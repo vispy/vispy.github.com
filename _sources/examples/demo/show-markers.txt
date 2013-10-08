@@ -2,6 +2,10 @@ demo/show-markers
 -----------------
 
 Display markers at different sizes and line thicknessess. """
+
+import os
+import sys
+
 import numpy as np
 from vispy import gl
 from OpenGL import GL
@@ -10,7 +14,10 @@ from vispy import app
 from vispy.util.transforms import ortho
 from vispy.oogl import Program
 from vispy.oogl import VertexBuffer
+
+sys.path.insert(0, os.path.dirname(__file__))
 import markers
+
 
 n = 540
 data = np.zeros(n, dtype = [ ('a_position', np.float32, 3),
@@ -109,6 +116,10 @@ if __name__ == '__main__':
     canvas = Canvas()
     canvas.show()
     app.run()
+
+.. image:: /_static/images/demo__show-markers.png
+
+----
 
 .. code-block:: python
     

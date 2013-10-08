@@ -5,6 +5,10 @@ Example demonstrating two viewports in one window, and how one can
 propagate events to the viewports. Note that stuff like this will be
 part of the future higher lever visuals layer.
 
+.. image:: /_static/images/howto__split-screen.png
+
+----
+
 .. code-block:: python
     
     
@@ -67,7 +71,7 @@ part of the future higher lever visuals layer.
             self.program['a_position'] = self.vbo
     
             # Init
-            self._pos = 0, 0
+            self._pos = 25, 25
             self._size = 1, 1
     
     
@@ -100,7 +104,7 @@ part of the future higher lever visuals layer.
     
         def __init__(self):
             app.Canvas.__init__(self)
-    
+            self.size = 400, 200
             self.left = ViewPort( (1.0, 0.5, 0.5, 1.0) )
             self.right = ViewPort( (0.5, 1.0, 0.5, 1.0) )
     

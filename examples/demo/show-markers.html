@@ -54,14 +54,17 @@
             
   <div class="section" id="demo-show-markers">
 <h1>demo/show-markers<a class="headerlink" href="#demo-show-markers" title="Permalink to this headline">¶</a></h1>
-<p>Display markers at different sizes and line thicknessess. &#8220;&#8221;&#8221;
-import numpy as np
+<p>Display markers at different sizes and line thicknessess. &#8220;&#8221;&#8220;</p>
+<p>import os
+import sys</p>
+<p>import numpy as np
 from vispy import gl
 from OpenGL import GL</p>
 <p>from vispy import app
 from vispy.util.transforms import ortho
 from vispy.oogl import Program
-from vispy.oogl import VertexBuffer
+from vispy.oogl import VertexBuffer</p>
+<p>sys.path.insert(0, os.path.dirname(__file__))
 import markers</p>
 <p>n = 540
 data = np.zeros(n, dtype = [ (&#8216;a_position&#8217;, np.float32, 3),</p>
@@ -165,6 +168,8 @@ self.program.draw(gl.GL_POINTS)</dd>
 canvas.show()
 app.run()</dd>
 </dl>
+<img alt="../../_images/demo__show-markers.png" src="../../_images/demo__show-markers.png" />
+<hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre>
 </pre></div>
 </div>
