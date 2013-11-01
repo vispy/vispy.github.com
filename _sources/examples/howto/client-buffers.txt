@@ -24,7 +24,6 @@ argument when creating a VertexBuffer or ElementBuffer.
     import numpy as np
     from scipy.spatial import cKDTree
     
-    from OpenGL import GL
     from vispy.gloo import gl
     from vispy import app
     from vispy.gloo import Program, VertexBuffer, ElementBuffer
@@ -54,7 +53,6 @@ argument when creating a VertexBuffer or ElementBuffer.
     
     
     VERT_SHADER = """
-    #version 120
     attribute vec3 position;
     attribute vec4 color;
     attribute float size;
@@ -68,7 +66,6 @@ argument when creating a VertexBuffer or ElementBuffer.
     """
     
     FRAG_SHADER = """
-    #version 120
     varying vec4 v_color;
     void main()
     {
@@ -101,8 +98,6 @@ argument when creating a VertexBuffer or ElementBuffer.
     
             gl.glEnable(gl.GL_BLEND)
             gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE)
-            gl.glEnable(GL.GL_VERTEX_PROGRAM_POINT_SIZE)
-            gl.glEnable(GL.GL_POINT_SPRITE)
     
         def on_resize(self, event):
             width, height = event.size

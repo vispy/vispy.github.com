@@ -103,7 +103,6 @@ Based on code from glumpy by Nicolas Rougier.</p>
 <span class="n">target</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">][:]</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span>
 
 <span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
 <span class="s">attribute vec3 position;</span>
 <span class="s">attribute vec4 color;</span>
 <span class="s">attribute float size;</span>
@@ -117,7 +116,6 @@ Based on code from glumpy by Nicolas Rougier.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">FRAG_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
 <span class="s">varying vec4 v_color;</span>
 <span class="s">void main()</span>
 <span class="s">{</span>
@@ -156,14 +154,8 @@ Based on code from glumpy by Nicolas Rougier.</p>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE</span><span class="p">)</span>
-
-        <span class="c"># todo: normal GL requires these lines, ES 2.0 does not</span>
-        <span class="kn">from</span> <span class="nn">OpenGL</span> <span class="kn">import</span> <span class="n">GL</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_VERTEX_PROGRAM_POINT_SIZE</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_POINT_SPRITE</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>

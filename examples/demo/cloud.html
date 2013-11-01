@@ -68,7 +68,6 @@
 <img alt="../../_images/demo__cloud.png" src="../../_images/demo__cloud.png" />
 <hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">OpenGL</span> <span class="kn">import</span> <span class="n">GL</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
@@ -92,8 +91,6 @@
 
 
 <span class="n">vert</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
-
 <span class="s">// Uniforms</span>
 <span class="s">// ------------------------------------</span>
 <span class="s">uniform mat4 u_model;</span>
@@ -130,8 +127,6 @@
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">frag</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
-
 <span class="s">// Constants</span>
 <span class="s">// ------------------------------------</span>
 
@@ -317,8 +312,6 @@
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span> <span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE_MINUS_SRC_ALPHA</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_VERTEX_PROGRAM_POINT_SIZE</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_POINT_SPRITE</span><span class="p">)</span>
 
 
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>

@@ -82,18 +82,14 @@ This example blurs the output image.</p>
                         <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span> <span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
 <span class="c"># For initial quad</span>
-<span class="n">VERT_SHADER1</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot; // simple vertex shader</span>
-<span class="s">#version 120</span>
-
+<span class="n">VERT_SHADER1</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">attribute vec3 a_position;</span>
 <span class="s">void main (void) {</span>
 <span class="s">    gl_Position = vec4(a_position, 1.0);</span>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="n">FRAG_SHADER1</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot; // simple fragment shader</span>
-<span class="s">#version 120</span>
-
+<span class="n">FRAG_SHADER1</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">uniform vec4 u_color;</span>
 <span class="s">void main()</span>
 <span class="s">{</span>
@@ -102,9 +98,7 @@ This example blurs the output image.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="c"># To render the result of the FBO</span>
-<span class="n">VERT_SHADER2</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot; // textured vertex shader</span>
-<span class="s">#version 120</span>
-
+<span class="n">VERT_SHADER2</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">attribute vec3 a_position;</span>
 <span class="s">attribute vec2 a_texcoord;</span>
 <span class="s">varying vec2 v_texcoord;</span>
@@ -116,9 +110,7 @@ This example blurs the output image.</p>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="n">FRAG_SHADER2</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot; // textured fragment shader</span>
-<span class="s">#version 120</span>
-
+<span class="n">FRAG_SHADER2</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">uniform sampler2D u_texture1;</span>
 <span class="s">varying vec2 v_texcoord;</span>
 <span class="s">const float c_zero = 0.0;</span>

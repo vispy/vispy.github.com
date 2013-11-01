@@ -99,9 +99,6 @@ calculated, such that each explostion is unique.</p>
 
 
 <span class="n">VERT_CODE</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">// explosion vertex shader</span>
-<span class="s">#version 120</span>
-
 <span class="s">uniform float u_time;</span>
 <span class="s">uniform vec3 u_centerPosition;</span>
 <span class="s">attribute float a_lifetime;</span>
@@ -127,9 +124,6 @@ calculated, such that each explostion is unique.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">FRAG_CODE</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">// explostion fragment shader</span>
-<span class="s">#version 120</span>
-
 <span class="s">uniform sampler2D s_texture;</span>
 <span class="s">uniform vec4 u_color;</span>
 <span class="s">varying float v_lifetime;</span>
@@ -159,17 +153,12 @@ calculated, such that each explostion is unique.</p>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE</span><span class="p">)</span>
 
-        <span class="c"># Note: normal GL requires these lines, ES 2.0 does not</span>
-        <span class="kn">from</span> <span class="nn">OpenGL</span> <span class="kn">import</span> <span class="n">GL</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_VERTEX_PROGRAM_POINT_SIZE</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL</span><span class="o">.</span><span class="n">GL_POINT_SPRITE</span><span class="p">)</span>
-
         <span class="c"># Create shader program</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_prog_handle</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateProgram</span><span class="p">()</span>
 
         <span class="c"># Create vertex shader</span>
         <span class="n">shader</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_VERTEX_SHADER</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">VERT_CODE</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource_compat</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">VERT_CODE</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">shader</span><span class="p">)</span>
         <span class="n">status</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_COMPILE_STATUS</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">status</span><span class="p">:</span>
@@ -180,7 +169,7 @@ calculated, such that each explostion is unique.</p>
 
         <span class="c"># Create fragment shader</span>
         <span class="n">shader</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">FRAG_CODE</span><span class="p">)</span>
+        <span class="n">need_enabled</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource_compat</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">FRAG_CODE</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">shader</span><span class="p">)</span>
         <span class="n">status</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_COMPILE_STATUS</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">status</span><span class="p">:</span>
@@ -188,6 +177,10 @@ calculated, such that each explostion is unique.</p>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&#39;Fragment shader did not compile.&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">gl</span><span class="o">.</span><span class="n">glAttachShader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prog_handle</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
+
+        <span class="c"># Enable point sprites</span>
+        <span class="k">for</span> <span class="n">enum</span> <span class="ow">in</span> <span class="n">need_enabled</span><span class="p">:</span>
+            <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">enum</span><span class="p">)</span>
 
         <span class="c"># Link</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glLinkProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prog_handle</span><span class="p">)</span>

@@ -19,7 +19,6 @@ Astronomers and cosmologists will kill me !
     from vispy import gloo
     from vispy import app
     from vispy.gloo import gl
-    from OpenGL import GL
     from vispy.util.transforms import perspective, translate, rotate
     
     # Manual galaxy creation
@@ -73,8 +72,6 @@ Astronomers and cosmologists will kill me !
     
     
     VERT_SHADER = """
-    #version 120
-    
     // Uniforms
     // ------------------------------------
     uniform mat4  u_model;
@@ -103,8 +100,6 @@ Astronomers and cosmologists will kill me !
     """
     
     FRAG_SHADER = """
-    #version 120
-    
     // Uniforms
     // ------------------------------------
     uniform sampler2D u_colormap;
@@ -157,8 +152,6 @@ Astronomers and cosmologists will kill me !
             gl.glDisable(gl.GL_DEPTH_TEST)
             gl.glEnable(gl.GL_BLEND)
             gl.glBlendFunc (gl.GL_SRC_ALPHA, gl.GL_ONE) #_MINUS_SRC_ALPHA)
-            gl.glEnable(GL.GL_VERTEX_PROGRAM_POINT_SIZE)
-            gl.glEnable(GL.GL_POINT_SPRITE)
             # Start the timer upon initialization.
             self.timer.start()
     
