@@ -74,14 +74,14 @@ visit the examples section in the <a class="reference external" href="http://vis
 <div class="row-fluid container">
 <div class="span6 container">
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Note that this needs vispy version &gt; 0.1.0</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gl</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="nd">@c.connect</span>
 <span class="k">def</span> <span class="nf">on_paint</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">)</span>
+    <span class="n">gloo</span><span class="o">.</span><span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">gloo</span><span class="o">.</span><span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
@@ -102,18 +102,15 @@ visit the examples section in the <a class="reference external" href="http://vis
 <h1>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h1>
 <p>Vispy is organized in the following modules:</p>
 <ul class="simple">
-<li><strong>vispy.gl</strong>: low level OpenGL API (level 1)</li>
-<li><strong>vispy.oogl</strong>: object oriented OpenGL API (level 2)</li>
-<li><strong>vispy.visuals</strong>: visuals layer (level 3)</li>
-<li>To come: functional interface (level 4)</li>
-<li>... something with big data? (level 5)</li>
 <li><strong>vispy.app</strong>: simple application framework for creating/embedding OpenGL widgets</li>
-<li><strong>vispy.event</strong>: event system.</li>
+<li><strong>vispy.gloo.gl</strong>: low level OpenGL API</li>
+<li><strong>vispy.gloo</strong>: object oriented OpenGL API</li>
+<li><strong>vispy.visuals</strong>: visuals layer (planned)</li>
+<li><strong>vispy.pyplot</strong>: functional interface (planned)</li>
 </ul>
 <p>The visualisation modules are organized in levels that provide API&#8217;s at
 increasing abstraction. Libraries and applications that
 use vispy can use it at the desired level.</p>
-<p>Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.</p>
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>

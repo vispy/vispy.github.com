@@ -65,7 +65,7 @@
   <div class="section" id="rawgl-rawgl-fireworks">
 <h1>rawgl/rawgl-fireworks<a class="headerlink" href="#rawgl-rawgl-fireworks" title="Permalink to this headline">¶</a></h1>
 <p>This example is equivalent to the fireworks example,
-but does not use vispy.gl, but the raw GL API.</p>
+but does not use vispy.gloo, but the raw GL API.</p>
 <p>Example demonstrating simulation of fireworks using point sprites.
 (adapted from the &#8220;OpenGL ES 2.0 Programming Guide&#8221;)</p>
 <p>This example demonstrates a series of explosions that last one second. The
@@ -76,7 +76,8 @@ calculated, such that each explostion is unique.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gl</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
 
 <span class="c"># Create a texture</span>

@@ -71,7 +71,8 @@
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">OpenGL.GL</span> <span class="kn">as</span> <span class="nn">gl</span>
+<span class="c">#import OpenGL.GL as gl</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
 <span class="k">def</span> <span class="nf">on_display</span><span class="p">():</span>
     <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
