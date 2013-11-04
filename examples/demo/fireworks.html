@@ -92,9 +92,9 @@ calculated, such that each explostion is unique.</p>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 
 <span class="c"># Create vertex data container</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">[(</span><span class="s">&#39;a_lifetime&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">[</span> <span class="p">(</span><span class="s">&#39;a_lifetime&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                      <span class="p">(</span><span class="s">&#39;a_startPosition&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-                     <span class="p">(</span><span class="s">&#39;a_endPosition&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+                     <span class="p">(</span><span class="s">&#39;a_endPosition&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">])</span>
 
 
 <span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
@@ -146,8 +146,8 @@ calculated, such that each explostion is unique.</p>
 
         <span class="c"># Create program</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span> <span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                               <span class="n">s_texture</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">im1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;s_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">im1</span><span class="p">)</span>
 
         <span class="c"># Create first explosion</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_new_explosion</span><span class="p">()</span>

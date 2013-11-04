@@ -69,14 +69,14 @@ Three textures are created and combined in the fragment shader.</p>
 <img alt="../_images/texturing.png" src="../_images/texturing.png" />
 <hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">Program</span><span class="p">,</span> <span class="n">Texture2D</span><span class="p">,</span> <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">ElementBuffer</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">dataio</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="c"># Texture 1</span>
-<span class="n">im1</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">crate</span><span class="p">()</span>
+<span class="n">im1</span> <span class="o">=</span> <span class="n">dataio</span><span class="o">.</span><span class="n">crate</span><span class="p">()</span>
 
 <span class="c"># Texture with bumbs (to muliply with im1)</span>
 <span class="n">im2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="s">&#39;float32&#39;</span><span class="p">)</span>

@@ -77,7 +77,7 @@
 
 <span class="c"># Create vertices</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000000</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[(</span><span class="s">&#39;a_position&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[</span> <span class="p">(</span><span class="s">&#39;a_position&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                      <span class="p">(</span><span class="s">&#39;a_bg_color&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
                      <span class="p">(</span><span class="s">&#39;a_fg_color&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
                      <span class="p">(</span><span class="s">&#39;a_size&#39;</span><span class="p">,</span>     <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
@@ -293,12 +293,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="mi">5</span>
         <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                              <span class="n">u_linewidth</span> <span class="o">=</span> <span class="n">u_linewidth</span><span class="p">,</span>
-                              <span class="n">u_antialias</span> <span class="o">=</span> <span class="n">u_antialias</span><span class="p">,</span>
-                              <span class="n">u_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-                              <span class="n">u_view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span>
-                              <span class="n">u_size</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">set_vars</span><span class="p">(</span><span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_linewidth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_antialias&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_antialias</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span>
 

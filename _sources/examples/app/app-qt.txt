@@ -44,6 +44,7 @@ every second.
     
         def on_mouse_release(self, event):
             print('on_mouse_release')
+            print(event.trail())
     
         def on_mouse_move(self, event):
             print('on_mouse_move (%dx%d)' % event.pos)
@@ -56,7 +57,7 @@ every second.
             gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
     
         def on_timer(self, event):
-            print('tick !')
+            print('tick ! (%s)' % event.dt)
     
     # -----------------------------------------------------------------------------
     if __name__ == '__main__':
