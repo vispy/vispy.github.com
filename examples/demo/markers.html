@@ -67,6 +67,8 @@
 <p>Marker shader definitions. You need to combine marker_frag with one of the
 available marker function (marker_disc, marker_diamond, ...)</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">vert</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
 <span class="s">// Uniforms</span>
 <span class="s">// ------------------------------------</span>
 <span class="s">uniform mat4 u_model;</span>
@@ -97,13 +99,16 @@ available marker function (marker_disc, marker_diamond, ...)</p>
 <span class="s">    v_antialias = u_antialias;</span>
 <span class="s">    v_fg_color  = a_fg_color;</span>
 <span class="s">    v_bg_color  = a_bg_color;</span>
-<span class="s">    gl_Position = u_projection * u_view * u_model * vec4(a_position*u_size,1.0);</span>
+<span class="s">    gl_Position = u_projection * u_view * u_model *</span>
+<span class="s">        vec4(a_position*u_size,1.0);</span>
 <span class="s">    gl_PointSize = v_size + 2*(v_linewidth + 1.5*v_antialias);</span>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
 
 <span class="n">frag</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
 <span class="s">// Constants</span>
 <span class="s">// ------------------------------------</span>
 
@@ -263,7 +268,7 @@ available marker function (marker_disc, marker_diamond, ...)</p>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="n">tailed_arrow</span><span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="n">tailed_arrow</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">float marker(vec2 P, float size)</span>
 <span class="s">{</span>
 

@@ -67,29 +67,31 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># VisPy - Copyright (c) 2013, Vispy Development Team All rights reserved.</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team.</span>
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
+
 
 <span class="k">def</span> <span class="nf">on_display</span><span class="p">():</span>
     <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutSwapBuffers</span><span class="p">()</span>
 
+
 <span class="k">def</span> <span class="nf">on_keyboard</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s">&#39;</span><span class="se">\033</span><span class="s">&#39;</span><span class="p">:</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
+
 <span class="k">def</span> <span class="nf">on_idle</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">t</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">glut</span><span class="o">.</span><span class="n">glutGet</span><span class="p">(</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_ELAPSED_TIME</span> <span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">glut</span><span class="o">.</span><span class="n">glutGet</span><span class="p">(</span><span class="n">glut</span><span class="o">.</span><span class="n">GLUT_ELAPSED_TIME</span><span class="p">)</span>
     <span class="n">frames</span> <span class="o">=</span> <span class="n">frames</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="mf">1000.0</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span>
     <span class="k">if</span> <span class="n">elapsed</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span> <span class="s">&quot;FPS : </span><span class="si">%.2f</span><span class="s"> (</span><span class="si">%d</span><span class="s"> frames in </span><span class="si">%.2f</span><span class="s"> second)&quot;</span>
-               <span class="o">%</span> <span class="p">(</span><span class="n">frames</span><span class="o">/</span><span class="n">elapsed</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">))</span>
-        <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;FPS : </span><span class="si">%.2f</span><span class="s"> (</span><span class="si">%d</span><span class="s"> frames in </span><span class="si">%.2f</span><span class="s"> second)&quot;</span>
+              <span class="o">%</span> <span class="p">(</span><span class="n">frames</span> <span class="o">/</span> <span class="n">elapsed</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">))</span>
+        <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="mi">0</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutPostRedisplay</span><span class="p">()</span>
 
 
@@ -98,13 +100,14 @@
     <span class="kn">import</span> <span class="nn">OpenGL.GLUT</span> <span class="kn">as</span> <span class="nn">glut</span>
 
     <span class="n">glut</span><span class="o">.</span><span class="n">glutInit</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-    <span class="n">glut</span><span class="o">.</span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">glut</span><span class="o">.</span><span class="n">GLUT_DOUBLE</span> <span class="o">|</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_RGB</span> <span class="o">|</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_DEPTH</span><span class="p">)</span>
-    <span class="n">glut</span><span class="o">.</span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">)</span>
+    <span class="n">glut</span><span class="o">.</span><span class="n">glutInitDisplayMode</span><span class="p">(</span>
+        <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_DOUBLE</span> <span class="o">|</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_RGB</span> <span class="o">|</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_DEPTH</span><span class="p">)</span>
+    <span class="n">glut</span><span class="o">.</span><span class="n">glutInitWindowSize</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&quot;Do nothing benchmark (GLUT)&quot;</span><span class="p">)</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">on_display</span><span class="p">)</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutKeyboardFunc</span><span class="p">(</span><span class="n">on_keyboard</span><span class="p">)</span>
 
-    <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">glut</span><span class="o">.</span><span class="n">glutGet</span><span class="p">(</span><span class="n">glut</span><span class="o">.</span><span class="n">GLUT_ELAPSED_TIME</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+    <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">glut</span><span class="o">.</span><span class="n">glutGet</span><span class="p">(</span><span class="n">glut</span><span class="o">.</span><span class="n">GLUT_ELAPSED_TIME</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutIdleFunc</span><span class="p">(</span><span class="n">on_idle</span><span class="p">)</span>
     <span class="n">glut</span><span class="o">.</span><span class="n">glutMainLoop</span><span class="p">()</span>
 </pre></div>

@@ -11,6 +11,8 @@ available marker function (marker_disc, marker_diamond, ...)
     
     
     vert = """
+    #version 120
+    
     // Uniforms
     // ------------------------------------
     uniform mat4 u_model;
@@ -41,13 +43,16 @@ available marker function (marker_disc, marker_diamond, ...)
         v_antialias = u_antialias;
         v_fg_color  = a_fg_color;
         v_bg_color  = a_bg_color;
-        gl_Position = u_projection * u_view * u_model * vec4(a_position*u_size,1.0);
+        gl_Position = u_projection * u_view * u_model *
+            vec4(a_position*u_size,1.0);
         gl_PointSize = v_size + 2*(v_linewidth + 1.5*v_antialias);
     }
     """
     
     
     frag = """
+    #version 120
+    
     // Constants
     // ------------------------------------
     
@@ -207,7 +212,7 @@ available marker function (marker_disc, marker_diamond, ...)
     }
     """
     
-    tailed_arrow= """
+    tailed_arrow = """
     float marker(vec2 P, float size)
     {
     
@@ -226,5 +231,3 @@ available marker function (marker_disc, marker_diamond, ...)
         return min(arrow,hbar);
     }
     """
-    
-    

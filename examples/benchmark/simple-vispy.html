@@ -67,34 +67,36 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># VisPy - Copyright (c) 2013, Vispy Development Team All rights reserved.</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team.</span>
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">use</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
-<span class="n">app</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&#39;qt&#39;</span><span class="p">)</span>
-<span class="c"># app.use(&#39;glut&#39;)</span>
-<span class="c"># app.use(&#39;pyglet&#39;)</span>
+<span class="n">use</span><span class="p">(</span><span class="s">&#39;pyqt4&#39;</span><span class="p">)</span>
+<span class="c"># use(&#39;glut&#39;)</span>
+<span class="c"># use(&#39;pyglet&#39;)</span>
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Do nothing benchmark (vispy)&quot;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Do nothing benchmark (vispy)&quot;</span><span class="p">,</span>
+                    <span class="n">close_keys</span><span class="o">=</span><span class="s">&#39;escape&#39;</span><span class="p">)</span>
+
 
 <span class="nd">@canvas.connect</span>
-<span class="k">def</span> <span class="nf">on_paint</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">t</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span>
     <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
 
     <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">frames</span> <span class="o">=</span> <span class="n">frames</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span> <span class="c"># seconds</span>
+    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>  <span class="c"># seconds</span>
     <span class="k">if</span> <span class="n">elapsed</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span> <span class="s">&quot;FPS : </span><span class="si">%.2f</span><span class="s"> (</span><span class="si">%d</span><span class="s"> frames in </span><span class="si">%.2f</span><span class="s"> second)&quot;</span>
-               <span class="o">%</span> <span class="p">(</span><span class="n">frames</span><span class="o">/</span><span class="n">elapsed</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">))</span>
-        <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span><span class="mi">0</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;FPS : </span><span class="si">%.2f</span><span class="s"> (</span><span class="si">%d</span><span class="s"> frames in </span><span class="si">%.2f</span><span class="s"> second)&quot;</span>
+              <span class="o">%</span> <span class="p">(</span><span class="n">frames</span> <span class="o">/</span> <span class="n">elapsed</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">))</span>
+        <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="mi">0</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="n">t0</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="n">t0</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>

@@ -102,19 +102,21 @@ part of the future higher lever visuals layer.</p>
 
 
 <span class="k">class</span> <span class="nc">ViewPort</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
     <span class="sd">&quot;&quot;&quot; Represents a rectangular region on the screen.</span>
 <span class="sd">    Resize and mouse events are propagated to here, as well</span>
-<span class="sd">    as the paint event.</span>
+<span class="sd">    as the draw event.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bgcolor</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_bgcolor</span> <span class="o">=</span> <span class="n">bgcolor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">EmitterGroup</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-                        <span class="n">resize</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">ResizeEvent</span><span class="p">,</span>
-                        <span class="n">mouse_press</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
-                        <span class="n">mouse_release</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
-                        <span class="n">mouse_move</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
-                        <span class="n">mouse_wheel</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
-                        <span class="p">)</span>
+                                   <span class="n">resize</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">ResizeEvent</span><span class="p">,</span>
+                                   <span class="n">mouse_press</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
+                                   <span class="n">mouse_release</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
+                                   <span class="n">mouse_move</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
+                                   <span class="n">mouse_wheel</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">MouseEvent</span><span class="p">,</span>
+                                   <span class="p">)</span>
 
         <span class="c"># Create program</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">)</span>
@@ -129,49 +131,41 @@ part of the future higher lever visuals layer.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
 
-
     <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span>
-
 
     <span class="k">def</span> <span class="nf">on_mouse_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span>
 
-
     <span class="k">def</span> <span class="nf">on_mouse_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20.0</span>
-
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
 
-
-    <span class="k">def</span> <span class="nf">on_paint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
         <span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vbo</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POINTS</span><span class="p">)</span>
-
 
 
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close_keys</span><span class="o">=</span><span class="s">&#39;escape&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">200</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">ViewPort</span><span class="p">(</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">ViewPort</span><span class="p">(</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">ViewPort</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">ViewPort</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE</span><span class="p">)</span>
 
-
-    <span class="k">def</span> <span class="nf">on_paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="c"># Paint events are &quot;manually&quot; propagated to the viewport instances,</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># Draw events are &quot;manually&quot; propagated to the viewport instances,</span>
         <span class="c"># because we first want to set the glViewport for each one.</span>
 
         <span class="c"># Prepare</span>
@@ -180,61 +174,53 @@ part of the future higher lever visuals layer.</p>
         <span class="n">w2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">w1</span>
         <span class="c"># Left</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">on_paint</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">on_draw</span><span class="p">()</span>
         <span class="c"># Right</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">on_paint</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">on_draw</span><span class="p">()</span>
 
         <span class="c"># Invoke new draw</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">w1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">//</span><span class="mi">2</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="n">w2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">w1</span>
         <span class="n">h</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">on_mouse_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">viewport</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_viewport</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_re_emit_mouse_event</span><span class="p">(</span><span class="n">viewport</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_press</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
 
-
     <span class="k">def</span> <span class="nf">on_mouse_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">viewport</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_viewport</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_re_emit_mouse_event</span><span class="p">(</span><span class="n">viewport</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_release</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
-
 
     <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">viewport</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_viewport</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_re_emit_mouse_event</span><span class="p">(</span><span class="n">viewport</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_move</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
 
-
     <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">viewport</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_viewport</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_re_emit_mouse_event</span><span class="p">(</span><span class="n">viewport</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_wheel</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
-
 
     <span class="k">def</span> <span class="nf">_get_viewport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Based on a given position, get the viewport and the pos</span>
 <span class="sd">        relative to that viewport.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">halfwidth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">//</span><span class="mi">2</span>
+        <span class="n">halfwidth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">halfwidth</span><span class="p">:</span>
             <span class="n">viewport</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">viewport</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">halfwidth</span><span class="p">,</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">halfwidth</span><span class="p">,</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">viewport</span><span class="p">,</span> <span class="n">pos</span>
-
 
     <span class="k">def</span> <span class="nf">_re_emit_mouse_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emitter</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">emitter</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">button</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">button</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">modifiers</span><span class="p">,</span>
-                                                        <span class="n">delta</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">delta</span> <span class="p">)</span>
-
+                <span class="n">delta</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
