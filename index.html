@@ -62,31 +62,24 @@
     <div class="row">
         <div class="span9">
             
-  <p>Vispy is an <strong>OpenGL-based interactive visualization library in
-Python</strong>. Its goal is to make it easy to create beautiful and fast
-dynamic visualizations. For example, <strong>scientific plotting</strong> of tens
-of millions of points, interacting with complex polygonial models, and
-(dynamic) volume rendering. All thanks to the graphics card&#8217;s hardware
-acceleration.</p>
-<div class="section" id="status">
-<h1>Status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h1>
-<p>Vispy will eventually offer graphical APIs at multiple levels, including
-a matplotlib-like scientific plotting library. Currently, only the
-lowest-level API is implemented: it brings an easy-to-use Pythonic
-object-oriented interface to OpenGL. This layer requires you to have
-basic knowledge of modern OpenGL (notably the OpenGL shading language,
-GLSL).</p>
-<p>For this reason,
-<strong>Vispy is not yet suitable for the general scientist, but it will be in the future</strong>
-(in several months at the very least).
-We are currently working on higher level layers. They will hide most
-OpenGL concepts and let you create beautiful visualizations in a few
-lines of code. Stay tuned!</p>
-</div>
+  <p>Vispy is a <strong>high-performance interactive 2D/3D data visualization library</strong>.
+Vispy leverages the computational power of modern
+<strong>Graphics Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to
+display very large datasets. Applications of Vispy include:</p>
+<ul class="simple">
+<li>High-quality interactive scientific plots with tens of millions of points.</li>
+<li>Direct visualization of real-time data.</li>
+<li>Fast interactive visualization of 3D models (meshes, volume rendering).</li>
+<li>OpenGL visualization demos.</li>
+<li>Scientific GUIs with fast, scalable visualization widgets (Qt or IPython notebook with WebGL).</li>
+</ul>
+<p><strong>Important note</strong>. As of today (July 2014), using Vispy requires knowing OpenGL. Within the next few weeks, we will offer higher-level graphical interfaces that allow for the creation of visualizations without any knowledge of OpenGL.</p>
 <div class="section" id="announcements">
 <h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><strong>GSoC 2014</strong>: <a class="reference external" href="https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014">we&#8217;re looking for students!</a></li>
+<li><strong>EuroSciPy 2014</strong>: talk and sprint, August 2014</li>
+<li><a class="reference external" href="https://github.com/vispy/linuxmag-article">Article in **Linux Magazine**, French Edition</a>, July 2014</li>
+<li><strong>GSoC 2014</strong>: <a class="reference external" href="https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014">two GSoC students are currently working on Vispy under the PSF umbrella</a></li>
 <li><strong>Release!</strong>, Version 0.2.1 04-11-2013</li>
 <li><strong>Presentation at BI forum</strong>, Budapest, 6 November 2013</li>
 <li><strong>Presentation at Euroscipy</strong>, Belgium, August 2013</li>
@@ -94,64 +87,26 @@ lines of code. Stay tuned!</p>
 <li><strong>Release!</strong> Version 0.1.0 14-08-2013</li>
 </ul>
 </div>
-<div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Visualization with <tt class="docutils literal"><span class="pre">vispy</span></tt> is easy!  For more code samples, please
-visit the examples section in the <a class="reference external" href="http://vispy.readthedocs.org">documentation</a>.</p>
-<div class="row-fluid container">
-<div class="span6 container">
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Note that this needs vispy version &gt; 0.1.0</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="nd">@c.connect</span>
-<span class="k">def</span> <span class="nf">on_paint</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">)</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="organization">
-<h1>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h1>
-<p>Vispy is organized in the following modules:</p>
-<ul class="simple">
-<li><strong>vispy.app</strong>: simple application framework for creating/embedding OpenGL widgets</li>
-<li><strong>vispy.util</strong>: Various utilities, mostly for internal use</li>
-<li><strong>vispy.gloo</strong>: object oriented OpenGL API</li>
-<li><strong>vispy.visuals</strong>: visuals layer (planned)</li>
-<li><strong>vispy.pyplot</strong>: functional interface (planned)</li>
-</ul>
-<p>The visualisation modules are organized in levels that provide API&#8217;s at
-increasing abstraction. Libraries and applications that
-use vispy can use it at the desired level.</p>
-<p><tt class="docutils literal"><span class="pre">vispy.app</span></tt> and <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> are currently in beta stage; we try to
-keep the API&#8217;s stable, but may introduce small changes.</p>
-</div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Vispy runs on Python 2.6 and higher, including Python 3.
-Vispy depends on Numpy and PyOpenGL.</p>
-<p>Since Vispy is pure Python, installation is easy: <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">vispy</span></tt>.
-Alternatively, you can get the source and run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
+<p>Vispy runs on Python 2.6+ and Python 3.3+ and depends on Numpy and PyOpenGL.</p>
+<p>As Vispy is under heavy development at this time, we highly recommend you to use the <a class="reference external" href="https://github.com/vispy/vispy">development version on Github</a> (master branch). You need to clone the repository and install Vispy with <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
 <div class="section" id="about-us">
 <h1>About us<a class="headerlink" href="#about-us" title="Permalink to this headline">¶</a></h1>
 <p>The core development team consists of Luke Campagnola, Almar Klein,
-Nicolas Rougier and Cyrille Rossant. We have each written our own Python
-visualization toolkit (PyQtGraph, Visvis, Glumpy and Galry,
-respectively), and decided to team-up.</p>
-<p>Vispy will eventually replace all of our visualization libraries, so
-you can expect vispy to have all the features of our respective toolkits
-combined, and more.</p>
+Nicolas Rougier, Eric Larson, Cyrille Rossant. Four of us have written our own
+Python visualization toolkit (PyQtGraph, Visvis, Glumpy and Galry), and
+we decided to team-up to create a unique high-performance, high-quality
+interactive visualization library.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://groups.google.com/forum/#!forum/vispy">User mailing list</a></li>
+<li><a class="reference external" href="https://groups.google.com/forum/#!forum/vispy-dev">Dev mailing list</a></li>
+<li><a class="reference external" href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+</ul>
 </div>
-<div class="section" id="publications-around-vispy">
-<h1>Publications around Vispy<a class="headerlink" href="#publications-around-vispy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="publications">
+<h1>Publications<a class="headerlink" href="#publications" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference external" href="http://www.frontiersin.org/Journal/10.3389/fninf.2013.00036/full">Hardware-accelerated interactive data visualization for neuroscience in Python</a> C. Rossant and K.D. Harris, Frontiers in Neuroinformatics, 7.36, (2013)</li>
 <li><a class="reference external" href="http://jcgt.org/published/0002/02/08/">Shader-based Antialiased Dashed Stroked Polylines</a> N. P. Rougier. Journal of Computer Graphics Techniques, 2.2 (2013)</li>
