@@ -1,0 +1,305 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>basics/visuals/custom_visual &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="basics-visuals-custom-visual">
+<h1>basics/visuals/custom_visual<a class="headerlink" href="#basics-visuals-custom-visual" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
+
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Visual</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span><span class="p">,</span> <span class="n">LogTransform</span>
+
+
+<span class="k">class</span> <span class="nc">PanZoomTransform</span><span class="p">(</span><span class="n">STTransform</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I call this when I want to translate.&quot;&quot;&quot;</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">dx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;I call this when I want to zoom.&quot;&quot;&quot;</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">dx</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">dx</span><span class="p">),</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
+        <span class="n">tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">translate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.</span><span class="o">/</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                          <span class="n">tr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.</span><span class="o">/</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+
+
+<span class="k">class</span> <span class="nc">MarkerVisual</span><span class="p">(</span><span class="n">Visual</span><span class="p">):</span>
+    <span class="c"># My full vertex shader, with just a `transform` hook.</span>
+    <span class="n">VERTEX_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">        #version 120</span>
+
+<span class="s">        attribute vec2 a_position;</span>
+<span class="s">        attribute vec3 a_color;</span>
+<span class="s">        attribute float a_size;</span>
+
+<span class="s">        varying vec4 v_fg_color;</span>
+<span class="s">        varying vec4 v_bg_color;</span>
+<span class="s">        varying float v_radius;</span>
+<span class="s">        varying float v_linewidth;</span>
+<span class="s">        varying float v_antialias;</span>
+
+<span class="s">        void main (void) {</span>
+<span class="s">            v_radius = a_size;</span>
+<span class="s">            v_linewidth = 1.0;</span>
+<span class="s">            v_antialias = 1.0;</span>
+<span class="s">            v_fg_color  = vec4(0.0,0.0,0.0,0.5);</span>
+<span class="s">            v_bg_color  = vec4(a_color,    1.0);</span>
+
+<span class="s">            gl_Position = $transform(vec4(a_position,0,1));</span>
+
+<span class="s">            gl_PointSize = 2.0*(v_radius + v_linewidth + 1.5*v_antialias);</span>
+<span class="s">        }</span>
+<span class="s">    &quot;&quot;&quot;</span>
+
+    <span class="n">FRAGMENT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">        #version 120</span>
+<span class="s">        varying vec4 v_fg_color;</span>
+<span class="s">        varying vec4 v_bg_color;</span>
+<span class="s">        varying float v_radius;</span>
+<span class="s">        varying float v_linewidth;</span>
+<span class="s">        varying float v_antialias;</span>
+<span class="s">        void main()</span>
+<span class="s">        {</span>
+<span class="s">            float size = 2.0*(v_radius + v_linewidth + 1.5*v_antialias);</span>
+<span class="s">            float t = v_linewidth/2.0-v_antialias;</span>
+<span class="s">            float r = length((gl_PointCoord.xy - vec2(0.5,0.5))*size);</span>
+<span class="s">            float d = abs(r - v_radius) - t;</span>
+<span class="s">            if( d &lt; 0.0 )</span>
+<span class="s">                gl_FragColor = v_fg_color;</span>
+<span class="s">            else</span>
+<span class="s">            {</span>
+<span class="s">                float alpha = d/v_antialias;</span>
+<span class="s">                alpha = exp(-alpha*alpha);</span>
+<span class="s">                if (r &gt; v_radius)</span>
+<span class="s">                    gl_FragColor = vec4(v_fg_color.rgb, alpha*v_fg_color.a);</span>
+<span class="s">                else</span>
+<span class="s">                    gl_FragColor = mix(v_bg_color, v_fg_color, alpha);</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span> <span class="o">=</span> <span class="n">ModularProgram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">VERTEX_SHADER</span><span class="p">,</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">FRAGMENT_SHADER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Special function that is used to set the options. Automatically</span>
+<span class="sd">        called at initialization.&quot;&quot;&quot;</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                       <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;I&#39;m not required to use this function. We could also have a system</span>
+<span class="sd">        of trait attributes, such that a user doing</span>
+<span class="sd">        `visual.position = myndarray` results in an automatic update of the</span>
+<span class="sd">        buffer. Here I just set the buffers manually.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">pos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">size</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># attributes / uniforms are not available until program is built</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>  <span class="c"># Force ModularProgram to set shaders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;a_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;a_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;points&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">MarkerVisual</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+
+        <span class="c"># This is just an instance I choose to use, nothing required in the</span>
+        <span class="c"># Visual API here.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span> <span class="o">=</span> <span class="n">PanZoomTransform</span><span class="p">()</span>
+
+        <span class="c"># Here, I set the `transform` hook to my PAN_ZOOM function.</span>
+        <span class="c"># In addition, I provide a component instance.</span>
+        <span class="c"># Vispy knows that every $variable in the Function is bound to</span>
+        <span class="c"># component.$variable. Here, since pan and zoom are tuples,</span>
+        <span class="c"># Vispy understands that it has to create two uniforms (u_$variable</span>
+        <span class="c"># for example).</span>
+        <span class="n">tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span> <span class="o">*</span> <span class="n">LogTransform</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xy</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xy</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_dragging</span><span class="p">:</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">last_event</span><span class="o">.</span><span class="n">pos</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span>
+            <span class="n">dxy</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">button</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">button</span>
+
+            <span class="c"># This just updates my private PanZoom instance. Nothing magic</span>
+            <span class="c"># happens.</span>
+            <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">dxy</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">button</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">dxy</span><span class="p">)</span>
+
+            <span class="c"># The magic happens here. self.on_draw() is called, so</span>
+            <span class="c"># self.points.draw() is called. The two variables in the transform</span>
+            <span class="c"># hook are bound to self.panzoom.pan and self.panzoom.zoom, so</span>
+            <span class="c"># Vispy will automatically fetch those two values and update</span>
+            <span class="c"># the two corresponding uniforms.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+            <span class="c"># Force transform to update its shader.</span>
+            <span class="c"># (this should not be necessary)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

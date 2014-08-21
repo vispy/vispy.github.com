@@ -74,129 +74,118 @@
 <span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">def display():</span>
-<span class="s">    gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)</span>
-<span class="s">    gl.glDrawElements(</span>
-<span class="s">        gl.GL_TRIANGLES, icube_data.size, gl.GL_UNSIGNED_INT, None)</span>
-<span class="s">    glut.glutSwapBuffers()</span>
+<span class="s">class Canvas(app.Canvas):</span>
+<span class="s">    def __init__(self):</span>
+<span class="s">        app.Canvas.__init__(self, size=(512, 512),</span>
+<span class="s">                            title=&#39;Rotating cube (GL version)&#39;,</span>
+<span class="s">                            keys=&#39;interactive&#39;)</span>
+<span class="s">        self.timer = app.Timer(1./60., self.on_timer)</span>
 
+<span class="s">    def on_initialize(self, event):</span>
+<span class="s">        # Build &amp; activate cube program</span>
+<span class="s">        self.cube = gl.glCreateProgram()</span>
+<span class="s">        vertex = gl.glCreateShader(gl.GL_VERTEX_SHADER)</span>
+<span class="s">        fragment = gl.glCreateShader(gl.GL_FRAGMENT_SHADER)</span>
+<span class="s">        gl.glShaderSource(vertex, cube_vertex)</span>
+<span class="s">        gl.glShaderSource(fragment, cube_fragment)</span>
+<span class="s">        gl.glCompileShader(vertex)</span>
+<span class="s">        gl.glCompileShader(fragment)</span>
+<span class="s">        gl.glAttachShader(self.cube, vertex)</span>
+<span class="s">        gl.glAttachShader(self.cube, fragment)</span>
+<span class="s">        gl.glLinkProgram(self.cube)</span>
+<span class="s">        gl.glDetachShader(self.cube, vertex)</span>
+<span class="s">        gl.glDetachShader(self.cube, fragment)</span>
+<span class="s">        gl.glUseProgram(self.cube)</span>
 
-<span class="s">def reshape(width, height):</span>
-<span class="s">    gl.glViewport(0, 0, width, height)</span>
-<span class="s">    projection = perspective(35.0, width / float(height), 2.0, 10.0)</span>
-<span class="s">    loc = gl.glGetUniformLocation(cube, &quot;u_projection&quot;)</span>
-<span class="s">    gl.glUniformMatrix4fv(loc, 1, False, projection)</span>
+<span class="s">        # Get data &amp; build cube buffers</span>
+<span class="s">        vcube_data, self.icube_data = makecube()</span>
+<span class="s">        vcube = gl.glGenBuffers(1)</span>
+<span class="s">        gl.glBindBuffer(gl.GL_ARRAY_BUFFER, vcube)</span>
+<span class="s">        gl.glBufferData(gl.GL_ARRAY_BUFFER, vcube_data.nbytes,</span>
+<span class="s">                        vcube_data, gl.GL_STATIC_DRAW)</span>
+<span class="s">        icube = gl.glGenBuffers(1)</span>
+<span class="s">        gl.glBindBuffer(gl.GL_ELEMENT_ARRAY_BUFFER, icube)</span>
+<span class="s">        gl.glBufferData(gl.GL_ELEMENT_ARRAY_BUFFER,</span>
+<span class="s">                        self.icube_data.nbytes, self.icube_data,</span>
+<span class="s">                        gl.GL_STATIC_DRAW)</span>
 
+<span class="s">        # Bind cube attributes</span>
+<span class="s">        stride = vcube_data.strides[0]</span>
+<span class="s">        offset = ctypes.c_void_p(0)</span>
+<span class="s">        loc = gl.glGetAttribLocation(self.cube, &quot;a_position&quot;)</span>
+<span class="s">        gl.glEnableVertexAttribArray(loc)</span>
+<span class="s">        gl.glVertexAttribPointer(loc, 3, gl.GL_FLOAT, False, stride, offset)</span>
 
-<span class="s">def keyboard(key, x, y):</span>
-<span class="s">    if key == &#39;</span><span class="se">\033</span><span class="s">&#39;:</span>
-<span class="s">        sys.exit()</span>
+<span class="s">        offset = ctypes.c_void_p(vcube_data.dtype[&quot;a_position&quot;].itemsize)</span>
+<span class="s">        loc = gl.glGetAttribLocation(self.cube, &quot;a_texcoord&quot;)</span>
+<span class="s">        gl.glEnableVertexAttribArray(loc)</span>
+<span class="s">        gl.glVertexAttribPointer(loc, 2, gl.GL_FLOAT, False, stride, offset)</span>
 
+<span class="s">        # Create &amp; bind cube texture</span>
+<span class="s">        crate = checkerboard()</span>
+<span class="s">        texture = gl.glGenTextures(1)</span>
+<span class="s">        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER,</span>
+<span class="s">                           gl.GL_LINEAR)</span>
+<span class="s">        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER,</span>
+<span class="s">                           gl.GL_LINEAR)</span>
+<span class="s">        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_S,</span>
+<span class="s">                           gl.GL_CLAMP_TO_EDGE)</span>
+<span class="s">        gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_T,</span>
+<span class="s">                           gl.GL_CLAMP_TO_EDGE)</span>
+<span class="s">        gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_INTENSITY,</span>
+<span class="s">                        crate.shape[1], crate.shape[0],</span>
+<span class="s">                        0, gl.GL_RED, gl.GL_UNSIGNED_BYTE, crate)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_texture&quot;)</span>
+<span class="s">        gl.glUniform1i(loc, texture)</span>
+<span class="s">        gl.glBindTexture(gl.GL_TEXTURE_2D, 0)</span>
 
-<span class="s">def timer(fps):</span>
-<span class="s">    global theta, phi</span>
-<span class="s">    theta += .5</span>
-<span class="s">    phi += .5</span>
-<span class="s">    model = np.eye(4, dtype=np.float32)</span>
-<span class="s">    rotate(model, theta, 0, 0, 1)</span>
-<span class="s">    rotate(model, phi, 0, 1, 0)</span>
-<span class="s">    loc = gl.glGetUniformLocation(cube, &quot;u_model&quot;)</span>
-<span class="s">    gl.glUniformMatrix4fv(loc, 1, False, model)</span>
-<span class="s">    glut.glutTimerFunc(1000 / fps, timer, fps)</span>
-<span class="s">    glut.glutPostRedisplay()</span>
+<span class="s">        # Create &amp; bind cube matrices</span>
+<span class="s">        view = np.eye(4, dtype=np.float32)</span>
+<span class="s">        model = np.eye(4, dtype=np.float32)</span>
+<span class="s">        projection = np.eye(4, dtype=np.float32)</span>
+<span class="s">        translate(view, 0, 0, -7)</span>
+<span class="s">        self.phi, self.theta = 60, 20</span>
+<span class="s">        rotate(model, self.theta, 0, 0, 1)</span>
+<span class="s">        rotate(model, self.phi, 0, 1, 0)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_model&quot;)</span>
+<span class="s">        gl.glUniformMatrix4fv(loc, 1, False, model)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_view&quot;)</span>
+<span class="s">        gl.glUniformMatrix4fv(loc, 1, False, view)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_projection&quot;)</span>
+<span class="s">        gl.glUniformMatrix4fv(loc, 1, False, projection)</span>
 
+<span class="s">        # OpenGL initalization</span>
+<span class="s">        gl.glClearColor(0.30, 0.30, 0.35, 1.00)</span>
+<span class="s">        gl.glEnable(gl.GL_DEPTH_TEST)</span>
 
-<span class="s"># GLUT init</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">glut.glutInit()</span>
-<span class="s">glut.glutInitDisplayMode(glut.GLUT_DOUBLE | glut.GLUT_RGBA | glut.GLUT_DEPTH)</span>
-<span class="s">glut.glutCreateWindow(&#39;Rotating cube (GL version)&#39;)</span>
-<span class="s">glut.glutReshapeWindow(512, 512)</span>
-<span class="s">glut.glutReshapeFunc(reshape)</span>
-<span class="s">glut.glutDisplayFunc(display)</span>
-<span class="s">glut.glutKeyboardFunc(keyboard)</span>
-<span class="s">glut.glutTimerFunc(1000 / 60, timer, 60)</span>
+<span class="s">        self.timer.start()</span>
 
-<span class="s"># Build &amp; activate cube program</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">cube = gl.glCreateProgram()</span>
-<span class="s">vertex = gl.glCreateShader(gl.GL_VERTEX_SHADER)</span>
-<span class="s">fragment = gl.glCreateShader(gl.GL_FRAGMENT_SHADER)</span>
-<span class="s">gl.glShaderSource(vertex, cube_vertex)</span>
-<span class="s">gl.glShaderSource(fragment, cube_fragment)</span>
-<span class="s">gl.glCompileShader(vertex)</span>
-<span class="s">gl.glCompileShader(fragment)</span>
-<span class="s">gl.glAttachShader(cube, vertex)</span>
-<span class="s">gl.glAttachShader(cube, fragment)</span>
-<span class="s">gl.glLinkProgram(cube)</span>
-<span class="s">gl.glDetachShader(cube, vertex)</span>
-<span class="s">gl.glDetachShader(cube, fragment)</span>
-<span class="s">gl.glUseProgram(cube)</span>
+<span class="s">    def on_draw(self, event):</span>
+<span class="s">        gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)</span>
+<span class="s">        gl.glDrawElements(gl.GL_TRIANGLES, self.icube_data.size,</span>
+<span class="s">                          gl.GL_UNSIGNED_INT, None)</span>
 
-<span class="s"># Get data &amp; build cube buffers</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">vcube_data, icube_data = makecube()</span>
-<span class="s">vcube = gl.glGenBuffers(1)</span>
-<span class="s">gl.glBindBuffer(gl.GL_ARRAY_BUFFER, vcube)</span>
-<span class="s">gl.glBufferData(</span>
-<span class="s">    gl.GL_ARRAY_BUFFER, vcube_data.nbytes, vcube_data, gl.GL_STATIC_DRAW)</span>
-<span class="s">icube = gl.glGenBuffers(1)</span>
-<span class="s">gl.glBindBuffer(gl.GL_ELEMENT_ARRAY_BUFFER, icube)</span>
-<span class="s">gl.glBufferData(gl.GL_ELEMENT_ARRAY_BUFFER,</span>
-<span class="s">                icube_data.nbytes, icube_data, gl.GL_STATIC_DRAW)</span>
+<span class="s">    def on_resize(self, event):</span>
+<span class="s">        width, height = event.size</span>
+<span class="s">        gl.glViewport(0, 0, width, height)</span>
+<span class="s">        projection = perspective(35.0, width / float(height), 2.0, 10.0)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_projection&quot;)</span>
+<span class="s">        gl.glUniformMatrix4fv(loc, 1, False, projection)</span>
 
-<span class="s"># Bind cube attributes</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">stride = vcube_data.strides[0]</span>
-<span class="s">offset = ctypes.c_void_p(0)</span>
-<span class="s">loc = gl.glGetAttribLocation(cube, &quot;a_position&quot;)</span>
-<span class="s">gl.glEnableVertexAttribArray(loc)</span>
-<span class="s">gl.glVertexAttribPointer(loc, 3, gl.GL_FLOAT, False, stride, offset)</span>
+<span class="s">    def on_timer(self, event):</span>
+<span class="s">        self.theta += .5</span>
+<span class="s">        self.phi += .5</span>
+<span class="s">        model = np.eye(4, dtype=np.float32)</span>
+<span class="s">        rotate(model, self.theta, 0, 0, 1)</span>
+<span class="s">        rotate(model, self.phi, 0, 1, 0)</span>
+<span class="s">        loc = gl.glGetUniformLocation(self.cube, &quot;u_model&quot;)</span>
+<span class="s">        gl.glUniformMatrix4fv(loc, 1, False, model)</span>
+<span class="s">        self.update()</span>
 
-<span class="s">offset = ctypes.c_void_p(vcube_data.dtype[&quot;a_position&quot;].itemsize)</span>
-<span class="s">loc = gl.glGetAttribLocation(cube, &quot;a_texcoord&quot;)</span>
-<span class="s">gl.glEnableVertexAttribArray(loc)</span>
-<span class="s">gl.glVertexAttribPointer(loc, 2, gl.GL_FLOAT, False, stride, offset)</span>
-
-<span class="s"># Create &amp; bind cube texture</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">crate = checkerboard()</span>
-<span class="s">texture = gl.glGenTextures(1)</span>
-<span class="s">gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR)</span>
-<span class="s">gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR)</span>
-<span class="s">gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_S, gl.GL_CLAMP_TO_EDGE)</span>
-<span class="s">gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_T, gl.GL_CLAMP_TO_EDGE)</span>
-<span class="s">gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_INTENSITY,</span>
-<span class="s">                crate.shape[1], crate.shape[0],</span>
-<span class="s">                0, gl.GL_RED, gl.GL_UNSIGNED_BYTE, crate)</span>
-<span class="s">loc = gl.glGetUniformLocation(cube, &quot;u_texture&quot;)</span>
-<span class="s">gl.glUniform1i(loc, texture)</span>
-<span class="s">gl.glBindTexture(gl.GL_TEXTURE_2D, 0)</span>
-
-<span class="s"># Create &amp; bind cube matrices</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">view = np.eye(4, dtype=np.float32)</span>
-<span class="s">model = np.eye(4, dtype=np.float32)</span>
-<span class="s">projection = np.eye(4, dtype=np.float32)</span>
-<span class="s">translate(view, 0, 0, -7)</span>
-<span class="s">phi, theta = 60, 20</span>
-<span class="s">rotate(model, theta, 0, 0, 1)</span>
-<span class="s">rotate(model, phi, 0, 1, 0)</span>
-<span class="s">loc = gl.glGetUniformLocation(cube, &quot;u_model&quot;)</span>
-<span class="s">gl.glUniformMatrix4fv(loc, 1, False, model)</span>
-<span class="s">loc = gl.glGetUniformLocation(cube, &quot;u_view&quot;)</span>
-<span class="s">gl.glUniformMatrix4fv(loc, 1, False, view)</span>
-<span class="s">loc = gl.glGetUniformLocation(cube, &quot;u_projection&quot;)</span>
-<span class="s">gl.glUniformMatrix4fv(loc, 1, False, projection)</span>
-
-<span class="s"># OpenGL initalization</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">gl.glClearColor(0.30, 0.30, 0.35, 1.00)</span>
-<span class="s">gl.glEnable(gl.GL_DEPTH_TEST)</span>
-
-<span class="s"># Enter mainloop</span>
-<span class="s"># --------------------------------------</span>
-<span class="s">glut.glutMainLoop()</span>
+<span class="s">if __name__ == &#39;__main__&#39;:</span>
+<span class="s">    c = Canvas()</span>
+<span class="s">    c.show()</span>
+<span class="s">    app.run()</span>
 </pre></div>
 </div>
 </div>

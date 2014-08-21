@@ -1,0 +1,725 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>basics/scene/modular_shaders/sandbox &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link href="../../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <link rel="top" title="vispy" href="../../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="basics-scene-modular-shaders-sandbox">
+<h1>basics/scene/modular_shaders/sandbox<a class="headerlink" href="#basics-scene-modular-shaders-sandbox" title="Permalink to this headline">¶</a></h1>
+<p>Sandbox for experimenting with vispy.scene.shaders</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PyQt4.QtGui</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c"># noqa</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">from</span> <span class="nn">editor</span> <span class="kn">import</span> <span class="n">Editor</span><span class="p">,</span> <span class="n">HAVE_QSCI</span>
+
+
+<span class="n">presets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">&#39;Introduction&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">             ------ Shader Composition Sandbox -------</span>
+
+<span class="s">Instructions:</span>
+
+<span class="s">1) Edit this code; it is immediately executed after every change. Exceptions</span>
+<span class="s">   will be displayed on the right side.</span>
+
+<span class="s">2) Assign strings to VERTEX and FRAGMENT variables (see below) and they will</span>
+<span class="s">   appear in the windows to the right.</span>
+
+<span class="s">3) Select presets from the list above to see a few examples.</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+
+
+<span class="s">from vispy.scene.shaders import ModularProgram</span>
+
+<span class="s">vertex_shader = &quot;void main() {}&quot;</span>
+<span class="s">fragment_shader = &quot;void main() {}&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Simple hook&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">In this example we define a &#39;hook&#39; in the vertex shader: a function prototype</span>
+<span class="s">with no definition. By leaving this function undefined, any new function</span>
+<span class="s">definition may be concatenated to the shader.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+
+<span class="s"># The hook is called &#39;input_position&#39;, and is used to provide the</span>
+<span class="s"># value for gl_Position.</span>
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 input_position();</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = input_position();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s"># ModularProgram parses the shader code for function prototypes</span>
+<span class="s"># and registers each as a hook.</span>
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Now we make a new function definition and attach it to the program.</span>
+<span class="s">func = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 input_position() {</span>
+<span class="s">        return vec4(0,0,0,0);</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s">program[&#39;input_position&#39;] = func</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Anonymous functions&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">Functions may optionally be defined with &#39;$&#39; in front of the function name.</span>
+<span class="s">This indicates that the function is anonymous (has no name) and thus may be</span>
+<span class="s">assigned any new name in the program.</span>
+
+<span class="s">The major benefit to using anonymous functions is that the modular shader</span>
+<span class="s">system is free to rename functions that would otherwise conflict with each</span>
+<span class="s">other.</span>
+
+<span class="s">In this example, an anonymous function is assigned to a hook. When it is</span>
+<span class="s">compiled into the complete program, it is renamed to match the hook.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 input_position();</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = input_position();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Now we make a new function definition and attach it to the program.</span>
+<span class="s"># Note that this function is anonymous (name begins with &#39;$&#39;) and does not</span>
+<span class="s"># have the correct name to be attached to the input_position hook.</span>
+<span class="s">func = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 $my_function() {</span>
+<span class="s">        return vec4(0,0,0,0);</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s">program[&#39;input_position&#39;] = func</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Program variables&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">Many Functions need to define their own program variables</span>
+<span class="s">(uniform/attribute/varying) in order to operate correctly. However, with many</span>
+<span class="s">independent functions added to a ModularProgram, it is likely that two</span>
+<span class="s">Functions might try to define variables of the same name.</span>
+
+<span class="s">To solve this, Functions may use $anonymous_variables that will be assigned to</span>
+<span class="s">a real program variable at compile time.</span>
+
+<span class="s">In the next example, we will see how ModularProgram resolves name conflicts.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">import numpy as np</span>
+
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 transform_position(vec4);</span>
+
+<span class="s">attribute vec4 position_a;</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = transform_position(position_a);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Define a function to do a matrix transform.</span>
+<span class="s"># The variable $matrix will be substituted with a uniquely-named program</span>
+<span class="s"># variable when the function is compiled.</span>
+<span class="s">func = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 $matrix_transform(vec4 pos) {</span>
+<span class="s">        return $matrix * pos;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s"># The definition for &#39;matrix&#39; must indicate the variable type and data type.</span>
+<span class="s">func[&#39;matrix&#39;] = (&#39;uniform&#39;, &#39;mat4&#39;, np.eye(4))</span>
+
+
+<span class="s">program.set_hook(&#39;transform_position&#39;, func)</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Resolving name conflicts&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">When anonymous functions and variables have conflicting names, the</span>
+<span class="s">ModularProgram will generate unique names by appending _N to the end of the</span>
+<span class="s">name.</span>
+
+<span class="s">This example demonstrates dynamic naming of a program variable.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">import numpy as np</span>
+
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 projection(vec4);</span>
+<span class="s">vec4 modelview(vec4);</span>
+
+<span class="s">attribute vec4 position_a;</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = projection(modelview(position_a));</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Define two identical functions</span>
+<span class="s">projection = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 $matrix_transform(vec4 pos) {</span>
+<span class="s">        return $matrix * pos;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+<span class="s">projection[&#39;matrix&#39;] = (&#39;uniform&#39;, &#39;mat4&#39;, np.eye(4))</span>
+
+<span class="s">modelview = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 $matrix_transform(vec4 pos) {</span>
+<span class="s">        return $matrix * pos;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+<span class="s">modelview[&#39;matrix&#39;] = (&#39;uniform&#39;, &#39;mat4&#39;, np.eye(4))</span>
+
+
+<span class="s">program.set_hook(&#39;projection&#39;, projection)</span>
+<span class="s">program.set_hook(&#39;modelview&#39;, modelview)</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Function chaining&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">Function chains are another essential component of shader composition,</span>
+<span class="s">allowing a list of functions to be executed in order.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function, FunctionChain</span>
+
+<span class="s"># Added a new hook to allow any number of functions to be executed</span>
+<span class="s"># after gl_Position is set.</span>
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">void vert_post_hook();</span>
+
+<span class="s">attribute vec4 position_a;</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = position_a;</span>
+<span class="s">    vert_post_hook();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Add a function to flatten the z-position of the vertex</span>
+<span class="s">flatten = Function(&quot;&quot;&quot;</span>
+<span class="s">    void flatten_func() {</span>
+<span class="s">        gl_Position.z = 0;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s"># Add another function that copies an attribute to a varying</span>
+<span class="s"># for use in the fragment shader</span>
+<span class="s">read_color_attr = Function(&quot;&quot;&quot;</span>
+<span class="s">    void $read_color_attr() {</span>
+<span class="s">        $output = $input;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s"># ..and set two new program variables:</span>
+<span class="s"># (note that no value is needed for varyings)</span>
+<span class="s">read_color_attr[&#39;output&#39;] = (&#39;varying&#39;, &#39;vec4&#39;)</span>
+<span class="s">read_color_attr[&#39;input&#39;] = (&#39;attribute&#39;, &#39;vec4&#39;, &#39;color_a&#39;)</span>
+
+
+<span class="s"># Now create a chain that calls both functions in sequence</span>
+<span class="s">post_chain = FunctionChain(&#39;vert_post_hook&#39;, [flatten, read_color_attr])</span>
+
+<span class="s">program.set_hook(&#39;vert_post_hook&#39;, post_chain)</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Function composition&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">Chains may also be used to generate a function composition where the return</span>
+<span class="s">value of each function call supplies the input to the next argument.</span>
+<span class="s">Thus, the original input is transformed in a series steps.</span>
+
+<span class="s">This is most commonly used for passing vertex positions through a composition</span>
+<span class="s">of transform functions.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import ModularProgram, Function, FunctionChain</span>
+
+
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 transform_chain(vec4);</span>
+
+<span class="s">attribute vec4 position_a;</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = transform_chain(position_a);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s">flatten = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 flatten_func(vec4 pos) {</span>
+<span class="s">        pos.z = 0;</span>
+<span class="s">        pos.w = 1;</span>
+<span class="s">        return pos;</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+
+<span class="s"># Define a scaling function</span>
+<span class="s">scale = Function(&quot;&quot;&quot;</span>
+<span class="s">    vec4 $scale_vertex(vec4 pos) {</span>
+<span class="s">        return pos * vec4($scale, 1);</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;)</span>
+<span class="s">scale[&#39;scale&#39;] = (&#39;uniform&#39;, &#39;vec3&#39;, (2, 1, 1))</span>
+
+<span class="s"># Assigning a list of both functions to a program hook will gemerate a</span>
+<span class="s"># composition of functions:</span>
+<span class="s">program[&#39;transform_chain&#39;] = [flatten, scale]</span>
+
+<span class="s"># Internally, this creates a FunctionChain:</span>
+<span class="s"># transform = FunctionChain(&#39;transform_chain&#39;, [flatten, scale])</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Fragment shaders&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">Although the prior examples focused on vertex shaders, these concepts</span>
+<span class="s">apply equally well for fragment shaders.</span>
+
+<span class="s">However: fragment shaders have one limitation that makes them very</span>
+<span class="s">different--they lack attributes. In order to supply attribute data</span>
+<span class="s">to a fragment shader, we will need to introduce some supporting code</span>
+<span class="s">to the vertex shader.</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)</span>
+<span class="s">from vispy.gloo import VertexBuffer</span>
+<span class="s">import numpy as np</span>
+
+<span class="s"># we require a void hook in the vertex shader that can be used</span>
+<span class="s"># to attach supporting code for the fragment shader.</span>
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">void vert_post_hook();</span>
+
+<span class="s">attribute vec4 position_a</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = position_a;</span>
+<span class="s">    vert_post_hook();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s"># add a hook to the fragment shader to allow arbitrary color input</span>
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">vec4 fragment_color();</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_FragColor = fragment_color();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># First, define a simple fragment color function and bind it to a varying</span>
+<span class="s"># input:</span>
+<span class="s">frag_func = Function(&quot;vec4 $frag_color_input() { return $f_input; }&quot;)</span>
+<span class="s">frag_func[&#39;f_input&#39;] = (&#39;varying&#39;, &#39;vec4&#39;)</span>
+
+<span class="s"># Attach to the program</span>
+<span class="s">program[&#39;fragment_color&#39;] = frag_func</span>
+
+<span class="s"># Next, we need a vertex shader function that will supply input</span>
+<span class="s"># to the varying.</span>
+<span class="s">vert_func = Function(&quot;void $vert_color_input() { $v_output = $v_input; }&quot;)</span>
+<span class="s">colors = VertexBuffer(np.array([[1,1,1,1]], dtype=np.float32))</span>
+<span class="s">vert_func[&#39;v_input&#39;] = (&#39;attribute&#39;, &#39;vec4&#39;, colors)</span>
+
+<span class="s"># to ensure both the vertex function output and the fragment function input</span>
+<span class="s"># are attached to the same varying, we use the following syntax:</span>
+<span class="s">vert_func[&#39;v_output&#39;] = frag_func[&#39;f_input&#39;]</span>
+
+<span class="s"># and attach this to the vertex shader</span>
+<span class="s">program[&#39;vert_post_hook&#39;] = vert_func</span>
+
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+    <span class="p">(</span><span class="s">&#39;Sub-hooks&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)</span>
+<span class="s">from vispy.gloo import VertexBuffer</span>
+<span class="s">import numpy as np</span>
+
+<span class="s">vertex_shader = &quot;&quot;&quot;</span>
+<span class="s">void vert_post_hook();</span>
+
+<span class="s">void main() {</span>
+<span class="s">    gl_Position = vec4(0,0,0,0);</span>
+<span class="s">    vert_post_hook();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">fragment_shader = &quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">program = ModularProgram(vertex_shader, fragment_shader)</span>
+
+<span class="s"># Create a function that calls another function</span>
+<span class="s">vert_func = Function(&quot;&quot;&quot;</span>
+<span class="s">void $vert_func() {</span>
+<span class="s">    $some_other_function();</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;)</span>
+
+
+<span class="s"># Create the second function:</span>
+<span class="s">other_func = Function(&quot;&quot;&quot;</span>
+<span class="s">void $other_func() {</span>
+<span class="s">    gl_Position.w = 1;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;)</span>
+
+<span class="s"># Assign other_func to the anonymous function call in vert_func:</span>
+<span class="s">vert_func[&#39;some_other_function&#39;] = other_func</span>
+
+<span class="s"># The name assigned to other_func will be inserted in place of</span>
+<span class="s"># the function call in vert_func</span>
+
+<span class="s">program[&#39;vert_post_hook&#39;] = vert_func</span>
+
+<span class="s"># obligatory: these variables are used to fill the text fields on the right.</span>
+<span class="s">program._compile()</span>
+<span class="s">VERTEX = program.vert_code</span>
+<span class="s">FRAGMENT = program.frag_code</span>
+<span class="s">&#39;&#39;&#39;</span><span class="p">),</span>
+
+
+<span class="p">]</span>
+
+
+<span class="n">qsci_note</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#  [[ NOTE: Install PyQt.QsciScintilla for improved code editing ]]</span>
+<span class="s">#  [[ (Debian packages: python-qscintilla2 or python3-pyqt4.qsci ]]</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">HAVE_QSCI</span><span class="p">:</span>
+    <span class="n">presets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">presets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">qsci_note</span> <span class="o">+</span> <span class="n">presets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">([])</span>
+
+<span class="n">win</span> <span class="o">=</span> <span class="n">QMainWindow</span><span class="p">()</span>
+<span class="n">cw</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">win</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">cw</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QGridLayout</span><span class="p">()</span>
+<span class="n">cw</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="n">editor</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s">&#39;Python&#39;</span><span class="p">)</span>
+<span class="n">vertex</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s">&#39;CPP&#39;</span><span class="p">)</span>
+<span class="n">fragment</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s">&#39;CPP&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">editor</span><span class="o">.</span><span class="n">zoomOut</span><span class="p">()</span>
+    <span class="n">vertex</span><span class="o">.</span><span class="n">zoomOut</span><span class="p">()</span>
+    <span class="n">fragment</span><span class="o">.</span><span class="n">zoomOut</span><span class="p">()</span>
+
+<span class="n">hsplit</span> <span class="o">=</span> <span class="n">QSplitter</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">)</span>
+<span class="n">vsplit</span> <span class="o">=</span> <span class="n">QSplitter</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Vertical</span><span class="p">)</span>
+
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">hsplit</span><span class="p">)</span>
+<span class="n">hsplit</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">editor</span><span class="p">)</span>
+<span class="n">hsplit</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">vsplit</span><span class="p">)</span>
+<span class="n">vsplit</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+<span class="n">vsplit</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+
+<span class="n">menubar</span> <span class="o">=</span> <span class="n">win</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span>
+
+<span class="n">last_loaded</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">load_example</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">last_loaded</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">presets</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">editor</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">last_loaded</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">preset</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">presets</span><span class="p">):</span>
+            <span class="n">n</span><span class="p">,</span> <span class="n">code</span> <span class="o">=</span> <span class="n">preset</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">editor</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+                <span class="n">last_loaded</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">return</span>
+
+
+<span class="k">def</span> <span class="nf">load_next</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">last_loaded</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">load_example</span><span class="p">(</span><span class="n">last_loaded</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">mk_load_callback</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">load_example</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">example_menu</span> <span class="o">=</span> <span class="n">menubar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s">&#39;Load example..&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">preset</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">presets</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">preset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">example_menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">. </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span>
+                                    <span class="n">mk_load_callback</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+<span class="n">next_action</span> <span class="o">=</span> <span class="n">menubar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="s">&quot;Next example&quot;</span><span class="p">,</span> <span class="n">load_next</span><span class="p">)</span>
+
+<span class="n">win</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">win</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">1100</span><span class="p">)</span>
+<span class="n">hsplit</span><span class="o">.</span><span class="n">setSizes</span><span class="p">([</span><span class="mi">900</span><span class="p">,</span> <span class="mi">900</span><span class="p">])</span>
+
+<span class="n">load_example</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">update</span><span class="p">():</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+    <span class="n">local</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">glob</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">local</span><span class="p">,</span> <span class="n">glob</span><span class="p">)</span>
+        <span class="n">vert</span> <span class="o">=</span> <span class="n">glob</span><span class="p">[</span><span class="s">&#39;VERTEX&#39;</span><span class="p">]</span>
+        <span class="n">frag</span> <span class="o">=</span> <span class="n">glob</span><span class="p">[</span><span class="s">&#39;FRAGMENT&#39;</span><span class="p">]</span>
+        <span class="n">editor</span><span class="o">.</span><span class="n">clear_marker</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">vert</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="n">frag</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">tb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c">#print(tb.tb_lineno, tb.tb_frame.f_code.co_filename)</span>
+            <span class="k">if</span> <span class="n">tb</span><span class="o">.</span><span class="n">tb_frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span> <span class="o">==</span> <span class="s">&#39;&lt;string&gt;&#39;</span><span class="p">:</span>
+                <span class="n">editor</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">tb_lineno</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tb_next</span>
+
+    <span class="n">vertex</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">vert</span><span class="p">)</span>
+    <span class="n">fragment</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">frag</span><span class="p">)</span>
+
+<span class="n">editor</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+<span class="n">update</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

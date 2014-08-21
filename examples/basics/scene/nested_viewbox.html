@@ -1,0 +1,260 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>basics/scene/nested_viewbox &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="basics-scene-nested-viewbox">
+<h1>basics/scene/nested_viewbox<a class="headerlink" href="#basics-scene-nested-viewbox" title="Permalink to this headline">¶</a></h1>
+<p>Simple test of nested viewboxes, demonstrating the three methods that
+can be used by a viewbox to provide clipping.</p>
+<p>In the root scene are two viewboxes: the left viewbox uses the &#8216;viewport&#8217;
+clipping method and a PanZoomCamera, whereas the right viewbox uses the &#8216;fbo&#8217;
+clipping method and a base Camera (null transform).</p>
+<p>Each of these viewboxes contains again two viewboxes, with the same
+differences. In this way we test embedding each type of viewbox inside each
+type.</p>
+<p>This is what it should look like:</p>
+<p>The plot line has a &#8220;marker&#8221; region on the left side that points in the +y
+direction. In pixel coordinates, this is normally expected to point downward
+(because the pixel y-axis points down). However, the default behavior for
+PanZoomCamera is to reverse its internal y-axis relative to its parent.</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div>vb1 uses        vb2 uses</div></blockquote>
+<dl class="docutils">
+<dt>PanZoomCamera   base Camera</dt>
+<dd>(+y upward)   (+y downward)</dd>
+</dl>
+</div></blockquote>
+<div class="line-block">
+<div class="line-block">
+<div class="line">|              |</div>
+</div>
+<div class="line">+y upward   |  +y upward   |</div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">|______________|______________|</span></a>
+|              |              |
+| +y downward  | +y downward  |
+<a href="#id3"><span class="problematic" id="id4">|______________|______________|</span></a></p>
+</div></blockquote>
+<img alt="../../../_images/basics__scene__nested_viewbox.png" src="../../../_images/basics__scene__nested_viewbox.png" />
+<hr class="docutils" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
+
+<span class="c">#gloo.gl.use(&#39;desktop debug&#39;)</span>
+
+<span class="c"># &lt;&lt;&lt; Change method here</span>
+<span class="c"># With the None method you can see the absence of clipping.</span>
+<span class="c"># With the &#39;fbo&#39; method you can see the texture interpolation (induced by</span>
+<span class="c"># a delibirate mismatch in screen and textue resolution)</span>
+<span class="c"># Try different combinarions, like a viewport in an fbo</span>
+<span class="n">CLIP_METHOD1</span> <span class="o">=</span> <span class="s">&#39;viewport&#39;</span>  <span class="c"># none, viewport, fbo (fragment to come)</span>
+<span class="n">CLIP_METHOD2</span> <span class="o">=</span> <span class="s">&#39;fbo&#39;</span>
+
+
+<span class="c"># Create lines for use in ndc and pixel coordinates</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">color</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">color</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">pos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">pos</span><span class="p">[</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span>  <span class="c"># So we can see which side is up</span>
+
+
+<span class="c"># Create canvas</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+<span class="c">#</span>
+<span class="c"># Create viewboxes on left ...</span>
+<span class="c">#</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="mf">2.</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="mf">2.</span>
+
+<span class="c"># left (+y up)</span>
+<span class="n">vb1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb1&#39;</span><span class="p">,</span>
+                            <span class="n">margin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">vb1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">vb1</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">w2</span><span class="p">,</span> <span class="n">h</span>
+<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">interactive</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c"># bottom-left (+y down)</span>
+<span class="n">vb11</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb1</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb11&#39;</span><span class="p">,</span>
+                             <span class="n">margin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">vb11</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">vb11</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">vb11</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">line11</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb11</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+
+<span class="c"># top-left (+y up)</span>
+<span class="n">vb12</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb1</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb12&#39;</span><span class="p">,</span>
+                             <span class="n">margin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">vb12</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">vb12</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">vb12</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>  <span class="c"># use parent cs</span>
+<span class="c"># vb12 does not apply any scaling, so we do that manually here to match vb11</span>
+<span class="n">line12</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span> <span class="o">*</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                            <span class="n">parent</span><span class="o">=</span><span class="n">vb12</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+
+
+<span class="c">#</span>
+<span class="c"># Create viewboxes on right ...</span>
+<span class="c">#</span>
+
+<span class="c"># right (+y down)</span>
+<span class="n">vb2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb2&#39;</span><span class="p">,</span>
+                            <span class="n">margin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;yellow&#39;</span><span class="p">)</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">w2</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">w2</span><span class="p">,</span> <span class="n">h</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">interactive</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c"># top-right (+y up)</span>
+<span class="n">vb21</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb21&#39;</span><span class="p">,</span>
+                             <span class="n">margin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">vb21</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">vb21</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">w2</span><span class="p">,</span> <span class="n">h2</span>
+<span class="n">vb21</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">line21</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb21</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+
+<span class="c"># bottom-right (+y down)</span>
+<span class="n">vb22</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;vb22&#39;</span><span class="p">,</span>
+                             <span class="n">margin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;teal&#39;</span><span class="p">)</span>
+<span class="n">vb22</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h2</span>
+<span class="n">vb22</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">w2</span><span class="p">,</span> <span class="n">h2</span>
+<span class="n">vb22</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>  <span class="c"># use parent cs</span>
+<span class="c"># vb22 does not apply any scaling, so we do that manually here to match vb21</span>
+<span class="n">line22</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span> <span class="o">*</span> <span class="p">[[</span><span class="n">w2</span><span class="p">,</span> <span class="n">h2</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                            <span class="n">parent</span><span class="o">=</span><span class="n">vb22</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+
+
+<span class="c"># Set preferred clipping methods</span>
+<span class="k">for</span> <span class="n">vb</span> <span class="ow">in</span> <span class="p">[</span><span class="n">vb1</span><span class="p">,</span> <span class="n">vb11</span><span class="p">,</span> <span class="n">vb21</span><span class="p">]:</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">preferred_clip_method</span> <span class="o">=</span> <span class="n">CLIP_METHOD1</span>
+<span class="k">for</span> <span class="n">vb</span> <span class="ow">in</span> <span class="p">[</span><span class="n">vb2</span><span class="p">,</span> <span class="n">vb12</span><span class="p">,</span> <span class="n">vb22</span><span class="p">]:</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">preferred_clip_method</span> <span class="o">=</span> <span class="n">CLIP_METHOD2</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

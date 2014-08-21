@@ -1,0 +1,371 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>demo/gloo/raytracing &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="demo-gloo-raytracing">
+<h1>demo/gloo/raytracing<a class="headerlink" href="#demo-gloo-raytracing" title="Permalink to this headline">¶</a></h1>
+<p>GPU-based ray tracing example.</p>
+<dl class="docutils">
+<dt>GLSL port of the following Python example:</dt>
+<dd><a class="reference external" href="https://gist.github.com/rossant/6046463">https://gist.github.com/rossant/6046463</a>
+<a class="reference external" href="https://pbs.twimg.com/media/BPpbJTiCIAEoEPl.png">https://pbs.twimg.com/media/BPpbJTiCIAEoEPl.png</a></dd>
+</dl>
+<p>TODO:
+* Once uniform structs are supported, refactor the code to encapsulate</p>
+<blockquote>
+<div>objects (spheres, planes, lights) in structures.</div></blockquote>
+<ul class="simple">
+<li>Customizable engine with an arbitrary number of objects.</li>
+</ul>
+<img alt="../../../_images/demo__gloo__raytracing.png" src="../../../_images/demo__gloo__raytracing.png" />
+<hr class="docutils" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span>
+
+<span class="n">vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
+<span class="s">attribute vec2 a_position;</span>
+<span class="s">varying vec2 v_position;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(a_position, 0.0, 1.0);</span>
+<span class="s">    v_position = a_position;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
+<span class="s">const float M_PI = 3.14159265358979323846;</span>
+<span class="s">const float INFINITY = 1000000000.;</span>
+<span class="s">const int PLANE = 1;</span>
+<span class="s">const int SPHERE_0 = 2;</span>
+<span class="s">const int SPHERE_1 = 3;</span>
+
+<span class="s">uniform float u_time;</span>
+<span class="s">uniform float u_aspect_ratio;</span>
+<span class="s">varying vec2 v_position;</span>
+
+<span class="s">uniform vec3 sphere_position_0;</span>
+<span class="s">uniform float sphere_radius_0;</span>
+<span class="s">uniform vec3 sphere_color_0;</span>
+
+<span class="s">uniform vec3 sphere_position_1;</span>
+<span class="s">uniform float sphere_radius_1;</span>
+<span class="s">uniform vec3 sphere_color_1;</span>
+
+<span class="s">uniform vec3 plane_position;</span>
+<span class="s">uniform vec3 plane_normal;</span>
+
+<span class="s">uniform float light_intensity;</span>
+<span class="s">uniform vec2 light_specular;</span>
+<span class="s">uniform vec3 light_position;</span>
+<span class="s">uniform vec3 light_color;</span>
+
+<span class="s">uniform float ambient;</span>
+<span class="s">uniform vec3 O;</span>
+
+<span class="s">float intersect_sphere(vec3 O, vec3 D, vec3 S, float R) {</span>
+<span class="s">    float a = dot(D, D);</span>
+<span class="s">    vec3 OS = O - S;</span>
+<span class="s">    float b = 2. * dot(D, OS);</span>
+<span class="s">    float c = dot(OS, OS) - R * R;</span>
+<span class="s">    float disc = b * b - 4. * a * c;</span>
+<span class="s">    if (disc &gt; 0.) {</span>
+<span class="s">        float distSqrt = sqrt(disc);</span>
+<span class="s">        float q = (-b - distSqrt) / 2.0;</span>
+<span class="s">        if (b &gt;= 0.) {</span>
+<span class="s">            q = (-b + distSqrt) / 2.0;</span>
+<span class="s">        }</span>
+<span class="s">        float t0 = q / a;</span>
+<span class="s">        float t1 = c / q;</span>
+<span class="s">        t0 = min(t0, t1);</span>
+<span class="s">        t1 = max(t0, t1);</span>
+<span class="s">        if (t1 &gt;= 0.) {</span>
+<span class="s">            if (t0 &lt; 0.) {</span>
+<span class="s">                return t1;</span>
+<span class="s">            }</span>
+<span class="s">            else {</span>
+<span class="s">                return t0;</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
+<span class="s">    return INFINITY;</span>
+<span class="s">}</span>
+
+<span class="s">float intersect_plane(vec3 O, vec3 D, vec3 P, vec3 N) {</span>
+<span class="s">    float denom = dot(D, N);</span>
+<span class="s">    if (abs(denom) &lt; 1e-6) {</span>
+<span class="s">        return INFINITY;</span>
+<span class="s">    }</span>
+<span class="s">    float d = dot(P - O, N) / denom;</span>
+<span class="s">    if (d &lt; 0.) {</span>
+<span class="s">        return INFINITY;</span>
+<span class="s">    }</span>
+<span class="s">    return d;</span>
+<span class="s">}</span>
+
+<span class="s">vec3 run(float x, float y, float t) {</span>
+<span class="s">    vec3 Q = vec3(x, y, 0.);</span>
+<span class="s">    vec3 D = normalize(Q - O);</span>
+<span class="s">    int depth = 0;</span>
+<span class="s">    float t_plane, t0, t1;</span>
+<span class="s">    vec3 rayO = O;</span>
+<span class="s">    vec3 rayD = D;</span>
+<span class="s">    vec3 col;</span>
+<span class="s">    vec3 col_ray;</span>
+<span class="s">    float reflection = 1.;</span>
+
+<span class="s">    int object_index;</span>
+<span class="s">    vec3 object_color;</span>
+<span class="s">    vec3 object_normal;</span>
+<span class="s">    float object_reflection;</span>
+<span class="s">    vec3 M;</span>
+<span class="s">    vec3 N, toL, toO;</span>
+
+<span class="s">    while (depth &lt; 5) {</span>
+
+<span class="s">        /* start trace_ray */</span>
+
+<span class="s">        t_plane = intersect_plane(rayO, rayD, plane_position, plane_normal);</span>
+<span class="s">        t0 = intersect_sphere(rayO, rayD, sphere_position_0, sphere_radius_0);</span>
+<span class="s">        t1 = intersect_sphere(rayO, rayD, sphere_position_1, sphere_radius_1);</span>
+
+<span class="s">        if (t_plane &lt; min(t0, t1)) {</span>
+<span class="s">            // Plane.</span>
+<span class="s">            M = rayO + rayD * t_plane;</span>
+<span class="s">            object_normal = plane_normal;</span>
+<span class="s">            // Plane texture.</span>
+<span class="s">            if (mod(int(2*M.x), 2) == mod(int(2*M.z), 2)) {</span>
+<span class="s">                object_color = vec3(1., 1., 1.);</span>
+<span class="s">            }</span>
+<span class="s">            else {</span>
+<span class="s">                object_color = vec3(0., 0., 0.);</span>
+<span class="s">            }</span>
+<span class="s">            object_reflection = .25;</span>
+<span class="s">            object_index = PLANE;</span>
+<span class="s">        }</span>
+<span class="s">        else if (t0 &lt; t1) {</span>
+<span class="s">            // Sphere 0.</span>
+<span class="s">            M = rayO + rayD * t0;</span>
+<span class="s">            object_normal = normalize(M - sphere_position_0);</span>
+<span class="s">            object_color = sphere_color_0;</span>
+<span class="s">            object_reflection = .5;</span>
+<span class="s">            object_index = SPHERE_0;</span>
+<span class="s">        }</span>
+<span class="s">        else if (t1 &lt; t0) {</span>
+<span class="s">            // Sphere 1.</span>
+<span class="s">            M = rayO + rayD * t1;</span>
+<span class="s">            object_normal = normalize(M - sphere_position_1);</span>
+<span class="s">            object_color = sphere_color_1;</span>
+<span class="s">            object_reflection = .5;</span>
+<span class="s">            object_index = SPHERE_1;</span>
+<span class="s">        }</span>
+<span class="s">        else {</span>
+<span class="s">            break;</span>
+<span class="s">        }</span>
+
+<span class="s">        N = object_normal;</span>
+<span class="s">        toL = normalize(light_position - M);</span>
+<span class="s">        toO = normalize(O - M);</span>
+
+<span class="s">        // Shadow of the spheres on the plane.</span>
+<span class="s">        if (object_index == PLANE) {</span>
+<span class="s">            t0 = intersect_sphere(M + N * .0001, toL,</span>
+<span class="s">                                  sphere_position_0, sphere_radius_0);</span>
+<span class="s">            t1 = intersect_sphere(M + N * .0001, toL,</span>
+<span class="s">                                  sphere_position_1, sphere_radius_1);</span>
+<span class="s">            if (min(t0, t1) &lt; INFINITY) {</span>
+<span class="s">                break;</span>
+<span class="s">            }</span>
+<span class="s">        }</span>
+
+<span class="s">        col_ray = vec3(ambient, ambient, ambient);</span>
+<span class="s">        col_ray += light_intensity * max(dot(N, toL), 0.) * object_color;</span>
+<span class="s">        col_ray += light_specular.x * light_color *</span>
+<span class="s">            pow(max(dot(N, normalize(toL + toO)), 0.), light_specular.y);</span>
+
+<span class="s">        /* end trace_ray */</span>
+
+<span class="s">        rayO = M + N * .0001;</span>
+<span class="s">        rayD = normalize(rayD - 2. * dot(rayD, N) * N);</span>
+<span class="s">        col += reflection * col_ray;</span>
+<span class="s">        reflection *= object_reflection;</span>
+
+<span class="s">        depth++;</span>
+<span class="s">    }</span>
+
+<span class="s">    return clamp(col, 0., 1.);</span>
+<span class="s">}</span>
+
+<span class="s">void main() {</span>
+<span class="s">    vec2 pos = v_position;</span>
+<span class="s">    gl_FragColor = vec4(run(pos.x*u_aspect_ratio, pos.y, u_time), 1.);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+                            <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">),</span>
+                                      <span class="p">(</span><span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_radius_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_color_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_radius_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_color_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">223</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;plane_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;plane_normal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;light_intensity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;light_specular&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;light_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;light_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;ambient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mo">05</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;O&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">elapsed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">+.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_aspect_ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

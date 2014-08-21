@@ -72,11 +72,11 @@
 <span class="c"># Author: Nicolas P .Rougier</span>
 <span class="c"># Date:   04/03/2014</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">OpenGL.GL</span> <span class="kn">as</span> <span class="nn">gl</span>
-<span class="kn">import</span> <span class="nn">OpenGL.GLUT</span> <span class="kn">as</span> <span class="nn">glut</span>
+
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 
 <span class="n">vertex_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">    uniform float scale;</span>
@@ -97,105 +97,91 @@
 <span class="s">    } &quot;&quot;&quot;</span>
 
 
-<span class="k">def</span> <span class="nf">display</span><span class="p">():</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">)</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TRIANGLE_STRIP</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">glut</span><span class="o">.</span><span class="n">glutSwapBuffers</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Quad (GL)&#39;</span><span class="p">,</span>
+                            <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># Build data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[(</span><span class="s">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                                 <span class="p">(</span><span class="s">&quot;color&quot;</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                              <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                                 <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
 
-<span class="k">def</span> <span class="nf">reshape</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-    <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="c"># Build &amp; activate program</span>
 
+        <span class="c"># Request a program and shader slots from GPU</span>
+        <span class="n">program</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateProgram</span><span class="p">()</span>
+        <span class="n">vertex</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_VERTEX_SHADER</span><span class="p">)</span>
+        <span class="n">fragment</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">keyboard</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s">&#39;</span><span class="se">\033</span><span class="s">&#39;</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+        <span class="c"># Set shaders source</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">vertex_code</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">fragment_code</span><span class="p">)</span>
 
+        <span class="c"># Compile shaders</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
 
-<span class="c"># GLUT init</span>
-<span class="c"># --------------------------------------</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutInit</span><span class="p">()</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutInitDisplayMode</span><span class="p">(</span><span class="n">glut</span><span class="o">.</span><span class="n">GLUT_DOUBLE</span> <span class="o">|</span> <span class="n">glut</span><span class="o">.</span><span class="n">GLUT_RGBA</span><span class="p">)</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutCreateWindow</span><span class="p">(</span><span class="s">&#39;Hello world!&#39;</span><span class="p">)</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutReshapeWindow</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutReshapeFunc</span><span class="p">(</span><span class="n">reshape</span><span class="p">)</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutDisplayFunc</span><span class="p">(</span><span class="n">display</span><span class="p">)</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutKeyboardFunc</span><span class="p">(</span><span class="n">keyboard</span><span class="p">)</span>
+        <span class="c"># Attach shader objects to the program</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glAttachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glAttachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
 
-<span class="c"># Build data</span>
-<span class="c"># --------------------------------------</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[(</span><span class="s">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-                    <span class="p">(</span><span class="s">&quot;color&quot;</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
-<span class="n">data</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">data</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>   <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>   <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>   <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="c"># Build program</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glLinkProgram</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
 
-<span class="c"># Build &amp; activate program</span>
-<span class="c"># --------------------------------------</span>
+        <span class="c"># Get rid of shaders (no more needed)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glDetachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glDetachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
 
-<span class="c"># Request a program and shader slots from GPU</span>
-<span class="n">program</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateProgram</span><span class="p">()</span>
-<span class="n">vertex</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_VERTEX_SHADER</span><span class="p">)</span>
-<span class="n">fragment</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">)</span>
+        <span class="c"># Make program the default program</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glUseProgram</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
 
-<span class="c"># Set shaders source</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">vertex_code</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">fragment_code</span><span class="p">)</span>
+        <span class="c"># Build buffer</span>
 
-<span class="c"># Compile shaders</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">)</span>
+        <span class="c"># Request a buffer slot from GPU</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c"># Attach shader objects to the program</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glAttachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glAttachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
+        <span class="c"># Make this buffer the default one</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
 
-<span class="c"># Build program</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glLinkProgram</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
+        <span class="c"># Upload data</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                        <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
 
-<span class="c"># Get rid of shaders (no more needed)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glDetachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glDetachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
+        <span class="c"># Bind attributes</span>
+        <span class="n">stride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;position&quot;</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
-<span class="c"># Make program the default program</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glUseProgram</span><span class="p">(</span><span class="n">program</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
+        <span class="c"># Bind uniforms</span>
+        <span class="c"># --------------------------------------</span>
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;scale&quot;</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glUniform1f</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
-<span class="c"># Build buffer</span>
-<span class="c"># --------------------------------------</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TRIANGLE_STRIP</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="c"># Request a buffer slot from GPU</span>
-<span class="nb">buffer</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
-<span class="c"># Make this buffer the default one</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">)</span>
-
-<span class="c"># Upload data</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
-
-
-<span class="c"># Bind attributes</span>
-<span class="c"># --------------------------------------</span>
-<span class="n">stride</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;position&quot;</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
-
-<span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
-<span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
-
-<span class="c"># Bind uniforms</span>
-<span class="c"># --------------------------------------</span>
-<span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;scale&quot;</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">glUniform1f</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-
-<span class="c"># Enter mainloop</span>
-<span class="c"># --------------------------------------</span>
-<span class="n">glut</span><span class="o">.</span><span class="n">glutMainLoop</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
