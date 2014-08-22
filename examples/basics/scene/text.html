@@ -36,8 +36,8 @@
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-<li><a href="gallery.html">Gallery</a></li>
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
 <li><a href="http://api.vispy.org">Documentation</a></li>
 <li><a href="https://github.com/vispy/vispy">Source</a></li>
 
@@ -72,19 +72,24 @@ how the point size is independent of scaling of viewbox and canvas.</p>
 <span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Text</span>
 
 <span class="c"># Create canvas with a viewbox at the lower half</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">()</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
 <span class="n">vb</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">border_color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">vb</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">vb</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span>
 <span class="n">vb</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+
+
+<span class="nd">@canvas.events.resize.connect</span>
+<span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span>
 
 <span class="n">t1</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s">&#39;Text in root scene (24 pt)&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
 <span class="n">t1</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">24</span>
 <span class="n">t1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">3</span>
 
-<span class="n">t2</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s">&#39;Text in viewbox (18 pt)&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s">&#39;Text in viewbox (18 pt)&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">,</span>
+          <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">t2</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">18</span>
-<span class="n">t2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="n">t2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span>
 
 <span class="c"># Add a line so you can see translate/scale of camera</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>

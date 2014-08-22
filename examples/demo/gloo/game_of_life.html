@@ -36,8 +36,8 @@
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav">
-                <li><a href="index.html">Home</a></li>
-<li><a href="gallery.html">Gallery</a></li>
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
 <li><a href="http://api.vispy.org">Documentation</a></li>
 <li><a href="https://github.com/vispy/vispy">Source</a></li>
 
@@ -64,158 +64,176 @@
             
   <div class="section" id="demo-gloo-game-of-life">
 <h1>demo/gloo/game_of_life<a class="headerlink" href="#demo-gloo-game-of-life" title="Permalink to this headline">¶</a></h1>
+<p>Conway game of life.</p>
 <img alt="../../../_images/demo__gloo__game_of_life.png" src="../../../_images/demo__gloo__game_of_life.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">render_fragment</span> <span class="o">=</span>
-<span class="n">uniform</span> <span class="nb">int</span> <span class="n">pingpong</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nb">float</span> <span class="n">v</span><span class="p">;</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="p">)[</span><span class="n">pingpong</span><span class="p">];</span>
-    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">compute_vertex = &quot;&quot;&quot;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-    <span class="n">v_texcoord</span> <span class="o">=</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">compute_fragment = &quot;&quot;&quot;</span>
-<span class="n">uniform</span> <span class="nb">int</span> <span class="n">pingpong</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dx</span><span class="p">;</span>          <span class="o">//</span> <span class="n">horizontal</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">texels</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dy</span><span class="p">;</span>          <span class="o">//</span> <span class="n">vertical</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">texels</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">vec2</span>  <span class="n">p</span> <span class="o">=</span> <span class="n">v_texcoord</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">old_state</span><span class="p">,</span> <span class="n">new_state</span><span class="p">,</span> <span class="n">count</span><span class="p">;</span>
-
-    <span class="n">old_state</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span><span class="p">)[</span><span class="n">pingpong</span><span class="p">];</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">]</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dy</span><span class="p">))[</span><span class="n">pingpong</span><span class="p">];</span>
-
-    <span class="n">new_state</span> <span class="o">=</span> <span class="n">old_state</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">old_state</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="o">//</span> <span class="n">Any</span> <span class="n">live</span> <span class="n">cell</span> <span class="k">with</span> <span class="n">fewer</span> <span class="n">than</span> <span class="n">two</span> <span class="n">live</span> <span class="n">neighbours</span> <span class="n">dies</span>
-        <span class="o">//</span> <span class="k">as</span> <span class="k">if</span> <span class="n">caused</span> <span class="n">by</span> <span class="n">under</span><span class="o">-</span><span class="n">population</span><span class="o">.</span>
-        <span class="k">if</span><span class="p">(</span> <span class="n">count</span>  <span class="o">&lt;</span> <span class="mf">1.5</span> <span class="p">)</span>
-            <span class="n">new_state</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-
-        <span class="o">//</span> <span class="n">Any</span> <span class="n">live</span> <span class="n">cell</span> <span class="k">with</span> <span class="n">two</span> <span class="ow">or</span> <span class="n">three</span> <span class="n">live</span> <span class="n">neighbours</span>
-        <span class="o">//</span> <span class="n">lives</span> <span class="n">on</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">generation</span><span class="o">.</span>
-
-        <span class="o">//</span> <span class="n">Any</span> <span class="n">live</span> <span class="n">cell</span> <span class="k">with</span> <span class="n">more</span> <span class="n">than</span> <span class="n">three</span> <span class="n">live</span> <span class="n">neighbours</span> <span class="n">dies</span><span class="p">,</span>
-        <span class="o">//</span>  <span class="k">as</span> <span class="k">if</span> <span class="n">by</span> <span class="n">overcrowding</span><span class="o">.</span>
-        <span class="k">else</span> <span class="k">if</span><span class="p">(</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mf">3.5</span> <span class="p">)</span>
-            <span class="n">new_state</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="o">//</span> <span class="n">Any</span> <span class="n">dead</span> <span class="n">cell</span> <span class="k">with</span> <span class="n">exactly</span> <span class="n">three</span> <span class="n">live</span> <span class="n">neighbours</span> <span class="n">becomes</span>
-        <span class="o">//</span>  <span class="n">a</span> <span class="n">live</span> <span class="n">cell</span><span class="p">,</span> <span class="k">as</span> <span class="k">if</span> <span class="n">by</span> <span class="n">reproduction</span><span class="o">.</span>
-       <span class="k">if</span><span class="p">(</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mf">3.5</span><span class="p">)</span> <span class="p">)</span>
-           <span class="n">new_state</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span> <span class="n">pingpong</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_state</span><span class="p">;</span>
-        <span class="n">gl_FragColor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_state</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_state</span><span class="p">;</span>
-        <span class="n">gl_FragColor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_state</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">DepthBuffer</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span>
+                        <span class="n">set_state</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 
 
-<span class="sd">class Canvas(app.Canvas):</span>
+<span class="n">render_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0.0, 1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-<span class="sd">    def __init__(self):</span>
-<span class="sd">        app.Canvas.__init__(self, title=&quot;Conway game of life&quot;,</span>
-<span class="sd">                            size=(512, 512), keys=&#39;interactive&#39;)</span>
+<span class="n">render_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform int pingpong;</span>
+<span class="s">uniform sampler2D texture;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    float v;</span>
+<span class="s">    v = texture2D(texture, v_texcoord)[pingpong];</span>
+<span class="s">    gl_FragColor = vec4(1.0-v, 1.0-v, 1.0-v, 1.0);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-<span class="sd">    def on_initialize(self, event):</span>
-<span class="sd">        # Build programs</span>
-<span class="sd">        # --------------</span>
-<span class="sd">        self.comp_size = (512, 512)</span>
-<span class="sd">        size = self.comp_size + (4,)</span>
-<span class="sd">        Z = np.zeros(size, dtype=np.float32)</span>
-<span class="sd">        Z[...] = np.random.randint(0, 2, size)</span>
-<span class="sd">        Z[:256, :256, :] = 0</span>
-<span class="sd">        gun = &quot;&quot;&quot;</span>
-        <span class="o">........................</span><span class="n">O</span><span class="o">...........</span>
-        <span class="o">......................</span><span class="n">O</span><span class="o">.</span><span class="n">O</span><span class="o">...........</span>
-        <span class="o">............</span><span class="n">OO</span><span class="o">......</span><span class="n">OO</span><span class="o">............</span><span class="n">OO</span>
-        <span class="o">...........</span><span class="n">O</span><span class="o">...</span><span class="n">O</span><span class="o">....</span><span class="n">OO</span><span class="o">............</span><span class="n">OO</span>
-        <span class="n">OO</span><span class="o">........</span><span class="n">O</span><span class="o">.....</span><span class="n">O</span><span class="o">...</span><span class="n">OO</span><span class="o">..............</span>
-        <span class="n">OO</span><span class="o">........</span><span class="n">O</span><span class="o">...</span><span class="n">O</span><span class="o">.</span><span class="n">OO</span><span class="o">....</span><span class="n">O</span><span class="o">.</span><span class="n">O</span><span class="o">...........</span>
-        <span class="o">..........</span><span class="n">O</span><span class="o">.....</span><span class="n">O</span><span class="o">.......</span><span class="n">O</span><span class="o">...........</span>
-        <span class="o">...........</span><span class="n">O</span><span class="o">...</span><span class="n">O</span><span class="o">....................</span>
-        <span class="o">............</span><span class="n">OO</span><span class="o">......................</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        x, y = 0, 0</span>
-<span class="s">        for i in range(len(gun)):</span>
-<span class="s">            if gun[i] == &#39;</span><span class="se">\n</span><span class="s">&#39;:</span>
-<span class="s">                y += 1</span>
-<span class="s">                x = 0</span>
-<span class="s">            elif gun[i] == &#39;O&#39;:</span>
-<span class="s">                Z[y, x] = 1</span>
-<span class="s">            x += 1</span>
+<span class="n">compute_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0.0, 1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">        self.pingpong = 1</span>
-<span class="s">        self.compute = Program(compute_vertex, compute_fragment, 4)</span>
-<span class="s">        self.compute[&quot;texture&quot;] = Z</span>
-<span class="s">        self.compute[&quot;position&quot;] = [(-1, -1), (-1, +1), (+1, -1), (+1, +1)]</span>
-<span class="s">        self.compute[&quot;texcoord&quot;] = [(0, 0), (0, 1), (1, 0), (1, 1)]</span>
-<span class="s">        self.compute[&#39;dx&#39;] = 1.0 / size[1]</span>
-<span class="s">        self.compute[&#39;dy&#39;] = 1.0 / size[0]</span>
-<span class="s">        self.compute[&#39;pingpong&#39;] = self.pingpong</span>
+<span class="n">compute_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform int pingpong;</span>
+<span class="s">uniform sampler2D texture;</span>
+<span class="s">uniform float dx;          // horizontal distance between texels</span>
+<span class="s">uniform float dy;          // vertical distance between texels</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main(void)</span>
+<span class="s">{</span>
+<span class="s">    vec2  p = v_texcoord;</span>
+<span class="s">    float old_state, new_state, count;</span>
 
-<span class="s">        self.render = Program(render_vertex, render_fragment, 4)</span>
-<span class="s">        self.render[&quot;position&quot;] = [(-1, -1), (-1, +1), (+1, -1), (+1, +1)]</span>
-<span class="s">        self.render[&quot;texcoord&quot;] = [(0, 0), (0, 1), (1, 0), (1, 1)]</span>
-<span class="s">        self.render[&quot;texture&quot;] = self.compute[&quot;texture&quot;]</span>
-<span class="s">        self.render[&#39;pingpong&#39;] = self.pingpong</span>
+<span class="s">    old_state = texture2D(texture, p)[pingpong];</span>
+<span class="s">    count = texture2D(texture, p + vec2(-dx,-dy))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2( dx,-dy))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, dy))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, dy))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, 0.0))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, 0.0))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0,-dy))[pingpong]</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0, dy))[pingpong];</span>
 
-<span class="s">        self.fbo = FrameBuffer(self.compute[&quot;texture&quot;],</span>
-<span class="s">                               DepthBuffer(self.comp_size))</span>
-<span class="s">        set_state(depth_test=False, clear_color=&#39;black&#39;)</span>
+<span class="s">    new_state = old_state;</span>
+<span class="s">    if( old_state &gt; 0.5 ) {</span>
+<span class="s">        // Any live cell with fewer than two live neighbours dies</span>
+<span class="s">        // as if caused by under-population.</span>
+<span class="s">        if( count  &lt; 1.5 )</span>
+<span class="s">            new_state = 0.0;</span>
 
-<span class="s">    def on_draw(self, event):</span>
-<span class="s">        with self.fbo:</span>
-<span class="s">            set_viewport(0, 0, *self.comp_size)</span>
-<span class="s">            self.compute[&quot;texture&quot;].interpolation = &#39;nearest&#39;</span>
-<span class="s">            self.compute.draw(&#39;triangle_strip&#39;)</span>
-<span class="s">        clear()</span>
-<span class="s">        set_viewport(0, 0, *self.size)</span>
-<span class="s">        self.render[&quot;texture&quot;].interpolation = &#39;linear&#39;</span>
-<span class="s">        self.render.draw(&#39;triangle_strip&#39;)</span>
-<span class="s">        self.pingpong = 1 - self.pingpong</span>
-<span class="s">        self.compute[&quot;pingpong&quot;] = self.pingpong</span>
-<span class="s">        self.render[&quot;pingpong&quot;] = self.pingpong</span>
-<span class="s">        self.update()</span>
+<span class="s">        // Any live cell with two or three live neighbours</span>
+<span class="s">        // lives on to the next generation.</span>
 
-<span class="s">    def on_reshape(self, event):</span>
-<span class="s">        set_viewport(0, 0, *event.size)</span>
+<span class="s">        // Any live cell with more than three live neighbours dies,</span>
+<span class="s">        //  as if by overcrowding.</span>
+<span class="s">        else if( count &gt; 3.5 )</span>
+<span class="s">            new_state = 0.0;</span>
+<span class="s">    } else {</span>
+<span class="s">        // Any dead cell with exactly three live neighbours becomes</span>
+<span class="s">        //  a live cell, as if by reproduction.</span>
+<span class="s">       if( (count &gt; 2.5) &amp;&amp; (count &lt; 3.5) )</span>
+<span class="s">           new_state = 1.0;</span>
+<span class="s">    }</span>
+
+<span class="s">    if( pingpong == 0) {</span>
+<span class="s">        gl_FragColor[1] = new_state;</span>
+<span class="s">        gl_FragColor[0] = old_state;</span>
+<span class="s">    } else {</span>
+<span class="s">        gl_FragColor[1] = old_state;</span>
+<span class="s">        gl_FragColor[0] = new_state;</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">if __name__ == &#39;__main__&#39;:</span>
-<span class="s">    canvas = Canvas()</span>
-<span class="s">    canvas.show()</span>
-<span class="s">    app.run()</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Conway game of life&quot;</span><span class="p">,</span>
+                            <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># Build programs</span>
+        <span class="c"># --------------</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">Z</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">Z</span><span class="p">[:</span><span class="mi">256</span><span class="p">,</span> <span class="p">:</span><span class="mi">256</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">gun</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">        ........................O...........</span>
+<span class="s">        ......................O.O...........</span>
+<span class="s">        ............OO......OO............OO</span>
+<span class="s">        ...........O...O....OO............OO</span>
+<span class="s">        OO........O.....O...OO..............</span>
+<span class="s">        OO........O...O.OO....O.O...........</span>
+<span class="s">        ..........O.....O.......O...........</span>
+<span class="s">        ...........O...O....................</span>
+<span class="s">        ............OO......................&quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gun</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">gun</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">:</span>
+                <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">gun</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;O&#39;</span><span class="p">:</span>
+                <span class="n">Z</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">compute_vertex</span><span class="p">,</span> <span class="n">compute_fragment</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texcoord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;pingpong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">render_vertex</span><span class="p">,</span> <span class="n">render_fragment</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texcoord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&#39;pingpong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fbo</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">],</span>
+                               <span class="n">DepthBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">))</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">fbo</span><span class="p">:</span>
+            <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;nearest&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+        <span class="n">clear</span><span class="p">()</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;pingpong&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;pingpong&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_reshape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

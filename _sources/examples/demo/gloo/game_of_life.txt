@@ -1,8 +1,10 @@
+:orphan:
+
 demo/gloo/game_of_life
 ----------------------
 
 
-
+Conway game of life.
 
 .. image:: /_static/images/demo__gloo__game_of_life.png
 
@@ -10,7 +12,26 @@ demo/gloo/game_of_life
 
 .. code-block:: python
     
-    render_fragment = 
+    
+    
+    import numpy as np
+    from vispy.gloo import (Program, FrameBuffer, DepthBuffer, clear, set_viewport,
+                            set_state)
+    from vispy import app
+    
+    
+    render_vertex = """
+    attribute vec2 position;
+    attribute vec2 texcoord;
+    varying vec2 v_texcoord;
+    void main()
+    {
+        gl_Position = vec4(position, 0.0, 1.0);
+        v_texcoord = texcoord;
+    }
+    """
+    
+    render_fragment = """
     uniform int pingpong;
     uniform sampler2D texture;
     varying vec2 v_texcoord;
