@@ -70,13 +70,11 @@
 <span class="c"># Copyright (c) 2014, Vispy Development Team.</span>
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">use</span>
+
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">clear</span>
 
-<span class="n">use</span><span class="p">(</span><span class="s">&#39;pyqt4&#39;</span><span class="p">)</span>
-<span class="c"># use(&#39;glut&#39;)</span>
-<span class="c"># use(&#39;pyglet&#39;)</span>
+<span class="c"># app.use_app(&#39;pyqt4&#39;)  # or pyside, glut, pyglet, sdl2, etc.</span>
 
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;Do nothing benchmark (vispy)&quot;</span><span class="p">,</span>
                     <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
@@ -84,20 +82,11 @@
 
 <span class="nd">@canvas.connect</span>
 <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">t</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span>
     <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>  <span class="c"># Draw frames as fast as possible</span>
 
-    <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">frames</span> <span class="o">=</span> <span class="n">frames</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">elapsed</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>  <span class="c"># seconds</span>
-    <span class="k">if</span> <span class="n">elapsed</span> <span class="o">&gt;</span> <span class="mf">2.5</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;FPS : </span><span class="si">%.2f</span><span class="s"> (</span><span class="si">%d</span><span class="s"> frames in </span><span class="si">%.2f</span><span class="s"> second)&quot;</span>
-              <span class="o">%</span> <span class="p">(</span><span class="n">frames</span> <span class="o">/</span> <span class="n">elapsed</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">))</span>
-        <span class="n">t0</span><span class="p">,</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-<span class="n">t0</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">measure_fps</span><span class="p">()</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -123,7 +112,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

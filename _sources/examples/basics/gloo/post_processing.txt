@@ -66,7 +66,7 @@ basics/gloo/post_processing
         def on_initialize(self, event):
             # Build cube data
             # --------------------------------------
-            vertices, indices, _ = cube()
+            vertices, indices, _ = create_cube()
             vertices = VertexBuffer(vertices)
             self.indices = IndexBuffer(indices)
     
@@ -99,9 +99,7 @@ basics/gloo/post_processing
             # OpenGL and Timer initalization
             # --------------------------------------
             set_state(clear_color=(.3, .3, .35, 1), depth_test=True)
-            self.timer = app.Timer(1.0 / 60)
-            self.timer.connect(self.on_timer)
-            self.timer.start()
+            self.timer = app.Timer('auto', connect=self.on_timer, start=True)
             self._set_projection(self.size)
     
         def on_draw(self, event):

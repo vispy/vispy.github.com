@@ -154,6 +154,8 @@ calculated, such that each explostion is unique.</p>
         <span class="c"># Create first explosion</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_new_explosion</span><span class="p">()</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c"># Enable blending</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span>
@@ -171,9 +173,6 @@ calculated, such that each explostion is unique.</p>
         <span class="c"># Draw</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;u_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_starttime</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;points&#39;</span><span class="p">)</span>
-
-        <span class="c"># Invoke a new draw</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
         <span class="c"># New explosion?</span>
         <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_starttime</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
@@ -228,7 +227,11 @@ calculated, such that each explostion is unique.</p>
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

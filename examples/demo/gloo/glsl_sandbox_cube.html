@@ -67,7 +67,8 @@
 <p>A GLSL sandbox application based on the spinning cube. Requires PySide
 or PyQt4.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">dataio</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">read_mesh</span><span class="p">,</span> <span class="n">load_data_file</span><span class="p">,</span> <span class="n">load_crate</span>
 <span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">perspective</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
 
 <span class="c"># Force using qt and take QtCore+QtGui from backend module</span>
@@ -107,13 +108,13 @@ or PyQt4.</p>
 <span class="s">    float ty = v_texcoord.y;</span>
 <span class="s">    float tx = sin(ty*50.0)*0.01 + v_texcoord.x;</span>
 <span class="s">    gl_FragColor = texture2D(u_texture, vec2(tx, ty));</span>
-
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
 
 <span class="c"># Read cube data</span>
-<span class="n">positions</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">texcoords</span> <span class="o">=</span> <span class="n">dataio</span><span class="o">.</span><span class="n">read_mesh</span><span class="p">(</span><span class="s">&#39;cube.obj&#39;</span><span class="p">)</span>
+<span class="n">positions</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">texcoords</span> <span class="o">=</span> \
+    <span class="n">read_mesh</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;orig/cube.obj&#39;</span><span class="p">))</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">positions</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">&#39;float32&#39;</span><span class="p">)</span>
 
 <span class="n">faces_buffer</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">IndexBuffer</span><span class="p">(</span><span class="n">faces</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">))</span>
@@ -131,14 +132,13 @@ or PyQt4.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;a_texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">texcoords</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">dataio</span><span class="o">.</span><span class="n">crate</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">load_crate</span><span class="p">())</span>
 
         <span class="c"># Handle transformations</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init_transforms</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_transforms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_transforms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -266,7 +266,11 @@ or PyQt4.</p>
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

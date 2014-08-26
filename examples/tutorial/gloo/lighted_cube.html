@@ -106,11 +106,11 @@
 <span class="s">    def __init__(self):</span>
 <span class="s">        app.Canvas.__init__(self, size=(512, 512), title=&#39;Lighted cube&#39;,</span>
 <span class="s">                            keys=&#39;interactive&#39;)</span>
-<span class="s">        self.timer = app.Timer(1./60., self.on_timer)</span>
+<span class="s">        self.timer = app.Timer(&#39;auto&#39;, self.on_timer)</span>
 
 <span class="s">    def on_initialize(self, event):</span>
 <span class="s">        # Build cube data</span>
-<span class="s">        V, F, O = cube()</span>
+<span class="s">        V, F, O = create_cube()</span>
 <span class="s">        vertices = VertexBuffer(V)</span>
 <span class="s">        self.faces = IndexBuffer(F)</span>
 <span class="s">        self.outline = IndexBuffer(O)</span>
@@ -201,7 +201,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

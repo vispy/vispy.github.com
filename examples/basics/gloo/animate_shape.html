@@ -141,6 +141,8 @@ draw the vertices.</p>
         <span class="c">#self._program[&#39;a_position&#39;] = self._vbo[&#39;a_position&#39;]</span>
         <span class="c">#self._program[&#39;a_texcoords&#39;] = self._vbo[&#39;a_texcoords&#39;]</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
 
@@ -161,8 +163,6 @@ draw the vertices.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="n">indices_buffer</span><span class="p">)</span>
         <span class="c"># self._program.draw(&#39;triangles&#39;, client_indices_buffer)  # Not</span>
         <span class="c"># recommended</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
@@ -193,7 +193,11 @@ draw the vertices.</p>
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

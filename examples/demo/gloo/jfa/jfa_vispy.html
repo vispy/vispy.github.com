@@ -77,7 +77,7 @@ Author: Stefan Gustavson (<a class="reference external" href="mailto:stefan&#46;
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">VertexShader</span><span class="p">,</span> <span class="n">FragmentShader</span><span class="p">,</span> <span class="n">FrameBuffer</span><span class="p">,</span>
                         <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">Texture2D</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">vispy.util</span> <span class="kn">import</span> <span class="n">get_data_file</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span>
 
 <span class="n">this_dir</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
 
@@ -86,9 +86,10 @@ Author: Stefan Gustavson (<a class="reference external" href="mailto:stefan&#46;
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">use_shaders</span> <span class="o">=</span> <span class="bp">True</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_setup_textures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">get_data_file</span><span class="p">(</span><span class="s">&#39;jfa/&#39;</span> <span class="o">+</span> <span class="n">fname</span><span class="p">))</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;jfa/&#39;</span> <span class="o">+</span> <span class="n">fname</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">texture_size</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">orig_tex</span> <span class="o">=</span> <span class="n">Texture2D</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;luminance&#39;</span><span class="p">)</span>
@@ -155,7 +156,6 @@ Author: Stefan Gustavson (<a class="reference external" href="mailto:stefan&#46;
             <span class="bp">self</span><span class="o">.</span><span class="n">programs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">orig_tex</span>
         <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">programs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="s">&#39;1234&#39;</span><span class="p">:</span>
@@ -199,7 +199,11 @@ Author: Stefan Gustavson (<a class="reference external" href="mailto:stefan&#46;
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

@@ -26,7 +26,7 @@ This version is a vispy-ized translation of jfa_translate.py.
     from vispy import app
     from vispy.gloo import (Program, VertexShader, FragmentShader, FrameBuffer,
                             VertexBuffer, Texture2D, set_viewport)
-    from vispy.util import get_data_file
+    from vispy.io import load_data_file
     
     this_dir = op.abspath(op.dirname(__file__))
     
@@ -35,9 +35,10 @@ This version is a vispy-ized translation of jfa_translate.py.
         def __init__(self):
             self.use_shaders = True
             app.Canvas.__init__(self, size=(512, 512), keys='interactive')
+            self._timer = app.Timer('auto', self.update, start=True)
     
         def _setup_textures(self, fname):
-            img = Image.open(get_data_file('jfa/' + fname))
+            img = Image.open(load_data_file('jfa/' + fname))
             self.texture_size = tuple(img.size)
             data = np.array(img, np.ubyte)[::-1].copy()
             self.orig_tex = Texture2D(data, format='luminance')
@@ -104,7 +105,6 @@ This version is a vispy-ized translation of jfa_translate.py.
                 self.programs[2]['texture'] = self.orig_tex
             set_viewport(0, 0, *self.size)
             self.programs[2].draw('triangle_strip')
-            self.update()
     
         def on_key_press(self, event):
             if event.key is not None and event.key.name in '1234':

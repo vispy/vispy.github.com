@@ -165,6 +165,7 @@
 <span class="s">    def __init__(self):</span>
 <span class="s">        app.Canvas.__init__(self, title=&#39;Grayscott Reaction-Diffusion&#39;,</span>
 <span class="s">                            size=(512, 512), keys=&#39;interactive&#39;)</span>
+<span class="s">        self._timer = app.Timer(&#39;auto&#39;, connect=self.update, start=True)</span>
 
 <span class="s">    def on_initialize(self, event):</span>
 <span class="s">        self.scale = 4</span>
@@ -234,7 +235,6 @@
 <span class="s">        self.pingpong = 1 - self.pingpong</span>
 <span class="s">        self.compute[&quot;pingpong&quot;] = self.pingpong</span>
 <span class="s">        self.render[&quot;pingpong&quot;] = self.pingpong</span>
-<span class="s">        self.update()</span>
 
 <span class="s">    def on_resize(self, event):</span>
 <span class="s">        set_viewport(0, 0, *self.size)</span>
@@ -268,7 +268,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

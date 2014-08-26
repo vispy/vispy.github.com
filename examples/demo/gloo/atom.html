@@ -103,9 +103,7 @@
 <span class="s">        self.clock = 0</span>
 <span class="s">        self.stop_rotation = False</span>
 
-<span class="s">        self.timer = app.Timer(1.0 / 60)</span>
-<span class="s">        self.timer.connect(self.on_timer)</span>
-<span class="s">        self.timer.start()</span>
+<span class="s">        self._timer = app.Timer(&#39;auto&#39;, connect=self.on_timer, start=True)</span>
 
 <span class="s">    def on_initialize(self, event):</span>
 <span class="s">        gloo.set_state(&#39;translucent&#39;, depth_test=False)</span>
@@ -175,7 +173,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

@@ -124,13 +124,11 @@
 <span class="s">        gloo.set_clear_color(&#39;white&#39;)</span>
 <span class="s">        gloo.set_state(blend=True,</span>
 <span class="s">                       blend_func=(&#39;src_alpha&#39;, &#39;one_minus_src_alpha&#39;))</span>
-<span class="s">        self.timer = app.Timer(1. / 60., self.on_timer)</span>
-<span class="s">        self.timer.start()</span>
+<span class="s">        self.timer = app.Timer(1. / 60., self.on_timer, start=True)</span>
 
 <span class="s">    def on_draw(self, event):</span>
 <span class="s">        gloo.clear()</span>
 <span class="s">        self.program.draw(&#39;points&#39;)</span>
-<span class="s">        self.update()</span>
 
 <span class="s">    def on_resize(self, event):</span>
 <span class="s">        gloo.set_viewport(0, 0, *event.size)</span>
@@ -141,6 +139,7 @@
 <span class="s">        self.data[&#39;a_fg_color&#39;][..., 3] -= 0.01</span>
 <span class="s">        self.data[&#39;a_size&#39;] += 1.0</span>
 <span class="s">        self.vdata.set_data(self.data)</span>
+<span class="s">        self.update()</span>
 
 <span class="s">    def on_mouse_move(self, event):</span>
 <span class="s">        x, y = event.pos</span>
@@ -179,7 +178,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

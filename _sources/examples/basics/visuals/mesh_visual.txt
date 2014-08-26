@@ -20,7 +20,7 @@ Simple demonstration of LineVisual.
     from vispy.scene import visuals
     from vispy.scene.components import (VertexColorComponent, GridContourComponent,
                                         VertexNormalComponent, ShadingComponent)
-    from vispy.util.meshdata import sphere
+    from vispy.geometry import create_sphere
     from vispy.scene.transforms import (STTransform, AffineTransform,
                                         ChainTransform)
     
@@ -32,7 +32,7 @@ Simple demonstration of LineVisual.
     
             # Generate some data to work with
             global mdata
-            mdata = sphere(20, 40, 1.0)
+            mdata = create_sphere(20, 40, 1.0)
     
             # Mesh with pre-indexed vertices, uniform color
             verts = mdata.vertices(indexed='faces')

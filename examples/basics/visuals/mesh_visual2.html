@@ -69,10 +69,6 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="c">#from .visual import Visual</span>
-<span class="c">#from ..shader.function import Function, Variable</span>
-<span class="c">#from ...import gloo</span>
-
 <span class="kn">from</span> <span class="nn">vispy.scene.visuals.visual</span> <span class="kn">import</span> <span class="n">Visual</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span><span class="p">,</span> <span class="n">Function</span><span class="p">,</span> <span class="n">Variable</span><span class="p">,</span> <span class="n">Varying</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
@@ -268,9 +264,9 @@
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 
     <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
-    <span class="kn">from</span> <span class="nn">vispy.util.meshdata</span> <span class="kn">import</span> <span class="n">sphere</span>
+    <span class="kn">from</span> <span class="nn">vispy.geometry</span> <span class="kn">import</span> <span class="n">create_sphere</span>
 
-    <span class="n">mdata</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">mdata</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
     <span class="n">faces</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">faces</span><span class="p">()</span>
     <span class="n">verts</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4.0</span>
     <span class="n">verts_flat</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">(</span><span class="n">indexed</span><span class="o">=</span><span class="s">&#39;faces&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mf">4.0</span>
@@ -349,7 +345,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

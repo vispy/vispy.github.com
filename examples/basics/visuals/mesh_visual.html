@@ -73,7 +73,7 @@
 <span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">visuals</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.components</span> <span class="kn">import</span> <span class="p">(</span><span class="n">VertexColorComponent</span><span class="p">,</span> <span class="n">GridContourComponent</span><span class="p">,</span>
                                     <span class="n">VertexNormalComponent</span><span class="p">,</span> <span class="n">ShadingComponent</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">vispy.util.meshdata</span> <span class="kn">import</span> <span class="n">sphere</span>
+<span class="kn">from</span> <span class="nn">vispy.geometry</span> <span class="kn">import</span> <span class="n">create_sphere</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="p">(</span><span class="n">STTransform</span><span class="p">,</span> <span class="n">AffineTransform</span><span class="p">,</span>
                                     <span class="n">ChainTransform</span><span class="p">)</span>
 
@@ -85,7 +85,7 @@
 
         <span class="c"># Generate some data to work with</span>
         <span class="k">global</span> <span class="n">mdata</span>
-        <span class="n">mdata</span> <span class="o">=</span> <span class="n">sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">mdata</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
         <span class="c"># Mesh with pre-indexed vertices, uniform color</span>
         <span class="n">verts</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">(</span><span class="n">indexed</span><span class="o">=</span><span class="s">&#39;faces&#39;</span><span class="p">)</span>
@@ -208,7 +208,11 @@
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

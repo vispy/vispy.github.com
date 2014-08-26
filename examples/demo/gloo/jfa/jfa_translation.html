@@ -81,7 +81,7 @@ corresponding shader changes.</li>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">op</span>
 <span class="kn">from</span> <span class="nn">vispy.ext</span> <span class="kn">import</span> <span class="n">glfw</span>
-<span class="kn">from</span> <span class="nn">vispy.util</span> <span class="kn">import</span> <span class="n">get_data_file</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span>
 <span class="kn">from</span> <span class="nn">OpenGL</span> <span class="kn">import</span> <span class="n">GL</span> <span class="k">as</span> <span class="n">gl</span>
 <span class="kn">from</span> <span class="nn">OpenGL</span> <span class="kn">import</span> <span class="n">GLU</span> <span class="k">as</span> <span class="n">glu</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -140,7 +140,7 @@ corresponding shader changes.</li>
 <span class="k">def</span> <span class="nf">loadShapeTexture</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">texID</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;loadShapeTexture - load 8-bit shape texture data</span>
 <span class="sd">    from a TGA file and set up the corresponding texture object.&quot;&quot;&quot;</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">texw</span><span class="p">,</span> <span class="n">texh</span> <span class="o">=</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">get_data_file</span><span class="p">(</span><span class="s">&#39;jfa/&#39;</span> <span class="o">+</span> <span class="n">filename</span><span class="p">))</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">texw</span><span class="p">,</span> <span class="n">texh</span> <span class="o">=</span> <span class="n">loadImage</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;jfa/&#39;</span> <span class="o">+</span> <span class="n">filename</span><span class="p">))</span>
     <span class="n">gl</span><span class="o">.</span><span class="n">glActiveTexture</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TEXTURE0</span><span class="p">)</span>
     <span class="n">gl</span><span class="o">.</span><span class="n">glBindTexture</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texID</span><span class="p">)</span>
     <span class="c"># Load image into texture</span>
@@ -338,7 +338,11 @@ corresponding shader changes.</li>
         <li><a class="reference external"
                 href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
         <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">Mailing list</a></li>
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
     </ul>
 </div>
 <h4 class="sidebar-box-heading">Related Projects</h4>

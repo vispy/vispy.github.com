@@ -20,9 +20,9 @@ demo/gloo/brain
     from vispy import gloo
     from vispy import app
     from vispy.util.transforms import perspective, translate, rotate
-    from vispy.util import get_data_file
+    from vispy.io import load_data_file
     
-    brain = np.load(get_data_file('brain/brain.npz'))
+    brain = np.load(load_data_file('brain/brain.npz'))
     data = brain['vertex_buffer']
     faces = brain['index_buffer']
     
@@ -112,9 +112,7 @@ demo/gloo/brain
             self.program['u_light_intensity'] = (1., 1., 1.)
     
             self._t0 = default_timer()
-            self._timer = app.Timer(1. / 60)
-            self._timer.connect(self.on_timer)
-            self._timer.start()
+            self._timer = app.Timer('auto', connect=self.on_timer, start=True)
     
             self.update_matrices()
     

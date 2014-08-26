@@ -18,7 +18,7 @@ Lie group SO(n).
     from vispy import gloo
     from vispy import app
     from vispy.color import ColorArray
-    from vispy.datasets import load_iris
+    from vispy.io import load_iris
     import numpy as np
     from scipy.linalg import expm, logm
     
@@ -135,8 +135,7 @@ Lie group SO(n).
             circ[-1, 0] = -1 if ndim % 2 == 0 else 1
             self._op = OrthogonalPath(np.eye(ndim), circ)
     
-            self._timer = app.Timer(1. / 60)
-            self._timer.connect(self.on_timer)
+            self._timer = app.Timer(1. / 60, connect=self.on_timer)
     
         def on_timer(self, event):
             mat = self._op(event.elapsed)

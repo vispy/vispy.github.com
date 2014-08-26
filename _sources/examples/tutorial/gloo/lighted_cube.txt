@@ -50,11 +50,11 @@ tutorial/gloo/lighted_cube
         def __init__(self):
             app.Canvas.__init__(self, size=(512, 512), title='Lighted cube',
                                 keys='interactive')
-            self.timer = app.Timer(1./60., self.on_timer)
+            self.timer = app.Timer('auto', self.on_timer)
     
         def on_initialize(self, event):
             # Build cube data
-            V, F, O = cube()
+            V, F, O = create_cube()
             vertices = VertexBuffer(V)
             self.faces = IndexBuffer(F)
             self.outline = IndexBuffer(O)
