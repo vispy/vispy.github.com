@@ -11,6 +11,8 @@
     <link href="_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="_static/owl-carousel/owl.carousel.css" type="text/css" />
+        <link rel="stylesheet" href="_static/owl-carousel/owl.theme.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="_static/js/bootstrap.min.js"></script>
@@ -26,6 +28,7 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/owl-carousel/owl.carousel.min.js"></script>
         <link rel="top" title="vispy" href="#" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="_static/favicon.ico">
@@ -62,7 +65,58 @@
     <div class="row">
         <div class="span9">
             
-  <p>Vispy is a <strong>high-performance interactive 2D/3D data visualization
+  <div id="owl-demo" class="owl-carousel">
+    <div class="item"><a href=examples/demo/gloo/ndscatter.html><img class="owl-lazy" data-src="_images/demo__gloo__ndscatter.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/grayscott.html><img class="owl-lazy" data-src="_images/demo__gloo__grayscott.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/terrain.html><img class="owl-lazy" data-src="_images/demo__gloo__terrain.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/boids.html><img class="owl-lazy" data-src="_images/demo__gloo__boids.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/jfa/jfa_vispy.html><img class="owl-lazy" data-src="_images/demo__gloo__jfa__jfa_vispy.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/fireworks.html><img class="owl-lazy" data-src="_images/demo__gloo__fireworks.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/graph.html><img class="owl-lazy" data-src="_images/demo__gloo__graph.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/atom.html><img class="owl-lazy" data-src="_images/demo__gloo__atom.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/raytracing.html><img class="owl-lazy" data-src="_images/demo__gloo__raytracing.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/game_of_life.html><img class="owl-lazy" data-src="_images/demo__gloo__game_of_life.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/brain.html><img class="owl-lazy" data-src="_images/demo__gloo__brain.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/signals.html><img class="owl-lazy" data-src="_images/demo__gloo__signals.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/mandelbrot.html><img class="owl-lazy" data-src="_images/demo__gloo__mandelbrot.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/spacy.html><img class="owl-lazy" data-src="_images/demo__gloo__spacy.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/imshow.html><img class="owl-lazy" data-src="_images/demo__gloo__imshow.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/realtime_signals.html><img class="owl-lazy" data-src="_images/demo__gloo__realtime_signals.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/voronoi.html><img class="owl-lazy" data-src="_images/demo__gloo__voronoi.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/donut.html><img class="owl-lazy" data-src="_images/demo__gloo__donut.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/show_markers.html><img class="owl-lazy" data-src="_images/demo__gloo__show_markers.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/cloud.html><img class="owl-lazy" data-src="_images/demo__gloo__cloud.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/molecular_viewer.html><img class="owl-lazy" data-src="_images/demo__gloo__molecular_viewer.png" alt="Lazy Owl Image"></a></div>
+    <div class="item"><a href=examples/demo/gloo/galaxy.html><img class="owl-lazy" data-src="_images/demo__gloo__galaxy.png" alt="Lazy Owl Image"></a></div>
+</div>
+<style rel="stylesheet" type="text/css">
+   #owl-demo .item{
+   margin: 3px;
+   }
+   #owl-demo .item img{
+   height: 250px;
+   width: auto;
+   margin-left: auto;
+   margin-right: auto;
+   }
+</style>
+
+<script>
+
+   $(document).ready(function() {
+   $("#owl-demo").owlCarousel({
+   items : 1,
+   lazyLoad : true,
+   dots: false,
+   autoplay : true,
+   autoplayTimeout: 3000,
+   autoplaySpeed: 1000,
+   center: true,
+   loop: true,
+   });
+
+   });
+</script><p>Vispy is a <strong>high-performance interactive 2D/3D data visualization
 library</strong>. Vispy leverages the computational power of modern <strong>Graphics
 Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display very
 large datasets. Applications of Vispy include:</p>
@@ -76,7 +130,7 @@ rendering).</li>
 <a class="reference external" href="http://ipython.org/notebook.html">IPython notebook</a> with WebGL).</li>
 </ul>
 <div class="section" id="using-vispy">
-<h1>Using Vispy<a class="headerlink" href="#using-vispy" title="Permalink to this headline">¶</a></h1>
+<h1>Using Vispy</h1>
 <p>Vispy is a young library under heavy development at this time. It
 targets two categories of users:</p>
 <ol class="arabic simple">
@@ -86,26 +140,26 @@ as easily as possible.</li>
 <li><strong>Scientists without any knowledge of OpenGL</strong>, who are seeking a
 high-level, high-performance plotting toolkit.</li>
 </ol>
-<p>If you&#8217;re in the first category, you can already start using Vispy.
+<p>If you're in the first category, you can already start using Vispy.
 Vispy offers a Pythonic, NumPy-aware, user-friendly interface for OpenGL
 ES 2.0 called <strong>gloo</strong>. You can focus on writing your GLSL code instead
 of dealing with the complicated OpenGL API - Vispy takes care of that
 automatically for you.</p>
-<p>If you&#8217;re in the second category, we&#8217;re starting to build experimental
+<p>If you're in the second category, we're starting to build experimental
 high-level plotting interfaces. Notably, Vispy now ships a very basic
 and experimental OpenGL backend for matplotlib.</p>
 </div>
 <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<h1>Installation</h1>
 <p>Vispy runs on Python 2.6+ and Python 3.3+ and depends on NumPy. You also
 need a backend (PyQt4/PySide, glfw, GLUT, pyglet, or SDL).</p>
 <p>As Vispy is under heavy development at this time, we highly recommend
 you to use the development version on Github (master branch). You need
 to clone the repository and install Vispy with
-<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
+<tt class="docutils literal">python setup.py install</tt>.</p>
 </div>
 <div class="section" id="structure-of-vispy">
-<h1>Structure of Vispy<a class="headerlink" href="#structure-of-vispy" title="Permalink to this headline">¶</a></h1>
+<h1>Structure of Vispy</h1>
 <p>Currently, the main subpackages are:</p>
 <ul class="simple">
 <li><strong>app</strong>: integrates an event system and offers a unified interface on
@@ -132,7 +186,7 @@ graph.</li>
 although <strong>app</strong> and <strong>gloo</strong> are <em>relatively</em> stable at this point.</p>
 </div>
 <div class="section" id="about-us">
-<h1>About us<a class="headerlink" href="#about-us" title="Permalink to this headline">¶</a></h1>
+<h1>About us</h1>
 <p>The core development team consists of:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://luke.campagnola.me/">Luke Campagnola</a></li>
