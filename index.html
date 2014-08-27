@@ -64,32 +64,17 @@
             
   <p>Vispy is a <strong>high-performance interactive 2D/3D data visualization
 library</strong>. Vispy leverages the computational power of modern <strong>Graphics
-Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display
-very large datasets. Applications of Vispy include:</p>
+Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display very
+large datasets. Applications of Vispy include:</p>
 <ul class="simple">
 <li>High-quality interactive scientific plots with millions of points.</li>
 <li>Direct visualization of real-time data.</li>
-<li>Fast interactive visualization of 3D models (meshes, volume rendering).</li>
+<li>Fast interactive visualization of 3D models (meshes, volume
+rendering).</li>
 <li>OpenGL visualization demos.</li>
 <li>Scientific GUIs with fast, scalable visualization widgets (Qt or
-IPython notebook with WebGL).</li>
+<a class="reference external" href="http://ipython.org/notebook.html">IPython notebook</a> with WebGL).</li>
 </ul>
-<p>We&#8217;re now working on vispy&#8217;s higher level interfaces, so that it will
-become easy for everyone to create awesome and fast visualizations.</p>
-<div class="section" id="announcements">
-<h1>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><strong>Release!</strong> Version 0.3, August 27, 2014</li>
-<li><strong>EuroSciPy 2014</strong>: talk at Saturday 30, and sprint at Sunday 31, August 2014</li>
-<li><a class="reference external" href="https://github.com/vispy/linuxmag-article">Article in **Linux Magazine**, French Edition</a>, July 2014</li>
-<li><strong>GSoC 2014</strong>: <a class="reference external" href="https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014">two GSoC students are currently working on Vispy under the PSF umbrella</a></li>
-<li><strong>Release!</strong>, Version 0.2.1 04-11-2013</li>
-<li><strong>Presentation at BI forum</strong>, Budapest, 6 November 2013</li>
-<li><strong>Presentation at Euroscipy</strong>, Belgium, August 2013</li>
-<li><strong>EuroSciPy Sprint</strong>, Belgium, August 2013</li>
-<li><strong>Release!</strong> Version 0.1.0 14-08-2013</li>
-</ul>
-</div>
 <div class="section" id="using-vispy">
 <h1>Using Vispy<a class="headerlink" href="#using-vispy" title="Permalink to this headline">¶</a></h1>
 <p>Vispy is a young library under heavy development at this time. It
@@ -112,31 +97,26 @@ and experimental OpenGL backend for matplotlib.</p>
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Vispy runs on Python 2.6+ and Python 3.3+ and depends on NumPy. You
-also need a backend (PyQt4, PySide, glfw, GLUT, pyglet, or SDL2).</p>
+<p>Vispy runs on Python 2.6+ and Python 3.3+ and depends on NumPy. You also
+need a backend (PyQt4/PySide, glfw, GLUT, pyglet, or SDL).</p>
 <p>As Vispy is under heavy development at this time, we highly recommend
-you to use the development version on Github  (master branch). You need
-to clone the repository and install Vispy with <cite>python setup.py
-install</cite>.</p>
+you to use the development version on Github (master branch). You need
+to clone the repository and install Vispy with
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
 </div>
 <div class="section" id="structure-of-vispy">
 <h1>Structure of Vispy<a class="headerlink" href="#structure-of-vispy" title="Permalink to this headline">¶</a></h1>
 <p>Currently, the main subpackages are:</p>
-<ul>
-<li><p class="first"><strong>app</strong>: integrates an event system and offers a unified interface on
+<ul class="simple">
+<li><strong>app</strong>: integrates an event system and offers a unified interface on
 top of many window backends (Qt4, wx, glfw, GLUT, IPython notebook
-with/without WebGL, and others). Relatively stable API.</p>
-</li>
-<li><p class="first"><strong>gloo</strong>: a Pythonic, object-oriented interface to OpenGL. Relatively
-stable API.</p>
-</li>
-<li><p class="first"><strong>mpl_plot</strong>: an OpenGL backend for matplotlib. Experimental.</p>
-</li>
-<li><p class="first"><strong>scene</strong>: this is the system underlying our upcoming high level
+with/without WebGL, and others). Relatively stable API.</li>
+<li><strong>gloo</strong>: a Pythonic, object-oriented interface to OpenGL. Relatively
+stable API.</li>
+<li><strong>mpl_plot</strong>: an OpenGL backend for matplotlib. Experimental.</li>
+<li><strong>scene</strong>: this is the system underlying our upcoming high level
 visualization interfaces. Under heavy development and still
-experimental, it contains several modules.</p>
-<blockquote>
-<div><ul class="simple">
+experimental, it contains several modules.<ul>
 <li><strong>Visuals</strong> are graphical abstractions representing 2D shapes, 3D
 meshes, text, etc.</li>
 <li><strong>Transforms</strong> implement 2D/3D transformations implemented on both
@@ -146,11 +126,28 @@ together snippets of GLSL code.</li>
 <li>The <strong>scene graph</strong> tracks all objects within a transformation
 graph.</li>
 </ul>
-</div></blockquote>
 </li>
 </ul>
 <p>The API of all public interfaces are subject to change in the future,
 although <strong>app</strong> and <strong>gloo</strong> are <em>relatively</em> stable at this point.</p>
+</div>
+<div class="section" id="about-us">
+<h1>About us<a class="headerlink" href="#about-us" title="Permalink to this headline">¶</a></h1>
+<p>The core development team consists of:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://luke.campagnola.me/">Luke Campagnola</a></li>
+<li><a class="reference external" href="http://www.almarklein.org/">Almar Klein</a></li>
+<li><a class="reference external" href="http://larsoner.com">Eric Larson</a></li>
+<li><a class="reference external" href="http://cyrille.rossant.net">Cyrille Rossant</a></li>
+<li><a class="reference external" href="http://www.loria.fr/~rougier/index.html">Nicolas Rougier</a></li>
+</ul>
+<p>Four of us have written our own Python visualization toolkit
+(<a class="reference external" href="http://www.pyqtgraph.org/">PyQtGraph</a> by LC,
+<a class="reference external" href="https://code.google.com/p/visvis/">Visvis</a> by AK,
+<a class="reference external" href="https://github.com/rougier/Glumpy">Glumpy</a> by NR, and
+<a class="reference external" href="https://github.com/rossant/galry">Galry</a> by CR), and we decided to
+team up to create a unique high-performance, high-quality interactive
+visualization library.</p>
 </div>
 <div class="section" id="publications">
 <h1>Publications<a class="headerlink" href="#publications" title="Permalink to this headline">¶</a></h1>

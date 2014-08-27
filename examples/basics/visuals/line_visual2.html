@@ -1,0 +1,307 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>basics/visuals/line_visual2 &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="basics-visuals-line-visual2">
+<h1>basics/visuals/line_visual2<a class="headerlink" href="#basics-visuals-line-visual2" title="Permalink to this headline">¶</a></h1>
+<p>A Line Visual that uses the new shader Function.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c">#from .visual import Visual</span>
+<span class="c">#from ..shader.function import Function, Variable</span>
+<span class="c">#from ...import gloo</span>
+
+<span class="kn">from</span> <span class="nn">vispy.scene.visuals.visual</span> <span class="kn">import</span> <span class="n">Visual</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span><span class="p">,</span> <span class="n">Function</span><span class="p">,</span> <span class="n">Variable</span><span class="p">,</span> <span class="n">Varying</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+
+
+<span class="c">## Snippet templates (defined as string to force user to create fresh Function)</span>
+<span class="c"># Consider these stored in a central location in vispy ...</span>
+
+
+<span class="n">vertex_template</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_template</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">void main() {</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+
+<span class="n">dash_template</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">float dash(float distance) {</span>
+<span class="s">    float mod = distance / $dash_len;</span>
+<span class="s">    mod = mod - int(mod);</span>
+<span class="s">    return 0.5 * sin(mod*3.141593*2.0) + 0.5;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">stub4</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&quot;vec4 stub4(vec4 value) { return value; }&quot;</span><span class="p">)</span>
+<span class="n">stub3</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s">&quot;vec4 stub3(vec3 value) { return value; }&quot;</span><span class="p">)</span>
+
+
+<span class="c">## Actual code</span>
+
+<span class="k">class</span> <span class="nc">Line</span><span class="p">(</span><span class="n">Visual</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">Visual</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c"># Create a program</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span> <span class="o">=</span> <span class="n">ModularProgram</span><span class="p">(</span><span class="n">vertex_template</span><span class="p">,</span> <span class="n">fragment_template</span><span class="p">)</span>
+
+        <span class="c"># Define how we are going to specify position and color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;gl_Position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;$transform(vec4($position, 1.0))&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;gl_FragColor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;vec4($color, 1.0)&#39;</span>
+
+        <span class="c"># Set position data</span>
+        <span class="k">assert</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+        <span class="n">vbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vbo</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+
+        <span class="c"># Create some variables related to color. We use a combination</span>
+        <span class="c"># of these depending on the kind of color being set.</span>
+        <span class="c"># We predefine them here so that we can re-use VBO and uniforms</span>
+        <span class="n">vbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color_var</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s">&#39;uniform vec3 color&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_colors_var</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s">&#39;attribute vec3 color&#39;</span><span class="p">,</span> <span class="n">vbo</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_color_varying</span> <span class="o">=</span> <span class="n">Varying</span><span class="p">(</span><span class="s">&#39;v_color&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Visual</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">fget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c"># todo: this should probably be handled by base visual class..</span>
+    <span class="nd">@transform.setter</span>
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+        <span class="n">Visual</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">fset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Set the vertex data for this line.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vbo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">vbo</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Set the color for this line. Color can be specified for the</span>
+<span class="sd">        whole line or per vertex.</span>
+
+<span class="sd">        When the color is changed from single color to array, the shaders</span>
+<span class="sd">        need to be recompiled, otherwise we only need to reset the</span>
+<span class="sd">        uniform / attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="c"># Single value (via a uniform)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">color</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_color_var</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">color</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color_var</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="c"># A value per vertex, via a VBO</span>
+            <span class="k">assert</span> <span class="n">color</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_colors_var</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_color_varying</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_color_varying</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_colors_var</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Line colors must be Nx3 array or color tuple&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one&#39;</span><span class="p">))</span>
+
+        <span class="c"># Draw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;line_strip&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DashedLine</span><span class="p">(</span><span class="n">Line</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This takes the Line and modifies the composition of Functions</span>
+<span class="sd">    to create a dashing effect.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">Line</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">dasher</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">dash_template</span><span class="p">)</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">Varying</span><span class="p">(</span><span class="s">&#39;v_distance&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;float&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;gl_FragColor.a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dasher</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        <span class="n">dasher</span><span class="p">[</span><span class="s">&#39;dash_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s">&#39;const float dash_len 0.001&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="n">distance</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;gl_Position.x&#39;</span>
+
+
+<span class="c">## Show the visual</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+
+    <span class="c"># vertex positions of data to draw</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">pos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c"># color array</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">color</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">color</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">line1</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line2</span> <span class="o">=</span> <span class="n">DashedLine</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line2</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+                                               <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ev</span><span class="p">):</span>
+            <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="bp">True</span><span class="p">)</span>
+            <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line1</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">line2</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mf">0.016</span><span class="p">)</span>
+
+    <span class="n">th</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="nd">@timer.connect</span>
+    <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">th</span>
+        <span class="n">th</span> <span class="o">+=</span> <span class="mf">0.01</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.4</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">line2</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="n">pos</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>
