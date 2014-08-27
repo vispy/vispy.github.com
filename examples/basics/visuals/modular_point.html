@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>basics/visuals/point_visual &mdash; vispy</title>
+        <title>basics/visuals/modular_point &mdash; vispy</title>
     
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -62,13 +62,13 @@
     <div class="row">
         <div class="span9">
             
-  <div class="section" id="basics-visuals-point-visual">
-<h1>basics/visuals/point_visual<a class="headerlink" href="#basics-visuals-point-visual" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="basics-visuals-modular-point">
+<h1>basics/visuals/modular_point<a class="headerlink" href="#basics-visuals-modular-point" title="Permalink to this headline">¶</a></h1>
 <p>Simple demonstration of PointsVisual.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">vispy.app</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">visuals</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.visuals.modular_point</span> <span class="kn">import</span> <span class="n">ModularPoint</span>
 
 <span class="c"># vertex positions of data to draw</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
@@ -79,7 +79,7 @@
 
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">vispy</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">ModularPoint</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">vispy</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>

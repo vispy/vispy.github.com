@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>basics/visuals/mesh_visual &mdash; vispy</title>
+        <title>basics/visuals/mesh &mdash; vispy</title>
     
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -62,17 +62,13 @@
     <div class="row">
         <div class="span9">
             
-  <div class="section" id="basics-visuals-mesh-visual">
-<h1>basics/visuals/mesh_visual<a class="headerlink" href="#basics-visuals-mesh-visual" title="Permalink to this headline">¶</a></h1>
-<p>Simple demonstration of LineVisual.</p>
-<img alt="../../../_images/basics__visuals__mesh_visual.png" src="../../../_images/basics__visuals__mesh_visual.png" />
-<hr class="docutils" />
+  <div class="section" id="basics-visuals-mesh">
+<h1>basics/visuals/mesh<a class="headerlink" href="#basics-visuals-mesh" title="Permalink to this headline">¶</a></h1>
+<p>Simple demonstration of Mesh visual.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">vispy.app</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">visuals</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.components</span> <span class="kn">import</span> <span class="p">(</span><span class="n">VertexColorComponent</span><span class="p">,</span> <span class="n">GridContourComponent</span><span class="p">,</span>
-                                    <span class="n">VertexNormalComponent</span><span class="p">,</span> <span class="n">ShadingComponent</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Mesh</span>
 <span class="kn">from</span> <span class="nn">vispy.geometry</span> <span class="kn">import</span> <span class="n">create_sphere</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="p">(</span><span class="n">STTransform</span><span class="p">,</span> <span class="n">AffineTransform</span><span class="p">,</span>
                                     <span class="n">ChainTransform</span><span class="p">)</span>
@@ -88,26 +84,26 @@
         <span class="n">mdata</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
         <span class="c"># Mesh with pre-indexed vertices, uniform color</span>
-        <span class="n">verts</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">(</span><span class="n">indexed</span><span class="o">=</span><span class="s">&#39;faces&#39;</span><span class="p">)</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mesh</span><span class="p">(</span><span class="n">meshdata</span><span class="o">=</span><span class="n">mdata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">))</span>
+        <span class="c">#mesh.transform = STTransform(scale=(1, 1, .001), translate=(400, 400))</span>
 
-        <span class="c"># Mesh with pre-indexed vertices, per-face color</span>
-        <span class="c">#   Because vertices are pre-indexed, we get a different color</span>
-        <span class="c">#   every time a vertex is visited, resulting in sharp color</span>
-        <span class="c">#   differences between edges.</span>
+        <span class="c">## Mesh with pre-indexed vertices, per-face color</span>
+        <span class="c">##   Because vertices are pre-indexed, we get a different color</span>
+        <span class="c">##   every time a vertex is visited, resulting in sharp color</span>
+        <span class="c">##   differences between edges.</span>
+        <span class="n">verts</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">(</span><span class="n">indexed</span><span class="o">=</span><span class="s">&#39;faces&#39;</span><span class="p">)</span>
         <span class="n">nf</span> <span class="o">=</span> <span class="n">verts</span><span class="o">.</span><span class="n">size</span><span class="o">//</span><span class="mi">9</span>
         <span class="n">fcolor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nf</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">fcolor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nf</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
         <span class="n">fcolor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">nf</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
         <span class="n">fcolor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nf</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">fcolor</span><span class="p">)</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">vertices</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">face_colors</span><span class="o">=</span><span class="n">fcolor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 
-        <span class="c"># Mesh with unindexed vertices, per-vertex color</span>
-        <span class="c">#   Because vertices are unindexed, we get the same color</span>
-        <span class="c">#   every time a vertex is visited, resulting in no color differences</span>
-        <span class="c">#   between edges.</span>
+        <span class="c">## Mesh with unindexed vertices, per-vertex color</span>
+        <span class="c">##   Because vertices are unindexed, we get the same color</span>
+        <span class="c">##   every time a vertex is visited, resulting in no color differences</span>
+        <span class="c">##   between edges.</span>
         <span class="n">verts</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">()</span>
         <span class="n">faces</span> <span class="o">=</span> <span class="n">mdata</span><span class="o">.</span><span class="n">faces</span><span class="p">()</span>
         <span class="n">nv</span> <span class="o">=</span> <span class="n">verts</span><span class="o">.</span><span class="n">size</span><span class="o">//</span><span class="mi">3</span>
@@ -115,37 +111,9 @@
         <span class="n">vcolor</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nv</span><span class="p">)</span>
         <span class="n">vcolor</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">nv</span><span class="p">)</span>
         <span class="n">vcolor</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nv</span><span class="p">)</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="o">=</span><span class="n">faces</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">vcolor</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
-
-        <span class="c"># Mesh colored by vertices + grid contours</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="o">=</span><span class="n">faces</span><span class="p">)</span>
-        <span class="n">mesh</span><span class="o">.</span><span class="n">color_components</span> <span class="o">=</span> <span class="p">[</span><span class="n">VertexColorComponent</span><span class="p">(</span><span class="n">vcolor</span><span class="p">),</span>
-                                 <span class="n">GridContourComponent</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span>
-                                                               <span class="mf">0.13</span><span class="p">))]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
-
-        <span class="c"># Phong shaded mesh</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="o">=</span><span class="n">faces</span><span class="p">)</span>
-        <span class="n">normal_comp</span> <span class="o">=</span> <span class="n">VertexNormalComponent</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
-        <span class="n">mesh</span><span class="o">.</span><span class="n">color_components</span> <span class="o">=</span> <span class="p">[</span><span class="n">VertexColorComponent</span><span class="p">(</span><span class="n">vcolor</span><span class="p">),</span>
-                                 <span class="n">GridContourComponent</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)),</span>
-                                 <span class="n">ShadingComponent</span><span class="p">(</span><span class="n">normal_comp</span><span class="p">,</span>
-                                                  <span class="n">lights</span><span class="o">=</span><span class="p">[((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-                                                          <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))],</span>
-                                                  <span class="n">ambient</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
-
-        <span class="c"># Phong shaded mesh, flat faces</span>
-        <span class="n">mesh</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">mdata</span><span class="o">.</span><span class="n">vertices</span><span class="p">(</span><span class="n">indexed</span><span class="o">=</span><span class="s">&#39;faces&#39;</span><span class="p">))</span>
-        <span class="n">normal_comp</span> <span class="o">=</span> <span class="n">VertexNormalComponent</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">mesh</span><span class="o">.</span><span class="n">color_components</span> <span class="o">=</span> <span class="p">[</span><span class="n">VertexColorComponent</span><span class="p">(</span><span class="n">vcolor</span><span class="p">[</span><span class="n">mdata</span><span class="o">.</span><span class="n">faces</span><span class="p">()]),</span>
-                                 <span class="n">GridContourComponent</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)),</span>
-                                 <span class="n">ShadingComponent</span><span class="p">(</span><span class="n">normal_comp</span><span class="p">,</span>
-                                                  <span class="n">lights</span><span class="o">=</span><span class="p">[((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-                                                           <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))],</span>
-                                                  <span class="n">ambient</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mesh</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">vcolor</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mesh</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">vcolor</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s">&#39;flat&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mesh</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">vcolor</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s">&#39;smooth&#39;</span><span class="p">))</span>
 
         <span class="c"># Lay out meshes in a grid</span>
         <span class="n">grid</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>

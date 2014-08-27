@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>basics/visuals/custom_components &mdash; vispy</title>
+        <title>basics/visuals/modular_components &mdash; vispy</title>
     
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -62,15 +62,15 @@
     <div class="row">
         <div class="span9">
             
-  <div class="section" id="basics-visuals-custom-components">
-<h1>basics/visuals/custom_components<a class="headerlink" href="#basics-visuals-custom-components" title="Permalink to this headline">¶</a></h1>
-<p>Demonstrates plugging custom shaders in to a LineVisual.</p>
+  <div class="section" id="basics-visuals-modular-components">
+<h1>basics/visuals/modular_components<a class="headerlink" href="#basics-visuals-modular-components" title="Permalink to this headline">¶</a></h1>
+<p>Demonstrates plugging custom shaders in to a ModularLine visual.</p>
 <p>This allows to modify the appearance of the visual without modifying or
-subclassing the original LineVisual class.</p>
+subclassing the original ModularLine class.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">vispy.app</span>
 <span class="kn">import</span> <span class="nn">vispy.gloo</span> <span class="kn">as</span> <span class="nn">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">visuals</span>
+<span class="kn">from</span> <span class="nn">vispy.scene.visuals.modular_line</span> <span class="kn">import</span> <span class="n">ModularLine</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="n">BaseTransform</span><span class="p">,</span> <span class="n">STTransform</span><span class="p">,</span> <span class="n">arg_to_array</span>
 <span class="kn">from</span> <span class="nn">vispy.scene.components</span> <span class="kn">import</span> <span class="p">(</span><span class="n">VisualComponent</span><span class="p">,</span> <span class="n">VertexColorComponent</span><span class="p">,</span>
                                     <span class="n">XYPosComponent</span><span class="p">)</span>
@@ -141,7 +141,7 @@ subclassing the original LineVisual class.</p>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbo</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="c"># measure distance along line</span>
             <span class="c"># TODO: this should be recomputed if the line data changes.</span>
-            <span class="n">pixel_tr</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">visual</span><span class="o">.</span><span class="n">transform</span>
+            <span class="n">pixel_tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visual</span><span class="o">.</span><span class="n">transform</span>
             <span class="n">pixel_pos</span> <span class="o">=</span> <span class="n">pixel_tr</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
             <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
             <span class="n">diff</span> <span class="o">=</span> <span class="p">((</span><span class="n">pixel_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">pixel_pos</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
@@ -155,7 +155,7 @@ subclassing the original LineVisual class.</p>
         <span class="n">ff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_funcs</span><span class="p">[</span><span class="s">&#39;frag_color&#39;</span><span class="p">]</span>
         <span class="n">vf</span><span class="p">[</span><span class="s">&#39;distance_attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_vbo</span><span class="p">()</span>  <span class="c"># attribute float</span>
         <span class="n">vf</span><span class="p">[</span><span class="s">&#39;output_dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Varying</span><span class="p">(</span><span class="s">&#39;output_dist&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;float&#39;</span><span class="p">)</span>
-        <span class="n">ff</span><span class="p">[</span><span class="s">&#39;dash_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">200.</span>
+        <span class="n">ff</span><span class="p">[</span><span class="s">&#39;dash_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20.</span>
         <span class="n">ff</span><span class="p">[</span><span class="s">&#39;distance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vf</span><span class="p">[</span><span class="s">&#39;output_dist&#39;</span><span class="p">]</span>
 
     <span class="nd">@property</span>
@@ -200,7 +200,7 @@ subclassing the original LineVisual class.</p>
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">vispy</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">ModularLine</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="p">(</span><span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
                                            <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span> <span class="o">*</span>
                                <span class="n">SineTransform</span><span class="p">()</span> <span class="o">*</span>
