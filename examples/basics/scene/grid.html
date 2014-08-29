@@ -26,7 +26,8 @@
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../_static/js/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../_static/js/carousel.js"></script>
         <link rel="top" title="vispy" href="../../../index.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../../_static/favicon.ico">
@@ -68,25 +69,21 @@
 <p>Test automatic layout of multiple viewboxes using Grid.</p>
 <img alt="../../../_images/basics__scene__grid.png" src="../../../_images/basics__scene__grid.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">app</span>
 
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">grid</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Grid</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+<span class="c"># This is the top-level widget that will hold three ViewBoxes, which will</span>
+<span class="c"># be automatically resized whenever the grid is resized.</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
 
 
-<span class="c"># Ensure that grid fills the entire canvas, even after resize.</span>
-<span class="nd">@canvas.events.resize.connect</span>
-<span class="k">def</span> <span class="nf">update_grid</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">grid</span><span class="p">,</span> <span class="n">canvas</span>
-    <span class="n">grid</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">size</span>
-
-<span class="n">update_grid</span><span class="p">()</span>
-
+<span class="c"># Add 3 ViewBoxes to the grid</span>
 <span class="n">b1</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_span</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">b1</span><span class="o">.</span><span class="n">border_color</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">b1</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -103,7 +100,7 @@
 <span class="n">b3</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 
-<span class="c"># Add one line to all three boxes</span>
+<span class="c"># Generate some random vertex data and a color gradient</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
@@ -114,18 +111,32 @@
 <span class="n">color</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 <span class="n">color</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
-<span class="n">l1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+<span class="c"># Top grid cell shows plot data in a rectangular coordinate system.</span>
+<span class="n">l1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;gl&#39;</span><span class="p">)</span>
 <span class="n">b1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="n">grid1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">GridLines</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">b1</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 
-<span class="n">l2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-<span class="n">l2</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">LogTransform</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">b2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l2</span><span class="p">)</span>
+<span class="c"># Bottom-left grid cell shows the same data with log-transformed X</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Entity</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">b2</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+<span class="n">e2</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">LogTransform</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">e2</span><span class="p">,</span>
+                        <span class="n">mode</span><span class="o">=</span><span class="s">&#39;gl&#39;</span><span class="p">)</span>
+<span class="n">grid2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">GridLines</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">e2</span><span class="p">)</span>
 
-<span class="n">l3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-<span class="n">l3</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">PolarTransform</span><span class="p">()</span>
-<span class="n">b3</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">l3</span><span class="p">)</span>
+<span class="c"># Bottom-right grid cell shows the same data again, but with a much more</span>
+<span class="c"># interesting transformation.</span>
+<span class="n">e3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Entity</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">b3</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+<span class="n">affine</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AffineTransform</span><span class="p">()</span>
+<span class="n">affine</span><span class="o">.</span><span class="n">scale</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+<span class="n">affine</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">affine</span><span class="o">.</span><span class="n">translate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">e3</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ChainTransform</span><span class="p">([</span>
+    <span class="n">scene</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">PolarTransform</span><span class="p">(),</span>
+    <span class="n">affine</span><span class="p">])</span>
+<span class="n">l3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">e3</span><span class="p">,</span>
+                        <span class="n">mode</span><span class="o">=</span><span class="s">&#39;gl&#39;</span><span class="p">)</span>
+<span class="n">grid3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">GridLines</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">e3</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
