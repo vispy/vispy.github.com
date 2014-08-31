@@ -5,10 +5,48 @@ tutorial/gloo/textured_cube
 
 
 
+.. note:: 
+                This example is based on ``vispy.gloo`` and thus uses GLSL
+                shading code, which is executed at the GPU and is
+                defined as multiline strings. 
+
 
 .. code-block:: python
     
-    fragment = 
+    # -*- coding: utf-8 -*-
+    # -----------------------------------------------------------------------------
+    # Copyright (c) 2014, Vispy Development Team. All Rights Reserved.
+    # Distributed under the (new) BSD License. See LICENSE.txt for more info.
+    # -----------------------------------------------------------------------------
+    # Author: Nicolas P .Rougier
+    # Date:   04/03/2014
+    # -----------------------------------------------------------------------------
+    import numpy as np
+    
+    from vispy import gloo, app
+    from vispy.gloo import Program, VertexBuffer, IndexBuffer
+    from vispy.util.transforms import perspective, translate, rotate
+    from vispy.geometry import create_cube
+    
+    
+    vertex = """
+    uniform mat4 model;
+    uniform mat4 view;
+    uniform mat4 projection;
+    uniform sampler2D texture;
+    
+    attribute vec3 position;
+    attribute vec2 texcoord;
+    
+    varying vec2 v_texcoord;
+    void main()
+    {
+        gl_Position = projection * view * model * vec4(position,1.0);
+        v_texcoord = texcoord;
+    }
+    """
+    
+    fragment = """
     uniform sampler2D texture;
     varying vec2 v_texcoord;
     void main()

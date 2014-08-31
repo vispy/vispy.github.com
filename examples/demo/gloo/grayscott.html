@@ -68,184 +68,219 @@
 <h1>demo/gloo/grayscott<a class="headerlink" href="#demo-gloo-grayscott" title="Permalink to this headline">¶</a></h1>
 <img alt="../../../_images/demo__gloo__grayscott.png" src="../../../_images/demo__gloo__grayscott.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">render_fragment</span> <span class="o">=</span>
-<span class="n">uniform</span> <span class="nb">int</span> <span class="n">pingpong</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nb">float</span> <span class="n">v</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">pingpong</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="p">)</span><span class="o">.</span><span class="n">b</span><span class="p">;</span>
-    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># vispy: gallery 2000</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Author:   Nicolas P .Rougier</span>
+<span class="c"># Date:     06/03/2014</span>
+<span class="c"># Abstract: GPU computing usingthe framebuffer</span>
+<span class="c"># Keywords: framebuffer, GPU computing, reaction-diffusion</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 
-<span class="sd">compute_vertex = &quot;&quot;&quot;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-    <span class="n">v_texcoord</span> <span class="o">=</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">DepthBuffer</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span>
+                        <span class="n">clear</span><span class="p">,</span> <span class="n">set_state</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 
-<span class="sd">compute_fragment = &quot;&quot;&quot;</span>
-<span class="n">uniform</span> <span class="nb">int</span> <span class="n">pingpong</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span> <span class="o">//</span> <span class="n">U</span><span class="p">,</span><span class="n">V</span><span class="p">:</span><span class="o">=</span> <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span> <span class="n">other</span> <span class="n">channels</span> <span class="n">ignored</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">params</span><span class="p">;</span>  <span class="o">//</span> <span class="n">rU</span><span class="p">,</span><span class="n">rV</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">k</span> <span class="p">:</span><span class="o">=</span> <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dx</span><span class="p">;</span>          <span class="o">//</span> <span class="n">horizontal</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">texels</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dy</span><span class="p">;</span>          <span class="o">//</span> <span class="n">vertical</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">texels</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dd</span><span class="p">;</span>          <span class="o">//</span> <span class="n">unit</span> <span class="n">of</span> <span class="n">distance</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">dt</span><span class="p">;</span>          <span class="o">//</span> <span class="n">unit</span> <span class="n">of</span> <span class="n">time</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nb">float</span> <span class="n">center</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">4.0</span><span class="o">+</span><span class="mf">4.0</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">));</span>  <span class="o">//</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">other</span> <span class="n">weights</span>
-    <span class="nb">float</span> <span class="n">diag</span>   <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span>         <span class="o">//</span> <span class="n">weight</span> <span class="k">for</span> <span class="n">diagonals</span>
-    <span class="n">vec2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">v_texcoord</span><span class="p">;</span>                  <span class="o">//</span> <span class="n">center</span> <span class="n">coordinates</span>
 
-    <span class="n">vec2</span> <span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">pingpong</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">rg</span><span class="p">;</span>    <span class="o">//</span> <span class="n">central</span> <span class="n">value</span>
-        <span class="o">//</span> <span class="n">Compute</span> <span class="n">Laplacian</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="p">(</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span><span class="p">)</span> <span class="o">*</span> <span class="n">diag</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">rg</span>
-            <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">center</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">ba</span><span class="p">;</span>    <span class="o">//</span> <span class="n">central</span> <span class="n">value</span>
-        <span class="o">//</span> <span class="n">Compute</span> <span class="n">Laplacian</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="p">(</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span><span class="p">)</span> <span class="o">*</span> <span class="n">diag</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span> <span class="n">dx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dy</span><span class="p">))</span><span class="o">.</span><span class="n">ba</span>
-            <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">center</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="n">render_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0.0, 1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-    <span class="nb">float</span> <span class="n">u</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">r</span><span class="p">;</span>           <span class="o">//</span> <span class="n">compute</span> <span class="n">some</span> <span class="n">temporary</span>
-    <span class="nb">float</span> <span class="n">v</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">g</span><span class="p">;</span>           <span class="o">//</span> <span class="n">values</span> <span class="n">which</span> <span class="n">might</span> <span class="n">save</span>
-    <span class="nb">float</span> <span class="n">lu</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">r</span><span class="p">;</span>          <span class="o">//</span> <span class="n">a</span> <span class="n">few</span> <span class="n">GPU</span> <span class="n">cycles</span>
-    <span class="nb">float</span> <span class="n">lv</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">g</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">uvv</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">v</span><span class="p">;</span>
+<span class="n">render_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform int pingpong;</span>
+<span class="s">uniform sampler2D texture;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    float v;</span>
+<span class="s">    if( pingpong == 0 )</span>
+<span class="s">        v = texture2D(texture, v_texcoord).r;</span>
+<span class="s">    else</span>
+<span class="s">        v = texture2D(texture, v_texcoord).b;</span>
+<span class="s">    gl_FragColor = vec4(1.0-v, 1.0-v, 1.0-v, 1.0);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-    <span class="n">vec4</span> <span class="n">q</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">rgba</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">ru</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">r</span><span class="p">;</span>          <span class="o">//</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">diffusion</span> <span class="n">of</span> <span class="n">U</span>
-    <span class="nb">float</span> <span class="n">rv</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">g</span><span class="p">;</span>          <span class="o">//</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">diffusion</span> <span class="n">of</span> <span class="n">V</span>
-    <span class="nb">float</span> <span class="n">f</span>  <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">b</span><span class="p">;</span>          <span class="o">//</span> <span class="n">some</span> <span class="n">coupling</span> <span class="n">parameter</span>
-    <span class="nb">float</span> <span class="n">k</span>  <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">a</span><span class="p">;</span>          <span class="o">//</span> <span class="n">another</span> <span class="n">coupling</span> <span class="n">parameter</span>
+<span class="n">compute_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0.0, 1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-    <span class="nb">float</span> <span class="n">du</span> <span class="o">=</span> <span class="n">ru</span> <span class="o">*</span> <span class="n">lu</span> <span class="o">/</span> <span class="n">dd</span> <span class="o">-</span> <span class="n">uvv</span> <span class="o">+</span> <span class="n">f</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">u</span><span class="p">);</span> <span class="o">//</span> <span class="n">Gray</span><span class="o">-</span><span class="n">Scott</span> <span class="n">equation</span>
-    <span class="nb">float</span> <span class="n">dv</span> <span class="o">=</span> <span class="n">rv</span> <span class="o">*</span> <span class="n">lv</span> <span class="o">/</span> <span class="n">dd</span> <span class="o">+</span> <span class="n">uvv</span> <span class="o">-</span> <span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span><span class="p">;</span>   <span class="o">//</span> <span class="n">diffusion</span><span class="o">+-</span><span class="n">reaction</span>
+<span class="n">compute_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform int pingpong;</span>
+<span class="s">uniform sampler2D texture; // U,V:= r,g, other channels ignored</span>
+<span class="s">uniform sampler2D params;  // rU,rV,f,k := r,g,b,a</span>
+<span class="s">uniform float dx;          // horizontal distance between texels</span>
+<span class="s">uniform float dy;          // vertical distance between texels</span>
+<span class="s">uniform float dd;          // unit of distance</span>
+<span class="s">uniform float dt;          // unit of time</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main(void)</span>
+<span class="s">{</span>
+<span class="s">    float center = -(4.0+4.0/sqrt(2.0));  // -1 * other weights</span>
+<span class="s">    float diag   = 1.0/sqrt(2.0);         // weight for diagonals</span>
+<span class="s">    vec2 p = v_texcoord;                  // center coordinates</span>
 
-    <span class="n">u</span> <span class="o">+=</span> <span class="n">du</span> <span class="o">*</span> <span class="n">dt</span><span class="p">;</span>
-    <span class="n">v</span> <span class="o">+=</span> <span class="n">dv</span> <span class="o">*</span> <span class="n">dt</span><span class="p">;</span>
+<span class="s">    vec2 c,l;</span>
+<span class="s">    if( pingpong == 0 ) {</span>
+<span class="s">        c = texture2D(texture, p).rg;    // central value</span>
+<span class="s">        // Compute Laplacian</span>
+<span class="s">        l = ( texture2D(texture, p + vec2(-dx,-dy)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2( dx,-dy)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, dy)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, dy)).rg) * diag</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, 0.0)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, 0.0)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0,-dy)).rg</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0, dy)).rg</span>
+<span class="s">            + c * center;</span>
+<span class="s">    } else {</span>
+<span class="s">        c = texture2D(texture, p).ba;    // central value</span>
+<span class="s">        // Compute Laplacian</span>
+<span class="s">        l = ( texture2D(texture, p + vec2(-dx,-dy)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2( dx,-dy)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, dy)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, dy)).ba) * diag</span>
+<span class="s">            + texture2D(texture, p + vec2(-dx, 0.0)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2( dx, 0.0)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0,-dy)).ba</span>
+<span class="s">            + texture2D(texture, p + vec2(0.0, dy)).ba</span>
+<span class="s">            + c * center;</span>
+<span class="s">    }</span>
 
-    <span class="k">if</span><span class="p">(</span> <span class="n">pingpong</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">clamp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">clamp</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">c</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">clamp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">clamp</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="s">    float u = c.r;           // compute some temporary</span>
+<span class="s">    float v = c.g;           // values which might save</span>
+<span class="s">    float lu = l.r;          // a few GPU cycles</span>
+<span class="s">    float lv = l.g;</span>
+<span class="s">    float uvv = u * v * v;</span>
+
+<span class="s">    vec4 q = texture2D(params, p).rgba;</span>
+<span class="s">    float ru = q.r;          // rate of diffusion of U</span>
+<span class="s">    float rv = q.g;          // rate of diffusion of V</span>
+<span class="s">    float f  = q.b;          // some coupling parameter</span>
+<span class="s">    float k  = q.a;          // another coupling parameter</span>
+
+<span class="s">    float du = ru * lu / dd - uvv + f * (1.0 - u); // Gray-Scott equation</span>
+<span class="s">    float dv = rv * lv / dd + uvv - (f + k) * v;   // diffusion+-reaction</span>
+
+<span class="s">    u += du * dt;</span>
+<span class="s">    v += dv * dt;</span>
+
+<span class="s">    if( pingpong == 1 ) {</span>
+<span class="s">        gl_FragColor = vec4(clamp(u, 0.0, 1.0), clamp(v, 0.0, 1.0), c);</span>
+<span class="s">    } else {</span>
+<span class="s">        gl_FragColor = vec4(c, clamp(u, 0.0, 1.0), clamp(v, 0.0, 1.0));</span>
+<span class="s">    }</span>
+<span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">class Canvas(app.Canvas):</span>
-<span class="s">    def __init__(self):</span>
-<span class="s">        app.Canvas.__init__(self, title=&#39;Grayscott Reaction-Diffusion&#39;,</span>
-<span class="s">                            size=(512, 512), keys=&#39;interactive&#39;)</span>
-<span class="s">        self._timer = app.Timer(&#39;auto&#39;, connect=self.update, start=True)</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Grayscott Reaction-Diffusion&#39;</span><span class="p">,</span>
+                            <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="s">    def on_initialize(self, event):</span>
-<span class="s">        self.scale = 4</span>
-<span class="s">        self.comp_size = (256, 256)</span>
-<span class="s">        comp_w, comp_h = self.comp_size</span>
-<span class="s">        dt = 1.0</span>
-<span class="s">        dd = 1.5</span>
-<span class="s">        species = {</span>
-<span class="s">            # name : [r_u, r_v, f, k]</span>
-<span class="s">            &#39;Bacteria 1&#39;: [0.16, 0.08, 0.035, 0.065],</span>
-<span class="s">            &#39;Bacteria 2&#39;: [0.14, 0.06, 0.035, 0.065],</span>
-<span class="s">            &#39;Coral&#39;: [0.16, 0.08, 0.060, 0.062],</span>
-<span class="s">            &#39;Fingerprint&#39;: [0.19, 0.05, 0.060, 0.062],</span>
-<span class="s">            &#39;Spirals&#39;: [0.10, 0.10, 0.018, 0.050],</span>
-<span class="s">            &#39;Spirals Dense&#39;: [0.12, 0.08, 0.020, 0.050],</span>
-<span class="s">            &#39;Spirals Fast&#39;: [0.10, 0.16, 0.020, 0.050],</span>
-<span class="s">            &#39;Unstable&#39;: [0.16, 0.08, 0.020, 0.055],</span>
-<span class="s">            &#39;Worms 1&#39;: [0.16, 0.08, 0.050, 0.065],</span>
-<span class="s">            &#39;Worms 2&#39;: [0.16, 0.08, 0.054, 0.063],</span>
-<span class="s">            &#39;Zebrafish&#39;: [0.16, 0.08, 0.035, 0.060]</span>
-<span class="s">        }</span>
-<span class="s">        P = np.zeros((comp_h, comp_w, 4), dtype=np.float32)</span>
-<span class="s">        P[:, :] = species[&#39;Unstable&#39;]</span>
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">comp_w</span><span class="p">,</span> <span class="n">comp_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">dd</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="n">species</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c"># name : [r_u, r_v, f, k]</span>
+            <span class="s">&#39;Bacteria 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.035</span><span class="p">,</span> <span class="mf">0.065</span><span class="p">],</span>
+            <span class="s">&#39;Bacteria 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.035</span><span class="p">,</span> <span class="mf">0.065</span><span class="p">],</span>
+            <span class="s">&#39;Coral&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.060</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">],</span>
+            <span class="s">&#39;Fingerprint&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.19</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.060</span><span class="p">,</span> <span class="mf">0.062</span><span class="p">],</span>
+            <span class="s">&#39;Spirals&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.018</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">],</span>
+            <span class="s">&#39;Spirals Dense&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.020</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">],</span>
+            <span class="s">&#39;Spirals Fast&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.020</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">],</span>
+            <span class="s">&#39;Unstable&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.020</span><span class="p">,</span> <span class="mf">0.055</span><span class="p">],</span>
+            <span class="s">&#39;Worms 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.050</span><span class="p">,</span> <span class="mf">0.065</span><span class="p">],</span>
+            <span class="s">&#39;Worms 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.054</span><span class="p">,</span> <span class="mf">0.063</span><span class="p">],</span>
+            <span class="s">&#39;Zebrafish&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.035</span><span class="p">,</span> <span class="mf">0.060</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">comp_h</span><span class="p">,</span> <span class="n">comp_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">P</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">species</span><span class="p">[</span><span class="s">&#39;Unstable&#39;</span><span class="p">]</span>
 
-<span class="s">        UV = np.zeros((comp_h, comp_w, 4), dtype=np.float32)</span>
-<span class="s">        UV[:, :, 0] = 1.0</span>
-<span class="s">        r = 32</span>
-<span class="s">        UV[comp_h / 2 - r:comp_h / 2 + r,</span>
-<span class="s">           comp_w / 2 - r:comp_w / 2 + r, 0] = 0.50</span>
-<span class="s">        UV[comp_h / 2 - r:comp_h / 2 + r,</span>
-<span class="s">           comp_w / 2 - r:comp_w / 2 + r, 1] = 0.25</span>
-<span class="s">        UV += np.random.uniform(0.0, 0.01, (comp_h, comp_w, 4))</span>
-<span class="s">        UV[:, :, 2] = UV[:, :, 0]</span>
-<span class="s">        UV[:, :, 3] = UV[:, :, 1]</span>
+        <span class="n">UV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">comp_h</span><span class="p">,</span> <span class="n">comp_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">UV</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">32</span>
+        <span class="n">UV</span><span class="p">[</span><span class="n">comp_h</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="p">:</span><span class="n">comp_h</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span>
+           <span class="n">comp_w</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="p">:</span><span class="n">comp_w</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.50</span>
+        <span class="n">UV</span><span class="p">[</span><span class="n">comp_h</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="p">:</span><span class="n">comp_h</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span>
+           <span class="n">comp_w</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="p">:</span><span class="n">comp_w</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>
+        <span class="n">UV</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="p">(</span><span class="n">comp_h</span><span class="p">,</span> <span class="n">comp_w</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">UV</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">UV</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">UV</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">UV</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="s">        self.pingpong = 1</span>
-<span class="s">        self.compute = Program(compute_vertex, compute_fragment, 4)</span>
-<span class="s">        self.compute[&quot;params&quot;] = P</span>
-<span class="s">        self.compute[&quot;texture&quot;] = UV</span>
-<span class="s">        self.compute[&quot;position&quot;] = [(-1, -1), (-1, +1), (+1, -1), (+1, +1)]</span>
-<span class="s">        self.compute[&quot;texcoord&quot;] = [(0, 0), (0, 1), (1, 0), (1, 1)]</span>
-<span class="s">        self.compute[&#39;dt&#39;] = dt</span>
-<span class="s">        self.compute[&#39;dx&#39;] = 1.0 / comp_w</span>
-<span class="s">        self.compute[&#39;dy&#39;] = 1.0 / comp_h</span>
-<span class="s">        self.compute[&#39;dd&#39;] = dd</span>
-<span class="s">        self.compute[&#39;pingpong&#39;] = self.pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">compute_vertex</span><span class="p">,</span> <span class="n">compute_fragment</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;params&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">UV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texcoord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">comp_w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">comp_h</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;dd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&#39;pingpong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
 
-<span class="s">        self.render = Program(render_vertex, render_fragment, 4)</span>
-<span class="s">        self.render[&quot;position&quot;] = [(-1, -1), (-1, +1), (+1, -1), (+1, +1)]</span>
-<span class="s">        self.render[&quot;texcoord&quot;] = [(0, 0), (0, 1), (1, 0), (1, 1)]</span>
-<span class="s">        self.render[&quot;texture&quot;] = self.compute[&quot;texture&quot;]</span>
-<span class="s">        self.render[&#39;pingpong&#39;] = self.pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">render_vertex</span><span class="p">,</span> <span class="n">render_fragment</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texcoord&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&#39;pingpong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
 
-<span class="s">        self.fbo = FrameBuffer(self.compute[&quot;texture&quot;],</span>
-<span class="s">                               DepthBuffer(self.comp_size))</span>
-<span class="s">        set_state(depth_test=False, clear_color=&#39;black&#39;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fbo</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">],</span>
+                               <span class="n">DepthBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">))</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
 
-<span class="s">    def on_draw(self, event):</span>
-<span class="s">        with self.fbo:</span>
-<span class="s">            set_viewport(0, 0, *self.comp_size)</span>
-<span class="s">            self.compute[&quot;texture&quot;].interpolation = &#39;nearest&#39;</span>
-<span class="s">            self.compute.draw(&#39;triangle_strip&#39;)</span>
-<span class="s">        clear(color=True)</span>
-<span class="s">        set_viewport(0, 0, *self.size)</span>
-<span class="s">        self.render[&quot;texture&quot;].interpolation = &#39;linear&#39;</span>
-<span class="s">        self.render.draw(&#39;triangle_strip&#39;)</span>
-<span class="s">        self.pingpong = 1 - self.pingpong</span>
-<span class="s">        self.compute[&quot;pingpong&quot;] = self.pingpong</span>
-<span class="s">        self.render[&quot;pingpong&quot;] = self.pingpong</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">fbo</span><span class="p">:</span>
+            <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;nearest&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+        <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;pingpong&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&quot;pingpong&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
 
-<span class="s">    def on_resize(self, event):</span>
-<span class="s">        set_viewport(0, 0, *self.size)</span>
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
 
-<span class="s">if __name__ == &#39;__main__&#39;:</span>
-<span class="s">    canvas = Canvas()</span>
-<span class="s">    canvas.show()</span>
-<span class="s">    app.run()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

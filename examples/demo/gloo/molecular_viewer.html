@@ -68,155 +68,209 @@
 <h1>demo/gloo/molecular_viewer<a class="headerlink" href="#demo-gloo-molecular-viewer" title="Permalink to this headline">¶</a></h1>
 <img alt="../../../_images/demo__gloo__molecular_viewer.png" src="../../../_images/demo__gloo__molecular_viewer.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fragment</span> <span class="o">=</span>
-<span class="c">#version 120</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># vispy: gallery 30</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># 2014, Aurore Deschildre, Gael Goret, Cyrille Rossant, Nicolas P. Rougier.</span>
+<span class="c"># Distributed under the terms of the new BSD License.</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="n">uniform</span> <span class="n">mat4</span> <span class="n">u_model</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">mat4</span> <span class="n">u_view</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">mat4</span> <span class="n">u_projection</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">vec3</span> <span class="n">u_light_position</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">vec3</span> <span class="n">u_light_spec_position</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">perspective</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span>
 
-<span class="n">varying</span> <span class="n">vec3</span>  <span class="n">v_color</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec4</span>  <span class="n">v_eye_position</span><span class="p">;</span>
-<span class="n">varying</span> <span class="nb">float</span> <span class="n">v_radius</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec3</span>  <span class="n">v_light_direction</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="o">//</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">z0</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
-    <span class="n">vec2</span> <span class="n">texcoord</span> <span class="o">=</span> <span class="n">gl_PointCoord</span><span class="o">*</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="n">vec2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
-    <span class="nb">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">texcoord</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">y</span> <span class="o">=</span> <span class="n">texcoord</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">)</span>
-        <span class="n">discard</span><span class="p">;</span>
+<span class="n">vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
 
-    <span class="nb">float</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
-    <span class="n">vec4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">v_eye_position</span><span class="p">;</span>
-    <span class="n">pos</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="n">v_radius</span><span class="o">*</span><span class="n">z</span><span class="p">;</span>
-    <span class="n">vec3</span> <span class="n">pos2</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">xyz</span><span class="p">;</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">u_projection</span> <span class="o">*</span> <span class="n">pos</span><span class="p">;</span>
-    <span class="n">gl_FragDepth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="n">pos</span><span class="o">.</span><span class="n">w</span><span class="p">)</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>
-    <span class="n">vec3</span> <span class="n">normal</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
-    <span class="nb">float</span> <span class="n">diffuse</span> <span class="o">=</span> <span class="n">clamp</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">v_light_direction</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="s">uniform mat4 u_model;</span>
+<span class="s">uniform mat4 u_view;</span>
+<span class="s">uniform mat4 u_projection;</span>
+<span class="s">uniform vec3 u_light_position;</span>
+<span class="s">uniform vec3 u_light_spec_position;</span>
 
-    <span class="o">//</span> <span class="n">Specular</span> <span class="n">lighting</span><span class="o">.</span>
-    <span class="n">vec3</span> <span class="n">M</span> <span class="o">=</span> <span class="n">pos2</span><span class="o">.</span><span class="n">xyz</span><span class="p">;</span>
-    <span class="n">vec3</span> <span class="n">O</span> <span class="o">=</span> <span class="n">v_eye_position</span><span class="o">.</span><span class="n">xyz</span><span class="p">;</span>
-    <span class="n">vec3</span> <span class="n">L</span> <span class="o">=</span> <span class="n">u_light_spec_position</span><span class="p">;</span>
-    <span class="n">vec3</span> <span class="n">K</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">L</span> <span class="o">-</span> <span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="n">normalize</span><span class="p">(</span><span class="n">O</span> <span class="o">-</span> <span class="n">M</span><span class="p">));</span>
-    <span class="o">//</span> <span class="n">WARNING</span><span class="p">:</span> <span class="nb">abs</span><span class="p">()</span> <span class="ow">is</span> <span class="n">necessary</span><span class="p">,</span> <span class="n">otherwise</span> <span class="n">weird</span> <span class="n">bugs</span> <span class="n">may</span> <span class="n">appear</span> <span class="k">with</span> <span class="n">some</span>
-    <span class="o">//</span> <span class="n">GPU</span> <span class="n">drivers</span><span class="o">...</span>
-    <span class="nb">float</span> <span class="n">specular</span> <span class="o">=</span> <span class="n">clamp</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">K</span><span class="p">)),</span> <span class="mf">40.</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-    <span class="n">vec3</span> <span class="n">v_light</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">);</span>
-    <span class="n">gl_FragColor</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">15</span><span class="o">*</span><span class="n">v_color</span> <span class="o">+</span> <span class="o">.</span><span class="mi">55</span><span class="o">*</span><span class="n">diffuse</span> <span class="o">*</span> <span class="n">v_color</span>
-                        <span class="o">+</span> <span class="o">.</span><span class="mi">35</span><span class="o">*</span><span class="n">specular</span> <span class="o">*</span> <span class="n">v_light</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="s">attribute vec3  a_position;</span>
+<span class="s">attribute vec3  a_color;</span>
+<span class="s">attribute float a_radius;</span>
+
+<span class="s">varying vec3  v_color;</span>
+<span class="s">varying vec4  v_eye_position;</span>
+<span class="s">varying float v_radius;</span>
+<span class="s">varying vec3  v_light_direction;</span>
+
+<span class="s">void main (void) {</span>
+<span class="s">    v_radius = a_radius;</span>
+<span class="s">    v_color = a_color;</span>
+
+<span class="s">    v_eye_position = u_view * u_model * vec4(a_position,1.0);</span>
+<span class="s">    v_light_direction = normalize(u_light_position);</span>
+<span class="s">    float dist = length(v_eye_position.xyz);</span>
+
+<span class="s">    gl_Position = u_projection * v_eye_position;</span>
+
+<span class="s">    // stackoverflow.com/questions/8608844/...</span>
+<span class="s">    //  ... resizing-point-sprites-based-on-distance-from-the-camera</span>
+<span class="s">    vec4  proj_corner = u_projection * vec4(a_radius, a_radius, v_eye_position.z, v_eye_position.w);  // # noqa</span>
+<span class="s">    gl_PointSize = 512.0 * proj_corner.x / proj_corner.w;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
+<span class="s">uniform mat4 u_model;</span>
+<span class="s">uniform mat4 u_view;</span>
+<span class="s">uniform mat4 u_projection;</span>
+<span class="s">uniform vec3 u_light_position;</span>
+<span class="s">uniform vec3 u_light_spec_position;</span>
+
+<span class="s">varying vec3  v_color;</span>
+<span class="s">varying vec4  v_eye_position;</span>
+<span class="s">varying float v_radius;</span>
+<span class="s">varying vec3  v_light_direction;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    // r^2 = (x - x0)^2 + (y - y0)^2 + (z - z0)^2</span>
+<span class="s">    vec2 texcoord = gl_PointCoord* 2.0 - vec2(1.0);</span>
+<span class="s">    float x = texcoord.x;</span>
+<span class="s">    float y = texcoord.y;</span>
+<span class="s">    float d = 1.0 - x*x - y*y;</span>
+<span class="s">    if (d &lt;= 0.0)</span>
+<span class="s">        discard;</span>
+
+<span class="s">    float z = sqrt(d);</span>
+<span class="s">    vec4 pos = v_eye_position;</span>
+<span class="s">    pos.z += v_radius*z;</span>
+<span class="s">    vec3 pos2 = pos.xyz;</span>
+<span class="s">    pos = u_projection * pos;</span>
+<span class="s">    gl_FragDepth = 0.5*(pos.z / pos.w)+0.5;</span>
+<span class="s">    vec3 normal = vec3(x,y,z);</span>
+<span class="s">    float diffuse = clamp(dot(normal, v_light_direction), 0.0, 1.0);</span>
+
+<span class="s">    // Specular lighting.</span>
+<span class="s">    vec3 M = pos2.xyz;</span>
+<span class="s">    vec3 O = v_eye_position.xyz;</span>
+<span class="s">    vec3 L = u_light_spec_position;</span>
+<span class="s">    vec3 K = normalize(normalize(L - M) + normalize(O - M));</span>
+<span class="s">    // WARNING: abs() is necessary, otherwise weird bugs may appear with some</span>
+<span class="s">    // GPU drivers...</span>
+<span class="s">    float specular = clamp(pow(abs(dot(normal, K)), 40.), 0.0, 1.0);</span>
+<span class="s">    vec3 v_light = vec3(1., 1., 1.);</span>
+<span class="s">    gl_FragColor.rgb = (.15*v_color + .55*diffuse * v_color</span>
+<span class="s">                        + .35*specular * v_light);</span>
+<span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">class Canvas(app.Canvas):</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
-<span class="s">    def __init__(self):</span>
-<span class="s">        app.Canvas.__init__(self, title=&#39;Molecular viewer&#39;,</span>
-<span class="s">                            keys=&#39;interactive&#39;)</span>
-<span class="s">        self.size = 1200, 800</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Molecular viewer&#39;</span><span class="p">,</span>
+                            <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">800</span>
 
-<span class="s">        self.program = gloo.Program(vertex, fragment)</span>
-<span class="s">        self.view = np.eye(4, dtype=np.float32)</span>
-<span class="s">        self.model = np.eye(4, dtype=np.float32)</span>
-<span class="s">        self.projection = np.eye(4, dtype=np.float32)</span>
-<span class="s">        self.translate = 40</span>
-<span class="s">        translate(self.view, 0, 0, -self.translate)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
 
-<span class="s">        fname = load_data_file(&#39;molecular_viewer/micelle.npz&#39;)</span>
-<span class="s">        self.load_molecule(fname)</span>
-<span class="s">        self.load_data()</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;molecular_viewer/micelle.npz&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_molecule</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 
-<span class="s">        self.theta = 0</span>
-<span class="s">        self.phi = 0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="s">        self._timer = app.Timer(&#39;auto&#39;, connect=self.on_timer, start=True)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="s">    def load_molecule(self, fname):</span>
-<span class="s">        molecule = np.load(fname)[&#39;molecule&#39;]</span>
-<span class="s">        self._nAtoms = molecule.shape[0]</span>
+    <span class="k">def</span> <span class="nf">load_molecule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
+        <span class="n">molecule</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="s">&#39;molecule&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nAtoms</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="s">        # The x,y,z values store in one array</span>
-<span class="s">        self.coords = molecule[:, :3]</span>
+        <span class="c"># The x,y,z values store in one array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coords</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 
-<span class="s">        # The array that will store the color and alpha scale for all the atoms</span>
-<span class="s">        self.atomsColours = molecule[:, 3:6]</span>
+        <span class="c"># The array that will store the color and alpha scale for all the atoms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atomsColours</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 
-<span class="s">        # The array that will store the scale for all the atoms.</span>
-<span class="s">        self.atomsScales = molecule[:, 6]</span>
+        <span class="c"># The array that will store the scale for all the atoms.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atomsScales</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span>
 
-<span class="s">    def load_data(self):</span>
-<span class="s">        n = self._nAtoms</span>
+    <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nAtoms</span>
 
-<span class="s">        data = np.zeros(n, [(&#39;a_position&#39;, np.float32, 3),</span>
-<span class="s">                            (&#39;a_color&#39;, np.float32, 3),</span>
-<span class="s">                            (&#39;a_radius&#39;, np.float32, 1)])</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[(</span><span class="s">&#39;a_position&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                            <span class="p">(</span><span class="s">&#39;a_color&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                            <span class="p">(</span><span class="s">&#39;a_radius&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 
-<span class="s">        data[&#39;a_position&#39;] = self.coords</span>
-<span class="s">        data[&#39;a_color&#39;] = self.atomsColours</span>
-<span class="s">        data[&#39;a_radius&#39;] = self.atomsScales</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomsColours</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_radius&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomsScales</span>
 
-<span class="s">        self.program.bind(gloo.VertexBuffer(data))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
-<span class="s">        self.program[&#39;u_model&#39;] = self.model</span>
-<span class="s">        self.program[&#39;u_view&#39;] = self.view</span>
-<span class="s">        self.program[&#39;u_light_position&#39;] = 0., 0., 2.</span>
-<span class="s">        self.program[&#39;u_light_spec_position&#39;] = -5., 5., -5.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_light_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_light_spec_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.</span>
 
-<span class="s">    def on_initialize(self, event):</span>
-<span class="s">        gloo.set_state(depth_test=True, clear_color=&#39;black&#39;)</span>
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
 
-<span class="s">    def on_key_press(self, event):</span>
-<span class="s">        if event.text == &#39; &#39;:</span>
-<span class="s">            if self.timer.running:</span>
-<span class="s">                self.timer.stop()</span>
-<span class="s">            else:</span>
-<span class="s">                self.timer.start()</span>
-<span class="s">        # if event.text == &#39;A&#39;:</span>
-<span class="s">            # self.</span>
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="c"># if event.text == &#39;A&#39;:</span>
+            <span class="c"># self.</span>
 
-<span class="s">    def on_timer(self, event):</span>
-<span class="s">        self.theta += .25</span>
-<span class="s">        self.phi += .25</span>
-<span class="s">        self.model = np.eye(4, dtype=np.float32)</span>
+    <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
-<span class="s">        rotate(self.model, self.theta, 0, 0, 1)</span>
-<span class="s">        rotate(self.model, self.phi, 0, 1, 0)</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="s">        self.program[&#39;u_model&#39;] = self.model</span>
-<span class="s">        self.update()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="s">    def on_resize(self, event):</span>
-<span class="s">        width, height = event.size</span>
-<span class="s">        gloo.set_viewport(0, 0, width, height)</span>
-<span class="s">        self.projection = perspective(25.0, width / float(height), 2.0, 100.0)</span>
-<span class="s">        self.program[&#39;u_projection&#39;] = self.projection</span>
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
 
-<span class="s">    def on_mouse_wheel(self, event):</span>
-<span class="s">        self.translate -= event.delta[1]</span>
-<span class="s">        self.translate = max(-1, self.translate)</span>
-<span class="s">        self.view = np.eye(4, dtype=np.float32)</span>
+    <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">-=</span> <span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
-<span class="s">        translate(self.view, 0, 0, -self.translate)</span>
+        <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
 
-<span class="s">        self.program[&#39;u_view&#39;] = self.view</span>
-<span class="s">        self.update()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="s">    def on_draw(self, event):</span>
-<span class="s">        gloo.clear()</span>
-<span class="s">        self.program.draw(&#39;points&#39;)</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;points&#39;</span><span class="p">)</span>
 
 
-<span class="s">if __name__ == &#39;__main__&#39;:</span>
-<span class="s">    mvc = Canvas()</span>
-<span class="s">    mvc.show()</span>
-<span class="s">    app.run()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">mvc</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">mvc</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

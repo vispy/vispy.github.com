@@ -5,14 +5,107 @@ demo/gloo/atom
 
 
 
-
 .. image:: /_static/images/demo__gloo__atom.png
 
 ----
 
+.. note:: 
+                This example is based on ``vispy.gloo`` and thus uses GLSL
+                shading code, which is executed at the GPU and is
+                defined as multiline strings. 
+
+
 .. code-block:: python
     
-    frag = 
+    # -*- coding: utf-8 -*-
+    # vispy: gallery 30
+    # -----------------------------------------------------------------------------
+    # Copyright (c) 2014, Vispy Development Team. All Rights Reserved.
+    # Distributed under the (new) BSD License. See LICENSE.txt for more info.
+    # -----------------------------------------------------------------------------
+    # Author: Nicolas P .Rougier
+    # Date:   06/03/2014
+    # Abstract: Fake electrons orbiting
+    # Keywords: Sprites, atom, particles
+    # -----------------------------------------------------------------------------
+    
+    import numpy as np
+    from vispy import gloo
+    from vispy import app
+    from vispy.util.transforms import perspective, translate, rotate
+    
+    # Create vertices
+    n, p = 100, 150
+    data = np.zeros(p * n, [('a_position', np.float32, 2),
+                            ('a_color',    np.float32, 4),
+                            ('a_rotation', np.float32, 4)])
+    trail = .5 * np.pi
+    data['a_position'][:, 0] = np.resize(np.linspace(0, trail, n), p * n)
+    data['a_position'][:, 0] += np.repeat(np.random.uniform(0, 2 * np.pi, p), n)
+    data['a_position'][:, 1] = np.repeat(np.linspace(0, 2 * np.pi, p), n)
+    
+    data['a_color'] = 1, 1, 1, 1
+    data['a_color'] = np.repeat(
+        np.random.uniform(0.75, 1.00, (p, 4)).astype(np.float32), n, axis=0)
+    data['a_color'][:, 3] = np.resize(np.linspace(0, 1, n), p * n)
+    
+    data['a_rotation'] = np.repeat(
+        np.random.uniform(0, 2 * np.pi, (p, 4)).astype(np.float32), n, axis=0)
+    
+    
+    vert = """
+    #version 120
+    uniform mat4 u_model;
+    uniform mat4 u_view;
+    uniform mat4 u_projection;
+    uniform float u_size;
+    uniform float u_clock;
+    
+    attribute vec2 a_position;
+    attribute vec4 a_color;
+    attribute vec4 a_rotation;
+    varying vec4 v_color;
+    
+    mat4 build_rotation(vec3 axis, float angle)
+    {
+        axis = normalize(axis);
+        float s = sin(angle);
+        float c = cos(angle);
+        float oc = 1.0 - c;
+        return mat4(oc * axis.x * axis.x + c,
+                    oc * axis.x * axis.y - axis.z * s,
+                    oc * axis.z * axis.x + axis.y * s,
+                    0.0,
+                    oc * axis.x * axis.y + axis.z * s,
+                    oc * axis.y * axis.y + c,
+                    oc * axis.y * axis.z - axis.x * s,
+                    0.0,
+                    oc * axis.z * axis.x - axis.y * s,
+                    oc * axis.y * axis.z + axis.x * s,
+                    oc * axis.z * axis.z + c,
+                    0.0,
+                    0.0, 0.0, 0.0, 1.0);
+    }
+    
+    
+    void main (void) {
+        v_color = a_color;
+    
+        float x0 = 1.5;
+        float z0 = 0.0;
+    
+        float theta = a_position.x + u_clock;
+        float x1 = x0*cos(theta) + z0*sin(theta);
+        float y1 = 0.0;
+        float z1 = (z0*cos(theta) - x0*sin(theta))/2.0;
+    
+        mat4 R = build_rotation(a_rotation.xyz, a_rotation.w);
+        gl_Position = u_projection * u_view * u_model * R * vec4(x1,y1,z1,1);
+        gl_PointSize = 8.0 * u_size * sqrt(v_color.a);
+    }
+    """
+    
+    frag = """
     #version 120
     varying vec4 v_color;
     varying float v_size;

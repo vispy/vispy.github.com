@@ -68,169 +68,198 @@
 <h1>demo/gloo/mandelbrot<a class="headerlink" href="#demo-gloo-mandelbrot" title="Permalink to this headline">¶</a></h1>
 <img alt="../../../_images/demo__gloo__mandelbrot.png" src="../../../_images/demo__gloo__mandelbrot.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">fragment</span> <span class="o">=</span>
-<span class="n">uniform</span> <span class="n">vec2</span> <span class="n">resolution</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="n">vec2</span> <span class="n">center</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="nb">float</span> <span class="n">scale</span><span class="p">;</span>
-<span class="n">uniform</span> <span class="nb">int</span> <span class="nb">iter</span><span class="p">;</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># vispy: gallery 30</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Author: John David Reaver</span>
+<span class="c"># Date:   04/29/2014</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 
-<span class="o">//</span> <span class="n">Jet</span> <span class="n">color</span> <span class="n">scheme</span>
-<span class="n">vec4</span> <span class="n">color_scheme</span><span class="p">(</span><span class="nb">float</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">vec3</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
-    <span class="nb">float</span> <span class="n">c</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.34</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">);</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.34</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.64</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">);</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">);</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.34</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.64</span> <span class="o">-</span> <span class="mf">0.34</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.89</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">);</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">0.96</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.64</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.89</span> <span class="o">-</span> <span class="mf">0.64</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">0.96</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.89</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.89</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">vec4</span><span class="p">(</span><span class="n">mix</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span>
 
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+<span class="c"># Shader source code</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="n">vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
 
-    <span class="o">//</span> <span class="n">Recover</span> <span class="n">coordinates</span> <span class="kn">from</span> <span class="nn">pixel</span> <span class="nn">coordinates</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">gl_FragCoord</span><span class="o">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">resolution</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">center</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">gl_FragCoord</span><span class="o">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">resolution</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">+</span> <span class="n">center</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0, 1.0);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
-    <span class="o">//</span> <span class="n">Main</span> <span class="n">Mandelbrot</span> <span class="n">computation</span>
-    <span class="nb">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">iter</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">float</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">z</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">z</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
-        <span class="nb">float</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">z</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">z</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">;</span>
+<span class="n">fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform vec2 resolution;</span>
+<span class="s">uniform vec2 center;</span>
+<span class="s">uniform float scale;</span>
+<span class="s">uniform int iter;</span>
 
-        <span class="k">if</span><span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">4.0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-        <span class="n">z</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-        <span class="n">z</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="s">// Jet color scheme</span>
+<span class="s">vec4 color_scheme(float x) {</span>
+<span class="s">    vec3 a, b;</span>
+<span class="s">    float c;</span>
+<span class="s">    if (x &lt; 0.34) {</span>
+<span class="s">        a = vec3(0, 0, 0.5);</span>
+<span class="s">        b = vec3(0, 0.8, 0.95);</span>
+<span class="s">        c = (x - 0.0) / (0.34 - 0.0);</span>
+<span class="s">    } else if (x &lt; 0.64) {</span>
+<span class="s">        a = vec3(0, 0.8, 0.95);</span>
+<span class="s">        b = vec3(0.85, 1, 0.04);</span>
+<span class="s">        c = (x - 0.34) / (0.64 - 0.34);</span>
+<span class="s">    } else if (x &lt; 0.89) {</span>
+<span class="s">        a = vec3(0.85, 1, 0.04);</span>
+<span class="s">        b = vec3(0.96, 0.7, 0);</span>
+<span class="s">        c = (x - 0.64) / (0.89 - 0.64);</span>
+<span class="s">    } else {</span>
+<span class="s">        a = vec3(0.96, 0.7, 0);</span>
+<span class="s">        b = vec3(0.5, 0, 0);</span>
+<span class="s">        c = (x - 0.89) / (1.0 - 0.89);</span>
+<span class="s">    }</span>
+<span class="s">    return vec4(mix(a, b, c), 1.0);</span>
+<span class="s">}</span>
 
-    <span class="o">//</span> <span class="n">Convert</span> <span class="n">iterations</span> <span class="n">to</span> <span class="n">color</span>
-    <span class="nb">float</span> <span class="n">color</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">iter</span><span class="p">);</span>
-    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">color_scheme</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+<span class="s">void main() {</span>
+<span class="s">    vec2 z, c;</span>
 
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="s">    // Recover coordinates from pixel coordinates</span>
+<span class="s">    c.x = (gl_FragCoord.x / resolution.x - 0.5) * scale + center.x;</span>
+<span class="s">    c.y = (gl_FragCoord.y / resolution.y - 0.5) * scale + center.y;</span>
 
+<span class="s">    // Main Mandelbrot computation</span>
+<span class="s">    int i;</span>
+<span class="s">    z = c;</span>
+<span class="s">    for(i = 0; i &lt; iter; i++) {</span>
+<span class="s">        float x = (z.x * z.x - z.y * z.y) + c.x;</span>
+<span class="s">        float y = (z.y * z.x + z.x * z.y) + c.y;</span>
 
-<span class="sd"># vispy Canvas</span>
-<span class="sd"># -----------------------------------------------------------------------------</span>
-<span class="sd">class Canvas(app.Canvas):</span>
+<span class="s">        if((x * x + y * y) &gt; 4.0) break;</span>
+<span class="s">        z.x = x;</span>
+<span class="s">        z.y = y;</span>
+<span class="s">    }</span>
 
-<span class="sd">    def __init__(self, *args, **kwargs):</span>
-<span class="sd">        app.Canvas.__init__(self, *args, **kwargs)</span>
-<span class="sd">        self.program = gloo.Program(vertex, fragment)</span>
+<span class="s">    // Convert iterations to color</span>
+<span class="s">    float color = 1.0 - float(i) / float(iter);</span>
+<span class="s">    gl_FragColor = color_scheme(color);</span>
 
-<span class="sd">        # Draw a rectangle that takes up the whole screen. All of the work is</span>
-<span class="sd">        # done in the shader.</span>
-<span class="sd">        self.program[&quot;position&quot;] = [(-1, -1), (-1, 1), (1, 1),</span>
-<span class="sd">                                    (-1, -1), (1, 1), (1, -1)]</span>
-
-<span class="sd">        self.scale = self.program[&quot;scale&quot;] = 3</span>
-<span class="sd">        self.center = self.program[&quot;center&quot;] = [-0.5, 0]</span>
-<span class="sd">        self.iterations = self.program[&quot;iter&quot;] = 300</span>
-<span class="sd">        self.program[&#39;resolution&#39;] = self.size</span>
-
-<span class="sd">        self.bounds = [-2, 2]</span>
-<span class="sd">        self.min_scale = 0.00005</span>
-<span class="sd">        self.max_scale = 4</span>
-
-<span class="sd">        self._timer = app.Timer(&#39;auto&#39;, connect=self.update, start=True)</span>
-
-<span class="sd">    def on_initialize(self, event):</span>
-<span class="sd">        gloo.set_clear_color(color=&#39;black&#39;)</span>
-
-<span class="sd">    def on_draw(self, event):</span>
-<span class="sd">        self.program.draw()</span>
-
-<span class="sd">    def on_resize(self, event):</span>
-<span class="sd">        width, height = event.size</span>
-<span class="sd">        gloo.set_viewport(0, 0, width, height)</span>
-<span class="sd">        self.program[&#39;resolution&#39;] = [width, height]</span>
-
-<span class="sd">    def on_mouse_move(self, event):</span>
-<span class="sd">        &quot;&quot;&quot;</span><span class="n">Pan</span> <span class="n">the</span> <span class="n">view</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">change</span> <span class="ow">in</span> <span class="n">mouse</span> <span class="n">position</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        if event.is_dragging and event.buttons[0] == 1:</span>
-<span class="s">            x0, y0 = event.last_event.pos[0], event.last_event.pos[1]</span>
-<span class="s">            x1, y1 = event.pos[0], event.pos[1]</span>
-<span class="s">            X0, Y0 = self.pixel_to_coords(float(x0), float(y0))</span>
-<span class="s">            X1, Y1 = self.pixel_to_coords(float(x1), float(y1))</span>
-<span class="s">            self.translate_center(X1 - X0, Y1 - Y0)</span>
-
-<span class="s">    def translate_center(self, dx, dy):</span>
-<span class="s">        &quot;&quot;&quot;</span><span class="n">Translates</span> <span class="n">the</span> <span class="n">center</span> <span class="n">point</span><span class="p">,</span> <span class="ow">and</span> <span class="n">keeps</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">bounds</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        center = self.center</span>
-<span class="s">        center[0] -= dx</span>
-<span class="s">        center[1] -= dy</span>
-<span class="s">        center[0] = min(max(center[0], self.bounds[0]), self.bounds[1])</span>
-<span class="s">        center[1] = min(max(center[1], self.bounds[0]), self.bounds[1])</span>
-<span class="s">        self.program[&quot;center&quot;] = self.center = center</span>
-
-<span class="s">    def pixel_to_coords(self, x, y):</span>
-<span class="s">        &quot;&quot;&quot;</span><span class="n">Convert</span> <span class="n">pixel</span> <span class="n">coordinates</span> <span class="n">to</span> <span class="n">Mandelbrot</span> <span class="nb">set</span> <span class="n">coordinates</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        rx, ry = self.size</span>
-<span class="s">        nx = (x / rx - 0.5) * self.scale + self.center[0]</span>
-<span class="s">        ny = ((ry - y) / ry - 0.5) * self.scale + self.center[1]</span>
-<span class="s">        return [nx, ny]</span>
-
-<span class="s">    def on_mouse_wheel(self, event):</span>
-<span class="s">        &quot;&quot;&quot;</span><span class="n">Use</span> <span class="n">the</span> <span class="n">mouse</span> <span class="n">wheel</span> <span class="n">to</span> <span class="n">zoom</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        delta = event.delta[1]</span>
-<span class="s">        if delta &gt; 0:  # Zoom in</span>
-<span class="s">            factor = 0.9</span>
-<span class="s">        elif delta &lt; 0:  # Zoom out</span>
-<span class="s">            factor = 1 / 0.9</span>
-<span class="s">        for _ in range(int(abs(delta))):</span>
-<span class="s">            self.zoom(factor, event.pos)</span>
-
-<span class="s">    def on_key_press(self, event):</span>
-<span class="s">        &quot;&quot;&quot;</span><span class="n">Use</span> <span class="o">+</span> <span class="ow">or</span> <span class="o">-</span> <span class="n">to</span> <span class="n">zoom</span> <span class="ow">in</span> <span class="ow">and</span> <span class="n">out</span><span class="o">.</span>
-
-        <span class="n">The</span> <span class="n">mouse</span> <span class="n">wheel</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">zoom</span><span class="p">,</span> <span class="n">but</span> <span class="n">some</span> <span class="n">people</span> <span class="n">don</span><span class="s">&#39;t have mouse</span>
-        <span class="n">wheels</span> <span class="p">:)</span>
-
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        if event.text == &#39;+&#39;:</span>
-<span class="sd">            self.zoom(0.9)</span>
-<span class="sd">        elif event.text == &#39;-&#39;:</span>
-<span class="sd">            self.zoom(1/0.9)</span>
-
-<span class="sd">    def zoom(self, factor, mouse_coords=None):</span>
-<span class="sd">        &quot;&quot;&quot;</span><span class="n">Factors</span> <span class="n">less</span> <span class="n">than</span> <span class="n">zero</span> <span class="n">zoom</span> <span class="ow">in</span><span class="p">,</span> <span class="ow">and</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">zero</span> <span class="n">zoom</span> <span class="n">out</span><span class="o">.</span>
-
-        <span class="n">If</span> <span class="n">mouse_coords</span> <span class="ow">is</span> <span class="n">given</span><span class="p">,</span> <span class="n">the</span> <span class="n">point</span> <span class="n">under</span> <span class="n">the</span> <span class="n">mouse</span> <span class="n">stays</span> <span class="n">stationary</span>
-        <span class="k">while</span> <span class="n">zooming</span><span class="o">.</span> <span class="n">mouse_coords</span> <span class="n">should</span> <span class="n">come</span> <span class="kn">from</span> <span class="nn">MouseEvent.pos.</span>
-
-        <span class="s">&quot;&quot;&quot;</span>
-<span class="s">        if mouse_coords:  # Record the position of the mouse</span>
-<span class="s">            x, y = float(mouse_coords[0]), float(mouse_coords[1])</span>
-<span class="s">            x0, y0 = self.pixel_to_coords(x, y)</span>
-
-<span class="s">        self.scale *= factor</span>
-<span class="s">        self.scale = max(min(self.scale, self.max_scale), self.min_scale)</span>
-<span class="s">        self.program[&quot;scale&quot;] = self.scale</span>
-
-<span class="s">        if mouse_coords:  # Translate so the mouse point is stationary</span>
-<span class="s">            x1, y1 = self.pixel_to_coords(x, y)</span>
-<span class="s">            self.translate_center(x1 - x0, y1 - y0)</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">if __name__ == &#39;__main__&#39;:</span>
-<span class="s">    canvas = Canvas(size=(800, 800), keys=&#39;interactive&#39;)</span>
-<span class="s">    canvas.show()</span>
-<span class="s">    app.run()</span>
+<span class="c"># vispy Canvas</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
+
+        <span class="c"># Draw a rectangle that takes up the whole screen. All of the work is</span>
+        <span class="c"># done in the shader.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;scale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;center&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;iter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span> <span class="o">=</span> <span class="mf">0.00005</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span> <span class="o">=</span> <span class="mi">4</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pan the view based on the change in mouse position.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_dragging</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">last_event</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">event</span><span class="o">.</span><span class="n">last_event</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">y0</span><span class="p">))</span>
+            <span class="n">X1</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">y1</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translate_center</span><span class="p">(</span><span class="n">X1</span> <span class="o">-</span> <span class="n">X0</span><span class="p">,</span> <span class="n">Y1</span> <span class="o">-</span> <span class="n">Y0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">translate_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Translates the center point, and keeps it in bounds.&quot;&quot;&quot;</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">dx</span>
+        <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">dy</span>
+        <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;center&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+
+    <span class="k">def</span> <span class="nf">pixel_to_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert pixel coordinates to Mandelbrot set coordinates.&quot;&quot;&quot;</span>
+        <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">nx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">rx</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ny</span> <span class="o">=</span> <span class="p">((</span><span class="n">ry</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">ry</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Use the mouse wheel to zoom.&quot;&quot;&quot;</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># Zoom in</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="k">elif</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># Zoom out</span>
+            <span class="n">factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">0.9</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">))):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Use + or - to zoom in and out.</span>
+
+<span class="sd">        The mouse wheel can be used to zoom, but some people don&#39;t have mouse</span>
+<span class="sd">        wheels :)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;-&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">0.9</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">mouse_coords</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Factors less than zero zoom in, and greater than zero zoom out.</span>
+
+<span class="sd">        If mouse_coords is given, the point under the mouse stays stationary</span>
+<span class="sd">        while zooming. mouse_coords should come from MouseEvent.pos.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Record the position of the mouse</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">*=</span> <span class="n">factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;scale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
+
+        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Translate so the mouse point is stationary</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">translate_center</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

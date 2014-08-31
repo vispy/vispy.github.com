@@ -5,14 +5,67 @@ demo/gloo/molecular_viewer
 
 
 
-
 .. image:: /_static/images/demo__gloo__molecular_viewer.png
 
 ----
 
+.. note:: 
+                This example is based on ``vispy.gloo`` and thus uses GLSL
+                shading code, which is executed at the GPU and is
+                defined as multiline strings. 
+
+
 .. code-block:: python
     
-    fragment = 
+    # -*- coding: utf-8 -*-
+    # vispy: gallery 30
+    # -----------------------------------------------------------------------------
+    # 2014, Aurore Deschildre, Gael Goret, Cyrille Rossant, Nicolas P. Rougier.
+    # Distributed under the terms of the new BSD License.
+    # -----------------------------------------------------------------------------
+    import numpy as np
+    
+    from vispy import gloo
+    from vispy import app
+    from vispy.util.transforms import perspective, translate, rotate
+    from vispy.io import load_data_file
+    
+    vertex = """
+    #version 120
+    
+    uniform mat4 u_model;
+    uniform mat4 u_view;
+    uniform mat4 u_projection;
+    uniform vec3 u_light_position;
+    uniform vec3 u_light_spec_position;
+    
+    attribute vec3  a_position;
+    attribute vec3  a_color;
+    attribute float a_radius;
+    
+    varying vec3  v_color;
+    varying vec4  v_eye_position;
+    varying float v_radius;
+    varying vec3  v_light_direction;
+    
+    void main (void) {
+        v_radius = a_radius;
+        v_color = a_color;
+    
+        v_eye_position = u_view * u_model * vec4(a_position,1.0);
+        v_light_direction = normalize(u_light_position);
+        float dist = length(v_eye_position.xyz);
+    
+        gl_Position = u_projection * v_eye_position;
+    
+        // stackoverflow.com/questions/8608844/...
+        //  ... resizing-point-sprites-based-on-distance-from-the-camera
+        vec4  proj_corner = u_projection * vec4(a_radius, a_radius, v_eye_position.z, v_eye_position.w);  // # noqa
+        gl_PointSize = 512.0 * proj_corner.x / proj_corner.w;
+    }
+    """
+    
+    fragment = """
     #version 120
     
     uniform mat4 u_model;

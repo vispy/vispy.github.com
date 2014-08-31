@@ -68,129 +68,171 @@
 <h1>basics/gloo/post_processing<a class="headerlink" href="#basics-gloo-post-processing" title="Permalink to this headline">¶</a></h1>
 <img alt="../../../_images/basics__gloo__post_processing.png" src="../../../_images/basics__gloo__post_processing.png" />
 <hr class="docutils" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cube_fragment</span> <span class="o">=</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="nb">float</span> <span class="n">r</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="p">)</span><span class="o">.</span><span class="n">r</span><span class="p">;</span>
-    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># vispy: gallery 30</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># Author:   Nicolas P .Rougier</span>
+<span class="c"># Date:     04/03/2014</span>
+<span class="c"># Abstract: Show post-processing technique using framebuffer</span>
+<span class="c"># Keywords: framebuffer, gloo, cube, post-processing</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 
-<span class="sd">quad_vertex = &quot;&quot;&quot;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
-<span class="n">attribute</span> <span class="n">vec2</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
-    <span class="n">v_texcoord</span> <span class="o">=</span> <span class="n">texcoord</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 
-<span class="sd">quad_fragment = &quot;&quot;&quot;</span>
-<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">texture</span><span class="p">;</span>
-<span class="n">varying</span> <span class="n">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
-<span class="n">void</span> <span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">vec2</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">vec2</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">v_texcoord</span><span class="o">.</span><span class="n">y</span><span class="o">*</span><span class="mf">50.0</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="mf">512.0</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">vispy.geometry</span> <span class="kn">import</span> <span class="n">create_cube</span>
+<span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">perspective</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">IndexBuffer</span><span class="p">,</span> <span class="n">Texture2D</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span>
+                        <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">DepthBuffer</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span> <span class="n">set_state</span><span class="p">)</span>
 
-    <span class="o">//</span> <span class="n">Inverse</span> <span class="n">video</span>
-    <span class="k">if</span><span class="p">(</span> <span class="n">v_texcoord</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="o">+</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">rgb</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">texture</span><span class="p">,</span> <span class="n">v_texcoord</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="n">cube_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform mat4 model;</span>
+<span class="s">uniform mat4 view;</span>
+<span class="s">uniform mat4 projection;</span>
+<span class="s">attribute vec3 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">attribute vec3 normal;</span>
+<span class="s">attribute vec4 color;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = projection * view * model * vec4(position,1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">cube_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform sampler2D texture;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    float r = texture2D(texture, v_texcoord).r;</span>
+<span class="s">    gl_FragColor = vec4(r,r,r,1);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">quad_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">attribute vec2 position;</span>
+<span class="s">attribute vec2 texcoord;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = vec4(position, 0.0, 1.0);</span>
+<span class="s">    v_texcoord = texcoord;</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">quad_fragment</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">uniform sampler2D texture;</span>
+<span class="s">varying vec2 v_texcoord;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    vec2 d = 5.0 * vec2(sin(v_texcoord.y*50.0),0)/512.0;</span>
+
+<span class="s">    // Inverse video</span>
+<span class="s">    if( v_texcoord.x &gt; 0.5 ) {</span>
+<span class="s">        gl_FragColor.rgb = 1.0-texture2D(texture, v_texcoord+d).rgb;</span>
+<span class="s">    } else {</span>
+<span class="s">        gl_FragColor = texture2D(texture, v_texcoord);</span>
+<span class="s">    }</span>
+<span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">def checkerboard(grid_num=8, grid_size=32):</span>
-<span class="s">    row_even = grid_num // 2 * [0, 1]</span>
-<span class="s">    row_odd = grid_num // 2 * [1, 0]</span>
-<span class="s">    Z = np.row_stack(grid_num // 2 * (row_even, row_odd)).astype(np.uint8)</span>
-<span class="s">    return 255 * Z.repeat(grid_size, axis=0).repeat(grid_size, axis=1)</span>
+<span class="k">def</span> <span class="nf">checkerboard</span><span class="p">(</span><span class="n">grid_num</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+    <span class="n">row_even</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">row_odd</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">(</span><span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">row_even</span><span class="p">,</span> <span class="n">row_odd</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">255</span> <span class="o">*</span> <span class="n">Z</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 
-<span class="s">class Canvas(app.Canvas):</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
-<span class="s">    def __init__(self):</span>
-<span class="s">        app.Canvas.__init__(self, title=&#39;Framebuffer post-processing&#39;,</span>
-<span class="s">                            keys=&#39;interactive&#39;, size=(512, 512))</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Framebuffer post-processing&#39;</span><span class="p">,</span>
+                            <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
 
-<span class="s">    def on_initialize(self, event):</span>
-<span class="s">        # Build cube data</span>
-<span class="s">        # --------------------------------------</span>
-<span class="s">        vertices, indices, _ = create_cube()</span>
-<span class="s">        vertices = VertexBuffer(vertices)</span>
-<span class="s">        self.indices = IndexBuffer(indices)</span>
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># Build cube data</span>
+        <span class="c"># --------------------------------------</span>
+        <span class="n">vertices</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">create_cube</span><span class="p">()</span>
+        <span class="n">vertices</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">IndexBuffer</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 
-<span class="s">        # Build program</span>
-<span class="s">        # --------------------------------------</span>
-<span class="s">        view = np.eye(4, dtype=np.float32)</span>
-<span class="s">        model = np.eye(4, dtype=np.float32)</span>
-<span class="s">        translate(view, 0, 0, -7)</span>
-<span class="s">        self.phi, self.theta = 60, 20</span>
-<span class="s">        rotate(model, self.theta, 0, 0, 1)</span>
-<span class="s">        rotate(model, self.phi, 0, 1, 0)</span>
+        <span class="c"># Build program</span>
+        <span class="c"># --------------------------------------</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">translate</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="s">        self.cube = Program(cube_vertex, cube_fragment)</span>
-<span class="s">        self.cube.bind(vertices)</span>
-<span class="s">        self.cube[&quot;texture&quot;] = checkerboard()</span>
-<span class="s">        self.cube[&quot;texture&quot;].interpolation = &#39;linear&#39;</span>
-<span class="s">        self.cube[&#39;model&#39;] = model</span>
-<span class="s">        self.cube[&#39;view&#39;] = view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">cube_vertex</span><span class="p">,</span> <span class="n">cube_fragment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">checkerboard</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">view</span>
 
-<span class="s">        depth = DepthBuffer((512, 512))</span>
-<span class="s">        color = Texture2D(shape=(512, 512, 3), dtype=np.dtype(np.float32))</span>
-<span class="s">        self.framebuffer = FrameBuffer(color=color, depth=depth)</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">DepthBuffer</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">Texture2D</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">)</span>
 
-<span class="s">        self.quad = Program(quad_vertex, quad_fragment, count=4)</span>
-<span class="s">        self.quad[&#39;texcoord&#39;] = [(0, 0), (0, 1), (1, 0), (1, 1)]</span>
-<span class="s">        self.quad[&#39;position&#39;] = [(-1, -1), (-1, +1), (+1, -1), (+1, +1)]</span>
-<span class="s">        self.quad[&#39;texture&#39;] = color</span>
-<span class="s">        self.quad[&quot;texture&quot;].interpolation = &#39;linear&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">quad_vertex</span><span class="p">,</span> <span class="n">quad_fragment</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
 
-<span class="s">        # OpenGL and Timer initalization</span>
-<span class="s">        # --------------------------------------</span>
-<span class="s">        set_state(clear_color=(.3, .3, .35, 1), depth_test=True)</span>
-<span class="s">        self.timer = app.Timer(&#39;auto&#39;, connect=self.on_timer, start=True)</span>
-<span class="s">        self._set_projection(self.size)</span>
+        <span class="c"># OpenGL and Timer initalization</span>
+        <span class="c"># --------------------------------------</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">,</span> <span class="o">.</span><span class="mi">35</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_projection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
-<span class="s">    def on_draw(self, event):</span>
-<span class="s">        self.framebuffer.activate()</span>
-<span class="s">        set_viewport(0, 0, 512, 512)</span>
-<span class="s">        clear(color=True, depth=True)</span>
-<span class="s">        set_state(depth_test=True)</span>
-<span class="s">        self.cube.draw(&#39;triangles&#39;, self.indices)</span>
-<span class="s">        self.framebuffer.deactivate()</span>
-<span class="s">        clear(color=True)</span>
-<span class="s">        set_state(depth_test=False)</span>
-<span class="s">        self.quad.draw(&#39;triangle_strip&#39;)</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+        <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
 
-<span class="s">    def on_resize(self, event):</span>
-<span class="s">        self._set_projection(event.size)</span>
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_projection</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
-<span class="s">    def _set_projection(self, size):</span>
-<span class="s">        width, height = size</span>
-<span class="s">        set_viewport(0, 0, width, height)</span>
-<span class="s">        projection = perspective(30.0, width / float(height), 2.0, 10.0)</span>
-<span class="s">        self.cube[&#39;projection&#39;] = projection</span>
+    <span class="k">def</span> <span class="nf">_set_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">projection</span>
 
-<span class="s">    def on_timer(self, event):</span>
-<span class="s">        self.theta += .5</span>
-<span class="s">        self.phi += .5</span>
-<span class="s">        model = np.eye(4, dtype=np.float32)</span>
-<span class="s">        rotate(model, self.theta, 0, 0, 1)</span>
-<span class="s">        rotate(model, self.phi, 0, 1, 0)</span>
-<span class="s">        self.cube[&#39;model&#39;] = model</span>
-<span class="s">        self.update()</span>
+    <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">5</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rotate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="s">if __name__ == &#39;__main__&#39;:</span>
-<span class="s">    c = Canvas()</span>
-<span class="s">    c.show()</span>
-<span class="s">    c.app.run()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

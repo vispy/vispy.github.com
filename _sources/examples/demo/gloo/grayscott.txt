@@ -5,14 +5,48 @@ demo/gloo/grayscott
 
 
 
-
 .. image:: /_static/images/demo__gloo__grayscott.png
 
 ----
 
+.. note:: 
+                This example is based on ``vispy.gloo`` and thus uses GLSL
+                shading code, which is executed at the GPU and is
+                defined as multiline strings. 
+
+
 .. code-block:: python
     
-    render_fragment = 
+    # -*- coding: utf-8 -*-
+    # vispy: gallery 2000
+    # -----------------------------------------------------------------------------
+    # Copyright (c) 2014, Vispy Development Team. All Rights Reserved.
+    # Distributed under the (new) BSD License. See LICENSE.txt for more info.
+    # -----------------------------------------------------------------------------
+    # Author:   Nicolas P .Rougier
+    # Date:     06/03/2014
+    # Abstract: GPU computing usingthe framebuffer
+    # Keywords: framebuffer, GPU computing, reaction-diffusion
+    # -----------------------------------------------------------------------------
+    
+    import numpy as np
+    from vispy.gloo import (Program, FrameBuffer, DepthBuffer, set_viewport,
+                            clear, set_state)
+    from vispy import app
+    
+    
+    render_vertex = """
+    attribute vec2 position;
+    attribute vec2 texcoord;
+    varying vec2 v_texcoord;
+    void main()
+    {
+        gl_Position = vec4(position, 0.0, 1.0);
+        v_texcoord = texcoord;
+    }
+    """
+    
+    render_fragment = """
     uniform int pingpong;
     uniform sampler2D texture;
     varying vec2 v_texcoord;
