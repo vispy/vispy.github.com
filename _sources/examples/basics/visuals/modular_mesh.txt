@@ -15,18 +15,20 @@ Simple demonstration of LineVisual.
     
     
     import numpy as np
-    import vispy.app
-    from vispy import gloo
-    from vispy.scene.visuals.modular_mesh import ModularMesh
-    from vispy.scene.components import (VertexColorComponent, GridContourComponent,
-                                        VertexNormalComponent, ShadingComponent)
+    from vispy import app, gloo, visuals
+    from vispy.visuals.modular_mesh import ModularMesh
+    from vispy.visuals.components import (VertexColorComponent,
+                                          GridContourComponent,
+                                          VertexNormalComponent, ShadingComponent)
     from vispy.geometry import create_sphere
-    from vispy.scene.transforms import (STTransform, AffineTransform,
-                                        ChainTransform)
+    from vispy.visuals.transforms import (STTransform, AffineTransform,
+                                          ChainTransform)
     
     
-    class Canvas(vispy.scene.SceneCanvas):
+    class Canvas(app.Canvas):
         def __init__(self):
+            app.Canvas.__init__(self, keys='interactive')
+    
             self.meshes = []
             self.rotation = AffineTransform()
     
@@ -35,7 +37,7 @@ Simple demonstration of LineVisual.
             mdata = create_sphere(20, 40, 1.0)
     
             # Mesh with pre-indexed vertices, uniform color
-            verts = mdata.vertices(indexed='faces')
+            verts = mdata.get_vertices(indexed='faces')
             mesh = ModularMesh(pos=verts, color=(1, 0, 0, 1))
             self.meshes.append(mesh)
     
@@ -55,8 +57,8 @@ Simple demonstration of LineVisual.
             #   Because vertices are unindexed, we get the same color
             #   every time a vertex is visited, resulting in no color differences
             #   between edges.
-            verts = mdata.vertices()
-            faces = mdata.faces()
+            verts = mdata.get_vertices()
+            faces = mdata.get_faces()
             nv = verts.size//3
             vcolor = np.ones((nv, 4), dtype=np.float32)
             vcolor[:, 0] = np.linspace(1, 0, nv)
@@ -84,14 +86,14 @@ Simple demonstration of LineVisual.
             self.meshes.append(mesh)
     
             # Phong shaded mesh, flat faces
-            mesh = ModularMesh(pos=mdata.vertices(indexed='faces'))
+            mesh = ModularMesh(pos=mdata.get_vertices(indexed='faces'))
             normal_comp = VertexNormalComponent(mdata, smooth=False)
-            mesh.color_components = [VertexColorComponent(vcolor[mdata.faces()]),
-                                     GridContourComponent(spacing=(0.1, 0.1, 0.1)),
-                                     ShadingComponent(normal_comp,
-                                                      lights=[((-1, 1, -1),
-                                                               (1.0, 1.0, 1.0))],
-                                                      ambient=0.2)]
+            mesh.color_components = [
+                VertexColorComponent(vcolor[mdata.get_faces()]),
+                GridContourComponent(spacing=(0.1, 0.1, 0.1)),
+                ShadingComponent(normal_comp, lights=[((-1, 1, -1),
+                                                      (1.0, 1.0, 1.0))],
+                                 ambient=0.2)]
             self.meshes.append(mesh)
     
             # Lay out meshes in a grid
@@ -103,13 +105,13 @@ Simple demonstration of LineVisual.
                 mesh.transform = ChainTransform([STTransform(translate=(x, y),
                                                              scale=(s, s, 1)),
                                                  self.rotation])
-    
-            vispy.scene.SceneCanvas.__init__(self, keys='interactive')
+                mesh.tr_sys = visuals.transforms.TransformSystem(self)
+                mesh.tr_sys.visual_to_document = mesh.transform
     
             self.size = (800, 800)
             self.show()
     
-            self.timer = vispy.app.Timer(connect=self.rotate)
+            self.timer = app.Timer(connect=self.rotate)
             self.timer.start(0.016)
     
         def rotate(self, event):
@@ -123,11 +125,11 @@ Simple demonstration of LineVisual.
             gloo.set_clear_color('black')
             gloo.clear(color=True, depth=True)
             for mesh in self.meshes:
-                self.draw_visual(mesh)
+                mesh.draw(mesh.tr_sys)
     
     
     if __name__ == '__main__':
         win = Canvas()
         import sys
         if sys.flags.interactive != 1:
-            vispy.app.run()
+            app.run()

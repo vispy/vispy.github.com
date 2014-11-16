@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>basics/scene/volume &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/js/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../_static/js/carousel.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="basics-scene-volume">
+<h1>basics/scene/volume<a class="headerlink" href="#basics-scene-volume" title="Permalink to this headline">¶</a></h1>
+<p>Example volume rendering</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c"># todo: LIST</span>
+<span class="c"># - clim property</span>
+<span class="c"># - different render styles</span>
+<span class="c"># - this example makes 6 Program objects???</span>
+<span class="c"># - Check recompiling</span>
+<span class="c"># - set camera limits using contents</span>
+
+<span class="c"># Read volume</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;brain/mri.npz&#39;</span><span class="p">))[</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c">#vol = imageio.volread(&#39;stent.npz&#39;)</span>
+<span class="n">vol</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">vol</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c"># todo: implement clim</span>
+
+<span class="c"># Prepare canvas</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c"># Set up a viewbox to display the image with interactive pan/zoom</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
+
+<span class="c"># Create the volume visual</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+<span class="c">#volume._program._context.glir.set_verbose(1)</span>
+
+<span class="c"># Set the view bounds to show the entire image with some padding</span>
+<span class="c">#view.camera.rect = (-10, -10, vol.shape[1]+20, vol.shape[0]+20)</span>
+<span class="c">#view.set_camera(&#39;turntable&#39;, mode=&#39;perspective&#39;, up=&#39;z&#39;, distance=320,</span>
+<span class="c">#                 center=(128, 128, 128), azimuth=30., elevation=30.)</span>
+<span class="c">#view.camera.width = 700</span>
+<span class="c"># view.camera.fov = 30</span>
+<span class="c"># view.camera.distance = 500</span>
+
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set_range</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">camera</span>
+<span class="c"># c.transform.translate((0, 0, 600))</span>
+<span class="n">c</span><span class="o">.</span><span class="n">fov</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c"># todo: center loc is not yet used</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

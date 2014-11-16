@@ -77,9 +77,9 @@
 
 
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
-<span class="n">view</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="s">&#39;turntable&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;perspective&#39;</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">set_camera</span><span class="p">(</span><span class="s">&#39;turntable&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;perspective&#39;</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">azimuth</span><span class="o">=</span><span class="mf">30.</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mf">30.</span><span class="p">)</span>
 
 <span class="c">## Simple surface plot example</span>
 <span class="c">## x, y values are not specified, so assumed to be 0:50</span>
@@ -94,8 +94,10 @@
 <span class="c"># Add a 3D axis to keep us oriented</span>
 <span class="n">axis</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">XYZAxis</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

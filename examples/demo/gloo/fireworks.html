@@ -82,8 +82,11 @@ defined as multiline strings.</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">app</span>
+
+<span class="c"># import vispy</span>
+<span class="c"># vispy.use(&#39;pyside&#39;, &#39;es2&#39;)</span>
+
 
 <span class="c"># Create a texture</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">32</span>
@@ -105,7 +108,6 @@ defined as multiline strings.</p>
 
 
 <span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
 <span class="s">uniform float u_time;</span>
 <span class="s">uniform vec3 u_centerPosition;</span>
 <span class="s">attribute float a_lifetime;</span>
@@ -130,17 +132,17 @@ defined as multiline strings.</p>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
+<span class="c"># Deliberately add precision qualifiers to test automatic GLSL code conversion</span>
 <span class="n">FRAG_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
-
+<span class="s">precision highp float;</span>
 <span class="s">uniform sampler2D texture1;</span>
 <span class="s">uniform vec4 u_color;</span>
 <span class="s">varying float v_lifetime;</span>
-<span class="s">uniform sampler2D s_texture;</span>
+<span class="s">uniform highp sampler2D s_texture;</span>
 
 <span class="s">void main()</span>
 <span class="s">{</span>
-<span class="s">    vec4 texColor;</span>
+<span class="s">    highp vec4 texColor;</span>
 <span class="s">    texColor = texture2D(s_texture, gl_PointCoord);</span>
 <span class="s">    gl_FragColor = vec4(u_color) * texColor;</span>
 <span class="s">    gl_FragColor.a *= v_lifetime;</span>

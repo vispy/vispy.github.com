@@ -78,16 +78,13 @@ calculated, such that each explostion is unique.</p>
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ctypes</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">OpenGL.GL</span> <span class="kn">as</span> <span class="nn">gl</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
 
 <span class="n">vertex_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
-
 <span class="s">uniform float time;</span>
 <span class="s">uniform vec3 center;</span>
 <span class="s">attribute float lifetime;</span>
@@ -108,8 +105,6 @@ defined as multiline strings.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">fragment_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">#version 120</span>
-
 <span class="s">uniform vec4 color;</span>
 <span class="s">varying float v_lifetime;</span>
 <span class="s">void main()</span>
@@ -149,25 +144,24 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;lifetime&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                                        <span class="p">(</span><span class="s">&#39;start&#39;</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                                        <span class="p">(</span><span class="s">&#39;end&#39;</span><span class="p">,</span>      <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-        <span class="n">vbuffer</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">vbuffer</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateBuffer</span><span class="p">()</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vbuffer</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                        <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
 
         <span class="c"># Bind buffer attributes</span>
         <span class="n">stride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;lifetime&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
-        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;lifetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;lifetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;start&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
-        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;end&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
@@ -178,8 +172,8 @@ defined as multiline strings.</p>
         <span class="n">gl</span><span class="o">.</span><span class="n">glDisable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_VERTEX_PROGRAM_POINT_SIZE</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POINT_SPRITE</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="mi">34370</span><span class="p">)</span>  <span class="c"># gl.GL_VERTEX_PROGRAM_POINT_SIZE</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="mi">34913</span><span class="p">)</span>  <span class="c"># gl.GL_POINT_SPRITE</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_explosion</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -214,8 +208,7 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;lifetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                        <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>

@@ -108,8 +108,9 @@ to convert matplotlib commands to vispy draw commands.</p>
 <span class="c"># 2. Any plotting commands executed after this will not take effect.</span>
 <span class="c"># We are working to remove this limitation.</span>
 
-<span class="n">block</span> <span class="o">=</span> <span class="bp">False</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="k">else</span> <span class="bp">True</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+<span class="n">block</span> <span class="o">=</span> <span class="bp">False</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">True</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

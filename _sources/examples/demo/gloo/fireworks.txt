@@ -28,8 +28,11 @@ calculated, such that each explostion is unique.
     
     import time
     import numpy as np
-    from vispy import gloo
-    from vispy import app
+    from vispy import gloo, app
+    
+    # import vispy
+    # vispy.use('pyside', 'es2')
+    
     
     # Create a texture
     radius = 32
@@ -51,7 +54,6 @@ calculated, such that each explostion is unique.
     
     
     VERT_SHADER = """
-    #version 120
     uniform float u_time;
     uniform vec3 u_centerPosition;
     attribute float a_lifetime;
@@ -76,17 +78,17 @@ calculated, such that each explostion is unique.
     }
     """
     
+    # Deliberately add precision qualifiers to test automatic GLSL code conversion
     FRAG_SHADER = """
-    #version 120
-    
+    precision highp float;
     uniform sampler2D texture1;
     uniform vec4 u_color;
     varying float v_lifetime;
-    uniform sampler2D s_texture;
+    uniform highp sampler2D s_texture;
     
     void main()
     {
-        vec4 texColor;
+        highp vec4 texColor;
         texColor = texture2D(s_texture, gl_PointCoord);
         gl_FragColor = vec4(u_color) * texColor;
         gl_FragColor.a *= v_lifetime;

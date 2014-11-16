@@ -76,8 +76,8 @@ shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">DepthBuffer</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span>
-                        <span class="n">set_state</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">RenderBuffer</span><span class="p">,</span>
+                        <span class="n">clear</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span> <span class="n">set_state</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 
 
@@ -218,7 +218,7 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">[</span><span class="s">&#39;pingpong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pingpong</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">fbo</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">],</span>
-                               <span class="n">DepthBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">))</span>
+                               <span class="n">RenderBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comp_size</span><span class="p">))</span>
         <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>

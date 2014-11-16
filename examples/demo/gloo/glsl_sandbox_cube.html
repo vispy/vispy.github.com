@@ -215,9 +215,7 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">fragEdit</span><span class="o">.</span><span class="n">setPlainText</span><span class="p">(</span><span class="n">FRAG_CODE</span><span class="p">)</span>
 
         <span class="c"># Create a canvas</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">create_native</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">native</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="c"># Layout</span>
         <span class="n">hlayout</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QHBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -236,13 +234,9 @@ defined as multiline strings.</p>
     <span class="k">def</span> <span class="nf">on_compile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">vert_code</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
         <span class="n">frag_code</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fragEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">shaders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">vert_code</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">shaders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">frag_code</span>
-        <span class="c"># Because the code has changed, the variables are re-created,</span>
-        <span class="c"># so we need to reset them. This can be considered a bug in gloo</span>
-        <span class="c"># and should be addressed at some point.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">projection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">view</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">set_shaders</span><span class="p">(</span><span class="n">vert_code</span><span class="p">,</span> <span class="n">frag_code</span><span class="p">)</span>
+        <span class="c"># Note how we do not need to reset our variables, they are</span>
+        <span class="c"># re-set automatically (by gloo)</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>

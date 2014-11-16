@@ -68,9 +68,8 @@
 <h1>basics/visuals/modular_line<a class="headerlink" href="#basics-visuals-modular-line" title="Permalink to this headline">¶</a></h1>
 <p>Simple demonstration of LineVisual.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">vispy.app</span>
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.visuals.modular_line</span> <span class="kn">import</span> <span class="n">ModularLine</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">visuals</span>
+<span class="kn">from</span> <span class="nn">vispy.visuals.modular_line</span> <span class="kn">import</span> <span class="n">ModularLine</span>
 
 <span class="c"># vertex positions of data to draw</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
@@ -84,25 +83,26 @@
 <span class="n">color</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">vispy</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">ModularLine</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-        <span class="n">vispy</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">TransformSystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ev</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">draw_visual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">win</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">vispy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

@@ -35,3 +35,9 @@ Simple use of SceneCanvas to display an Image.
     import sys
     if __name__ == '__main__' and sys.flags.interactive == 0:
         app.run()
+    
+    view.camera = scene.cameras.TurntableCamera(parent=view.scene)
+    view.camera.set_range((0, 100), (0, 100), (-10, 10))
+    c = view.camera
+    #c.transform.translate((0, 0, 600))
+    c.fov = 50

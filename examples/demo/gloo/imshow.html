@@ -138,8 +138,6 @@ defined as multiline strings.</p>
 <span class="s">uniform float cmap;</span>
 
 <span class="s">uniform sampler2D image;</span>
-<span class="s">uniform vec2 image_shape;</span>
-
 <span class="s">uniform sampler2D colormaps;</span>
 <span class="s">uniform vec2 colormaps_shape;</span>
 
@@ -175,9 +173,8 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;colormaps&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;colormaps_shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">colormaps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colormaps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">&#39;float32&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="s">&#39;image_shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">I</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
                             <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
 

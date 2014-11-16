@@ -96,7 +96,6 @@ defined as multiline strings.</p>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy.util.ptime</span> <span class="kn">import</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo.util</span> <span class="kn">import</span> <span class="n">_screenshot</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="c"># WARNING: doesn&#39;t work with Qt4 (update() does not call on_draw()??)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">use_app</span><span class="p">(</span><span class="s">&#39;glfw&#39;</span><span class="p">)</span>
@@ -168,15 +167,15 @@ defined as multiline strings.</p>
 
 
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)):</span>
         <span class="c"># We hide the canvas upon creation.</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
         <span class="c"># Texture where we render the scene.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_rendertex</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rendertex</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
         <span class="c"># FBO.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rendertex</span><span class="p">,</span>
-                                     <span class="n">gloo</span><span class="o">.</span><span class="n">DepthBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+                                     <span class="n">gloo</span><span class="o">.</span><span class="n">RenderBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
         <span class="c"># Regular program that will be rendered to the FBO.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -201,9 +200,10 @@ defined as multiline strings.</p>
         <span class="n">app</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
     <span class="c"># The rendering is done, we get the rendering output (4D NumPy array)</span>
     <span class="n">render</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">im</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Finished in </span><span class="si">%.1f</span><span class="s">ms.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">_time</span><span class="o">*</span><span class="mf">1e3</span><span class="p">))</span>

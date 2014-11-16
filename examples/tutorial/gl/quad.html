@@ -80,11 +80,10 @@ defined as multiline strings.</p>
 <span class="c"># Author: Nicolas P .Rougier</span>
 <span class="c"># Date:   04/03/2014</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">OpenGL.GL</span> <span class="kn">as</span> <span class="nn">gl</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
 
 <span class="n">vertex_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">    uniform float scale;</span>
@@ -151,24 +150,23 @@ defined as multiline strings.</p>
         <span class="c"># Build buffer</span>
 
         <span class="c"># Request a buffer slot from GPU</span>
-        <span class="n">buf</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateBuffer</span><span class="p">()</span>
 
         <span class="c"># Make this buffer the default one</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
 
         <span class="c"># Upload data</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                        <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glBufferData</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DYNAMIC_DRAW</span><span class="p">)</span>
 
         <span class="c"># Bind attributes</span>
         <span class="n">stride</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;position&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_FLOAT</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
-        <span class="n">offset</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">itemsize</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>

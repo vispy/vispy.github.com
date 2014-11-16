@@ -1,0 +1,56 @@
+:orphan:
+
+basics/scene/volume
+-------------------
+
+
+Example volume rendering
+
+.. code-block:: python
+    
+    
+    
+    from vispy import app, scene, io
+    
+    import numpy as np
+    
+    # todo: LIST
+    # - clim property
+    # - different render styles
+    # - this example makes 6 Program objects???
+    # - Check recompiling
+    # - set camera limits using contents
+    
+    # Read volume
+    vol = np.load(io.load_data_file('brain/mri.npz'))['data']
+    vol = np.flipud(np.rollaxis(vol, 1))
+    #vol = imageio.volread('stent.npz')
+    vol = vol.astype('float32') / vol.max()  # todo: implement clim
+    
+    # Prepare canvas
+    canvas = scene.SceneCanvas(keys='interactive')
+    canvas.size = 800, 600
+    canvas.show()
+    
+    # Set up a viewbox to display the image with interactive pan/zoom
+    view = canvas.central_widget.add_view()
+    
+    # Create the volume visual
+    volume = scene.visuals.Volume(vol, parent=view.scene)
+    #volume._program._context.glir.set_verbose(1)
+    
+    # Set the view bounds to show the entire image with some padding
+    #view.camera.rect = (-10, -10, vol.shape[1]+20, vol.shape[0]+20)
+    #view.set_camera('turntable', mode='perspective', up='z', distance=320,
+    #                 center=(128, 128, 128), azimuth=30., elevation=30.)
+    #view.camera.width = 700
+    # view.camera.fov = 30
+    # view.camera.distance = 500
+    
+    view.camera = scene.cameras.TurntableCamera(parent=view.scene)
+    view.camera.set_range((0, 250), (0, 250), (0, 250))
+    c = view.camera
+    # c.transform.translate((0, 0, 600))
+    c.fov = 10
+    
+    # todo: center loc is not yet used

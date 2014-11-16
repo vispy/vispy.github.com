@@ -79,31 +79,13 @@ defined as multiline strings.</p>
 <span class="c"># -----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Visual</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span><span class="p">,</span> <span class="n">LogTransform</span>
-
-
-<span class="k">class</span> <span class="nc">PanZoomTransform</span><span class="p">(</span><span class="n">STTransform</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;I call this when I want to translate.&quot;&quot;&quot;</span>
-        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">dx</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                          <span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">def</span> <span class="nf">zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)):</span>
-        <span class="sd">&quot;&quot;&quot;I call this when I want to zoom.&quot;&quot;&quot;</span>
-        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">dx</span>
-        <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">dx</span><span class="p">),</span>
-                 <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mf">2.5</span><span class="o">*</span><span class="n">dy</span><span class="p">))</span>
-        <span class="n">tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">translate</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.</span><span class="o">/</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                          <span class="n">tr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.</span><span class="o">/</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+<span class="kn">from</span> <span class="nn">vispy.visuals.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span>
+<span class="kn">from</span> <span class="nn">vispy.visuals</span> <span class="kn">import</span> <span class="n">Visual</span>
+<span class="kn">from</span> <span class="nn">vispy.visuals.transforms</span> <span class="kn">import</span> <span class="p">(</span><span class="n">STTransform</span><span class="p">,</span> <span class="n">LogTransform</span><span class="p">,</span>
+                                      <span class="n">TransformSystem</span><span class="p">,</span> <span class="n">ChainTransform</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">MarkerVisual</span><span class="p">(</span><span class="n">Visual</span><span class="p">):</span>
@@ -181,8 +163,10 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="n">size</span>
 
-    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transforms</span><span class="p">):</span>
         <span class="c"># attributes / uniforms are not available until program is built</span>
+        <span class="n">tr</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">get_full_transform</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>  <span class="c"># Force ModularProgram to set shaders</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program</span><span class="p">[</span><span class="s">&#39;a_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_color</span><span class="p">)</span>
@@ -202,53 +186,31 @@ defined as multiline strings.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">MarkerVisual</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
 
-        <span class="c"># This is just an instance I choose to use, nothing required in the</span>
-        <span class="c"># Visual API here.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span> <span class="o">=</span> <span class="n">PanZoomTransform</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">ChainTransform</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="p">,</span>
+                                         <span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">w2</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="n">w2</span><span class="p">),</span>
+                                         <span class="n">LogTransform</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))])</span>
 
-        <span class="c"># Here, I set the `transform` hook to my PAN_ZOOM function.</span>
-        <span class="c"># In addition, I provide a component instance.</span>
-        <span class="c"># Vispy knows that every $variable in the Function is bound to</span>
-        <span class="c"># component.$variable. Here, since pan and zoom are tuples,</span>
-        <span class="c"># Vispy understands that it has to create two uniforms (u_$variable</span>
-        <span class="c"># for example).</span>
-        <span class="n">tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span> <span class="o">*</span> <span class="n">LogTransform</span><span class="p">(</span><span class="n">base</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span> <span class="o">=</span> <span class="n">TransformSystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_document</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">even</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                        <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xy</span><span class="p">):</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">xy</span>
-        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="n">w</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span>
-
     <span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">is_dragging</span><span class="p">:</span>
-            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
-            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">last_event</span><span class="o">.</span><span class="n">pos</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span>
-            <span class="n">dxy</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">dxy</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">last_event</span><span class="o">.</span><span class="n">pos</span>
             <span class="n">button</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">button</span>
 
-            <span class="c"># This just updates my private PanZoom instance. Nothing magic</span>
-            <span class="c"># happens.</span>
             <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">dxy</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">button</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">dxy</span><span class="p">)</span>
+                <span class="n">center</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">dxy</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">)),</span> <span class="n">center</span><span class="p">)</span>
 
-            <span class="c"># The magic happens here. self.on_draw() is called, so</span>
-            <span class="c"># self.points.draw() is called. The two variables in the transform</span>
-            <span class="c"># hook are bound to self.panzoom.pan and self.panzoom.zoom, so</span>
-            <span class="c"># Vispy will automatically fetch those two values and update</span>
-            <span class="c"># the two corresponding uniforms.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-            <span class="c"># Force transform to update its shader.</span>
-            <span class="c"># (this should not be necessary)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">panzoom</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
@@ -256,7 +218,7 @@ defined as multiline strings.</p>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>

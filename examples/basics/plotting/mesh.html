@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>basics/plotting/vispy_plot &mdash; vispy</title>
+        <title>basics/plotting/mesh &mdash; vispy</title>
     
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -64,26 +64,26 @@
     <div class="row">
         <div class="span9">
             
-  <div class="section" id="basics-plotting-vispy-plot">
-<h1>basics/plotting/vispy_plot<a class="headerlink" href="#basics-plotting-vispy-plot" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-<span class="c"># Copyright (c) 2014, Vispy Development Team.</span>
-<span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
-
+  <div class="section" id="basics-plotting-mesh">
+<h1>basics/plotting/mesh<a class="headerlink" href="#basics-plotting-mesh" title="Permalink to this headline">¶</a></h1>
+<p>Example of simple mesh plotting and manipulation.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">vispy.plot</span> <span class="kn">as</span> <span class="nn">vplt</span>
 
-<span class="n">plot_data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">canvas1</span> <span class="o">=</span> <span class="n">vplt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_data</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span>
+<span class="kn">import</span> <span class="nn">vispy.plot</span> <span class="kn">as</span> <span class="nn">vp</span>
 
-<span class="n">image_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">canvas2</span> <span class="o">=</span> <span class="n">vplt</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">image_data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">))</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">)</span>
 
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=-</span><span class="mi">0</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c"># Start up the event loop if this is not an interactive prompt.</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">canvas1</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">vertex_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">canvas</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">mesh_data</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">mesh_data</span><span class="o">.</span><span class="n">set_vertex_colors</span><span class="p">(</span><span class="n">vertex_colors</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

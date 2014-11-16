@@ -111,7 +111,6 @@ defined as multiline strings.</p>
 <span class="s">const int SPHERE_0 = 2;</span>
 <span class="s">const int SPHERE_1 = 3;</span>
 
-<span class="s">uniform float u_time;</span>
 <span class="s">uniform float u_aspect_ratio;</span>
 <span class="s">varying vec2 v_position;</span>
 
@@ -174,7 +173,7 @@ defined as multiline strings.</p>
 <span class="s">    return d;</span>
 <span class="s">}</span>
 
-<span class="s">vec3 run(float x, float y, float t) {</span>
+<span class="s">vec3 run(float x, float y) {</span>
 <span class="s">    vec3 Q = vec3(x, y, 0.);</span>
 <span class="s">    vec3 D = normalize(Q - O);</span>
 <span class="s">    int depth = 0;</span>
@@ -269,7 +268,7 @@ defined as multiline strings.</p>
 
 <span class="s">void main() {</span>
 <span class="s">    vec2 pos = v_position;</span>
-<span class="s">    gl_FragColor = vec4(run(pos.x*u_aspect_ratio, pos.y, u_time), 1.);</span>
+<span class="s">    gl_FragColor = vec4(run(pos.x*u_aspect_ratio, pos.y), 1.);</span>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
@@ -282,7 +281,6 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">),</span>
                                       <span class="p">(</span><span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mf">1.</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.</span><span class="p">)]</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_radius_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="mi">6</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_color_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
@@ -305,7 +303,6 @@ defined as multiline strings.</p>
 
     <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">elapsed</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">+.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;sphere_position_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>

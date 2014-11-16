@@ -35,7 +35,6 @@ The method consists of:
     from vispy import app
     from vispy.util.ptime import time
     from vispy.gloo.util import _screenshot
-    import numpy as np
     
     # WARNING: doesn't work with Qt4 (update() does not call on_draw()??)
     app.use_app('glfw')
@@ -107,15 +106,15 @@ The method consists of:
     
     
     class Canvas(app.Canvas):
-        def __init__(self, size=None):
+        def __init__(self, size=(600, 600)):
             # We hide the canvas upon creation.
             app.Canvas.__init__(self, show=False, size=size)
             self._t0 = time()
             # Texture where we render the scene.
-            self._rendertex = gloo.Texture2D(shape=self.size, dtype=np.float32)
+            self._rendertex = gloo.Texture2D(self.size)
             # FBO.
             self._fbo = gloo.FrameBuffer(self._rendertex,
-                                         gloo.DepthBuffer(self.size))
+                                         gloo.RenderBuffer(self.size))
             # Regular program that will be rendered to the FBO.
             self.program = gloo.Program(vertex, fragment)
             self.program["position"] = [(-1, -1), (-1, 1), (1, 1),
@@ -140,9 +139,10 @@ The method consists of:
             app.quit()
     
     if __name__ == '__main__':
-        size = (600, 600)
-        c = Canvas(size=size)
+        c = Canvas()
+        size = c.size
         app.run()
+    
         # The rendering is done, we get the rendering output (4D NumPy array)
         render = c.im
         print('Finished in %.1fms.' % (c._time*1e3))

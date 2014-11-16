@@ -66,7 +66,7 @@
             
   <div class="section" id="basics-scene-modular-shaders-sandbox">
 <h1>basics/scene/modular_shaders/sandbox<a class="headerlink" href="#basics-scene-modular-shaders-sandbox" title="Permalink to this headline">¶</a></h1>
-<p>Sandbox for experimenting with vispy.scene.shaders</p>
+<p>Sandbox for experimenting with vispy.visuals.shaders</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
@@ -99,7 +99,7 @@ defined as multiline strings.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 
-<span class="s">from vispy.scene.shaders import ModularProgram</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram</span>
 
 <span class="s">vertex_shader = &quot;void main() {}&quot;</span>
 <span class="s">fragment_shader = &quot;void main() {}&quot;</span>
@@ -120,7 +120,7 @@ defined as multiline strings.</p>
 <span class="s">definition may be concatenated to the shader.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function</span>
 
 <span class="s"># The hook is called &#39;input_position&#39;, and is used to provide the</span>
 <span class="s"># value for gl_Position.</span>
@@ -172,7 +172,7 @@ defined as multiline strings.</p>
 <span class="s">compiled into the complete program, it is renamed to match the hook.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function</span>
 
 <span class="s">vertex_shader = &quot;&quot;&quot;</span>
 <span class="s">vec4 input_position();</span>
@@ -221,7 +221,7 @@ defined as multiline strings.</p>
 <span class="s">In the next example, we will see how ModularProgram resolves name conflicts.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function</span>
 <span class="s">import numpy as np</span>
 
 <span class="s">vertex_shader = &quot;&quot;&quot;</span>
@@ -274,7 +274,7 @@ defined as multiline strings.</p>
 <span class="s">This example demonstrates dynamic naming of a program variable.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function</span>
 <span class="s">import numpy as np</span>
 
 <span class="s">vertex_shader = &quot;&quot;&quot;</span>
@@ -329,7 +329,7 @@ defined as multiline strings.</p>
 <span class="s">allowing a list of functions to be executed in order.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function, FunctionChain</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function, FunctionChain</span>
 
 <span class="s"># Added a new hook to allow any number of functions to be executed</span>
 <span class="s"># after gl_Position is set.</span>
@@ -395,7 +395,7 @@ defined as multiline strings.</p>
 <span class="s">of transform functions.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import ModularProgram, Function, FunctionChain</span>
+<span class="s">from vispy.visuals.shaders import ModularProgram, Function, FunctionChain</span>
 
 
 <span class="s">vertex_shader = &quot;&quot;&quot;</span>
@@ -458,7 +458,7 @@ defined as multiline strings.</p>
 <span class="s">to the vertex shader.</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)</span>
+<span class="s">from vispy.visuals.shaders import (ModularProgram, Function, FunctionChain)</span>
 <span class="s">from vispy.gloo import VertexBuffer</span>
 <span class="s">import numpy as np</span>
 
@@ -519,7 +519,7 @@ defined as multiline strings.</p>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="s">&quot;&quot;&quot;</span>
 
-<span class="s">from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)</span>
+<span class="s">from vispy.visuals.shaders import (ModularProgram, Function, FunctionChain)</span>
 <span class="s">from vispy.gloo import VertexBuffer</span>
 <span class="s">import numpy as np</span>
 
@@ -661,14 +661,17 @@ defined as multiline strings.</p>
         <span class="n">vert</span> <span class="o">=</span> <span class="n">glob</span><span class="p">[</span><span class="s">&#39;VERTEX&#39;</span><span class="p">]</span>
         <span class="n">frag</span> <span class="o">=</span> <span class="n">glob</span><span class="p">[</span><span class="s">&#39;FRAGMENT&#39;</span><span class="p">]</span>
         <span class="n">editor</span><span class="o">.</span><span class="n">clear_marker</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="n">vert</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
         <span class="n">frag</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
         <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
         <span class="k">while</span> <span class="n">tb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="c">#print(tb.tb_lineno, tb.tb_frame.f_code.co_filename)</span>
-            <span class="k">if</span> <span class="n">tb</span><span class="o">.</span><span class="n">tb_frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span> <span class="o">==</span> <span class="s">&#39;&lt;string&gt;&#39;</span><span class="p">:</span>
-                <span class="n">editor</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">tb_lineno</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tb</span><span class="o">.</span><span class="n">tb_frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span> <span class="o">==</span> <span class="s">&#39;&lt;string&gt;&#39;</span><span class="p">:</span>
+                    <span class="n">editor</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">tb_lineno</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">pass</span>
             <span class="n">tb</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tb_next</span>
 
     <span class="n">vertex</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">vert</span><span class="p">)</span>
@@ -677,7 +680,8 @@ defined as multiline strings.</p>
 <span class="n">editor</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
 <span class="n">update</span><span class="p">()</span>
 
-<span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

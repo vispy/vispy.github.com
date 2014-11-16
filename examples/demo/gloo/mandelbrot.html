@@ -243,7 +243,7 @@ defined as multiline strings.</p>
 <span class="sd">        while zooming. mouse_coords should come from MouseEvent.pos.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Record the position of the mouse</span>
+        <span class="k">if</span> <span class="n">mouse_coords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># Record the position of the mouse</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -251,7 +251,8 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;scale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
 
-        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Translate so the mouse point is stationary</span>
+        <span class="c"># Translate so the mouse point is stationary</span>
+        <span class="k">if</span> <span class="n">mouse_coords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">translate_center</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span>
 

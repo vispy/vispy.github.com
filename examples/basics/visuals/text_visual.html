@@ -75,20 +75,21 @@
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
 
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">gloo</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">visuals</span>
 
 
-<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Glyphs&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Glyphs&#39;</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mf">48.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">TextVisual</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">TransformSystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">draw_visual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Use the mouse wheel to zoom.&quot;&quot;&quot;</span>

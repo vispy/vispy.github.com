@@ -92,7 +92,8 @@ defined as multiline strings.</p>
 <span class="kn">from</span> <span class="nn">vispy.geometry</span> <span class="kn">import</span> <span class="n">create_cube</span>
 <span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">perspective</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">rotate</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Program</span><span class="p">,</span> <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">IndexBuffer</span><span class="p">,</span> <span class="n">Texture2D</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span>
-                        <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">DepthBuffer</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span> <span class="n">set_state</span><span class="p">)</span>
+                        <span class="n">FrameBuffer</span><span class="p">,</span> <span class="n">RenderBuffer</span><span class="p">,</span> <span class="n">set_viewport</span><span class="p">,</span> <span class="n">set_state</span><span class="p">)</span>
+
 
 <span class="n">cube_vertex</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">uniform mat4 model;</span>
@@ -100,8 +101,8 @@ defined as multiline strings.</p>
 <span class="s">uniform mat4 projection;</span>
 <span class="s">attribute vec3 position;</span>
 <span class="s">attribute vec2 texcoord;</span>
-<span class="s">attribute vec3 normal;</span>
-<span class="s">attribute vec4 color;</span>
+<span class="s">attribute vec3 normal;  // not used in this example</span>
+<span class="s">attribute vec4 color;  // not used in this example</span>
 <span class="s">varying vec2 v_texcoord;</span>
 <span class="s">void main()</span>
 <span class="s">{</span>
@@ -184,15 +185,13 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">[</span><span class="s">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">view</span>
 
-        <span class="n">depth</span> <span class="o">=</span> <span class="n">DepthBuffer</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="n">Texture2D</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">)</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">Texture2D</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span> <span class="o">=</span> <span class="n">FrameBuffer</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">RenderBuffer</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">quad</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">quad_vertex</span><span class="p">,</span> <span class="n">quad_fragment</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&#39;texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="p">[</span><span class="s">&quot;texture&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s">&#39;linear&#39;</span>
 
         <span class="c"># OpenGL and Timer initalization</span>
         <span class="c"># --------------------------------------</span>
@@ -201,12 +200,12 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_set_projection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
-        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
-        <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="o">.</span><span class="n">deactivate</span><span class="p">()</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">framebuffer</span><span class="p">:</span>
+            <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+            <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+        <span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
         <span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">quad</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>

@@ -96,6 +96,8 @@ defined as multiline strings.</p>
 
 <span class="s">attribute vec3 position;</span>
 <span class="s">attribute vec2 texcoord;</span>
+<span class="s">attribute vec3 normal;</span>
+<span class="s">attribute vec4 color;</span>
 
 <span class="s">varying vec2 v_texcoord;</span>
 <span class="s">void main()</span>
@@ -116,9 +118,9 @@ defined as multiline strings.</p>
 
 
 <span class="k">def</span> <span class="nf">checkerboard</span><span class="p">(</span><span class="n">grid_num</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
-    <span class="n">row_even</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">row_odd</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">(</span><span class="n">grid_num</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">row_even</span><span class="p">,</span> <span class="n">row_odd</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">row_even</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">row_odd</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">(</span><span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">row_even</span><span class="p">,</span> <span class="n">row_odd</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">255</span> <span class="o">*</span> <span class="n">Z</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 

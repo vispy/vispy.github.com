@@ -4,8 +4,7 @@ basics/scene/modular_shaders/sandbox
 ------------------------------------
 
 
-Sandbox for experimenting with vispy.scene.shaders
-
+Sandbox for experimenting with vispy.visuals.shaders
 
 .. note:: 
                 This example is based on ``vispy.gloo`` and thus uses GLSL
@@ -42,7 +41,7 @@ Sandbox for experimenting with vispy.scene.shaders
     """
     
     
-    from vispy.scene.shaders import ModularProgram
+    from vispy.visuals.shaders import ModularProgram
     
     vertex_shader = "void main() {}"
     fragment_shader = "void main() {}"
@@ -63,7 +62,7 @@ Sandbox for experimenting with vispy.scene.shaders
     definition may be concatenated to the shader.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function
+    from vispy.visuals.shaders import ModularProgram, Function
     
     # The hook is called 'input_position', and is used to provide the
     # value for gl_Position.
@@ -115,7 +114,7 @@ Sandbox for experimenting with vispy.scene.shaders
     compiled into the complete program, it is renamed to match the hook.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function
+    from vispy.visuals.shaders import ModularProgram, Function
     
     vertex_shader = """
     vec4 input_position();
@@ -164,7 +163,7 @@ Sandbox for experimenting with vispy.scene.shaders
     In the next example, we will see how ModularProgram resolves name conflicts.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function
+    from vispy.visuals.shaders import ModularProgram, Function
     import numpy as np
     
     vertex_shader = """
@@ -217,7 +216,7 @@ Sandbox for experimenting with vispy.scene.shaders
     This example demonstrates dynamic naming of a program variable.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function
+    from vispy.visuals.shaders import ModularProgram, Function
     import numpy as np
     
     vertex_shader = """
@@ -272,7 +271,7 @@ Sandbox for experimenting with vispy.scene.shaders
     allowing a list of functions to be executed in order.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function, FunctionChain
+    from vispy.visuals.shaders import ModularProgram, Function, FunctionChain
     
     # Added a new hook to allow any number of functions to be executed
     # after gl_Position is set.
@@ -338,7 +337,7 @@ Sandbox for experimenting with vispy.scene.shaders
     of transform functions.
     """
     
-    from vispy.scene.shaders import ModularProgram, Function, FunctionChain
+    from vispy.visuals.shaders import ModularProgram, Function, FunctionChain
     
     
     vertex_shader = """
@@ -401,7 +400,7 @@ Sandbox for experimenting with vispy.scene.shaders
     to the vertex shader.
     """
     
-    from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)
+    from vispy.visuals.shaders import (ModularProgram, Function, FunctionChain)
     from vispy.gloo import VertexBuffer
     import numpy as np
     
@@ -462,7 +461,7 @@ Sandbox for experimenting with vispy.scene.shaders
     """
     """
     
-    from vispy.scene.shaders import (ModularProgram, Function, FunctionChain)
+    from vispy.visuals.shaders import (ModularProgram, Function, FunctionChain)
     from vispy.gloo import VertexBuffer
     import numpy as np
     
@@ -604,14 +603,17 @@ Sandbox for experimenting with vispy.scene.shaders
             vert = glob['VERTEX']
             frag = glob['FRAGMENT']
             editor.clear_marker()
-        except:
+        except Exception:
             vert = traceback.format_exc()
             frag = ""
             tb = sys.exc_info()[2]
             while tb is not None:
                 #print(tb.tb_lineno, tb.tb_frame.f_code.co_filename)
-                if tb.tb_frame.f_code.co_filename == '<string>':
-                    editor.set_marker(tb.tb_lineno-1)
+                try:
+                    if tb.tb_frame.f_code.co_filename == '<string>':
+                        editor.set_marker(tb.tb_lineno-1)
+                except Exception:
+                    pass
                 tb = tb.tb_next
     
         vertex.setText(vert)
@@ -620,4 +622,5 @@ Sandbox for experimenting with vispy.scene.shaders
     editor.textChanged.connect(update)
     update()
     
-    app.exec_()
+    if __name__ == '__main__':
+        app.exec_()

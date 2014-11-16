@@ -243,7 +243,7 @@ defined as multiline strings.</p>
             <span class="n">A</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">R</span> <span class="o">+</span> <span class="mf">0.0005</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="mf">0.025</span> <span class="o">*</span> <span class="n">dP</span>
         <span class="n">boids</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">boids</span><span class="p">[</span><span class="s">&#39;velocity&#39;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">vbo_position</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vbo_position</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">particles</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
         <span class="k">return</span> <span class="n">t</span>
 
