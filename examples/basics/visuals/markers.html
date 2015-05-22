@@ -74,8 +74,9 @@
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">visuals</span>
 <span class="kn">from</span> <span class="nn">vispy.visuals.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span><span class="p">,</span> <span class="n">TransformSystem</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="mi">540</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">radius</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">dtheta</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.5</span> <span class="o">/</span> <span class="mf">180.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
     <span class="n">theta</span> <span class="o">+=</span> <span class="n">dtheta</span>
@@ -84,6 +85,7 @@
     <span class="n">r</span> <span class="o">=</span> <span class="mf">10.1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.02</span>
     <span class="n">radius</span> <span class="o">-=</span> <span class="mf">0.45</span>
     <span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+    <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">500</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">-</span><span class="n">i</span><span class="o">/</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
@@ -96,8 +98,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span> <span class="o">=</span> <span class="n">TransformSystem</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_document</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">MarkersVisual</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">marker_types</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">face_color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_symbol</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">marker_types</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
@@ -113,19 +117,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">apply_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_document</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">marker_types</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">marker_types</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_symbol</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">marker_types</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

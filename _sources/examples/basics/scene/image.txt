@@ -13,6 +13,7 @@ Simple use of SceneCanvas to display an Image.
 .. code-block:: python
     
     
+    import sys
     from vispy import scene
     from vispy import app
     import numpy as np
@@ -29,15 +30,8 @@ Simple use of SceneCanvas to display an Image.
                                 scale=50).astype(np.ubyte)
     image = scene.visuals.Image(img_data, parent=view.scene)
     
-    # Set the view bounds to show the entire image with some padding
-    view.camera.rect = (-10, -10, image.size[0]+20, image.size[1]+20)
+    # Set 2D camera (the camera will scale to the contents in the scene)
+    view.camera = scene.PanZoomCamera(aspect=1)
     
-    import sys
     if __name__ == '__main__' and sys.flags.interactive == 0:
         app.run()
-    
-    view.camera = scene.cameras.TurntableCamera(parent=view.scene)
-    view.camera.set_range((0, 100), (0, 100), (-10, 10))
-    c = view.camera
-    #c.transform.translate((0, 0, 600))
-    c.fov = 50

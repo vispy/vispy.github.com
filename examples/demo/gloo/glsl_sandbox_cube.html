@@ -70,7 +70,7 @@
 or PyQt4.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -131,8 +131,7 @@ defined as multiline strings.</p>
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">400</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_CODE</span><span class="p">,</span> <span class="n">FRAG_CODE</span><span class="p">)</span>
 
@@ -145,43 +144,46 @@ defined as multiline strings.</p>
         <span class="c"># Handle transformations</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init_transforms</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_transforms</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update_transforms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="n">faces_buffer</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">init_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">translate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
 
     <span class="k">def</span> <span class="nf">update_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">5</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                            <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">apply_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">45.0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span>
+                                      <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
 
 
 <span class="k">class</span> <span class="nc">TextField</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPlainTextEdit</span><span class="p">):</span>
@@ -231,6 +233,8 @@ defined as multiline strings.</p>
         <span class="n">vlayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fragEdit</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">vlayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theButton</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">on_compile</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">vert_code</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vertEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
         <span class="n">frag_code</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fragEdit</span><span class="o">.</span><span class="n">toPlainText</span><span class="p">())</span>
@@ -242,7 +246,6 @@ defined as multiline strings.</p>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

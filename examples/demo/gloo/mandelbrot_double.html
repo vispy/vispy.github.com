@@ -73,9 +73,11 @@ single-precision floats. Any function starting with ds_* operates on these
 variables. See <a class="reference external" href="http://www.thasler.org/blog/?p=93">http://www.thasler.org/blog/?p=93</a>.</p>
 <p>NOTE: Some NVIDIA cards optimize the double-precision code away. Results are
 therefore hardware dependent.</p>
+<img alt="../../../_images/demo__gloo__mandelbrot_double.png" src="../../../_images/demo__gloo__mandelbrot_double.png" />
+<hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -252,21 +254,23 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">translate_center</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;iter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
 
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;inv_resolution_x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_emulated_double</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;inv_resolution_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_emulated_double</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span> <span class="o">=</span> <span class="mf">1e-12</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span> <span class="o">=</span> <span class="mi">4</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">apply_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;inv_resolution_x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_emulated_double</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">width</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;inv_resolution_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_emulated_double</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">height</span><span class="p">)</span>
@@ -320,7 +324,7 @@ defined as multiline strings.</p>
 <span class="sd">        wheels :)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span> <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;=&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;-&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">0.9</span><span class="p">)</span>
@@ -333,7 +337,7 @@ defined as multiline strings.</p>
 <span class="sd">        while zooming. mouse_coords should come from MouseEvent.pos.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Record the position of the mouse</span>
+        <span class="k">if</span> <span class="n">mouse_coords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># Record the position of the mouse</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">mouse_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
@@ -341,7 +345,7 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;scale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_emulated_double</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">mouse_coords</span><span class="p">:</span>  <span class="c"># Translate so the mouse point is stationary</span>
+        <span class="k">if</span> <span class="n">mouse_coords</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># Translate so mouse point is stationary</span>
             <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_to_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">translate_center</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span>
 
@@ -355,7 +359,6 @@ defined as multiline strings.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

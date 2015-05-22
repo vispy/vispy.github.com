@@ -73,7 +73,7 @@ to give the effect of &#8220;morphing&#8221; noise.</p>
 <hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -82,6 +82,7 @@ defined as multiline strings.</p>
 <span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">ortho</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy.visuals.shaders</span> <span class="kn">import</span> <span class="n">ModularProgram</span>
 
 
 <span class="c"># Shape of image to be displayed</span>
@@ -125,13 +126,13 @@ defined as multiline strings.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">FRAG_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">uniform sampler3D u_texture;</span>
+<span class="s">uniform $sampler_type u_texture;</span>
 <span class="s">uniform float i;</span>
 <span class="s">varying vec2 v_texcoord;</span>
 <span class="s">void main()</span>
 <span class="s">{</span>
 <span class="s">    // step through gradient with i, note that slice (depth) comes last here!</span>
-<span class="s">    gl_FragColor = texture3D(u_texture, vec3(v_texcoord, i));</span>
+<span class="s">    gl_FragColor = $sample(u_texture, vec3(v_texcoord, i));</span>
 <span class="s">    gl_FragColor.a = 1.0;</span>
 <span class="s">}</span>
 
@@ -140,13 +141,19 @@ defined as multiline strings.</p>
 
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">W</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="mi">5</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">emulate3d</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">((</span><span class="n">W</span><span class="o">*</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="n">H</span><span class="o">*</span><span class="mi">5</span><span class="p">)))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture3D</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span>
-                                      <span class="n">wrapping</span><span class="o">=</span><span class="s">&#39;clamp_to_edge&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">emulate3d</span><span class="p">:</span>
+            <span class="n">tex_cls</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">TextureEmulated3D</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tex_cls</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture3D</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">tex_cls</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span>
+                               <span class="n">wrapping</span><span class="o">=</span><span class="s">&#39;clamp_to_edge&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">ModularProgram</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;sampler_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="o">.</span><span class="n">glsl_sampler_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;sample&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="o">.</span><span class="n">glsl_sample</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -162,13 +169,14 @@ defined as multiline strings.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">physical_size</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">ortho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
@@ -198,8 +206,8 @@ defined as multiline strings.</p>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c"># Use emulated3d to switch from an emulated 3D texture to an actual one</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">emulate3d</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

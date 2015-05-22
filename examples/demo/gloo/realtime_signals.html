@@ -71,7 +71,7 @@
 <hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -140,7 +140,7 @@ defined as multiline strings.</p>
 
 <span class="s">    // Compute the x coordinate from the time index.</span>
 <span class="s">    float x = -1 + 2*a_index.z / (u_n-1);</span>
-<span class="s">    vec2 position = vec2(x, a_position);</span>
+<span class="s">    vec2 position = vec2(x - (1 - 1 / u_scale.x), a_position);</span>
 
 <span class="s">    // Find the affine transformation for the subplots.</span>
 <span class="s">    vec2 a = vec2(1./ncols, 1./nrows)*.9;</span>
@@ -194,15 +194,17 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
 
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                        <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="o">.</span><span class="mo">05</span>
@@ -227,7 +229,6 @@ defined as multiline strings.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

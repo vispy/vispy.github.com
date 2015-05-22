@@ -68,7 +68,7 @@
 <h1>basics/gloo/start_shaders<a class="headerlink" href="#basics-gloo-start-shaders" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -82,9 +82,11 @@ defined as multiline strings.</p>
 
 <span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
 <span class="s">attribute vec2 a_position;</span>
+<span class="s">uniform float u_size;</span>
+
 <span class="s">void main() {</span>
 <span class="s">    gl_Position = vec4(a_position, 0.0, 1.0);</span>
-<span class="s">    gl_PointSize = 10.0;</span>
+<span class="s">    gl_PointSize = u_size;</span>
 <span class="s">}</span>
 <span class="s">&quot;&quot;&quot;</span>
 
@@ -98,9 +100,15 @@ defined as multiline strings.</p>
 <span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
+
+        <span class="n">ps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_scale</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">20.</span><span class="o">*</span><span class="n">ps</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
@@ -112,7 +120,6 @@ defined as multiline strings.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>

@@ -33,7 +33,8 @@ Illustrate how to plot a 2D function (an image) y=f(x,y) on the GPU.
     """
     
     fragment = """
-    const float M_PI = 3.14159265358979323846;
+    #include "math/constants.glsl"
+    //const float M_PI = 3.14159265358979323846;
     uniform float u_time;
     varying vec2 v_position;
     
@@ -107,12 +108,14 @@ Illustrate how to plot a 2D function (an image) y=f(x,y) on the GPU.
             self.program['u_time'] = 0.0
             self.timer = app.Timer('auto', connect=self.on_timer, start=True)
     
+            self.show()
+    
         def on_timer(self, event):
             self.program['u_time'] = event.elapsed
             self.update()
     
         def on_resize(self, event):
-            width, height = event.size
+            width, height = event.physical_size
             gloo.set_viewport(0, 0, width, height)
     
         def on_draw(self, event):
@@ -120,5 +123,4 @@ Illustrate how to plot a 2D function (an image) y=f(x,y) on the GPU.
     
     if __name__ == '__main__':
         canvas = Canvas()
-        canvas.show()
         app.run()

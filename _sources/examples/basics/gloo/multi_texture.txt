@@ -81,11 +81,12 @@ added.
             self.program['u_tex2'] = gloo.Texture2D(im2, interpolation='linear')
             self.program.bind(gloo.VertexBuffer(data))
     
-        def on_initialize(self, event):
             gloo.set_clear_color('white')
     
+            self.show()
+    
         def on_resize(self, event):
-            width, height = event.size
+            width, height = event.physical_size
             gloo.set_viewport(0, 0, width, height)
     
         def on_draw(self, event):
@@ -95,5 +96,4 @@ added.
     
     if __name__ == '__main__':
         c = Canvas()
-        c.show()
         app.run()

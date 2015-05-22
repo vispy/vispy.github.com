@@ -70,13 +70,19 @@
 www.shadertoy.com and get the demo.</p>
 <p>TODO: support cubes and videos as channel inputs (currently, only images
 are supported).</p>
+<img alt="../../../_images/demo__gloo__shadertoy.png" src="../../../_images/demo__gloo__shadertoy.png" />
+<hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># NOTE: This example throws warnings about variables not being used;</span>
+<span class="c"># this is normal because only some shadertoy examples make use of all</span>
+<span class="c"># variables, and the GPU may compile some of them away.</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
@@ -106,7 +112,7 @@ defined as multiline strings.</p>
 <span class="s">uniform sampler2D iChannel2;             // input channel. XX = 2D/Cube</span>
 <span class="s">uniform sampler2D iChannel3;             // input channel. XX = 2D/Cube</span>
 <span class="s">uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)</span>
-<span class="s">uniform float     iChannelTime[4];       // channel playback time (in seconds)</span>
+<span class="s">uniform float     iChannelTime[4];       // channel playback time (in sec)</span>
 
 <span class="si">%s</span><span class="s"></span>
 <span class="s">&quot;&quot;&quot;</span>
@@ -142,11 +148,17 @@ defined as multiline strings.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;position&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                                     <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iMouse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iSampleRate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">44100.</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iChannelTime[</span><span class="si">%d</span><span class="s">]&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">activate_zoom</span><span class="p">()</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">set_channel_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="n">tex</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
@@ -172,13 +184,16 @@ defined as multiline strings.</p>
 
     <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iGlobalTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">elapsed</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_idate</span><span class="p">()</span>  <span class="c"># used in some shadertoy examples</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_idate</span><span class="p">()</span>  <span class="c"># used in some shadertoy exs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iResolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activate_zoom</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">activate_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;iResolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.</span><span class="p">)</span>
 
 <span class="c"># -------------------------------------------------------------------------</span>
 <span class="c"># COPY-PASTE SHADERTOY CODE BELOW</span>

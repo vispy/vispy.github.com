@@ -70,14 +70,14 @@
 <hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="c"># vispy: gallery 30</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Copyright (c) 2015, Vispy Development Team. All Rights Reserved.</span>
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
 <span class="c"># Author: John David Reaver</span>
@@ -101,56 +101,47 @@ defined as multiline strings.</p>
 <span class="s">uniform vec2 resolution;</span>
 <span class="s">uniform vec2 center;</span>
 <span class="s">uniform float scale;</span>
-<span class="s">uniform int iter;</span>
 
-<span class="s">// Jet color scheme</span>
-<span class="s">vec4 color_scheme(float x) {</span>
-<span class="s">    vec3 a, b;</span>
-<span class="s">    float c;</span>
-<span class="s">    if (x &lt; 0.34) {</span>
-<span class="s">        a = vec3(0, 0, 0.5);</span>
-<span class="s">        b = vec3(0, 0.8, 0.95);</span>
-<span class="s">        c = (x - 0.0) / (0.34 - 0.0);</span>
-<span class="s">    } else if (x &lt; 0.64) {</span>
-<span class="s">        a = vec3(0, 0.8, 0.95);</span>
-<span class="s">        b = vec3(0.85, 1, 0.04);</span>
-<span class="s">        c = (x - 0.34) / (0.64 - 0.34);</span>
-<span class="s">    } else if (x &lt; 0.89) {</span>
-<span class="s">        a = vec3(0.85, 1, 0.04);</span>
-<span class="s">        b = vec3(0.96, 0.7, 0);</span>
-<span class="s">        c = (x - 0.64) / (0.89 - 0.64);</span>
-<span class="s">    } else {</span>
-<span class="s">        a = vec3(0.96, 0.7, 0);</span>
-<span class="s">        b = vec3(0.5, 0, 0);</span>
-<span class="s">        c = (x - 0.89) / (1.0 - 0.89);</span>
-<span class="s">    }</span>
-<span class="s">    return vec4(mix(a, b, c), 1.0);</span>
+<span class="s">vec3 hot(float t)</span>
+<span class="s">{</span>
+<span class="s">    return vec3(smoothstep(0.00,0.33,t),</span>
+<span class="s">                smoothstep(0.33,0.66,t),</span>
+<span class="s">                smoothstep(0.66,1.00,t));</span>
 <span class="s">}</span>
 
-<span class="s">void main() {</span>
-<span class="s">    vec2 z, c;</span>
+<span class="s">void main()</span>
+<span class="s">{</span>
+
+<span class="s">    const int n = 300;</span>
+<span class="s">    const float log_2 = 0.6931471805599453;</span>
+
+<span class="s">    vec2 c;</span>
 
 <span class="s">    // Recover coordinates from pixel coordinates</span>
 <span class="s">    c.x = (gl_FragCoord.x / resolution.x - 0.5) * scale + center.x;</span>
 <span class="s">    c.y = (gl_FragCoord.y / resolution.y - 0.5) * scale + center.y;</span>
 
-<span class="s">    // Main Mandelbrot computation</span>
+<span class="s">    float x, y, d;</span>
 <span class="s">    int i;</span>
-<span class="s">    z = c;</span>
-<span class="s">    for(i = 0; i &lt; iter; i++) {</span>
-<span class="s">        float x = (z.x * z.x - z.y * z.y) + c.x;</span>
-<span class="s">        float y = (z.y * z.x + z.x * z.y) + c.y;</span>
-
-<span class="s">        if((x * x + y * y) &gt; 4.0) break;</span>
-<span class="s">        z.x = x;</span>
-<span class="s">        z.y = y;</span>
+<span class="s">    vec2 z = c;</span>
+<span class="s">    for(i = 0; i &lt; n; ++i)</span>
+<span class="s">    {</span>
+<span class="s">        x = (z.x*z.x - z.y*z.y) + c.x;</span>
+<span class="s">        y = (z.y*z.x + z.x*z.y) + c.y;</span>
+<span class="s">        d = x*x + y*y;</span>
+<span class="s">        if (d &gt; 4.0) break;</span>
+<span class="s">        z = vec2(x,y);</span>
 <span class="s">    }</span>
-
-<span class="s">    // Convert iterations to color</span>
-<span class="s">    float color = 1.0 - float(i) / float(iter);</span>
-<span class="s">    gl_FragColor = color_scheme(color);</span>
-
+<span class="s">    if ( i &lt; n ) {</span>
+<span class="s">        float nu = log(log(sqrt(d))/log_2)/log_2;</span>
+<span class="s">        float index = float(i) + 1.0 - nu;</span>
+<span class="s">        float v = pow(index/float(n),0.5);</span>
+<span class="s">        gl_FragColor = vec4(hot(v),1.0);</span>
+<span class="s">    } else {</span>
+<span class="s">        gl_FragColor = vec4(hot(0.0),1.0);</span>
+<span class="s">    }</span>
 <span class="s">}</span>
+
 <span class="s">&quot;&quot;&quot;</span>
 
 
@@ -169,23 +160,26 @@ defined as multiline strings.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;scale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;center&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&quot;iter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_scale</span> <span class="o">=</span> <span class="mf">0.00005</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_scale</span> <span class="o">=</span> <span class="mi">4</span>
 
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">apply_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span>
 
@@ -231,7 +225,8 @@ defined as multiline strings.</p>
 <span class="sd">        wheels :)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;+&#39;</span> <span class="ow">or</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;=&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;-&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mf">0.9</span><span class="p">)</span>
@@ -259,7 +254,6 @@ defined as multiline strings.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">),</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-    <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

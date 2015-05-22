@@ -1,0 +1,533 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>demo/gloo/galaxy/galaxy_specrend &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link href="../../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/js/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../../_static/js/carousel.js"></script>
+        <link rel="top" title="vispy" href="../../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="demo-gloo-galaxy-galaxy-specrend">
+<h1>demo/gloo/galaxy/galaxy_specrend<a class="headerlink" href="#demo-gloo-galaxy-galaxy-specrend" title="Permalink to this headline">¶</a></h1>
+<p>Colour Rendering of Spectra</p>
+<p>by John Walker
+<a class="reference external" href="http://www.fourmilab.ch/">http://www.fourmilab.ch/</a></p>
+<p>Last updated: March 9, 2003</p>
+<p>Converted to Python by Andrew Hutchins, sometime in early
+2011.</p>
+<blockquote>
+<div>This program is in the public domain.
+The modifications are also public domain. (AH)</div></blockquote>
+<p>For complete information about the techniques employed in
+this program, see the World-Wide Web document:</p>
+<blockquote>
+<div><a class="reference external" href="http://www.fourmilab.ch/documents/specrend/">http://www.fourmilab.ch/documents/specrend/</a></div></blockquote>
+<p>The xyz_to_rgb() function, which was wrong in the original
+version of this program, was corrected by:</p>
+<blockquote>
+<div>Andrew J. S. Hamilton 21 May 1999
+<a class="reference external" href="mailto:Andrew&#46;Hamilton&#37;&#52;&#48;Colorado&#46;EDU">Andrew<span>&#46;</span>Hamilton<span>&#64;</span>Colorado<span>&#46;</span>EDU</a>
+<a class="reference external" href="http://casa.colorado.edu/~ajsh/">http://casa.colorado.edu/~ajsh/</a></div></blockquote>
+<p>who also added the gamma correction facilities and
+modified constrain_rgb() to work by desaturating the
+colour by adding white.</p>
+<p>A program which uses these functions to plot CIE
+&#8220;tongue&#8221; diagrams called &#8220;ppmcie&#8221; is included in
+the Netpbm graphics toolkit:</p>
+<blockquote>
+<div><a class="reference external" href="http://netpbm.sourceforge.net/">http://netpbm.sourceforge.net/</a></div></blockquote>
+<p>(The program was called cietoppm in earlier
+versions of Netpbm.)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c"># A colour system is defined by the CIE x and y coordinates of</span>
+<span class="c"># its three primary illuminants and the x and y coordinates of</span>
+<span class="c"># the white point.</span>
+
+<span class="n">GAMMA_REC709</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">NTSCsystem</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;NTSC&quot;</span><span class="p">,</span>
+              <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.33</span><span class="p">,</span>
+              <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.21</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.71</span><span class="p">,</span>
+              <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.14</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span>
+              <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3101</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3163</span><span class="p">,</span> <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+
+<span class="n">EBUsystem</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;SUBU (PAL/SECAM)&quot;</span><span class="p">,</span>
+             <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.64</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.33</span><span class="p">,</span>
+             <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.29</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.60</span><span class="p">,</span>
+             <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">,</span>
+             <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3127</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3291</span><span class="p">,</span> <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+<span class="n">SMPTEsystem</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;SMPTE&quot;</span><span class="p">,</span>
+               <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.63</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.34</span><span class="p">,</span>
+               <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.31</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.595</span><span class="p">,</span>
+               <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.155</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.07</span><span class="p">,</span>
+               <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3127</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3291</span><span class="p">,</span> <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+
+<span class="n">HDTVsystem</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;HDTV&quot;</span><span class="p">,</span>
+              <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.33</span><span class="p">,</span>
+              <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.21</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.71</span><span class="p">,</span>
+              <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">,</span>
+              <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3127</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3291</span><span class="p">,</span> <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+
+<span class="n">CIEsystem</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;CIE&quot;</span><span class="p">,</span>
+             <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.7355</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.2645</span><span class="p">,</span>
+             <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.2658</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.7243</span><span class="p">,</span>
+             <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.1669</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.0085</span><span class="p">,</span>
+             <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3333333333</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3333333333</span><span class="p">,</span>
+             <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+
+<span class="n">Rec709system</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;CIE REC709&quot;</span><span class="p">,</span>
+                <span class="s">&quot;xRed&quot;</span><span class="p">:</span> <span class="mf">0.64</span><span class="p">,</span> <span class="s">&quot;yRed&quot;</span><span class="p">:</span> <span class="mf">0.33</span><span class="p">,</span>
+                <span class="s">&quot;xGreen&quot;</span><span class="p">:</span> <span class="mf">0.30</span><span class="p">,</span> <span class="s">&quot;yGreen&quot;</span><span class="p">:</span> <span class="mf">0.60</span><span class="p">,</span>
+                <span class="s">&quot;xBlue&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s">&quot;yBlue&quot;</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">,</span>
+                <span class="s">&quot;xWhite&quot;</span><span class="p">:</span> <span class="mf">0.3127</span><span class="p">,</span> <span class="s">&quot;yWhite&quot;</span><span class="p">:</span> <span class="mf">0.3291</span><span class="p">,</span>
+                <span class="s">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">GAMMA_REC709</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">upvp_to_xy</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">vp</span><span class="p">):</span>
+    <span class="n">xc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">up</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="mi">6</span> <span class="o">*</span> <span class="n">up</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">vp</span><span class="p">)</span> <span class="o">+</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">yc</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">vp</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="mi">6</span> <span class="o">*</span> <span class="n">up</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">vp</span><span class="p">)</span> <span class="o">+</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">xy_toupvp</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">):</span>
+    <span class="n">up</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">vp</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">vp</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">xyz_to_rgb</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Given an additive tricolour system CS, defined by the CIE x</span>
+<span class="sd">    and y chromaticities of its three primaries (z is derived</span>
+<span class="sd">    trivially as 1-(x+y)), and a desired chromaticity (XC, YC,</span>
+<span class="sd">    ZC) in CIE space, determine the contribution of each</span>
+<span class="sd">    primary in a linear combination which sums to the desired</span>
+<span class="sd">    chromaticity.  If the  requested chromaticity falls outside</span>
+<span class="sd">    the Maxwell  triangle (colour gamut) formed by the three</span>
+<span class="sd">    primaries, one of the r, g, or b weights will be negative.</span>
+
+<span class="sd">    Caller can use constrain_rgb() to desaturate an</span>
+<span class="sd">    outside-gamut colour to the closest representation within</span>
+<span class="sd">    the available gamut and/or norm_rgb to normalise the RGB</span>
+<span class="sd">    components so the largest nonzero component has value 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">xr</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;xRed&quot;</span><span class="p">]</span>
+    <span class="n">yr</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;yRed&quot;</span><span class="p">]</span>
+    <span class="n">zr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">xr</span> <span class="o">+</span> <span class="n">yr</span><span class="p">)</span>
+    <span class="n">xg</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;xGreen&quot;</span><span class="p">]</span>
+    <span class="n">yg</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;yGreen&quot;</span><span class="p">]</span>
+    <span class="n">zg</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">xg</span> <span class="o">+</span> <span class="n">yg</span><span class="p">)</span>
+    <span class="n">xb</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;xBlue&quot;</span><span class="p">]</span>
+    <span class="n">yb</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;yBlue&quot;</span><span class="p">]</span>
+    <span class="n">zb</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">xb</span> <span class="o">+</span> <span class="n">yb</span><span class="p">)</span>
+    <span class="n">xw</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;xWhite&quot;</span><span class="p">]</span>
+    <span class="n">yw</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="s">&quot;yWhite&quot;</span><span class="p">]</span>
+    <span class="n">zw</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">xw</span> <span class="o">+</span> <span class="n">yw</span><span class="p">)</span>
+
+    <span class="n">rx</span> <span class="o">=</span> <span class="p">(</span><span class="n">yg</span> <span class="o">*</span> <span class="n">zb</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">yb</span> <span class="o">*</span> <span class="n">zg</span><span class="p">)</span>
+    <span class="n">ry</span> <span class="o">=</span> <span class="p">(</span><span class="n">xb</span> <span class="o">*</span> <span class="n">zg</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xg</span> <span class="o">*</span> <span class="n">zb</span><span class="p">)</span>
+    <span class="n">rz</span> <span class="o">=</span> <span class="p">(</span><span class="n">xg</span> <span class="o">*</span> <span class="n">yb</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xb</span> <span class="o">*</span> <span class="n">yg</span><span class="p">)</span>
+    <span class="n">gx</span> <span class="o">=</span> <span class="p">(</span><span class="n">yb</span> <span class="o">*</span> <span class="n">zr</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">yr</span> <span class="o">*</span> <span class="n">zb</span><span class="p">)</span>
+    <span class="n">gy</span> <span class="o">=</span> <span class="p">(</span><span class="n">xr</span> <span class="o">*</span> <span class="n">zb</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xb</span> <span class="o">*</span> <span class="n">zr</span><span class="p">)</span>
+    <span class="n">gz</span> <span class="o">=</span> <span class="p">(</span><span class="n">xb</span> <span class="o">*</span> <span class="n">yr</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xr</span> <span class="o">*</span> <span class="n">yb</span><span class="p">)</span>
+    <span class="n">bx</span> <span class="o">=</span> <span class="p">(</span><span class="n">yr</span> <span class="o">*</span> <span class="n">zg</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">yg</span> <span class="o">*</span> <span class="n">zr</span><span class="p">)</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="p">(</span><span class="n">xg</span> <span class="o">*</span> <span class="n">zr</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xr</span> <span class="o">*</span> <span class="n">zg</span><span class="p">)</span>
+    <span class="n">bz</span> <span class="o">=</span> <span class="p">(</span><span class="n">xr</span> <span class="o">*</span> <span class="n">yg</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">xg</span> <span class="o">*</span> <span class="n">yr</span><span class="p">)</span>
+
+    <span class="n">rw</span> <span class="o">=</span> <span class="p">((</span><span class="n">rx</span> <span class="o">*</span> <span class="n">xw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ry</span> <span class="o">*</span> <span class="n">yw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">rz</span> <span class="o">*</span> <span class="n">zw</span><span class="p">))</span> <span class="o">/</span> <span class="n">yw</span>
+    <span class="n">gw</span> <span class="o">=</span> <span class="p">((</span><span class="n">gx</span> <span class="o">*</span> <span class="n">xw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">gy</span> <span class="o">*</span> <span class="n">yw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">gz</span> <span class="o">*</span> <span class="n">zw</span><span class="p">))</span> <span class="o">/</span> <span class="n">yw</span>
+    <span class="n">bw</span> <span class="o">=</span> <span class="p">((</span><span class="n">bx</span> <span class="o">*</span> <span class="n">xw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">by</span> <span class="o">*</span> <span class="n">yw</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bz</span> <span class="o">*</span> <span class="n">zw</span><span class="p">))</span> <span class="o">/</span> <span class="n">yw</span>
+
+    <span class="n">rx</span> <span class="o">=</span> <span class="n">rx</span> <span class="o">/</span> <span class="n">rw</span>
+    <span class="n">ry</span> <span class="o">=</span> <span class="n">ry</span> <span class="o">/</span> <span class="n">rw</span>
+    <span class="n">rz</span> <span class="o">=</span> <span class="n">rz</span> <span class="o">/</span> <span class="n">rw</span>
+    <span class="n">gx</span> <span class="o">=</span> <span class="n">gx</span> <span class="o">/</span> <span class="n">gw</span>
+    <span class="n">gy</span> <span class="o">=</span> <span class="n">gy</span> <span class="o">/</span> <span class="n">gw</span>
+    <span class="n">gz</span> <span class="o">=</span> <span class="n">gz</span> <span class="o">/</span> <span class="n">gw</span>
+    <span class="n">bx</span> <span class="o">=</span> <span class="n">bx</span> <span class="o">/</span> <span class="n">bw</span>
+    <span class="n">by</span> <span class="o">=</span> <span class="n">by</span> <span class="o">/</span> <span class="n">bw</span>
+    <span class="n">bz</span> <span class="o">=</span> <span class="n">bz</span> <span class="o">/</span> <span class="n">bw</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">rx</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ry</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">rz</span> <span class="o">*</span> <span class="n">zc</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">gx</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">gy</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">gz</span> <span class="o">*</span> <span class="n">zc</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">bx</span> <span class="o">*</span> <span class="n">xc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">by</span> <span class="o">*</span> <span class="n">yc</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bz</span> <span class="o">*</span> <span class="n">zc</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">inside_gamut</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Test whether a requested colour is within the gamut</span>
+<span class="sd">     achievable with the primaries of the current colour</span>
+<span class="sd">     system.  This amounts simply to testing whether all the</span>
+<span class="sd">     primary weights are non-negative. */</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">constrain_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If the requested RGB shade contains a negative weight for</span>
+<span class="sd">    one of the primaries, it lies outside the colour gamut</span>
+<span class="sd">    accessible from the given triple of primaries.  Desaturate</span>
+<span class="sd">    it by adding white, equal quantities of R, G, and B, enough</span>
+<span class="sd">    to make RGB all positive.  The function returns 1 if the</span>
+<span class="sd">    components were modified, zero otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Amount of white needed is w = - min(0, *r, *g, *b)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="o">-</span><span class="nb">min</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>  <span class="c"># I think?</span>
+
+    <span class="c"># Add just enough white to make r, g, b all positive.</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">+=</span> <span class="n">w</span>
+        <span class="n">g</span> <span class="o">+=</span> <span class="n">w</span>
+        <span class="n">b</span> <span class="o">+=</span> <span class="n">w</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">gamma_correct</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform linear RGB values to nonlinear RGB values. Rec.</span>
+<span class="sd">    709 is ITU-R Recommendation BT. 709 (1990) ``Basic</span>
+<span class="sd">    Parameter Values for the HDTV Standard for the Studio and</span>
+<span class="sd">    for International Programme Exchange&#39;&#39;, formerly CCIR Rec.</span>
+<span class="sd">    709. For details see</span>
+
+<span class="sd">       http://www.poynton.com/ColorFAQ.html</span>
+<span class="sd">       http://www.poynton.com/GammaFAQ.html</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">gamma</span>
+
+    <span class="k">if</span> <span class="n">gamma</span> <span class="o">==</span> <span class="n">GAMMA_REC709</span><span class="p">:</span>
+        <span class="n">cc</span> <span class="o">=</span> <span class="mf">0.018</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">cc</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">((</span><span class="mf">1.099</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.099</span><span class="p">)</span> <span class="o">/</span> <span class="n">cc</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.099</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.099</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">gamma_correct_rgb</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">gamma_correct</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">gamma_correct</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">gamma_correct</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">norm_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalise RGB components so the most intense (unless all</span>
+<span class="sd">    are zero) has a value of 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">greatest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">greatest</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">/=</span> <span class="n">greatest</span>
+        <span class="n">g</span> <span class="o">/=</span> <span class="n">greatest</span>
+        <span class="n">b</span> <span class="o">/=</span> <span class="n">greatest</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="c"># spec_intens is a function</span>
+<span class="k">def</span> <span class="nf">spectrum_to_xyz</span><span class="p">(</span><span class="n">spec_intens</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the CIE X, Y, and Z coordinates corresponding to</span>
+<span class="sd">    a light source with spectral distribution given by  the</span>
+<span class="sd">    function SPEC_INTENS, which is called with a series of</span>
+<span class="sd">    wavelengths between 380 and 780 nm (the argument is</span>
+<span class="sd">    expressed in meters), which returns emittance at  that</span>
+<span class="sd">    wavelength in arbitrary units.  The chromaticity</span>
+<span class="sd">    coordinates of the spectrum are returned in the x, y, and z</span>
+<span class="sd">    arguments which respect the identity:</span>
+
+<span class="sd">        x + y + z = 1.</span>
+
+<span class="sd">    CIE colour matching functions xBar, yBar, and zBar for</span>
+<span class="sd">    wavelengths from 380 through 780 nanometers, every 5</span>
+<span class="sd">    nanometers.  For a wavelength lambda in this range::</span>
+
+<span class="sd">        cie_colour_match[(lambda - 380) / 5][0] = xBar</span>
+<span class="sd">        cie_colour_match[(lambda - 380) / 5][1] = yBar</span>
+<span class="sd">        cie_colour_match[(lambda - 380) / 5][2] = zBar</span>
+
+<span class="sd">    AH Note 2011: This next bit is kind of irrelevant on modern</span>
+<span class="sd">    hardware. Unless you are desperate for speed.</span>
+<span class="sd">    In which case don&#39;t use the Python version!</span>
+
+<span class="sd">    To save memory, this table can be declared as floats</span>
+<span class="sd">    rather than doubles; (IEEE) float has enough</span>
+<span class="sd">    significant bits to represent the values. It&#39;s declared</span>
+<span class="sd">    as a double here to avoid warnings about &quot;conversion</span>
+<span class="sd">    between floating-point types&quot; from certain persnickety</span>
+<span class="sd">    compilers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cie_colour_match</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0014</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0065</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0022</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0105</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0042</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0201</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0076</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0362</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0143</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.0679</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0232</span><span class="p">,</span> <span class="mf">0.0006</span><span class="p">,</span> <span class="mf">0.1102</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0435</span><span class="p">,</span> <span class="mf">0.0012</span><span class="p">,</span> <span class="mf">0.2074</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0776</span><span class="p">,</span> <span class="mf">0.0022</span><span class="p">,</span> <span class="mf">0.3713</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1344</span><span class="p">,</span> <span class="mf">0.0040</span><span class="p">,</span> <span class="mf">0.6456</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2148</span><span class="p">,</span> <span class="mf">0.0073</span><span class="p">,</span> <span class="mf">1.0391</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2839</span><span class="p">,</span> <span class="mf">0.0116</span><span class="p">,</span> <span class="mf">1.3856</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3285</span><span class="p">,</span> <span class="mf">0.0168</span><span class="p">,</span> <span class="mf">1.6230</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3483</span><span class="p">,</span> <span class="mf">0.0230</span><span class="p">,</span> <span class="mf">1.7471</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3481</span><span class="p">,</span> <span class="mf">0.0298</span><span class="p">,</span> <span class="mf">1.7826</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3362</span><span class="p">,</span> <span class="mf">0.0380</span><span class="p">,</span> <span class="mf">1.7721</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3187</span><span class="p">,</span> <span class="mf">0.0480</span><span class="p">,</span> <span class="mf">1.7441</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2908</span><span class="p">,</span> <span class="mf">0.0600</span><span class="p">,</span> <span class="mf">1.6692</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2511</span><span class="p">,</span> <span class="mf">0.0739</span><span class="p">,</span> <span class="mf">1.5281</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1954</span><span class="p">,</span> <span class="mf">0.0910</span><span class="p">,</span> <span class="mf">1.2876</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1421</span><span class="p">,</span> <span class="mf">0.1126</span><span class="p">,</span> <span class="mf">1.0419</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0956</span><span class="p">,</span> <span class="mf">0.1390</span><span class="p">,</span> <span class="mf">0.8130</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0580</span><span class="p">,</span> <span class="mf">0.1693</span><span class="p">,</span> <span class="mf">0.6162</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0320</span><span class="p">,</span> <span class="mf">0.2080</span><span class="p">,</span> <span class="mf">0.4652</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0147</span><span class="p">,</span> <span class="mf">0.2586</span><span class="p">,</span> <span class="mf">0.3533</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0049</span><span class="p">,</span> <span class="mf">0.3230</span><span class="p">,</span> <span class="mf">0.2720</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0024</span><span class="p">,</span> <span class="mf">0.4073</span><span class="p">,</span> <span class="mf">0.2123</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0093</span><span class="p">,</span> <span class="mf">0.5030</span><span class="p">,</span> <span class="mf">0.1582</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0291</span><span class="p">,</span> <span class="mf">0.6082</span><span class="p">,</span> <span class="mf">0.1117</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0633</span><span class="p">,</span> <span class="mf">0.7100</span><span class="p">,</span> <span class="mf">0.0782</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1096</span><span class="p">,</span> <span class="mf">0.7932</span><span class="p">,</span> <span class="mf">0.0573</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1655</span><span class="p">,</span> <span class="mf">0.8620</span><span class="p">,</span> <span class="mf">0.0422</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2257</span><span class="p">,</span> <span class="mf">0.9149</span><span class="p">,</span> <span class="mf">0.0298</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2904</span><span class="p">,</span> <span class="mf">0.9540</span><span class="p">,</span> <span class="mf">0.0203</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3597</span><span class="p">,</span> <span class="mf">0.9803</span><span class="p">,</span> <span class="mf">0.0134</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.4334</span><span class="p">,</span> <span class="mf">0.9950</span><span class="p">,</span> <span class="mf">0.0087</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5121</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.0057</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5945</span><span class="p">,</span> <span class="mf">0.9950</span><span class="p">,</span> <span class="mf">0.0039</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6784</span><span class="p">,</span> <span class="mf">0.9786</span><span class="p">,</span> <span class="mf">0.0027</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7621</span><span class="p">,</span> <span class="mf">0.9520</span><span class="p">,</span> <span class="mf">0.0021</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8425</span><span class="p">,</span> <span class="mf">0.9154</span><span class="p">,</span> <span class="mf">0.0018</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9163</span><span class="p">,</span> <span class="mf">0.8700</span><span class="p">,</span> <span class="mf">0.0017</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9786</span><span class="p">,</span> <span class="mf">0.8163</span><span class="p">,</span> <span class="mf">0.0014</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0263</span><span class="p">,</span> <span class="mf">0.7570</span><span class="p">,</span> <span class="mf">0.0011</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0567</span><span class="p">,</span> <span class="mf">0.6949</span><span class="p">,</span> <span class="mf">0.0010</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0622</span><span class="p">,</span> <span class="mf">0.6310</span><span class="p">,</span> <span class="mf">0.0008</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0456</span><span class="p">,</span> <span class="mf">0.5668</span><span class="p">,</span> <span class="mf">0.0006</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">0.5030</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.9384</span><span class="p">,</span> <span class="mf">0.4412</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.8544</span><span class="p">,</span> <span class="mf">0.3810</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.7514</span><span class="p">,</span> <span class="mf">0.3210</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.6424</span><span class="p">,</span> <span class="mf">0.2650</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5419</span><span class="p">,</span> <span class="mf">0.2170</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.4479</span><span class="p">,</span> <span class="mf">0.1750</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.3608</span><span class="p">,</span> <span class="mf">0.1382</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2835</span><span class="p">,</span> <span class="mf">0.1070</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.2187</span><span class="p">,</span> <span class="mf">0.0816</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1649</span><span class="p">,</span> <span class="mf">0.0610</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.1212</span><span class="p">,</span> <span class="mf">0.0446</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0874</span><span class="p">,</span> <span class="mf">0.0320</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0636</span><span class="p">,</span> <span class="mf">0.0232</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0468</span><span class="p">,</span> <span class="mf">0.0170</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0329</span><span class="p">,</span> <span class="mf">0.0119</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0227</span><span class="p">,</span> <span class="mf">0.0082</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0158</span><span class="p">,</span> <span class="mf">0.0057</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0114</span><span class="p">,</span> <span class="mf">0.0041</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0081</span><span class="p">,</span> <span class="mf">0.0029</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0058</span><span class="p">,</span> <span class="mf">0.0021</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0041</span><span class="p">,</span> <span class="mf">0.0015</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0029</span><span class="p">,</span> <span class="mf">0.0010</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0020</span><span class="p">,</span> <span class="mf">0.0007</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0014</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0010</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0007</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0003</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">]]</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c"># lambda = 380; lambda &lt; 780.1; i++, lambda += 5) {</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lamb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">380</span><span class="p">,</span> <span class="mi">780</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
+        <span class="n">Me</span> <span class="o">=</span> <span class="n">spec_intens</span><span class="p">(</span><span class="n">lamb</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">+=</span> <span class="n">Me</span> <span class="o">*</span> <span class="n">cie_colour_match</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">Y</span> <span class="o">+=</span> <span class="n">Me</span> <span class="o">*</span> <span class="n">cie_colour_match</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">Z</span> <span class="o">+=</span> <span class="n">Me</span> <span class="o">*</span> <span class="n">cie_colour_match</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">XYZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">Z</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="n">XYZ</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">/</span> <span class="n">XYZ</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">Z</span> <span class="o">/</span> <span class="n">XYZ</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">bb_spectrum</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">bbTemp</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate, by Planck&#39;s radiation law, the emittance of a black body</span>
+<span class="sd">    of temperature bbTemp at the given wavelength (in metres).  */</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">wlm</span> <span class="o">=</span> <span class="n">wavelength</span> <span class="o">*</span> <span class="mf">1e-9</span>  <span class="c"># Convert to metres</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mf">3.74183e-16</span> <span class="o">*</span>
+            <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">wlm</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">1.4388e-2</span> <span class="o">/</span> <span class="p">(</span><span class="n">wlm</span> <span class="o">*</span> <span class="n">bbTemp</span><span class="p">))</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="sd">&quot;&quot;&quot;  Built-in test program which displays the x, y, and Z and RGB</span>
+<span class="sd">    values for black body spectra from 1000 to 10000 degrees kelvin.</span>
+<span class="sd">    When run, this program should produce the following output:</span>
+
+<span class="sd">    Temperature       x      y      z       R     G     B</span>
+<span class="sd">    -----------    ------ ------ ------   ----- ----- -----</span>
+<span class="sd">       1000 K      0.6528 0.3444 0.0028   1.000 0.007 0.000 (Approximation)</span>
+<span class="sd">       1500 K      0.5857 0.3931 0.0212   1.000 0.126 0.000 (Approximation)</span>
+<span class="sd">       2000 K      0.5267 0.4133 0.0600   1.000 0.234 0.010</span>
+<span class="sd">       2500 K      0.4770 0.4137 0.1093   1.000 0.349 0.067</span>
+<span class="sd">       3000 K      0.4369 0.4041 0.1590   1.000 0.454 0.151</span>
+<span class="sd">       3500 K      0.4053 0.3907 0.2040   1.000 0.549 0.254</span>
+<span class="sd">       4000 K      0.3805 0.3768 0.2428   1.000 0.635 0.370</span>
+<span class="sd">       4500 K      0.3608 0.3636 0.2756   1.000 0.710 0.493</span>
+<span class="sd">       5000 K      0.3451 0.3516 0.3032   1.000 0.778 0.620</span>
+<span class="sd">       5500 K      0.3325 0.3411 0.3265   1.000 0.837 0.746</span>
+<span class="sd">       6000 K      0.3221 0.3318 0.3461   1.000 0.890 0.869</span>
+<span class="sd">       6500 K      0.3135 0.3237 0.3628   1.000 0.937 0.988</span>
+<span class="sd">       7000 K      0.3064 0.3166 0.3770   0.907 0.888 1.000</span>
+<span class="sd">       7500 K      0.3004 0.3103 0.3893   0.827 0.839 1.000</span>
+<span class="sd">       8000 K      0.2952 0.3048 0.4000   0.762 0.800 1.000</span>
+<span class="sd">       8500 K      0.2908 0.3000 0.4093   0.711 0.766 1.000</span>
+<span class="sd">       9000 K      0.2869 0.2956 0.4174   0.668 0.738 1.000</span>
+<span class="sd">       9500 K      0.2836 0.2918 0.4246   0.632 0.714 1.000</span>
+<span class="sd">      10000 K      0.2807 0.2884 0.4310   0.602 0.693 1.000</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Temperature       x      y      z       R     G     B</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;-----------    ------ ------ ------   ----- ----- -----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">500</span><span class="p">):</span>  <span class="c"># (t = 1000; t &lt;= 10000; t+= 500) {</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">spectrum_to_xyz</span><span class="p">(</span><span class="n">bb_spectrum</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">xyz_to_rgb</span><span class="p">(</span><span class="n">SMPTEsystem</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;  </span><span class="si">%5.0f</span><span class="s"> K      </span><span class="si">%.4f</span><span class="s"> </span><span class="si">%.4f</span><span class="s"> </span><span class="si">%.4f</span><span class="s">   &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+
+        <span class="c"># I omit the approximation bit here.</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">constrain_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">norm_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.3f</span><span class="s"> </span><span class="si">%.3f</span><span class="s"> </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

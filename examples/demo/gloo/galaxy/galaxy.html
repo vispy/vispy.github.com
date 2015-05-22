@@ -1,0 +1,336 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>demo/gloo/galaxy/galaxy &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link href="../../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/js/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../../_static/js/carousel.js"></script>
+        <link rel="top" title="vispy" href="../../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="demo-gloo-galaxy-galaxy">
+<h1>demo/gloo/galaxy/galaxy<a class="headerlink" href="#demo-gloo-galaxy-galaxy" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">vispy.util.transforms</span> <span class="kn">import</span> <span class="n">perspective</span>
+<span class="kn">from</span> <span class="nn">vispy.util</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">io</span>
+
+<span class="kn">import</span> <span class="nn">galaxy_specrend</span>
+<span class="kn">from</span> <span class="nn">galaxy_simulation</span> <span class="kn">import</span> <span class="n">Galaxy</span>
+
+<span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+<span class="s">uniform mat4  u_model;</span>
+<span class="s">uniform mat4  u_view;</span>
+<span class="s">uniform mat4  u_projection;</span>
+
+<span class="s">//sampler that maps [0, n] -&gt; color according to blackbody law</span>
+<span class="s">uniform sampler1D u_colormap;</span>
+<span class="s">//index to sample the colormap at</span>
+<span class="s">attribute float a_color_index;</span>
+
+<span class="s">//size of the star</span>
+<span class="s">attribute float a_size;</span>
+<span class="s">//type</span>
+<span class="s">//type 0 - stars</span>
+<span class="s">//type 1 - dust</span>
+<span class="s">//type 2 - h2a objects</span>
+<span class="s">//type 3 - h2a objects</span>
+<span class="s">attribute float a_type;</span>
+<span class="s">attribute vec2  a_position;</span>
+<span class="s">//brightness of the star</span>
+<span class="s">attribute float a_brightness;</span>
+
+<span class="s">varying vec3 v_color;</span>
+<span class="s">void main (void)</span>
+<span class="s">{</span>
+<span class="s">    gl_Position = u_projection * u_view * u_model * vec4(a_position, 0.0,1.0);</span>
+
+<span class="s">    //find base color according to physics from our sampler</span>
+<span class="s">    vec3 base_color = texture1D(u_colormap, a_color_index).rgb;</span>
+<span class="s">    //scale it down according to brightness</span>
+<span class="s">    v_color = base_color * a_brightness;</span>
+
+
+<span class="s">    if (a_size &gt; 2.0)</span>
+<span class="s">    {</span>
+<span class="s">        gl_PointSize = a_size;</span>
+<span class="s">    } else {</span>
+<span class="s">        gl_PointSize = 0.0;</span>
+<span class="s">    }</span>
+
+<span class="s">    if (a_type == 2) {</span>
+<span class="s">        v_color *= vec3(2, 1, 1);</span>
+<span class="s">    }</span>
+<span class="s">    else if (a_type == 3) {</span>
+<span class="s">        v_color = vec3(.9);</span>
+<span class="s">    }</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">FRAG_SHADER</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+<span class="s">//star texture</span>
+<span class="s">uniform sampler2D u_texture;</span>
+<span class="s">//predicted color from black body</span>
+<span class="s">varying vec3 v_color;</span>
+
+<span class="s">void main()</span>
+<span class="s">{</span>
+<span class="s">    //amount of intensity from the grayscale star</span>
+<span class="s">    float star_tex_intensity = texture2D(u_texture, gl_PointCoord).r;</span>
+<span class="s">    gl_FragColor = vec4(v_color * star_tex_intensity, 0.8);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="n">galaxy</span> <span class="o">=</span> <span class="n">Galaxy</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">galaxy</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="mi">13000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="c"># coldest and hottest temperatures of out galaxy</span>
+<span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">10000.0</span>
+<span class="c"># total number of discrete colors between t0 and t1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+<span class="c"># maps [0, n) -&gt; colors</span>
+<span class="c"># generate a linear interpolation of temperatures</span>
+<span class="c"># then map the temperatures to colors using black body</span>
+<span class="c"># color predictions</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">galaxy_specrend</span><span class="o">.</span><span class="n">spectrum_to_xyz</span><span class="p">(</span><span class="n">galaxy_specrend</span><span class="o">.</span><span class="n">bb_spectrum</span><span class="p">,</span>
+                                              <span class="n">temperature</span><span class="p">)</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">galaxy_specrend</span><span class="o">.</span><span class="n">xyz_to_rgb</span><span class="p">(</span><span class="n">galaxy_specrend</span><span class="o">.</span><span class="n">SMPTEsystem</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">galaxy_specrend</span><span class="o">.</span><span class="n">norm_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="c"># load the PNG that we use to blend the star with</span>
+<span class="c"># to provide a circular look to each star.</span>
+<span class="k">def</span> <span class="nf">load_galaxy_star_image</span><span class="p">():</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;galaxy/star-particle.png&#39;</span><span class="p">)</span>
+    <span class="n">raw_image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read_png</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">raw_image</span>
+
+
+<span class="k">class</span> <span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># setup initial width, height</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+
+        <span class="c"># create a new shader program</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span><span class="p">,</span>
+                                    <span class="n">count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">galaxy</span><span class="p">))</span>
+
+        <span class="c"># load the star texture</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">load_galaxy_star_image</span><span class="p">(),</span>
+                                      <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span>
+
+        <span class="c"># construct the model, view and projection matrices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">translate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_colormap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">colors</span>
+
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">w</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
+
+        <span class="c"># start the galaxy to some decent point in the future</span>
+        <span class="n">galaxy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_galaxy_vertex_data</span><span class="p">()</span>
+
+        <span class="c"># setup the VBO once the galaxy vertex data has been setup</span>
+        <span class="c"># bind the VBO for the first time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_vbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_vbo</span><span class="p">)</span>
+
+        <span class="c"># setup blending</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+                       <span class="n">depth_test</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                       <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__create_galaxy_vertex_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">galaxy</span><span class="p">),</span>
+                        <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;a_size&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s">&#39;a_position&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s">&#39;a_color_index&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s">&#39;a_brightness&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                               <span class="p">(</span><span class="s">&#39;a_type&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+
+        <span class="c"># see shader for parameter explanations</span>
+        <span class="n">pw</span><span class="p">,</span> <span class="n">ph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">galaxy</span><span class="p">[</span><span class="s">&#39;size&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">pw</span> <span class="o">/</span> <span class="mf">800.0</span><span class="p">,</span> <span class="n">ph</span> <span class="o">/</span> <span class="mf">800.0</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">galaxy</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">13000.0</span>
+
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_color_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">galaxy</span><span class="p">[</span><span class="s">&#39;temperature&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_brightness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">galaxy</span><span class="p">[</span><span class="s">&#39;brightness&#39;</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">galaxy</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># setup the new viewport</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
+        <span class="c"># recompute the projection matrix</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">w</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">),</span>
+                                      <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="c"># update the galaxy</span>
+        <span class="n">galaxy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">50000</span><span class="p">)</span>  <span class="c"># in years !</span>
+
+        <span class="c"># recreate the numpy array that will be sent as the VBO data</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_galaxy_vertex_data</span><span class="p">()</span>
+        <span class="c"># update the VBO</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_vbo</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="c"># bind the VBO to the GL context</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_vbo</span><span class="p">)</span>
+
+        <span class="c"># clear the screen and render</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;points&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

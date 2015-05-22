@@ -70,7 +70,7 @@
 <hr class="docutils" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -150,7 +150,7 @@ defined as multiline strings.</p>
 <span class="s">    pos.z += v_radius*z;</span>
 <span class="s">    vec3 pos2 = pos.xyz;</span>
 <span class="s">    pos = u_projection * pos;</span>
-<span class="s">    gl_FragDepth = 0.5*(pos.z / pos.w)+0.5;</span>
+<span class="s">//    gl_FragDepth = 0.5*(pos.z / pos.w)+0.5;</span>
 <span class="s">    vec3 normal = vec3(x,y,z);</span>
 <span class="s">    float diffuse = clamp(dot(normal, v_light_direction), 0.0, 1.0);</span>
 
@@ -173,15 +173,16 @@ defined as multiline strings.</p>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;Molecular viewer&#39;</span><span class="p">,</span>
-                            <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">800</span>
+                            <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_scale</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="mi">40</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">translate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="mi">40</span>
-        <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_zoom</span><span class="p">()</span>
 
         <span class="n">fname</span> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;molecular_viewer/micelle.npz&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">load_molecule</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
@@ -190,7 +191,10 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span>
 
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">load_molecule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
         <span class="n">molecule</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="s">&#39;molecule&#39;</span><span class="p">]</span>
@@ -214,7 +218,7 @@ defined as multiline strings.</p>
 
         <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coords</span>
         <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomsColours</span>
-        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_radius&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomsScales</span>
+        <span class="n">data</span><span class="p">[</span><span class="s">&#39;a_radius&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomsScales</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ps</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
@@ -222,9 +226,6 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_light_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_light_spec_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.</span>
-
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
@@ -238,16 +239,16 @@ defined as multiline strings.</p>
     <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">+=</span> <span class="o">.</span><span class="mi">25</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-
-        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+                            <span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="k">def</span> <span class="nf">apply_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_projection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection</span>
@@ -255,9 +256,7 @@ defined as multiline strings.</p>
     <span class="k">def</span> <span class="nf">on_mouse_wheel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">-=</span> <span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">translate</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-
-        <span class="n">translate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">translate</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">translate</span><span class="p">))</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s">&#39;u_view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -269,7 +268,6 @@ defined as multiline strings.</p>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">mvc</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
-    <span class="n">mvc</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>

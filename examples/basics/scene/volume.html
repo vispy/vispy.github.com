@@ -67,50 +67,130 @@
   <div class="section" id="basics-scene-volume">
 <h1>basics/scene/volume<a class="headerlink" href="#basics-scene-volume" title="Permalink to this headline">¶</a></h1>
 <p>Example volume rendering</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
+<p>Controls:</p>
+<ul class="simple">
+<li>1  - toggle camera between first person (fly) and regular 3D (turntable)</li>
+<li>2  - toggle between volume rendering methods</li>
+<li>3  - toggle between stent-CT / brain-MRI image</li>
+<li>4  - toggle between colormaps</li>
+<li>0  - reset cameras</li>
+<li>[] - decrease/increase isosurface threshold</li>
+</ul>
+<p>With fly camera:</p>
+<ul class="simple">
+<li>WASD or arrow keys - move around</li>
+<li>SPACE - brake</li>
+<li>FC - move up-down</li>
+<li>IJKL or mouse - look around</li>
+</ul>
+<img alt="../../../_images/basics__scene__volume.png" src="../../../_images/basics__scene__volume.png" />
+<hr class="docutils" />
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="c"># todo: LIST</span>
-<span class="c"># - clim property</span>
-<span class="c"># - different render styles</span>
-<span class="c"># - this example makes 6 Program objects???</span>
-<span class="c"># - Check recompiling</span>
-<span class="c"># - set camera limits using contents</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">get_colormaps</span><span class="p">,</span> <span class="n">BaseColormap</span>
 
 <span class="c"># Read volume</span>
-<span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;brain/mri.npz&#39;</span><span class="p">))[</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
-<span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c">#vol = imageio.volread(&#39;stent.npz&#39;)</span>
-<span class="n">vol</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">vol</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c"># todo: implement clim</span>
+<span class="n">vol1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;volume/stent.npz&#39;</span><span class="p">))[</span><span class="s">&#39;arr_0&#39;</span><span class="p">]</span>
+<span class="n">vol2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s">&#39;brain/mri.npz&#39;</span><span class="p">))[</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">vol2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span><span class="n">vol2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="c"># Prepare canvas</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">measure_fps</span><span class="p">()</span>
 
 <span class="c"># Set up a viewbox to display the image with interactive pan/zoom</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
 
-<span class="c"># Create the volume visual</span>
-<span class="n">volume</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-<span class="c">#volume._program._context.glir.set_verbose(1)</span>
+<span class="c"># Set whether we are emulating a 3D texture</span>
+<span class="n">emulate_texture</span> <span class="o">=</span> <span class="bp">False</span>
 
-<span class="c"># Set the view bounds to show the entire image with some padding</span>
-<span class="c">#view.camera.rect = (-10, -10, vol.shape[1]+20, vol.shape[0]+20)</span>
-<span class="c">#view.set_camera(&#39;turntable&#39;, mode=&#39;perspective&#39;, up=&#39;z&#39;, distance=320,</span>
-<span class="c">#                 center=(128, 128, 128), azimuth=30., elevation=30.)</span>
-<span class="c">#view.camera.width = 700</span>
-<span class="c"># view.camera.fov = 30</span>
-<span class="c"># view.camera.distance = 500</span>
+<span class="c"># Create the volume visuals, only one is visible</span>
+<span class="n">volume1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol1</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.225</span><span class="p">,</span>
+                               <span class="n">emulate_texture</span><span class="o">=</span><span class="n">emulate_texture</span><span class="p">)</span>
+<span class="n">volume1</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">volume2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol2</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                               <span class="n">emulate_texture</span><span class="o">=</span><span class="n">emulate_texture</span><span class="p">)</span>
+<span class="n">volume2</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="bp">False</span>
 
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set_range</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">camera</span>
-<span class="c"># c.transform.translate((0, 0, 600))</span>
-<span class="n">c</span><span class="o">.</span><span class="n">fov</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c"># Create two cameras (1 for firstperson, 3 for 3d person)</span>
+<span class="n">fov</span> <span class="o">=</span> <span class="mf">60.</span>
+<span class="n">cam1</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">FlyCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">)</span>
+<span class="n">cam2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">)</span>
+<span class="n">cam3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">ArcballCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam2</span>  <span class="c"># Select turntable at first</span>
 
-<span class="c"># todo: center loc is not yet used</span>
+
+<span class="c"># create colormaps that work well for translucent and additive volume rendering</span>
+<span class="k">class</span> <span class="nc">TransFire</span><span class="p">(</span><span class="n">BaseColormap</span><span class="p">):</span>
+    <span class="n">glsl_map</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    vec4 translucent_fire(float t) {</span>
+<span class="s">        return vec4(pow(t, 0.5), t, t*t, max(0, t*1.05 - 0.05));</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">TransGrays</span><span class="p">(</span><span class="n">BaseColormap</span><span class="p">):</span>
+    <span class="n">glsl_map</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">    vec4 translucent_grays(float t) {</span>
+<span class="s">        return vec4(t, t, t, t*0.05);</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;</span>
+
+<span class="c"># Setup colormap iterators</span>
+<span class="n">opaque_cmaps</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">get_colormaps</span><span class="p">())</span>
+<span class="n">translucent_cmaps</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">([</span><span class="n">TransFire</span><span class="p">(),</span> <span class="n">TransGrays</span><span class="p">()])</span>
+<span class="n">opaque_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">opaque_cmaps</span><span class="p">)</span>
+<span class="n">translucent_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">translucent_cmaps</span><span class="p">)</span>
+
+
+<span class="c"># Implement key presses</span>
+<span class="nd">@canvas.events.key_press.connect</span>
+<span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">opaque_cmap</span><span class="p">,</span> <span class="n">translucent_cmap</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">cam_toggle</span> <span class="o">=</span> <span class="p">{</span><span class="n">cam1</span><span class="p">:</span> <span class="n">cam2</span><span class="p">,</span> <span class="n">cam2</span><span class="p">:</span> <span class="n">cam3</span><span class="p">,</span> <span class="n">cam3</span><span class="p">:</span> <span class="n">cam1</span><span class="p">}</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam_toggle</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span> <span class="s">&#39;fly&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;mip&#39;</span><span class="p">,</span> <span class="s">&#39;translucent&#39;</span><span class="p">,</span> <span class="s">&#39;iso&#39;</span><span class="p">,</span> <span class="s">&#39;additive&#39;</span><span class="p">]</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">methods</span><span class="p">[(</span><span class="n">methods</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">volume1</span><span class="o">.</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Volume render method: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">opaque_cmap</span> <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;mip&#39;</span><span class="p">,</span> <span class="s">&#39;iso&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="n">translucent_cmap</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;3&#39;</span><span class="p">:</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">volume1</span><span class="o">.</span><span class="n">visible</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">volume1</span><span class="o">.</span><span class="n">visible</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;4&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">volume1</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;mip&#39;</span><span class="p">,</span> <span class="s">&#39;iso&#39;</span><span class="p">]:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">opaque_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">opaque_cmaps</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">translucent_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">translucent_cmaps</span><span class="p">)</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">cam1</span><span class="o">.</span><span class="n">set_range</span><span class="p">()</span>
+        <span class="n">cam3</span><span class="o">.</span><span class="n">set_range</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s">&#39;[]&#39;</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.025</span> <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s">&#39;[&#39;</span> <span class="k">else</span> <span class="mf">0.025</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">threshold</span> <span class="o">+=</span> <span class="n">s</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">threshold</span> <span class="o">+=</span> <span class="n">s</span>
+        <span class="n">th</span> <span class="o">=</span> <span class="n">volume1</span><span class="o">.</span><span class="n">threshold</span> <span class="k">if</span> <span class="n">volume1</span><span class="o">.</span><span class="n">visible</span> <span class="k">else</span> <span class="n">volume2</span><span class="o">.</span><span class="n">threshold</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Isosurface threshold: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">th</span><span class="p">)</span>
+
+
+<span class="c"># for testing performance</span>
+<span class="c">#@canvas.connect</span>
+<span class="c">#def on_draw(ev):</span>
+    <span class="c">#canvas.update()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">__doc__</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

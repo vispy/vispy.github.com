@@ -85,7 +85,7 @@ Multiple real-time digital signals with GLSL-based clipping.
     
         // Compute the x coordinate from the time index.
         float x = -1 + 2*a_index.z / (u_n-1);
-        vec2 position = vec2(x, a_position);
+        vec2 position = vec2(x - (1 - 1 / u_scale.x), a_position);
     
         // Find the affine transformation for the subplots.
         vec2 a = vec2(1./ncols, 1./nrows)*.9;
@@ -139,15 +139,17 @@ Multiple real-time digital signals with GLSL-based clipping.
             self.program['u_size'] = (nrows, ncols)
             self.program['u_n'] = n
     
+            gloo.set_viewport(0, 0, *self.physical_size)
+    
             self._timer = app.Timer('auto', connect=self.on_timer, start=True)
     
-        def on_initialize(self, event):
             gloo.set_state(clear_color='black', blend=True,
                            blend_func=('src_alpha', 'one_minus_src_alpha'))
     
+            self.show()
+    
         def on_resize(self, event):
-            self.width, self.height = event.size
-            gloo.set_viewport(0, 0, self.width, self.height)
+            gloo.set_viewport(0, 0, *event.physical_size)
     
         def on_mouse_wheel(self, event):
             dx = np.sign(event.delta[1]) * .05
@@ -172,5 +174,4 @@ Multiple real-time digital signals with GLSL-based clipping.
     
     if __name__ == '__main__':
         c = Canvas()
-        c.show()
         app.run()

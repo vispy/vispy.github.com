@@ -7,8 +7,8 @@ tutorial/app/fps
 This is a very minimal example that opens a window and makes the background
 color to change from black to white to black ...
 
-The backend (one of 'qt', 'glut', 'pyglet') is chosen automatically depending
-on what is available on your machine.
+The backend is chosen automatically depending on what is available on
+your machine.
 
 .. code-block:: python
     
@@ -24,6 +24,7 @@ on what is available on your machine.
             app.Canvas.__init__(self, *args, **kwargs)
             self._timer = app.Timer('auto', connect=self.on_timer, start=True)
             self.tick = 0
+            self.show()
     
         def on_draw(self, event):
             gloo.clear(color=True)
@@ -39,6 +40,5 @@ on what is available on your machine.
     
     if __name__ == '__main__':
         canvas = Canvas(keys='interactive')
-        canvas.show()
         canvas.measure_fps(1, canvas.show_fps)
         app.run()

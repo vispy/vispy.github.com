@@ -72,7 +72,7 @@ scalar &#8220;values&#8221;. Plots the values looked up from colormaps and
 interpolated between the locations.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -101,6 +101,10 @@ defined as multiline strings.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_lim</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dir_x_right</span> <span class="o">=</span> <span class="n">dir_x_right</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dir_y_top</span> <span class="o">=</span> <span class="n">dir_y_top</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">activate_zoom</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">create_shader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colormap</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">colormap</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -166,7 +170,6 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">vbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">IndexBuffer</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span>
                        <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
 
@@ -175,10 +178,11 @@ defined as multiline strings.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangles&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activate_zoom</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">activate_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">heigh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
         <span class="n">data_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_lim</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">data_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_lim</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">data_aspect</span> <span class="o">=</span> <span class="n">data_width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">data_height</span><span class="p">)</span>
@@ -268,8 +272,6 @@ defined as multiline strings.</p>
                 <span class="n">x</span><span class="o">=</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">u</span><span class="o">=</span><span class="n">vec</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
                 <span class="n">colormap</span><span class="o">=</span><span class="n">create_colormap1d_hot</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span>
                 <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-    <span class="n">c1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    <span class="n">c2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>

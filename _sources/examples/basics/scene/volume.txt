@@ -6,51 +6,133 @@ basics/scene/volume
 
 Example volume rendering
 
+Controls:
+
+* 1  - toggle camera between first person (fly) and regular 3D (turntable)
+* 2  - toggle between volume rendering methods
+* 3  - toggle between stent-CT / brain-MRI image
+* 4  - toggle between colormaps
+* 0  - reset cameras
+* [] - decrease/increase isosurface threshold
+
+With fly camera:
+
+* WASD or arrow keys - move around
+* SPACE - brake
+* FC - move up-down
+* IJKL or mouse - look around
+
+.. image:: /_static/images/basics__scene__volume.png
+
+----
+
 .. code-block:: python
     
     
     
-    from vispy import app, scene, io
+    from itertools import cycle
     
     import numpy as np
     
-    # todo: LIST
-    # - clim property
-    # - different render styles
-    # - this example makes 6 Program objects???
-    # - Check recompiling
-    # - set camera limits using contents
+    from vispy import app, scene, io
+    from vispy.color import get_colormaps, BaseColormap
     
     # Read volume
-    vol = np.load(io.load_data_file('brain/mri.npz'))['data']
-    vol = np.flipud(np.rollaxis(vol, 1))
-    #vol = imageio.volread('stent.npz')
-    vol = vol.astype('float32') / vol.max()  # todo: implement clim
+    vol1 = np.load(io.load_data_file('volume/stent.npz'))['arr_0']
+    vol2 = np.load(io.load_data_file('brain/mri.npz'))['data']
+    vol2 = np.flipud(np.rollaxis(vol2, 1))
     
     # Prepare canvas
-    canvas = scene.SceneCanvas(keys='interactive')
-    canvas.size = 800, 600
-    canvas.show()
+    canvas = scene.SceneCanvas(keys='interactive', size=(800, 600), show=True)
+    canvas.measure_fps()
     
     # Set up a viewbox to display the image with interactive pan/zoom
     view = canvas.central_widget.add_view()
     
-    # Create the volume visual
-    volume = scene.visuals.Volume(vol, parent=view.scene)
-    #volume._program._context.glir.set_verbose(1)
+    # Set whether we are emulating a 3D texture
+    emulate_texture = False
     
-    # Set the view bounds to show the entire image with some padding
-    #view.camera.rect = (-10, -10, vol.shape[1]+20, vol.shape[0]+20)
-    #view.set_camera('turntable', mode='perspective', up='z', distance=320,
-    #                 center=(128, 128, 128), azimuth=30., elevation=30.)
-    #view.camera.width = 700
-    # view.camera.fov = 30
-    # view.camera.distance = 500
+    # Create the volume visuals, only one is visible
+    volume1 = scene.visuals.Volume(vol1, parent=view.scene, threshold=0.225,
+                                   emulate_texture=emulate_texture)
+    volume1.transform = scene.STTransform(translate=(64, 64, 0))
+    volume2 = scene.visuals.Volume(vol2, parent=view.scene, threshold=0.2,
+                                   emulate_texture=emulate_texture)
+    volume2.visible = False
     
-    view.camera = scene.cameras.TurntableCamera(parent=view.scene)
-    view.camera.set_range((0, 250), (0, 250), (0, 250))
-    c = view.camera
-    # c.transform.translate((0, 0, 600))
-    c.fov = 10
+    # Create two cameras (1 for firstperson, 3 for 3d person)
+    fov = 60.
+    cam1 = scene.cameras.FlyCamera(parent=view.scene, fov=fov)
+    cam2 = scene.cameras.TurntableCamera(parent=view.scene, fov=fov)
+    cam3 = scene.cameras.ArcballCamera(parent=view.scene, fov=fov)
+    view.camera = cam2  # Select turntable at first
     
-    # todo: center loc is not yet used
+    
+    # create colormaps that work well for translucent and additive volume rendering
+    class TransFire(BaseColormap):
+        glsl_map = """
+        vec4 translucent_fire(float t) {
+            return vec4(pow(t, 0.5), t, t*t, max(0, t*1.05 - 0.05));
+        }
+        """
+    
+    
+    class TransGrays(BaseColormap):
+        glsl_map = """
+        vec4 translucent_grays(float t) {
+            return vec4(t, t, t, t*0.05);
+        }
+        """
+    
+    # Setup colormap iterators
+    opaque_cmaps = cycle(get_colormaps())
+    translucent_cmaps = cycle([TransFire(), TransGrays()])
+    opaque_cmap = next(opaque_cmaps)
+    translucent_cmap = next(translucent_cmaps)
+    
+    
+    # Implement key presses
+    @canvas.events.key_press.connect
+    def on_key_press(event):
+        global opaque_cmap, translucent_cmap
+        if event.text == '1':
+            cam_toggle = {cam1: cam2, cam2: cam3, cam3: cam1}
+            view.camera = cam_toggle.get(view.camera, 'fly')
+        elif event.text == '2':
+            methods = ['mip', 'translucent', 'iso', 'additive']
+            method = methods[(methods.index(volume1.method) + 1) % 4]
+            print("Volume render method: %s" % method)
+            cmap = opaque_cmap if method in ['mip', 'iso'] else translucent_cmap
+            volume1.method = method
+            volume1.cmap = cmap
+            volume2.method = method
+            volume2.cmap = cmap
+        elif event.text == '3':
+            volume1.visible = not volume1.visible
+            volume2.visible = not volume1.visible
+        elif event.text == '4':
+            if volume1.method in ['mip', 'iso']:
+                cmap = opaque_cmap = next(opaque_cmaps)
+            else:
+                cmap = translucent_cmap = next(translucent_cmaps)
+            volume1.cmap = cmap
+            volume2.cmap = cmap
+        elif event.text == '0':
+            cam1.set_range()
+            cam3.set_range()
+        elif event.text != '' and event.text in '[]':
+            s = -0.025 if event.text == '[' else 0.025
+            volume1.threshold += s
+            volume2.threshold += s
+            th = volume1.threshold if volume1.visible else volume2.threshold
+            print("Isosurface threshold: %0.3f" % th)
+    
+    
+    # for testing performance
+    #@canvas.connect
+    #def on_draw(ev):
+        #canvas.update()
+    
+    if __name__ == '__main__':
+        print(__doc__)
+        app.run()

@@ -7,6 +7,10 @@ basics/scene/console
 Demonstrate the use of the vispy console. Note how the console size is
 independent of the canvas scaling.
 
+.. image:: /_static/images/basics__scene__console.png
+
+----
+
 .. code-block:: python
     
     
@@ -20,6 +24,7 @@ independent of the canvas scaling.
     grid = canvas.central_widget.add_grid()
     
     vb = scene.widgets.ViewBox(border_color='b')
+    vb.camera = 'panzoom'
     vb.camera.rect = -1, -1, 2, 2
     grid.add_widget(vb, row=0, col=0)
     text = Text('Starting timer...', color='w', font_size=24, parent=vb.scene)

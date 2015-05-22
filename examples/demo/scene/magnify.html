@@ -73,6 +73,8 @@ region of data, while also keeping the entire data set visible for reference.</p
 <p>The MagnifyCamera classes are responsible for inserting MagnifyTransform
 at the transform of each viewbox scene, while also updating those transforms
 to respond to user input.</p>
+<img alt="../../../_images/demo__scene__magnify.png" src="../../../_images/demo__scene__magnify.png" />
+<hr class="docutils" />
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">vispy.scene</span>
 <span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">visuals</span>
@@ -92,10 +94,9 @@ to respond to user input.</p>
 
 <span class="c">#</span>
 <span class="c"># Top viewbox: Show a plot line containing fine structure with a 1D</span>
-<span class="c"># magnigication transform.</span>
+<span class="c"># magnification transform.</span>
 <span class="c">#</span>
-<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Magnify1DCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">100</span>
+
 
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
@@ -109,23 +110,23 @@ to respond to user input.</p>
 
 <span class="n">grid1</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">GridLines</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb1</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 
+<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">Magnify1DCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">vb1</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">100</span>
 
 <span class="c">#</span>
 <span class="c"># Bottom-left viewbox: Image with circular magnification lens.</span>
 <span class="c">#</span>
 <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">vb2</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">MagnifyCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">vb2</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">img_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">58</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">img_data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;impostor&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-
+<span class="n">image</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">img_data</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;impostor&#39;</span><span class="p">)</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">MagnifyCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">vb2</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c">#</span>
 <span class="c"># Bottom-right viewbox: Scatter plot with many clusters of varying scale.</span>
 <span class="c">#</span>
-<span class="n">vb3</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">MagnifyCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">vb3</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
 
 <span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -141,7 +142,8 @@ to respond to user input.</p>
 <span class="n">vb3</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
 
 <span class="n">grid2</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">GridLines</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">vb3</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-
+<span class="n">vb3</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">MagnifyCamera</span><span class="p">(</span><span class="n">mag</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size_factor</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">radius_ratio</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">vb3</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c"># Add helpful text</span>
 <span class="n">text1</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;mouse wheel = magnify&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>

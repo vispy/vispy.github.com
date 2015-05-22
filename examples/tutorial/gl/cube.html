@@ -68,13 +68,13 @@
 <h1>tutorial/gl/cube<a class="headerlink" href="#tutorial-gl-cube" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># Copyright (c) 2014, Vispy Development Team. All Rights Reserved.</span>
+<span class="c"># Copyright (c) 2015, Vispy Development Team. All Rights Reserved.</span>
 <span class="c"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
 <span class="c"># -----------------------------------------------------------------------------</span>
 <span class="c"># Author: Nicolas P .Rougier</span>
@@ -198,7 +198,6 @@ defined as multiline strings.</p>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
                             <span class="n">title</span><span class="o">=</span><span class="s">&#39;Rotating cube (GL version)&#39;</span><span class="p">,</span>
                             <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c"># Build &amp; activate cube program</span>
@@ -275,8 +274,8 @@ defined as multiline strings.</p>
         <span class="c"># OpenGL initalization</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
@@ -284,8 +283,10 @@ defined as multiline strings.</p>
                           <span class="n">gl</span><span class="o">.</span><span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">size</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resize</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">physical_size</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">physical_width</span><span class="p">,</span> <span class="n">physical_height</span><span class="p">):</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">physical_width</span><span class="p">,</span> <span class="n">physical_height</span><span class="p">)</span>
         <span class="n">projection</span> <span class="o">=</span> <span class="n">perspective</span><span class="p">(</span><span class="mf">35.0</span><span class="p">,</span> <span class="n">width</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
         <span class="n">loc</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="s">&quot;u_projection&quot;</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="n">projection</span><span class="p">)</span>

@@ -6,19 +6,22 @@ basics/scene/colored_line
 
 Demonstration of various features of Line visual.
 
+.. image:: /_static/images/basics__scene__colored_line.png
+
+----
+
 .. code-block:: python
     
     
     import itertools
     import numpy as np
-    import sys
     
     from vispy import app, scene
-    from vispy.color import colormaps
+    from vispy.color import get_colormaps
     from vispy.visuals.transforms import STTransform
     from vispy.ext.six import next
     
-    colormaps = itertools.cycle(colormaps)
+    colormaps = itertools.cycle(get_colormaps())
     
     # vertex positions of data to draw
     N = 200
@@ -31,7 +34,7 @@ Demonstration of various features of Line visual.
     
     # Create a visual that updates the line with different colormaps
     color = next(colormaps)
-    line = scene.Line(pos=pos, color=color, mode='gl')
+    line = scene.Line(pos=pos, color=color, method='gl')
     line.transform = STTransform(translate=[0, 140])
     line.parent = canvas.central_widget
     
@@ -45,9 +48,8 @@ Demonstration of various features of Line visual.
         line.set_data(pos=pos, color=color)
         text.text = color
     
-    timer = app.Timer(2.0, connect=on_timer, start=True)
+    timer = app.Timer(.5, connect=on_timer, start=True)
     
     
     if __name__ == '__main__':
-        if sys.flags.interactive != 1:
-            canvas.app.run()
+        canvas.app.run()

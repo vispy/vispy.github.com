@@ -70,9 +70,11 @@
 to convert matplotlib commands to vispy draw commands.</p>
 <p>Requires matplotlib.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 
+<span class="c"># You can use either matplotlib or vispy to render this example:</span>
+<span class="c"># import matplotlib.pyplot as plt</span>
 <span class="kn">import</span> <span class="nn">vispy.mpl_plot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
 <span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">read_png</span><span class="p">,</span> <span class="n">load_data_file</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
@@ -108,9 +110,8 @@ to convert matplotlib commands to vispy draw commands.</p>
 <span class="c"># 2. Any plotting commands executed after this will not take effect.</span>
 <span class="c"># We are working to remove this limitation.</span>
 
-<span class="n">block</span> <span class="o">=</span> <span class="bp">False</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">True</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

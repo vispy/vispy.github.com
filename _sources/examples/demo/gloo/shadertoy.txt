@@ -11,6 +11,10 @@ TODO: support cubes and videos as channel inputs (currently, only images
 are supported).
 
 
+.. image:: /_static/images/demo__gloo__shadertoy.png
+
+----
+
 .. note:: 
                 This example is based on ``vispy.gloo`` and thus uses GLSL
                 shading code, which is executed at the GPU and is
@@ -20,6 +24,10 @@ are supported).
 .. code-block:: python
     
     
+    
+    # NOTE: This example throws warnings about variables not being used;
+    # this is normal because only some shadertoy examples make use of all
+    # variables, and the GPU may compile some of them away.
     
     import sys
     from datetime import datetime, time
@@ -51,7 +59,7 @@ are supported).
     uniform sampler2D iChannel2;             // input channel. XX = 2D/Cube
     uniform sampler2D iChannel3;             // input channel. XX = 2D/Cube
     uniform vec3      iChannelResolution[4]; // channel resolution (in pixels)
-    uniform float     iChannelTime[4];       // channel playback time (in seconds)
+    uniform float     iChannelTime[4];       // channel playback time (in sec)
     
     %s
     """
@@ -87,11 +95,17 @@ are supported).
     
             self.program["position"] = [(-1, -1), (-1, 1), (1, 1),
                                         (-1, -1), (1, 1), (1, -1)]
+            self.program['iMouse'] = 0, 0, 0, 0
     
             self.program['iSampleRate'] = 44100.
             for i in range(4):
                 self.program['iChannelTime[%d]' % i] = 0.
+    
+            self.activate_zoom()
+    
             self._timer = app.Timer('auto', connect=self.on_timer, start=True)
+    
+            self.show()
     
         def set_channel_input(self, img, i=0):
             tex = gloo.Texture2D(img)
@@ -117,13 +131,16 @@ are supported).
     
         def on_timer(self, event):
             self.program['iGlobalTime'] = event.elapsed
-            self.program['iDate'] = get_idate()  # used in some shadertoy examples
+            self.program['iDate'] = get_idate()  # used in some shadertoy exs
             self.update()
     
         def on_resize(self, event):
-            width, height = event.size
-            gloo.set_viewport(0, 0, width, height)
-            self.program['iResolution'] = (width, height, 0.)
+            self.activate_zoom()
+    
+        def activate_zoom(self):
+            gloo.set_viewport(0, 0, *self.physical_size)
+            self.program['iResolution'] = (self.physical_size[0],
+                                           self.physical_size[1], 0.)
     
     # -------------------------------------------------------------------------
     # COPY-PASTE SHADERTOY CODE BELOW

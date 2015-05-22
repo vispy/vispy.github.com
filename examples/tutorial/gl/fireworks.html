@@ -74,7 +74,7 @@ Object (VBO). After each explosion, vertex data for the next explosion are
 calculated, such that each explostion is unique.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This example is based on <tt class="docutils literal"><span class="pre">vispy.gloo</span></tt> and thus uses GLSL
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
 shading code, which is executed at the GPU and is
 defined as multiline strings.</p>
 </div>
@@ -85,6 +85,8 @@ defined as multiline strings.</p>
 
 
 <span class="n">vertex_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
 <span class="s">uniform float time;</span>
 <span class="s">uniform vec3 center;</span>
 <span class="s">attribute float lifetime;</span>
@@ -105,6 +107,8 @@ defined as multiline strings.</p>
 <span class="s">&quot;&quot;&quot;</span>
 
 <span class="n">fragment_code</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">#version 120</span>
+
 <span class="s">uniform vec4 color;</span>
 <span class="s">varying float v_lifetime;</span>
 <span class="s">void main()</span>
@@ -121,7 +125,6 @@ defined as multiline strings.</p>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s">&#39;GL Fireworks&#39;</span><span class="p">,</span>
                             <span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c"># Build &amp; activate program</span>
@@ -174,15 +177,16 @@ defined as multiline strings.</p>
         <span class="n">gl</span><span class="o">.</span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_ONE</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="mi">34370</span><span class="p">)</span>  <span class="c"># gl.GL_VERTEX_PROGRAM_POINT_SIZE</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="mi">34913</span><span class="p">)</span>  <span class="c"># gl.GL_POINT_SPRITE</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_explosion</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_timer</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glClear</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_COLOR_BUFFER_BIT</span> <span class="o">|</span> <span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_BUFFER_BIT</span><span class="p">)</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glDrawArrays</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POINTS</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">event</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_timer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">elapsed_time</span> <span class="o">+=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="mf">60.</span>

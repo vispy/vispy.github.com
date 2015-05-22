@@ -1,0 +1,345 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>tutorial/visuals/T03_antialiasing &mdash; vispy</title>
+    
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link href="../../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../_static/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../_static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/js/jquery.anoslide.js"></script>
+        <script type="text/javascript" src="../../../_static/js/carousel.js"></script>
+        <link rel="top" title="vispy" href="../../../index.html" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="shortcut icon" href="../../../_static/favicon.ico">
+</head>
+<body class="container">
+    <a href="http://vispy.org" class="logo"><img src="../../../_static/img/logo.png" alt=""></a>
+    <div class="clearfix"></div>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="http://vispy.org/index.html">Home</a></li>
+<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
+<li><a href="http://api.vispy.org">Documentation</a></li>
+<li><a href="https://github.com/vispy/vispy">Source</a></li>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+
+</script>
+            </ul>
+            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
+                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+                <input type="hidden" name="check_keywords" value="yes" >
+                <input type="hidden" name="area" value="default" >
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            
+  <div class="section" id="tutorial-visuals-t03-antialiasing">
+<h1>tutorial/visuals/T03_antialiasing<a class="headerlink" href="#tutorial-visuals-t03-antialiasing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tutorial-creating-visuals">
+<h2>Tutorial: Creating Visuals<a class="headerlink" href="#tutorial-creating-visuals" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="antialiasing">
+<h1>03. Antialiasing<a class="headerlink" href="#antialiasing" title="Permalink to this headline">¶</a></h1>
+<p>In [tutorial 1] we learned how to draw a simple rectangle, and in [tutorial 2]
+we expanded on this by using the Document coordinate system to draw a
+rectangular border of a specific width. In this tutorial we introduce the
+Framebuffer coordinate system, which is used for antialiasing measurements.</p>
+<p>In order to antialias our edges, we need to introduce a calculation to the
+fragment shader that computes, for each pixel being drawn, the fraction of the
+pixel that is covered by the visual&#8217;s geometry. At first glance, it may seem
+that the Document coordinate system is sufficient for this purpose because it
+has unit-length pixels. However, there are two situations when the actual
+pixels being filled by the fragment shader are not the same size as the pixels
+on the canvas:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>High-resolution displays (such as retina displays) that report a canvas
+resolution smaller than the actual framebuffer resolution.</li>
+<li>When exporting to an image with a different size than the canvas.</li>
+</ol>
+</div></blockquote>
+<p>In most cases the discrepancy between Document and Framebuffer coordinates can
+be corrected by a simple scale factor. However, this fails for some interesting
+corner cases where the transform is more complex, such as in VR applications
+using optical distortion correction. Decide for yourself: is this Visual for
+my personal use, or is it intended for a broader audience? For simplicity in
+this example, we will use a simple scale factor.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This example is based on <code class="docutils literal"><span class="pre">vispy.gloo</span></code> and thus uses GLSL
+shading code, which is executed at the GPU and is
+defined as multiline strings.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">visuals</span><span class="p">,</span> <span class="n">scene</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="c"># Here we use almost the same vertex shader as in tutorial 2.</span>
+<span class="c"># The important difference is the addition of the line_pos variable,</span>
+<span class="c"># which measures position across the width of the border line.</span>
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">varying float line_pos;  // how far we are across the border line</span>
+
+<span class="s">void main() {</span>
+<span class="s">    // First map the vertex to document coordinates</span>
+<span class="s">    vec4 doc_pos = $visual_to_doc(vec4($position, 0, 1));</span>
+
+<span class="s">    vec4 adjusted;</span>
+<span class="s">    if ( $adjust_dir.x == 0 ) {</span>
+<span class="s">        adjusted = doc_pos;</span>
+<span class="s">        line_pos = $line_width;  // at the outside of the border</span>
+<span class="s">    }</span>
+<span class="s">    else {</span>
+<span class="s">        // Inner vertexes must be adjusted for line width</span>
+<span class="s">        vec4 doc_x = $visual_to_doc(vec4($adjust_dir.x, 0, 0, 0)) -</span>
+<span class="s">                    $visual_to_doc(vec4(0, 0, 0, 0));</span>
+<span class="s">        vec4 doc_y = $visual_to_doc(vec4(0, $adjust_dir.y, 0, 0)) -</span>
+<span class="s">                    $visual_to_doc(vec4(0, 0, 0, 0));</span>
+<span class="s">        doc_x = normalize(doc_x);</span>
+<span class="s">        doc_y = normalize(doc_y);</span>
+
+<span class="s">        vec4 proj_y_x = dot(doc_x, doc_y) * doc_x;  // project y onto x</span>
+<span class="s">        float cur_width = length(doc_y - proj_y_x);  // measure current weight</span>
+
+<span class="s">        // And now we can adjust vertex position for line width:</span>
+<span class="s">        adjusted = doc_pos + ($line_width / cur_width) * (doc_x + doc_y);</span>
+
+<span class="s">        line_pos = 0;  // at the inside of the border</span>
+<span class="s">    }</span>
+
+<span class="s">    // Finally map the remainder of the way to render coordinates</span>
+<span class="s">    gl_Position = $doc_to_render(adjusted);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+<span class="c"># The fragment shader is updated to change the opacity of the color based on</span>
+<span class="c"># the amount of the fragment that is covered by the visual&#39;s geometry.</span>
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">varying float line_pos;</span>
+
+<span class="s">void main() {</span>
+<span class="s">    // Decrease the alpha linearly as we come within 1 pixel of the edge.</span>
+<span class="s">    // Note: this only approximates the actual fraction of the pixel that is</span>
+<span class="s">    // covered by the visual&#39;s geometry. A more accurate measurement would</span>
+<span class="s">    // produce better antialiasing, but the effect would be subtle.</span>
+<span class="s">    float alpha = 1.0;</span>
+<span class="s">    if ((line_pos * $doc_fb_scale) &lt; 1) {</span>
+<span class="s">        alpha = $color.a * line_pos;</span>
+<span class="s">    }</span>
+<span class="s">    else if ((line_pos * $doc_fb_scale) &gt; ($line_width - 1)) {</span>
+<span class="s">        alpha = $color.a * ($line_width - line_pos);</span>
+<span class="s">    }</span>
+<span class="s">    gl_FragColor = vec4($color.rgb, alpha);</span>
+<span class="s">}</span>
+<span class="s">&quot;&quot;&quot;</span>
+
+
+<span class="c"># The visual class is defined almost exactly as in [tutorial 2]. The only</span>
+<span class="c"># major difference is that the draw() method now calculates a scale factor</span>
+<span class="c"># for converting between document and framebuffer coordinates.</span>
+<span class="k">class</span> <span class="nc">MyRectVisual</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">Visual</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Visual that draws a rectangular outline.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : float</span>
+<span class="sd">        x coordinate of rectangle origin</span>
+<span class="sd">    y : float</span>
+<span class="sd">        y coordinate of rectangle origin</span>
+<span class="sd">    w : float</span>
+<span class="sd">        width of rectangle</span>
+<span class="sd">    h : float</span>
+<span class="sd">        height of rectangle</span>
+<span class="sd">    weight : float</span>
+<span class="sd">        width of border (in px)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">4.0</span><span class="p">):</span>
+        <span class="n">visuals</span><span class="o">.</span><span class="n">Visual</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
+
+        <span class="c"># 10 vertices for 8 triangles (using triangle_strip) forming a</span>
+        <span class="c"># rectangular outline</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vert_buffer</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span>
+        <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="c"># Direction each vertex should move to correct for line width</span>
+        <span class="c"># (the length of this vector will be corrected in the shader)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_buffer</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">shaders</span><span class="o">.</span><span class="n">ModularProgram</span><span class="p">(</span><span class="n">vertex_shader</span><span class="p">,</span>
+                                                      <span class="n">fragment_shader</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vert_buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;adjust_dir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj_buffer</span>
+        <span class="c"># To compensate for antialiasing, add 1 to border width:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;line_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transforms</span><span class="p">):</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">cull_face</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+        <span class="c"># Set the two transforms required by the vertex shader:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">visual_to_document</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s">&#39;doc_to_render&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">transforms</span><span class="o">.</span><span class="n">framebuffer_to_render</span> <span class="o">*</span>
+            <span class="n">transforms</span><span class="o">.</span><span class="n">document_to_framebuffer</span><span class="p">)</span>
+
+        <span class="c"># Set the scale factor between document and framebuffer coordinate</span>
+        <span class="c"># systems. This assumes a simple linear / isotropic scale; more complex</span>
+        <span class="c"># transforms will yield strange results!</span>
+        <span class="n">fbs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">transforms</span><span class="o">.</span><span class="n">document_to_framebuffer</span><span class="o">.</span><span class="n">map</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span>
+                             <span class="n">transforms</span><span class="o">.</span><span class="n">document_to_framebuffer</span><span class="o">.</span><span class="n">map</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;doc_fb_scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fbs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s">&#39;line_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fbs</span>
+
+        <span class="c"># Finally, draw the triangles.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s">&#39;triangle_strip&#39;</span><span class="p">)</span>
+
+
+<span class="c"># As in the previous tutorial, we auto-generate a Visual+Node class for use</span>
+<span class="c"># in the scenegraph.</span>
+<span class="n">MyRect</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">create_visual_node</span><span class="p">(</span><span class="n">MyRectVisual</span><span class="p">)</span>
+
+
+<span class="c"># Finally we will test the visual by displaying in a scene.</span>
+
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># This time we add a ViewBox to let the user zoom/pan</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s">&#39;panzoom&#39;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+
+<span class="c"># ..and add the rects to the view instead of canvas.scene</span>
+<span class="n">rects</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyRect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">),</span>
+         <span class="n">MyRect</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)]</span>
+
+<span class="c"># Again, rotate one rectangle to ensure the transforms are working as we</span>
+<span class="c"># expect.</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">AffineTransform</span><span class="p">()</span>
+<span class="n">tr</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">rects</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">tr</span>
+
+<span class="c"># Add some text instructions</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s">&quot;Drag right mouse button to zoom.&quot;</span><span class="p">,</span>
+                          <span class="n">color</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">,</span>
+                          <span class="n">anchor_x</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                          <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="p">,</span>
+                          <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c"># ..and optionally start the event loop</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+        </div>
+        <div class="span3">
+
+<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
+        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Links</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
+        <li><a class="reference external"
+                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy">User mailing list</a></li>
+        <li><a class="reference external"
+                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
+        <li><a class="reference external"
+                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
+    </ul>
+</div>
+<h4 class="sidebar-box-heading">Related Projects</h4>
+<div class="well sidebar-box">
+    <ul class="nav nav-list">
+        <li><a class="reference external"
+                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
+        <li><a class="reference external"
+                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
+        <li><a class="reference external"
+                href="http://rossant.github.io/galry/">Galry</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
+        <li><a class="reference external"
+                href="http://code.google.com/p/visvis/">Visvis</a></li>
+    </ul>
+</div>
+        </div>
+    </div>
+    <div class="well footer">
+        <small>
+            &copy; Copyright the vispy development team.
+            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
+        </small>
+    </div>
+</body>
+</html>

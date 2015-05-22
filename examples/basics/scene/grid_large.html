@@ -67,7 +67,8 @@
   <div class="section" id="basics-scene-grid-large">
 <h1>basics/scene/grid_large<a class="headerlink" href="#basics-scene-grid-large" title="Permalink to this headline">¶</a></h1>
 <p>Test automatic layout of multiple viewboxes using Grid.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -84,17 +85,17 @@
     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">vb</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">vb</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s">&#39;panzoom&#39;</span>
         <span class="n">vb</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
         <span class="n">vb</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
 
         <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">pos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
         <span class="n">pos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;gl&#39;</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;gl&#39;</span><span class="p">)</span>
         <span class="n">vb</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
 
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>

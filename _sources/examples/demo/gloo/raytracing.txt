@@ -241,7 +241,11 @@ TODO:
             self.program['ambient'] = .05
             self.program['O'] = (0., 0., -1.)
     
+            self.activate_zoom()
+    
             self._timer = app.Timer('auto', connect=self.on_timer, start=True)
+    
+            self.show()
     
         def on_timer(self, event):
             t = event.elapsed
@@ -250,8 +254,11 @@ TODO:
             self.update()
     
         def on_resize(self, event):
-            width, height = event.size
-            gloo.set_viewport(0, 0, width, height)
+            self.activate_zoom()
+    
+        def activate_zoom(self):
+            width, height = self.size
+            gloo.set_viewport(0, 0, *self.physical_size)
             self.program['u_aspect_ratio'] = width/float(height)
     
         def on_draw(self, event):
@@ -259,5 +266,4 @@ TODO:
     
     if __name__ == '__main__':
         canvas = Canvas()
-        canvas.show()
         app.run()
