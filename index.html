@@ -1,19 +1,21 @@
 
-
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <title>Vispy: OpenGL-based interactive visualization in Python &mdash; vispy</title>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+    <title>VisPy: Interactive scientific visualization &mdash; VisPy</title>
     
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link href="_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="_static/css/custom.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
     
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="_static/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -23,253 +25,206 @@
         HAS_SOURCE:  true
       };
     </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/js/jquery.anoslide.js"></script>
-        <script type="text/javascript" src="_static/js/carousel.js"></script>
-        <link rel="top" title="vispy" href="#" />
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="shortcut icon" href="_static/favicon.ico">
-</head>
-<body class="container">
-    <a href="http://vispy.org" class="logo"><img src="_static/img/logo.png" alt=""></a>
-    <div class="clearfix"></div>
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav">
-                <li><a href="http://vispy.org/index.html">Home</a></li>
-<li><a href="http://vispy.org/gallery.html">Gallery</a></li>
-<li><a href="http://api.vispy.org">Documentation</a></li>
-<li><a href="https://github.com/vispy/vispy">Source</a></li>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="VisPy" href="#" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  </head>
+  <body role="document">
 
-  ga('create', 'UA-45168532-1', 'vispy.org');
-  ga('send', 'pageview');
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="_static/vispy-text-white.svg">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
 
-</script>
-            </ul>
-            <form class="navbar-form pull-right" action="http://api.vispy.org/en/latest/search.html" method="get">
-                <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
-                <input type="hidden" name="check_keywords" value="yes" >
-                <input type="hidden" name="area" value="default" >
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span9">
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
             
-  
-<div id="carousel" class="carousel" data-mixed>
-  <a class="prev" data-prev><img src="_static/img/prev.png" width=56 height=56></a>
-  <ul>
-    <li><div class="wrap" align="center"><a href=examples/demo/scene/magnify.html><img data-src="_static/carousel/demo__scene__magnify.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/atom.html><img data-src="_static/carousel/demo__gloo__atom.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/imshow.html><img data-src="_static/carousel/demo__gloo__imshow.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/ndscatter.html><img data-src="_static/carousel/demo__gloo__ndscatter.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/realtime_signals.html><img data-src="_static/carousel/demo__gloo__realtime_signals.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/jfa/jfa_vispy.html><img data-src="_static/carousel/demo__gloo__jfa__jfa_vispy.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/galaxy.html><img data-src="_static/carousel/demo__gloo__galaxy.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/signals.html><img data-src="_static/carousel/demo__gloo__signals.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/terrain.html><img data-src="_static/carousel/demo__gloo__terrain.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/boids.html><img data-src="_static/carousel/demo__gloo__boids.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/fireworks.html><img data-src="_static/carousel/demo__gloo__fireworks.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/molecular_viewer.html><img data-src="_static/carousel/demo__gloo__molecular_viewer.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/mandelbrot.html><img data-src="_static/carousel/demo__gloo__mandelbrot.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/voronoi.html><img data-src="_static/carousel/demo__gloo__voronoi.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/mandelbrot_double.html><img data-src="_static/carousel/demo__gloo__mandelbrot_double.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/raytracing.html><img data-src="_static/carousel/demo__gloo__raytracing.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/high_frequency.html><img data-src="_static/carousel/demo__gloo__high_frequency.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/cloud.html><img data-src="_static/carousel/demo__gloo__cloud.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/graph.html><img data-src="_static/carousel/demo__gloo__graph.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/grayscott.html><img data-src="_static/carousel/demo__gloo__grayscott.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/game_of_life.html><img data-src="_static/carousel/demo__gloo__game_of_life.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/spacy.html><img data-src="_static/carousel/demo__gloo__spacy.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/brain.html><img data-src="_static/carousel/demo__gloo__brain.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/donut.html><img data-src="_static/carousel/demo__gloo__donut.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-    <li><div class="wrap" align="center"><a href=examples/demo/gloo/shadertoy.html><img data-src="_static/carousel/demo__gloo__shadertoy.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></div></li>
-  </ul>
-  <a class="next" data-next><img src="_static/img/next.png" width=56 height=56></a>
-</div>
-
-<p>Vispy is a <strong>high-performance interactive 2D/3D data visualization
-library</strong>. Vispy leverages the computational power of modern <strong>Graphics
-Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display very
-large datasets. Applications of Vispy include:</p>
-<ul class="simple">
-<li>High-quality interactive scientific plots with millions of points.</li>
-<li>Direct visualization of real-time data.</li>
-<li>Fast interactive visualization of 3D models (meshes, volume
-rendering).</li>
-<li>OpenGL visualization demos.</li>
-<li>Scientific GUIs with fast, scalable visualization widgets (Qt or
-<a class="reference external" href="http://ipython.org/notebook.html">IPython notebook</a> with WebGL).</li>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="news.html">News</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul class="simple">
 </ul>
-<div class="section" id="announcements">
-<h1>Announcements</h1>
-<ul class="simple">
-<li><strong>Release!</strong> Version 0.4, May 22, 2015</li>
-<li><a class="reference external" href="http://ipython-books.github.io/featured-06/">Vispy tutorial in the IPython Cookbook</a></li>
-<li><strong>Release!</strong> Version 0.3, August 29, 2014</li>
-<li><strong>EuroSciPy 2014</strong>: talk at Saturday 30, and sprint at Sunday 31, August 2014</li>
-<li><a class="reference external" href="https://github.com/vispy/linuxmag-article">Article in Linux Magazine, French Edition</a>, July 2014</li>
-<li><strong>GSoC 2014</strong>: <a class="reference external" href="https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014">two GSoC students are currently working on Vispy under the PSF umbrella</a></li>
-<li><strong>Release!</strong>, Version 0.2.1 04-11-2013</li>
-<li><strong>Presentation at BI forum</strong>, Budapest, 6 November 2013</li>
-<li><strong>Presentation at Euroscipy</strong>, Belgium, August 2013</li>
-<li><strong>EuroSciPy Sprint</strong>, Belgium, August 2013</li>
-<li><strong>Release!</strong> Version 0.1.0 14-08-2013</li>
-</ul>
-</div>
-<div class="section" id="using-vispy">
-<h1>Using Vispy</h1>
-<p>Vispy is a young library under heavy development at this time. It
-targets two categories of users:</p>
-<ol class="arabic simple">
-<li><strong>Users knowing OpenGL</strong>, or willing to learn OpenGL, who want to
-create beautiful and fast interactive 2D/3D visualizations in Python
-as easily as possible.</li>
-<li><strong>Scientists without any knowledge of OpenGL</strong>, who are seeking a
-high-level, high-performance plotting toolkit.</li>
-</ol>
-<p>If you're in the first category, you can already start using Vispy.
-Vispy offers a Pythonic, NumPy-aware, user-friendly interface for OpenGL
-ES 2.0 called <strong>gloo</strong>. You can focus on writing your GLSL code instead
-of dealing with the complicated OpenGL API - Vispy takes care of that
-automatically for you.</p>
-<p>If you're in the second category, we're starting to build experimental
-high-level plotting interfaces. Notably, Vispy now ships a very basic
-and experimental OpenGL backend for matplotlib.</p>
-</div>
-<div class="section" id="installation">
-<h1>Installation</h1>
-<p>Vispy runs on Python 2.6+ and Python 3.3+ and depends on NumPy. You also
-need a backend (PyQt4/PySide, glfw, pyglet, SDL, or wx).</p>
-<p>As Vispy is under heavy development at this time, we highly recommend
-you to use the development version on Github (master branch). You need
-to clone the repository and install Vispy with
-<tt class="docutils literal">python setup.py install</tt>.</p>
-<p>If you need to install Python for the first time, consider using the
-<a class="reference external" href="http://continuum.io/downloads">Anaconda</a> Python distribution. It
-provides a convenient package management system.</p>
-</div>
-<div class="section" id="structure-of-vispy">
-<h1>Structure of Vispy</h1>
-<p>Currently, the main subpackages are:</p>
-<ul class="simple">
-<li><strong>app</strong>: integrates an event system and offers a unified interface on
-top of many window backends (Qt4, wx, glfw, IPython notebook
-with/without WebGL, and others). Relatively stable API.</li>
-<li><strong>gloo</strong>: a Pythonic, object-oriented interface to OpenGL. Relatively
-stable API.</li>
-<li><strong>mpl_plot</strong>: an OpenGL backend for matplotlib. Experimental.</li>
-<li><strong>scene</strong>: this is the system underlying our upcoming high level
-visualization interfaces. Under heavy development and still
-experimental, it contains several modules.<ul>
-<li><strong>Visuals</strong> are graphical abstractions representing 2D shapes, 3D
-meshes, text, etc.</li>
-<li><strong>Transforms</strong> implement 2D/3D transformations implemented on both
-CPU and GPU.</li>
-<li><strong>Shaders</strong> implements a shader composition system for plumbing
-together snippets of GLSL code.</li>
-<li>The <strong>scene graph</strong> tracks all objects within a transformation
-graph.</li>
 </ul>
 </li>
-</ul>
-<p>The API of all public interfaces are subject to change in the future,
-although <strong>app</strong> and <strong>gloo</strong> are <em>relatively</em> stable at this point.</p>
-</div>
-<div class="section" id="about-us">
-<h1>About us</h1>
-<p>The core development team consists of:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://luke.campagnola.me/">Luke Campagnola</a></li>
-<li><a class="reference external" href="http://www.almarklein.org/">Almar Klein</a></li>
-<li><a class="reference external" href="http://larsoner.com">Eric Larson</a></li>
-<li><a class="reference external" href="http://cyrille.rossant.net">Cyrille Rossant</a></li>
-<li><a class="reference external" href="http://www.loria.fr/~rougier/index.html">Nicolas Rougier</a></li>
-</ul>
-<p>Four of us have written our own Python visualization toolkit
-(<a class="reference external" href="http://www.pyqtgraph.org/">PyQtGraph</a> by LC,
-<a class="reference external" href="https://code.google.com/p/visvis/">Visvis</a> by AK,
-<a class="reference external" href="https://github.com/rougier/Glumpy">Glumpy</a> by NR, and
-<a class="reference external" href="https://github.com/rossant/galry">Galry</a> by CR), and we decided to
-team up to create a unique high-performance, high-quality interactive
-visualization library.</p>
-</div>
-<div class="section" id="publications">
-<h1>Publications<a class="headerlink" href="#publications" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="http://www.frontiersin.org/Journal/10.3389/fninf.2013.00036/full">Hardware-accelerated interactive data visualization for neuroscience in Python</a> C. Rossant and K.D. Harris, Frontiers in Neuroinformatics, 7.36, (2013)</li>
-<li><a class="reference external" href="http://jcgt.org/published/0002/02/08/">Shader-based Antialiased Dashed Stroked Polylines</a> N. P. Rougier. Journal of Computer Graphics Techniques, 2.2 (2013)</li>
-<li><a class="reference external" href="http://jcgt.org/published/0002/01/04/">Higher Quality 2D Text Rendering</a> N. P. Rougier. Journal of Computer Graphics Techniques, 2.1 (2013)</li>
-</ul>
-</div>
-<div class="section" id="talks">
-<h1>Talks<a class="headerlink" href="#talks" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="http://www.youtube.com/watch?v=D7w8H4wmPRo">Introducing Vispy&#8217;s high level modules: easy yet powerful visualization for everyone</a> - Talk at EuroScipy 2014</li>
-<li><a class="reference external" href="https://github.com/vispy/static/raw/master/vispy-biforum-2013.pdf">Vispy, a future tool for interactive visualization</a> - Talk at Budapest BI forum 2013</li>
-<li><a class="reference external" href="https://github.com/vispy/static/raw/master/vispy-euroscipy-2013.pdf">Vispy, a modern and interactive visualization framework</a> - Talk at EuroScipy 2013</li>
-</ul>
-</div>
+              
+            
+            
+            
+            
+            
+          </ul>
 
-
-        </div>
-        <div class="span3">
-
-<div class="clearfix"></div> <h4 class="sidebar-box-heading">Download</h4>
-<div class="well sidebar-box">
-    <ul class="nav nav-list">
-        <li><a class="reference external"
-                href="https://pypi.python.org/pypi/vispy">Latest release from Pypi</a></li>
-        <li><a href="https://github.com/vispy/vispy/archive/master.zip">Bleeding edge</a></li>
-    </ul>
-</div>
-<h4 class="sidebar-box-heading">Links</h4>
-<div class="well sidebar-box">
-    <ul class="nav nav-list">
-        <li><a class="reference external"
-                href="https://github.com/vispy/vispy/issues">Issue tracker</a></li>
-        <li><a class="reference external"
-                href="https://github.com/vispy/vispy/wiki">Project wiki</a></li>
-        <li><a class="reference external"
-                href="http://groups.google.com/group/vispy">User mailing list</a></li>
-        <li><a class="reference external"
-                href="http://groups.google.com/group/vispy-dev">Dev mailing list</a></li>
-        <li><a class="reference external"
-                href="https://gitter.im/vispy/vispy">Dev chat room</a></li>
-    </ul>
-</div>
-<h4 class="sidebar-box-heading">Related Projects</h4>
-<div class="well sidebar-box">
-    <ul class="nav nav-list">
-        <li><a class="reference external"
-                href="http://pyopengl.sourceforge.net/">PyOpenGL</a></li>
-        <li><a class="reference external"
-                href="http://www.pyqtgraph.org/">PyQtGraph</a></li>
-        <li><a class="reference external"
-                href="http://rossant.github.io/galry/">Galry</a></li>
-        <li><a class="reference external"
-                href="http://code.google.com/p/glumpy/">Glumpy</a></li>
-        <li><a class="reference external"
-                href="http://code.google.com/p/visvis/">Visvis</a></li>
-    </ul>
-</div>
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
         </div>
     </div>
-    <div class="well footer">
-        <small>
-            &copy; Copyright the vispy development team.
-            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
-            Theme by <a href="http://scikit-image.org/">scikit-image</a>.
-        </small>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="jumbotron">
+<div class="row">
+<div class="col-lg-9">
+<img class="img-responsive center-block" src="_images/vispy-teaser.svg" /><p>VisPy is a <a class="reference external" href="http://www.python.org">Python</a> library for interactive
+scientific visualization that is designed to be fast, scalable, and
+easy to use.</p>
+</div>
+<div class="col-lg-3 text-right">
+<h3><i class="fa fa-tachometer fa-2x"></i> Fast</h3>
+<p><small>GPU accelerated</small></p><h3><i class="fa fa-signal fa-2x"></i> Scalable</h3>
+<p><small>Millions of points, real-time</small></p><h3><i class="fa fa-heart fa-2x"></i> Beautiful</h3>
+<p><small>Antigrain rendering</small></p></div>
+</div>
+</div>
+<div id="HomeCarousel" class="carousel slide" data-ride="carousel">
+   <ol class="carousel-indicators">
+     <li data-target="#HomeCarousel" data-slide-to="0" class="active"></li>
+     <li data-target="#HomeCarousel" data-slide-to="1" class=""></li>
+     <li data-target="#HomeCarousel" data-slide-to="2" class=""></li>
+     <li data-target="#HomeCarousel" data-slide-to="3" class=""></li>
+   </ol>
+
+   <div class="carousel-inner">
+
+     <div class="item active">
+       <img src="_static/carousel/galaxy.png" alt="Galaxy" style="width:100%">
+       <div class="container">
+         <div class="carousel-caption">
+
+           <h1>Spiral galaxy simulation</h1>
+           <p> Simulation of a spiral galaxy using the density wave theory.</p>
+           <p><a class="btn btn-primary" href="gallery.html" role="button">Check it out</a></p>
+         </div>
+       </div>
+     </div>
+
+     <div class="item">
+       <img src="_static/carousel/high-frequency.png" alt="High-frequency signal" style="width:100%">
+       <div class="container">
+         <div class="carousel-caption">
+           <h1>High frequency signals</h1>
+           <p>GPU multisampled high-frequency signal</p>
+           <p><a class="btn btn-primary" href="gallery.html" role="button">Browse gallery</a></p>
+         </div>
+       </div>
+     </div>
+
+     <div class="item">
+       <img src="_static/carousel/mandelbrot.png" alt="Mandelbrot" style="width:100%">
+       <div class="container">
+         <div class="carousel-caption">
+           <h1>Mandelbrot set</h1>
+           <p>GPU computed fractals</p>
+           <p><a class="btn btn-primary" href="gallery.httml" role="button">Shom me more</a></p>
+         </div>
+       </div>
+     </div>
+
+     <div class="item">
+       <img src="_static/carousel/signals.png" alt="Signals" style="width:100%">
+       <div class="container">
+         <div class="carousel-caption">
+           <h1>Realtime signals</h1>
+           <p>320 signals with 10 000 points each</p>
+           <p><a class="btn btn-primary" href="gallery.html" role="button">Waouh !</a></p>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <a class="left carousel-control" href="#HomeCarousel" role="button"
+      data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+
+   <a class="right carousel-control" href="#HomeCarousel" role="button"
+      data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+ </div>
+
     </div>
-</body>
+      
+  </div>
+</div>
+<footer class="footer">
+
+  <div class="container">
+    <ul class="list-inline">
+      <li><a href="https://github.com/vispy/vispy">GitHub</a></li>
+      <li>·</li>
+      <li><a href=""><a href="https://github.com/vispy/vispy/blob/master/examples/">Examples</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/issues">Issues</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/releases">Releases</a></li>
+      <li class="pull-right"><a href="#">Back to top</a></li>
+    </ul>
+    <ul class="list-unstyled small">
+      <li>Copyright (c) 2015 VisPy developers</li>
+      <li>Code licensed under
+        <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
+        documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>
+      </li>
+      <li>
+        Made with <a href="http://sphinx-doc.org">sphinx</a> using the excellent
+        <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme">bootstrap theme</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+  </body>
 </html>

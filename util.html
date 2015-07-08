@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The util module &mdash; VisPy</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="VisPy" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/vispy-text-white.svg">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="news.html">News</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">The util module</a><ul>
+<li><a class="reference internal" href="#module-vispy.util.event">vispy.util.event</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-vispy.util.fonts">vispy.util.fonts</a></li>
+<li><a class="reference internal" href="#module-vispy.util.keys">vispy.util.keys</a></li>
+<li><a class="reference internal" href="#module-vispy.util.transforms">vispy.util.transforms</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="module-vispy.util">
+<span id="the-util-module"></span><h1>The util module<a class="headerlink" href="#module-vispy.util" title="Permalink to this headline">¶</a></h1>
+<p>Utilities for Vispy. A collection of modules that are used in
+one or more Vispy sub-packages.</p>
+<hr class="docutils" />
+<div class="section" id="module-vispy.util.event">
+<span id="vispy-util-event"></span><h2>vispy.util.event<a class="headerlink" href="#module-vispy.util.event" title="Permalink to this headline">¶</a></h2>
+<p>The event module implements the classes that make up the event system.
+The Event class and its subclasses are used to represent &quot;stuff that happens&quot;.
+The EventEmitter class provides an interface to connect to events and
+to emit events. The EmitterGroup groups EventEmitter objects.</p>
+<p>For more information see <a class="reference external" href="http://github.com/vispy/vispy/wiki/API_Events">http://github.com/vispy/vispy/wiki/API_Events</a></p>
+<hr class="docutils" />
+<dl class="class">
+<dt id="vispy.util.event.Event">
+<em class="property">class </em><code class="descclassname">vispy.util.event.</code><code class="descname">Event</code><span class="sig-paren">(</span><em>type</em>, <em>native=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class describing events that occur and can be reacted to with callbacks.
+Each event instance contains information about a single event that has
+occurred such as a key press, mouse motion, timer activation, etc.</p>
+<p>Subclasses: <code class="xref py py-class docutils literal"><span class="pre">KeyEvent</span></code>, <code class="xref py py-class docutils literal"><span class="pre">MouseEvent</span></code>, <code class="xref py py-class docutils literal"><span class="pre">TouchEvent</span></code>,
+<code class="xref py py-class docutils literal"><span class="pre">StylusEvent</span></code></p>
+<p>The creation of events and passing of events to the appropriate callback
+functions is the responsibility of <a class="reference internal" href="#vispy.util.event.EventEmitter" title="vispy.util.event.EventEmitter"><code class="xref py py-class docutils literal"><span class="pre">EventEmitter</span></code></a> instances.</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>native</strong> : object (optional)</p>
+<blockquote>
+<div><p>The native GUI event object</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : keyword arguments</p>
+<blockquote class="last">
+<div><p>All extra keyword arguments become attributes of the event object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.util.event.Event.blocked">
+<code class="descname">blocked</code><a class="headerlink" href="#vispy.util.event.Event.blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>This boolean property indicates whether the event will be delivered
+to event callbacks. If it is set to True, then no further callbacks
+will receive the event. When possible, it is recommended to use
+Event.handled rather than Event.blocked.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.Event.handled">
+<code class="descname">handled</code><a class="headerlink" href="#vispy.util.event.Event.handled" title="Permalink to this definition">¶</a></dt>
+<dd><p>This boolean property indicates whether the event has already been
+acted on by an event handler. Since many handlers may have access to
+the same events, it is recommended that each check whether the event
+has already been handled as well as set handled=True if it decides to
+act on the event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.Event.source">
+<code class="descname">source</code><a class="headerlink" href="#vispy.util.event.Event.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object that the event applies to (i.e. the source of the event).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.Event.sources">
+<code class="descname">sources</code><a class="headerlink" href="#vispy.util.event.Event.sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of objects that the event applies to (i.e. are or have
+been a source of the event). Can contain multiple objects in case
+the event traverses a hierarchy of objects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.app.canvas.MouseEvent">
+<em class="property">class </em><code class="descclassname">vispy.app.canvas.</code><code class="descname">MouseEvent</code><span class="sig-paren">(</span><em>type</em>, <em>pos=None</em>, <em>button=None</em>, <em>buttons=None</em>, <em>modifiers=None</em>, <em>delta=None</em>, <em>last_event=None</em>, <em>press_event=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.MouseEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mouse event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below, as well as a &quot;time&quot; attribute with the event's
+precision start time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>pos</strong> : (int, int)</p>
+<blockquote>
+<div><p>The position of the mouse (in screen coordinates).</p>
+</div></blockquote>
+<p><strong>button</strong> : int | None</p>
+<blockquote>
+<div><p>The button that generated this event (can be None).
+Left=1, right=2, middle=3. During a mouse drag, this
+will return the button that started the drag (same thing as
+<code class="docutils literal"><span class="pre">event.press_event.button</span></code>).</p>
+</div></blockquote>
+<p><strong>buttons</strong> : [int, ...]</p>
+<blockquote>
+<div><p>The list of buttons depressed during this event.</p>
+</div></blockquote>
+<p><strong>modifiers</strong> : tuple of Key instances</p>
+<blockquote>
+<div><p>Tuple that specifies which modifier keys were pressed down at the
+time of the event (shift, control, alt, meta).</p>
+</div></blockquote>
+<p><strong>delta</strong> : (float, float)</p>
+<blockquote>
+<div><p>The amount of scrolling in horizontal and vertical direction. One
+&quot;tick&quot; corresponds to a delta of 1.0.</p>
+</div></blockquote>
+<p><strong>press_event</strong> : MouseEvent</p>
+<blockquote>
+<div><p>The press event that was generated at the start of the current drag,
+if any.</p>
+</div></blockquote>
+<p><strong>last_event</strong> : MouseEvent</p>
+<blockquote>
+<div><p>The MouseEvent immediately preceding the current event. During drag
+operations, all generated events retain their last_event properties,
+allowing the entire drag to be reconstructed.</p>
+</div></blockquote>
+<p><strong>native</strong> : object (optional)</p>
+<blockquote>
+<div><p>The native GUI event object</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : keyword arguments</p>
+<blockquote class="last">
+<div><p>All extra keyword arguments become attributes of the event object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">drag_events</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">trail</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.app.canvas.MouseEvent.drag_events">
+<code class="descname">drag_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.MouseEvent.drag_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all mouse events in the current drag operation.</p>
+<p>Returns None if there is no current drag operation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.app.canvas.MouseEvent.is_dragging">
+<code class="descname">is_dragging</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.is_dragging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether this event is part of a mouse drag operation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.app.canvas.MouseEvent.trail">
+<code class="descname">trail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.MouseEvent.trail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an (N, 2) array of mouse coordinates for every event in the
+current mouse drag operation.</p>
+<p>Returns None if there is no current drag operation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.app.canvas.KeyEvent">
+<em class="property">class </em><code class="descclassname">vispy.app.canvas.</code><code class="descname">KeyEvent</code><span class="sig-paren">(</span><em>type</em>, <em>key=None</em>, <em>text=''</em>, <em>modifiers=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.KeyEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Key event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>key</strong> : vispy.keys.Key instance</p>
+<blockquote>
+<div><p>The Key object for this event. Can be compared to string names.</p>
+</div></blockquote>
+<p><strong>text</strong> : str</p>
+<blockquote>
+<div><p>The text representation of the key (can be an empty string).</p>
+</div></blockquote>
+<p><strong>modifiers</strong> : tuple of Key instances</p>
+<blockquote>
+<div><p>Tuple that specifies which modifier keys were pressed down at the
+time of the event (shift, control, alt, meta).</p>
+</div></blockquote>
+<p><strong>native</strong> : object (optional)</p>
+<blockquote>
+<div><p>The native GUI event object</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : keyword arguments</p>
+<blockquote class="last">
+<div><p>All extra keyword arguments become attributes of the event object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.app.canvas.ResizeEvent">
+<em class="property">class </em><code class="descclassname">vispy.app.canvas.</code><code class="descname">ResizeEvent</code><span class="sig-paren">(</span><em>type</em>, <em>size=None</em>, <em>physical_size=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.ResizeEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>size</strong> : (int, int)</p>
+<blockquote>
+<div><p>The new size of the Canvas, in points (logical pixels).</p>
+</div></blockquote>
+<p><strong>physical_size</strong> : (int, int)</p>
+<blockquote>
+<div><p>The new physical size of the Canvas, in pixels.</p>
+</div></blockquote>
+<p><strong>native</strong> : object (optional)</p>
+<blockquote>
+<div><p>The native GUI event object</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : extra keyword arguments</p>
+<blockquote class="last">
+<div><p>All extra keyword arguments become attributes of the event object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.app.canvas.DrawEvent">
+<em class="property">class </em><code class="descclassname">vispy.app.canvas.</code><code class="descname">DrawEvent</code><span class="sig-paren">(</span><em>type</em>, <em>region=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.DrawEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw event class</p>
+<p>This type of event is sent to Canvas.events.draw when a redraw
+is required.</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>region</strong> : (int, int, int, int) or None</p>
+<blockquote>
+<div><p>The region of the canvas which needs to be redrawn (x, y, w, h).
+If None, the entire canvas must be redrawn.</p>
+</div></blockquote>
+<p><strong>native</strong> : object (optional)</p>
+<blockquote>
+<div><p>The native GUI event object</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : extra keyword arguments</p>
+<blockquote class="last">
+<div><p>All extra keyword arguments become attributes of the event object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="class">
+<dt id="vispy.util.event.EventEmitter">
+<em class="property">class </em><code class="descclassname">vispy.util.event.</code><code class="descname">EventEmitter</code><span class="sig-paren">(</span><em>source=None</em>, <em>type=None</em>, <em>event_class=&lt;class 'vispy.util.event.Event'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encapsulates a list of event callbacks.</p>
+<p>Each instance of EventEmitter represents the source of a stream of similar
+events, such as mouse click events or timer activation events. For
+example, the following diagram shows the propagation of a mouse click
+event to the list of callbacks that are registered to listen for that
+event:</p>
+<div class="highlight-python"><div class="highlight"><pre>User clicks    |Canvas creates
+mouse on       |MouseEvent:                |&#39;mouse_press&#39; EventEmitter:         |callbacks in sequence: # noqa
+Canvas         |                           |                                    |  # noqa
+            --&gt;|event = MouseEvent(...) --&gt;|Canvas.events.mouse_press(event) --&gt;|callback1(event)  # noqa
+               |                           |                                 --&gt;|callback2(event)  # noqa
+               |                           |                                 --&gt;|callback3(event)  # noqa
+</pre></div>
+</div>
+<p>Callback functions may be added or removed from an EventEmitter using
+<code class="xref py py-func docutils literal"><span class="pre">connect()</span></code> or
+<code class="xref py py-func docutils literal"><span class="pre">disconnect()</span></code>.</p>
+<p>Calling an instance of EventEmitter will cause each of its callbacks
+to be invoked in sequence. All callbacks are invoked with a single
+argument which will be an instance of <code class="xref py py-class docutils literal"><span class="pre">Event</span></code>.</p>
+<p>EventEmitters are generally created by an EmitterGroup instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : object</p>
+<blockquote>
+<div><p>The object that the generated events apply to. All emitted Events will
+have their .source property set to this value.</p>
+</div></blockquote>
+<p><strong>type</strong> : str or None</p>
+<blockquote>
+<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</div></blockquote>
+<p><strong>event_class</strong> : subclass of Event</p>
+<blockquote class="last">
+<div><p>The class of events that this emitter will generate.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.block" title="vispy.util.event.EventEmitter.block"><code class="xref py py-obj docutils literal"><span class="pre">block</span></code></a>([callback])</td>
+<td>Block this emitter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocked" title="vispy.util.event.EventEmitter.blocked"><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></a>([callback])</td>
+<td>Return boolean indicating whether the emitter is blocked for the given callback.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocker" title="vispy.util.event.EventEmitter.blocker"><code class="xref py py-obj docutils literal"><span class="pre">blocker</span></code></a>([callback])</td>
+<td>Return an EventBlocker to be used in 'with' statements</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.connect" title="vispy.util.event.EventEmitter.connect"><code class="xref py py-obj docutils literal"><span class="pre">connect</span></code></a>(callback[,&nbsp;ref,&nbsp;position,&nbsp;before,&nbsp;after])</td>
+<td>Connect this emitter to a new callback.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.disconnect" title="vispy.util.event.EventEmitter.disconnect"><code class="xref py py-obj docutils literal"><span class="pre">disconnect</span></code></a>([callback])</td>
+<td>Disconnect a callback from this emitter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.unblock" title="vispy.util.event.EventEmitter.unblock"><code class="xref py py-obj docutils literal"><span class="pre">unblock</span></code></a>([callback])</td>
+<td>Unblock this emitter.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.__call__">
+<code class="descname">__call__</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke all callbacks for this emitter.</p>
+<p>Emit a new event object, created with the given keyword
+arguments, which must match with the input arguments of the
+corresponding event class. Note that the 'type' argument is
+filled in by the emitter.</p>
+<p>Alternatively, the emitter can also be called with an Event
+instance as the only argument. In this case, the specified
+Event will be used rather than generating a new one. This allows
+customized Event instances to be emitted and also allows EventEmitters
+to be chained by connecting one directly to another.</p>
+<p>Note that the same Event instance is sent to all callbacks.
+This allows some level of communication between the callbacks
+(notably, via Event.handled) but also requires that callbacks
+be careful not to inadvertently modify the Event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.block">
+<code class="descname">block</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Block this emitter. Any attempts to emit an event while blocked
+will be silently ignored. If <em>callback</em> is given, then the emitter
+is only blocked for that specific callback.</p>
+<p>Calls to block are cumulative; the emitter must be unblocked the same
+number of times as it is blocked.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.blocked">
+<code class="descname">blocked</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.blocked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return boolean indicating whether the emitter is blocked for
+the given callback.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.blocker">
+<code class="descname">blocker</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.blocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an EventBlocker to be used in 'with' statements</p>
+<p class="rubric">Notes</p>
+<p>For example, one could do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">emitter</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
+    <span class="k">pass</span>  <span class="c"># ..do stuff; no events will be emitted..</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.EventEmitter.callback_refs">
+<code class="descname">callback_refs</code><a class="headerlink" href="#vispy.util.event.EventEmitter.callback_refs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of callback references</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.EventEmitter.callbacks">
+<code class="descname">callbacks</code><a class="headerlink" href="#vispy.util.event.EventEmitter.callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of callbacks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><em>callback</em>, <em>ref=False</em>, <em>position='first'</em>, <em>before=None</em>, <em>after=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect this emitter to a new callback.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>callback</strong> : function | tuple</p>
+<blockquote>
+<div><p><em>callback</em> may be either a callable object or a tuple
+(object, attr_name) where object.attr_name will point to a
+callable object. Note that only a weak reference to <code class="docutils literal"><span class="pre">object</span></code>
+will be kept.</p>
+</div></blockquote>
+<p><strong>ref</strong> : bool | str</p>
+<blockquote>
+<div><p>Reference used to identify the callback in <code class="docutils literal"><span class="pre">before</span></code>/<code class="docutils literal"><span class="pre">after</span></code>.
+If True, the callback ref will automatically determined (see
+Notes). If False, the callback cannot be referred to by a string.
+If str, the given string will be used. Note that if <code class="docutils literal"><span class="pre">ref</span></code>
+is not unique in <code class="docutils literal"><span class="pre">callback_refs</span></code>, an error will be thrown.</p>
+</div></blockquote>
+<p><strong>position</strong> : str</p>
+<blockquote>
+<div><p>If <code class="docutils literal"><span class="pre">'first'</span></code>, the first eligible position is used (that
+meets the before and after criteria), <code class="docutils literal"><span class="pre">'last'</span></code> will use
+the last position.</p>
+</div></blockquote>
+<p><strong>before</strong> : str | callback | list of str or callback | None</p>
+<blockquote>
+<div><p>List of callbacks that the current callback should precede.
+Can be None if no before-criteria should be used.</p>
+</div></blockquote>
+<p><strong>after</strong> : str | callback | list of str or callback | None</p>
+<blockquote class="last">
+<div><p>List of callbacks that the current callback should follow.
+Can be None if no after-criteria should be used.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If <code class="docutils literal"><span class="pre">ref=True</span></code>, the callback reference will be determined from:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>If <code class="docutils literal"><span class="pre">callback</span></code> is <code class="docutils literal"><span class="pre">tuple</span></code>, the secend element in the tuple.</li>
+<li>The <code class="docutils literal"><span class="pre">__name__</span></code> attribute.</li>
+<li>The <code class="docutils literal"><span class="pre">__class__.__name__</span></code> attribute.</li>
+</ol>
+</div></blockquote>
+<p>The current list of callback refs can be obtained using
+<code class="docutils literal"><span class="pre">event.callback_refs</span></code>. Callbacks can be referred to by either
+their string reference (if given), or by the actual callback that
+was attached (e.g., <code class="docutils literal"><span class="pre">(canvas,</span> <span class="pre">'swap_buffers')</span></code>).</p>
+<p>If the specified callback is already connected, then the request is
+ignored.</p>
+<p>If before is None and after is None (default), the new callback will
+be added to the beginning of the callback list. Thus the
+callback that is connected _last_ will be the _first_ to receive
+events from the emitter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect a callback from this emitter.</p>
+<p>If no callback is specified, then <em>all</em> callbacks are removed.
+If the callback was not already connected, then the call does nothing.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.EventEmitter.ignore_callback_errors">
+<code class="descname">ignore_callback_errors</code><a class="headerlink" href="#vispy.util.event.EventEmitter.ignore_callback_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether exceptions during callbacks will be caught by the emitter</p>
+<p>This allows it to continue invoking other callbacks if an error
+occurs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.EventEmitter.print_callback_errors">
+<code class="descname">print_callback_errors</code><a class="headerlink" href="#vispy.util.event.EventEmitter.print_callback_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a message and stack trace if a callback raises an exception</p>
+<p>Valid values are &quot;first&quot; (only show first instance), &quot;reminders&quot; (show
+complete first instance, then counts), &quot;always&quot; (always show full
+traceback), or &quot;never&quot;.</p>
+<p>This assumes ignore_callback_errors=True. These will be raised as
+warnings, so ensure that the vispy logging level is set to at
+least &quot;warning&quot;.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.util.event.EventEmitter.source">
+<code class="descname">source</code><a class="headerlink" href="#vispy.util.event.EventEmitter.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>The object that events generated by this emitter apply to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.util.event.EventEmitter.unblock">
+<code class="descname">unblock</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.unblock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unblock this emitter. See <code class="xref py py-func docutils literal"><span class="pre">event.EventEmitter.block()</span></code>.</p>
+<p>Note: Use of <code class="docutils literal"><span class="pre">unblock(None)</span></code> only reverses the effect of 
+<code class="docutils literal"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly 
+blocked using <code class="docutils literal"><span class="pre">block(callback)</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="module-vispy.util.fonts">
+<span id="vispy-util-fonts"></span><h2>vispy.util.fonts<a class="headerlink" href="#module-vispy.util.fonts" title="Permalink to this headline">¶</a></h2>
+<p>The fonts module implements some helpful functions for dealing with system
+fonts.</p>
+<dl class="function">
+<dt id="vispy.util.fonts.list_fonts">
+<code class="descclassname">vispy.util.fonts.</code><code class="descname">list_fonts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.fonts.list_fonts" title="Permalink to this definition">¶</a></dt>
+<dd><p>List system fonts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fonts</strong> : list of str</p>
+<blockquote class="last">
+<div><p>List of system fonts.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="module-vispy.util.keys">
+<span id="vispy-util-keys"></span><h2>vispy.util.keys<a class="headerlink" href="#module-vispy.util.keys" title="Permalink to this headline">¶</a></h2>
+<p>Define constants for keys.</p>
+<p>Each key constant is defined as a Key object, which allows comparison with
+strings (e.g. 'A', 'Escape', 'Shift'). This enables handling of key events
+without using the key constants explicitly (e.g. <code class="docutils literal"><span class="pre">if</span> <span class="pre">ev.key</span> <span class="pre">==</span> <span class="pre">'Left':</span></code>).</p>
+<p>In addition, key objects that represent characters can be matched to
+the integer ordinal (e.g. 32 for space, 65 for A). This behavior is mainly
+intended as a compatibility measure.</p>
+<dl class="class">
+<dt id="vispy.util.keys.Key">
+<em class="property">class </em><code class="descclassname">vispy.util.keys.</code><code class="descname">Key</code><span class="sig-paren">(</span><em>*names</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.keys.Key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represent the identity of a certain key.</p>
+<p>This represents one or more names that the key in question is known by.</p>
+<p>A Key object can be compared to one of its string names (case
+insensitive), to the integer ordinal of the key (only for keys that
+represent characters), and to another Key instance.</p>
+<dl class="attribute">
+<dt id="vispy.util.keys.Key.name">
+<code class="descname">name</code><a class="headerlink" href="#vispy.util.keys.Key.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The primary name of the key.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="module-vispy.util.transforms">
+<span id="vispy-util-transforms"></span><h2>vispy.util.transforms<a class="headerlink" href="#module-vispy.util.transforms" title="Permalink to this headline">¶</a></h2>
+<p>Very simple transformation library that is needed for some examples.</p>
+<dl class="function">
+<dt id="vispy.util.transforms.affine_map">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">affine_map</code><span class="sig-paren">(</span><em>points1</em>, <em>points2</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.affine_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a 3D transformation matrix that maps points1 onto points2.</p>
+<p>Arguments are specified as arrays of four 3D coordinates, shape (4, 3).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.frustum">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">frustum</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.frustum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create view frustum</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>left</strong> : float</p>
+<blockquote>
+<div><p>Left coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>right</strong> : float</p>
+<blockquote>
+<div><p>Right coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>bottom</strong> : float</p>
+<blockquote>
+<div><p>Bottom coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>top</strong> : float</p>
+<blockquote>
+<div><p>Top coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>znear</strong> : float</p>
+<blockquote>
+<div><p>Near coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>zfar</strong> : float</p>
+<blockquote>
+<div><p>Far coordinate of the field of view.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>View frustum matrix (4x4).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.ortho">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">ortho</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.ortho" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create orthographic projection matrix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>left</strong> : float</p>
+<blockquote>
+<div><p>Left coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>right</strong> : float</p>
+<blockquote>
+<div><p>Right coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>bottom</strong> : float</p>
+<blockquote>
+<div><p>Bottom coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>top</strong> : float</p>
+<blockquote>
+<div><p>Top coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>znear</strong> : float</p>
+<blockquote>
+<div><p>Near coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>zfar</strong> : float</p>
+<blockquote>
+<div><p>Far coordinate of the field of view.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Orthographic projection matrix (4x4).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.perspective">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">perspective</code><span class="sig-paren">(</span><em>fovy</em>, <em>aspect</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.perspective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create perspective projection matrix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fovy</strong> : float</p>
+<blockquote>
+<div><p>The field of view along the y axis.</p>
+</div></blockquote>
+<p><strong>aspect</strong> : float</p>
+<blockquote>
+<div><p>Aspect ratio of the view.</p>
+</div></blockquote>
+<p><strong>znear</strong> : float</p>
+<blockquote>
+<div><p>Near coordinate of the field of view.</p>
+</div></blockquote>
+<p><strong>zfar</strong> : float</p>
+<blockquote>
+<div><p>Far coordinate of the field of view.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Perspective projection matrix (4x4).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.rotate">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>axis</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 3x3 rotation matrix for rotation about a vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>angle</strong> : float</p>
+<blockquote>
+<div><p>The angle of rotation, in degrees.</p>
+</div></blockquote>
+<p><strong>axis</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The x, y, z coordinates of the axis direction vector.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.scale">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">scale</code><span class="sig-paren">(</span><em>s</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Non-uniform scaling along the x, y, and z axes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>s</strong> : array-like, shape (3,)</p>
+<blockquote>
+<div><p>Scaling in x, y, z.</p>
+</div></blockquote>
+<p><strong>dtype</strong> : dtype | None</p>
+<blockquote>
+<div><p>Output type (if None, don't cast).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Transformation matrix describing the scaling.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.util.transforms.translate">
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">translate</code><span class="sig-paren">(</span><em>offset</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.transforms.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate by an offset (x, y, z) .</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>offset</strong> : array-like, shape (3,)</p>
+<blockquote>
+<div><p>Translation in x, y, z.</p>
+</div></blockquote>
+<p><strong>dtype</strong> : dtype | None</p>
+<blockquote>
+<div><p>Output type (if None, don't cast).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Transformation matrix describing the translation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+
+  <div class="container">
+    <ul class="list-inline">
+      <li><a href="https://github.com/vispy/vispy">GitHub</a></li>
+      <li>·</li>
+      <li><a href=""><a href="https://github.com/vispy/vispy/blob/master/examples/">Examples</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/issues">Issues</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/releases">Releases</a></li>
+      <li class="pull-right"><a href="#">Back to top</a></li>
+    </ul>
+    <ul class="list-unstyled small">
+      <li>Copyright (c) 2015 VisPy developers</li>
+      <li>Code licensed under
+        <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
+        documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>
+      </li>
+      <li>
+        Made with <a href="http://sphinx-doc.org">sphinx</a> using the excellent
+        <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme">bootstrap theme</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+  </body>
+</html>

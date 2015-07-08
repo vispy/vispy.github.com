@@ -1,0 +1,1843 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The object oriented OpenGL API (gloo) &mdash; VisPy</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="VisPy" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="_static/vispy-text-white.svg">
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            <li class="divider-vertical"></li>
+            
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="news.html">News</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">The object oriented OpenGL API (gloo)</a><ul>
+<li><a class="reference internal" href="#base-class">Base class</a></li>
+<li><a class="reference internal" href="#program-class">Program class</a></li>
+<li><a class="reference internal" href="#buffer-classes">Buffer classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#texture-classes">Texture classes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes-related-to-fbo-s">Classes related to FBO's</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-vispy.gloo.wrappers">State methods</a></li>
+<li><a class="reference internal" href="#module-vispy.gloo.context">The OpenGL context</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#vispy-gloo-gl-low-level-gl-api">vispy.gloo.gl - low level GL API</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+<!--
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+-->
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="module-vispy.gloo">
+<span id="the-object-oriented-opengl-api-gloo"></span><h1>The object oriented OpenGL API (gloo)<a class="headerlink" href="#module-vispy.gloo" title="Permalink to this headline">¶</a></h1>
+<p>Object oriented interface to OpenGL.</p>
+<p>This module implements classes for the things that are &quot;objects&quot; in
+OpenGL, such as textures, FBO's, VBO's and shaders. Further, some
+convenience classes are implemented (like the collection class).</p>
+<p>This set of classes provides a friendly (Pythonic) interface
+to OpenGL, and is designed to provide OpenGL's full functionality.</p>
+<p>All classes inherit from GLObject, which provide a basic interface,
+enabling, activating and deleting the object. Central to each
+visualization is the Program. Other objects, such as Texture2D and
+VertexBuffer should be set as uniforms and attributes of the Program
+object.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Init</span>
+<span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex_source</span><span class="p">,</span> <span class="n">fragment_source</span><span class="p">)</span>
+<span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">my_positions_array</span><span class="p">)</span>
+<span class="n">program</span><span class="p">[</span><span class="s">&#39;s_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">my_image</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="c"># Draw event handler</span>
+<span class="n">program</span><span class="p">[</span><span class="s">&#39;u_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TRIANGLES</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>With vispy.gloo we strive to offer a Python interface that provides
+the full functionality of OpenGL. However, this layer is a work in
+progress and there are still a few known limitations. Most notably:</p>
+<ul class="last simple">
+<li>TextureCubeMap is not yet implemented</li>
+<li>FBOs can only do 2D textures (not 3D textures or cube maps)</li>
+<li>No support for compressed textures.</li>
+</ul>
+</div>
+<div class="section" id="base-class">
+<h2>Base class<a class="headerlink" href="#base-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vispy.gloo.GLObject">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">GLObject</code><a class="headerlink" href="#vispy.gloo.GLObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic GL object that represents an object on the GPU.</p>
+<p>When a GLObject is instantiated, it is associated with the currently
+active Canvas, or with the next Canvas to be created if there is
+no current Canvas</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.GLObject.delete" title="vispy.gloo.GLObject.delete"><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code></a>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.GLObject.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.GLObject.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the object from GPU memory.</p>
+<p>Note that the GPU object will also be deleted when this gloo
+object is about to be deleted. However, sometimes you want to
+explicitly delete the GPU object explicitly.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.GLObject.glir">
+<code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.GLObject.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The glir queue for this object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.GLObject.id">
+<code class="descname">id</code><a class="headerlink" href="#vispy.gloo.GLObject.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of this GL object used to reference the GL object
+in GLIR. id's are unique within a process.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="program-class">
+<h2>Program class<a class="headerlink" href="#program-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vispy.gloo.Program">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Program</code><span class="sig-paren">(</span><em>vert=None</em>, <em>frag=None</em>, <em>count=0</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shader program object</p>
+<p>A Program is an object to which shaders can be attached and linked to
+create the final program.</p>
+<p>Uniforms and attributes can be set using indexing: e.g.
+<code class="docutils literal"><span class="pre">program['a_pos']</span> <span class="pre">=</span> <span class="pre">pos_data</span></code> and <code class="docutils literal"><span class="pre">program['u_color']</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vert</strong> : str</p>
+<blockquote>
+<div><p>The vertex shader to be used by this program</p>
+</div></blockquote>
+<p><strong>frag</strong> : str</p>
+<blockquote>
+<div><p>The fragment shader to be used by this program</p>
+</div></blockquote>
+<p><strong>count</strong> : int (optional)</p>
+<blockquote class="last">
+<div><p>The program will prepare a structured vertex buffer of count
+vertices. All attributes set using <code class="docutils literal"><span class="pre">prog['attr']</span> <span class="pre">=</span> <span class="pre">X</span></code> will
+be combined into a structured vbo with interleaved elements, which
+is more efficient than having one vbo per attribute.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If several shaders are specified, only one can contain the main
+function. OpenGL ES 2.0 does not support a list of shaders.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Program.bind" title="vispy.gloo.Program.bind"><code class="xref py py-obj docutils literal"><span class="pre">bind</span></code></a>(data)</td>
+<td>Bind a VertexBuffer that has structured data</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Program.draw" title="vispy.gloo.Program.draw"><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code></a>([mode,&nbsp;indices,&nbsp;check_error])</td>
+<td>Draw the attribute arrays in the specified mode.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Program.set_shaders" title="vispy.gloo.Program.set_shaders"><code class="xref py py-obj docutils literal"><span class="pre">set_shaders</span></code></a>(vert,&nbsp;frag)</td>
+<td>Set the vertex and fragment shaders.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.Program.bind">
+<code class="descname">bind</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Program.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind a VertexBuffer that has structured data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : VertexBuffer</p>
+<blockquote class="last">
+<div><p>The vertex buffer to bind. The field names of the array
+are mapped to attribute names in GLSL.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.Program.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>mode='triangles'</em>, <em>indices=None</em>, <em>check_error=True</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Program.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the attribute arrays in the specified mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mode</strong> : str | GL_ENUM</p>
+<blockquote>
+<div><p>'points', 'lines', 'line_strip', 'line_loop', 'triangles',
+'triangle_strip', or 'triangle_fan'.</p>
+</div></blockquote>
+<p><strong>indices</strong> : array</p>
+<blockquote>
+<div><p>Array of indices to draw.</p>
+</div></blockquote>
+<p><strong>check_error:</strong> :</p>
+<blockquote class="last">
+<div><p>Check error after draw.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.Program.set_shaders">
+<code class="descname">set_shaders</code><span class="sig-paren">(</span><em>vert</em>, <em>frag</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Program.set_shaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the vertex and fragment shaders.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vert</strong> : str</p>
+<blockquote>
+<div><p>Source code for vertex shader.</p>
+</div></blockquote>
+<p><strong>frag</strong> : str</p>
+<blockquote class="last">
+<div><p>Source code for fragment shaders.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Program.shaders">
+<code class="descname">shaders</code><a class="headerlink" href="#vispy.gloo.Program.shaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Source code for vertex and fragment shader</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Program.variables">
+<code class="descname">variables</code><a class="headerlink" href="#vispy.gloo.Program.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of the variables in use by the current program</p>
+<p>The list is obtained by parsing the GLSL source code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>variables</strong> : list</p>
+<blockquote class="last">
+<div><p>Each variable is represented as a tuple (kind, type, name),
+where <cite>kind</cite> is 'attribute', 'uniform', 'uniform_array',
+'varying' or 'const'.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="buffer-classes">
+<h2>Buffer classes<a class="headerlink" href="#buffer-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vispy.gloo.buffer.Buffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">Buffer</code><span class="sig-paren">(</span><em>data=None</em>, <em>nbytes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.Buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic GPU buffer.</p>
+<p>A generic buffer is an interface used to upload data to a GPU array buffer
+(ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER). It keeps track of
+buffer size but does not have any CPU storage. You can consider it as
+write-only.</p>
+<p>The <cite>set_data</cite> is a deferred operation: you can call it even if an OpenGL
+context is not available. The <cite>update</cite> function is responsible to upload
+pending data to GPU memory and requires an active GL context.</p>
+<p>The Buffer class only deals with data in terms of bytes; it is not
+aware of data type or element size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray | None</p>
+<blockquote>
+<div><p>Buffer data.</p>
+</div></blockquote>
+<p><strong>nbytes</strong> : int | None</p>
+<blockquote class="last">
+<div><p>Buffer byte size.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize_bytes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_subdata</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.Buffer.nbytes">
+<code class="descname">nbytes</code><a class="headerlink" href="#vispy.gloo.buffer.Buffer.nbytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer size in bytes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.Buffer.resize_bytes">
+<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.Buffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize this buffer (deferred operation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>size</strong> : int</p>
+<blockquote class="last">
+<div><p>New buffer size in bytes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.Buffer.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data in the buffer (deferred operation).</p>
+<p>This completely resets the size and contents of the buffer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Data to be uploaded</p>
+</div></blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote class="last">
+<div><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.Buffer.set_subdata">
+<code class="descname">set_subdata</code><span class="sig-paren">(</span><em>data</em>, <em>offset=0</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a sub-region of the buffer (deferred operation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Data to be uploaded</p>
+</div></blockquote>
+<p><strong>offset: int</strong> :</p>
+<blockquote>
+<div><p>Offset in buffer where to start copying data (in bytes)</p>
+</div></blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote class="last">
+<div><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.buffer.DataBuffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">DataBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>GPU data buffer that is aware of data type and elements size</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray | None</p>
+<blockquote class="last">
+<div><p>Buffer data.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize_bytes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_subdata</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.dtype">
+<code class="descname">dtype</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer dtype</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.glsl_type">
+<code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.itemsize">
+<code class="descname">itemsize</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.itemsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total number of bytes required to store the array data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.offset">
+<code class="descname">offset</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer offset (in bytes) relative to base</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.DataBuffer.resize_bytes">
+<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer (in-place, deferred operation)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>size</strong> : integer</p>
+<blockquote class="last">
+<div><p>New buffer size in bytes</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This clears any pending operations.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.DataBuffer.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em>, <em>copy=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data (deferred operation)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Data to be uploaded</p>
+</div></blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote>
+<div><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Additional arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.buffer.DataBuffer.set_subdata">
+<code class="descname">set_subdata</code><span class="sig-paren">(</span><em>data</em>, <em>offset=0</em>, <em>copy=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a sub-region of the buffer (deferred operation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Data to be uploaded</p>
+</div></blockquote>
+<p><strong>offset: int</strong> :</p>
+<blockquote>
+<div><p>Offset in buffer where to start copying data (in bytes)</p>
+</div></blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote>
+<div><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : dict</p>
+<blockquote class="last">
+<div><p>Additional keyword arguments.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.size">
+<code class="descname">size</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of elements in the buffer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.buffer.DataBuffer.stride">
+<code class="descname">stride</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.stride" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stride of data in memory</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.VertexBuffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">VertexBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.VertexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer for vertex attribute data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Buffer data (optional)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize_bytes</span></code>(size)</td>
+<td>Resize the buffer (in-place, deferred operation)</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code>(data[,&nbsp;copy])</td>
+<td>Set data (deferred operation)</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_subdata</span></code>(data[,&nbsp;offset,&nbsp;copy])</td>
+<td>Set a sub-region of the buffer (deferred operation).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.IndexBuffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">IndexBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.IndexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer for index data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray | None</p>
+<blockquote class="last">
+<div><p>Buffer data.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize_bytes</span></code>(size)</td>
+<td>Resize the buffer (in-place, deferred operation)</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code>(data[,&nbsp;copy])</td>
+<td>Set data (deferred operation)</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_subdata</span></code>(data[,&nbsp;offset,&nbsp;copy])</td>
+<td>Set a sub-region of the buffer (deferred operation).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="texture-classes">
+<h2>Texture classes<a class="headerlink" href="#texture-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vispy.gloo.texture.BaseTexture">
+<em class="property">class </em><code class="descclassname">vispy.gloo.texture.</code><code class="descname">BaseTexture</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Texture is used to represent a topological set of scalar values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray | tuple | None</p>
+<blockquote>
+<div><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</div></blockquote>
+<p><strong>format</strong> : str | enum | None</p>
+<blockquote>
+<div><p>The format of the texture: 'luminance', 'alpha',
+'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, 'luminance' is assumed.</p>
+</div></blockquote>
+<p><strong>resizable</strong> : bool</p>
+<blockquote>
+<div><p>Indicates whether texture can be resized. Default True.</p>
+</div></blockquote>
+<p><strong>interpolation</strong> : str | None</p>
+<blockquote>
+<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
+Default 'nearest'.</p>
+</div></blockquote>
+<p><strong>wrapping</strong> : str | None</p>
+<blockquote>
+<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
+'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+</div></blockquote>
+<p><strong>shape</strong> : tuple | None</p>
+<blockquote>
+<div><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal"><span class="pre">shape</span></code>.</p>
+</div></blockquote>
+<p><strong>internalformat</strong> : str | None</p>
+<blockquote>
+<div><p>Internal format to use.</p>
+</div></blockquote>
+<p><strong>resizeable</strong> : None</p>
+<blockquote class="last">
+<div><p>Deprecated version of <cite>resizable</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.texture.BaseTexture.format">
+<code class="descname">format</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>The texture format (color channels).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.texture.BaseTexture.interpolation">
+<code class="descname">interpolation</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.interpolation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture interpolation for minification and magnification.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.texture.BaseTexture.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>shape</em>, <em>format=None</em>, <em>internalformat=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the texture size and format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple of integers</p>
+<blockquote>
+<div><p>New texture shape in zyx order. Optionally, an extra dimention
+may be specified to indicate the number of color channels.</p>
+</div></blockquote>
+<p><strong>format</strong> : str | enum | None</p>
+<blockquote>
+<div><p>The format of the texture: 'luminance', 'alpha',
+'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, 'luminance' is assumed.</p>
+</div></blockquote>
+<p><strong>internalformat</strong> : str | enum | None</p>
+<blockquote class="last">
+<div><p>The internal (storage) format of the texture: 'luminance',
+'alpha', 'r8', 'r16', 'r16f', 'r32f'; 'luminance_alpha',
+'rg8', 'rg16', 'rg16f', 'rg32f'; 'rgb', 'rgb8', 'rgb16',
+'rgb16f', 'rgb32f'; 'rgba', 'rgba8', 'rgba16', 'rgba16f',
+'rgba32f'.  If None, the internalformat is chosen
+automatically based on the number of channels.  This is a
+hint which may be ignored by the OpenGL implementation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.texture.BaseTexture.set_data">
+<code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em>, <em>offset=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set texture data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Data to be uploaded</p>
+</div></blockquote>
+<p><strong>offset: int | tuple of ints</strong> :</p>
+<blockquote>
+<div><p>Offset in texture where to start copying data</p>
+</div></blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote class="last">
+<div><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory. Asking explicitly
+for a copy will prevent this behavior.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This operation implicitely resizes the texture to the shape of
+the data if given offset is None.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.texture.BaseTexture.shape">
+<code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data shape (last dimension indicates number of color channels)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.texture.BaseTexture.wrapping">
+<code class="descname">wrapping</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.wrapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture wrapping mode</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.Texture2D">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture2D</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Texture2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two dimensional texture</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
+<blockquote>
+<div><p>Texture data shaped as W, or a tuple with the shape for
+the texture (W).</p>
+</div></blockquote>
+<p><strong>format</strong> : str | enum | None</p>
+<blockquote>
+<div><p>The format of the texture: 'luminance', 'alpha',
+'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, 'luminance' is assumed.</p>
+</div></blockquote>
+<p><strong>resizable</strong> : bool</p>
+<blockquote>
+<div><p>Indicates whether texture can be resized. Default True.</p>
+</div></blockquote>
+<p><strong>interpolation</strong> : str</p>
+<blockquote>
+<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
+Default 'nearest'.</p>
+</div></blockquote>
+<p><strong>wrapping</strong> : str</p>
+<blockquote>
+<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
+'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+</div></blockquote>
+<p><strong>shape</strong> : tuple</p>
+<blockquote>
+<div><p>Optional. A tuple with the shape HxW. If <code class="docutils literal"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal"><span class="pre">shape</span></code>.</p>
+</div></blockquote>
+<p><strong>internalformat</strong> : str | None</p>
+<blockquote>
+<div><p>Internal format to use.</p>
+</div></blockquote>
+<p><strong>resizeable</strong> : None</p>
+<blockquote class="last">
+<div><p>Deprecated version of <cite>resizable</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code>(shape[,&nbsp;format,&nbsp;internalformat])</td>
+<td>Set the texture size and format</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code>(data[,&nbsp;offset,&nbsp;copy])</td>
+<td>Set texture data</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.Texture2D.glsl_sample">
+<code class="descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture2D.glsl_sampler_type">
+<code class="descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture2D.glsl_type">
+<code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture2D.height">
+<code class="descname">height</code><a class="headerlink" href="#vispy.gloo.Texture2D.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture2D.width">
+<code class="descname">width</code><a class="headerlink" href="#vispy.gloo.Texture2D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.Texture3D">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture3D</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.Texture3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three dimensional texture</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray | tuple | None</p>
+<blockquote>
+<div><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</div></blockquote>
+<p><strong>format</strong> : str | enum | None</p>
+<blockquote>
+<div><p>The format of the texture: 'luminance', 'alpha',
+'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, 'luminance' is assumed.</p>
+</div></blockquote>
+<p><strong>resizable</strong> : bool</p>
+<blockquote>
+<div><p>Indicates whether texture can be resized. Default True.</p>
+</div></blockquote>
+<p><strong>interpolation</strong> : str | None</p>
+<blockquote>
+<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
+Default 'nearest'.</p>
+</div></blockquote>
+<p><strong>wrapping</strong> : str | None</p>
+<blockquote>
+<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
+'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+</div></blockquote>
+<p><strong>shape</strong> : tuple | None</p>
+<blockquote>
+<div><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal"><span class="pre">shape</span></code>.</p>
+</div></blockquote>
+<p><strong>internalformat</strong> : str | None</p>
+<blockquote>
+<div><p>Internal format to use.</p>
+</div></blockquote>
+<p><strong>resizeable</strong> : None</p>
+<blockquote class="last">
+<div><p>Deprecated version of <cite>resizable</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code>(shape[,&nbsp;format,&nbsp;internalformat])</td>
+<td>Set the texture size and format</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code>(data[,&nbsp;offset,&nbsp;copy])</td>
+<td>Set texture data</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.depth">
+<code class="descname">depth</code><a class="headerlink" href="#vispy.gloo.Texture3D.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture depth</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.glsl_sample">
+<code class="descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.glsl_sampler_type">
+<code class="descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.glsl_type">
+<code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.height">
+<code class="descname">height</code><a class="headerlink" href="#vispy.gloo.Texture3D.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.Texture3D.width">
+<code class="descname">width</code><a class="headerlink" href="#vispy.gloo.Texture3D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.TextureAtlas">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">TextureAtlas</code><span class="sig-paren">(</span><em>shape=(1024</em>, <em>1024)</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.TextureAtlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group multiple small data regions into a larger texture.</p>
+<p>The algorithm is based on the article by Jukka Jylänki : &quot;A Thousand Ways
+to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin
+Packing&quot;, February 27, 2010. More precisely, this is an implementation of
+the Skyline Bottom-Left algorithm based on C++ sources provided by Jukka
+Jylänki at: <a class="reference external" href="http://clb.demon.fi/files/RectangleBinPack/">http://clb.demon.fi/files/RectangleBinPack/</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple of int</p>
+<blockquote class="last">
+<div><p>Texture shape (optional).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This creates a 2D texture that holds 1D float32 data.
+An example of simple access:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bounds</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">get_free_region</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span><span class="o">.</span><span class="n">set_region</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.TextureAtlas.get_free_region" title="vispy.gloo.TextureAtlas.get_free_region"><code class="xref py py-obj docutils literal"><span class="pre">get_free_region</span></code></a>(width,&nbsp;height)</td>
+<td>Get a free region of given size and allocate it</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code>(shape[,&nbsp;format,&nbsp;internalformat])</td>
+<td>Set the texture size and format</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_data</span></code>(data[,&nbsp;offset,&nbsp;copy])</td>
+<td>Set texture data</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.TextureAtlas.get_free_region">
+<code class="descname">get_free_region</code><span class="sig-paren">(</span><em>width</em>, <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a free region of given size and allocate it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of region to allocate</p>
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of region to allocate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bounds</strong> : tuple | None</p>
+<blockquote class="last">
+<div><p>A newly allocated region as (x, y, w, h) or None
+(if failed).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="classes-related-to-fbo-s">
+<h2>Classes related to FBO's<a class="headerlink" href="#classes-related-to-fbo-s" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vispy.gloo.RenderBuffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">RenderBuffer</code><span class="sig-paren">(</span><em>shape=None</em>, <em>format=None</em>, <em>resizeable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.RenderBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for render buffer object</p>
+<p>A render buffer can be in color, depth or stencil format. If this
+format is not specified, it is set when attached to the FrameBuffer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple</p>
+<blockquote>
+<div><p>The shape of the render buffer.</p>
+</div></blockquote>
+<p><strong>format</strong> : {None, 'color', 'depth', 'stencil'}</p>
+<blockquote>
+<div><p>The format of the render buffer. See resize.</p>
+</div></blockquote>
+<p><strong>resizeable</strong> : bool</p>
+<blockquote class="last">
+<div><p>Indicates whether texture can be resized</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.RenderBuffer.resize" title="vispy.gloo.RenderBuffer.resize"><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code></a>(shape[,&nbsp;format])</td>
+<td>Set the render-buffer size and format</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.RenderBuffer.format">
+<code class="descname">format</code><a class="headerlink" href="#vispy.gloo.RenderBuffer.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>RenderBuffer format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.RenderBuffer.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>shape</em>, <em>format=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.RenderBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the render-buffer size and format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple of integers</p>
+<blockquote>
+<div><p>New shape in yx order. A render buffer is always 2D. For
+symmetry with the texture class, a 3-element tuple can also
+be given, in which case the last dimension is ignored.</p>
+</div></blockquote>
+<p><strong>format</strong> : {None, 'color', 'depth', 'stencil'}</p>
+<blockquote class="last">
+<div><p>The buffer format. If None, the current format is maintained. 
+If that is also None, the format will be set upon attaching
+it to a framebuffer. One can also specify the explicit enum:
+GL_RGB565, GL_RGBA4, GL_RGB5_A1, GL_DEPTH_COMPONENT16, or
+GL_STENCIL_INDEX8</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.RenderBuffer.shape">
+<code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.RenderBuffer.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>RenderBuffer shape</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.FrameBuffer">
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">FrameBuffer</code><span class="sig-paren">(</span><em>color=None</em>, <em>depth=None</em>, <em>stencil=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.FrameBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frame buffer object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>color</strong> : RenderBuffer (optional)</p>
+<blockquote>
+<div><p>The color buffer to attach to this frame buffer</p>
+</div></blockquote>
+<p><strong>depth</strong> : RenderBuffer (optional)</p>
+<blockquote>
+<div><p>The depth buffer to attach to this frame buffer</p>
+</div></blockquote>
+<p><strong>stencil</strong> : RenderBuffer (optional)</p>
+<blockquote class="last">
+<div><p>The stencil buffer to attach to this frame buffer</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.activate" title="vispy.gloo.FrameBuffer.activate"><code class="xref py py-obj docutils literal"><span class="pre">activate</span></code></a>()</td>
+<td>Activate/use this frame buffer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.deactivate" title="vispy.gloo.FrameBuffer.deactivate"><code class="xref py py-obj docutils literal"><span class="pre">deactivate</span></code></a>()</td>
+<td>Stop using this frame buffer, the previous framebuffer will be made active.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">delete</span></code>()</td>
+<td>Delete the object from GPU memory.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.read" title="vispy.gloo.FrameBuffer.read"><code class="xref py py-obj docutils literal"><span class="pre">read</span></code></a>([mode,&nbsp;alpha])</td>
+<td>Return array of pixel values in an attached buffer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.resize" title="vispy.gloo.FrameBuffer.resize"><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code></a>(shape)</td>
+<td>Resize all attached buffers with the given shape</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.FrameBuffer.activate">
+<code class="descname">activate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.FrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Activate/use this frame buffer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.FrameBuffer.color_buffer">
+<code class="descname">color_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.color_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color buffer attachment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.FrameBuffer.deactivate">
+<code class="descname">deactivate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.FrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop using this frame buffer, the previous framebuffer will be
+made active.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.FrameBuffer.depth_buffer">
+<code class="descname">depth_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.depth_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Depth buffer attachment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.FrameBuffer.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>mode='color'</em>, <em>alpha=True</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.FrameBuffer.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return array of pixel values in an attached buffer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mode</strong> : str</p>
+<blockquote>
+<div><p>The buffer type to read. May be 'color', 'depth', or 'stencil'.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : bool</p>
+<blockquote>
+<div><p>If True, returns RGBA array. Otherwise, returns RGB.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>buffer</strong> : array</p>
+<blockquote class="last">
+<div><p>3D array of pixels in np.uint8 format. 
+The array shape is (h, w, 3) or (h, w, 4), with the top-left 
+corner of the framebuffer at index [0, 0] in the returned array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.FrameBuffer.resize">
+<code class="descname">resize</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.FrameBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize all attached buffers with the given shape</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple of two integers</p>
+<blockquote class="last">
+<div><p>New buffer shape (h, w), to be applied to all currently
+attached buffers. For buffers that are a texture, the number
+of color channels is preserved.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.FrameBuffer.shape">
+<code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>The shape of the Texture/RenderBuffer attached to this FrameBuffer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.FrameBuffer.stencil_buffer">
+<code class="descname">stencil_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.stencil_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stencil buffer attachment</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-vispy.gloo.wrappers">
+<span id="state-methods"></span><h2>State methods<a class="headerlink" href="#module-vispy.gloo.wrappers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="vispy.gloo.wrappers.read_pixels">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">read_pixels</code><span class="sig-paren">(</span><em>viewport=None</em>, <em>alpha=True</em>, <em>out_type='unsigned_byte'</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.wrappers.read_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read pixels from the currently selected buffer.</p>
+<p>Under most circumstances, this function reads from the front buffer.
+Unlike all other functions in vispy.gloo, this function directly executes
+an OpenGL command.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>viewport</strong> : array-like | None</p>
+<blockquote>
+<div><p>4-element list of x, y, w, h parameters. If None (default),
+the current GL viewport will be queried and used.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : bool</p>
+<blockquote>
+<div><p>If True (default), the returned array has 4 elements (RGBA).
+If False, it has 3 (RGB).</p>
+</div></blockquote>
+<p><strong>out_type</strong> : str | dtype</p>
+<blockquote>
+<div><p>Can be 'unsigned_byte' or 'float'. Note that this does not
+use casting, but instead determines how values are read from
+the current buffer. Can also be numpy dtypes <code class="docutils literal"><span class="pre">np.uint8</span></code>,
+<code class="docutils literal"><span class="pre">np.ubyte</span></code>, or <code class="docutils literal"><span class="pre">np.float32</span></code>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pixels</strong> : array</p>
+<blockquote class="last">
+<div><p>3D array of pixels in np.uint8 or np.float32 format. 
+The array shape is (h, w, 3) or (h, w, 4), with the top-left corner 
+of the framebuffer at index [0, 0] in the returned array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.gloo.wrappers.get_gl_configuration">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">get_gl_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.wrappers.get_gl_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the current gl configuration</p>
+<p>This function uses constants that are not in the OpenGL ES 2.1
+namespace, so only use this on desktop systems.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>config</strong> : dict</p>
+<blockquote class="last">
+<div><p>The currently active OpenGL configuration.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-vispy.gloo.context">
+<span id="the-opengl-context"></span><h2>The OpenGL context<a class="headerlink" href="#module-vispy.gloo.context" title="Permalink to this headline">¶</a></h2>
+<p>Functionality to deal with GL Contexts in vispy. This module is defined
+in gloo, because gloo (and the layers that depend on it) need to be
+context aware. The vispy.app module &quot;provides&quot; a context, and therefore
+depends on this module. Although the GLContext class is aimed for use
+by vispy.app (for practical reasons), it should be possible to use
+GLContext without using vispy.app by overloading it in an appropriate
+manner.</p>
+<p>An GLContext object acts as a placeholder on which different parts
+of vispy (or other systems) can keep track of information related to
+an OpenGL context.</p>
+<dl class="class">
+<dt id="vispy.gloo.context.FakeCanvas">
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">FakeCanvas</code><a class="headerlink" href="#vispy.gloo.context.FakeCanvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake canvas to allow using gloo without vispy.app</p>
+<p>Instantiate this class to collect GLIR commands from gloo
+interactions. Call flush() in your draw event handler to execute
+the commands in the active contect.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.FakeCanvas.flush" title="vispy.gloo.context.FakeCanvas.flush"><code class="xref py py-obj docutils literal"><span class="pre">flush</span></code></a>()</td>
+<td>Flush commands.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.context.FakeCanvas.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.FakeCanvas.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush commands. Call this after setting to context to current.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.context.GLContext">
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLContext</code><span class="sig-paren">(</span><em>config=None</em>, <em>shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.GLContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object encapsulating data necessary for a OpenGL context</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>config</strong> : dict | None</p>
+<blockquote>
+<div><p>The requested configuration.</p>
+</div></blockquote>
+<p><strong>shared</strong> : instance of GLContext | None</p>
+<blockquote class="last">
+<div><p>The shared context.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">clear</span></code>([color,&nbsp;depth,&nbsp;stencil])</td>
+<td>Clear the screen buffers</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.create_shared" title="vispy.gloo.context.GLContext.create_shared"><code class="xref py py-obj docutils literal"><span class="pre">create_shared</span></code></a>(name,&nbsp;ref)</td>
+<td>For the app backends to create the GLShared object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">finish</span></code>()</td>
+<td>Wait for GL commands to to finish</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">flush</span></code>()</td>
+<td>Flush GL commands</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.flush_commands" title="vispy.gloo.context.GLContext.flush_commands"><code class="xref py py-obj docutils literal"><span class="pre">flush_commands</span></code></a>([event])</td>
+<td>Flush</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">get_state_presets</span></code>()</td>
+<td>The available GL state presets</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_color</span></code>(color)</td>
+<td>Set the blend color</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_equation</span></code>(mode_rgb[,&nbsp;mode_alpha])</td>
+<td>Specify the equation for RGB and alpha blending</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_func</span></code>([srgb,&nbsp;drgb,&nbsp;salpha,&nbsp;dalpha])</td>
+<td>Specify pixel arithmetic for RGB and alpha</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_color</span></code>([color,&nbsp;alpha])</td>
+<td>Set the screen clear color</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_depth</span></code>([depth])</td>
+<td>Set the clear value for the depth buffer</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_stencil</span></code>([index])</td>
+<td>Set the clear value for the stencil buffer</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_color_mask</span></code>(red,&nbsp;green,&nbsp;blue,&nbsp;alpha)</td>
+<td>Toggle writing of frame buffer color components</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_cull_face</span></code>([mode])</td>
+<td>Set front, back, or both faces to be culled</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_func</span></code>([func])</td>
+<td>Specify the value used for depth buffer comparisons</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_mask</span></code>(flag)</td>
+<td>Toggle writing into the depth buffer</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_range</span></code>([near,&nbsp;far])</td>
+<td>Set depth values</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_front_face</span></code>([mode])</td>
+<td>Set which faces are front-facing</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_hint</span></code>(target,&nbsp;mode)</td>
+<td>Set OpenGL drawing hint</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_line_width</span></code>([width])</td>
+<td>Set line width</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_polygon_offset</span></code>([factor,&nbsp;units])</td>
+<td>Set the scale and units used to calculate depth values</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sample_coverage</span></code>([value,&nbsp;invert])</td>
+<td>Specify multisample coverage parameters</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_scissor</span></code>(x,&nbsp;y,&nbsp;w,&nbsp;h)</td>
+<td>Define the scissor box</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state</span></code>([preset])</td>
+<td>Set OpenGL rendering state, optionally using a preset</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_func</span></code>([func,&nbsp;ref,&nbsp;mask,&nbsp;face])</td>
+<td>Set front or back function and reference value</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_mask</span></code>([mask,&nbsp;face])</td>
+<td>Control the front or back writing of individual bits in the stencil</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_op</span></code>([sfail,&nbsp;dpfail,&nbsp;dppass,&nbsp;face])</td>
+<td>Set front or back stencil test actions</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_viewport</span></code>(*args)</td>
+<td>Set the OpenGL viewport</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLContext.capabilities">
+<code class="descname">capabilities</code><a class="headerlink" href="#vispy.gloo.context.GLContext.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>The OpenGL capabilities</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLContext.config">
+<code class="descname">config</code><a class="headerlink" href="#vispy.gloo.context.GLContext.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary describing the configuration of this GL context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.context.GLContext.create_shared">
+<code class="descname">create_shared</code><span class="sig-paren">(</span><em>name</em>, <em>ref</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.GLContext.create_shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>For the app backends to create the GLShared object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<blockquote>
+<div><p>The name.</p>
+</div></blockquote>
+<p><strong>ref</strong> : object</p>
+<blockquote class="last">
+<div><p>The reference.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.gloo.context.GLContext.flush_commands">
+<code class="descname">flush_commands</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.GLContext.flush_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event</strong> : instance of Event</p>
+<blockquote class="last">
+<div><p>The event.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLContext.glir">
+<code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.context.GLContext.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The glir queue for the context. This queue is for objects
+that can be shared accross canvases (if they share a contex).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLContext.shared">
+<code class="descname">shared</code><a class="headerlink" href="#vispy.gloo.context.GLContext.shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the object that represents the namespace that can
+potentially be shared between multiple contexts.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="vispy.gloo.context.GLShared">
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLShared</code><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Representation of a &quot;namespace&quot; that can be shared between
+different contexts. App backends can associate themselves with this
+object via add_ref().</p>
+<p>This object can be used to establish whether two contexts/canvases
+share objects, and can be used as a placeholder to store shared
+information, such as glyph atlasses.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLShared.add_ref" title="vispy.gloo.context.GLShared.add_ref"><code class="xref py py-obj docutils literal"><span class="pre">add_ref</span></code></a>(name,&nbsp;ref)</td>
+<td>Add a reference for the backend object that gives access to the low level context.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="vispy.gloo.context.GLShared.add_ref">
+<code class="descname">add_ref</code><span class="sig-paren">(</span><em>name</em>, <em>ref</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.GLShared.add_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a reference for the backend object that gives access
+to the low level context. Used in vispy.app.canvas.backends.
+The given name must match with that of previously added
+references.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLShared.name">
+<code class="descname">name</code><a class="headerlink" href="#vispy.gloo.context.GLShared.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the canvas backend that this shared namespace is
+associated with. Can be None.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLShared.parser">
+<code class="descname">parser</code><a class="headerlink" href="#vispy.gloo.context.GLShared.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GLIR parser (shared between contexts)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.gloo.context.GLShared.ref">
+<code class="descname">ref</code><a class="headerlink" href="#vispy.gloo.context.GLShared.ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reference (stored internally via a weakref) to an object
+that the backend system can use to obtain the low-level
+information of the &quot;reference context&quot;. In Vispy this will
+typically be the CanvasBackend object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.gloo.context.forget_canvas">
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">forget_canvas</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.forget_canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forget about the given canvas. Used by the canvas when closed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.gloo.context.get_current_canvas">
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_current_canvas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.get_current_canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the currently active canvas</p>
+<p>Returns None if there is no canvas available. A canvas is made
+active on initialization and before the draw event is emitted.</p>
+<p>When a gloo object is created, it is associated with the currently
+active Canvas, or with the next Canvas to be created if there is
+no current Canvas. Use Canvas.set_current() to manually activate a
+canvas.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.gloo.context.get_default_config">
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_default_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.get_default_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the default OpenGL context configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>config</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of config values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="vispy.gloo.context.set_current_canvas">
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">set_current_canvas</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.context.set_current_canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a canvas active. Used primarily by the canvas itself.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="vispy-gloo-gl-low-level-gl-api">
+<h2>vispy.gloo.gl - low level GL API<a class="headerlink" href="#vispy-gloo-gl-low-level-gl-api" title="Permalink to this headline">¶</a></h2>
+<p>Vispy also exposes a (low level) functional GL API.</p>
+<blockquote>
+<div><a class="reference external" href="gl.html">vispy.gloo.gl docs</a></div></blockquote>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+
+  <div class="container">
+    <ul class="list-inline">
+      <li><a href="https://github.com/vispy/vispy">GitHub</a></li>
+      <li>·</li>
+      <li><a href=""><a href="https://github.com/vispy/vispy/blob/master/examples/">Examples</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/issues">Issues</a></li>
+      <li>·</li>
+      <li><a href="https://github.com/vispy/vispy/releases">Releases</a></li>
+      <li class="pull-right"><a href="#">Back to top</a></li>
+    </ul>
+    <ul class="list-unstyled small">
+      <li>Copyright (c) 2015 VisPy developers</li>
+      <li>Code licensed under
+        <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
+        documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>
+      </li>
+      <li>
+        Made with <a href="http://sphinx-doc.org">sphinx</a> using the excellent
+        <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme">bootstrap theme</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+  </body>
+</html>
