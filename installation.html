@@ -91,7 +91,7 @@
 <li><a class="reference internal" href="#package-requirements">Package requirements</a></li>
 <li><a class="reference internal" href="#backend-requirements">Backend requirements</a></li>
 <li><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
-<li><a class="reference internal" href="#id1">Installation</a><ul>
+<li><a class="reference internal" href="#installation-options">Installation options</a><ul>
 <li><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
 </li>
@@ -108,7 +108,6 @@
             
           </ul>
 
-<!--
           
             
 <form class="navbar-form navbar-right" action="search.html" method="get">
@@ -119,10 +118,19 @@
   <input type="hidden" name="area" value="default" />
 </form>
           
--->
+
         </div>
     </div>
   </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-45168532-1', 'vispy.org');
+  ga('send', 'pageview');
+</script>
 
 <div class="container">
   <div class="row">
@@ -132,7 +140,7 @@
 <li><a class="reference internal" href="#package-requirements">Package requirements</a></li>
 <li><a class="reference internal" href="#backend-requirements">Backend requirements</a></li>
 <li><a class="reference internal" href="#hardware-requirements">Hardware requirements</a></li>
-<li><a class="reference internal" href="#id1">Installation</a><ul>
+<li><a class="reference internal" href="#installation-options">Installation options</a><ul>
 <li><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
 </li>
@@ -182,14 +190,23 @@ programmable pipeline (as opposed to the fixed pipeline).</p>
 <p>The results of the above command and is long list of information related to
 your system and video driver. The OpenGL version must be at least 2.1.</p>
 </div>
-<div class="section" id="id1">
-<h2>Installation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Once requirements are met, you can proceed with VisPy installation:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install vispy
+<div class="section" id="installation-options">
+<h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">¶</a></h2>
+<p><strong>To install the latest release version</strong>, you can do:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install --upgrade vispy
 </pre></div>
 </div>
-<p>or upgrade any existing installation:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install --upgrade vispy
+<p><strong>If you want to run the latest development version</strong>, you can clone the
+repository to your local machine and install with <code class="docutils literal"><span class="pre">develop</span></code> to enable easy
+updates to latest``master``:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone git://github.com/vispy/vispy.git  # creates &quot;vispy&quot; folder
+$ cd vispy
+$ python setup.py develop
+</pre></div>
+</div>
+<p>To run the latest development version without cloning the repository, you
+can also use this line:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install -e git+https://github.com/vispy/vispy#egg=vispy-dev
 </pre></div>
 </div>
 <div class="section" id="testing-installation">
