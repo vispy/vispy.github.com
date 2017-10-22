@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The object oriented OpenGL API (gloo) &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>The object oriented OpenGL API (gloo) &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -88,15 +81,19 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">The object oriented OpenGL API (gloo)</a><ul>
-<li><a class="reference internal" href="#base-class">Base class</a></li>
-<li><a class="reference internal" href="#program-class">Program class</a></li>
+<li><a class="reference internal" href="#base-class">Base class</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#program-class">Program class</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#buffer-classes">Buffer classes</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#texture-classes">Texture classes</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#classes-related-to-fbo-s">Classes related to FBO's</a><ul>
+<li><a class="reference internal" href="#classes-related-to-fbo-s">Classes related to FBO’s</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-vispy.gloo.wrappers">State methods</a></li>
@@ -143,30 +140,30 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy.gloo">
 <span id="the-object-oriented-opengl-api-gloo"></span><h1>The object oriented OpenGL API (gloo)<a class="headerlink" href="#module-vispy.gloo" title="Permalink to this headline">¶</a></h1>
 <p>Object oriented interface to OpenGL.</p>
-<p>This module implements classes for the things that are &quot;objects&quot; in
-OpenGL, such as textures, FBO's, VBO's and shaders. Further, some
+<p>This module implements classes for the things that are “objects” in
+OpenGL, such as textures, FBO’s, VBO’s and shaders. Further, some
 convenience classes are implemented (like the collection class).</p>
 <p>This set of classes provides a friendly (Pythonic) interface
-to OpenGL, and is designed to provide OpenGL's full functionality.</p>
+to OpenGL, and is designed to provide OpenGL’s full functionality.</p>
 <p>All classes inherit from GLObject, which provide a basic interface,
 enabling, activating and deleting the object. Central to each
 visualization is the Program. Other objects, such as Texture2D and
 VertexBuffer should be set as uniforms and attributes of the Program
 object.</p>
 <p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># Init</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Init</span>
 <span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">vertex_source</span><span class="p">,</span> <span class="n">fragment_source</span><span class="p">)</span>
-<span class="n">program</span><span class="p">[</span><span class="s">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">my_positions_array</span><span class="p">)</span>
-<span class="n">program</span><span class="p">[</span><span class="s">&#39;s_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">my_image</span><span class="p">)</span>
+<span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">my_positions_array</span><span class="p">)</span>
+<span class="n">program</span><span class="p">[</span><span class="s1">&#39;s_texture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">my_image</span><span class="p">)</span>
 <span class="o">...</span>
 
-<span class="c"># Draw event handler</span>
-<span class="n">program</span><span class="p">[</span><span class="s">&#39;u_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="c1"># Draw event handler</span>
+<span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
 <span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_TRIANGLES</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -190,6 +187,21 @@ progress and there are still a few known limitations. Most notably:</p>
 <p>When a GLObject is instantiated, it is associated with the currently
 active Canvas, or with the next Canvas to be created if there is
 no current Canvas</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.GLObject.glir" title="vispy.gloo.GLObject.glir"><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></a></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.GLObject.id" title="vispy.gloo.GLObject.id"><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></a></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -221,7 +233,7 @@ explicitly delete the GPU object explicitly.</p>
 <dt id="vispy.gloo.GLObject.id">
 <code class="descname">id</code><a class="headerlink" href="#vispy.gloo.GLObject.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>The id of this GL object used to reference the GL object
-in GLIR. id's are unique within a process.</p>
+in GLIR. id’s are unique within a process.</p>
 </dd></dl>
 
 </dd></dl>
@@ -263,6 +275,27 @@ is more efficient than having one vbo per attribute.</p>
 <p class="rubric">Notes</p>
 <p>If several shaders are specified, only one can contain the main
 function. OpenGL ES 2.0 does not support a list of shaders.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Program.shaders" title="vispy.gloo.Program.shaders"><code class="xref py py-obj docutils literal"><span class="pre">shaders</span></code></a></td>
+<td>Source code for vertex and fragment shader</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Program.variables" title="vispy.gloo.Program.variables"><code class="xref py py-obj docutils literal"><span class="pre">variables</span></code></a></td>
+<td>A list of the variables in use by the current program</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -313,14 +346,14 @@ are mapped to attribute names in GLSL.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mode</strong> : str | GL_ENUM</p>
 <blockquote>
-<div><p>'points', 'lines', 'line_strip', 'line_loop', 'triangles',
-'triangle_strip', or 'triangle_fan'.</p>
+<div><p>‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘triangles’,
+‘triangle_strip’, or ‘triangle_fan’.</p>
 </div></blockquote>
 <p><strong>indices</strong> : array</p>
 <blockquote>
 <div><p>Array of indices to draw.</p>
 </div></blockquote>
-<p><strong>check_error:</strong> :</p>
+<p><strong>check_error:</strong></p>
 <blockquote class="last">
 <div><p>Check error after draw.</p>
 </div></blockquote>
@@ -370,8 +403,8 @@ are mapped to attribute names in GLSL.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>variables</strong> : list</p>
 <blockquote class="last">
 <div><p>Each variable is represented as a tuple (kind, type, name),
-where <cite>kind</cite> is 'attribute', 'uniform', 'uniform_array',
-'varying' or 'const'.</p>
+where <cite>kind</cite> is ‘attribute’, ‘uniform’, ‘uniform_array’,
+‘varying’ or ‘const’.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -410,6 +443,24 @@ aware of data type or element size.</p>
 <div><p>Buffer byte size.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>Implementation to execute GL Intermediate Representation (GLIR)</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#id" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -471,7 +522,7 @@ aware of data type or element size.</p>
 <blockquote>
 <div><p>Data to be uploaded</p>
 </div></blockquote>
-<p><strong>copy: bool</strong> :</p>
+<p><strong>copy: bool</strong></p>
 <blockquote class="last">
 <div><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory.
@@ -495,11 +546,11 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <blockquote>
 <div><p>Data to be uploaded</p>
 </div></blockquote>
-<p><strong>offset: int</strong> :</p>
+<p><strong>offset: int</strong></p>
 <blockquote>
 <div><p>Offset in buffer where to start copying data (in bytes)</p>
 </div></blockquote>
-<p><strong>copy: bool</strong> :</p>
+<p><strong>copy: bool</strong></p>
 <blockquote class="last">
 <div><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory.
@@ -526,6 +577,42 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <div><p>Buffer data.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>Implementation to execute GL Intermediate Representation (GLIR)</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#id" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">offset</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">stride</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -606,7 +693,7 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <blockquote>
 <div><p>Data to be uploaded</p>
 </div></blockquote>
-<p><strong>copy: bool</strong> :</p>
+<p><strong>copy: bool</strong></p>
 <blockquote>
 <div><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory.
@@ -634,11 +721,11 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <blockquote>
 <div><p>Data to be uploaded</p>
 </div></blockquote>
-<p><strong>offset: int</strong> :</p>
+<p><strong>offset: int</strong></p>
 <blockquote>
 <div><p>Offset in buffer where to start copying data (in bytes)</p>
 </div></blockquote>
-<p><strong>copy: bool</strong> :</p>
+<p><strong>copy: bool</strong></p>
 <blockquote>
 <div><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory.
@@ -684,6 +771,42 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></td>
+<td>Buffer dtype</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></td>
+<td>GLSL declaration strings required for a variable to hold this data.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></td>
+<td>The total number of bytes required to store the array data</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></td>
+<td>Buffer size in bytes</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">offset</span></code></td>
+<td>Buffer offset (in bytes) relative to base</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td>Number of elements in the buffer</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">stride</span></code></td>
+<td>Stride of data in memory</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -720,6 +843,42 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <div><p>Buffer data.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dtype</span></code></td>
+<td>Buffer dtype</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></td>
+<td>GLSL declaration strings required for a variable to hold this data.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">itemsize</span></code></td>
+<td>The total number of bytes required to store the array data</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">nbytes</span></code></td>
+<td>Buffer size in bytes</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">offset</span></code></td>
+<td>Buffer offset (in bytes) relative to base</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td>Number of elements in the buffer</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">stride</span></code></td>
+<td>Stride of data in memory</td>
 </tr>
 </tbody>
 </table>
@@ -765,10 +924,10 @@ can also be given.</p>
 </div></blockquote>
 <p><strong>format</strong> : str | enum | None</p>
 <blockquote>
-<div><p>The format of the texture: 'luminance', 'alpha',
-'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+<div><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
 is chosen automatically based on the number of channels.
-When the data has one channel, 'luminance' is assumed.</p>
+When the data has one channel, ‘luminance’ is assumed.</p>
 </div></blockquote>
 <p><strong>resizable</strong> : bool</p>
 <blockquote>
@@ -776,13 +935,13 @@ When the data has one channel, 'luminance' is assumed.</p>
 </div></blockquote>
 <p><strong>interpolation</strong> : str | None</p>
 <blockquote>
-<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
-Default 'nearest'.</p>
+<div><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
 </div></blockquote>
 <p><strong>wrapping</strong> : str | None</p>
 <blockquote>
-<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
-'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+<div><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
 </div></blockquote>
 <p><strong>shape</strong> : tuple | None</p>
 <blockquote>
@@ -798,6 +957,33 @@ is also a tuple, it will override the value of <code class="docutils literal"><s
 <div><p>Deprecated version of <cite>resizable</cite>.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#format" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>Implementation to execute GL Intermediate Representation (GLIR)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#id" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wrapping</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -846,18 +1032,18 @@ may be specified to indicate the number of color channels.</p>
 </div></blockquote>
 <p><strong>format</strong> : str | enum | None</p>
 <blockquote>
-<div><p>The format of the texture: 'luminance', 'alpha',
-'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+<div><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
 is chosen automatically based on the number of channels.
-When the data has one channel, 'luminance' is assumed.</p>
+When the data has one channel, ‘luminance’ is assumed.</p>
 </div></blockquote>
 <p><strong>internalformat</strong> : str | enum | None</p>
 <blockquote class="last">
-<div><p>The internal (storage) format of the texture: 'luminance',
-'alpha', 'r8', 'r16', 'r16f', 'r32f'; 'luminance_alpha',
-'rg8', 'rg16', 'rg16f', 'rg32f'; 'rgb', 'rgb8', 'rgb16',
-'rgb16f', 'rgb32f'; 'rgba', 'rgba8', 'rgba16', 'rgba16f',
-'rgba32f'.  If None, the internalformat is chosen
+<div><p>The internal (storage) format of the texture: ‘luminance’,
+‘alpha’, ‘r8’, ‘r16’, ‘r16f’, ‘r32f’; ‘luminance_alpha’,
+‘rg8’, ‘rg16’, ‘rg16f’, ‘rg32f’; ‘rgb’, ‘rgb8’, ‘rgb16’,
+‘rgb16f’, ‘rgb32f’; ‘rgba’, ‘rgba8’, ‘rgba16’, ‘rgba16f’,
+‘rgba32f’.  If None, the internalformat is chosen
 automatically based on the number of channels.  This is a
 hint which may be ignored by the OpenGL implementation.</p>
 </div></blockquote>
@@ -879,11 +1065,11 @@ hint which may be ignored by the OpenGL implementation.</p>
 <blockquote>
 <div><p>Data to be uploaded</p>
 </div></blockquote>
-<p><strong>offset: int | tuple of ints</strong> :</p>
+<p><strong>offset: int | tuple of ints</strong></p>
 <blockquote>
 <div><p>Offset in texture where to start copying data</p>
 </div></blockquote>
-<p><strong>copy: bool</strong> :</p>
+<p><strong>copy: bool</strong></p>
 <blockquote class="last">
 <div><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory. Asking explicitly
@@ -927,10 +1113,10 @@ the texture (W).</p>
 </div></blockquote>
 <p><strong>format</strong> : str | enum | None</p>
 <blockquote>
-<div><p>The format of the texture: 'luminance', 'alpha',
-'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+<div><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
 is chosen automatically based on the number of channels.
-When the data has one channel, 'luminance' is assumed.</p>
+When the data has one channel, ‘luminance’ is assumed.</p>
 </div></blockquote>
 <p><strong>resizable</strong> : bool</p>
 <blockquote>
@@ -938,13 +1124,13 @@ When the data has one channel, 'luminance' is assumed.</p>
 </div></blockquote>
 <p><strong>interpolation</strong> : str</p>
 <blockquote>
-<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
-Default 'nearest'.</p>
+<div><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
 </div></blockquote>
 <p><strong>wrapping</strong> : str</p>
 <blockquote>
-<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
-'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+<div><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
 </div></blockquote>
 <p><strong>shape</strong> : tuple</p>
 <blockquote>
@@ -960,6 +1146,48 @@ is also a tuple, it will override the value of <code class="docutils literal"><s
 <div><p>Deprecated version of <cite>resizable</cite>.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></td>
+<td>The texture format (color channels).</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture2D.glsl_sample" title="vispy.gloo.Texture2D.glsl_sample"><code class="xref py py-obj docutils literal"><span class="pre">glsl_sample</span></code></a></td>
+<td>GLSL function that samples the texture.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Texture2D.glsl_sampler_type" title="vispy.gloo.Texture2D.glsl_sampler_type"><code class="xref py py-obj docutils literal"><span class="pre">glsl_sampler_type</span></code></a></td>
+<td>GLSL type of the sampler.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture2D.glsl_type" title="vispy.gloo.Texture2D.glsl_type"><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></a></td>
+<td>GLSL declaration strings required for a variable to hold this data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Texture2D.height" title="vispy.gloo.Texture2D.height"><code class="xref py py-obj docutils literal"><span class="pre">height</span></code></a></td>
+<td>Texture height</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></td>
+<td>Texture interpolation for minification and magnification.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></td>
+<td>Data shape (last dimension indicates number of color channels)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Texture2D.width" title="vispy.gloo.Texture2D.width"><code class="xref py py-obj docutils literal"><span class="pre">width</span></code></a></td>
+<td>Texture width</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wrapping</span></code></td>
+<td>Texture wrapping mode</td>
 </tr>
 </tbody>
 </table>
@@ -1029,10 +1257,10 @@ can also be given.</p>
 </div></blockquote>
 <p><strong>format</strong> : str | enum | None</p>
 <blockquote>
-<div><p>The format of the texture: 'luminance', 'alpha',
-'luminance_alpha', 'rgb', or 'rgba'. If not given the format
+<div><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
 is chosen automatically based on the number of channels.
-When the data has one channel, 'luminance' is assumed.</p>
+When the data has one channel, ‘luminance’ is assumed.</p>
 </div></blockquote>
 <p><strong>resizable</strong> : bool</p>
 <blockquote>
@@ -1040,13 +1268,13 @@ When the data has one channel, 'luminance' is assumed.</p>
 </div></blockquote>
 <p><strong>interpolation</strong> : str | None</p>
 <blockquote>
-<div><p>Interpolation mode, must be one of: 'nearest', 'linear'.
-Default 'nearest'.</p>
+<div><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
 </div></blockquote>
 <p><strong>wrapping</strong> : str | None</p>
 <blockquote>
-<div><p>Wrapping mode, must be one of: 'repeat', 'clamp_to_edge',
-'mirrored_repeat'. Default 'clamp_to_edge'.</p>
+<div><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
 </div></blockquote>
 <p><strong>shape</strong> : tuple | None</p>
 <blockquote>
@@ -1062,6 +1290,51 @@ is also a tuple, it will override the value of <code class="docutils literal"><s
 <div><p>Deprecated version of <cite>resizable</cite>.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture3D.depth" title="vispy.gloo.Texture3D.depth"><code class="xref py py-obj docutils literal"><span class="pre">depth</span></code></a></td>
+<td>Texture depth</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></td>
+<td>The texture format (color channels).</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Texture3D.glsl_sample" title="vispy.gloo.Texture3D.glsl_sample"><code class="xref py py-obj docutils literal"><span class="pre">glsl_sample</span></code></a></td>
+<td>GLSL function that samples the texture.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture3D.glsl_sampler_type" title="vispy.gloo.Texture3D.glsl_sampler_type"><code class="xref py py-obj docutils literal"><span class="pre">glsl_sampler_type</span></code></a></td>
+<td>GLSL type of the sampler.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.Texture3D.glsl_type" title="vispy.gloo.Texture3D.glsl_type"><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></a></td>
+<td>GLSL declaration strings required for a variable to hold this data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture3D.height" title="vispy.gloo.Texture3D.height"><code class="xref py py-obj docutils literal"><span class="pre">height</span></code></a></td>
+<td>Texture height</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></td>
+<td>Texture interpolation for minification and magnification.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></td>
+<td>Data shape (last dimension indicates number of color channels)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.Texture3D.width" title="vispy.gloo.Texture3D.width"><code class="xref py py-obj docutils literal"><span class="pre">width</span></code></a></td>
+<td>Texture width</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wrapping</span></code></td>
+<td>Texture wrapping mode</td>
 </tr>
 </tbody>
 </table>
@@ -1125,9 +1398,9 @@ is also a tuple, it will override the value of <code class="docutils literal"><s
 <dt id="vispy.gloo.TextureAtlas">
 <em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">TextureAtlas</code><span class="sig-paren">(</span><em>shape=(1024</em>, <em>1024)</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.TextureAtlas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Group multiple small data regions into a larger texture.</p>
-<p>The algorithm is based on the article by Jukka Jylänki : &quot;A Thousand Ways
+<p>The algorithm is based on the article by Jukka Jylänki : “A Thousand Ways
 to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin
-Packing&quot;, February 27, 2010. More precisely, this is an implementation of
+Packing”, February 27, 2010. More precisely, this is an implementation of
 the Skyline Bottom-Left algorithm based on C++ sources provided by Jukka
 Jylänki at: <a class="reference external" href="http://clb.demon.fi/files/RectangleBinPack/">http://clb.demon.fi/files/RectangleBinPack/</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1145,11 +1418,53 @@ Jylänki at: <a class="reference external" href="http://clb.demon.fi/files/Rect
 <p class="rubric">Notes</p>
 <p>This creates a 2D texture that holds 1D float32 data.
 An example of simple access:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bounds</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">get_free_region</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span><span class="o">.</span><span class="n">set_region</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></td>
+<td>The texture format (color channels).</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_sample</span></code></td>
+<td>GLSL function that samples the texture.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_sampler_type</span></code></td>
+<td>GLSL type of the sampler.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_type</span></code></td>
+<td>GLSL declaration strings required for a variable to hold this data.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">height</span></code></td>
+<td>Texture height</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></td>
+<td>Texture interpolation for minification and magnification.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></td>
+<td>Data shape (last dimension indicates number of color channels)</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">width</span></code></td>
+<td>Texture width</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wrapping</span></code></td>
+<td>Texture wrapping mode</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1204,7 +1519,7 @@ An example of simple access:</p>
 
 </div>
 <div class="section" id="classes-related-to-fbo-s">
-<h2>Classes related to FBO's<a class="headerlink" href="#classes-related-to-fbo-s" title="Permalink to this headline">¶</a></h2>
+<h2>Classes related to FBO’s<a class="headerlink" href="#classes-related-to-fbo-s" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="vispy.gloo.RenderBuffer">
 <em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">RenderBuffer</code><span class="sig-paren">(</span><em>shape=None</em>, <em>format=None</em>, <em>resizeable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.RenderBuffer" title="Permalink to this definition">¶</a></dt>
@@ -1219,7 +1534,7 @@ format is not specified, it is set when attached to the FrameBuffer.</p>
 <blockquote>
 <div><p>The shape of the render buffer.</p>
 </div></blockquote>
-<p><strong>format</strong> : {None, 'color', 'depth', 'stencil'}</p>
+<p><strong>format</strong> : {None, ‘color’, ‘depth’, ‘stencil’}</p>
 <blockquote>
 <div><p>The format of the render buffer. See resize.</p>
 </div></blockquote>
@@ -1228,6 +1543,27 @@ format is not specified, it is set when attached to the FrameBuffer.</p>
 <div><p>Indicates whether texture can be resized</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.RenderBuffer.format" title="vispy.gloo.RenderBuffer.format"><code class="xref py py-obj docutils literal"><span class="pre">format</span></code></a></td>
+<td>RenderBuffer format</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.RenderBuffer.shape" title="vispy.gloo.RenderBuffer.shape"><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></a></td>
+<td>RenderBuffer shape</td>
 </tr>
 </tbody>
 </table>
@@ -1266,7 +1602,7 @@ format is not specified, it is set when attached to the FrameBuffer.</p>
 symmetry with the texture class, a 3-element tuple can also
 be given, in which case the last dimension is ignored.</p>
 </div></blockquote>
-<p><strong>format</strong> : {None, 'color', 'depth', 'stencil'}</p>
+<p><strong>format</strong> : {None, ‘color’, ‘depth’, ‘stencil’}</p>
 <blockquote class="last">
 <div><p>The buffer format. If None, the current format is maintained. 
 If that is also None, the format will be set upon attaching
@@ -1309,6 +1645,33 @@ GL_STENCIL_INDEX8</p>
 <div><p>The stencil buffer to attach to this frame buffer</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.color_buffer" title="vispy.gloo.FrameBuffer.color_buffer"><code class="xref py py-obj docutils literal"><span class="pre">color_buffer</span></code></a></td>
+<td>Color buffer attachment</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.depth_buffer" title="vispy.gloo.FrameBuffer.depth_buffer"><code class="xref py py-obj docutils literal"><span class="pre">depth_buffer</span></code></a></td>
+<td>Depth buffer attachment</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></td>
+<td>The glir queue for this object.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">id</span></code></td>
+<td>The id of this GL object used to reference the GL object in GLIR.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.shape" title="vispy.gloo.FrameBuffer.shape"><code class="xref py py-obj docutils literal"><span class="pre">shape</span></code></a></td>
+<td>The shape of the Texture/RenderBuffer attached to this FrameBuffer</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.FrameBuffer.stencil_buffer" title="vispy.gloo.FrameBuffer.stencil_buffer"><code class="xref py py-obj docutils literal"><span class="pre">stencil_buffer</span></code></a></td>
+<td>Stencil buffer attachment</td>
 </tr>
 </tbody>
 </table>
@@ -1371,7 +1734,7 @@ made active.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mode</strong> : str</p>
 <blockquote>
-<div><p>The buffer type to read. May be 'color', 'depth', or 'stencil'.</p>
+<div><p>The buffer type to read. May be ‘color’, ‘depth’, or ‘stencil’.</p>
 </div></blockquote>
 <p><strong>alpha</strong> : bool</p>
 <blockquote>
@@ -1451,7 +1814,7 @@ If False, it has 3 (RGB).</p>
 </div></blockquote>
 <p><strong>out_type</strong> : str | dtype</p>
 <blockquote>
-<div><p>Can be 'unsigned_byte' or 'float'. Note that this does not
+<div><p>Can be ‘unsigned_byte’ or ‘float’. Note that this does not
 use casting, but instead determines how values are read from
 the current buffer. Can also be numpy dtypes <code class="docutils literal"><span class="pre">np.uint8</span></code>,
 <code class="docutils literal"><span class="pre">np.ubyte</span></code>, or <code class="docutils literal"><span class="pre">np.float32</span></code>.</p>
@@ -1495,7 +1858,7 @@ namespace, so only use this on desktop systems.</p>
 <span id="the-opengl-context"></span><h2>The OpenGL context<a class="headerlink" href="#module-vispy.gloo.context" title="Permalink to this headline">¶</a></h2>
 <p>Functionality to deal with GL Contexts in vispy. This module is defined
 in gloo, because gloo (and the layers that depend on it) need to be
-context aware. The vispy.app module &quot;provides&quot; a context, and therefore
+context aware. The vispy.app module “provides” a context, and therefore
 depends on this module. Although the GLContext class is aimed for use
 by vispy.app (for practical reasons), it should be possible to use
 GLContext without using vispy.app by overloading it in an appropriate
@@ -1550,6 +1913,27 @@ the commands in the active contect.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.capabilities" title="vispy.gloo.context.GLContext.capabilities"><code class="xref py py-obj docutils literal"><span class="pre">capabilities</span></code></a></td>
+<td>The OpenGL capabilities</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.config" title="vispy.gloo.context.GLContext.config"><code class="xref py py-obj docutils literal"><span class="pre">config</span></code></a></td>
+<td>A dictionary describing the configuration of this GL context.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.glir" title="vispy.gloo.context.GLContext.glir"><code class="xref py py-obj docutils literal"><span class="pre">glir</span></code></a></td>
+<td>The glir queue for the context.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.context.GLContext.shared" title="vispy.gloo.context.GLContext.shared"><code class="xref py py-obj docutils literal"><span class="pre">shared</span></code></a></td>
+<td>Get the object that represents the namespace that can potentially be shared between multiple contexts.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1575,71 +1959,74 @@ the commands in the active contect.</p>
 <tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">get_state_presets</span></code>()</td>
 <td>The available GL state presets</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_color</span></code>(color)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">get_viewport</span></code>()</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_color</span></code>(color)</td>
 <td>Set the blend color</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_equation</span></code>(mode_rgb[,&nbsp;mode_alpha])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_equation</span></code>(mode_rgb[,&nbsp;mode_alpha])</td>
 <td>Specify the equation for RGB and alpha blending</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_func</span></code>([srgb,&nbsp;drgb,&nbsp;salpha,&nbsp;dalpha])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_blend_func</span></code>([srgb,&nbsp;drgb,&nbsp;salpha,&nbsp;dalpha])</td>
 <td>Specify pixel arithmetic for RGB and alpha</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_color</span></code>([color,&nbsp;alpha])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_color</span></code>([color,&nbsp;alpha])</td>
 <td>Set the screen clear color</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_depth</span></code>([depth])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_depth</span></code>([depth])</td>
 <td>Set the clear value for the depth buffer</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_stencil</span></code>([index])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_clear_stencil</span></code>([index])</td>
 <td>Set the clear value for the stencil buffer</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_color_mask</span></code>(red,&nbsp;green,&nbsp;blue,&nbsp;alpha)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_color_mask</span></code>(red,&nbsp;green,&nbsp;blue,&nbsp;alpha)</td>
 <td>Toggle writing of frame buffer color components</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_cull_face</span></code>([mode])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_cull_face</span></code>([mode])</td>
 <td>Set front, back, or both faces to be culled</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_func</span></code>([func])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_func</span></code>([func])</td>
 <td>Specify the value used for depth buffer comparisons</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_mask</span></code>(flag)</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_mask</span></code>(flag)</td>
 <td>Toggle writing into the depth buffer</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_range</span></code>([near,&nbsp;far])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_depth_range</span></code>([near,&nbsp;far])</td>
 <td>Set depth values</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_front_face</span></code>([mode])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_front_face</span></code>([mode])</td>
 <td>Set which faces are front-facing</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_hint</span></code>(target,&nbsp;mode)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_hint</span></code>(target,&nbsp;mode)</td>
 <td>Set OpenGL drawing hint</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_line_width</span></code>([width])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_line_width</span></code>([width])</td>
 <td>Set line width</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_polygon_offset</span></code>([factor,&nbsp;units])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_polygon_offset</span></code>([factor,&nbsp;units])</td>
 <td>Set the scale and units used to calculate depth values</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sample_coverage</span></code>([value,&nbsp;invert])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_sample_coverage</span></code>([value,&nbsp;invert])</td>
 <td>Specify multisample coverage parameters</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_scissor</span></code>(x,&nbsp;y,&nbsp;w,&nbsp;h)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_scissor</span></code>(x,&nbsp;y,&nbsp;w,&nbsp;h)</td>
 <td>Define the scissor box</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state</span></code>([preset])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_state</span></code>([preset])</td>
 <td>Set OpenGL rendering state, optionally using a preset</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_func</span></code>([func,&nbsp;ref,&nbsp;mask,&nbsp;face])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_func</span></code>([func,&nbsp;ref,&nbsp;mask,&nbsp;face])</td>
 <td>Set front or back function and reference value</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_mask</span></code>([mask,&nbsp;face])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_mask</span></code>([mask,&nbsp;face])</td>
 <td>Control the front or back writing of individual bits in the stencil</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_op</span></code>([sfail,&nbsp;dpfail,&nbsp;dppass,&nbsp;face])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_stencil_op</span></code>([sfail,&nbsp;dpfail,&nbsp;dppass,&nbsp;face])</td>
 <td>Set front or back stencil test actions</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_viewport</span></code>(*args)</td>
-<td>Set the OpenGL viewport</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_viewport</span></code>(*args)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1714,12 +2101,30 @@ potentially be shared between multiple contexts.</p>
 <dl class="class">
 <dt id="vispy.gloo.context.GLShared">
 <em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLShared</code><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
-<dd><p>Representation of a &quot;namespace&quot; that can be shared between
+<dd><p>Representation of a “namespace” that can be shared between
 different contexts. App backends can associate themselves with this
 object via add_ref().</p>
 <p>This object can be used to establish whether two contexts/canvases
 share objects, and can be used as a placeholder to store shared
 information, such as glyph atlasses.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLShared.name" title="vispy.gloo.context.GLShared.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>The name of the canvas backend that this shared namespace is associated with.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.gloo.context.GLShared.parser" title="vispy.gloo.context.GLShared.parser"><code class="xref py py-obj docutils literal"><span class="pre">parser</span></code></a></td>
+<td>The GLIR parser (shared between contexts)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.gloo.context.GLShared.ref" title="vispy.gloo.context.GLShared.ref"><code class="xref py py-obj docutils literal"><span class="pre">ref</span></code></a></td>
+<td>A reference (stored internally via a weakref) to an object that the backend system can use to obtain the low-level information of the “reference context”.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1759,7 +2164,7 @@ associated with. Can be None.</p>
 <code class="descname">ref</code><a class="headerlink" href="#vispy.gloo.context.GLShared.ref" title="Permalink to this definition">¶</a></dt>
 <dd><p>A reference (stored internally via a weakref) to an object
 that the backend system can use to obtain the low-level
-information of the &quot;reference context&quot;. In Vispy this will
+information of the “reference context”. In Vispy this will
 typically be the CanvasBackend object.</p>
 </dd></dl>
 
@@ -1812,7 +2217,7 @@ canvas.</p>
 <h2>vispy.gloo.gl - low level GL API<a class="headerlink" href="#vispy-gloo-gl-low-level-gl-api" title="Permalink to this headline">¶</a></h2>
 <p>Vispy also exposes a (low level) functional GL API.</p>
 <blockquote>
-<div><a class="reference external" href="gl.html">vispy.gloo.gl docs</a></div></blockquote>
+<div><a class="reference internal" href="gl.html"><span class="doc">vispy.gloo.gl docs</span></a></div></blockquote>
 </div>
 </div>
 

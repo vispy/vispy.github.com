@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Vispy &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>Vispy &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -125,7 +118,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy">
 <span id="vispy"></span><h1>Vispy<a class="headerlink" href="#module-vispy" title="Permalink to this headline">¶</a></h1>
@@ -148,18 +141,24 @@ large datasets.</p>
 <div><dl class="docutils">
 <dt>The app backend to use (case insensitive). Standard backends:</dt>
 <dd><ul class="first last simple">
-<li>'PyQt4': use Qt widget toolkit via PyQt4.</li>
-<li>'PyQt5': use Qt widget toolkit via PyQt5.</li>
-<li>'PySide': use Qt widget toolkit via PySide.</li>
-<li>'PyGlet': use Pyglet backend.</li>
-<li>'Glfw': use Glfw backend (successor of Glut). Widely available
+<li>‘PyQt4’: use Qt widget toolkit via PyQt4.</li>
+<li>‘PyQt5’: use Qt widget toolkit via PyQt5.</li>
+<li>‘PySide’: use Qt widget toolkit via PySide.</li>
+<li>‘PyGlet’: use Pyglet backend.</li>
+<li>‘Glfw’: use Glfw backend (successor of Glut). Widely available
 on Linux.</li>
-<li>'SDL2': use SDL v2 backend.</li>
+<li>‘SDL2’: use SDL v2 backend.</li>
+<li>‘osmesa’: Use OSMesa backend</li>
 </ul>
 </dd>
 <dt>Additional backends:</dt>
 <dd><ul class="first last simple">
-<li>'ipynb_vnc': render in the IPython notebook via a VNC approach
+<li><dl class="first docutils">
+<dt>‘ipynb_webgl’: run vispy from a Jupyter notebook (not fully</dt>
+<dd>functional)</dd>
+</dl>
+</li>
+<li>‘ipynb_vnc’: render in a Jupyter notebook via a VNC approach
 (experimental)</li>
 </ul>
 </dd>
@@ -170,13 +169,13 @@ on Linux.</li>
 <div><dl class="docutils">
 <dt>The gl backend to use (case insensitive). Options are:</dt>
 <dd><ul class="first last simple">
-<li>'gl2': use Vispy's desktop OpenGL API.</li>
-<li>'pyopengl2': use PyOpenGL's desktop OpenGL API. Mostly for
+<li>‘gl2’: use Vispy’s desktop OpenGL API.</li>
+<li>‘pyopengl2’: use PyOpenGL’s desktop OpenGL API. Mostly for
 testing.</li>
-<li>'es2': (TO COME) use real OpenGL ES 2.0 on Windows via Angle.
+<li>‘es2’: (TO COME) use real OpenGL ES 2.0 on Windows via Angle.
 Availability of ES 2.0 is larger for Windows, since it relies
 on DirectX.</li>
-<li>'gl+': use the full OpenGL functionality available on
+<li>‘gl+’: use the full OpenGL functionality available on
 your system (via PyOpenGL).</li>
 </ul>
 </dd>
@@ -198,7 +197,7 @@ loaded, an error is raised.</p>
 <p>If no backend name is provided, Vispy will first check if the GUI
 toolkit corresponding to each backend is already imported, and try
 that backend first. If this is unsuccessful, it will try the
-'default_backend' provided in the vispy config. If still not
+‘default_backend’ provided in the vispy config. If still not
 succesful, it will try each backend in a predetermined order.</p>
 </dd></dl>
 
@@ -243,7 +242,7 @@ succesful, it will try each backend in a predetermined order.</p>
 <div><p>The verbosity of messages to print. If a str, it can be either DEBUG,
 INFO, WARNING, ERROR, or CRITICAL. Note that these are for
 convenience and are equivalent to passing in logging.DEBUG, etc.
-For bool, True is the same as 'INFO', False is the same as 'WARNING'.</p>
+For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
 </div></blockquote>
 <p><strong>match</strong> : str | None</p>
 <blockquote>
@@ -281,8 +280,8 @@ these options when performance is not crucial.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : str</p>
 <blockquote>
-<div><p>Can be one of 'full', 'unit', 'nobackend', 'extra', 'lineendings',
-'flake', 'docs', or any backend name (e.g., 'qt').</p>
+<div><p>Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
+‘flake’, ‘docs’, or any backend name (e.g., ‘qt’).</p>
 </div></blockquote>
 <p><strong>extra_arg_string</strong> : str</p>
 <blockquote>

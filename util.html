@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The util module &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>The util module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -133,7 +126,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy.util">
 <span id="the-util-module"></span><h1>The util module<a class="headerlink" href="#module-vispy.util" title="Permalink to this headline">¶</a></h1>
@@ -143,7 +136,7 @@ one or more Vispy sub-packages.</p>
 <div class="section" id="module-vispy.util.event">
 <span id="vispy-util-event"></span><h2>vispy.util.event<a class="headerlink" href="#module-vispy.util.event" title="Permalink to this headline">¶</a></h2>
 <p>The event module implements the classes that make up the event system.
-The Event class and its subclasses are used to represent &quot;stuff that happens&quot;.
+The Event class and its subclasses are used to represent “stuff that happens”.
 The EventEmitter class provides an interface to connect to events and
 to emit events. The EmitterGroup groups EventEmitter objects.</p>
 <p>For more information see <a class="reference external" href="http://github.com/vispy/vispy/wiki/API_Events">http://github.com/vispy/vispy/wiki/API_Events</a></p>
@@ -177,6 +170,33 @@ arguments listed below.</p>
 <div><p>All extra keyword arguments become attributes of the event object.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.Event.blocked" title="vispy.util.event.Event.blocked"><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></a></td>
+<td>This boolean property indicates whether the event will be delivered to event callbacks.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.Event.handled" title="vispy.util.event.Event.handled"><code class="xref py py-obj docutils literal"><span class="pre">handled</span></code></a></td>
+<td>This boolean property indicates whether the event has already been acted on by an event handler.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.Event.source" title="vispy.util.event.Event.source"><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></a></td>
+<td>The object that the event applies to (i.e.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.Event.sources" title="vispy.util.event.Event.sources"><code class="xref py py-obj docutils literal"><span class="pre">sources</span></code></a></td>
+<td>List of objects that the event applies to (i.e.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -220,7 +240,7 @@ the event traverses a hierarchy of objects.</p>
 <em class="property">class </em><code class="descclassname">vispy.app.canvas.</code><code class="descname">MouseEvent</code><span class="sig-paren">(</span><em>type</em>, <em>pos=None</em>, <em>button=None</em>, <em>buttons=None</em>, <em>modifiers=None</em>, <em>delta=None</em>, <em>last_event=None</em>, <em>press_event=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.canvas.MouseEvent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mouse event class</p>
 <p>Note that each event object has an attribute for each of the input
-arguments listed below, as well as a &quot;time&quot; attribute with the event's
+arguments listed below, as well as a “time” attribute with the event’s
 precision start time.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -241,7 +261,7 @@ Left=1, right=2, middle=3. During a mouse drag, this
 will return the button that started the drag (same thing as
 <code class="docutils literal"><span class="pre">event.press_event.button</span></code>).</p>
 </div></blockquote>
-<p><strong>buttons</strong> : [int, ...]</p>
+<p><strong>buttons</strong> : [int, …]</p>
 <blockquote>
 <div><p>The list of buttons depressed during this event.</p>
 </div></blockquote>
@@ -253,7 +273,7 @@ time of the event (shift, control, alt, meta).</p>
 <p><strong>delta</strong> : (float, float)</p>
 <blockquote>
 <div><p>The amount of scrolling in horizontal and vertical direction. One
-&quot;tick&quot; corresponds to a delta of 1.0.</p>
+“tick” corresponds to a delta of 1.0.</p>
 </div></blockquote>
 <p><strong>press_event</strong> : MouseEvent</p>
 <blockquote>
@@ -275,6 +295,60 @@ allowing the entire drag to be reconstructed.</p>
 <div><p>All extra keyword arguments become attributes of the event object.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">button</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">buttons</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">delta</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">handled</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">is_dragging</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">last_event</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">modifiers</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pos</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">press_event</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sources</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://docs.python.org/3.6/library/time.html#module-time" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">time</span></code></a></td>
+<td>This module provides various functions to manipulate time values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -355,6 +429,42 @@ time of the event (shift, control, alt, meta).</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">handled</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">key</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">modifiers</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sources</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">text</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
@@ -388,6 +498,39 @@ arguments listed below.</p>
 <div><p>All extra keyword arguments become attributes of the event object.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">handled</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">physical_size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sources</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -426,6 +569,36 @@ If None, the entire canvas must be redrawn.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">handled</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">region</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sources</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#type" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">type</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <hr class="docutils" />
@@ -438,12 +611,12 @@ events, such as mouse click events or timer activation events. For
 example, the following diagram shows the propagation of a mouse click
 event to the list of callbacks that are registered to listen for that
 event:</p>
-<div class="highlight-python"><div class="highlight"><pre>User clicks    |Canvas creates
-mouse on       |MouseEvent:                |&#39;mouse_press&#39; EventEmitter:         |callbacks in sequence: # noqa
-Canvas         |                           |                                    |  # noqa
-            --&gt;|event = MouseEvent(...) --&gt;|Canvas.events.mouse_press(event) --&gt;|callback1(event)  # noqa
-               |                           |                                 --&gt;|callback2(event)  # noqa
-               |                           |                                 --&gt;|callback3(event)  # noqa
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span> <span class="n">clicks</span>    <span class="o">|</span><span class="n">Canvas</span> <span class="n">creates</span>
+<span class="n">mouse</span> <span class="n">on</span>       <span class="o">|</span><span class="n">MouseEvent</span><span class="p">:</span>                <span class="o">|</span><span class="s1">&#39;mouse_press&#39;</span> <span class="n">EventEmitter</span><span class="p">:</span>         <span class="o">|</span><span class="n">callbacks</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span> <span class="c1"># noqa</span>
+<span class="n">Canvas</span>         <span class="o">|</span>                           <span class="o">|</span>                                    <span class="o">|</span>  <span class="c1"># noqa</span>
+            <span class="o">--&gt;|</span><span class="n">event</span> <span class="o">=</span> <span class="n">MouseEvent</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">--&gt;|</span><span class="n">Canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_press</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">--&gt;|</span><span class="n">callback1</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>  <span class="c1"># noqa</span>
+               <span class="o">|</span>                           <span class="o">|</span>                                 <span class="o">--&gt;|</span><span class="n">callback2</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>  <span class="c1"># noqa</span>
+               <span class="o">|</span>                           <span class="o">|</span>                                 <span class="o">--&gt;|</span><span class="n">callback3</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>  <span class="c1"># noqa</span>
 </pre></div>
 </div>
 <p>Callback functions may be added or removed from an EventEmitter using
@@ -474,6 +647,30 @@ have their .source property set to this value.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.callback_refs" title="vispy.util.event.EventEmitter.callback_refs"><code class="xref py py-obj docutils literal"><span class="pre">callback_refs</span></code></a></td>
+<td>The set of callback references</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.callbacks" title="vispy.util.event.EventEmitter.callbacks"><code class="xref py py-obj docutils literal"><span class="pre">callbacks</span></code></a></td>
+<td>The set of callbacks</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.ignore_callback_errors" title="vispy.util.event.EventEmitter.ignore_callback_errors"><code class="xref py py-obj docutils literal"><span class="pre">ignore_callback_errors</span></code></a></td>
+<td>Whether exceptions during callbacks will be caught by the emitter</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.print_callback_errors" title="vispy.util.event.EventEmitter.print_callback_errors"><code class="xref py py-obj docutils literal"><span class="pre">print_callback_errors</span></code></a></td>
+<td>Print a message and stack trace if a callback raises an exception</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.source" title="vispy.util.event.EventEmitter.source"><code class="xref py py-obj docutils literal"><span class="pre">source</span></code></a></td>
+<td>The object that events generated by this emitter apply to</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -481,22 +678,25 @@ have their .source property set to this value.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.block" title="vispy.util.event.EventEmitter.block"><code class="xref py py-obj docutils literal"><span class="pre">block</span></code></a>([callback])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.__call__" title="vispy.util.event.EventEmitter.__call__"><code class="xref py py-obj docutils literal"><span class="pre">__call__</span></code></a>(**kwargs)</td>
+<td>Invoke all callbacks for this emitter.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.block" title="vispy.util.event.EventEmitter.block"><code class="xref py py-obj docutils literal"><span class="pre">block</span></code></a>([callback])</td>
 <td>Block this emitter.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocked" title="vispy.util.event.EventEmitter.blocked"><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></a>([callback])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocked" title="vispy.util.event.EventEmitter.blocked"><code class="xref py py-obj docutils literal"><span class="pre">blocked</span></code></a>([callback])</td>
 <td>Return boolean indicating whether the emitter is blocked for the given callback.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocker" title="vispy.util.event.EventEmitter.blocker"><code class="xref py py-obj docutils literal"><span class="pre">blocker</span></code></a>([callback])</td>
-<td>Return an EventBlocker to be used in 'with' statements</td>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.blocker" title="vispy.util.event.EventEmitter.blocker"><code class="xref py py-obj docutils literal"><span class="pre">blocker</span></code></a>([callback])</td>
+<td>Return an EventBlocker to be used in ‘with’ statements</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.connect" title="vispy.util.event.EventEmitter.connect"><code class="xref py py-obj docutils literal"><span class="pre">connect</span></code></a>(callback[,&nbsp;ref,&nbsp;position,&nbsp;before,&nbsp;after])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.connect" title="vispy.util.event.EventEmitter.connect"><code class="xref py py-obj docutils literal"><span class="pre">connect</span></code></a>(callback[,&nbsp;ref,&nbsp;position,&nbsp;before,&nbsp;after])</td>
 <td>Connect this emitter to a new callback.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.disconnect" title="vispy.util.event.EventEmitter.disconnect"><code class="xref py py-obj docutils literal"><span class="pre">disconnect</span></code></a>([callback])</td>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.disconnect" title="vispy.util.event.EventEmitter.disconnect"><code class="xref py py-obj docutils literal"><span class="pre">disconnect</span></code></a>([callback])</td>
 <td>Disconnect a callback from this emitter.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.unblock" title="vispy.util.event.EventEmitter.unblock"><code class="xref py py-obj docutils literal"><span class="pre">unblock</span></code></a>([callback])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.event.EventEmitter.unblock" title="vispy.util.event.EventEmitter.unblock"><code class="xref py py-obj docutils literal"><span class="pre">unblock</span></code></a>([callback])</td>
 <td>Unblock this emitter.</td>
 </tr>
 </tbody>
@@ -507,7 +707,7 @@ have their .source property set to this value.</p>
 <dd><p>Invoke all callbacks for this emitter.</p>
 <p>Emit a new event object, created with the given keyword
 arguments, which must match with the input arguments of the
-corresponding event class. Note that the 'type' argument is
+corresponding event class. Note that the ‘type’ argument is
 filled in by the emitter.</p>
 <p>Alternatively, the emitter can also be called with an Event
 instance as the only argument. In this case, the specified
@@ -540,11 +740,11 @@ the given callback.</p>
 <dl class="method">
 <dt id="vispy.util.event.EventEmitter.blocker">
 <code class="descname">blocker</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.blocker" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an EventBlocker to be used in 'with' statements</p>
+<dd><p>Return an EventBlocker to be used in ‘with’ statements</p>
 <p class="rubric">Notes</p>
 <p>For example, one could do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">emitter</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
-    <span class="k">pass</span>  <span class="c"># ..do stuff; no events will be emitted..</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">emitter</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
+    <span class="k">pass</span>  <span class="c1"># ..do stuff; no events will be emitted..</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -645,12 +845,12 @@ occurs.</p>
 <dt id="vispy.util.event.EventEmitter.print_callback_errors">
 <code class="descname">print_callback_errors</code><a class="headerlink" href="#vispy.util.event.EventEmitter.print_callback_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a message and stack trace if a callback raises an exception</p>
-<p>Valid values are &quot;first&quot; (only show first instance), &quot;reminders&quot; (show
-complete first instance, then counts), &quot;always&quot; (always show full
-traceback), or &quot;never&quot;.</p>
+<p>Valid values are “first” (only show first instance), “reminders” (show
+complete first instance, then counts), “always” (always show full
+traceback), or “never”.</p>
 <p>This assumes ignore_callback_errors=True. These will be raised as
 warnings, so ensure that the vispy logging level is set to at
-least &quot;warning&quot;.</p>
+least “warning”.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -663,8 +863,8 @@ least &quot;warning&quot;.</p>
 <dt id="vispy.util.event.EventEmitter.unblock">
 <code class="descname">unblock</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.event.EventEmitter.unblock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unblock this emitter. See <code class="xref py py-func docutils literal"><span class="pre">event.EventEmitter.block()</span></code>.</p>
-<p>Note: Use of <code class="docutils literal"><span class="pre">unblock(None)</span></code> only reverses the effect of 
-<code class="docutils literal"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly 
+<p>Note: Use of <code class="docutils literal"><span class="pre">unblock(None)</span></code> only reverses the effect of
+<code class="docutils literal"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly
 blocked using <code class="docutils literal"><span class="pre">block(callback)</span></code>.</p>
 </dd></dl>
 
@@ -700,7 +900,7 @@ fonts.</p>
 <span id="vispy-util-keys"></span><h2>vispy.util.keys<a class="headerlink" href="#module-vispy.util.keys" title="Permalink to this headline">¶</a></h2>
 <p>Define constants for keys.</p>
 <p>Each key constant is defined as a Key object, which allows comparison with
-strings (e.g. 'A', 'Escape', 'Shift'). This enables handling of key events
+strings (e.g. ‘A’, ‘Escape’, ‘Shift’). This enables handling of key events
 without using the key constants explicitly (e.g. <code class="docutils literal"><span class="pre">if</span> <span class="pre">ev.key</span> <span class="pre">==</span> <span class="pre">'Left':</span></code>).</p>
 <p>In addition, key objects that represent characters can be matched to
 the integer ordinal (e.g. 32 for space, 65 for A). This behavior is mainly
@@ -713,6 +913,18 @@ intended as a compatibility measure.</p>
 <p>A Key object can be compared to one of its string names (case
 insensitive), to the integer ordinal of the key (only for keys that
 represent characters), and to another Key instance.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.util.keys.Key.name" title="vispy.util.keys.Key.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td>The primary name of the key.</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="vispy.util.keys.Key.name">
 <code class="descname">name</code><a class="headerlink" href="#vispy.util.keys.Key.name" title="Permalink to this definition">¶</a></dt>
@@ -893,7 +1105,7 @@ represent characters), and to another Key instance.</p>
 </div></blockquote>
 <p><strong>dtype</strong> : dtype | None</p>
 <blockquote>
-<div><p>Output type (if None, don't cast).</p>
+<div><p>Output type (if None, don’t cast).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -921,7 +1133,7 @@ represent characters), and to another Key instance.</p>
 </div></blockquote>
 <p><strong>dtype</strong> : dtype | None</p>
 <blockquote>
-<div><p>Output type (if None, don't cast).</p>
+<div><p>Output type (if None, don’t cast).</p>
 </div></blockquote>
 </td>
 </tr>

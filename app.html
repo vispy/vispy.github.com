@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The app module &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>The app module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -127,13 +120,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy.app">
 <span id="the-app-module"></span><h1>The app module<a class="headerlink" href="#module-vispy.app" title="Permalink to this headline">¶</a></h1>
 <p>The app module defines three classes: Application, Canvas, and Timer.
 On loading, vispy creates a default Application instance which can be used
-via functions in the module's namespace.</p>
+via functions in the module’s namespace.</p>
 <hr class="docutils" />
 <dl class="function">
 <dt id="vispy.app.use_app">
@@ -153,7 +146,7 @@ details.</p>
 </div></blockquote>
 <p><strong>call_reuse</strong> : bool</p>
 <blockquote class="last">
-<div><p>Whether to call the backend's <cite>reuse()</cite> function (True by default).
+<div><p>Whether to call the backend’s <cite>reuse()</cite> function (True by default).
 Not implemented by default, but some backends need it. For example,
 the notebook backends need to inject some JavaScript in a notebook as
 soon as <cite>use_app()</cite> is called.</p>
@@ -217,6 +210,24 @@ for details.</p>
 native backend application object is only created when <cite>create()</cite>
 is called or <cite>native</cite> is used. The Canvas and Timer do this
 automatically.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Application.backend_module" title="vispy.app.Application.backend_module"><code class="xref py py-obj docutils literal"><span class="pre">backend_module</span></code></a></td>
+<td>The module object that defines the backend.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Application.backend_name" title="vispy.app.Application.backend_name"><code class="xref py py-obj docutils literal"><span class="pre">backend_name</span></code></a></td>
+<td>The name of the GUI backend that this app wraps.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Application.native" title="vispy.app.Application.native"><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></a></td>
+<td>The native GUI application instance.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -314,7 +325,7 @@ need to inject JavaScript code as soon as <cite>use_app()</cite> is called.</p>
 terminals?  By default, typing <code class="docutils literal"><span class="pre">python</span> <span class="pre">-i</span> <span class="pre">main.py</span></code> results in
 an interactive shell that also regularly calls the VisPy event
 loop.  In this specific case, the run() function will terminate
-immediately and rely on the interpreter's input loop to be run
+immediately and rely on the interpreter’s input loop to be run
 after script execution.</p>
 </div></blockquote>
 </td>
@@ -334,7 +345,7 @@ see inputhook.py for details</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>duration_sec: float</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>duration_sec: float</strong></p>
 <blockquote class="last">
 <div><p>Time to sleep in seconds</p>
 </div></blockquote>
@@ -349,7 +360,7 @@ see inputhook.py for details</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="vispy.app.Canvas">
-<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>title='Vispy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.Canvas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>title='VisPy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.Canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a GUI element with an OpenGL context</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -381,7 +392,7 @@ be called last (by default) by the <code class="docutils literal"><span class="p
 <blockquote>
 <div><p>Give vispy Application instance to use as a backend.
 (vispy.app is used by default.) If str, then an application
-using the chosen backend (e.g., 'pyglet') will be created.
+using the chosen backend (e.g., ‘pyglet’) will be created.
 Note the canvas application can be accessed at <code class="docutils literal"><span class="pre">canvas.app</span></code>.</p>
 </div></blockquote>
 <p><strong>create_native</strong> : bool</p>
@@ -418,7 +429,7 @@ options.</p>
 </div></blockquote>
 <p><strong>keys</strong> : str | dict | None</p>
 <blockquote>
-<div><p>Default key mapping to use. If 'interactive', escape and F11 will
+<div><p>Default key mapping to use. If ‘interactive’, escape and F11 will
 close the canvas and toggle full-screen mode, respectively.
 If dict, maps keys to functions. If dict values are strings,
 they are assumed to be <code class="docutils literal"><span class="pre">Canvas</span></code> methods, otherwise they should
@@ -473,6 +484,48 @@ backends natively support double-clicking (currently Qt and WX); on other
 backends, they are detected manually with a fixed time delay.
 This can cause problems with accessibility, as increasing the OS detection
 time or using a dedicated double-click button will not be respected.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.app" title="vispy.app.Canvas.app"><code class="xref py py-obj docutils literal"><span class="pre">app</span></code></a></td>
+<td>The vispy Application instance on which this Canvas is based.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.context" title="vispy.app.Canvas.context"><code class="xref py py-obj docutils literal"><span class="pre">context</span></code></a></td>
+<td>The OpenGL context of the native widget</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.dpi" title="vispy.app.Canvas.dpi"><code class="xref py py-obj docutils literal"><span class="pre">dpi</span></code></a></td>
+<td>The physical resolution of the canvas in dots per inch.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.fps" title="vispy.app.Canvas.fps"><code class="xref py py-obj docutils literal"><span class="pre">fps</span></code></a></td>
+<td>The fps of canvas/window, as the rate that events.draw is emitted</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fullscreen</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.native" title="vispy.app.Canvas.native"><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></a></td>
+<td>The native widget object on which this Canvas is based.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.physical_size" title="vispy.app.Canvas.physical_size"><code class="xref py py-obj docutils literal"><span class="pre">physical_size</span></code></a></td>
+<td>The physical size of the canvas/window, which may differ from the</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.pixel_scale" title="vispy.app.Canvas.pixel_scale"><code class="xref py py-obj docutils literal"><span class="pre">pixel_scale</span></code></a></td>
+<td>The ratio between the number of logical pixels, or ‘points’, and the physical pixels on the device.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.position" title="vispy.app.Canvas.position"><code class="xref py py-obj docutils literal"><span class="pre">position</span></code></a></td>
+<td>The position of canvas/window relative to screen</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.size" title="vispy.app.Canvas.size"><code class="xref py py-obj docutils literal"><span class="pre">size</span></code></a></td>
+<td>The size of canvas/window</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.title" title="vispy.app.Canvas.title"><code class="xref py py-obj docutils literal"><span class="pre">title</span></code></a></td>
+<td>The title of canvas/window</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -492,16 +545,19 @@ time or using a dedicated double-click button will not be respected.</p>
 <tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.measure_fps" title="vispy.app.Canvas.measure_fps"><code class="xref py py-obj docutils literal"><span class="pre">measure_fps</span></code></a>([window,&nbsp;callback])</td>
 <td>Measure the current FPS</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.set_current" title="vispy.app.Canvas.set_current"><code class="xref py py-obj docutils literal"><span class="pre">set_current</span></code></a>([event])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.render" title="vispy.app.Canvas.render"><code class="xref py py-obj docutils literal"><span class="pre">render</span></code></a>()</td>
+<td>Render the canvas to an offscreen buffer and return the image array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.set_current" title="vispy.app.Canvas.set_current"><code class="xref py py-obj docutils literal"><span class="pre">set_current</span></code></a>([event])</td>
 <td>Make this the active GL canvas</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.show" title="vispy.app.Canvas.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>([visible,&nbsp;run])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.show" title="vispy.app.Canvas.show"><code class="xref py py-obj docutils literal"><span class="pre">show</span></code></a>([visible,&nbsp;run])</td>
 <td>Show or hide the canvas</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.swap_buffers" title="vispy.app.Canvas.swap_buffers"><code class="xref py py-obj docutils literal"><span class="pre">swap_buffers</span></code></a>([event])</td>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.swap_buffers" title="vispy.app.Canvas.swap_buffers"><code class="xref py py-obj docutils literal"><span class="pre">swap_buffers</span></code></a>([event])</td>
 <td>Swap GL buffers such that the offscreen buffer becomes visible</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Canvas.update" title="vispy.app.Canvas.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([event])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Canvas.update" title="vispy.app.Canvas.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([event])</td>
 <td>Inform the backend that the Canvas needs to be redrawn</td>
 </tr>
 </tbody>
@@ -528,7 +584,7 @@ behavior), consider making the widget a sub-widget.</p>
 <code class="descname">connect</code><span class="sig-paren">(</span><em>fun</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.Canvas.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect a function to an event</p>
 <p>The name of the function
-should be on_X, with X the name of the event (e.g. 'on_draw').</p>
+should be on_X, with X the name of the event (e.g. ‘on_draw’).</p>
 <p>This method is typically used as a decorator on a function
 definition for an event handler.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -615,20 +671,39 @@ size property on backends that expose HiDPI</p>
 <dl class="attribute">
 <dt id="vispy.app.Canvas.pixel_scale">
 <code class="descname">pixel_scale</code><a class="headerlink" href="#vispy.app.Canvas.pixel_scale" title="Permalink to this definition">¶</a></dt>
-<dd><p>The ratio between the number of logical pixels, or 'points', and
+<dd><p>The ratio between the number of logical pixels, or ‘points’, and
 the physical pixels on the device. In most cases this will be 1.0,
 but on certain backends this will be greater than 1. This should be
 used as a scaling factor when writing your own visualisations
-with Gloo (make a copy and multiply all your logical pixel values
-by it) but you should rarely, if ever, need to use this in your own
-Visuals or SceneGraph visualisations; instead you should apply the
-canvas_fb_transform in the SceneGraph canvas.</p>
+with gloo (make a copy and multiply all your logical pixel values
+by it). When writing Visuals or SceneGraph visualisations, this value
+is exposed as <cite>TransformSystem.px_scale</cite>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="vispy.app.Canvas.position">
 <code class="descname">position</code><a class="headerlink" href="#vispy.app.Canvas.position" title="Permalink to this definition">¶</a></dt>
 <dd><p>The position of canvas/window relative to screen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vispy.app.Canvas.render">
+<code class="descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.app.Canvas.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the canvas to an offscreen buffer and return the image
+array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
+<blockquote class="last">
+<div><p>Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the 
+upper-left corner of the rendered region.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -730,9 +805,9 @@ canvas_fb_transform in the SceneGraph canvas.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>interval</strong> : float | 'auto'</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>interval</strong> : float | ‘auto’</p>
 <blockquote>
-<div><p>Time between events in seconds. The default is 'auto', which
+<div><p>Time between events in seconds. The default is ‘auto’, which
 attempts to find the interval that matches the refresh rate of
 the current monitor. Currently this is simply 1/60.</p>
 </div></blockquote>
@@ -753,6 +828,30 @@ the current monitor. Currently this is simply 1/60.</p>
 <div><p>The application to attach the timer to.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.app.Timer.app" title="vispy.app.Timer.app"><code class="xref py py-obj docutils literal"><span class="pre">app</span></code></a></td>
+<td>The vispy Application instance on which this Timer is based.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">elapsed</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">interval</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.app.Timer.native" title="vispy.app.Timer.native"><code class="xref py py-obj docutils literal"><span class="pre">native</span></code></a></td>
+<td>The native timer on which this Timer is based.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">running</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>

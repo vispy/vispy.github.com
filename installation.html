@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Installation &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>Installation &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -157,7 +150,7 @@
 </form>
         </div>
       </div>
-    <div class="col-md-9">
+    <div class="col-md-9 content">
       
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
@@ -170,10 +163,11 @@ package.</p>
 <h2>Backend requirements<a class="headerlink" href="#backend-requirements" title="Permalink to this headline">¶</a></h2>
 <p>VisPy requires at least one toolkit for opening a window and creates an OpenGL
 context. This can be done using one Qt, GLFW,SDL2, Wx, or Pyglet. You can also
-use an IPython notebook (version 3+) with WebGL for some visualizations.</p>
+use a Jupyter notebook (version 3+) with WebGL for some visualizations although
+it is not fully functional at this time.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">You only need to have one of these packages, no need to install them all !</p>
+<p class="last">You only need to have one of these packages, no need to install them all!</p>
 </div>
 </div>
 <div class="section" id="hardware-requirements">
@@ -184,7 +178,7 @@ shaders. VisPy thus requires a fairly recent video card (~ less than 12 years
 old) as well as an up-to-date video driver such that vispy can access the
 programmable pipeline (as opposed to the fixed pipeline).</p>
 <p>To get information on your system, you can type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">vispy</span><span class="o">.</span><span class="n">sys_info</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">vispy</span><span class="o">.</span><span class="n">sys_info</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>The results of the above command and is long list of information related to
@@ -192,32 +186,51 @@ your system and video driver. The OpenGL version must be at least 2.1.</p>
 </div>
 <div class="section" id="installation-options">
 <h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">¶</a></h2>
+<p><strong>Before installing VisPy</strong> you should ensure a working version of python is
+installed on your computer, including all of the requirements included in the
+<strong>Backend Requirements</strong> section above. A simple way to install most of these
+requirements is to install the <strong>Anaconda</strong> scientific python distribution
+from Continuum Analytics.
+<a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a> will
+install most of the VisPy dependencies for you. If your computer is low on hard
+disk space, or you would like a minimal python installation, you may install
+the <a class="reference external" href="https://conda.io/miniconda.html">Miniconda</a> package also from
+Continuum Analytics. Once Anaconda is installed, create a
+<a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-python.html">conda python environment</a>.</p>
+<p>Next, install the following VisPy dependencies directly through <cite>pip</cite> or the Anaconda package installer.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> conda install numpy pyqt
+</pre></div>
+</div>
+<p>Once the python dependencies have been installed, install the latest
+proprietary drivers for your computer’s GPU. Generally these drivers may be
+downloaded from the GPU manufacturer’s website.</p>
 <p><strong>To install the latest release version</strong>, you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install --upgrade vispy
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --upgrade vispy
 </pre></div>
 </div>
 <p><strong>If you want to run the latest development version</strong>, you can clone the
 repository to your local machine and install with <code class="docutils literal"><span class="pre">develop</span></code> to enable easy
-updates to latest``master``:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ git clone git://github.com/vispy/vispy.git  # creates &quot;vispy&quot; folder
-$ cd vispy
-$ python setup.py develop
+updates to latest <code class="docutils literal"><span class="pre">master</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/vispy/vispy.git  <span class="c1"># creates &quot;vispy&quot; folder</span>
+<span class="gp">$</span> <span class="nb">cd</span> vispy
+<span class="gp">$</span> python setup.py develop
 </pre></div>
 </div>
 <p>To run the latest development version without cloning the repository, you
 can also use this line:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install -e git+https://github.com/vispy/vispy#egg=vispy-dev
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install git+https://github.com/vispy/vispy.git
 </pre></div>
 </div>
 <div class="section" id="testing-installation">
 <h3>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h3>
 <p>It is strongly advised to run the vispy test suite right after installation to
 check if everything is ok. To do this, just type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vispy</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vispy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vispy</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
 <span class="gp">...</span>
 </pre></div>
 </div>
+<p>Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.</p>
 </div>
 </div>
 </div>

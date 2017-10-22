@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The color module &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>The color module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -127,7 +120,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy.color">
 <span id="the-color-module"></span><h1>The color module<a class="headerlink" href="#module-vispy.color" title="Permalink to this headline">¶</a></h1>
@@ -158,6 +151,45 @@ the alpha value in <code class="docutils literal"><span class="pre">color</span>
 <div><p>If True, clip the color values.</p>
 </div></blockquote>
 </td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">RGB</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">RGBA</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">alpha</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">hex</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">hsv</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.color.Color.is_blank" title="vispy.color.Color.is_blank"><code class="xref py py-obj docutils literal"><span class="pre">is_blank</span></code></a></td>
+<td>Boolean indicating whether the color is invisible.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">lab</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">rgb</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">rgba</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">value</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -216,10 +248,10 @@ any alpha values in <code class="docutils literal"><span class="pre">color</span
 <blockquote>
 <div><p>Clip the color value.</p>
 </div></blockquote>
-<p><strong>color_space</strong> : 'rgb' | 'hsv'</p>
+<p><strong>color_space</strong> : ‘rgb’ | ‘hsv’</p>
 <blockquote class="last">
-<div><p>'rgb' (default) : color tuples are interpreted as (r, g, b) components.
-'hsv' : color tuples are interpreted as (h, s, v) components.</p>
+<div><p>‘rgb’ (default) : color tuples are interpreted as (r, g, b) components.
+‘hsv’ : color tuples are interpreted as (h, s, v) components.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -230,29 +262,65 @@ any alpha values in <code class="docutils literal"><span class="pre">color</span
 on the GPU.</p>
 <p class="rubric">Examples</p>
 <p>There are many ways to define colors. Here are some basic cases:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">ColorArray</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">)</span>  <span class="c"># using string name</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">ColorArray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># using string name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
 <span class="go">&lt;ColorArray: 1 color ((1.0, 0.0, 0.0, 1.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c"># RGBA tuple</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s">&#39;#0000ff&#39;</span><span class="p">)</span>  <span class="c"># hex color</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">()</span>  <span class="c"># defaults to black</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># RGBA tuple</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">)</span>  <span class="c1"># hex color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">()</span>  <span class="c1"># defaults to black</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">rgb</span>
 <span class="go">&gt;&gt;&gt;hsv_color = ColorArray(color_space=&quot;hsv&quot;, color=(0, 0, 0.5))</span>
 <span class="go">&gt;&gt;&gt;hsv_color</span>
 <span class="go">&lt;ColorArray: 1 color ((0.5, 0.5, 0.5, 1.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span>
 <span class="go">&lt;ColorArray: 1 color ((1.0, 1.0, 1.0, 0.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s">&#39;#0000FFFF&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;#0000FFFF&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span>
 <span class="go">&lt;ColorArray: 3 colors ((1.0, 0.0, 0.0, 1.0) ... (1.0, 0.0, 0.0, 1.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.ColorArray.RGB" title="vispy.color.ColorArray.RGB"><code class="xref py py-obj docutils literal"><span class="pre">RGB</span></code></a></td>
+<td>Nx3 array of RGBA uint8s</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.color.ColorArray.RGBA" title="vispy.color.ColorArray.RGBA"><code class="xref py py-obj docutils literal"><span class="pre">RGBA</span></code></a></td>
+<td>Nx4 array of RGBA uint8s</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.ColorArray.alpha" title="vispy.color.ColorArray.alpha"><code class="xref py py-obj docutils literal"><span class="pre">alpha</span></code></a></td>
+<td>Length-N array of alpha floats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.color.ColorArray.hex" title="vispy.color.ColorArray.hex"><code class="xref py py-obj docutils literal"><span class="pre">hex</span></code></a></td>
+<td>Numpy array with N elements, each one a hex triplet string</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.ColorArray.hsv" title="vispy.color.ColorArray.hsv"><code class="xref py py-obj docutils literal"><span class="pre">hsv</span></code></a></td>
+<td>Nx3 array of HSV floats</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">lab</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.ColorArray.rgb" title="vispy.color.ColorArray.rgb"><code class="xref py py-obj docutils literal"><span class="pre">rgb</span></code></a></td>
+<td>Nx3 array of RGB floats</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#vispy.color.ColorArray.rgba" title="vispy.color.ColorArray.rgba"><code class="xref py py-obj docutils literal"><span class="pre">rgba</span></code></a></td>
+<td>Nx4 array of RGBA floats</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.ColorArray.value" title="vispy.color.ColorArray.value"><code class="xref py py-obj docutils literal"><span class="pre">value</span></code></a></td>
+<td>Length-N array of color HSV values</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -427,10 +495,10 @@ The first control point must be 0.0. The last control point must be
 </div></blockquote>
 <p><strong>interpolation</strong> : str</p>
 <blockquote class="last">
-<div><p>The interpolation mode of the colormap. Default: 'linear'. Can also
-be 'zero'.
-If 'linear', ncontrols = ncolors (one color per control point).
-If 'zero', ncontrols = ncolors+1 (one color per bin).</p>
+<div><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
+be ‘zero’.
+If ‘linear’, ncontrols = ncolors (one color per control point).
+If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -438,8 +506,8 @@ If 'zero', ncontrols = ncolors+1 (one color per bin).</p>
 </table>
 <p class="rubric">Examples</p>
 <p>Here is a basic example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">Colormap</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">Colormap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -450,11 +518,22 @@ If 'zero', ncontrols = ncolors+1 (one color per bin).</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">colors</span></code></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#vispy.color.Colormap.interpolation" title="vispy.color.Colormap.interpolation"><code class="xref py py-obj docutils literal"><span class="pre">interpolation</span></code></a></td>
+<td>The interpolation mode of the colormap</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_map</span></code></td>
-<td></td>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>colors</strong></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><strong>glsl_map</strong></td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -508,7 +587,7 @@ list of rgba colors</p>
 <em class="property">class </em><code class="descclassname">vispy.color.</code><code class="descname">BaseColormap</code><span class="sig-paren">(</span><em>colors=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.color.BaseColormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class representing a colormap:</p>
 <blockquote>
-<div>t in [0, 1] --&gt; rgba_color</div></blockquote>
+<div>t in [0, 1] –&gt; rgba_color</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -532,17 +611,17 @@ to the first color in <cite>colors</cite>, and so on. These are vec4 vectors.</d
 of size (N, 4).</dd>
 </dl>
 <p class="rubric">Attributes</p>
-<table border="1" class="longtable docutils">
+<table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col width="55%" />
+<col width="45%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">colors</span></code></td>
-<td></td>
+<tr class="row-odd"><td><strong>colors</strong></td>
+<td>&#160;</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">glsl_map</span></code></td>
-<td></td>
+<tr class="row-even"><td><strong>glsl_map</strong></td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -563,7 +642,7 @@ of size (N, 4).</dd>
 <code class="descname">map</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.color.BaseColormap.map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a rgba array for the requested items.</p>
 <p>This function must be overriden by child classes.</p>
-<p>This function doesn't need to implement argument checking on <cite>item</cite>.
+<p>This function doesn’t need to implement argument checking on <cite>item</cite>.
 It can always assume that <cite>item</cite> is a (N, 1) array of values between
 0 and 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -611,8 +690,8 @@ their corresponding documentation for more information.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s">&#39;autumn&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s">&#39;single_hue&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;single_hue&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

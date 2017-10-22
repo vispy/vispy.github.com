@@ -1,28 +1,20 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>The vispy native plotting module &mdash; VisPy</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <title>The vispy native plotting module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -30,17 +22,18 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="VisPy" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -88,9 +81,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">The vispy native plotting module</a><ul>
-<li><a class="reference internal" href="#usage">Usage</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -130,7 +121,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <div class="section" id="module-vispy.plot">
 <span id="the-vispy-native-plotting-module"></span><h1>The vispy native plotting module<a class="headerlink" href="#module-vispy.plot" title="Permalink to this headline">¶</a></h1>
@@ -142,531 +133,23 @@ the next release.</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>To use <cite>vispy.plot</cite> typically the main class <cite>Fig</cite> is first instantiated:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.plot</span> <span class="kn">import</span> <span class="n">Fig</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.plot</span> <span class="k">import</span> <span class="n">Fig</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">Fig</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>And then <cite>PlotWidget</cite> instances are automatically created by accessing
 the <code class="docutils literal"><span class="pre">fig</span></code> instance:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ax_left</span> <span class="o">=</span> <span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ax_left</span> <span class="o">=</span> <span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax_right</span> <span class="o">=</span> <span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Then plots are accomplished via methods of the <cite>PlotWidget</cite> instances:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax_left</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax_right</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<dl class="class">
-<dt id="vispy.plot.Fig">
-<em class="property">class </em><code class="descclassname">vispy.plot.</code><code class="descname">Fig</code><span class="sig-paren">(</span><em>bgcolor='w'</em>, <em>size=(800</em>, <em>600)</em>, <em>show=True</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.Fig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a figure window</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bgcolor</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color to use for the background.</p>
-</div></blockquote>
-<p><strong>size</strong> : tuple</p>
-<blockquote>
-<div><p>Size of the figure window in pixels.</p>
-</div></blockquote>
-<p><strong>show</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, show the window.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="#vispy.plot.PlotWidget" title="vispy.plot.PlotWidget"><code class="xref py py-obj docutils literal"><span class="pre">PlotWidget</span></code></a></dt>
-<dd>the axis widget for plotting</dd>
-<dt><code class="xref py py-obj docutils literal"><span class="pre">SceneCanvas</span></code></dt>
-<dd>the super class</dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p>You can create a Figure, PlotWidget, and diagonal line plot like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.plot</span> <span class="kn">import</span> <span class="n">Fig</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">Fig</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c"># this creates a PlotWidget</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-</pre></div>
-</div>
-<p>See the gallery for many other examples.</p>
-<p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">close</span></code>()</td>
-<td>Close the canvas</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">connect</span></code>(fun)</td>
-<td>Connect a function to an event</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">create_native</span></code>()</td>
-<td>Create the native widget if not already done so.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">draw_visual</span></code>(visual[,&nbsp;event,&nbsp;viewport])</td>
-<td>Draw a visual to the canvas or currently active framebuffer.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">measure_fps</span></code>([window,&nbsp;callback])</td>
-<td>Measure the current FPS</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">on_draw</span></code>(event)</td>
-<td>Draw handler</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">on_resize</span></code>(event)</td>
-<td>Resize handler</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">pop_fbo</span></code>()</td>
-<td>Pop an FBO from the stack.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">pop_viewport</span></code>()</td>
-<td>Pop a viewport from the stack.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">push_fbo</span></code>(fbo,&nbsp;offset,&nbsp;csize)</td>
-<td>Push an FBO on the stack, together with the new viewport.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">push_viewport</span></code>(viewport)</td>
-<td>Push a viewport on the stack</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">render</span></code>([region,&nbsp;size])</td>
-<td>Render the scene to an offscreen buffer and return the image array.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">set_current</span></code>([event])</td>
-<td>Make this the active GL canvas</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">show</span></code>([visible,&nbsp;run])</td>
-<td>Show or hide the canvas</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">swap_buffers</span></code>([event])</td>
-<td>Swap GL buffers such that the offscreen buffer becomes visible</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">update</span></code>([event])</td>
-<td>Inform the backend that the Canvas needs to be redrawn</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="vispy.plot.Fig.plot_widgets">
-<code class="descname">plot_widgets</code><a class="headerlink" href="#vispy.plot.Fig.plot_widgets" title="Permalink to this definition">¶</a></dt>
-<dd><p>List of the associated PlotWidget instances</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="vispy.plot.PlotWidget">
-<em class="property">class </em><code class="descclassname">vispy.plot.</code><code class="descname">PlotWidget</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget" title="Permalink to this definition">¶</a></dt>
-<dd><p>Widget to facilitate plotting</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*args</strong> : arguments</p>
-<blockquote>
-<div><p>Arguments passed to the <cite>ViewBox</cite> super class.</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : keywoard arguments</p>
-<blockquote class="last">
-<div><p>Keyword arguments passed to the <cite>ViewBox</cite> super class.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>This class is typically instantiated implicitly by a <cite>Figure</cite>
-instance, e.g., by doing <code class="docutils literal"><span class="pre">fig[0,</span> <span class="pre">0]</span></code>.</p>
-<p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">add</span></code>(node)</td>
-<td>Add an Node to the scene for this ViewBox.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">add_grid</span></code>(*args,&nbsp;**kwargs)</td>
-<td>Create a new Grid and add it as a child widget.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">add_parent</span></code>(parent)</td>
-<td>Add a parent</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">add_view</span></code>(*args,&nbsp;**kwargs)</td>
-<td>Create a new ViewBox and add it as a child widget.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">add_widget</span></code>(widget)</td>
-<td>Add a Widget as a managed child of this Widget.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">common_parent</span></code>(node)</td>
-<td>Return the common parent of two entities</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">describe_tree</span></code>([with_transform])</td>
-<td>Create tree diagram of children</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code>(event)</td>
-<td>Draw the viewbox border/background</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">get_scene_bounds</span></code>([dim])</td>
-<td>Get the total bounds based on the visuals present in the scene</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#vispy.plot.PlotWidget.histogram" title="vispy.plot.PlotWidget.histogram"><code class="xref py py-obj docutils literal"><span class="pre">histogram</span></code></a>(data[,&nbsp;bins,&nbsp;color,&nbsp;orientation])</td>
-<td>Calculate and show a histogram of data</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.plot.PlotWidget.image" title="vispy.plot.PlotWidget.image"><code class="xref py py-obj docutils literal"><span class="pre">image</span></code></a>(data[,&nbsp;cmap,&nbsp;clim])</td>
-<td>Show an image</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">is_in_scene</span></code>(node)</td>
-<td>Get whether the given node is inside the scene of this viewbox.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.plot.PlotWidget.mesh" title="vispy.plot.PlotWidget.mesh"><code class="xref py py-obj docutils literal"><span class="pre">mesh</span></code></a>([vertices,&nbsp;faces,&nbsp;vertex_colors,&nbsp;...])</td>
-<td>Show a 3D mesh</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">node_path</span></code>(node)</td>
-<td>Return two lists describing the path from this node to another</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">node_path_to_child</span></code>(node)</td>
-<td>Return a list describing the path from this node to a child node</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">node_path_transforms</span></code>(node)</td>
-<td>Return the list of transforms along the path to another node.</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">node_transform</span></code>(node)</td>
-<td>Return the transform that maps from the coordinate system of <em>self</em> to the local coordinate system of <em>node</em>.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">on_resize</span></code>(event)</td>
-<td>On resize handler</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.plot.PlotWidget.plot" title="vispy.plot.PlotWidget.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>(data[,&nbsp;color,&nbsp;symbol,&nbsp;line_kind,&nbsp;...])</td>
-<td>Plot a series of data using lines and markers</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">remove_parent</span></code>(parent)</td>
-<td>Remove a parent</td>
-</tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">remove_widget</span></code>(widget)</td>
-<td>Remove a Widget as a managed child of this Widget.</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">set_transform</span></code>(<a href="#id1"><span class="problematic" id="id2">type_</span></a>,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Create a new transform of <em>type</em> and assign it to this node.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.plot.PlotWidget.spectrogram" title="vispy.plot.PlotWidget.spectrogram"><code class="xref py py-obj docutils literal"><span class="pre">spectrogram</span></code></a>(x[,&nbsp;n_fft,&nbsp;step,&nbsp;fs,&nbsp;window,&nbsp;...])</td>
-<td>Calculate and show a spectrogram</td>
-</tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">update</span></code>()</td>
-<td>Emit an event to inform listeners that properties of this Node or its children have changed.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#vispy.plot.PlotWidget.volume" title="vispy.plot.PlotWidget.volume"><code class="xref py py-obj docutils literal"><span class="pre">volume</span></code></a>(vol[,&nbsp;clim,&nbsp;method,&nbsp;threshold,&nbsp;cmap])</td>
-<td>Show a 3D volume</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.histogram">
-<code class="descname">histogram</code><span class="sig-paren">(</span><em>data</em>, <em>bins=10</em>, <em>color='w'</em>, <em>orientation='h'</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.histogram" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate and show a histogram of data</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like</p>
-<blockquote>
-<div><p>Data to histogram. Currently only 1D data is supported.</p>
-</div></blockquote>
-<p><strong>bins</strong> : int | array-like</p>
-<blockquote>
-<div><p>Number of bins, or bin edges.</p>
-</div></blockquote>
-<p><strong>color</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color of the histogram.</p>
-</div></blockquote>
-<p><strong>orientation</strong> : {'h', 'v'}</p>
-<blockquote>
-<div><p>Orientation of the histogram.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hist</strong> : instance of Polygon</p>
-<blockquote class="last">
-<div><p>The histogram polygon.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.image">
-<code class="descname">image</code><span class="sig-paren">(</span><em>data</em>, <em>cmap='cubehelix'</em>, <em>clim='auto'</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show an image</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : ndarray</p>
-<blockquote>
-<div><p>Should have shape (N, M), (N, M, 3) or (N, M, 4).</p>
-</div></blockquote>
-<p><strong>cmap</strong> : str</p>
-<blockquote>
-<div><p>Colormap name.</p>
-</div></blockquote>
-<p><strong>clim</strong> : str | tuple</p>
-<blockquote>
-<div><p>Colormap limits. Should be <code class="docutils literal"><span class="pre">'auto'</span></code> or a two-element tuple of
-min and max values.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image</strong> : instance of Image</p>
-<blockquote class="last">
-<div><p>The image.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>The colormap is only used if the image pixels are scalars.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.mesh">
-<code class="descname">mesh</code><span class="sig-paren">(</span><em>vertices=None</em>, <em>faces=None</em>, <em>vertex_colors=None</em>, <em>face_colors=None</em>, <em>color=(0.5</em>, <em>0.5</em>, <em>1.0)</em>, <em>fname=None</em>, <em>meshdata=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.mesh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show a 3D mesh</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Vertices.</p>
-</div></blockquote>
-<p><strong>faces</strong> : array | None</p>
-<blockquote>
-<div><p>Face definitions.</p>
-</div></blockquote>
-<p><strong>vertex_colors</strong> : array | None</p>
-<blockquote>
-<div><p>Vertex colors.</p>
-</div></blockquote>
-<p><strong>face_colors</strong> : array | None</p>
-<blockquote>
-<div><p>Face colors.</p>
-</div></blockquote>
-<p><strong>color</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color to use.</p>
-</div></blockquote>
-<p><strong>fname</strong> : str | None</p>
-<blockquote>
-<div><p>Filename to load. If not None, then vertices, faces, and meshdata
-must be None.</p>
-</div></blockquote>
-<p><strong>meshdata</strong> : MeshData | None</p>
-<blockquote>
-<div><p>Meshdata to use. If not None, then vertices, faces, and fname
-must be None.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mesh</strong> : instance of Mesh</p>
-<blockquote class="last">
-<div><p>The mesh.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.plot">
-<code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>color='k'</em>, <em>symbol='o'</em>, <em>line_kind='-'</em>, <em>width=1.0</em>, <em>marker_size=0.0</em>, <em>edge_color='k'</em>, <em>face_color='k'</em>, <em>edge_width=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot a series of data using lines and markers</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array | two arrays</p>
-<blockquote>
-<div><p>Arguments can be passed as <code class="docutils literal"><span class="pre">(Y,)</span></code>, <code class="docutils literal"><span class="pre">(X,</span> <span class="pre">Y)</span></code> or
-<code class="docutils literal"><span class="pre">np.array((X,</span> <span class="pre">Y))</span></code>.</p>
-</div></blockquote>
-<p><strong>color</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color of the line.</p>
-</div></blockquote>
-<p><strong>symbol</strong> : str</p>
-<blockquote>
-<div><p>Marker symbol to use.</p>
-</div></blockquote>
-<p><strong>line_kind</strong> : str</p>
-<blockquote>
-<div><p>Kind of line to draw. For now, only solid lines (<code class="docutils literal"><span class="pre">'-'</span></code>)
-are supported.</p>
-</div></blockquote>
-<p><strong>width</strong> : float</p>
-<blockquote>
-<div><p>Line width.</p>
-</div></blockquote>
-<p><strong>marker_size</strong> : float</p>
-<blockquote>
-<div><p>Marker size. If <cite>size == 0</cite> markers will not be shown.</p>
-</div></blockquote>
-<p><strong>edge_color</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color of the marker edge.</p>
-</div></blockquote>
-<p><strong>face_color</strong> : instance of Color</p>
-<blockquote>
-<div><p>Color of the marker face.</p>
-</div></blockquote>
-<p><strong>edge_width</strong> : float</p>
-<blockquote>
-<div><p>Edge width of the marker.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>line</strong> : instance of LinePlot</p>
-<blockquote class="last">
-<div><p>The line plot.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">marker_types</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">LinePlot</span></code></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.spectrogram">
-<code class="descname">spectrogram</code><span class="sig-paren">(</span><em>x</em>, <em>n_fft=256</em>, <em>step=None</em>, <em>fs=1.0</em>, <em>window='hann'</em>, <em>color_scale='log'</em>, <em>cmap='cubehelix'</em>, <em>clim='auto'</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.spectrogram" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate and show a spectrogram</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like</p>
-<blockquote>
-<div><p>1D signal to operate on. <code class="docutils literal"><span class="pre">If</span> <span class="pre">len(x)</span> <span class="pre">&lt;</span> <span class="pre">n_fft</span></code>, x will be
-zero-padded to length <code class="docutils literal"><span class="pre">n_fft</span></code>.</p>
-</div></blockquote>
-<p><strong>n_fft</strong> : int</p>
-<blockquote>
-<div><p>Number of FFT points. Much faster for powers of two.</p>
-</div></blockquote>
-<p><strong>step</strong> : int | None</p>
-<blockquote>
-<div><p>Step size between calculations. If None, <code class="docutils literal"><span class="pre">n_fft</span> <span class="pre">//</span> <span class="pre">2</span></code>
-will be used.</p>
-</div></blockquote>
-<p><strong>fs</strong> : float</p>
-<blockquote>
-<div><p>The sample rate of the data.</p>
-</div></blockquote>
-<p><strong>window</strong> : str | None</p>
-<blockquote>
-<div><p>Window function to use. Can be <code class="docutils literal"><span class="pre">'hann'</span></code> for Hann window, or None
-for no windowing.</p>
-</div></blockquote>
-<p><strong>color_scale</strong> : {'linear', 'log'}</p>
-<blockquote>
-<div><p>Scale to apply to the result of the STFT.
-<code class="docutils literal"><span class="pre">'log'</span></code> will use <code class="docutils literal"><span class="pre">10</span> <span class="pre">*</span> <span class="pre">log10(power)</span></code>.</p>
-</div></blockquote>
-<p><strong>cmap</strong> : str</p>
-<blockquote>
-<div><p>Colormap name.</p>
-</div></blockquote>
-<p><strong>clim</strong> : str | tuple</p>
-<blockquote>
-<div><p>Colormap limits. Should be <code class="docutils literal"><span class="pre">'auto'</span></code> or a two-element tuple of
-min and max values.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>spec</strong> : instance of Spectrogram</p>
-<blockquote class="last">
-<div><p>The spectrogram.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">Image</span></code></p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.plot.PlotWidget.volume">
-<code class="descname">volume</code><span class="sig-paren">(</span><em>vol</em>, <em>clim=None</em>, <em>method='mip'</em>, <em>threshold=None</em>, <em>cmap='grays'</em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.plot.PlotWidget.volume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show a 3D volume</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vol</strong> : ndarray</p>
-<blockquote>
-<div><p>Volume to render.</p>
-</div></blockquote>
-<p><strong>clim</strong> : tuple of two floats | None</p>
-<blockquote>
-<div><p>The contrast limits. The values in the volume are mapped to
-black and white corresponding to these values. Default maps
-between min and max.</p>
-</div></blockquote>
-<p><strong>method</strong> : {'mip', 'iso', 'translucent', 'additive'}</p>
-<blockquote>
-<div><p>The render style to use. See corresponding docs for details.
-Default 'mip'.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>The threshold to use for the isosurafce render style. By default
-the mean of the given volume is used.</p>
-</div></blockquote>
-<p><strong>cmap</strong> : str</p>
-<blockquote>
-<div><p>The colormap to use.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>volume</strong> : instance of Volume</p>
-<blockquote class="last">
-<div><p>The volume visualization.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">Volume</span></code></p>
-</div>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 </div>
 
