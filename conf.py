@@ -24,7 +24,7 @@ sys.path.append(os.path.abspath('ext'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '1.6'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -400,7 +400,7 @@ def linkcode_resolve(domain, info):
     except OSError:
         source = ""
         lineno = None
-        
+
     if lineno:
         linespec = "#L%d-L%d" % (lineno, lineno + len(source) - 1)
     else:
