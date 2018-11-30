@@ -160,10 +160,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="news.html">News</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id1">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id2">2015</a></li>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id3">2014</a></li>
-<li class="toctree-l2"><a class="reference internal" href="news.html#id4">2013</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#id1">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#id2">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#id3">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#id4">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html#id5">2013</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a><ul>
@@ -236,7 +237,7 @@ large datasets.</p>
 <p>For more information, see <a class="reference external" href="http://vispy.org">http://vispy.org</a>.</p>
 <dl class="function">
 <dt id="vispy.use">
-<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.5/vispy/util/wrappers.py#L23-L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the usage options for vispy</p>
 <p>Specify what app backend and GL backend to use.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -251,6 +252,7 @@ large datasets.</p>
 <li>‘PyQt4’: use Qt widget toolkit via PyQt4.</li>
 <li>‘PyQt5’: use Qt widget toolkit via PyQt5.</li>
 <li>‘PySide’: use Qt widget toolkit via PySide.</li>
+<li>‘PySide2’: use Qt widget toolkit via PySide2.</li>
 <li>‘PyGlet’: use Pyglet backend.</li>
 <li>‘Glfw’: use Glfw backend (successor of Glut). Widely available
 on Linux.</li>
@@ -310,7 +312,7 @@ succesful, it will try each backend in a predetermined order.</p>
 
 <dl class="function">
 <dt id="vispy.sys_info">
-<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.5/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get relevant system and debugging information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -338,7 +340,7 @@ succesful, it will try each backend in a predetermined order.</p>
 
 <dl class="function">
 <dt id="vispy.set_log_level">
-<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.5/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for setting the logging level</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -379,7 +381,7 @@ these options when performance is not crucial.</p>
 
 <dl class="function">
 <dt id="vispy.test">
-<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.5/vispy/testing/_runners.py#L361-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/testing/_runners.py#L354-L438"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test vispy software</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
