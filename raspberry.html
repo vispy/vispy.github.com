@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Vispy &#8212; VisPy</title>
+    <title>Installation on Raspberry Pi 3 Model B &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
@@ -30,8 +30,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The app module" href="app.html" />
-    <link rel="prev" title="Installation on Raspberry Pi 3 Model B" href="raspberry.html" />
+    <link rel="next" title="Vispy" href="vispy.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -77,7 +77,7 @@
 <li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="documentation.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="documentation.html#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="documentation.html#installation-instructions">Installation instructions</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="documentation.html#installation-instructions">Installation instructions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#package-requirements">Package requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
@@ -88,20 +88,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="raspberry.html">Installation on Raspberry Pi 3 Model B</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#distribution">Distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#raspbian-raspberry-setup">Raspbian/Raspberry setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#checking-opengl-capabilities">Checking OpenGL capabilities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#backend-requirements">Backend requirements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#package-requirements">Package requirements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#installation-options">Installation options</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raspberry.html#testing-installation">Testing installation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation on Raspberry Pi 3 Model B</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#distribution">Distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspbian-raspberry-setup">Raspbian/Raspberry setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-opengl-capabilities">Checking OpenGL capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backend-requirements">Backend requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-requirements">Package requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation-options">Installation options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="documentation.html#api-reference">API Reference</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">vispy - Top-level tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html#api-reference">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.html">vispy - Top-level tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="app.html">vispy.app - Application, event loops, canvas, backends</a></li>
 <li class="toctree-l3"><a class="reference internal" href="color.html">vispy.color - Handling colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geometry.html">vispy.geometry - Visualization-related geometry routines</a></li>
@@ -198,7 +198,16 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Vispy</a></li>
+<li><a class="reference internal" href="#">Installation on Raspberry Pi 3 Model B</a><ul>
+<li><a class="reference internal" href="#distribution">Distribution</a></li>
+<li><a class="reference internal" href="#raspbian-raspberry-setup">Raspbian/Raspberry setup</a></li>
+<li><a class="reference internal" href="#checking-opengl-capabilities">Checking OpenGL capabilities</a></li>
+<li><a class="reference internal" href="#backend-requirements">Backend requirements</a></li>
+<li><a class="reference internal" href="#package-requirements">Package requirements</a></li>
+<li><a class="reference internal" href="#installation-options">Installation options</a></li>
+<li><a class="reference internal" href="#testing-installation">Testing installation</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -238,184 +247,105 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-vispy">
-<span id="vispy"></span><h1>Vispy<a class="headerlink" href="#module-vispy" title="Permalink to this headline">¶</a></h1>
-<p>Vispy is a <strong>high-performance interactive 2D/3D data visualization
-library</strong>. Vispy leverages the computational power of modern <strong>Graphics
-Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display very
-large datasets.</p>
-<p>For more information, see <a class="reference external" href="http://vispy.org">http://vispy.org</a>.</p>
-<dl class="function">
-<dt id="vispy.use">
-<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the usage options for vispy</p>
-<p>Specify what app backend and GL backend to use.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>app</strong> : str</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>The app backend to use (case insensitive). Standard backends:</dt>
-<dd><ul class="first last simple">
-<li>‘PyQt4’: use Qt widget toolkit via PyQt4.</li>
-<li>‘PyQt5’: use Qt widget toolkit via PyQt5.</li>
-<li>‘PySide’: use Qt widget toolkit via PySide.</li>
-<li>‘PySide2’: use Qt widget toolkit via PySide2.</li>
-<li>‘PyGlet’: use Pyglet backend.</li>
-<li>‘Glfw’: use Glfw backend (successor of Glut). Widely available
-on Linux.</li>
-<li>‘SDL2’: use SDL v2 backend.</li>
-<li>‘osmesa’: Use OSMesa backend</li>
-</ul>
-</dd>
-<dt>Additional backends:</dt>
-<dd><ul class="first last simple">
-<li><dl class="first docutils">
-<dt>‘ipynb_webgl’: run vispy from a Jupyter notebook (not fully</dt>
-<dd>functional)</dd>
-</dl>
+  <div class="section" id="installation-on-raspberry-pi-3-model-b">
+<h1>Installation on Raspberry Pi 3 Model B<a class="headerlink" href="#installation-on-raspberry-pi-3-model-b" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="distribution">
+<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
+<p>For this installation a recent <a class="reference external" href="https://www.raspberrypi.org/downloads/raspbian/">Rasbian Stretch with Desktop</a> is used. Download the
+image and write it onto a fast micro SDHC (class 10) with enough capacity
+(at least 16GB).</p>
+<p>You might use other distributions for raspberry, but there have been only tests
+with Raspbian so far.</p>
+</div>
+<div class="section" id="raspbian-raspberry-setup">
+<h2>Raspbian/Raspberry setup<a class="headerlink" href="#raspbian-raspberry-setup" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Perform first time startup (language etc.)</p>
 </li>
-<li>‘ipynb_vnc’: render in a Jupyter notebook via a VNC approach
-(experimental)</li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-<p><strong>gl</strong> : str</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>The gl backend to use (case insensitive). Options are:</dt>
-<dd><ul class="first last simple">
-<li>‘gl2’: use Vispy’s desktop OpenGL API.</li>
-<li>‘pyopengl2’: use PyOpenGL’s desktop OpenGL API. Mostly for
-testing.</li>
-<li>‘es2’: (TO COME) use real OpenGL ES 2.0 on Windows via Angle.
-Availability of ES 2.0 is larger for Windows, since it relies
-on DirectX.</li>
-<li>‘gl+’: use the full OpenGL functionality available on
-your system (via PyOpenGL).</li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="app.html#vispy.app.use_app" title="vispy.app.use_app"><code class="xref py py-obj docutils literal"><span class="pre">vispy.app.use_app</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">vispy.gloo.gl.use_gl</span></code></p>
+<li><p class="first">start <cite>raspi_config</cite> at console and make sure to select the KMS driver
+(Full or Fake). Best experiences were obtained with Full KMS driver:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="n">Advanced</span> <span class="n">Options</span>
+    <span class="n">A1</span> <span class="n">Expand</span> <span class="n">Filesystem</span> <span class="o">-</span> <span class="n">resize</span> <span class="n">root</span> <span class="n">partition</span> <span class="n">to</span> <span class="n">use</span> <span class="nb">all</span> <span class="n">SD</span> <span class="n">space</span>
+    <span class="n">A7</span> <span class="n">GL</span> <span class="n">Driver</span>
+        <span class="n">G1</span> <span class="p">(</span><span class="n">Full</span> <span class="n">KMS</span><span class="p">)</span> <span class="n">OpenGL</span> <span class="n">desktop</span> <span class="n">driver</span> <span class="k">with</span> <span class="n">full</span> <span class="n">KMS</span>
+</pre></div>
 </div>
-<p class="rubric">Notes</p>
-<p>If the app option is given, <code class="docutils literal"><span class="pre">vispy.app.use_app()</span></code> is called. If
-the gl option is given, <code class="docutils literal"><span class="pre">vispy.gloo.use_gl()</span></code> is called.</p>
-<p>If an app backend name is provided, and that backend could not be
-loaded, an error is raised.</p>
-<p>If no backend name is provided, Vispy will first check if the GUI
-toolkit corresponding to each backend is already imported, and try
-that backend first. If this is unsuccessful, it will try the
-‘default_backend’ provided in the vispy config. If still not
-succesful, it will try each backend in a predetermined order.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.sys_info">
-<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get relevant system and debugging information</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str | None</p>
-<blockquote>
-<div><p>Filename to dump info to. Use None to simply print.</p>
-</div></blockquote>
-<p><strong>overwrite</strong> : bool</p>
-<blockquote>
-<div><p>If True, overwrite file (if it exists).</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str</p>
-<blockquote class="last">
-<div><p>The system information as a string.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.set_log_level">
-<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convenience function for setting the logging level</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>verbose</strong> : bool, str, int, or None</p>
-<blockquote>
-<div><p>The verbosity of messages to print. If a str, it can be either DEBUG,
-INFO, WARNING, ERROR, or CRITICAL. Note that these are for
-convenience and are equivalent to passing in logging.DEBUG, etc.
-For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
-</div></blockquote>
-<p><strong>match</strong> : str | None</p>
-<blockquote>
-<div><p>String to match. Only those messages that both contain a substring
-that regexp matches <code class="docutils literal"><span class="pre">'match'</span></code> (and the <code class="docutils literal"><span class="pre">verbose</span></code> level) will be
-displayed.</p>
-</div></blockquote>
-<p><strong>return_old</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, return the old verbosity level and old match.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">vispy.util.use_log_level</span></code></p>
+</li>
+<li><p class="first">Reboot</p>
+</li>
+</ol>
 </div>
-<p class="rubric">Notes</p>
-<p>If <code class="docutils literal"><span class="pre">verbose=='debug'</span></code>, then the <code class="docutils literal"><span class="pre">vispy</span></code> method emitting the log
-message will be prepended to each log message, which is useful for
-debugging. If <code class="docutils literal"><span class="pre">verbose=='debug'</span></code> or <code class="docutils literal"><span class="pre">match</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>, then a
-small performance overhead is added. Thus it is suggested to only use
-these options when performance is not crucial.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.test">
-<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/testing/_runners.py#L354-L438"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Test vispy software</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : str</p>
-<blockquote>
-<div><p>Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
-‘flake’, ‘docs’, or any backend name (e.g., ‘qt’).</p>
-</div></blockquote>
-<p><strong>extra_arg_string</strong> : str</p>
-<blockquote>
-<div><p>Extra arguments to sent to <code class="docutils literal"><span class="pre">pytest</span></code>.</p>
-</div></blockquote>
-<p><strong>coverage</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, collect coverage data.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<div class="section" id="checking-opengl-capabilities">
+<h2>Checking OpenGL capabilities<a class="headerlink" href="#checking-opengl-capabilities" title="Permalink to this headline">¶</a></h2>
+<p>Now start <cite>glxgears</cite> on a console and check the framerate. You should get
+something around 60 FPS.</p>
+<p>To retrieve more information about the OpenGL status of the system start
+<cite>glxinfo</cite> and <cite>glxheads</cite> on a console and observe the output.</p>
+<p>Depending in the MESA version (this is something not reliably explored)
+there will be the error message:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">libGL</span> <span class="n">error</span> <span class="n">MESA</span><span class="o">-</span><span class="n">LOADER</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">retrieve</span> <span class="n">device</span> <span class="n">information</span>
+</pre></div>
+</div>
+<p>You can ignore this for now, but if you have any information on the source of
+this error and how to resolve, please let vispy-devs know.</p>
+</div>
+<div class="section" id="backend-requirements">
+<h2>Backend requirements<a class="headerlink" href="#backend-requirements" title="Permalink to this headline">¶</a></h2>
+<p>VisPy requires at least one toolkit for opening a window and creates an OpenGL
+context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For Raspbian/Raspberry we rely on Qt4 for now!</p>
+</div>
+</div>
+<div class="section" id="package-requirements">
+<h2>Package requirements<a class="headerlink" href="#package-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The only mandatory requirement for VisPy is the <a class="reference external" href="http://numpy.org">numpy</a>
+package. This is already distributed with Raspbian. Nevertheless you need to
+install some system packages to get VisPy compiled, installed and running:</p>
+<ul class="simple">
+<li><cite>python3-pyqt4</cite> - Python3 bindings for Qt4</li>
+<li><cite>python3-pyqt4-opengl</cite> - Python3 bindings for Qt’s OpenGL module</li>
+<li><cite>cython3</cite> - C-Extensions for Python3</li>
+</ul>
+<p>Please use the Raspbian package manager to retrieve these packages.</p>
+</div>
+<div class="section" id="installation-options">
+<h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">¶</a></h2>
+<p>You have several options to install VisPy. Make sure to use the system <code class="docutils literal"><span class="pre">python3</span></code>
+at all times. We recommend to use the latest development version.</p>
+<p><strong>To install the latest release version</strong>, you can do:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip3 install --upgrade vispy
+</pre></div>
+</div>
+<p><strong>If you want to run the latest development version</strong>, you can clone the
+repository to your local machine and install with <code class="docutils literal"><span class="pre">develop</span></code> to enable easy
+updates to latest <code class="docutils literal"><span class="pre">master</span></code>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/vispy/vispy.git  <span class="c1"># creates &quot;vispy&quot; folder</span>
+<span class="gp">$</span> <span class="nb">cd</span> vispy
+<span class="gp">$</span> python3 setup.py develop
+</pre></div>
+</div>
+<p>To run the latest development version without cloning the repository, you
+can also use this line:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> pip3 install git+https://github.com/vispy/vispy.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-installation">
+<h2>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h2>
+<p>It is strongly advised to run the vispy test suite right after installation to
+check if everything is ok. To do this, just type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vispy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vispy</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>Please note that the test suite may be unstable on some systems. Any potential
+instability in the test suite does not necessarily imply instability in the
+working state of the provided VisPy examples.</p>
+<p>If you have feedback or questions, please use the VisPy <a class="reference internal" href="community.html"><span class="doc">Community</span></a> channels.</p>
+</div>
 </div>
 
 
