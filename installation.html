@@ -148,6 +148,29 @@
 <li class="toctree-l4"><a class="reference internal" href="util.html#module-vispy.util.transforms">vispy.util.transforms</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="gloo.glir.html">GLIR Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gloo.glir.html#gl-intermediate-representation-desktop-implementation">GL Intermediate Representation Desktop Implementation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#the-shape-of-a-command">The shape of a command</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#current">CURRENT</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#create">CREATE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#delete">DELETE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#uniform">UNIFORM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#texture">TEXTURE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#attribute">ATTRIBUTE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#draw">DRAW</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#size">SIZE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#data">DATA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#wrapping">WRAPPING</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#interpolation">INTERPOLATION</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#attach">ATTACH</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#framebuffer">FRAMEBUFFER</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#func">FUNC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#swap">SWAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gloo.glir.html#link">LINK</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="releasenotes.html">Release notes</a></li>
 </ul>
 </li>
@@ -355,14 +378,14 @@ Continuum Analytics. Once Anaconda is installed, create a
 <h3>Via conda<a class="headerlink" href="#via-conda" title="Permalink to this headline">¶</a></h3>
 <p>VisPy can be installed in a conda environment by using the package available
 from the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda install -c conda-forge vispy
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge vispy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="via-pypi">
 <h3>Via PyPI<a class="headerlink" href="#via-pypi" title="Permalink to this headline">¶</a></h3>
 <p>VisPy can also be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it from PyPI:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --upgrade vispy
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install --upgrade vispy</span>
 </pre></div>
 </div>
 <p>Once the python dependencies have been installed, install the latest
@@ -375,14 +398,14 @@ downloaded from the GPU manufacturer’s website.</p>
 repository to your local machine and install vispy in “development” mode.
 This means that any changes to the cloned repository will be immediately
 available in the python environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/vispy/vispy.git  <span class="c1"># creates &quot;vispy&quot; folder</span>
-<span class="gp">$</span> <span class="nb">cd</span> vispy
-<span class="gp">$</span> pip install -e .
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git://github.com/vispy/vispy.git  # creates &quot;vispy&quot; folder</span>
+<span class="go">cd vispy</span>
+<span class="go">pip install -e .</span>
 </pre></div>
 </div>
 <p>To run the latest development version without cloning the repository, you
 can also use this line:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install git+https://github.com/vispy/vispy.git
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install git+https://github.com/vispy/vispy.git</span>
 </pre></div>
 </div>
 </div>
@@ -403,9 +426,9 @@ to enable the extension and keep the environment isolated (i.e.
 <h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this headline">¶</a></h3>
 <p>To install the JupyterLab extension you need to install it explicitly with the
 following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda install -c conda-forge nodejs  <span class="c1"># or some other way to have a recent node</span>
-<span class="gp">$</span> jupyter labextension install @jupyter-widgets/jupyterlab-manager
-<span class="gp">$</span> jupyter labextension install vispy
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install -c conda-forge nodejs  # or some other way to have a recent node</span>
+<span class="go">jupyter labextension install @jupyter-widgets/jupyterlab-manager</span>
+<span class="go">jupyter labextension install vispy</span>
 </pre></div>
 </div>
 </div>
