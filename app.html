@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The app module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +240,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The app module</a></li>
+</ul>
+
+  <li>
+    <a href="vispy.html" title="Previous Chapter: Vispy"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Vispy</span>
+    </a>
+  </li>
+  <li>
+    <a href="color.html" title="Next Chapter: The color module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The color module &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/app.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy.app">
 <span id="the-app-module"></span><h1>The app module<a class="headerlink" href="#module-vispy.app" title="Permalink to this headline">¶</a></h1>
@@ -254,19 +284,19 @@ backend_name is None or matches the already selected backend.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>backend_name</strong> : str | None</p>
-<blockquote>
-<div><p>The name of the backend application to use. If not specified, Vispy
-tries to select a backend automatically. See <code class="docutils literal"><span class="pre">vispy.use()</span></code> for
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>backend_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">The name of the backend application to use. If not specified, Vispy
+tries to select a backend automatically. See <code class="docutils literal notranslate"><span class="pre">vispy.use()</span></code> for
 details.</p>
-</div></blockquote>
-<p><strong>call_reuse</strong> : bool</p>
-<blockquote class="last">
-<div><p>Whether to call the backend’s <cite>reuse()</cite> function (True by default).
+</dd>
+<dt><strong>call_reuse</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to call the backend’s <cite>reuse()</cite> function (True by default).
 Not implemented by default, but some backends need it. For example,
 the notebook backends need to inject some JavaScript in a notebook as
 soon as <cite>use_app()</cite> is called.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -311,12 +341,13 @@ instance of this class that can be created/obtained via
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>backend_name</strong> : str | None</p>
-<blockquote class="last">
-<div><p>The name of the backend application to use. If not specified,
-Vispy tries to select a backend automatically. See <code class="docutils literal"><span class="pre">vispy.use()</span></code>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>backend_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">The name of the backend application to use. If not specified,
+Vispy tries to select a backend automatically. See <code class="docutils literal notranslate"><span class="pre">vispy.use()</span></code>
 for details.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -393,15 +424,16 @@ need to inject JavaScript code as soon as <cite>use_app()</cite> is called.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>allow_interactive</strong> : bool</p>
-<blockquote class="last">
-<div><p>Is the application allowed to handle interactive mode for console
-terminals?  By default, typing <code class="docutils literal"><span class="pre">python</span> <span class="pre">-i</span> <span class="pre">main.py</span></code> results in
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>allow_interactive</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Is the application allowed to handle interactive mode for console
+terminals?  By default, typing <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-i</span> <span class="pre">main.py</span></code> results in
 an interactive shell that also regularly calls the VisPy event
 loop.  In this specific case, the run() function will terminate
 immediately and rely on the interpreter’s input loop to be run
 after script execution.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -419,10 +451,11 @@ see inputhook.py for details</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>duration_sec: float</strong></p>
-<blockquote class="last">
-<div><p>Time to sleep in seconds</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>duration_sec: float</strong></dt>
+<dd><p class="first last">Time to sleep in seconds</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -440,95 +473,79 @@ see inputhook.py for details</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>title</strong> : str</p>
-<blockquote>
-<div><p>The widget title</p>
-</div></blockquote>
-<p><strong>size</strong> : (width, height)</p>
-<blockquote>
-<div><p>The size of the window.</p>
-</div></blockquote>
-<p><strong>position</strong> : (x, y)</p>
-<blockquote>
-<div><p>The position of the window in screen coordinates.</p>
-</div></blockquote>
-<p><strong>show</strong> : bool</p>
-<blockquote>
-<div><p>Whether to show the widget immediately. Default False.</p>
-</div></blockquote>
-<p><strong>autoswap</strong> : bool</p>
-<blockquote>
-<div><p>Whether to swap the buffers automatically after a draw event.
-Default True. If True, the <code class="docutils literal"><span class="pre">swap_buffers</span></code> Canvas method will
-be called last (by default) by the <code class="docutils literal"><span class="pre">canvas.draw</span></code> event handler.</p>
-</div></blockquote>
-<p><strong>app</strong> : Application | str</p>
-<blockquote>
-<div><p>Give vispy Application instance to use as a backend.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>title</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The widget title</p>
+</dd>
+<dt><strong>size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(width, height)</span></dt>
+<dd><p class="first last">The size of the window.</p>
+</dd>
+<dt><strong>position</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(x, y)</span></dt>
+<dd><p class="first last">The position of the window in screen coordinates.</p>
+</dd>
+<dt><strong>show</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to show the widget immediately. Default False.</p>
+</dd>
+<dt><strong>autoswap</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to swap the buffers automatically after a draw event.
+Default True. If True, the <code class="docutils literal notranslate"><span class="pre">swap_buffers</span></code> Canvas method will
+be called last (by default) by the <code class="docutils literal notranslate"><span class="pre">canvas.draw</span></code> event handler.</p>
+</dd>
+<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Application | str</span></dt>
+<dd><p class="first last">Give vispy Application instance to use as a backend.
 (vispy.app is used by default.) If str, then an application
 using the chosen backend (e.g., ‘pyglet’) will be created.
-Note the canvas application can be accessed at <code class="docutils literal"><span class="pre">canvas.app</span></code>.</p>
-</div></blockquote>
-<p><strong>create_native</strong> : bool</p>
-<blockquote>
-<div><p>Whether to create the widget immediately. Default True.</p>
-</div></blockquote>
-<p><strong>vsync</strong> : bool</p>
-<blockquote>
-<div><p>Enable vertical synchronization.</p>
-</div></blockquote>
-<p><strong>resizable</strong> : bool</p>
-<blockquote>
-<div><p>Allow the window to be resized.</p>
-</div></blockquote>
-<p><strong>decorate</strong> : bool</p>
-<blockquote>
-<div><p>Decorate the window. Default True.</p>
-</div></blockquote>
-<p><strong>fullscreen</strong> : bool | int</p>
-<blockquote>
-<div><p>If False, windowed mode is used (default). If True, the default
+Note the canvas application can be accessed at <code class="docutils literal notranslate"><span class="pre">canvas.app</span></code>.</p>
+</dd>
+<dt><strong>create_native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to create the widget immediately. Default True.</p>
+</dd>
+<dt><strong>vsync</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Enable vertical synchronization.</p>
+</dd>
+<dt><strong>resizable</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Allow the window to be resized.</p>
+</dd>
+<dt><strong>decorate</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Decorate the window. Default True.</p>
+</dd>
+<dt><strong>fullscreen</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool | int</span></dt>
+<dd><p class="first last">If False, windowed mode is used (default). If True, the default
 monitor is used. If int, the given monitor number is used.</p>
-</div></blockquote>
-<p><strong>config</strong> : dict</p>
-<blockquote>
-<div><p>A dict with OpenGL configuration options, which is combined
+</dd>
+<dt><strong>config</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">A dict with OpenGL configuration options, which is combined
 with the default configuration options and used to initialize
-the context. See <code class="docutils literal"><span class="pre">canvas.context.config</span></code> for possible
+the context. See <code class="docutils literal notranslate"><span class="pre">canvas.context.config</span></code> for possible
 options.</p>
-</div></blockquote>
-<p><strong>shared</strong> : Canvas | GLContext | None</p>
-<blockquote>
-<div><p>An existing canvas or context to share OpenGL objects with.</p>
-</div></blockquote>
-<p><strong>keys</strong> : str | dict | None</p>
-<blockquote>
-<div><p>Default key mapping to use. If ‘interactive’, escape and F11 will
+</dd>
+<dt><strong>shared</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Canvas | GLContext | None</span></dt>
+<dd><p class="first last">An existing canvas or context to share OpenGL objects with.</p>
+</dd>
+<dt><strong>keys</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | dict | None</span></dt>
+<dd><p class="first last">Default key mapping to use. If ‘interactive’, escape and F11 will
 close the canvas and toggle full-screen mode, respectively.
 If dict, maps keys to functions. If dict values are strings,
-they are assumed to be <code class="docutils literal"><span class="pre">Canvas</span></code> methods, otherwise they should
+they are assumed to be <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> methods, otherwise they should
 be callable.</p>
-</div></blockquote>
-<p><strong>parent</strong> : widget-object</p>
-<blockquote>
-<div><p>The parent widget if this makes sense for the used backend.</p>
-</div></blockquote>
-<p><strong>dpi</strong> : float | None</p>
-<blockquote>
-<div><p>Resolution in dots-per-inch to use for the canvas. If dpi is None,
+</dd>
+<dt><strong>parent</strong> <span class="classifier-delimiter">:</span> <span class="classifier">widget-object</span></dt>
+<dd><p class="first last">The parent widget if this makes sense for the used backend.</p>
+</dd>
+<dt><strong>dpi</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | None</span></dt>
+<dd><p class="first last">Resolution in dots-per-inch to use for the canvas. If dpi is None,
 then the value will be determined by querying the global config first,
 and then the operating system.</p>
-</div></blockquote>
-<p><strong>always_on_top</strong> : bool</p>
-<blockquote>
-<div><p>If True, try to create the window in always-on-top mode.</p>
-</div></blockquote>
-<p><strong>px_scale</strong> : int &gt; 0</p>
-<blockquote class="last">
-<div><p>A scale factor to apply between logical and physical pixels in addition
+</dd>
+<dt><strong>always_on_top</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, try to create the window in always-on-top mode.</p>
+</dd>
+<dt><strong>px_scale</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int &gt; 0</span></dt>
+<dd><p class="first last">A scale factor to apply between logical and physical pixels in addition
 to the actual scale factor determined by the backend. This option
 allows the scale factor to be adjusted for testing.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -587,10 +604,11 @@ definition for an event handler.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fun</strong> : callable</p>
-<blockquote class="last">
-<div><p>The function.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fun</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
+<dd><p class="first last">The function.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -634,17 +652,17 @@ and sets the callback function.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>window</strong> : float</p>
-<blockquote>
-<div><p>The time-window (in seconds) to calculate FPS. Default 1.0.</p>
-</div></blockquote>
-<p><strong>callback</strong> : function | str</p>
-<blockquote class="last">
-<div><p>The function to call with the float FPS value, or the string
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>window</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The time-window (in seconds) to calculate FPS. Default 1.0.</p>
+</dd>
+<dt><strong>callback</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function | str</span></dt>
+<dd><p class="first last">The function to call with the float FPS value, or the string
 to be formatted with the fps value and then printed. The
-default is <code class="docutils literal"><span class="pre">'%1.1f</span> <span class="pre">FPS'</span></code>. If callback evaluates to False, the
+default is <code class="docutils literal notranslate"><span class="pre">'%1.1f</span> <span class="pre">FPS'</span></code>. If callback evaluates to False, the
 FPS measurement is stopped.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -691,11 +709,12 @@ array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
-<blockquote class="last">
-<div><p>Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the 
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the 
 upper-left corner of the rendered region.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -710,10 +729,11 @@ upper-left corner of the rendered region.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event</strong> : None</p>
-<blockquote class="last">
-<div><p>Not used.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
+<dd><p class="first last">Not used.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -728,14 +748,14 @@ upper-left corner of the rendered region.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>visible</strong> : bool</p>
-<blockquote>
-<div><p>Make the canvas visible.</p>
-</div></blockquote>
-<p><strong>run</strong> : bool</p>
-<blockquote class="last">
-<div><p>Run the backend event loop.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>visible</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Make the canvas visible.</p>
+</dd>
+<dt><strong>run</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Run the backend event loop.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -756,10 +776,11 @@ upper-left corner of the rendered region.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event</strong> : None</p>
-<blockquote class="last">
-<div><p>Not used.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
+<dd><p class="first last">Not used.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -780,10 +801,11 @@ upper-left corner of the rendered region.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event</strong> : None</p>
-<blockquote class="last">
-<div><p>Not used.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
+<dd><p class="first last">Not used.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -801,28 +823,25 @@ upper-left corner of the rendered region.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>interval</strong> : float | ‘auto’</p>
-<blockquote>
-<div><p>Time between events in seconds. The default is ‘auto’, which
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>interval</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | ‘auto’</span></dt>
+<dd><p class="first last">Time between events in seconds. The default is ‘auto’, which
 attempts to find the interval that matches the refresh rate of
 the current monitor. Currently this is simply 1/60.</p>
-</div></blockquote>
-<p><strong>connect</strong> : function | None</p>
-<blockquote>
-<div><p>The function to call.</p>
-</div></blockquote>
-<p><strong>iterations</strong> : int</p>
-<blockquote>
-<div><p>Number of iterations. Can be -1 for infinite.</p>
-</div></blockquote>
-<p><strong>start</strong> : bool</p>
-<blockquote>
-<div><p>Whether to start the timer.</p>
-</div></blockquote>
-<p><strong>app</strong> : instance of vispy.app.Application</p>
-<blockquote class="last">
-<div><p>The application to attach the timer to.</p>
-</div></blockquote>
+</dd>
+<dt><strong>connect</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function | None</span></dt>
+<dd><p class="first last">The function to call.</p>
+</dd>
+<dt><strong>iterations</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of iterations. Can be -1 for infinite.</p>
+</dd>
+<dt><strong>start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to start the timer.</p>
+</dd>
+<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of vispy.app.Application</span></dt>
+<dd><p class="first last">The application to attach the timer to.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -896,7 +915,7 @@ start event).</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

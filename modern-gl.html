@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Modern OpenGL &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -309,17 +313,17 @@ they will act at different stage of the rendering pipeline. To simplify this
 tutorial, we’ll use only <strong>vertex</strong> and <strong>fragment</strong> shader as shown below:</p>
 <img alt="_images/gl-pipeline.png" src="_images/gl-pipeline.png" />
 <p>A vertex shader acts on vertices and is supposed to output the vertex
-<strong>position</strong> (→ <code class="docutils literal"><span class="pre">gl_Position</span></code>) on the viewport (i.e. screen). A fragment shader
+<strong>position</strong> (→ <code class="docutils literal notranslate"><span class="pre">gl_Position</span></code>) on the viewport (i.e. screen). A fragment shader
 acts at the fragment level and is supposed to output the <strong>color</strong>
-(→ <code class="docutils literal"><span class="pre">gl_FragColor</span></code>) of the fragment. Hence, a minimal vertex shader is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span>
+(→ <code class="docutils literal notranslate"><span class="pre">gl_FragColor</span></code>) of the fragment. Hence, a minimal vertex shader is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>while a minimal fragment shader would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
 <span class="p">}</span>
@@ -361,15 +365,15 @@ things like projection and lighting.</li>
 <p>Let’s take a simple example of a vertex structure where we want each vertex to
 hold a position and a color. The easiest way to do that in python is to use a
 structured array using the <a class="reference external" href="http://www.numpy.org">numpy</a> library:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                                 <span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>We just created a CPU buffer with 4 vertices, each of them having a
-<code class="docutils literal"><span class="pre">position</span></code> (3 floats for x,y,z coordinates) and a <code class="docutils literal"><span class="pre">color</span></code> (4 floats for
+<code class="docutils literal notranslate"><span class="pre">position</span></code> (3 floats for x,y,z coordinates) and a <code class="docutils literal notranslate"><span class="pre">color</span></code> (4 floats for
 red, blue, green and alpha channels). Note that we explicitly chose to have 3
-coordinates for <code class="docutils literal"><span class="pre">position</span></code> but we may have chosen to have only 2 if were to
-work in two-dimensions only. Same holds true for <code class="docutils literal"><span class="pre">color</span></code>. We could have used
+coordinates for <code class="docutils literal notranslate"><span class="pre">position</span></code> but we may have chosen to have only 2 if were to
+work in two-dimensions only. Same holds true for <code class="docutils literal notranslate"><span class="pre">color</span></code>. We could have used
 only 3 channels (r,g,b) if we did not want to use transparency. This would save
 some bytes for each vertex. Of course, for 4 vertices, this does not really
 matter but you have to realize it <strong>will matter</strong> if you data size grows up to
@@ -380,7 +384,7 @@ one or ten million vertices.</p>
 <p>At this point in the tutorial, we know what are shaders and buffers but we
 still need to explain how they may be connected together. So, let’s consider
 again our CPU buffer:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
                                 <span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span>    <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -388,7 +392,7 @@ again our CPU buffer:</p>
 position is a tuple of 3 floats and color is a tuple of 4 floats. This is
 precisely what attributes are meant for. Let us change slightly our previous
 vertex shader:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
 <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -397,18 +401,18 @@ vertex shader:</p>
 </pre></div>
 </div>
 <p>This vertex shader now expects a vertex to possess 2 attributes, one named
-<code class="docutils literal"><span class="pre">position</span></code> and one named <code class="docutils literal"><span class="pre">color</span></code> with specified types (vec3 means tuple of
+<code class="docutils literal notranslate"><span class="pre">position</span></code> and one named <code class="docutils literal notranslate"><span class="pre">color</span></code> with specified types (vec3 means tuple of
 3 floats and vec4 means tuple of 4 floats). It is important to note that even
-if we labeled the first attribute <code class="docutils literal"><span class="pre">position</span></code>, this attribute is not yet bound
-to the actual <code class="docutils literal"><span class="pre">position</span></code> in the numpy array. We’ll need to do it explicitly
+if we labeled the first attribute <code class="docutils literal notranslate"><span class="pre">position</span></code>, this attribute is not yet bound
+to the actual <code class="docutils literal notranslate"><span class="pre">position</span></code> in the numpy array. We’ll need to do it explicitly
 at some point in our program and there is no automagic that will bind the numpy
 array field to the right attribute, you’ll have to do it yourself, but we’ll
 see that later.</p>
 <p>The second type of information we can feed the vertex shader are the uniforms
 that may be considered as constant values (across all the vertices). Let’s say
-for example we want to scale all the vertices by a constant factor <code class="docutils literal"><span class="pre">scale</span></code>,
+for example we want to scale all the vertices by a constant factor <code class="docutils literal notranslate"><span class="pre">scale</span></code>,
 we would thus write:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">uniform</span> <span class="nb">float</span> <span class="n">scale</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uniform</span> <span class="nb">float</span> <span class="n">scale</span><span class="p">;</span>
 <span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
 <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span>
@@ -420,7 +424,7 @@ we would thus write:</p>
 <p>Last type is the varying type that is used to pass information between the
 vertex stage and the fragment stage. So let us suppose (again) we want to pass
 the vertex color to the fragment shader, we now write:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">uniform</span> <span class="nb">float</span> <span class="n">scale</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uniform</span> <span class="nb">float</span> <span class="n">scale</span><span class="p">;</span>
 <span class="n">attribute</span> <span class="n">vec2</span> <span class="n">position</span><span class="p">;</span>
 <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">color</span><span class="p">;</span>
 <span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_color</span><span class="p">;</span>
@@ -433,7 +437,7 @@ the vertex color to the fragment shader, we now write:</p>
 </pre></div>
 </div>
 <p>and then in the fragment shader, we write:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_color</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_color</span><span class="p">;</span>
 
 <span class="n">void</span> <span class="n">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -441,7 +445,7 @@ the vertex color to the fragment shader, we now write:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The question is: what is the value of <code class="docutils literal"><span class="pre">v_color</span></code> inside the fragment shader?
+<p>The question is: what is the value of <code class="docutils literal notranslate"><span class="pre">v_color</span></code> inside the fragment shader?
 If you look at the figure that introduced the gl pipeline, we have 3 vertices and 21
 fragments. What is the color of each individual fragment?</p>
 <p>The answer is <em>the interpolation of all 3 vertices color</em>. This interpolation
@@ -484,8 +488,8 @@ manipulate. Instead of specifying the right/left/top/bottom planes, we’ll use
 field of view in the horizontal and vertical direction:</p>
 <p><strong>Perspective matrix</strong></p>
 <img alt="_images/perspective-matrix.png" src="_images/perspective-matrix.png" />
-<p>where <code class="docutils literal"><span class="pre">fovy</span></code> specifies the field of view angle, in degrees, in the y
-direction and <code class="docutils literal"><span class="pre">aspect</span></code> specifies the aspect ratio that determines the field
+<p>where <code class="docutils literal notranslate"><span class="pre">fovy</span></code> specifies the field of view angle, in degrees, in the y
+direction and <code class="docutils literal notranslate"><span class="pre">aspect</span></code> specifies the aspect ratio that determines the field
 of view in the x direction.</p>
 </div>
 <div class="section" id="model-and-view-matrices">
@@ -562,7 +566,7 @@ keeping overall complexity tractable.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

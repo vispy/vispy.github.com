@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Vispy &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +240,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Vispy</a></li>
+</ul>
+
+  <li>
+    <a href="raspberry.html" title="Previous Chapter: Installation on Raspberry Pi 3 Model B"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Installation ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="app.html" title="Next Chapter: The app module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The app module &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/vispy.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy">
 <span id="vispy"></span><h1>Vispy<a class="headerlink" href="#module-vispy" title="Permalink to this headline">¶</a></h1>
@@ -254,9 +284,9 @@ large datasets.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>app</strong> : str</p>
-<blockquote>
-<div><dl class="docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><dl class="first last docutils">
 <dt>The app backend to use (case insensitive). Standard backends:</dt>
 <dd><ul class="first last simple">
 <li>‘PyQt4’: use Qt widget toolkit via PyQt4.</li>
@@ -282,10 +312,9 @@ on Linux.</li>
 </ul>
 </dd>
 </dl>
-</div></blockquote>
-<p><strong>gl</strong> : str</p>
-<blockquote class="last">
-<div><dl class="docutils">
+</dd>
+<dt><strong>gl</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><dl class="first last docutils">
 <dt>The gl backend to use (case insensitive). Options are:</dt>
 <dd><ul class="first last simple">
 <li>‘gl2’: use Vispy’s desktop OpenGL API.</li>
@@ -299,18 +328,19 @@ your system (via PyOpenGL).</li>
 </ul>
 </dd>
 </dl>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="app.html#vispy.app.use_app" title="vispy.app.use_app"><code class="xref py py-obj docutils literal"><span class="pre">vispy.app.use_app</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">vispy.gloo.gl.use_gl</span></code></p>
+<p class="last"><a class="reference internal" href="app.html#vispy.app.use_app" title="vispy.app.use_app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.app.use_app</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.gloo.gl.use_gl</span></code></p>
 </div>
 <p class="rubric">Notes</p>
-<p>If the app option is given, <code class="docutils literal"><span class="pre">vispy.app.use_app()</span></code> is called. If
-the gl option is given, <code class="docutils literal"><span class="pre">vispy.gloo.use_gl()</span></code> is called.</p>
+<p>If the app option is given, <code class="docutils literal notranslate"><span class="pre">vispy.app.use_app()</span></code> is called. If
+the gl option is given, <code class="docutils literal notranslate"><span class="pre">vispy.gloo.use_gl()</span></code> is called.</p>
 <p>If an app backend name is provided, and that backend could not be
 loaded, an error is raised.</p>
 <p>If no backend name is provided, Vispy will first check if the GUI
@@ -328,20 +358,21 @@ succesful, it will try each backend in a predetermined order.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str | None</p>
-<blockquote>
-<div><p>Filename to dump info to. Use None to simply print.</p>
-</div></blockquote>
-<p><strong>overwrite</strong> : bool</p>
-<blockquote>
-<div><p>If True, overwrite file (if it exists).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Filename to dump info to. Use None to simply print.</p>
+</dd>
+<dt><strong>overwrite</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, overwrite file (if it exists).</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str</p>
-<blockquote class="last">
-<div><p>The system information as a string.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The system information as a string.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -356,60 +387,58 @@ succesful, it will try each backend in a predetermined order.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>verbose</strong> : bool, str, int, or None</p>
-<blockquote>
-<div><p>The verbosity of messages to print. If a str, it can be either DEBUG,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, str, int, or None</span></dt>
+<dd><p class="first last">The verbosity of messages to print. If a str, it can be either DEBUG,
 INFO, WARNING, ERROR, or CRITICAL. Note that these are for
 convenience and are equivalent to passing in logging.DEBUG, etc.
 For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
-</div></blockquote>
-<p><strong>match</strong> : str | None</p>
-<blockquote>
-<div><p>String to match. Only those messages that both contain a substring
-that regexp matches <code class="docutils literal"><span class="pre">'match'</span></code> (and the <code class="docutils literal"><span class="pre">verbose</span></code> level) will be
+</dd>
+<dt><strong>match</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">String to match. Only those messages that both contain a substring
+that regexp matches <code class="docutils literal notranslate"><span class="pre">'match'</span></code> (and the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> level) will be
 displayed.</p>
-</div></blockquote>
-<p><strong>return_old</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, return the old verbosity level and old match.</p>
-</div></blockquote>
+</dd>
+<dt><strong>return_old</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, return the old verbosity level and old match.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">vispy.util.use_log_level</span></code></p>
+<p class="last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.util.use_log_level</span></code></p>
 </div>
 <p class="rubric">Notes</p>
-<p>If <code class="docutils literal"><span class="pre">verbose=='debug'</span></code>, then the <code class="docutils literal"><span class="pre">vispy</span></code> method emitting the log
+<p>If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code>, then the <code class="docutils literal notranslate"><span class="pre">vispy</span></code> method emitting the log
 message will be prepended to each log message, which is useful for
-debugging. If <code class="docutils literal"><span class="pre">verbose=='debug'</span></code> or <code class="docutils literal"><span class="pre">match</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>, then a
+debugging. If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code> or <code class="docutils literal notranslate"><span class="pre">match</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>, then a
 small performance overhead is added. Thus it is suggested to only use
 these options when performance is not crucial.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="vispy.test">
-<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/testing/_runners.py#L354-L438"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/testing/_runners.py#L363-L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test vispy software</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : str</p>
-<blockquote>
-<div><p>Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
 ‘flake’, ‘docs’, or any backend name (e.g., ‘qt’).</p>
-</div></blockquote>
-<p><strong>extra_arg_string</strong> : str</p>
-<blockquote>
-<div><p>Extra arguments to sent to <code class="docutils literal"><span class="pre">pytest</span></code>.</p>
-</div></blockquote>
-<p><strong>coverage</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, collect coverage data.</p>
-</div></blockquote>
+</dd>
+<dt><strong>extra_arg_string</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Extra arguments to sent to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+</dd>
+<dt><strong>coverage</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, collect coverage data.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -437,7 +466,7 @@ these options when performance is not crucial.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

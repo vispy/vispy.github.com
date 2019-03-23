@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The color module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +240,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The color module</a></li>
+</ul>
+
+  <li>
+    <a href="app.html" title="Previous Chapter: The app module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The app module</span>
+    </a>
+  </li>
+  <li>
+    <a href="geometry.html" title="Next Chapter: The geometry module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The geometry module &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/color.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy.color">
 <span id="the-color-module"></span><h1>The color module<a class="headerlink" href="#module-vispy.color" title="Permalink to this headline">¶</a></h1>
@@ -250,30 +280,77 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>color</strong> : str | tuple</p>
-<blockquote>
-<div><p>If str, can be any of the names in <code class="docutils literal"><span class="pre">vispy.color.get_color_names</span></code>.
-Can also be a hex value if it starts with <code class="docutils literal"><span class="pre">'#'</span></code> as <code class="docutils literal"><span class="pre">'#ff0000'</span></code>.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | tuple</span></dt>
+<dd><p class="first last">If str, can be any of the names in <code class="docutils literal notranslate"><span class="pre">vispy.color.get_color_names</span></code>.
+Can also be a hex value if it starts with <code class="docutils literal notranslate"><span class="pre">'#'</span></code> as <code class="docutils literal notranslate"><span class="pre">'#ff0000'</span></code>.
 If array-like, it must be an 1-dimensional array with 3 or 4 elements.</p>
-</div></blockquote>
-<p><strong>alpha</strong> : float | None</p>
-<blockquote>
-<div><p>If no alpha is not supplied in <code class="docutils literal"><span class="pre">color</span></code> entry and <code class="docutils literal"><span class="pre">alpha</span></code> is None,
+</dd>
+<dt><strong>alpha</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | None</span></dt>
+<dd><p class="first last">If no alpha is not supplied in <code class="docutils literal notranslate"><span class="pre">color</span></code> entry and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is None,
 then this will default to 1.0 (opaque). If float, it will override
-the alpha value in <code class="docutils literal"><span class="pre">color</span></code>, if provided.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, clip the color values.</p>
-</div></blockquote>
+the alpha value in <code class="docutils literal notranslate"><span class="pre">color</span></code>, if provided.</p>
+</dd>
+<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, clip the color values.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="attribute">
+<dt id="vispy.color.Color.RGB">
+<code class="descname">RGB</code><a class="headerlink" href="#vispy.color.Color.RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.RGBA">
+<code class="descname">RGBA</code><a class="headerlink" href="#vispy.color.Color.RGBA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.alpha">
+<code class="descname">alpha</code><a class="headerlink" href="#vispy.color.Color.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of alpha floats</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.hex">
+<code class="descname">hex</code><a class="headerlink" href="#vispy.color.Color.hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy array with N elements, each one a hex triplet string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.hsv">
+<code class="descname">hsv</code><a class="headerlink" href="#vispy.color.Color.hsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of HSV floats</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="vispy.color.Color.is_blank">
 <code class="descname">is_blank</code><a class="headerlink" href="#vispy.color.Color.is_blank" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean indicating whether the color is invisible.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.rgb">
+<code class="descname">rgb</code><a class="headerlink" href="#vispy.color.Color.rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGB floats</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.rgba">
+<code class="descname">rgba</code><a class="headerlink" href="#vispy.color.Color.rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA floats</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="vispy.color.Color.value">
+<code class="descname">value</code><a class="headerlink" href="#vispy.color.Color.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of color HSV values</p>
 </dd></dl>
 
 </dd></dl>
@@ -286,29 +363,27 @@ the alpha value in <code class="docutils literal"><span class="pre">color</span>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>color</strong> : str | tuple | list of colors</p>
-<blockquote>
-<div><p>If str, can be any of the names in <code class="docutils literal"><span class="pre">vispy.color.get_color_names</span></code>.
-Can also be a hex value if it starts with <code class="docutils literal"><span class="pre">'#'</span></code> as <code class="docutils literal"><span class="pre">'#ff0000'</span></code>.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | tuple | list of colors</span></dt>
+<dd><p class="first last">If str, can be any of the names in <code class="docutils literal notranslate"><span class="pre">vispy.color.get_color_names</span></code>.
+Can also be a hex value if it starts with <code class="docutils literal notranslate"><span class="pre">'#'</span></code> as <code class="docutils literal notranslate"><span class="pre">'#ff0000'</span></code>.
 If array-like, it must be an Nx3 or Nx4 array-like object.
 Can also be a list of colors, such as
-<code class="docutils literal"><span class="pre">['red',</span> <span class="pre">'#00ff00',</span> <span class="pre">ColorArray('blue')]</span></code>.</p>
-</div></blockquote>
-<p><strong>alpha</strong> : float | None</p>
-<blockquote>
-<div><p>If no alpha is not supplied in <code class="docutils literal"><span class="pre">color</span></code> entry and <code class="docutils literal"><span class="pre">alpha</span></code> is None,
+<code class="docutils literal notranslate"><span class="pre">['red',</span> <span class="pre">'#00ff00',</span> <span class="pre">ColorArray('blue')]</span></code>.</p>
+</dd>
+<dt><strong>alpha</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | None</span></dt>
+<dd><p class="first last">If no alpha is not supplied in <code class="docutils literal notranslate"><span class="pre">color</span></code> entry and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is None,
 then this will default to 1.0 (opaque). If float, it will override
-any alpha values in <code class="docutils literal"><span class="pre">color</span></code>, if provided.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool</p>
-<blockquote>
-<div><p>Clip the color value.</p>
-</div></blockquote>
-<p><strong>color_space</strong> : ‘rgb’ | ‘hsv’</p>
-<blockquote class="last">
-<div><p>‘rgb’ (default) : color tuples are interpreted as (r, g, b) components.
+any alpha values in <code class="docutils literal notranslate"><span class="pre">color</span></code>, if provided.</p>
+</dd>
+<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Clip the color value.</p>
+</dd>
+<dt><strong>color_space</strong> <span class="classifier-delimiter">:</span> <span class="classifier">‘rgb’ | ‘hsv’</span></dt>
+<dd><p class="first last">‘rgb’ (default) : color tuples are interpreted as (r, g, b) components.
 ‘hsv’ : color tuples are interpreted as (h, s, v) components.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -318,7 +393,7 @@ any alpha values in <code class="docutils literal"><span class="pre">color</span
 on the GPU.</p>
 <p class="rubric">Examples</p>
 <p>There are many ways to define colors. Here are some basic cases:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">ColorArray</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">ColorArray</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># using string name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
 <span class="go">&lt;ColorArray: 1 color ((1.0, 0.0, 0.0, 1.0))&gt;</span>
@@ -373,20 +448,21 @@ on the GPU.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dv</strong> : float</p>
-<blockquote>
-<div><p>Amount to decrease the color value by.</p>
-</div></blockquote>
-<p><strong>copy</strong> : bool</p>
-<blockquote>
-<div><p>If False, operation will be carried out in-place.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>dv</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Amount to decrease the color value by.</p>
+</dd>
+<dt><strong>copy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If False, operation will be carried out in-place.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>color</strong> : instance of ColorArray</p>
-<blockquote class="last">
-<div><p>The darkened Color.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of ColorArray</span></dt>
+<dd><p class="first last">The darkened Color.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -401,10 +477,11 @@ on the GPU.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>colors</strong> : instance of ColorArray</p>
-<blockquote class="last">
-<div><p>The new colors.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of ColorArray</span></dt>
+<dd><p class="first last">The new colors.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -431,20 +508,21 @@ on the GPU.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dv</strong> : float</p>
-<blockquote>
-<div><p>Amount to increase the color value by.</p>
-</div></blockquote>
-<p><strong>copy</strong> : bool</p>
-<blockquote>
-<div><p>If False, operation will be carried out in-place.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>dv</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Amount to increase the color value by.</p>
+</dd>
+<dt><strong>copy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If False, operation will be carried out in-place.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>color</strong> : instance of ColorArray</p>
-<blockquote class="last">
-<div><p>The lightened Color.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of ColorArray</span></dt>
+<dd><p class="first last">The lightened Color.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -479,33 +557,32 @@ on the GPU.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>colors</strong> : list of colors | ColorArray</p>
-<blockquote>
-<div><p>The list of control colors. If not a <code class="docutils literal"><span class="pre">ColorArray</span></code>, a new
-<code class="docutils literal"><span class="pre">ColorArray</span></code> instance is created from this list. See the
-documentation of <code class="docutils literal"><span class="pre">ColorArray</span></code>.</p>
-</div></blockquote>
-<p><strong>controls</strong> : array-like</p>
-<blockquote>
-<div><p>The list of control points for the given colors. It should be
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of colors | ColorArray</span></dt>
+<dd><p class="first last">The list of control colors. If not a <code class="docutils literal notranslate"><span class="pre">ColorArray</span></code>, a new
+<code class="docutils literal notranslate"><span class="pre">ColorArray</span></code> instance is created from this list. See the
+documentation of <code class="docutils literal notranslate"><span class="pre">ColorArray</span></code>.</p>
+</dd>
+<dt><strong>controls</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The list of control points for the given colors. It should be
 an increasing list of floating-point number between 0.0 and 1.0.
 The first control point must be 0.0. The last control point must be
 1.0. The number of control points depends on the interpolation scheme.</p>
-</div></blockquote>
-<p><strong>interpolation</strong> : str</p>
-<blockquote class="last">
-<div><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
+</dd>
+<dt><strong>interpolation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The interpolation mode of the colormap. Default: ‘linear’. Can also
 be ‘zero’.
 If ‘linear’, ncontrols = ncolors (one color per control point).
 If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
 <p>Here is a basic example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">Colormap</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="k">import</span> <span class="n">Colormap</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
 </pre></div>
@@ -525,16 +602,18 @@ list of rgba colors</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like</p>
-<blockquote>
-<div><p>The values to map.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The values to map.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>colors</strong> : list</p>
-<blockquote class="last">
-<div><p>List of rgba colors.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of rgba colors.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -559,10 +638,11 @@ list of rgba colors</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>colors</strong> : list of lists, tuples, or ndarrays</p>
-<blockquote class="last">
-<div><p>The control colors used by the colormap (shape = (ncolors, 4)).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of lists, tuples, or ndarrays</span></dt>
+<dd><p class="first last">The control colors used by the colormap (shape = (ncolors, 4)).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -589,24 +669,26 @@ It can always assume that <cite>item</cite> is a (N, 1) array of values between
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>item</strong> : ndarray</p>
-<blockquote>
-<div><p>An array of values in [0,1].</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>item</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">An array of values in [0,1].</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rgba</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>An array with rgba values, with one color per item. The shape
-should be <code class="docutils literal"><span class="pre">item.shape</span> <span class="pre">+</span> <span class="pre">(4,)</span></code>.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>rgba</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">An array with rgba values, with one color per item. The shape
+should be <code class="docutils literal notranslate"><span class="pre">item.shape</span> <span class="pre">+</span> <span class="pre">(4,)</span></code>.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Users are expected to use a colormap with <code class="docutils literal"><span class="pre">__getitem__()</span></code> rather
-than <code class="docutils literal"><span class="pre">map()</span></code> (which implements a lower-level API).</p>
+<p>Users are expected to use a colormap with <code class="docutils literal notranslate"><span class="pre">__getitem__()</span></code> rather
+than <code class="docutils literal notranslate"><span class="pre">map()</span></code> (which implements a lower-level API).</p>
 </dd></dl>
 
 </dd></dl>
@@ -621,16 +703,17 @@ their corresponding documentation for more information.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str | Colormap</p>
-<blockquote class="last">
-<div><p>Colormap name. Can also be a Colormap for pass-through.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | Colormap</span></dt>
+<dd><p class="first last">Colormap name. Can also be a Colormap for pass-through.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;single_hue&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -650,10 +733,11 @@ their corresponding documentation for more information.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>names</strong> : list</p>
-<blockquote class="last">
-<div><p>List of color names known by Vispy.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>names</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of color names known by Vispy.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -668,10 +752,11 @@ their corresponding documentation for more information.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>color_dict</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dict of colors known by Vispy {name: #rgb}.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dict of colors known by Vispy {name: #rgb}.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -699,7 +784,7 @@ their corresponding documentation for more information.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

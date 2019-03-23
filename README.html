@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sphinx sources for the vispy website &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -35,8 +28,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -81,7 +73,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +241,28 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Sphinx sources for the vispy website</a><ul>
+<li><a class="reference internal" href="#build-instructions">Build Instructions</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="_sources/README.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="sphinx-sources-for-the-vispy-website">
 <h1>Sphinx sources for the vispy website<a class="headerlink" href="#sphinx-sources-for-the-vispy-website" title="Permalink to this headline">¶</a></h1>
@@ -247,7 +272,7 @@
 <h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this headline">¶</a></h2>
 <p>VisPy documentation should be generated via the <cite>make</cite> script in the VisPy
 code repository. A typical sequence of commands is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">make</span> <span class="n">website</span> <span class="n">html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">make</span> <span class="n">website</span> <span class="n">html</span>
 </pre></div>
 </div>
 <p>See the VisPy python repository for details.</p>
@@ -273,7 +298,7 @@ code repository. A typical sequence of commands is:</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

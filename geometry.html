@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The geometry module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +240,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The geometry module</a></li>
+</ul>
+
+  <li>
+    <a href="color.html" title="Previous Chapter: The color module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The color module</span>
+    </a>
+  </li>
+  <li>
+    <a href="gloo.html" title="Next Chapter: The object oriented OpenGL API (gloo)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The object or... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/geometry.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy.geometry">
 <span id="the-geometry-module"></span><h1>The geometry module<a class="headerlink" href="#module-vispy.geometry" title="Permalink to this headline">¶</a></h1>
@@ -249,32 +279,28 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : ndarray, shape (Nv, 3)</p>
-<blockquote>
-<div><p>Vertex coordinates. If faces is not specified, then this will
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (Nv, 3)</span></dt>
+<dd><p class="first last">Vertex coordinates. If faces is not specified, then this will
 instead be interpreted as (Nf, 3, 3) array of coordinates.</p>
-</div></blockquote>
-<p><strong>faces</strong> : ndarray, shape (Nf, 3)</p>
-<blockquote>
-<div><p>Indices into the vertex array.</p>
-</div></blockquote>
-<p><strong>edges</strong> : None</p>
-<blockquote>
-<div><p>[not available yet]</p>
-</div></blockquote>
-<p><strong>vertex_colors</strong> : ndarray, shape (Nv, 4)</p>
-<blockquote>
-<div><p>Vertex colors. If faces is not specified, this will be
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (Nf, 3)</span></dt>
+<dd><p class="first last">Indices into the vertex array.</p>
+</dd>
+<dt><strong>edges</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
+<dd><p class="first last">[not available yet]</p>
+</dd>
+<dt><strong>vertex_colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (Nv, 4)</span></dt>
+<dd><p class="first last">Vertex colors. If faces is not specified, this will be
 interpreted as (Nf, 3, 4) array of colors.</p>
-</div></blockquote>
-<p><strong>face_colors</strong> : ndarray, shape (Nf, 4)</p>
-<blockquote>
-<div><p>Face colors.</p>
-</div></blockquote>
-<p><strong>vertex_values</strong> : ndarray, shape (Nv,)</p>
-<blockquote class="last">
-<div><p>Vertex values.</p>
-</div></blockquote>
+</dd>
+<dt><strong>face_colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (Nf, 4)</span></dt>
+<dd><p class="first last">Face colors.</p>
+</dd>
+<dt><strong>vertex_values</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (Nv,)</span></dt>
+<dd><p class="first last">Vertex values.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -304,10 +330,11 @@ results and avoiding unnecessary conversions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bounds</strong> : list</p>
-<blockquote class="last">
-<div><p>A list of tuples of mesh bounds.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>bounds</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">A list of tuples of mesh bounds.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -322,19 +349,21 @@ results and avoiding unnecessary conversions.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If indexed is None, return (Nf, 3) array of vertex indices,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If indexed is None, return (Nf, 3) array of vertex indices,
 two per edge in the mesh.
 If indexed is ‘faces’, then return (Nf, 3, 2) array of vertex
 indices with 3 edges per face, and two vertices per edge.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>edges</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The edges.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>edges</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The edges.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -349,19 +378,21 @@ indices with 3 edges per face, and two vertices per edge.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If indexed is None, return (Nf, 4) array of face colors.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If indexed is None, return (Nf, 4) array of face colors.
 If indexed==’faces’, then instead return an indexed array
 (Nf, 3, 4)  (note this is just the same array with each color
 repeated three times).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>colors</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The colors.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The colors.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -376,18 +407,20 @@ repeated three times).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If None, return an array (Nf, 3) of normal vectors for each face.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If None, return an array (Nf, 3) of normal vectors for each face.
 If ‘faces’, then instead return an indexed array (Nf, 3, 3)
 (this is just the same array with each vector copied three times).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normals</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The normals.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>normals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The normals.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -409,18 +442,20 @@ If ‘faces’, then instead return an indexed array (Nf, 3, 3)
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If None, return an array (Nv, 4) of vertex colors.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If None, return an array (Nv, 4) of vertex colors.
 If indexed==’faces’, then instead return an indexed array
 (Nf, 3, 4).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>colors</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The vertex colors.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The vertex colors.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -441,19 +476,21 @@ If indexed==’faces’, then instead return an indexed array
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If None, return an (N, 3) array of normal vectors with one entry
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If None, return an (N, 3) array of normal vectors with one entry
 per unique vertex in the mesh. If indexed is ‘faces’, then the
 array will contain three normal vectors per face (and some
 vertices may be repeated).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normals</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The normals.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>normals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The normals.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -468,18 +505,20 @@ vertices may be repeated).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If None, return an array (Nv,) of vertex values.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If None, return an array (Nv,) of vertex values.
 If indexed==’faces’, then instead return an indexed array
 (Nf, 3).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>values</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The vertex values.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>values</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The vertex values.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -494,20 +533,22 @@ If indexed==’faces’, then instead return an indexed array
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If Note, return an array (N,3) of the positions of vertices in
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If Note, return an array (N,3) of the positions of vertices in
 the mesh. By default, each unique vertex appears only once.
 If indexed is ‘faces’, then the array will instead contain three
 vertices per face in the mesh (and a single vertex may appear more
 than once in the array).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The vertices.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The vertices.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -559,10 +600,11 @@ by face</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>state</strong> : dict</p>
-<blockquote class="last">
-<div><p>The previous state.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>state</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">The previous state.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -577,10 +619,11 @@ by face</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>state</strong> : dict</p>
-<blockquote class="last">
-<div><p>The state.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>state</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">The state.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -595,15 +638,15 @@ by face</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>colors</strong> : array</p>
-<blockquote>
-<div><p>Array of colors. Must have shape (Nf, 4) (indexed by face),
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of colors. Must have shape (Nf, 4) (indexed by face),
 or shape (Nf, 3, 4) (face colors indexed by faces).</p>
-</div></blockquote>
-<p><strong>indexed</strong> : str | None</p>
-<blockquote class="last">
-<div><p>Should be ‘faces’ if colors are indexed by faces.</p>
-</div></blockquote>
+</dd>
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -618,12 +661,13 @@ or shape (Nf, 3, 4) (face colors indexed by faces).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>faces</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>(Nf, 3) array of faces. Each row in the array contains
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">(Nf, 3) array of faces. Each row in the array contains
 three indices into the vertex array, specifying the three corners
 of a triangular face.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -638,15 +682,15 @@ of a triangular face.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>colors</strong> : array</p>
-<blockquote>
-<div><p>Array of colors. Must have shape (Nv, 4) (indexing by vertex)
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>colors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of colors. Must have shape (Nv, 4) (indexing by vertex)
 or shape (Nf, 3, 4) (vertices indexed by face).</p>
-</div></blockquote>
-<p><strong>indexed</strong> : str | None</p>
-<blockquote class="last">
-<div><p>Should be ‘faces’ if colors are indexed by faces.</p>
-</div></blockquote>
+</dd>
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -661,15 +705,15 @@ or shape (Nf, 3, 4) (vertices indexed by face).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>values</strong> : array</p>
-<blockquote>
-<div><p>Array of values. Must have shape (Nv,) (indexing by vertex)
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>values</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of values. Must have shape (Nv,) (indexing by vertex)
 or shape (Nf, 3) (vertices indexed by face).</p>
-</div></blockquote>
-<p><strong>indexed</strong> : str | None</p>
-<blockquote class="last">
-<div><p>Should be ‘faces’ if colors are indexed by faces.</p>
-</div></blockquote>
+</dd>
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -684,21 +728,20 @@ or shape (Nf, 3) (vertices indexed by face).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>verts</strong> : ndarray | None</p>
-<blockquote>
-<div><p>The array (Nv, 3) of vertex coordinates.</p>
-</div></blockquote>
-<p><strong>indexed</strong> : str | None</p>
-<blockquote>
-<div><p>If indexed==’faces’, then the data must have shape (Nf, 3, 3) and
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>verts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray | None</span></dt>
+<dd><p class="first last">The array (Nv, 3) of vertex coordinates.</p>
+</dd>
+<dt><strong>indexed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">If indexed==’faces’, then the data must have shape (Nf, 3, 3) and
 is assumed to be already indexed as a list of faces. This will
 cause any pre-existing normal vectors to be cleared unless
 reset_normals=False.</p>
-</div></blockquote>
-<p><strong>reset_normals</strong> : bool</p>
-<blockquote class="last">
-<div><p>If True, reset the normals.</p>
-</div></blockquote>
+</dd>
+<dt><strong>reset_normals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, reset the normals.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -715,19 +758,18 @@ reset_normals=False.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : (Nv, 3) array</p>
-<blockquote>
-<div><p>Vertex coordinates. If faces is not specified, then this will instead
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(Nv, 3) array</span></dt>
+<dd><p class="first last">Vertex coordinates. If faces is not specified, then this will instead
 be interpreted as (Nf, 3, 3) array of coordinates.</p>
-</div></blockquote>
-<p><strong>edges</strong> : (Nv, 2) array</p>
-<blockquote>
-<div><p>Constraining edges specified by vertex indices.</p>
-</div></blockquote>
-<p><strong>faces</strong> : (Nf, 3) array</p>
-<blockquote class="last">
-<div><p>Indexes into the vertex array.</p>
-</div></blockquote>
+</dd>
+<dt><strong>edges</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(Nv, 2) array</span></dt>
+<dd><p class="first last">Constraining edges specified by vertex indices.</p>
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(Nf, 3) array</span></dt>
+<dd><p class="first last">Indexes into the vertex array.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -742,10 +784,11 @@ be interpreted as (Nf, 3, 3) array of coordinates.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertex</strong> : array-like</p>
-<blockquote class="last">
-<div><p>The vertex to add.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertex</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The vertex to add.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -804,11 +847,12 @@ If no vertices or faces are specified, the function returns None.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>*args</strong> : arguments</p>
-<blockquote class="last">
-<div><p>Can be in the form <cite>Rect(x, y, w, h)</cite>, <cite>Rect(pos, size)</cite>, or
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>*args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">arguments</span></dt>
+<dd><p class="first last">Can be in the form <cite>Rect(x, y, w, h)</cite>, <cite>Rect(pos, size)</cite>, or
 <cite>Rect(Rect)</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -821,20 +865,21 @@ If no vertices or faces are specified, the function returns None.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : float</p>
-<blockquote>
-<div><p>X coordinate.</p>
-</div></blockquote>
-<p><strong>y</strong> : float</p>
-<blockquote>
-<div><p>Y coordinate.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">X coordinate.</p>
+</dd>
+<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Y coordinate.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>contains</strong> : bool</p>
-<blockquote class="last">
-<div><p>True if the point is within the rectangle.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>contains</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">True if the point is within the rectangle.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -849,20 +894,21 @@ If no vertices or faces are specified, the function returns None.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : bool</p>
-<blockquote>
-<div><p>Flip the X axis.</p>
-</div></blockquote>
-<p><strong>y</strong> : bool</p>
-<blockquote>
-<div><p>Flip the Y axis.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>x</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Flip the X axis.</p>
+</dd>
+<dt><strong>y</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Flip the Y axis.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rect</strong> : instance of Rect</p>
-<blockquote class="last">
-<div><p>The flipped rectangle.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>rect</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of Rect</span></dt>
+<dd><p class="first last">The flipped rectangle.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -884,16 +930,18 @@ guaranteed to be positive.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>padding</strong> : float</p>
-<blockquote>
-<div><p>The padding.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>padding</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The padding.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rect</strong> : instance of Rect</p>
-<blockquote class="last">
-<div><p>The padded rectangle.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>rect</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of Rect</span></dt>
+<dd><p class="first last">The padded rectangle.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -906,19 +954,19 @@ guaranteed to be positive.</p>
 <dt id="vispy.geometry.Triangulation">
 <em class="property">class </em><code class="descclassname">vispy.geometry.</code><code class="descname">Triangulation</code><span class="sig-paren">(</span><em>pts</em>, <em>edges</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/triangulation.py#L17-L810"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Triangulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constrained delaunay triangulation</p>
-<p>Implementation based on <a class="reference internal" href="#r12" id="id1">[R12]</a>.</p>
+<p>Implementation based on <a class="reference internal" href="#r018d6735238b-1" id="id1">[1]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pts</strong> : array</p>
-<blockquote>
-<div><p>Nx2 array of points.</p>
-</div></blockquote>
-<p><strong>edges</strong> : array</p>
-<blockquote class="last">
-<div><p>Nx2 array of edges (dtype=int).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Nx2 array of points.</p>
+</dd>
+<dt><strong>edges</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Nx2 array of edges (dtype=int).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -931,10 +979,10 @@ triangles.</li>
 <li>The pts and edges arrays may be modified.</li>
 </ul>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r12" rules="none">
+<table class="docutils citation" frame="void" id="r018d6735238b-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R12]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Domiter, V. and Žalik, B. Sweep‐line algorithm for constrained
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Domiter, V. and Žalik, B. Sweep‐line algorithm for constrained
 Delaunay triangulation</td></tr>
 </tbody>
 </table>
@@ -954,20 +1002,21 @@ Delaunay triangulation</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array-like</p>
-<blockquote>
-<div><p>The vertices.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The vertices.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array-like</p>
-<blockquote>
-<div><p>The vertices.</p>
-</div></blockquote>
-<p><strong>tringles</strong> : array-like</p>
-<blockquote class="last">
-<div><p>The triangles.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The vertices.</p>
+</dd>
+<dt><strong>tringles</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd><p class="first last">The triangles.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -982,44 +1031,41 @@ Delaunay triangulation</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rows</strong> : int</p>
-<blockquote>
-<div><p>Number of rows.</p>
-</div></blockquote>
-<p><strong>cols</strong> : int</p>
-<blockquote>
-<div><p>Number of columns.</p>
-</div></blockquote>
-<p><strong>radius</strong> : float</p>
-<blockquote>
-<div><p>Base cylinder radius.</p>
-</div></blockquote>
-<p><strong>length</strong> : float</p>
-<blockquote>
-<div><p>Length of the arrow.</p>
-</div></blockquote>
-<p><strong>cone_radius</strong> : float</p>
-<blockquote>
-<div><dl class="docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>rows</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of rows.</p>
+</dd>
+<dt><strong>cols</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of columns.</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Base cylinder radius.</p>
+</dd>
+<dt><strong>length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Length of the arrow.</p>
+</dd>
+<dt><strong>cone_radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><dl class="first last docutils">
 <dt>Radius of the cone base.</dt>
 <dd><p class="first last">If None, then this defaults to 2x the cylinder radius.</p>
 </dd>
 </dl>
-</div></blockquote>
-<p><strong>cone_length</strong> : float</p>
-<blockquote>
-<div><dl class="docutils">
+</dd>
+<dt><strong>cone_length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><dl class="first last docutils">
 <dt>Length of the cone.</dt>
 <dd><p class="first last">If None, then this defaults to 1/3 of the arrow length.</p>
 </dd>
 </dl>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>arrow</strong> : MeshData</p>
-<blockquote class="last">
-<div><p>Vertices and faces computed for a cone surface.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>arrow</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MeshData</span></dt>
+<dd><p class="first last">Vertices and faces computed for a cone surface.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1034,49 +1080,43 @@ Delaunay triangulation</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>width</strong> : float</p>
-<blockquote>
-<div><p>Box width.</p>
-</div></blockquote>
-<p><strong>height</strong> : float</p>
-<blockquote>
-<div><p>Box height.</p>
-</div></blockquote>
-<p><strong>depth</strong> : float</p>
-<blockquote>
-<div><p>Box depth.</p>
-</div></blockquote>
-<p><strong>width_segments</strong> : int</p>
-<blockquote>
-<div><p>Box segments count along the width.</p>
-</div></blockquote>
-<p><strong>height_segments</strong> : float</p>
-<blockquote>
-<div><p>Box segments count along the height.</p>
-</div></blockquote>
-<p><strong>depth_segments</strong> : float</p>
-<blockquote>
-<div><p>Box segments count along the depth.</p>
-</div></blockquote>
-<p><strong>planes: array_like</strong></p>
-<blockquote>
-<div><p>Any combination of <code class="docutils literal"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Box width.</p>
+</dd>
+<dt><strong>height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Box height.</p>
+</dd>
+<dt><strong>depth</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Box depth.</p>
+</dd>
+<dt><strong>width_segments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Box segments count along the width.</p>
+</dd>
+<dt><strong>height_segments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Box segments count along the height.</p>
+</dd>
+<dt><strong>depth_segments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Box segments count along the depth.</p>
+</dd>
+<dt><strong>planes: array_like</strong></dt>
+<dd><p class="first last">Any combination of <code class="docutils literal notranslate"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
 Included planes in the box construction.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Array of vertices suitable for use as a VertexBuffer.</p>
-</div></blockquote>
-<p><strong>faces</strong> : array</p>
-<blockquote>
-<div><p>Indices to use to produce a filled box.</p>
-</div></blockquote>
-<p><strong>outline</strong> : array</p>
-<blockquote class="last">
-<div><p>Indices to use to produce an outline of the box.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce a filled box.</p>
+</dd>
+<dt><strong>outline</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce an outline of the box.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1091,24 +1131,24 @@ Included planes in the box construction.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cols</strong> : int</p>
-<blockquote>
-<div><p>Number of faces.</p>
-</div></blockquote>
-<p><strong>radius</strong> : float</p>
-<blockquote>
-<div><p>Base cone radius.</p>
-</div></blockquote>
-<p><strong>length</strong> : float</p>
-<blockquote>
-<div><p>Length of the cone.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>cols</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of faces.</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Base cone radius.</p>
+</dd>
+<dt><strong>length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Length of the cone.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cone</strong> : MeshData</p>
-<blockquote class="last">
-<div><p>Vertices and faces computed for a cone surface.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>cone</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MeshData</span></dt>
+<dd><p class="first last">Vertices and faces computed for a cone surface.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1123,18 +1163,17 @@ Included planes in the box construction.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Array of vertices suitable for use as a VertexBuffer.</p>
-</div></blockquote>
-<p><strong>filled</strong> : array</p>
-<blockquote>
-<div><p>Indices to use to produce a filled cube.</p>
-</div></blockquote>
-<p><strong>outline</strong> : array</p>
-<blockquote class="last">
-<div><p>Indices to use to produce an outline of the cube.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>filled</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce a filled cube.</p>
+</dd>
+<dt><strong>outline</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce an outline of the cube.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1149,32 +1188,30 @@ Included planes in the box construction.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rows</strong> : int</p>
-<blockquote>
-<div><p>Number of rows.</p>
-</div></blockquote>
-<p><strong>cols</strong> : int</p>
-<blockquote>
-<div><p>Number of columns.</p>
-</div></blockquote>
-<p><strong>radius</strong> : tuple of float</p>
-<blockquote>
-<div><p>Cylinder radii.</p>
-</div></blockquote>
-<p><strong>length</strong> : float</p>
-<blockquote>
-<div><p>Length of the cylinder.</p>
-</div></blockquote>
-<p><strong>offset</strong> : bool</p>
-<blockquote>
-<div><p>Rotate each row by half a column.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>rows</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of rows.</p>
+</dd>
+<dt><strong>cols</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of columns.</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of float</span></dt>
+<dd><p class="first last">Cylinder radii.</p>
+</dd>
+<dt><strong>length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Length of the cylinder.</p>
+</dd>
+<dt><strong>offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Rotate each row by half a column.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cylinder</strong> : MeshData</p>
-<blockquote class="last">
-<div><p>Vertices and faces computed for a cylindrical surface.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>cylinder</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MeshData</span></dt>
+<dd><p class="first last">Vertices and faces computed for a cylindrical surface.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1191,31 +1228,30 @@ from meshgrid data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>xs</strong> : ndarray</p>
-<blockquote>
-<div><p>A 2d array of x coordinates for the vertices of the mesh. Must
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>xs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">A 2d array of x coordinates for the vertices of the mesh. Must
 have the same dimensions as ys and zs.</p>
-</div></blockquote>
-<p><strong>ys</strong> : ndarray</p>
-<blockquote>
-<div><p>A 2d array of y coordinates for the vertices of the mesh. Must
+</dd>
+<dt><strong>ys</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">A 2d array of y coordinates for the vertices of the mesh. Must
 have the same dimensions as xs and zs.</p>
-</div></blockquote>
-<p><strong>zs</strong> : ndarray</p>
-<blockquote>
-<div><p>A 2d array of z coordinates for the vertices of the mesh. Must
+</dd>
+<dt><strong>zs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">A 2d array of z coordinates for the vertices of the mesh. Must
 have the same dimensions as xs and ys.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of vertices in the mesh.</p>
-</div></blockquote>
-<p><strong>indices</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The array of indices for the mesh.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of vertices in the mesh.</p>
+</dd>
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of indices for the mesh.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1230,50 +1266,46 @@ have the same dimensions as xs and ys.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>width</strong> : float</p>
-<blockquote>
-<div><p>Plane width.</p>
-</div></blockquote>
-<p><strong>height</strong> : float</p>
-<blockquote>
-<div><p>Plane height.</p>
-</div></blockquote>
-<p><strong>width_segments</strong> : int</p>
-<blockquote>
-<div><p>Plane segments count along the width.</p>
-</div></blockquote>
-<p><strong>height_segments</strong> : float</p>
-<blockquote>
-<div><p>Plane segments count along the height.</p>
-</div></blockquote>
-<p><strong>direction: unicode</strong></p>
-<blockquote>
-<div><p><code class="docutils literal"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Plane width.</p>
+</dd>
+<dt><strong>height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Plane height.</p>
+</dd>
+<dt><strong>width_segments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Plane segments count along the width.</p>
+</dd>
+<dt><strong>height_segments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Plane segments count along the height.</p>
+</dd>
+<dt><strong>direction: unicode</strong></dt>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
 Direction the plane will be facing.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Array of vertices suitable for use as a VertexBuffer.</p>
-</div></blockquote>
-<p><strong>faces</strong> : array</p>
-<blockquote>
-<div><p>Indices to use to produce a filled plane.</p>
-</div></blockquote>
-<p><strong>outline</strong> : array</p>
-<blockquote class="last">
-<div><p>Indices to use to produce an outline of the plane.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce a filled plane.</p>
+</dd>
+<dt><strong>outline</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Indices to use to produce an outline of the plane.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r23" rules="none">
+<table class="docutils citation" frame="void" id="r5aae4a72062f-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R23]</a></td><td>Cabello, R. (n.d.). PlaneBufferGeometry.js. Retrieved May 12, 2015,
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Cabello, R. (n.d.). PlaneBufferGeometry.js. Retrieved May 12, 2015,
 from <a class="reference external" href="http://git.io/vU1Fh">http://git.io/vU1Fh</a></td></tr>
 </tbody>
 </table>
@@ -1287,42 +1319,38 @@ from <a class="reference external" href="http://git.io/vU1Fh">http://git.io/vU1F
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rows</strong> : int</p>
-<blockquote>
-<div><p>Number of rows (for method=’latitude’ and ‘cube’).</p>
-</div></blockquote>
-<p><strong>cols</strong> : int</p>
-<blockquote>
-<div><p>Number of columns (for method=’latitude’ and ‘cube’).</p>
-</div></blockquote>
-<p><strong>depth</strong> : int</p>
-<blockquote>
-<div><p>Number of depth segments (for method=’cube’).</p>
-</div></blockquote>
-<p><strong>radius</strong> : float</p>
-<blockquote>
-<div><p>Sphere radius.</p>
-</div></blockquote>
-<p><strong>offset</strong> : bool</p>
-<blockquote>
-<div><p>Rotate each row by half a column (for method=’latitude’).</p>
-</div></blockquote>
-<p><strong>subdivisions</strong> : int</p>
-<blockquote>
-<div><p>Number of subdivisions to perform (for method=’ico’)</p>
-</div></blockquote>
-<p><strong>method</strong> : str</p>
-<blockquote>
-<div><p>Method for generating sphere. Accepts ‘latitude’ for latitude-
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>rows</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of rows (for method=’latitude’ and ‘cube’).</p>
+</dd>
+<dt><strong>cols</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of columns (for method=’latitude’ and ‘cube’).</p>
+</dd>
+<dt><strong>depth</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of depth segments (for method=’cube’).</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Sphere radius.</p>
+</dd>
+<dt><strong>offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Rotate each row by half a column (for method=’latitude’).</p>
+</dd>
+<dt><strong>subdivisions</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of subdivisions to perform (for method=’ico’)</p>
+</dd>
+<dt><strong>method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Method for generating sphere. Accepts ‘latitude’ for latitude-
 longitude, ‘ico’ for icosahedron, and ‘cube’ for cube based
 tessellation.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>sphere</strong> : MeshData</p>
-<blockquote class="last">
-<div><p>Vertices and faces computed for a spherical surface.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sphere</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MeshData</span></dt>
+<dd><p class="first last">Vertices and faces computed for a spherical surface.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1337,24 +1365,24 @@ tessellation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Array of shape (N, M, …).</p>
-</div></blockquote>
-<p><strong>shape</strong> : tuple</p>
-<blockquote>
-<div><p>2-element shape.</p>
-</div></blockquote>
-<p><strong>kind</strong> : str</p>
-<blockquote>
-<div><p>Interpolation, either “linear” or “nearest”.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Array of shape (N, M, …).</p>
+</dd>
+<dt><strong>shape</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">2-element shape.</p>
+</dd>
+<dt><strong>kind</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Interpolation, either “linear” or “nearest”.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scaled_image</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>New image, will have dtype np.float64.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>scaled_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">New image, will have dtype np.float64.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1382,7 +1410,7 @@ tessellation.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

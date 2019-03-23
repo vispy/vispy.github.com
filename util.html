@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The util module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -242,7 +246,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The util module</a><ul>
+<li><a class="reference internal" href="#module-vispy.util.event">vispy.util.event</a></li>
+<li><a class="reference internal" href="#module-vispy.util.fonts">vispy.util.fonts</a></li>
+<li><a class="reference internal" href="#module-vispy.util.keys">vispy.util.keys</a></li>
+<li><a class="reference internal" href="#module-vispy.util.transforms">vispy.util.transforms</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="visuals.html" title="Previous Chapter: Visuals"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Visuals</span>
+    </a>
+  </li>
+  <li>
+    <a href="releasenotes.html" title="Next Chapter: Release notes"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Release notes &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/util.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy.util">
 <span id="the-util-module"></span><h1>The util module<a class="headerlink" href="#module-vispy.util" title="Permalink to this headline">¶</a></h1>
@@ -263,28 +299,27 @@ to emit events. The EmitterGroup groups EventEmitter objects.</p>
 <dd><p>Class describing events that occur and can be reacted to with callbacks.
 Each event instance contains information about a single event that has
 occurred such as a key press, mouse motion, timer activation, etc.</p>
-<p>Subclasses: <code class="xref py py-class docutils literal"><span class="pre">KeyEvent</span></code>, <code class="xref py py-class docutils literal"><span class="pre">MouseEvent</span></code>, <code class="xref py py-class docutils literal"><span class="pre">TouchEvent</span></code>,
-<code class="xref py py-class docutils literal"><span class="pre">StylusEvent</span></code></p>
+<p>Subclasses: <code class="xref py py-class docutils literal notranslate"><span class="pre">KeyEvent</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MouseEvent</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TouchEvent</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">StylusEvent</span></code></p>
 <p>The creation of events and passing of events to the appropriate callback
-functions is the responsibility of <a class="reference internal" href="#vispy.util.event.EventEmitter" title="vispy.util.event.EventEmitter"><code class="xref py py-class docutils literal"><span class="pre">EventEmitter</span></code></a> instances.</p>
+functions is the responsibility of <a class="reference internal" href="#vispy.util.event.EventEmitter" title="vispy.util.event.EventEmitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventEmitter</span></code></a> instances.</p>
 <p>Note that each event object has an attribute for each of the input
 arguments listed below.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>native</strong> : object (optional)</p>
-<blockquote>
-<div><p>The native GUI event object</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : keyword arguments</p>
-<blockquote class="last">
-<div><p>All extra keyword arguments become attributes of the event object.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object (optional)</span></dt>
+<dd><p class="first last">The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments</span></dt>
+<dd><p class="first last">All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -335,54 +370,46 @@ precision start time.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>pos</strong> : (int, int)</p>
-<blockquote>
-<div><p>The position of the mouse (in screen coordinates).</p>
-</div></blockquote>
-<p><strong>button</strong> : int | None</p>
-<blockquote>
-<div><p>The button that generated this event (can be None).
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>pos</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(int, int)</span></dt>
+<dd><p class="first last">The position of the mouse (in screen coordinates).</p>
+</dd>
+<dt><strong>button</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int | None</span></dt>
+<dd><p class="first last">The button that generated this event (can be None).
 Left=1, right=2, middle=3. During a mouse drag, this
 will return the button that started the drag (same thing as
-<code class="docutils literal"><span class="pre">event.press_event.button</span></code>).</p>
-</div></blockquote>
-<p><strong>buttons</strong> : [int, …]</p>
-<blockquote>
-<div><p>The list of buttons depressed during this event.</p>
-</div></blockquote>
-<p><strong>modifiers</strong> : tuple of Key instances</p>
-<blockquote>
-<div><p>Tuple that specifies which modifier keys were pressed down at the
+<code class="docutils literal notranslate"><span class="pre">event.press_event.button</span></code>).</p>
+</dd>
+<dt><strong>buttons</strong> <span class="classifier-delimiter">:</span> <span class="classifier">[int, …]</span></dt>
+<dd><p class="first last">The list of buttons depressed during this event.</p>
+</dd>
+<dt><strong>modifiers</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of Key instances</span></dt>
+<dd><p class="first last">Tuple that specifies which modifier keys were pressed down at the
 time of the event (shift, control, alt, meta).</p>
-</div></blockquote>
-<p><strong>delta</strong> : (float, float)</p>
-<blockquote>
-<div><p>The amount of scrolling in horizontal and vertical direction. One
+</dd>
+<dt><strong>delta</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(float, float)</span></dt>
+<dd><p class="first last">The amount of scrolling in horizontal and vertical direction. One
 “tick” corresponds to a delta of 1.0.</p>
-</div></blockquote>
-<p><strong>press_event</strong> : MouseEvent</p>
-<blockquote>
-<div><p>The press event that was generated at the start of the current drag,
+</dd>
+<dt><strong>press_event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MouseEvent</span></dt>
+<dd><p class="first last">The press event that was generated at the start of the current drag,
 if any.</p>
-</div></blockquote>
-<p><strong>last_event</strong> : MouseEvent</p>
-<blockquote>
-<div><p>The MouseEvent immediately preceding the current event. During drag
+</dd>
+<dt><strong>last_event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MouseEvent</span></dt>
+<dd><p class="first last">The MouseEvent immediately preceding the current event. During drag
 operations, all generated events retain their last_event properties,
 allowing the entire drag to be reconstructed.</p>
-</div></blockquote>
-<p><strong>native</strong> : object (optional)</p>
-<blockquote>
-<div><p>The native GUI event object</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : keyword arguments</p>
-<blockquote class="last">
-<div><p>All extra keyword arguments become attributes of the event object.</p>
-</div></blockquote>
+</dd>
+<dt><strong>native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object (optional)</span></dt>
+<dd><p class="first last">The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments</span></dt>
+<dd><p class="first last">All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -420,31 +447,27 @@ arguments listed below.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>key</strong> : vispy.keys.Key instance</p>
-<blockquote>
-<div><p>The Key object for this event. Can be compared to string names.</p>
-</div></blockquote>
-<p><strong>text</strong> : str</p>
-<blockquote>
-<div><p>The text representation of the key (can be an empty string).</p>
-</div></blockquote>
-<p><strong>modifiers</strong> : tuple of Key instances</p>
-<blockquote>
-<div><p>Tuple that specifies which modifier keys were pressed down at the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>key</strong> <span class="classifier-delimiter">:</span> <span class="classifier">vispy.keys.Key instance</span></dt>
+<dd><p class="first last">The Key object for this event. Can be compared to string names.</p>
+</dd>
+<dt><strong>text</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The text representation of the key (can be an empty string).</p>
+</dd>
+<dt><strong>modifiers</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of Key instances</span></dt>
+<dd><p class="first last">Tuple that specifies which modifier keys were pressed down at the
 time of the event (shift, control, alt, meta).</p>
-</div></blockquote>
-<p><strong>native</strong> : object (optional)</p>
-<blockquote>
-<div><p>The native GUI event object</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : keyword arguments</p>
-<blockquote class="last">
-<div><p>All extra keyword arguments become attributes of the event object.</p>
-</div></blockquote>
+</dd>
+<dt><strong>native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object (optional)</span></dt>
+<dd><p class="first last">The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments</span></dt>
+<dd><p class="first last">All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -461,26 +484,23 @@ arguments listed below.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>size</strong> : (int, int)</p>
-<blockquote>
-<div><p>The new size of the Canvas, in points (logical pixels).</p>
-</div></blockquote>
-<p><strong>physical_size</strong> : (int, int)</p>
-<blockquote>
-<div><p>The new physical size of the Canvas, in pixels.</p>
-</div></blockquote>
-<p><strong>native</strong> : object (optional)</p>
-<blockquote>
-<div><p>The native GUI event object</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : extra keyword arguments</p>
-<blockquote class="last">
-<div><p>All extra keyword arguments become attributes of the event object.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(int, int)</span></dt>
+<dd><p class="first last">The new size of the Canvas, in points (logical pixels).</p>
+</dd>
+<dt><strong>physical_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(int, int)</span></dt>
+<dd><p class="first last">The new physical size of the Canvas, in pixels.</p>
+</dd>
+<dt><strong>native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object (optional)</span></dt>
+<dd><p class="first last">The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">extra keyword arguments</span></dt>
+<dd><p class="first last">All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -499,23 +519,21 @@ arguments listed below.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>type</strong> : str</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>region</strong> : (int, int, int, int) or None</p>
-<blockquote>
-<div><p>The region of the canvas which needs to be redrawn (x, y, w, h).
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>region</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(int, int, int, int) or None</span></dt>
+<dd><p class="first last">The region of the canvas which needs to be redrawn (x, y, w, h).
 If None, the entire canvas must be redrawn.</p>
-</div></blockquote>
-<p><strong>native</strong> : object (optional)</p>
-<blockquote>
-<div><p>The native GUI event object</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : extra keyword arguments</p>
-<blockquote class="last">
-<div><p>All extra keyword arguments become attributes of the event object.</p>
-</div></blockquote>
+</dd>
+<dt><strong>native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object (optional)</span></dt>
+<dd><p class="first last">The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">extra keyword arguments</span></dt>
+<dd><p class="first last">All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -532,7 +550,7 @@ events, such as mouse click events or timer activation events. For
 example, the following diagram shows the propagation of a mouse click
 event to the list of callbacks that are registered to listen for that
 event:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span> <span class="n">clicks</span>    <span class="o">|</span><span class="n">Canvas</span> <span class="n">creates</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span> <span class="n">clicks</span>    <span class="o">|</span><span class="n">Canvas</span> <span class="n">creates</span>
 <span class="n">mouse</span> <span class="n">on</span>       <span class="o">|</span><span class="n">MouseEvent</span><span class="p">:</span>                <span class="o">|</span><span class="s1">&#39;mouse_press&#39;</span> <span class="n">EventEmitter</span><span class="p">:</span>         <span class="o">|</span><span class="n">callbacks</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span> <span class="c1"># noqa</span>
 <span class="n">Canvas</span>         <span class="o">|</span>                           <span class="o">|</span>                                    <span class="o">|</span>  <span class="c1"># noqa</span>
             <span class="o">--&gt;|</span><span class="n">event</span> <span class="o">=</span> <span class="n">MouseEvent</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">--&gt;|</span><span class="n">Canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_press</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">--&gt;|</span><span class="n">callback1</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>  <span class="c1"># noqa</span>
@@ -541,29 +559,28 @@ event:</p>
 </pre></div>
 </div>
 <p>Callback functions may be added or removed from an EventEmitter using
-<code class="xref py py-func docutils literal"><span class="pre">connect()</span></code> or
-<code class="xref py py-func docutils literal"><span class="pre">disconnect()</span></code>.</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code> or
+<code class="xref py py-func docutils literal notranslate"><span class="pre">disconnect()</span></code>.</p>
 <p>Calling an instance of EventEmitter will cause each of its callbacks
 to be invoked in sequence. All callbacks are invoked with a single
-argument which will be an instance of <code class="xref py py-class docutils literal"><span class="pre">Event</span></code>.</p>
+argument which will be an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Event</span></code>.</p>
 <p>EventEmitters are generally created by an EmitterGroup instance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : object</p>
-<blockquote>
-<div><p>The object that the generated events apply to. All emitted Events will
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>source</strong> <span class="classifier-delimiter">:</span> <span class="classifier">object</span></dt>
+<dd><p class="first last">The object that the generated events apply to. All emitted Events will
 have their .source property set to this value.</p>
-</div></blockquote>
-<p><strong>type</strong> : str or None</p>
-<blockquote>
-<div><p>String indicating the event type (e.g. mouse_press, key_release)</p>
-</div></blockquote>
-<p><strong>event_class</strong> : subclass of Event</p>
-<blockquote class="last">
-<div><p>The class of events that this emitter will generate.</p>
-</div></blockquote>
+</dd>
+<dt><strong>type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str or None</span></dt>
+<dd><p class="first last">String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>event_class</strong> <span class="classifier-delimiter">:</span> <span class="classifier">subclass of Event</span></dt>
+<dd><p class="first last">The class of events that this emitter will generate.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -610,7 +627,7 @@ the given callback.</p>
 <dd><p>Return an EventBlocker to be used in ‘with’ statements</p>
 <p class="rubric">Notes</p>
 <p>For example, one could do:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">emitter</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">emitter</span><span class="o">.</span><span class="n">blocker</span><span class="p">():</span>
     <span class="k">pass</span>  <span class="c1"># ..do stuff; no events will be emitted..</span>
 </pre></div>
 </div>
@@ -636,54 +653,51 @@ the given callback.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>callback</strong> : function | tuple</p>
-<blockquote>
-<div><p><em>callback</em> may be either a callable object or a tuple
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>callback</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function | tuple</span></dt>
+<dd><p class="first last"><em>callback</em> may be either a callable object or a tuple
 (object, attr_name) where object.attr_name will point to a
-callable object. Note that only a weak reference to <code class="docutils literal"><span class="pre">object</span></code>
+callable object. Note that only a weak reference to <code class="docutils literal notranslate"><span class="pre">object</span></code>
 will be kept.</p>
-</div></blockquote>
-<p><strong>ref</strong> : bool | str</p>
-<blockquote>
-<div><p>Reference used to identify the callback in <code class="docutils literal"><span class="pre">before</span></code>/<code class="docutils literal"><span class="pre">after</span></code>.
+</dd>
+<dt><strong>ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool | str</span></dt>
+<dd><p class="first last">Reference used to identify the callback in <code class="docutils literal notranslate"><span class="pre">before</span></code>/<code class="docutils literal notranslate"><span class="pre">after</span></code>.
 If True, the callback ref will automatically determined (see
 Notes). If False, the callback cannot be referred to by a string.
-If str, the given string will be used. Note that if <code class="docutils literal"><span class="pre">ref</span></code>
-is not unique in <code class="docutils literal"><span class="pre">callback_refs</span></code>, an error will be thrown.</p>
-</div></blockquote>
-<p><strong>position</strong> : str</p>
-<blockquote>
-<div><p>If <code class="docutils literal"><span class="pre">'first'</span></code>, the first eligible position is used (that
-meets the before and after criteria), <code class="docutils literal"><span class="pre">'last'</span></code> will use
+If str, the given string will be used. Note that if <code class="docutils literal notranslate"><span class="pre">ref</span></code>
+is not unique in <code class="docutils literal notranslate"><span class="pre">callback_refs</span></code>, an error will be thrown.</p>
+</dd>
+<dt><strong>position</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">If <code class="docutils literal notranslate"><span class="pre">'first'</span></code>, the first eligible position is used (that
+meets the before and after criteria), <code class="docutils literal notranslate"><span class="pre">'last'</span></code> will use
 the last position.</p>
-</div></blockquote>
-<p><strong>before</strong> : str | callback | list of str or callback | None</p>
-<blockquote>
-<div><p>List of callbacks that the current callback should precede.
+</dd>
+<dt><strong>before</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | callback | list of str or callback | None</span></dt>
+<dd><p class="first last">List of callbacks that the current callback should precede.
 Can be None if no before-criteria should be used.</p>
-</div></blockquote>
-<p><strong>after</strong> : str | callback | list of str or callback | None</p>
-<blockquote class="last">
-<div><p>List of callbacks that the current callback should follow.
+</dd>
+<dt><strong>after</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | callback | list of str or callback | None</span></dt>
+<dd><p class="first last">List of callbacks that the current callback should follow.
 Can be None if no after-criteria should be used.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>If <code class="docutils literal"><span class="pre">ref=True</span></code>, the callback reference will be determined from:</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ref=True</span></code>, the callback reference will be determined from:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>If <code class="docutils literal"><span class="pre">callback</span></code> is <code class="docutils literal"><span class="pre">tuple</span></code>, the secend element in the tuple.</li>
-<li>The <code class="docutils literal"><span class="pre">__name__</span></code> attribute.</li>
-<li>The <code class="docutils literal"><span class="pre">__class__.__name__</span></code> attribute.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">callback</span></code> is <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, the secend element in the tuple.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">__name__</span></code> attribute.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">__class__.__name__</span></code> attribute.</li>
 </ol>
 </div></blockquote>
 <p>The current list of callback refs can be obtained using
-<code class="docutils literal"><span class="pre">event.callback_refs</span></code>. Callbacks can be referred to by either
+<code class="docutils literal notranslate"><span class="pre">event.callback_refs</span></code>. Callbacks can be referred to by either
 their string reference (if given), or by the actual callback that
-was attached (e.g., <code class="docutils literal"><span class="pre">(canvas,</span> <span class="pre">'swap_buffers')</span></code>).</p>
+was attached (e.g., <code class="docutils literal notranslate"><span class="pre">(canvas,</span> <span class="pre">'swap_buffers')</span></code>).</p>
 <p>If the specified callback is already connected, then the request is
 ignored.</p>
 <p>If before is None and after is None (default), the new callback will
@@ -729,10 +743,10 @@ least “warning”.</p>
 <dl class="method">
 <dt id="vispy.util.event.EventEmitter.unblock">
 <code class="descname">unblock</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/event.py#L510-L525"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.unblock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unblock this emitter. See <code class="xref py py-func docutils literal"><span class="pre">event.EventEmitter.block()</span></code>.</p>
-<p>Note: Use of <code class="docutils literal"><span class="pre">unblock(None)</span></code> only reverses the effect of
-<code class="docutils literal"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly
-blocked using <code class="docutils literal"><span class="pre">block(callback)</span></code>.</p>
+<dd><p>Unblock this emitter. See <code class="xref py py-func docutils literal notranslate"><span class="pre">event.EventEmitter.block()</span></code>.</p>
+<p>Note: Use of <code class="docutils literal notranslate"><span class="pre">unblock(None)</span></code> only reverses the effect of
+<code class="docutils literal notranslate"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly
+blocked using <code class="docutils literal notranslate"><span class="pre">block(callback)</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -751,10 +765,11 @@ fonts.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fonts</strong> : list of str</p>
-<blockquote class="last">
-<div><p>List of system fonts.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fonts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of str</span></dt>
+<dd><p class="first last">List of system fonts.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -768,7 +783,7 @@ fonts.</p>
 <p>Define constants for keys.</p>
 <p>Each key constant is defined as a Key object, which allows comparison with
 strings (e.g. ‘A’, ‘Escape’, ‘Shift’). This enables handling of key events
-without using the key constants explicitly (e.g. <code class="docutils literal"><span class="pre">if</span> <span class="pre">ev.key</span> <span class="pre">==</span> <span class="pre">'Left':</span></code>).</p>
+without using the key constants explicitly (e.g. <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">ev.key</span> <span class="pre">==</span> <span class="pre">'Left':</span></code>).</p>
 <p>In addition, key objects that represent characters can be matched to
 the integer ordinal (e.g. 32 for space, 65 for A). This behavior is mainly
 intended as a compatibility measure.</p>
@@ -795,49 +810,46 @@ represent characters), and to another Key instance.</p>
 <p>Very simple transformation library that is needed for some examples.</p>
 <dl class="function">
 <dt id="vispy.util.transforms.affine_map">
-<code class="descclassname">vispy.util.transforms.</code><code class="descname">affine_map</code><span class="sig-paren">(</span><em>points1</em>, <em>points2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L181-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.affine_map" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">affine_map</code><span class="sig-paren">(</span><em>points1</em>, <em>points2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L186-L203"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.affine_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find a 3D transformation matrix that maps points1 onto points2.</p>
 <p>Arguments are specified as arrays of four 3D coordinates, shape (4, 3).</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="vispy.util.transforms.frustum">
-<code class="descclassname">vispy.util.transforms.</code><code class="descname">frustum</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L118-L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.frustum" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">frustum</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L123-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.frustum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create view frustum</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>left</strong> : float</p>
-<blockquote>
-<div><p>Left coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>right</strong> : float</p>
-<blockquote>
-<div><p>Right coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>bottom</strong> : float</p>
-<blockquote>
-<div><p>Bottom coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>top</strong> : float</p>
-<blockquote>
-<div><p>Top coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>znear</strong> : float</p>
-<blockquote>
-<div><p>Near coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>zfar</strong> : float</p>
-<blockquote>
-<div><p>Far coordinate of the field of view.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>left</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Left coordinate of the field of view.</p>
+</dd>
+<dt><strong>right</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Right coordinate of the field of view.</p>
+</dd>
+<dt><strong>bottom</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Bottom coordinate of the field of view.</p>
+</dd>
+<dt><strong>top</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Top coordinate of the field of view.</p>
+</dd>
+<dt><strong>znear</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Near coordinate of the field of view.</p>
+</dd>
+<dt><strong>zfar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Far coordinate of the field of view.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>View frustum matrix (4x4).</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">View frustum matrix (4x4).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -846,42 +858,39 @@ represent characters), and to another Key instance.</p>
 
 <dl class="function">
 <dt id="vispy.util.transforms.ortho">
-<code class="descclassname">vispy.util.transforms.</code><code class="descname">ortho</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L80-L115"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.ortho" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">ortho</code><span class="sig-paren">(</span><em>left</em>, <em>right</em>, <em>bottom</em>, <em>top</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L85-L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.ortho" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create orthographic projection matrix</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>left</strong> : float</p>
-<blockquote>
-<div><p>Left coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>right</strong> : float</p>
-<blockquote>
-<div><p>Right coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>bottom</strong> : float</p>
-<blockquote>
-<div><p>Bottom coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>top</strong> : float</p>
-<blockquote>
-<div><p>Top coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>znear</strong> : float</p>
-<blockquote>
-<div><p>Near coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>zfar</strong> : float</p>
-<blockquote>
-<div><p>Far coordinate of the field of view.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>left</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Left coordinate of the field of view.</p>
+</dd>
+<dt><strong>right</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Right coordinate of the field of view.</p>
+</dd>
+<dt><strong>bottom</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Bottom coordinate of the field of view.</p>
+</dd>
+<dt><strong>top</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Top coordinate of the field of view.</p>
+</dd>
+<dt><strong>znear</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Near coordinate of the field of view.</p>
+</dd>
+<dt><strong>zfar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Far coordinate of the field of view.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Orthographic projection matrix (4x4).</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Orthographic projection matrix (4x4).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -890,34 +899,33 @@ represent characters), and to another Key instance.</p>
 
 <dl class="function">
 <dt id="vispy.util.transforms.perspective">
-<code class="descclassname">vispy.util.transforms.</code><code class="descname">perspective</code><span class="sig-paren">(</span><em>fovy</em>, <em>aspect</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L156-L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.perspective" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">perspective</code><span class="sig-paren">(</span><em>fovy</em>, <em>aspect</em>, <em>znear</em>, <em>zfar</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L161-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.perspective" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create perspective projection matrix</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fovy</strong> : float</p>
-<blockquote>
-<div><p>The field of view along the y axis.</p>
-</div></blockquote>
-<p><strong>aspect</strong> : float</p>
-<blockquote>
-<div><p>Aspect ratio of the view.</p>
-</div></blockquote>
-<p><strong>znear</strong> : float</p>
-<blockquote>
-<div><p>Near coordinate of the field of view.</p>
-</div></blockquote>
-<p><strong>zfar</strong> : float</p>
-<blockquote>
-<div><p>Far coordinate of the field of view.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fovy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The field of view along the y axis.</p>
+</dd>
+<dt><strong>aspect</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Aspect ratio of the view.</p>
+</dd>
+<dt><strong>znear</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Near coordinate of the field of view.</p>
+</dd>
+<dt><strong>zfar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Far coordinate of the field of view.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Perspective projection matrix (4x4).</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Perspective projection matrix (4x4).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -926,20 +934,27 @@ represent characters), and to another Key instance.</p>
 
 <dl class="function">
 <dt id="vispy.util.transforms.rotate">
-<code class="descclassname">vispy.util.transforms.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>axis</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L58-L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.util.transforms.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>angle</em>, <em>axis</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/transforms.py#L58-L82"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.transforms.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>The 3x3 rotation matrix for rotation about a vector.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>angle</strong> : float</p>
-<blockquote>
-<div><p>The angle of rotation, in degrees.</p>
-</div></blockquote>
-<p><strong>axis</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The x, y, z coordinates of the axis direction vector.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>angle</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The angle of rotation, in degrees.</p>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The x, y, z coordinates of the axis direction vector.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Transformation matrix describing the rotation.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -954,20 +969,21 @@ represent characters), and to another Key instance.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>s</strong> : array-like, shape (3,)</p>
-<blockquote>
-<div><p>Scaling in x, y, z.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : dtype | None</p>
-<blockquote>
-<div><p>Output type (if None, don’t cast).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>s</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (3,)</span></dt>
+<dd><p class="first last">Scaling in x, y, z.</p>
+</dd>
+<dt><strong>dtype</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dtype | None</span></dt>
+<dd><p class="first last">Output type (if None, don’t cast).</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Transformation matrix describing the scaling.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Transformation matrix describing the scaling.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -982,20 +998,21 @@ represent characters), and to another Key instance.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>offset</strong> : array-like, shape (3,)</p>
-<blockquote>
-<div><p>Translation in x, y, z.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : dtype | None</p>
-<blockquote>
-<div><p>Output type (if None, don’t cast).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape (3,)</span></dt>
+<dd><p class="first last">Translation in x, y, z.</p>
+</dd>
+<dt><strong>dtype</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dtype | None</span></dt>
+<dd><p class="first last">Output type (if None, don’t cast).</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Transformation matrix describing the translation.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Transformation matrix describing the translation.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1024,7 +1041,7 @@ represent characters), and to another Key instance.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

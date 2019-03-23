@@ -3,26 +3,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The data IO module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-mfizz.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="_static/style.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +30,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,7 +75,19 @@
 <li class="toctree-l4"><a class="reference internal" href="installation.html#backend-requirements">Backend requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#hardware-requirements">Hardware requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#installation-options">Installation options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#usage-in-an-interactive-console">Usage in an interactive console</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#switchable-graphics">Switchable graphics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#windows">Windows</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#linux">Linux</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#modifyin-default-jupyter-kernel">Modifyin default jupyter kernel</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +240,33 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">The data IO module</a></li>
+</ul>
+
+  <li>
+    <a href="gloo.html" title="Previous Chapter: The object oriented OpenGL API (gloo)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The object or...</span>
+    </a>
+  </li>
+  <li>
+    <a href="plot.html" title="Next Chapter: The vispy native plotting module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The vispy nat... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/io.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="module-vispy.io">
 <span id="the-data-io-module"></span><h1>The data IO module<a class="headerlink" href="#module-vispy.io" title="Permalink to this headline">¶</a></h1>
@@ -250,27 +280,28 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>Filename to read.</p>
-</div></blockquote>
-<p><strong>format</strong> : str | None</p>
-<blockquote>
-<div><p>Format of the file. If None, it will be inferred from the filename.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>filename</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Filename to read.</p>
+</dd>
+<dt><strong>format</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Format of the file. If None, it will be inferred from the filename.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : array</p>
-<blockquote class="last">
-<div><p>Image data.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Image data.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal"><span class="pre">imsave</span></code></a>, <a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal"><span class="pre">write_png</span></code></a></p>
+<p class="last"><a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imsave</span></code></a>, <a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_png</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -283,25 +314,24 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>Filename to write.</p>
-</div></blockquote>
-<p><strong>im</strong> : array</p>
-<blockquote>
-<div><p>Image data.</p>
-</div></blockquote>
-<p><strong>format</strong> : str | None</p>
-<blockquote class="last">
-<div><p>Format of the file. If None, it will be inferred from the filename.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filename</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Filename to write.</p>
+</dd>
+<dt><strong>im</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Image data.</p>
+</dd>
+<dt><strong>format</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Format of the file. If None, it will be inferred from the filename.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal"><span class="pre">write_png</span></code></a></p>
+<p class="last"><a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_png</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -313,11 +343,12 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>iris</strong> : NpzFile</p>
-<blockquote class="last">
-<div><p>data[‘data’] : a (150, 4) NumPy array with the iris’ features
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>iris</strong> <span class="classifier-delimiter">:</span> <span class="classifier">NpzFile</span></dt>
+<dd><p class="first last">data[‘data’] : a (150, 4) NumPy array with the iris’ features
 data[‘group’] : a (150,) NumPy array with the iris’ group</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -332,10 +363,11 @@ data[‘group’] : a (150,) NumPy array with the iris’ group</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>crate</strong> : array</p>
-<blockquote class="last">
-<div><p>256x256x3 crate image.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>crate</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">256x256x3 crate image.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -350,24 +382,25 @@ data[‘group’] : a (150,) NumPy array with the iris’ group</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>packed</strong> : bool</p>
-<blockquote>
-<div><p>Whether or not the data should be in “packed” representation
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>packed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether or not the data should be in “packed” representation
 for use in GLSL code.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>kernel</strong> : array</p>
-<blockquote>
-<div><p>16x1024x4 (packed float in rgba) or
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>kernel</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">16x1024x4 (packed float in rgba) or
 16x1024 (unpacked float)
 16 interpolation kernel with length 1024 each.</p>
-</div></blockquote>
-<p><strong>names</strong> : tuple of strings</p>
-<blockquote class="last">
-<div><p>Respective interpolation names, plus “Nearest” which does
+</dd>
+<dt><strong>names</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of strings</span></dt>
+<dd><p class="first last">Respective interpolation names, plus “Nearest” which does
 not require a filter but can still be used</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -382,30 +415,30 @@ not require a filter but can still be used</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote>
-<div><p>The filename on the remote <code class="docutils literal"><span class="pre">demo-data</span></code> repository to download,
-e.g. <code class="docutils literal"><span class="pre">'molecular_viewer/micelle.npy'</span></code>. These correspond to paths
-on <code class="docutils literal"><span class="pre">https://github.com/vispy/demo-data/</span></code>.</p>
-</div></blockquote>
-<p><strong>directory</strong> : str | None</p>
-<blockquote>
-<div><p>Directory to use to save the file. By default, the vispy
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The filename on the remote <code class="docutils literal notranslate"><span class="pre">demo-data</span></code> repository to download,
+e.g. <code class="docutils literal notranslate"><span class="pre">'molecular_viewer/micelle.npy'</span></code>. These correspond to paths
+on <code class="docutils literal notranslate"><span class="pre">https://github.com/vispy/demo-data/</span></code>.</p>
+</dd>
+<dt><strong>directory</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
+<dd><p class="first last">Directory to use to save the file. By default, the vispy
 configuration directory is used.</p>
-</div></blockquote>
-<p><strong>force_download</strong> : bool | str</p>
-<blockquote>
-<div><p>If True, the file will be downloaded even if a local copy exists
+</dd>
+<dt><strong>force_download</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool | str</span></dt>
+<dd><p class="first last">If True, the file will be downloaded even if a local copy exists
 (and this copy will be overwritten). Can also be a YYYY-MM-DD date
 to ensure a file is up-to-date (modified date of a file on disk,
 if present, is checked).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote class="last">
-<div><p>The path to the file on the local system.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The path to the file on the local system.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -420,29 +453,28 @@ if present, is checked).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote>
-<div><p>File name to read. Format will be inferred from the filename.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">File name to read. Format will be inferred from the filename.
 Currently only ‘.obj’ and ‘.obj.gz’ are supported.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Vertices.</p>
-</div></blockquote>
-<p><strong>faces</strong> : array | None</p>
-<blockquote>
-<div><p>Triangle face definitions.</p>
-</div></blockquote>
-<p><strong>normals</strong> : array</p>
-<blockquote>
-<div><p>Normals for the mesh.</p>
-</div></blockquote>
-<p><strong>texcoords</strong> : array | None</p>
-<blockquote class="last">
-<div><p>Texture coordinates.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Vertices.</p>
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | None</span></dt>
+<dd><p class="first last">Triangle face definitions.</p>
+</dd>
+<dt><strong>normals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Normals for the mesh.</p>
+</dd>
+<dt><strong>texcoords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | None</span></dt>
+<dd><p class="first last">Texture coordinates.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -458,23 +490,25 @@ Currently only ‘.obj’ and ‘.obj.gz’ are supported.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>File to read.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>filename</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">File to read.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : array</p>
-<blockquote class="last">
-<div><p>Image data.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Image data.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal"><span class="pre">write_png</span></code></a>, <a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal"><span class="pre">imsave</span></code></a></p>
+<p class="last"><a class="reference internal" href="#vispy.io.write_png" title="vispy.io.write_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_png</span></code></a>, <a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imsave</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -486,43 +520,36 @@ Currently only ‘.obj’ and ‘.obj.gz’ are supported.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote>
-<div><p>Filename to write. Must end with “.obj” or “.gz”.</p>
-</div></blockquote>
-<p><strong>vertices</strong> : array</p>
-<blockquote>
-<div><p>Vertices.</p>
-</div></blockquote>
-<p><strong>faces</strong> : array | None</p>
-<blockquote>
-<div><p>Triangle face definitions.</p>
-</div></blockquote>
-<p><strong>normals</strong> : array</p>
-<blockquote>
-<div><p>Normals for the mesh.</p>
-</div></blockquote>
-<p><strong>texcoords</strong> : array | None</p>
-<blockquote>
-<div><p>Texture coordinates.</p>
-</div></blockquote>
-<p><strong>name</strong> : str</p>
-<blockquote>
-<div><p>Name of the object.</p>
-</div></blockquote>
-<p><strong>format</strong> : str</p>
-<blockquote>
-<div><p>Currently only “obj” is supported.</p>
-</div></blockquote>
-<p><strong>overwrite</strong> : bool</p>
-<blockquote>
-<div><p>If the file exists, overwrite it.</p>
-</div></blockquote>
-<p><strong>reshape_faces</strong> : bool</p>
-<blockquote class="last">
-<div><p>Reshape the <cite>faces</cite> array to (Nf, 3). Set to <cite>False</cite>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Filename to write. Must end with “.obj” or “.gz”.</p>
+</dd>
+<dt><strong>vertices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Vertices.</p>
+</dd>
+<dt><strong>faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | None</span></dt>
+<dd><p class="first last">Triangle face definitions.</p>
+</dd>
+<dt><strong>normals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Normals for the mesh.</p>
+</dd>
+<dt><strong>texcoords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array | None</span></dt>
+<dd><p class="first last">Texture coordinates.</p>
+</dd>
+<dt><strong>name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of the object.</p>
+</dd>
+<dt><strong>format</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Currently only “obj” is supported.</p>
+</dd>
+<dt><strong>overwrite</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If the file exists, overwrite it.</p>
+</dd>
+<dt><strong>reshape_faces</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Reshape the <cite>faces</cite> array to (Nf, 3). Set to <cite>False</cite>
 if you need to write a mesh with non triangular faces.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -538,21 +565,21 @@ if you need to write a mesh with non triangular faces.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>File to save to.</p>
-</div></blockquote>
-<p><strong>data</strong> : array</p>
-<blockquote class="last">
-<div><p>Image data.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filename</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">File to save to.</p>
+</dd>
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Image data.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal"><span class="pre">imsave</span></code></a></p>
+<p class="last"><a class="reference internal" href="#vispy.io.read_png" title="vispy.io.read_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_png</span></code></a>, <a class="reference internal" href="#vispy.io.imread" title="vispy.io.imread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imread</span></code></a>, <a class="reference internal" href="#vispy.io.imsave" title="vispy.io.imsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">imsave</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -577,7 +604,7 @@ if you need to write a mesh with non triangular faces.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2018, VisPy developers</li>
+      <li>2013-2019, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>
