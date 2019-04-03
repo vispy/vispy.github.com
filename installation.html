@@ -400,6 +400,7 @@ This means that any changes to the cloned repository will be immediately
 available in the python environment:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git://github.com/vispy/vispy.git  # creates &quot;vispy&quot; folder</span>
 <span class="go">cd vispy</span>
+<span class="go">git submodule update --init --recursive # create/initialize &#39;doc&#39; and &#39;js&#39; directories</span>
 <span class="go">pip install -e .</span>
 </pre></div>
 </div>
@@ -414,6 +415,7 @@ can also use this line:</p>
 <p>If you would like to use the VisPy Jupyter Widget you must first install
 the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> library and enable the extension by doing:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install ipywidgets</span>
+<span class="go">jupyter nbextension enable --py widgetsnbextension</span>
 <span class="go">jupyter nbextension enable --py vispy</span>
 </pre></div>
 </div>
@@ -421,6 +423,8 @@ the <code class="docutils literal notranslate"><span class="pre">ipywidgets</spa
 an activated virtual environment, the <code class="docutils literal notranslate"><span class="pre">--sys-prefix</span></code> option may be required
 to enable the extension and keep the environment isolated (i.e.
 <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbextension</span> <span class="pre">enable</span> <span class="pre">--py</span> <span class="pre">widgetsnbextension</span> <span class="pre">--sys-prefix</span></code>).</p>
+<p>Note if you have an old version of the extension installed you mean need to
+manually delete it from <cite>&lt;python-prefix&gt;/share/nbextensions/vispy</cite>&gt;</p>
 </div>
 <div class="section" id="jupyterlab">
 <h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this headline">¶</a></h3>
@@ -431,6 +435,8 @@ following:</p>
 <span class="go">jupyter labextension install vispy</span>
 </pre></div>
 </div>
+<p>If you have a “vispy” directory in your current directory this will try to
+install from there, use <cite>vispy&#64;latest</cite> instead.</p>
 </div>
 <div class="section" id="testing-installation">
 <h3>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h3>
