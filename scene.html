@@ -78,7 +78,7 @@
 <li class="toctree-l5"><a class="reference internal" href="installation.html#via-conda">Via conda</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#via-pypi">Via PyPI</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#via-github">Via GitHub</a></li>
-<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="installation.html#jupyter-notebook-extension">Jupyter Notebook Extension</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="installation.html#testing-installation">Testing installation</a></li>
 </ul>
@@ -1209,7 +1209,7 @@ plane.</p>
 <span id="vispy-scene-canvas"></span><h2>vispy.scene.canvas<a class="headerlink" href="#module-vispy.scene.canvas" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="vispy.scene.canvas.SceneCanvas">
-<em class="property">class </em><code class="descclassname">vispy.scene.canvas.</code><code class="descname">SceneCanvas</code><span class="sig-paren">(</span><em>title='VisPy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em>, <em>bgcolor='black'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L22-L623"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.scene.canvas.</code><code class="descname">SceneCanvas</code><span class="sig-paren">(</span><em>title='VisPy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em>, <em>bgcolor='black'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L22-L628"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.app.canvas.Canvas</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.frozen.Frozen</span></code></p>
 <p>A Canvas that automatically draws the contents of a scene</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1358,7 +1358,7 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.on_close">
-<code class="descname">on_close</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L501-L512"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_close</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L506-L517"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1396,7 +1396,7 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L485-L499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L490-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1415,19 +1415,19 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.pop_fbo">
-<code class="descname">pop_fbo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L585-L596"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_fbo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop_fbo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L590-L601"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_fbo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop an FBO from the stack.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.pop_viewport">
-<code class="descname">pop_viewport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L542-L553"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_viewport" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop_viewport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L547-L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop a viewport from the stack.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.push_fbo">
-<code class="descname">push_fbo</code><span class="sig-paren">(</span><em>fbo</em>, <em>offset</em>, <em>csize</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L555-L583"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_fbo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">push_fbo</code><span class="sig-paren">(</span><em>fbo</em>, <em>offset</em>, <em>csize</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L560-L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_fbo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push an FBO on the stack.</p>
 <p>This activates the framebuffer and causes subsequent rendering to be
 written to the framebuffer rather than the canvas’s back buffer. This
@@ -1458,7 +1458,7 @@ covered by this framebuffer object.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.push_viewport">
-<code class="descname">push_viewport</code><span class="sig-paren">(</span><em>viewport</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L515-L540"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_viewport" title="Permalink to this definition">¶</a></dt>
+<code class="descname">push_viewport</code><span class="sig-paren">(</span><em>viewport</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L520-L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push a viewport (x, y, w, h) on the stack. Values must be integers
 relative to the active framebuffer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1572,7 +1572,7 @@ scene graph to be displayed.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.visuals_at">
-<code class="descname">visuals_at</code><span class="sig-paren">(</span><em>pos</em>, <em>radius=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L437-L462"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visuals_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">visuals_at</code><span class="sig-paren">(</span><em>pos</em>, <em>radius=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/canvas.py#L442-L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visuals_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of visuals within <em>radius</em> pixels of <em>pos</em>.</p>
 <p>Visuals are sorted by their proximity to <em>pos</em>.</p>
 <table class="docutils field-list" frame="void" rules="none">

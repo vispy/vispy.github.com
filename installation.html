@@ -78,7 +78,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#via-conda">Via conda</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#via-pypi">Via PyPI</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#via-github">Via GitHub</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#jupyter-extension">Jupyter Extension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#jupyter-notebook-extension">Jupyter Notebook Extension</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#jupyterlab">JupyterLab</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
@@ -233,7 +233,7 @@
 <li><a class="reference internal" href="#via-conda">Via conda</a></li>
 <li><a class="reference internal" href="#via-pypi">Via PyPI</a></li>
 <li><a class="reference internal" href="#via-github">Via GitHub</a></li>
-<li><a class="reference internal" href="#jupyter-extension">Jupyter Extension</a></li>
+<li><a class="reference internal" href="#jupyter-notebook-extension">Jupyter Notebook Extension</a></li>
 <li><a class="reference internal" href="#jupyterlab">JupyterLab</a></li>
 <li><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
@@ -294,7 +294,7 @@
 <li><a class="reference internal" href="#via-conda">Via conda</a></li>
 <li><a class="reference internal" href="#via-pypi">Via PyPI</a></li>
 <li><a class="reference internal" href="#via-github">Via GitHub</a></li>
-<li><a class="reference internal" href="#jupyter-extension">Jupyter Extension</a></li>
+<li><a class="reference internal" href="#jupyter-notebook-extension">Jupyter Notebook Extension</a></li>
 <li><a class="reference internal" href="#jupyterlab">JupyterLab</a></li>
 <li><a class="reference internal" href="#testing-installation">Testing installation</a></li>
 </ul>
@@ -410,10 +410,10 @@ can also use this line:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="jupyter-extension">
-<h3>Jupyter Extension<a class="headerlink" href="#jupyter-extension" title="Permalink to this headline">¶</a></h3>
-<p>If you would like to use the VisPy Jupyter Widget you must first install
-the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> library and enable the extension by doing:</p>
+<div class="section" id="jupyter-notebook-extension">
+<h3>Jupyter Notebook Extension<a class="headerlink" href="#jupyter-notebook-extension" title="Permalink to this headline">¶</a></h3>
+<p>If you would like to use the VisPy Jupyter Notebook Widget you must first
+install the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> library and enable the extension by doing:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install ipywidgets</span>
 <span class="go">jupyter nbextension enable --py widgetsnbextension</span>
 <span class="go">jupyter nbextension enable --py vispy</span>
@@ -425,6 +425,19 @@ to enable the extension and keep the environment isolated (i.e.
 <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbextension</span> <span class="pre">enable</span> <span class="pre">--py</span> <span class="pre">widgetsnbextension</span> <span class="pre">--sys-prefix</span></code>).</p>
 <p>Note if you have an old version of the extension installed you mean need to
 manually delete it from <cite>&lt;python-prefix&gt;/share/nbextensions/vispy</cite>&gt;</p>
+<p>If you are installing vispy from source in a “development mode” you may need
+to explicitly install the extension before enabling it (using the symlink
+option to link the extension to your active development environment):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">jupyter nbextension install --symlink --py vispy --sys-prefix</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Jupyter-based backend and extension should be considered experimental
+due to performance limitations; both by the WebGL standard and what is
+currently implemented in vispy. Users should strongly consider these
+limitations before using vispy for an operational WebGL application.</p>
+</div>
 </div>
 <div class="section" id="jupyterlab">
 <h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this headline">¶</a></h3>
