@@ -398,13 +398,17 @@ downloaded from the GPU manufacturer’s website.</p>
 repository to your local machine and install vispy in “development” mode.
 This means that any changes to the cloned repository will be immediately
 available in the python environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git://github.com/vispy/vispy.git  # creates &quot;vispy&quot; folder</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> creates <span class="s2">&quot;vispy&quot;</span> folder
+<span class="go">git clone --recurse-submodules git://github.com/vispy/vispy.git</span>
 <span class="go">cd vispy</span>
-<span class="go">git submodule update --init --recursive # create/initialize &#39;doc&#39; and &#39;js&#39; directories</span>
+<span class="gp">#</span> create/initialize <span class="s1">&#39;doc&#39;</span> and <span class="s1">&#39;js&#39;</span> directories
+<span class="go">git submodule update --init --recursive</span>
 <span class="go">pip install -e .</span>
 </pre></div>
 </div>
-<p>To run the latest development version without cloning the repository, you
+<p>If you have cloned the repository in the past you may need to run the
+submodule command above to initialize any git submodules.
+To run the latest development version without cloning the repository, you
 can also use this line:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install git+https://github.com/vispy/vispy.git</span>
 </pre></div>
