@@ -3,8 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>The app module &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -299,7 +298,7 @@ via functions in the module’s namespace.</p>
 <hr class="docutils" />
 <dl class="function">
 <dt id="vispy.app.use_app">
-<code class="descclassname">vispy.app.</code><code class="descname">use_app</code><span class="sig-paren">(</span><em>backend_name=None</em>, <em>call_reuse=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/_default_app.py#L13-L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.use_app" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.app.</code><code class="descname">use_app</code><span class="sig-paren">(</span><em>backend_name=None</em>, <em>call_reuse=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/_default_app.py#L13-L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.use_app" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get/create the default Application object</p>
 <p>It is safe to call this function multiple times, as long as
 backend_name is None or matches the already selected backend.</p>
@@ -308,13 +307,11 @@ backend_name is None or matches the already selected backend.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>backend_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
-<dd><p class="first last">The name of the backend application to use. If not specified, Vispy
+<dt><strong>backend_name</strong><span class="classifier">str | None</span></dt><dd><p>The name of the backend application to use. If not specified, Vispy
 tries to select a backend automatically. See <code class="docutils literal notranslate"><span class="pre">vispy.use()</span></code> for
 details.</p>
 </dd>
-<dt><strong>call_reuse</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to call the backend’s <cite>reuse()</cite> function (True by default).
+<dt><strong>call_reuse</strong><span class="classifier">bool</span></dt><dd><p>Whether to call the backend’s <cite>reuse()</cite> function (True by default).
 Not implemented by default, but some backends need it. For example,
 the notebook backends need to inject some JavaScript in a notebook as
 soon as <cite>use_app()</cite> is called.</p>
@@ -328,25 +325,25 @@ soon as <cite>use_app()</cite> is called.</p>
 
 <dl class="function">
 <dt id="vispy.app.create">
-<code class="descclassname">vispy.app.</code><code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/_default_app.py#L51-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.create" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.app.</code><code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/_default_app.py#L51-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the native application.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="vispy.app.run">
-<code class="descclassname">vispy.app.</code><code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/_default_app.py#L58-L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.run" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.app.</code><code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/_default_app.py#L58-L62"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enter the native GUI event loop.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="vispy.app.quit">
-<code class="descclassname">vispy.app.</code><code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/_default_app.py#L65-L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.quit" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.app.</code><code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/_default_app.py#L65-L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.quit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quit the native GUI event loop.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="vispy.app.process_events">
-<code class="descclassname">vispy.app.</code><code class="descname">process_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/_default_app.py#L72-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.process_events" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.app.</code><code class="descname">process_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/_default_app.py#L72-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.process_events" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process all pending GUI events</p>
 <p>If the mainloop is not running, this should be done regularly to
 keep the visualization interactive and to keep the event system going.</p>
@@ -355,7 +352,7 @@ keep the visualization interactive and to keep the event system going.</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="vispy.app.Application">
-<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Application</code><span class="sig-paren">(</span><em>backend_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L23-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Application</code><span class="sig-paren">(</span><em>backend_name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L23-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of the vispy application</p>
 <p>This wraps a native GUI application instance. Vispy has a default
 instance of this class that can be created/obtained via
@@ -365,8 +362,7 @@ instance of this class that can be created/obtained via
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>backend_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
-<dd><p class="first last">The name of the backend application to use. If not specified,
+<dt><strong>backend_name</strong><span class="classifier">str | None</span></dt><dd><p>The name of the backend application to use. If not specified,
 Vispy tries to select a backend automatically. See <code class="docutils literal notranslate"><span class="pre">vispy.use()</span></code>
 for details.</p>
 </dd>
@@ -394,19 +390,19 @@ automatically.</p>
 
 <dl class="method">
 <dt id="vispy.app.Application.create">
-<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L94-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.create" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L94-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the native application.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.app.Application.is_interactive">
-<code class="descname">is_interactive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L100-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.is_interactive" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_interactive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L100-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.is_interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the user requested interactive mode.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.app.Application.is_notebook">
-<code class="descname">is_notebook</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L125-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.is_notebook" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_notebook</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L125-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.is_notebook" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine if the user is executing in a Jupyter Notebook</p>
 </dd></dl>
 
@@ -418,7 +414,7 @@ automatically.</p>
 
 <dl class="method">
 <dt id="vispy.app.Application.process_events">
-<code class="descname">process_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L73-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.process_events" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L73-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.process_events" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process all pending GUI events. If the mainloop is not
 running, this should be done regularly to keep the visualization
 interactive and to keep the event system going.</p>
@@ -426,13 +422,13 @@ interactive and to keep the event system going.</p>
 
 <dl class="method">
 <dt id="vispy.app.Application.quit">
-<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L162-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.quit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L162-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.quit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Quit the native GUI event loop.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.app.Application.reuse">
-<code class="descname">reuse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L154-L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.reuse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reuse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L154-L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.reuse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when the application is reused in an interactive session.
 This allow the backend to do stuff in the client when <cite>use_app()</cite> is
 called multiple times by the user. For example, the notebook backends
@@ -441,15 +437,14 @@ need to inject JavaScript code as soon as <cite>use_app()</cite> is called.</p>
 
 <dl class="method">
 <dt id="vispy.app.Application.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>allow_interactive=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L135-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>allow_interactive=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L135-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enter the native GUI event loop.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>allow_interactive</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Is the application allowed to handle interactive mode for console
+<dt><strong>allow_interactive</strong><span class="classifier">bool</span></dt><dd><p>Is the application allowed to handle interactive mode for console
 terminals?  By default, typing <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-i</span> <span class="pre">main.py</span></code> results in
 an interactive shell that also regularly calls the VisPy event
 loop.  In this specific case, the run() function will terminate
@@ -465,7 +460,7 @@ after script execution.</p>
 
 <dl class="method">
 <dt id="vispy.app.Application.sleep">
-<code class="descname">sleep</code><span class="sig-paren">(</span><em>duration_sec</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/application.py#L80-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.sleep" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sleep</code><span class="sig-paren">(</span><em>duration_sec</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/application.py#L80-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Application.sleep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sleep for the given duration in seconds.</p>
 <p>This is used to reduce
 CPU stress when VisPy is run in interactive mode.
@@ -475,8 +470,7 @@ see inputhook.py for details</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>duration_sec: float</strong></dt>
-<dd><p class="first last">Time to sleep in seconds</p>
+<dt><strong>duration_sec: float</strong></dt><dd><p>Time to sleep in seconds</p>
 </dd>
 </dl>
 </td>
@@ -490,81 +484,63 @@ see inputhook.py for details</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="vispy.app.Canvas">
-<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>title='VisPy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L26-L541"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>title='VisPy canvas'</em>, <em>size=(800</em>, <em>600)</em>, <em>position=None</em>, <em>show=False</em>, <em>autoswap=True</em>, <em>app=None</em>, <em>create_native=True</em>, <em>vsync=False</em>, <em>resizable=True</em>, <em>decorate=True</em>, <em>fullscreen=False</em>, <em>config=None</em>, <em>shared=None</em>, <em>keys=None</em>, <em>parent=None</em>, <em>dpi=None</em>, <em>always_on_top=False</em>, <em>px_scale=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L26-L541"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a GUI element with an OpenGL context</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>title</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">The widget title</p>
+<dt><strong>title</strong><span class="classifier">str</span></dt><dd><p>The widget title</p>
 </dd>
-<dt><strong>size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(width, height)</span></dt>
-<dd><p class="first last">The size of the window.</p>
+<dt><strong>size</strong><span class="classifier">(width, height)</span></dt><dd><p>The size of the window.</p>
 </dd>
-<dt><strong>position</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(x, y)</span></dt>
-<dd><p class="first last">The position of the window in screen coordinates.</p>
+<dt><strong>position</strong><span class="classifier">(x, y)</span></dt><dd><p>The position of the window in screen coordinates.</p>
 </dd>
-<dt><strong>show</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to show the widget immediately. Default False.</p>
+<dt><strong>show</strong><span class="classifier">bool</span></dt><dd><p>Whether to show the widget immediately. Default False.</p>
 </dd>
-<dt><strong>autoswap</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to swap the buffers automatically after a draw event.
+<dt><strong>autoswap</strong><span class="classifier">bool</span></dt><dd><p>Whether to swap the buffers automatically after a draw event.
 Default True. If True, the <code class="docutils literal notranslate"><span class="pre">swap_buffers</span></code> Canvas method will
 be called last (by default) by the <code class="docutils literal notranslate"><span class="pre">canvas.draw</span></code> event handler.</p>
 </dd>
-<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Application | str</span></dt>
-<dd><p class="first last">Give vispy Application instance to use as a backend.
+<dt><strong>app</strong><span class="classifier">Application | str</span></dt><dd><p>Give vispy Application instance to use as a backend.
 (vispy.app is used by default.) If str, then an application
 using the chosen backend (e.g., ‘pyglet’) will be created.
 Note the canvas application can be accessed at <code class="docutils literal notranslate"><span class="pre">canvas.app</span></code>.</p>
 </dd>
-<dt><strong>create_native</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to create the widget immediately. Default True.</p>
+<dt><strong>create_native</strong><span class="classifier">bool</span></dt><dd><p>Whether to create the widget immediately. Default True.</p>
 </dd>
-<dt><strong>vsync</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Enable vertical synchronization.</p>
+<dt><strong>vsync</strong><span class="classifier">bool</span></dt><dd><p>Enable vertical synchronization.</p>
 </dd>
-<dt><strong>resizable</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Allow the window to be resized.</p>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Allow the window to be resized.</p>
 </dd>
-<dt><strong>decorate</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Decorate the window. Default True.</p>
+<dt><strong>decorate</strong><span class="classifier">bool</span></dt><dd><p>Decorate the window. Default True.</p>
 </dd>
-<dt><strong>fullscreen</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool | int</span></dt>
-<dd><p class="first last">If False, windowed mode is used (default). If True, the default
+<dt><strong>fullscreen</strong><span class="classifier">bool | int</span></dt><dd><p>If False, windowed mode is used (default). If True, the default
 monitor is used. If int, the given monitor number is used.</p>
 </dd>
-<dt><strong>config</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd><p class="first last">A dict with OpenGL configuration options, which is combined
+<dt><strong>config</strong><span class="classifier">dict</span></dt><dd><p>A dict with OpenGL configuration options, which is combined
 with the default configuration options and used to initialize
 the context. See <code class="docutils literal notranslate"><span class="pre">canvas.context.config</span></code> for possible
 options.</p>
 </dd>
-<dt><strong>shared</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Canvas | GLContext | None</span></dt>
-<dd><p class="first last">An existing canvas or context to share OpenGL objects with.</p>
+<dt><strong>shared</strong><span class="classifier">Canvas | GLContext | None</span></dt><dd><p>An existing canvas or context to share OpenGL objects with.</p>
 </dd>
-<dt><strong>keys</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | dict | None</span></dt>
-<dd><p class="first last">Default key mapping to use. If ‘interactive’, escape and F11 will
+<dt><strong>keys</strong><span class="classifier">str | dict | None</span></dt><dd><p>Default key mapping to use. If ‘interactive’, escape and F11 will
 close the canvas and toggle full-screen mode, respectively.
 If dict, maps keys to functions. If dict values are strings,
 they are assumed to be <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> methods, otherwise they should
 be callable.</p>
 </dd>
-<dt><strong>parent</strong> <span class="classifier-delimiter">:</span> <span class="classifier">widget-object</span></dt>
-<dd><p class="first last">The parent widget if this makes sense for the used backend.</p>
+<dt><strong>parent</strong><span class="classifier">widget-object</span></dt><dd><p>The parent widget if this makes sense for the used backend.</p>
 </dd>
-<dt><strong>dpi</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | None</span></dt>
-<dd><p class="first last">Resolution in dots-per-inch to use for the canvas. If dpi is None,
+<dt><strong>dpi</strong><span class="classifier">float | None</span></dt><dd><p>Resolution in dots-per-inch to use for the canvas. If dpi is None,
 then the value will be determined by querying the global config first,
 and then the operating system.</p>
 </dd>
-<dt><strong>always_on_top</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">If True, try to create the window in always-on-top mode.</p>
+<dt><strong>always_on_top</strong><span class="classifier">bool</span></dt><dd><p>If True, try to create the window in always-on-top mode.</p>
 </dd>
-<dt><strong>px_scale</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int &gt; 0</span></dt>
-<dd><p class="first last">A scale factor to apply between logical and physical pixels in addition
+<dt><strong>px_scale</strong><span class="classifier">int &gt; 0</span></dt><dd><p>A scale factor to apply between logical and physical pixels in addition
 to the actual scale factor determined by the backend. This option
 allows the scale factor to be adjusted for testing.</p>
 </dd>
@@ -606,7 +582,7 @@ time or using a dedicated double-click button will not be respected.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.close">
-<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L444-L458"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L444-L458"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close the canvas</p>
 <p class="rubric">Notes</p>
 <p>This will usually destroy the GL context. For Qt, the context
@@ -617,7 +593,7 @@ behavior), consider making the widget a sub-widget.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><em>fun</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L302-L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.connect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect</code><span class="sig-paren">(</span><em>fun</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L302-L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect a function to an event</p>
 <p>The name of the function
 should be on_X, with X the name of the event (e.g. ‘on_draw’).</p>
@@ -628,8 +604,7 @@ definition for an event handler.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>fun</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
-<dd><p class="first last">The function.</p>
+<dt><strong>fun</strong><span class="classifier">callable</span></dt><dd><p>The function.</p>
 </dd>
 </dl>
 </td>
@@ -648,7 +623,7 @@ and to the shared context namespace.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.create_native">
-<code class="descname">create_native</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L213-L231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.create_native" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_native</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L213-L231"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.create_native" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the native widget if not already done so. If the widget
 is already created, this function does nothing.</p>
 </dd></dl>
@@ -667,7 +642,7 @@ is already created, this function does nothing.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.measure_fps">
-<code class="descname">measure_fps</code><span class="sig-paren">(</span><em>window=1</em>, <em>callback='%1.1f FPS'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L470-L499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.measure_fps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">measure_fps</code><span class="sig-paren">(</span><em>window=1</em>, <em>callback='%1.1f FPS'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L470-L499"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.measure_fps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure the current FPS</p>
 <p>Sets the update window, connects the draw event to update_fps
 and sets the callback function.</p>
@@ -676,11 +651,9 @@ and sets the callback function.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>window</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd><p class="first last">The time-window (in seconds) to calculate FPS. Default 1.0.</p>
+<dt><strong>window</strong><span class="classifier">float</span></dt><dd><p>The time-window (in seconds) to calculate FPS. Default 1.0.</p>
 </dd>
-<dt><strong>callback</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function | str</span></dt>
-<dd><p class="first last">The function to call with the float FPS value, or the string
+<dt><strong>callback</strong><span class="classifier">function | str</span></dt><dd><p>The function to call with the float FPS value, or the string
 to be formatted with the fps value and then printed. The
 default is <code class="docutils literal notranslate"><span class="pre">'%1.1f</span> <span class="pre">FPS'</span></code>. If callback evaluates to False, the
 FPS measurement is stopped.</p>
@@ -725,7 +698,7 @@ is exposed as <cite>TransformSystem.px_scale</cite>.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.render">
-<code class="descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L520-L541"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.render" title="Permalink to this definition">¶</a></dt>
+<code class="descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L520-L541"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.render" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render the canvas to an offscreen buffer and return the image
 array.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -733,8 +706,7 @@ array.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd><p class="first last">Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the 
+<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the 
 upper-left corner of the rendered region.</p>
 </dd>
 </dl>
@@ -746,15 +718,14 @@ upper-left corner of the rendered region.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.set_current">
-<code class="descname">set_current</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L398-L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.set_current" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_current</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L398-L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.set_current" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make this the active GL canvas</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
-<dd><p class="first last">Not used.</p>
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
 </dd>
 </dl>
 </td>
@@ -765,18 +736,16 @@ upper-left corner of the rendered region.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.show">
-<code class="descname">show</code><span class="sig-paren">(</span><em>visible=True</em>, <em>run=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L419-L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.show" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show</code><span class="sig-paren">(</span><em>visible=True</em>, <em>run=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L419-L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show or hide the canvas</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>visible</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Make the canvas visible.</p>
+<dt><strong>visible</strong><span class="classifier">bool</span></dt><dd><p>Make the canvas visible.</p>
 </dd>
-<dt><strong>run</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Run the backend event loop.</p>
+<dt><strong>run</strong><span class="classifier">bool</span></dt><dd><p>Run the backend event loop.</p>
 </dd>
 </dl>
 </td>
@@ -793,15 +762,14 @@ upper-left corner of the rendered region.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.swap_buffers">
-<code class="descname">swap_buffers</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L409-L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.swap_buffers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">swap_buffers</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L409-L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.swap_buffers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Swap GL buffers such that the offscreen buffer becomes visible</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
-<dd><p class="first last">Not used.</p>
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
 </dd>
 </dl>
 </td>
@@ -818,15 +786,14 @@ upper-left corner of the rendered region.</p>
 
 <dl class="method">
 <dt id="vispy.app.Canvas.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L433-L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/canvas.py#L433-L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Canvas.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inform the backend that the Canvas needs to be redrawn</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>event</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None</span></dt>
-<dd><p class="first last">Not used.</p>
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
 </dd>
 </dl>
 </td>
@@ -840,29 +807,24 @@ upper-left corner of the rendered region.</p>
 <hr class="docutils" />
 <dl class="class">
 <dt id="vispy.app.Timer">
-<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Timer</code><span class="sig-paren">(</span><em>interval='auto'</em>, <em>connect=None</em>, <em>iterations=-1</em>, <em>start=False</em>, <em>app=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/timer.py#L14-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.app.</code><code class="descname">Timer</code><span class="sig-paren">(</span><em>interval='auto'</em>, <em>connect=None</em>, <em>iterations=-1</em>, <em>start=False</em>, <em>app=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/timer.py#L14-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Timer used to schedule events in the future or on a repeating schedule</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>interval</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float | ‘auto’</span></dt>
-<dd><p class="first last">Time between events in seconds. The default is ‘auto’, which
+<dt><strong>interval</strong><span class="classifier">float | ‘auto’</span></dt><dd><p>Time between events in seconds. The default is ‘auto’, which
 attempts to find the interval that matches the refresh rate of
 the current monitor. Currently this is simply 1/60.</p>
 </dd>
-<dt><strong>connect</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function | None</span></dt>
-<dd><p class="first last">The function to call.</p>
+<dt><strong>connect</strong><span class="classifier">function | None</span></dt><dd><p>The function to call.</p>
 </dd>
-<dt><strong>iterations</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd><p class="first last">Number of iterations. Can be -1 for infinite.</p>
+<dt><strong>iterations</strong><span class="classifier">int</span></dt><dd><p>Number of iterations. Can be -1 for infinite.</p>
 </dd>
-<dt><strong>start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to start the timer.</p>
+<dt><strong>start</strong><span class="classifier">bool</span></dt><dd><p>Whether to start the timer.</p>
 </dd>
-<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">instance of vispy.app.Application</span></dt>
-<dd><p class="first last">The application to attach the timer to.</p>
+<dt><strong>app</strong><span class="classifier">instance of vispy.app.Application</span></dt><dd><p>The application to attach the timer to.</p>
 </dd>
 </dl>
 </td>
@@ -877,13 +839,13 @@ the current monitor. Currently this is simply 1/60.</p>
 
 <dl class="method">
 <dt id="vispy.app.Timer.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/timer.py#L171-L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.connect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect</code><span class="sig-paren">(</span><em>callback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/timer.py#L171-L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.events.timeout.connect()</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.app.Timer.disconnect">
-<code class="descname">disconnect</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/timer.py#L175-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.disconnect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>callback=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/timer.py#L175-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for self.events.timeout.disconnect()</p>
 </dd></dl>
 
@@ -895,7 +857,7 @@ the current monitor. Currently this is simply 1/60.</p>
 
 <dl class="method">
 <dt id="vispy.app.Timer.start">
-<code class="descname">start</code><span class="sig-paren">(</span><em>interval=None</em>, <em>iterations=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/timer.py#L97-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>interval=None</em>, <em>iterations=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/timer.py#L97-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the timer.</p>
 <p>A timeout event will be generated every <em>interval</em> seconds.
 If <em>interval</em> is None, then self.interval will be used.</p>
@@ -911,7 +873,7 @@ start event).</p>
 
 <dl class="method">
 <dt id="vispy.app.Timer.stop">
-<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/timer.py#L126-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/app/timer.py#L126-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.Timer.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop the timer.</p>
 </dd></dl>
 

@@ -3,8 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Vispy &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -300,7 +299,7 @@ large datasets.</p>
 <p>For more information, see <a class="reference external" href="http://vispy.org">http://vispy.org</a>.</p>
 <dl class="function">
 <dt id="vispy.use">
-<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the usage options for vispy</p>
 <p>Specify what app backend and GL backend to use.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -308,10 +307,8 @@ large datasets.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>app</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><dl class="first last docutils">
-<dt>The app backend to use (case insensitive). Standard backends:</dt>
-<dd><ul class="first last simple">
+<dt><strong>app</strong><span class="classifier">str</span></dt><dd><dl class="docutils">
+<dt>The app backend to use (case insensitive). Standard backends:</dt><dd><ul class="simple">
 <li>‘PyQt4’: use Qt widget toolkit via PyQt4.</li>
 <li>‘PyQt5’: use Qt widget toolkit via PyQt5.</li>
 <li>‘PySide’: use Qt widget toolkit via PySide.</li>
@@ -323,11 +320,9 @@ on Linux.</li>
 <li>‘osmesa’: Use OSMesa backend</li>
 </ul>
 </dd>
-<dt>Additional backends:</dt>
-<dd><ul class="first last simple">
+<dt>Additional backends:</dt><dd><ul class="simple">
 <li><dl class="first docutils">
-<dt>‘ipynb_webgl’: run vispy from a Jupyter notebook (not fully</dt>
-<dd>functional)</dd>
+<dt>‘ipynb_webgl’: run vispy from a Jupyter notebook (not fully</dt><dd>functional)</dd>
 </dl>
 </li>
 <li>‘ipynb_vnc’: render in a Jupyter notebook via a VNC approach
@@ -336,10 +331,8 @@ on Linux.</li>
 </dd>
 </dl>
 </dd>
-<dt><strong>gl</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><dl class="first last docutils">
-<dt>The gl backend to use (case insensitive). Options are:</dt>
-<dd><ul class="first last simple">
+<dt><strong>gl</strong><span class="classifier">str</span></dt><dd><dl class="docutils">
+<dt>The gl backend to use (case insensitive). Options are:</dt><dd><ul class="simple">
 <li>‘gl2’: use Vispy’s desktop OpenGL API.</li>
 <li>‘pyopengl2’: use PyOpenGL’s desktop OpenGL API. Mostly for
 testing.</li>
@@ -375,25 +368,22 @@ succesful, it will try each backend in a predetermined order.</p>
 
 <dl class="function">
 <dt id="vispy.sys_info">
-<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get relevant system and debugging information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
-<dd><p class="first last">Filename to dump info to. Use None to simply print.</p>
+<dt><strong>fname</strong><span class="classifier">str | None</span></dt><dd><p>Filename to dump info to. Use None to simply print.</p>
 </dd>
-<dt><strong>overwrite</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">If True, overwrite file (if it exists).</p>
+<dt><strong>overwrite</strong><span class="classifier">bool</span></dt><dd><p>If True, overwrite file (if it exists).</p>
 </dd>
 </dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">The system information as a string.</p>
+<dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>The system information as a string.</p>
 </dd>
 </dl>
 </td>
@@ -404,26 +394,23 @@ succesful, it will try each backend in a predetermined order.</p>
 
 <dl class="function">
 <dt id="vispy.set_log_level">
-<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience function for setting the logging level</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, str, int, or None</span></dt>
-<dd><p class="first last">The verbosity of messages to print. If a str, it can be either DEBUG,
+<dt><strong>verbose</strong><span class="classifier">bool, str, int, or None</span></dt><dd><p>The verbosity of messages to print. If a str, it can be either DEBUG,
 INFO, WARNING, ERROR, or CRITICAL. Note that these are for
 convenience and are equivalent to passing in logging.DEBUG, etc.
 For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
 </dd>
-<dt><strong>match</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str | None</span></dt>
-<dd><p class="first last">String to match. Only those messages that both contain a substring
+<dt><strong>match</strong><span class="classifier">str | None</span></dt><dd><p>String to match. Only those messages that both contain a substring
 that regexp matches <code class="docutils literal notranslate"><span class="pre">'match'</span></code> (and the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> level) will be
 displayed.</p>
 </dd>
-<dt><strong>return_old</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">If True, return the old verbosity level and old match.</p>
+<dt><strong>return_old</strong><span class="classifier">bool</span></dt><dd><p>If True, return the old verbosity level and old match.</p>
 </dd>
 </dl>
 </td>
@@ -444,22 +431,21 @@ these options when performance is not crucial.</p>
 
 <dl class="function">
 <dt id="vispy.test">
-<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/testing/_runners.py#L363-L447"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/testing/_runners.py#L363-L449"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test vispy software</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
+<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
 ‘flake’, ‘docs’, or any backend name (e.g., ‘qt’).</p>
 </dd>
-<dt><strong>extra_arg_string</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">Extra arguments to sent to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<dt><strong>extra_arg_string</strong><span class="classifier">str | list of str</span></dt><dd><p>Extra arguments to sent to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.
+Can also be a list of str to more explicitly provide the
+arguments.</p>
 </dd>
-<dt><strong>coverage</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">If True, collect coverage data.</p>
+<dt><strong>coverage</strong><span class="classifier">bool</span></dt><dd><p>If True, collect coverage data.</p>
 </dd>
 </dl>
 </td>
