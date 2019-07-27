@@ -419,17 +419,17 @@ camera’s may support this (yet).</p>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.center">
-<code class="descname">center</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.center" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">center</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.center" title="Permalink to this definition">¶</a></dt>
 <dd><p>The center location for this camera</p>
 <p>The exact meaning of this value differs per type of camera, but
 generally means the point of interest or the rotation point.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.depth_value">
-<code class="descname">depth_value</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.depth_value" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">depth_value</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.depth_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>The depth value to use  in orthographic and perspective projection</p>
 <p>For orthographic projections, <code class="docutils literal notranslate"><span class="pre">depth_value</span></code> is the distance between
 the near and far clipping planes. For perspective projections, it is
@@ -440,32 +440,32 @@ precision. This property provides the user a way to override
 the default value if necessary.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.fov">
-<code class="descname">fov</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.fov" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">fov</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.fov" title="Permalink to this definition">¶</a></dt>
 <dd><p>Field-of-view angle of the camera. If 0, the camera is in
 orthographic mode.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.get_state">
-<code class="descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L310-L320"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.get_state" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_state</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L310-L320"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.get_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the current view state of the camera</p>
 <p>Returns a dict of key-value pairs. The exact keys depend on the
 camera. Can be passed to set_state() (of this or another camera
 of the same type) to reproduce the state.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.interactive">
-<code class="descname">interactive</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.interactive" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">interactive</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean describing whether the camera should enable or disable
 user interaction.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.link">
-<code class="descname">link</code><span class="sig-paren">(</span><em>camera</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L343-L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.link" title="Permalink to this definition">¶</a></dt>
+<code class="descname">link</code><span class="sig-paren">(</span><em>self</em>, <em>camera</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L343-L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.link" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link this camera with another camera of the same type</p>
 <p>Linked camera’s keep each-others’ state in sync.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -484,7 +484,7 @@ user interaction.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.on_canvas_change">
-<code class="descname">on_canvas_change</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L404-L419"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.on_canvas_change" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_canvas_change</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L404-L419"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.on_canvas_change" title="Permalink to this definition">¶</a></dt>
 <dd><p>Canvas change event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -500,29 +500,29 @@ user interaction.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.pre_transform">
-<code class="descname">pre_transform</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.pre_transform" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">pre_transform</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.pre_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>A transform to apply to the beginning of the scene transform, in
 addition to anything else provided by this Camera.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L299-L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.reset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L299-L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the view to the default state.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.set_default_state">
-<code class="descname">set_default_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L304-L308"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_default_state" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_default_state</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L304-L308"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_default_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the current state to be the default state to be applied
 when calling reset().</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.set_range">
-<code class="descname">set_range</code><span class="sig-paren">(</span><em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>margin=0.05</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L228-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_range" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_range</code><span class="sig-paren">(</span><em>self</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em>, <em>margin=0.05</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L228-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_range" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the range of the view region for the camera</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -553,7 +553,7 @@ set. One should use reset() for that.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.set_state">
-<code class="descname">set_state</code><span class="sig-paren">(</span><em>state=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L322-L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_state" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_state</code><span class="sig-paren">(</span><em>self</em>, <em>state=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L322-L341"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.set_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the view state of the camera</p>
 <p>Should be a dict (or kwargs) as returned by get_state. It can
 be an incomlete dict, in which case only the specified
@@ -574,28 +574,28 @@ properties are set.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.up">
-<code class="descname">up</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.up" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">up</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.up" title="Permalink to this definition">¶</a></dt>
 <dd><p>The dimension that is considered up.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.view_changed">
-<code class="descname">view_changed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L365-L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.view_changed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">view_changed</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L365-L380"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.view_changed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when this camera is changes its view. Also called
 when its associated with a viewbox.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.viewbox">
-<code class="descname">viewbox</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">viewbox</code><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox" title="Permalink to this definition">¶</a></dt>
 <dd><p>The viewbox that this camera applies to.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.viewbox_key_event">
-<code class="descname">viewbox_key_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L421-L430"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_key_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L421-L430"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>ViewBox key event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -613,7 +613,7 @@ when its associated with a viewbox.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.viewbox_mouse_event">
-<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L394-L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L394-L402"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Viewbox mouse event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -631,7 +631,7 @@ when its associated with a viewbox.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.BaseCamera.viewbox_resize_event">
-<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L432-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/base_camera.py#L432-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.BaseCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>The ViewBox resize handler to update the transform</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -696,16 +696,16 @@ IKJL</li>
 rolling can be performed using Q and E.</li>
 </ul>
 </div></blockquote>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.auto_roll">
-<code class="descname">auto_roll</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.auto_roll" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">auto_roll</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.auto_roll" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether to rotate the camera automaticall to try and attempt
 to keep Z up.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.keymap">
-<code class="descname">keymap</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.keymap" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">keymap</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.keymap" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dictionary that maps keys to thruster directions</p>
 <p>The keys in this dictionary are vispy key descriptions (from
 vispy.keys) or characters that represent keys. These are matched
@@ -720,7 +720,7 @@ up/down, and 4, 5, 6 for pitch, yaw, roll.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.on_timer">
-<code class="descname">on_timer</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L231-L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.on_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L231-L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.on_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Timer event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -736,9 +736,9 @@ up/down, and 4, 5, 6 for pitch, yaw, roll.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.rotation">
-<code class="descname">rotation</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.rotation" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">rotation</code><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.rotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the full rotation. This rotation is composed of the
 normal rotation plus the extra rotation due to the current
 interaction of the user.</p>
@@ -746,7 +746,7 @@ interaction of the user.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.viewbox_key_event">
-<code class="descname">viewbox_key_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L326-L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_key_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L326-L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>ViewBox key event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -764,7 +764,7 @@ interaction of the user.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.FlyCamera.viewbox_mouse_event">
-<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L359-L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/fly.py#L359-L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.FlyCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>ViewBox mouse event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -814,7 +814,7 @@ properties.</p>
 resized.</p>
 <dl class="method">
 <dt id="vispy.scene.cameras.MagnifyCamera.on_timer">
-<code class="descname">on_timer</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L112-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.on_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>self</em>, <em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L112-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.on_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Timer event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -838,14 +838,14 @@ resized.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.MagnifyCamera.view_changed">
-<code class="descname">view_changed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L150-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.view_changed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">view_changed</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L150-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.view_changed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Called when this camera is changes its view. Also called
 when its associated with a viewbox.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.MagnifyCamera.viewbox_mouse_event">
-<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L83-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L83-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>ViewBox mouse event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -863,7 +863,7 @@ when its associated with a viewbox.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.MagnifyCamera.viewbox_resize_event">
-<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L139-L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/magnify.py#L139-L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.MagnifyCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>ViewBox resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -957,9 +957,9 @@ independently.</p>
 <li>RMB or scroll: zooms the view</li>
 </ul>
 </div></blockquote>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.aspect">
-<code class="descname">aspect</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.aspect" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">aspect</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.aspect" title="Permalink to this definition">¶</a></dt>
 <dd><p>The ratio between the x and y dimension. E.g. to show a
 square image as square, the aspect should be 1. If None, the
 dimensions are scaled automatically, dependening on the
@@ -967,9 +967,9 @@ available space. Otherwise the ratio between the dimensions
 is fixed.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.center">
-<code class="descname">center</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.center" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">center</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.center" title="Permalink to this definition">¶</a></dt>
 <dd><p>The center location for this camera</p>
 <p>The exact meaning of this value differs per type of camera, but
 generally means the point of interest or the rotation point.</p>
@@ -977,7 +977,7 @@ generally means the point of interest or the rotation point.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.pan">
-<code class="descname">pan</code><span class="sig-paren">(</span><em>*pan</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L116-L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.pan" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pan</code><span class="sig-paren">(</span><em>self</em>, <em>*pan</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L116-L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.pan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pan the view.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -994,9 +994,9 @@ scene.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.rect">
-<code class="descname">rect</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.rect" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">rect</code><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.rect" title="Permalink to this definition">¶</a></dt>
 <dd><p>The rectangular border of the ViewBox visible area, expressed in
 the coordinate system of the scene.</p>
 <p>Note that the rectangle can have negative width or height, in
@@ -1006,7 +1006,7 @@ is independent from the camera’s <code class="docutils literal notranslate"><s
 
 <dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.viewbox_mouse_event">
-<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L191-L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L191-L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>The SubScene received a mouse event; update transform
 accordingly.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1025,7 +1025,7 @@ accordingly.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.viewbox_resize_event">
-<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L180-L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">viewbox_resize_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L180-L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify the data aspect and scale factor, to adjust to
 the new window size.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1044,7 +1044,7 @@ the new window size.</p>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.PanZoomCamera.zoom">
-<code class="descname">zoom</code><span class="sig-paren">(</span><em>factor</em>, <em>center=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L76-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.zoom" title="Permalink to this definition">¶</a></dt>
+<code class="descname">zoom</code><span class="sig-paren">(</span><em>self</em>, <em>factor</em>, <em>center=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/panzoom.py#L76-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.PanZoomCamera.zoom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Zoom in (or out) at the given center</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1114,23 +1114,23 @@ scale_factor and fov.</p>
 <li>SHIFT + RMB: change FOV</li>
 </ul>
 </div></blockquote>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.TurntableCamera.azimuth">
-<code class="descname">azimuth</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.azimuth" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">azimuth</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.azimuth" title="Permalink to this definition">¶</a></dt>
 <dd><p>The angle of the camera in degrees around the y axis. An angle of
 0 places the camera within the (y, z) plane.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.TurntableCamera.elevation">
-<code class="descname">elevation</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.elevation" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">elevation</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.elevation" title="Permalink to this definition">¶</a></dt>
 <dd><p>The angle of the camera in degrees above the horizontal (x, z)
 plane.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.cameras.TurntableCamera.orbit">
-<code class="descname">orbit</code><span class="sig-paren">(</span><em>azim</em>, <em>elev</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/turntable.py#L114-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.orbit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">orbit</code><span class="sig-paren">(</span><em>self</em>, <em>azim</em>, <em>elev</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/cameras/turntable.py#L114-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.orbit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Orbits the camera around the center position.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1148,9 +1148,9 @@ plane.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.cameras.TurntableCamera.roll">
-<code class="descname">roll</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.roll" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">roll</code><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.roll" title="Permalink to this definition">¶</a></dt>
 <dd><p>The angle of the camera in degrees around the z axis. An angle of
 0 places puts the camera upright.</p>
 </dd></dl>
@@ -1233,7 +1233,9 @@ allows the scale factor to be adjusted for testing.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="app.html#vispy.app.Canvas" title="vispy.app.Canvas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.app.Canvas</span></code></a></p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="app.html#vispy.app.Canvas" title="vispy.app.Canvas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.app.Canvas</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Notes</p>
 <p>Receives the following events:</p>
@@ -1260,16 +1262,16 @@ backends natively support double-clicking (currently Qt and WX); on other
 backends, they are detected manually with a fixed time delay.
 This can cause problems with accessibility, as increasing the OS detection
 time or using a dedicated double-click button will not be respected.</p>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.central_widget">
-<code class="descname">central_widget</code><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.central_widget" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">central_widget</code><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.central_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the default widget that occupies the entire area of the
 canvas.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.draw_visual">
-<code class="descname">draw_visual</code><span class="sig-paren">(</span><em>visual</em>, <em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L268-L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.draw_visual" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw_visual</code><span class="sig-paren">(</span><em>self</em>, <em>visual</em>, <em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L268-L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.draw_visual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw a visual and its children to the canvas or currently active
 framebuffer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1291,7 +1293,7 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.on_close">
-<code class="descname">on_close</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L506-L517"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_close" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_close</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L506-L517"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1309,7 +1311,7 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.on_draw">
-<code class="descname">on_draw</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L202-L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_draw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_draw</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L202-L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1327,7 +1329,7 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L490-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L490-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1345,19 +1347,19 @@ this draw.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.pop_fbo">
-<code class="descname">pop_fbo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L590-L601"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_fbo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop_fbo</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L590-L601"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_fbo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop an FBO from the stack.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.pop_viewport">
-<code class="descname">pop_viewport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L547-L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_viewport" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pop_viewport</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L547-L558"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.pop_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop a viewport from the stack.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.push_fbo">
-<code class="descname">push_fbo</code><span class="sig-paren">(</span><em>fbo</em>, <em>offset</em>, <em>csize</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L560-L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_fbo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">push_fbo</code><span class="sig-paren">(</span><em>self</em>, <em>fbo</em>, <em>offset</em>, <em>csize</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L560-L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_fbo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push an FBO on the stack.</p>
 <p>This activates the framebuffer and causes subsequent rendering to be
 written to the framebuffer rather than the canvas’s back buffer. This
@@ -1385,7 +1387,7 @@ covered by this framebuffer object.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.push_viewport">
-<code class="descname">push_viewport</code><span class="sig-paren">(</span><em>viewport</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L520-L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_viewport" title="Permalink to this definition">¶</a></dt>
+<code class="descname">push_viewport</code><span class="sig-paren">(</span><em>self</em>, <em>viewport</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L520-L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.push_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push a viewport (x, y, w, h) on the stack. Values must be integers
 relative to the active framebuffer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1404,7 +1406,7 @@ relative to the active framebuffer.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.render">
-<code class="descname">render</code><span class="sig-paren">(</span><em>region=None</em>, <em>size=None</em>, <em>bgcolor=None</em>, <em>crop=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L219-L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.render" title="Permalink to this definition">¶</a></dt>
+<code class="descname">render</code><span class="sig-paren">(</span><em>self</em>, <em>region=None</em>, <em>size=None</em>, <em>bgcolor=None</em>, <em>crop=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L219-L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.render" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render the scene to an offscreen buffer and return the image array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1439,16 +1441,16 @@ upper-left corner of the rendered region.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.scene">
-<code class="descname">scene</code><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.scene" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">scene</code><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.scene" title="Permalink to this definition">¶</a></dt>
 <dd><p>The SubScene object that represents the root node of the
 scene graph to be displayed.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>node=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L183-L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em>, <em>node=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L183-L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the scene</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1466,7 +1468,7 @@ scene graph to be displayed.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.visual_at">
-<code class="descname">visual_at</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L380-L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visual_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">visual_at</code><span class="sig-paren">(</span><em>self</em>, <em>pos</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L380-L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visual_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the visual at a given position</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1490,7 +1492,7 @@ scene graph to be displayed.</p>
 
 <dl class="method">
 <dt id="vispy.scene.canvas.SceneCanvas.visuals_at">
-<code class="descname">visuals_at</code><span class="sig-paren">(</span><em>pos</em>, <em>radius=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L442-L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visuals_at" title="Permalink to this definition">¶</a></dt>
+<code class="descname">visuals_at</code><span class="sig-paren">(</span><em>self</em>, <em>pos</em>, <em>radius=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/canvas.py#L442-L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.canvas.SceneCanvas.visuals_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of visuals within <em>radius</em> pixels of <em>pos</em>.</p>
 <p>Visuals are sorted by their proximity to <em>pos</em>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1545,36 +1547,36 @@ of as coordinate systems connected by transformation functions.</p>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.canvas">
-<code class="descname">canvas</code><a class="headerlink" href="#vispy.scene.node.Node.canvas" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">canvas</code><a class="headerlink" href="#vispy.scene.node.Node.canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>The canvas in which this node’s scenegraph is being drawn.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.children">
-<code class="descname">children</code><a class="headerlink" href="#vispy.scene.node.Node.children" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">children</code><a class="headerlink" href="#vispy.scene.node.Node.children" title="Permalink to this definition">¶</a></dt>
 <dd><p>A copy of the list of children of this node. Do not add
 items to this list, but use <code class="docutils literal notranslate"><span class="pre">x.parent</span> <span class="pre">=</span> <span class="pre">y</span></code> instead.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.clip_children">
-<code class="descname">clip_children</code><a class="headerlink" href="#vispy.scene.node.Node.clip_children" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">clip_children</code><a class="headerlink" href="#vispy.scene.node.Node.clip_children" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean indicating whether children of this node will inherit its
 clipper.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.clipper">
-<code class="descname">clipper</code><a class="headerlink" href="#vispy.scene.node.Node.clipper" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">clipper</code><a class="headerlink" href="#vispy.scene.node.Node.clipper" title="Permalink to this definition">¶</a></dt>
 <dd><p>A visual filter that can be used to clip visuals to the boundaries
 of this node.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.common_parent">
-<code class="descname">common_parent</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L451-L472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.common_parent" title="Permalink to this definition">¶</a></dt>
+<code class="descname">common_parent</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L451-L472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.common_parent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the common parent of two entities</p>
 <p>If the entities have no common parent, return None.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1599,7 +1601,7 @@ of this node.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.describe_tree">
-<code class="descname">describe_tree</code><span class="sig-paren">(</span><em>with_transform=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L418-L432"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.describe_tree" title="Permalink to this definition">¶</a></dt>
+<code class="descname">describe_tree</code><span class="sig-paren">(</span><em>self</em>, <em>with_transform=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L418-L432"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.describe_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create tree diagram of children</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1621,9 +1623,9 @@ of this node.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.document">
-<code class="descname">document</code><a class="headerlink" href="#vispy.scene.node.Node.document" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">document</code><a class="headerlink" href="#vispy.scene.node.Node.document" title="Permalink to this definition">¶</a></dt>
 <dd><p>The document is an optional property that is an node representing
 the coordinate system from which this node should make physical 
 measurements such as px, mm, pt, in, etc. This coordinate system 
@@ -1633,16 +1635,16 @@ other lengths specified in physical units.</p>
 drawing (usually this is supplied by the SceneCanvas).</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.document_node">
-<code class="descname">document_node</code><a class="headerlink" href="#vispy.scene.node.Node.document_node" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">document_node</code><a class="headerlink" href="#vispy.scene.node.Node.document_node" title="Permalink to this definition">¶</a></dt>
 <dd><p>The node to be used as the document coordinate system.</p>
 <p>By default, the document node is <cite>self.root_node</cite>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.is_child">
-<code class="descname">is_child</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L234-L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.is_child" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_child</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L234-L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.is_child" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if a node is a child of the current node</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1666,7 +1668,7 @@ drawing (usually this is supplied by the SceneCanvas).</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.node_path">
-<code class="descname">node_path</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L525-L570"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_path</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L525-L570"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return two lists describing the path from this node to another</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1705,7 +1707,7 @@ the path from the common parent to the specified ending node.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.node_path_to_child">
-<code class="descname">node_path_to_child</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L474-L523"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path_to_child" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_path_to_child</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L474-L523"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path_to_child" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list describing the path from this node to a child node</p>
 <p>If <em>node</em> is not a (grand)child of this node, then raise RuntimeError.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1730,7 +1732,7 @@ the path from the common parent to the specified ending node.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.node_path_transforms">
-<code class="descname">node_path_transforms</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L572-L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path_transforms" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_path_transforms</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L572-L591"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_path_transforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of transforms along the path to another node.</p>
 <p>The transforms are listed in reverse order, such that the last 
 transform should be applied first when mapping from this node to 
@@ -1757,7 +1759,7 @@ the other.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.node_transform">
-<code class="descname">node_transform</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L593-L611"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_transform</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L593-L611"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.node_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transform that maps from the coordinate system of
 <em>self</em> to the local coordinate system of <em>node</em>.</p>
 <p>Note that there must be a _single_ path in the scenegraph that connects
@@ -1784,7 +1786,7 @@ the two entities; otherwise an exception will be raised.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.on_parent_change">
-<code class="descname">on_parent_change</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L224-L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.on_parent_change" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_parent_change</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L224-L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.on_parent_change" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parent change event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1800,17 +1802,17 @@ the two entities; otherwise an exception will be raised.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.order">
-<code class="descname">order</code><a class="headerlink" href="#vispy.scene.node.Node.order" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">order</code><a class="headerlink" href="#vispy.scene.node.Node.order" title="Permalink to this definition">¶</a></dt>
 <dd><p>A value used to determine the order in which nodes are drawn.</p>
 <p>Greater values are drawn later. Children are always drawn after their
 parent.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.parent">
-<code class="descname">parent</code><a class="headerlink" href="#vispy.scene.node.Node.parent" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">parent</code><a class="headerlink" href="#vispy.scene.node.Node.parent" title="Permalink to this definition">¶</a></dt>
 <dd><p>The parent of this node in the scenegraph.</p>
 <p>Nodes inherit coordinate transformations and some filters (opacity and
 clipping by default) from their parents. Setting this property assigns
@@ -1821,28 +1823,28 @@ scenegraph.</p>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.parent_chain">
-<code class="descname">parent_chain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L402-L416"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.parent_chain" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parent_chain</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L402-L416"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.parent_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of parents starting from this node. The chain ends
 at the first node with no parents.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.picking">
-<code class="descname">picking</code><a class="headerlink" href="#vispy.scene.node.Node.picking" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">picking</code><a class="headerlink" href="#vispy.scene.node.Node.picking" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean that determines whether this node (and its children) are
 drawn in picking mode.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.scene_node">
-<code class="descname">scene_node</code><a class="headerlink" href="#vispy.scene.node.Node.scene_node" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">scene_node</code><a class="headerlink" href="#vispy.scene.node.Node.scene_node" title="Permalink to this definition">¶</a></dt>
 <dd><p>The first ancestor of this node that is a SubScene instance, or self
 if no such node exists.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.set_transform">
-<code class="descname">set_transform</code><span class="sig-paren">(</span><em>type_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L371-L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.set_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_transform</code><span class="sig-paren">(</span><em>self</em>, <em>type_</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L371-L385"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.set_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new transform of <em>type</em> and assign it to this node.</p>
 <p>All extra arguments are used in the construction of the transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1863,23 +1865,23 @@ if no such node exists.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.transform">
-<code class="descname">transform</code><a class="headerlink" href="#vispy.scene.node.Node.transform" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">transform</code><a class="headerlink" href="#vispy.scene.node.Node.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>The transform that maps the local coordinate frame to the
 coordinate frame of the parent.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.node.Node.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L325-L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/node.py#L325-L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.node.Node.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Emit an event to inform listeners that properties of this Node have
 changed. Also request a canvas update.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.node.Node.visible">
-<code class="descname">visible</code><a class="headerlink" href="#vispy.scene.node.Node.visible" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">visible</code><a class="headerlink" href="#vispy.scene.node.Node.visible" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether this node should be drawn or not. Only applicable to
 nodes that can be drawn.</p>
 </dd></dl>
@@ -1896,41 +1898,41 @@ nodes that can be drawn.</p>
 <dd><p>Bases: <a class="reference internal" href="util.html#vispy.util.event.Event" title="vispy.util.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.Event</span></code></a></p>
 <p>Represents a mouse event that occurred on a SceneCanvas. This event is
 delivered to all entities whose mouse interaction area is under the event.</p>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.button">
-<code class="descname">button</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.button" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">button</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.button" title="Permalink to this definition">¶</a></dt>
 <dd><p>The button pressed or released on this event.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.buttons">
-<code class="descname">buttons</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.buttons" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">buttons</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.buttons" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of all buttons currently pressed on the mouse.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.delta">
-<code class="descname">delta</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.delta" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">delta</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.delta" title="Permalink to this definition">¶</a></dt>
 <dd><p>The increment by which the mouse wheel has moved.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.last_event">
-<code class="descname">last_event</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.last_event" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">last_event</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.last_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>The mouse event immediately prior to this one. This
 property is None when no mouse buttons are pressed.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.pos">
-<code class="descname">pos</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.pos" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">pos</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.pos" title="Permalink to this definition">¶</a></dt>
 <dd><p>The position of this event in the local coordinate system of the
 visual.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.events.SceneMouseEvent.press_event">
-<code class="descname">press_event</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.press_event" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">press_event</code><a class="headerlink" href="#vispy.scene.events.SceneMouseEvent.press_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>The mouse press event that initiated a mouse drag, if any.</p>
 </dd></dl>
 
@@ -1951,16 +1953,16 @@ the Visual classes found in <cite>vispy.visuals</cite>.</p>
 <dt id="vispy.scene.visuals.VisualNode">
 <em class="property">class </em><code class="descclassname">vispy.scene.visuals.</code><code class="descname">VisualNode</code><span class="sig-paren">(</span><em>parent=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/visuals.py#L23-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.visuals.VisualNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.scene.node.Node" title="vispy.scene.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.node.Node</span></code></a></p>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.visuals.VisualNode.interactive">
-<code class="descname">interactive</code><a class="headerlink" href="#vispy.scene.visuals.VisualNode.interactive" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">interactive</code><a class="headerlink" href="#vispy.scene.visuals.VisualNode.interactive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether this widget should be allowed to accept mouse and touch
 events.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.visuals.VisualNode.picking">
-<code class="descname">picking</code><a class="headerlink" href="#vispy.scene.visuals.VisualNode.picking" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">picking</code><a class="headerlink" href="#vispy.scene.visuals.VisualNode.picking" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean that determines whether this node (and its children) are
 drawn in picking mode.</p>
 </dd></dl>
@@ -2415,7 +2417,9 @@ for more information.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArrowVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkersVisual</span></code></p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArrowVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkersVisual</span></code></dt><dd></dd>
+</dl>
 </div>
 </dd></dl>
 
@@ -2869,7 +2873,9 @@ are supported.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkersVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">marker_types</span></code></p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">LineVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">MarkersVisual</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">marker_types</span></code></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Examples</p>
 <p>All of these syntaxes will work:</p>
@@ -3521,7 +3527,7 @@ and sliders.</p>
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.AxisWidget.link_view">
-<code class="descname">link_view</code><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/axis.py#L61-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.link_view" title="Permalink to this definition">¶</a></dt>
+<code class="descname">link_view</code><span class="sig-paren">(</span><em>self</em>, <em>view</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/axis.py#L61-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.link_view" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link this axis to a ViewBox</p>
 <p>This makes it so that the axis’s domain always matches the
 visible range in the ViewBox.</p>
@@ -3541,7 +3547,7 @@ visible range in the ViewBox.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.AxisWidget.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/axis.py#L34-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/axis.py#L34-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3580,19 +3586,19 @@ visible range in the ViewBox.</p>
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.Console.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L167-L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.clear" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clear</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L167-L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the console</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Console.font_size">
-<code class="descname">font_size</code><a class="headerlink" href="#vispy.scene.widgets.Console.font_size" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">font_size</code><a class="headerlink" href="#vispy.scene.widgets.Console.font_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>The font size (in points) of the text</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Console.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L157-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L157-L165"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3608,15 +3614,15 @@ visible range in the ViewBox.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Console.text_color">
-<code class="descname">text_color</code><a class="headerlink" href="#vispy.scene.widgets.Console.text_color" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">text_color</code><a class="headerlink" href="#vispy.scene.widgets.Console.text_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>The color of the text</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Console.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>text=''</em>, <em>wrap=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L171-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.write" title="Permalink to this definition">¶</a></dt>
+<code class="descname">write</code><span class="sig-paren">(</span><em>self</em>, <em>text=''</em>, <em>wrap=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/console.py#L171-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write text and scroll</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3701,21 +3707,21 @@ str as the color’s name or an actual instace of a vipy.color.Color</p>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.ColorBarWidget.border_color">
-<code class="descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_color" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>The color of the border around the ColorBar in pixels</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.ColorBarWidget.border_width">
-<code class="descname">border_width</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_width" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">border_width</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_width" title="Permalink to this definition">¶</a></dt>
 <dd><p>The width of the border around the ColorBar in pixels</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.ColorBarWidget.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/colorbar.py#L90-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/colorbar.py#L90-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3755,7 +3761,7 @@ proportionally divide its internal area into a grid.</p>
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.Grid.add_grid">
-<code class="descname">add_grid</code><span class="sig-paren">(</span><em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L199-L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_grid" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_grid</code><span class="sig-paren">(</span><em>self</em>, <em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L199-L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new Grid and add it as a child widget.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3781,7 +3787,7 @@ proportionally divide its internal area into a grid.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Grid.add_view">
-<code class="descname">add_view</code><span class="sig-paren">(</span><em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L221-L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_view" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_view</code><span class="sig-paren">(</span><em>self</em>, <em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L221-L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_view" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new ViewBox and add it as a child widget.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3807,7 +3813,7 @@ proportionally divide its internal area into a grid.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Grid.add_widget">
-<code class="descname">add_widget</code><span class="sig-paren">(</span><em>widget=None</em>, <em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L86-L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_widget" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget=None</em>, <em>row=None</em>, <em>col=None</em>, <em>row_span=1</em>, <em>col_span=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L86-L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a new widget to this grid. This will cause other widgets in the
 grid to be resized to make room for the new widget. Can be used
 to replace a widget as well</p>
@@ -3841,7 +3847,7 @@ parent(s) are removed.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Grid.remove_widget">
-<code class="descname">remove_widget</code><span class="sig-paren">(</span><em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L151-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.remove_widget" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L151-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.remove_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a widget from this grid</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3859,7 +3865,7 @@ parent(s) are removed.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Grid.resize_widget">
-<code class="descname">resize_widget</code><span class="sig-paren">(</span><em>widget</em>, <em>row_span</em>, <em>col_span</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L166-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.resize_widget" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget</em>, <em>row_span</em>, <em>col_span</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/grid.py#L166-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.resize_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize a widget in the grid to new dimensions.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3904,7 +3910,7 @@ parent(s) are removed.</p>
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.Label.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/label.py#L30-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Label.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/label.py#L30-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Label.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3955,7 +3961,7 @@ used as the argument to <code class="xref py py-func docutils literal notranslat
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L171-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.add" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L171-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an Node to the scene for this ViewBox.</p>
 <p>This is a convenience method equivalent to
 <cite>node.parent = viewbox.scene</cite></p>
@@ -3973,9 +3979,9 @@ used as the argument to <code class="xref py py-func docutils literal notranslat
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.camera">
-<code class="descname">camera</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.camera" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">camera</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.camera" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get/set the Camera in use by this ViewBox</p>
 <p>If a string is given (e.g. ‘panzoom’, ‘turntable’, ‘fly’). A
 corresponding camera is selected if it already exists in the
@@ -3989,7 +3995,7 @@ viewboxes at the same time.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.get_scene_bounds">
-<code class="descname">get_scene_bounds</code><span class="sig-paren">(</span><em>dim=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L126-L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.get_scene_bounds" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_scene_bounds</code><span class="sig-paren">(</span><em>self</em>, <em>dim=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L126-L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.get_scene_bounds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the total bounds based on the visuals present in the scene</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4014,7 +4020,7 @@ the bounds for the requested dimension.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.is_in_scene">
-<code class="descname">is_in_scene</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L116-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.is_in_scene" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_in_scene</code><span class="sig-paren">(</span><em>self</em>, <em>node</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L116-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.is_in_scene" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get whether the given node is inside the scene of this viewbox.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4032,7 +4038,7 @@ the bounds for the requested dimension.</p>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.on_resize">
-<code class="descname">on_resize</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L184-L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.on_resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_resize</code><span class="sig-paren">(</span><em>self</em>, <em>event</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/viewbox.py#L184-L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.on_resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize event handler</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4048,9 +4054,9 @@ the bounds for the requested dimension.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.ViewBox.scene">
-<code class="descname">scene</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.scene" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">scene</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.scene" title="Permalink to this definition">¶</a></dt>
 <dd><p>The root node of the scene viewed by this ViewBox.</p>
 </dd></dl>
 
@@ -4091,21 +4097,21 @@ the contents and the border).</p>
 </table>
 <dl class="method">
 <dt id="vispy.scene.widgets.Widget.add_grid">
-<code class="descname">add_grid</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L453-L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_grid" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_grid</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L453-L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new Grid and add it as a child widget.</p>
 <p>All arguments are given to Grid().</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Widget.add_view">
-<code class="descname">add_view</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L463-L471"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_view" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_view</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L463-L471"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_view" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new ViewBox and add it as a child widget.</p>
 <p>All arguments are given to ViewBox().</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Widget.add_widget">
-<code class="descname">add_widget</code><span class="sig-paren">(</span><em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L430-L451"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_widget" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L430-L451"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a Widget as a managed child of this Widget.</p>
 <p>The child will be
 automatically positioned and sized to fill the entire space inside
@@ -4130,54 +4136,54 @@ this Widget (unless _update_child_widgets is redefined).</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.bgcolor">
-<code class="descname">bgcolor</code><a class="headerlink" href="#vispy.scene.widgets.Widget.bgcolor" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">bgcolor</code><a class="headerlink" href="#vispy.scene.widgets.Widget.bgcolor" title="Permalink to this definition">¶</a></dt>
 <dd><p>The background color of the Widget.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.border_color">
-<code class="descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.Widget.border_color" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.Widget.border_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>The color of the border.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.height">
-<code class="descname">height</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">height</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height" title="Permalink to this definition">¶</a></dt>
 <dd><p>The actual height of the widget</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.height_max">
-<code class="descname">height_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_max" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">height_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>The maximum height of the widget</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.height_min">
-<code class="descname">height_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_min" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">height_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>The minimum height of the widget</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.inner_rect">
-<code class="descname">inner_rect</code><a class="headerlink" href="#vispy.scene.widgets.Widget.inner_rect" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">inner_rect</code><a class="headerlink" href="#vispy.scene.widgets.Widget.inner_rect" title="Permalink to this definition">¶</a></dt>
 <dd><p>The rectangular area inside the margin, border, and padding.</p>
 <p>Generally widgets should avoid drawing or placing sub-widgets outside
 this rectangle.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.picking">
-<code class="descname">picking</code><a class="headerlink" href="#vispy.scene.widgets.Widget.picking" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">picking</code><a class="headerlink" href="#vispy.scene.widgets.Widget.picking" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean that determines whether this node (and its children) are
 drawn in picking mode.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="vispy.scene.widgets.Widget.remove_widget">
-<code class="descname">remove_widget</code><span class="sig-paren">(</span><em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L473-L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.remove_widget" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_widget</code><span class="sig-paren">(</span><em>self</em>, <em>widget</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/scene/widgets/widget.py#L473-L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.remove_widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a Widget as a managed child of this Widget.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4193,17 +4199,17 @@ drawn in picking mode.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.size">
-<code class="descname">size</code><a class="headerlink" href="#vispy.scene.widgets.Widget.size" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">size</code><a class="headerlink" href="#vispy.scene.widgets.Widget.size" title="Permalink to this definition">¶</a></dt>
 <dd><p>The size (w, h) of this widget.</p>
 <p>If the widget is a child of another widget, then its size is assigned
 automatically by its parent.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.stretch">
-<code class="descname">stretch</code><a class="headerlink" href="#vispy.scene.widgets.Widget.stretch" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">stretch</code><a class="headerlink" href="#vispy.scene.widgets.Widget.stretch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stretch factors (w, h) used when determining how much space to
 allocate to this widget in a layout.</p>
 <p>If either stretch factor is None, then it will be assigned when the
@@ -4211,21 +4217,21 @@ widget is added to a layout based on the number of columns or rows it
 occupies.</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.width">
-<code class="descname">width</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">width</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width" title="Permalink to this definition">¶</a></dt>
 <dd><p>The actual width of this widget</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.width_max">
-<code class="descname">width_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_max" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">width_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>The maximum width the widget can have</p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="method">
 <dt id="vispy.scene.widgets.Widget.width_min">
-<code class="descname">width_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_min" title="Permalink to this definition">¶</a></dt>
+<em class="property">property </em><code class="descname">width_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_min" title="Permalink to this definition">¶</a></dt>
 <dd><p>The minimum width the widget can have</p>
 </dd></dl>
 
