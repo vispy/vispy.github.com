@@ -1,24 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vispy &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -263,33 +264,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Vispy</a></li>
-</ul>
-
-  <li>
-    <a href="raspberry.html" title="Previous Chapter: Installation on Raspberry Pi 3 Model B"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Installation ...</span>
-    </a>
-  </li>
-  <li>
-    <a href="app.html" title="Next Chapter: The app module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The app module &raquo;</span>
-    </a>
-  </li>
-<div id="sourcelink">
-  <a href="_sources/vispy.rst.txt"
-     rel="nofollow">Source</a>
-</div>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-    <div class="col-md-9 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="module-vispy">
 <span id="vispy"></span><h1>Vispy<a class="headerlink" href="#module-vispy" title="Permalink to this headline">¶</a></h1>
@@ -298,9 +273,80 @@ library</strong>. Vispy leverages the computational power of modern <strong>Grap
 Processing Units (GPUs)</strong> through the <strong>OpenGL</strong> library to display very
 large datasets.</p>
 <p>For more information, see <a class="reference external" href="http://vispy.org">http://vispy.org</a>.</p>
-<dl class="function">
+<dl class="py function">
+<dt id="vispy.set_log_level">
+<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em><span class="n">verbose</span></em>, <em><span class="n">match</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">return_old</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience function for setting the logging level</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>verbose</strong><span class="classifier">bool, str, int, or None</span></dt><dd><p>The verbosity of messages to print. If a str, it can be either DEBUG,
+INFO, WARNING, ERROR, or CRITICAL. Note that these are for
+convenience and are equivalent to passing in logging.DEBUG, etc.
+For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
+</dd>
+<dt><strong>match</strong><span class="classifier">str | None</span></dt><dd><p>String to match. Only those messages that both contain a substring
+that regexp matches <code class="docutils literal notranslate"><span class="pre">'match'</span></code> (and the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> level) will be
+displayed.</p>
+</dd>
+<dt><strong>return_old</strong><span class="classifier">bool</span></dt><dd><p>If True, return the old verbosity level and old match.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.util.use_log_level</span></code></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code>, then the <code class="docutils literal notranslate"><span class="pre">vispy</span></code> method emitting the log
+message will be prepended to each log message, which is useful for
+debugging. If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code> or <code class="docutils literal notranslate"><span class="pre">match</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>, then a
+small performance overhead is added. Thus it is suggested to only use
+these options when performance is not crucial.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.sys_info">
+<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em><span class="n">fname</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">overwrite</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get relevant system and debugging information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong><span class="classifier">str | None</span></dt><dd><p>Filename to dump info to. Use None to simply print.</p>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool</span></dt><dd><p>If True, overwrite file (if it exists).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>The system information as a string.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.test">
+<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em><span class="o">*</span><span class="n">args</span></em>, <em><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L154-L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proxy function to delay <cite>.testing</cite> import</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="vispy.use">
-<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em>app=None</em>, <em>gl=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.</code><code class="descname">use</code><span class="sig-paren">(</span><em><span class="n">app</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">gl</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.use" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the usage options for vispy</p>
 <p>Specify what app backend and GL backend to use.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -370,96 +416,6 @@ that backend first. If this is unsuccessful, it will try the
 succesful, it will try each backend in a predetermined order.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.sys_info">
-<code class="descclassname">vispy.</code><code class="descname">sys_info</code><span class="sig-paren">(</span><em>fname=None</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/config.py#L393-L445"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.sys_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get relevant system and debugging information</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>fname</strong><span class="classifier">str | None</span></dt><dd><p>Filename to dump info to. Use None to simply print.</p>
-</dd>
-<dt><strong>overwrite</strong><span class="classifier">bool</span></dt><dd><p>If True, overwrite file (if it exists).</p>
-</dd>
-</dl>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>The system information as a string.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.set_log_level">
-<code class="descclassname">vispy.</code><code class="descname">set_log_level</code><span class="sig-paren">(</span><em>verbose</em>, <em>match=None</em>, <em>return_old=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/util/logs.py#L129-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.set_log_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convenience function for setting the logging level</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>verbose</strong><span class="classifier">bool, str, int, or None</span></dt><dd><p>The verbosity of messages to print. If a str, it can be either DEBUG,
-INFO, WARNING, ERROR, or CRITICAL. Note that these are for
-convenience and are equivalent to passing in logging.DEBUG, etc.
-For bool, True is the same as ‘INFO’, False is the same as ‘WARNING’.</p>
-</dd>
-<dt><strong>match</strong><span class="classifier">str | None</span></dt><dd><p>String to match. Only those messages that both contain a substring
-that regexp matches <code class="docutils literal notranslate"><span class="pre">'match'</span></code> (and the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> level) will be
-displayed.</p>
-</dd>
-<dt><strong>return_old</strong><span class="classifier">bool</span></dt><dd><p>If True, return the old verbosity level and old match.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.util.use_log_level</span></code></dt><dd></dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code>, then the <code class="docutils literal notranslate"><span class="pre">vispy</span></code> method emitting the log
-message will be prepended to each log message, which is useful for
-debugging. If <code class="docutils literal notranslate"><span class="pre">verbose=='debug'</span></code> or <code class="docutils literal notranslate"><span class="pre">match</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>, then a
-small performance overhead is added. Thus it is suggested to only use
-these options when performance is not crucial.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.test">
-<code class="descclassname">vispy.</code><code class="descname">test</code><span class="sig-paren">(</span><em>label='full'</em>, <em>extra_arg_string=''</em>, <em>coverage=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/testing/_runners.py#L363-L449"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Test vispy software</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Can be one of ‘full’, ‘unit’, ‘nobackend’, ‘extra’, ‘lineendings’,
-‘flake’, ‘docs’, or any backend name (e.g., ‘qt’).</p>
-</dd>
-<dt><strong>extra_arg_string</strong><span class="classifier">str | list of str</span></dt><dd><p>Extra arguments to sent to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.
-Can also be a list of str to more explicitly provide the
-arguments.</p>
-</dd>
-<dt><strong>coverage</strong><span class="classifier">bool</span></dt><dd><p>If True, collect coverage data.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </div>
 
 
@@ -481,7 +437,7 @@ arguments.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2019, VisPy developers</li>
+      <li>2013-2020, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>

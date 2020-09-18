@@ -1,24 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The object oriented OpenGL API (gloo) &#8212; VisPy</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,6 +25,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
 
@@ -273,43 +274,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">The object oriented OpenGL API (gloo)</a><ul>
-<li><a class="reference internal" href="#base-class">Base class</a></li>
-<li><a class="reference internal" href="#program-class">Program class</a></li>
-<li><a class="reference internal" href="#buffer-classes">Buffer classes</a></li>
-<li><a class="reference internal" href="#texture-classes">Texture classes</a></li>
-<li><a class="reference internal" href="#classes-related-to-fbo-s">Classes related to FBO’s</a></li>
-<li><a class="reference internal" href="#module-vispy.gloo.wrappers">State methods</a></li>
-<li><a class="reference internal" href="#module-vispy.gloo.context">The OpenGL context</a></li>
-<li><a class="reference internal" href="#vispy-gloo-gl-low-level-gl-api">vispy.gloo.gl - low level GL API</a></li>
-</ul>
-</li>
-</ul>
-
-  <li>
-    <a href="geometry.html" title="Previous Chapter: The geometry module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The geometry module</span>
-    </a>
-  </li>
-  <li>
-    <a href="io.html" title="Next Chapter: The data IO module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The data IO module &raquo;</span>
-    </a>
-  </li>
-<div id="sourcelink">
-  <a href="_sources/gloo.rst.txt"
-     rel="nofollow">Source</a>
-</div>
-<form action="search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-        </div>
-      </div>
-    <div class="col-md-9 content">
+    <div class="body col-md-12 content" role="main">
       
   <div class="section" id="module-vispy.gloo">
 <span id="the-object-oriented-opengl-api-gloo"></span><h1>The object oriented OpenGL API (gloo)<a class="headerlink" href="#module-vispy.gloo" title="Permalink to this headline">¶</a></h1>
@@ -349,29 +314,29 @@ progress and there are still a few known limitations. Most notably:</p>
 </div>
 <div class="section" id="base-class">
 <h2>Base class<a class="headerlink" href="#base-class" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.GLObject">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">GLObject</code><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/globject.py#L44-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.GLObject" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">GLObject</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/globject.py#L44-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.GLObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generic GL object that represents an object on the GPU.</p>
 <p>When a GLObject is instantiated, it is associated with the currently
 active Canvas, or with the next Canvas to be created if there is
 no current Canvas</p>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.GLObject.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/globject.py#L80-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.GLObject.delete" title="Permalink to this definition">¶</a></dt>
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/globject.py#L80-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.GLObject.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete the object from GPU memory.</p>
 <p>Note that the GPU object will also be deleted when this gloo
 object is about to be deleted. However, sometimes you want to
 explicitly delete the GPU object explicitly.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.GLObject.glir">
 <em class="property">property </em><code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.GLObject.glir" title="Permalink to this definition">¶</a></dt>
 <dd><p>The glir queue for this object.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.GLObject.id">
 <em class="property">property </em><code class="descname">id</code><a class="headerlink" href="#vispy.gloo.GLObject.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>The id of this GL object used to reference the GL object
@@ -383,9 +348,9 @@ in GLIR. id’s are unique within a process.</p>
 </div>
 <div class="section" id="program-class">
 <h2>Program class<a class="headerlink" href="#program-class" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.Program">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Program</code><span class="sig-paren">(</span><em>vert=None</em>, <em>frag=None</em>, <em>count=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/program.py#L74-L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Program</code><span class="sig-paren">(</span><em><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">frag</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">count</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L74-L535"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shader program object</p>
 <p>A Program is an object to which shaders can be attached and linked to
 create the final program.</p>
@@ -413,9 +378,9 @@ is more efficient than having one vbo per attribute.</p>
 <p class="rubric">Notes</p>
 <p>If several shaders are specified, only one can contain the main
 function. OpenGL ES 2.0 does not support a list of shaders.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Program.bind">
-<code class="descname">bind</code><span class="sig-paren">(</span><em>self</em>, <em>data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/program.py#L282-L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.bind" title="Permalink to this definition">¶</a></dt>
+<code class="descname">bind</code><span class="sig-paren">(</span><em><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L282-L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.bind" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bind a VertexBuffer that has structured data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -432,17 +397,18 @@ are mapped to attribute names in GLSL.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Program.draw">
-<code class="descname">draw</code><span class="sig-paren">(</span><em>self</em>, <em>mode='triangles'</em>, <em>indices=None</em>, <em>check_error=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/program.py#L466-L533"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.draw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw</code><span class="sig-paren">(</span><em><span class="n">mode</span><span class="o">=</span><span class="default_value">'triangles'</span></em>, <em><span class="n">indices</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">check_error</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L466-L535"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw the attribute arrays in the specified mode.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>mode</strong><span class="classifier">str | GL_ENUM</span></dt><dd><p>‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘triangles’,
-‘triangle_strip’, or ‘triangle_fan’.</p>
+<dt><strong>mode</strong><span class="classifier">str | GL_ENUM</span></dt><dd><p>‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘lines_adjacency’,
+‘line_strip_adjacency’, ‘triangles’, ‘triangle_strip’, or
+‘triangle_fan’.</p>
 </dd>
 <dt><strong>indices</strong><span class="classifier">array</span></dt><dd><p>Array of indices to draw.</p>
 </dd>
@@ -455,9 +421,9 @@ are mapped to attribute names in GLSL.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Program.set_shaders">
-<code class="descname">set_shaders</code><span class="sig-paren">(</span><em>self</em>, <em>vert</em>, <em>frag</em>, <em>geom=None</em>, <em>update_variables=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/program.py#L165-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.set_shaders" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_shaders</code><span class="sig-paren">(</span><em><span class="n">vert</span></em>, <em><span class="n">frag</span></em>, <em><span class="n">geom</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">update_variables</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L165-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Program.set_shaders" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the vertex and fragment shaders.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -480,13 +446,13 @@ setting shader code. Default is True.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Program.shaders">
 <em class="property">property </em><code class="descname">shaders</code><a class="headerlink" href="#vispy.gloo.Program.shaders" title="Permalink to this definition">¶</a></dt>
 <dd><p>All currently attached shaders</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Program.variables">
 <em class="property">property </em><code class="descname">variables</code><a class="headerlink" href="#vispy.gloo.Program.variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of the variables in use by the current program</p>
@@ -512,9 +478,9 @@ where <cite>kind</cite> is ‘attribute’, ‘uniform’, ‘uniform_array’,
 </div>
 <div class="section" id="buffer-classes">
 <h2>Buffer classes<a class="headerlink" href="#buffer-classes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.buffer.Buffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">Buffer</code><span class="sig-paren">(</span><em>data=None</em>, <em>nbytes=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L18-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">Buffer</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">nbytes</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L18-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generic GPU buffer.</p>
 <p>A generic buffer is an interface used to upload data to a GPU array buffer
 (ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER). It keeps track of
@@ -539,15 +505,15 @@ aware of data type or element size.</p>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.Buffer.nbytes">
 <em class="property">property </em><code class="descname">nbytes</code><a class="headerlink" href="#vispy.gloo.buffer.Buffer.nbytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer size in bytes</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.Buffer.resize_bytes">
-<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em>self</em>, <em>size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L116-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L116-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize this buffer (deferred operation).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -563,9 +529,9 @@ aware of data type or element size.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.Buffer.set_data">
-<code class="descname">set_data</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L90-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_data</code><span class="sig-paren">(</span><em><span class="n">data</span></em>, <em><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L90-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data in the buffer (deferred operation).</p>
 <p>This completely resets the size and contents of the buffer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -586,9 +552,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.Buffer.set_subdata">
-<code class="descname">set_subdata</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>offset=0</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L61-L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_subdata</code><span class="sig-paren">(</span><em><span class="n">data</span></em>, <em><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L61-L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_subdata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a sub-region of the buffer (deferred operation).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -612,9 +578,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.buffer.DataBuffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">DataBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L133-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.buffer.</code><code class="descname">DataBuffer</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L133-L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>GPU data buffer that is aware of data type and elements size</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -628,33 +594,33 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.dtype">
 <em class="property">property </em><code class="descname">dtype</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.dtype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer dtype</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.glsl_type">
 <em class="property">property </em><code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.glsl_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL declaration strings required for a variable to hold this data.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.itemsize">
 <em class="property">property </em><code class="descname">itemsize</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.itemsize" title="Permalink to this definition">¶</a></dt>
 <dd><p>The total number of bytes required to store the array data</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.offset">
 <em class="property">property </em><code class="descname">offset</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer offset (in bytes) relative to base</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.resize_bytes">
-<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em>self</em>, <em>size</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L242-L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize_bytes</code><span class="sig-paren">(</span><em><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L243-L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize the buffer (in-place, deferred operation)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -672,9 +638,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <p>This clears any pending operations.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.set_data">
-<code class="descname">set_data</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>copy=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L177-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_data</code><span class="sig-paren">(</span><em><span class="n">data</span></em>, <em><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L178-L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data (deferred operation)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -696,9 +662,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.set_subdata">
-<code class="descname">set_subdata</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>offset=0</em>, <em>copy=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L156-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_subdata</code><span class="sig-paren">(</span><em><span class="n">data</span></em>, <em><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L156-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_subdata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a sub-region of the buffer (deferred operation).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -707,7 +673,8 @@ Asking explicitly for a copy will prevent this behavior.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
 <dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
 </dd>
-<dt><strong>offset: int</strong></dt><dd><p>Offset in buffer where to start copying data (in bytes)</p>
+<dt><strong>offset: int</strong></dt><dd><p>Offset in buffer where to start copying data (i.e. index of
+starting element).</p>
 </dd>
 <dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
 data is actually uploaded to GPU memory.
@@ -722,13 +689,13 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.size">
 <em class="property">property </em><code class="descname">size</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of elements in the buffer</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.buffer.DataBuffer.stride">
 <em class="property">property </em><code class="descname">stride</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.stride" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stride of data in memory</p>
@@ -736,9 +703,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.VertexBuffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">VertexBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L418-L460"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.VertexBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">VertexBuffer</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L419-L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.VertexBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer for vertex attribute data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -754,9 +721,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </table>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.IndexBuffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">IndexBuffer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/buffer.py#L473-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.IndexBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">IndexBuffer</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L474-L505"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.IndexBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Buffer for index data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -775,9 +742,9 @@ Asking explicitly for a copy will prevent this behavior.</p>
 </div>
 <div class="section" id="texture-classes">
 <h2>Texture classes<a class="headerlink" href="#texture-classes" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.texture.BaseTexture">
-<em class="property">class </em><code class="descclassname">vispy.gloo.texture.</code><code class="descname">BaseTexture</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L18-L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.texture.</code><code class="descname">BaseTexture</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L18-L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Texture is used to represent a topological set of scalar values.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -813,21 +780,21 @@ is also a tuple, it will override the value of <code class="docutils literal not
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.format">
 <em class="property">property </em><code class="descname">format</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.format" title="Permalink to this definition">¶</a></dt>
 <dd><p>The texture format (color channels).</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.interpolation">
 <em class="property">property </em><code class="descname">interpolation</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.interpolation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture interpolation for minification and magnification.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.resize">
-<code class="descname">resize</code><span class="sig-paren">(</span><em>self</em>, <em>shape</em>, <em>format=None</em>, <em>internalformat=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L202-L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em><span class="n">shape</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L202-L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the texture size and format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -857,9 +824,9 @@ hint which may be ignored by the OpenGL implementation.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.set_data">
-<code class="descname">set_data</code><span class="sig-paren">(</span><em>self</em>, <em>data</em>, <em>offset=None</em>, <em>copy=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L279-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_data</code><span class="sig-paren">(</span><em><span class="n">data</span></em>, <em><span class="n">offset</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L279-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set texture data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -884,13 +851,13 @@ for a copy will prevent this behavior.</p>
 the data if given offset is None.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.shape">
 <em class="property">property </em><code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data shape (last dimension indicates number of color channels)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.wrapping">
 <em class="property">property </em><code class="descname">wrapping</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.wrapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture wrapping mode</p>
@@ -898,9 +865,9 @@ the data if given offset is None.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.Texture2D">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture2D</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L451-L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Texture2D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture2D</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L451-L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Texture2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two dimensional texture</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -935,31 +902,31 @@ is also a tuple, it will override the value of <code class="docutils literal not
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture2D.glsl_sample">
 <em class="property">property </em><code class="descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL function that samples the texture.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture2D.glsl_sampler_type">
 <em class="property">property </em><code class="descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL type of the sampler.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture2D.glsl_type">
 <em class="property">property </em><code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.Texture2D.glsl_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL declaration strings required for a variable to hold this data.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture2D.height">
 <em class="property">property </em><code class="descname">height</code><a class="headerlink" href="#vispy.gloo.Texture2D.height" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture height</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture2D.width">
 <em class="property">property </em><code class="descname">width</code><a class="headerlink" href="#vispy.gloo.Texture2D.width" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture width</p>
@@ -967,9 +934,9 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.Texture3D">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture3D</code><span class="sig-paren">(</span><em>data=None</em>, <em>format=None</em>, <em>resizable=True</em>, <em>interpolation=None</em>, <em>wrapping=None</em>, <em>shape=None</em>, <em>internalformat=None</em>, <em>resizeable=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L519-L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Texture3D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">Texture3D</code><span class="sig-paren">(</span><em><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L519-L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.Texture3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Three dimensional texture</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1005,37 +972,37 @@ is also a tuple, it will override the value of <code class="docutils literal not
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.depth">
 <em class="property">property </em><code class="descname">depth</code><a class="headerlink" href="#vispy.gloo.Texture3D.depth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture depth</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.glsl_sample">
 <em class="property">property </em><code class="descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL function that samples the texture.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.glsl_sampler_type">
 <em class="property">property </em><code class="descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL type of the sampler.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.glsl_type">
 <em class="property">property </em><code class="descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.Texture3D.glsl_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>GLSL declaration strings required for a variable to hold this data.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.height">
 <em class="property">property </em><code class="descname">height</code><a class="headerlink" href="#vispy.gloo.Texture3D.height" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture height</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.Texture3D.width">
 <em class="property">property </em><code class="descname">width</code><a class="headerlink" href="#vispy.gloo.Texture3D.width" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture width</p>
@@ -1043,9 +1010,9 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.TextureAtlas">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">TextureAtlas</code><span class="sig-paren">(</span><em>shape=(1024</em>, <em>1024)</em>, <em>dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L886-L999"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.TextureAtlas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">TextureAtlas</code><span class="sig-paren">(</span><em>shape=(1024</em>, <em>1024)</em>, <em>dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L886-L999"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.TextureAtlas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Group multiple small data regions into a larger texture.</p>
 <p>The algorithm is based on the article by Jukka Jylänki : “A Thousand Ways
 to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin
@@ -1069,14 +1036,14 @@ Jylänki at: <a class="reference external" href="http://clb.demon.fi/files/Rect
 <p class="rubric">Notes</p>
 <p>This creates a 2D texture that holds 1D float32 data.
 An example of simple access:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bounds</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">get_free_region</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span><span class="o">.</span><span class="n">set_region</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.TextureAtlas.get_free_region">
-<code class="descname">get_free_region</code><span class="sig-paren">(</span><em>self</em>, <em>width</em>, <em>height</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/texture.py#L921-L982"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_free_region</code><span class="sig-paren">(</span><em><span class="n">width</span></em>, <em><span class="n">height</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L921-L982"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a free region of given size and allocate it</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1106,9 +1073,9 @@ An example of simple access:</p>
 </div>
 <div class="section" id="classes-related-to-fbo-s">
 <h2>Classes related to FBO’s<a class="headerlink" href="#classes-related-to-fbo-s" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.RenderBuffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">RenderBuffer</code><span class="sig-paren">(</span><em>shape=None</em>, <em>format=None</em>, <em>resizeable=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L16-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.RenderBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">RenderBuffer</code><span class="sig-paren">(</span><em><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">resizeable</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L16-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.RenderBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for render buffer object</p>
 <p>A render buffer can be in color, depth or stencil format. If this
 format is not specified, it is set when attached to the FrameBuffer.</p>
@@ -1128,15 +1095,15 @@ format is not specified, it is set when attached to the FrameBuffer.</p>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.RenderBuffer.format">
 <em class="property">property </em><code class="descname">format</code><a class="headerlink" href="#vispy.gloo.RenderBuffer.format" title="Permalink to this definition">¶</a></dt>
 <dd><p>RenderBuffer format</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.RenderBuffer.resize">
-<code class="descname">resize</code><span class="sig-paren">(</span><em>self</em>, <em>shape</em>, <em>format=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L52-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.RenderBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em><span class="n">shape</span></em>, <em><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L52-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.RenderBuffer.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the render-buffer size and format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1160,7 +1127,7 @@ GL_STENCIL_INDEX8</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.RenderBuffer.shape">
 <em class="property">property </em><code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.RenderBuffer.shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>RenderBuffer shape</p>
@@ -1168,9 +1135,9 @@ GL_STENCIL_INDEX8</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.FrameBuffer">
-<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">FrameBuffer</code><span class="sig-paren">(</span><em>color=None</em>, <em>depth=None</em>, <em>stencil=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L94-L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.</code><code class="descname">FrameBuffer</code><span class="sig-paren">(</span><em><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">depth</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">stencil</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L94-L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Frame buffer object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1188,34 +1155,34 @@ GL_STENCIL_INDEX8</p>
 </tr>
 </tbody>
 </table>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.activate">
-<code class="descname">activate</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L123-L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">activate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L123-L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Activate/use this frame buffer.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.color_buffer">
 <em class="property">property </em><code class="descname">color_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.color_buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Color buffer attachment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.deactivate">
-<code class="descname">deactivate</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L133-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deactivate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L133-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop using this frame buffer, the previous framebuffer will be
 made active.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.depth_buffer">
 <em class="property">property </em><code class="descname">depth_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.depth_buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Depth buffer attachment</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>self</em>, <em>mode='color'</em>, <em>alpha=True</em>, <em>crop=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L229-L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.read" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read</code><span class="sig-paren">(</span><em><span class="n">mode</span><span class="o">=</span><span class="default_value">'color'</span></em>, <em><span class="n">alpha</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">crop</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L229-L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return array of pixel values in an attached buffer</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1246,9 +1213,9 @@ the offset and dimensions of the crop.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.resize">
-<code class="descname">resize</code><span class="sig-paren">(</span><em>self</em>, <em>shape</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/framebuffer.py#L207-L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resize</code><span class="sig-paren">(</span><em><span class="n">shape</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/framebuffer.py#L207-L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.FrameBuffer.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize all attached buffers with the given shape</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1266,13 +1233,13 @@ of color channels is preserved.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.shape">
 <em class="property">property </em><code class="descname">shape</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>The shape of the Texture/RenderBuffer attached to this FrameBuffer</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.FrameBuffer.stencil_buffer">
 <em class="property">property </em><code class="descname">stencil_buffer</code><a class="headerlink" href="#vispy.gloo.FrameBuffer.stencil_buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stencil buffer attachment</p>
@@ -1283,125 +1250,20 @@ of color channels is preserved.</p>
 </div>
 <div class="section" id="module-vispy.gloo.wrappers">
 <span id="state-methods"></span><h2>State methods<a class="headerlink" href="#module-vispy.gloo.wrappers" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_viewport">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_viewport</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L99-L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_viewport" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the OpenGL viewport</p>
-<p>This is a wrapper for gl.glViewport.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>*args</strong><span class="classifier">tuple</span></dt><dd><p>X and Y coordinates, plus width and height. Can be passed in as
-individual components, or as a single tuple with four values.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="py class">
+<dt id="vispy.gloo.wrappers.GlooFunctions">
+<em class="property">class </em><code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">GlooFunctions</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L575-L586"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="vispy.gloo.wrappers.GlooFunctions.glir">
+<em class="property">property </em><code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GLIR queue corresponding to the current canvas</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_depth_range">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_range</code><span class="sig-paren">(</span><em>near=0.0</em>, <em>far=1.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L113-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_range" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set depth values</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>near</strong><span class="classifier">float</span></dt><dd><p>Near clipping plane.</p>
-</dd>
-<dt><strong>far</strong><span class="classifier">float</span></dt><dd><p>Far clipping plane.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_front_face">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_front_face</code><span class="sig-paren">(</span><em>mode='ccw'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L125-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_front_face" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set which faces are front-facing</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Can be ‘cw’ for clockwise or ‘ccw’ for counter-clockwise.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_cull_face">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_cull_face</code><span class="sig-paren">(</span><em>mode='back'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L135-L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_cull_face" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set front, back, or both faces to be culled</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Culling mode. Can be “front”, “back”, or “front_and_back”.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_line_width">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_line_width</code><span class="sig-paren">(</span><em>width=1.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L145-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_line_width" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set line width</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>The line width.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_polygon_offset">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_polygon_offset</code><span class="sig-paren">(</span><em>factor=0.0</em>, <em>units=0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L158-L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_polygon_offset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the scale and units used to calculate depth values</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>factor</strong><span class="classifier">float</span></dt><dd><p>Scale factor used to create a variable depth offset for
-each polygon.</p>
-</dd>
-<dt><strong>units</strong><span class="classifier">float</span></dt><dd><p>Multiplied by an implementation-specific value to create a
-constant depth offset.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.wrappers.clear">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">clear</code><span class="sig-paren">(</span><em>color=True</em>, <em>depth=True</em>, <em>stencil=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L180-L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.clear" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">clear</code><span class="sig-paren">(</span><em><span class="n">color</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">depth</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">stencil</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L180-L210"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the screen buffers</p>
 <p>This is a wrapper for gl.glClear.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1425,19 +1287,35 @@ be used to set the stencil clear index.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_clear_color">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_color</code><span class="sig-paren">(</span><em>color='black'</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L212-L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the screen clear color</p>
-<p>This is a wrapper for gl.glClearColor.</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.finish">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L532-L544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for GL commands to to finish</p>
+<p>This creates a GLIR command for glFinish and then processes the
+GLIR commands. If the GLIR interpreter is remote (e.g. WebGL), this
+function will return before GL has finished processing the commands.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.flush">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L546-L557"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush GL commands</p>
+<p>This is a wrapper for glFlush(). This also flushes the GLIR
+command queue.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.get_gl_configuration">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">get_gl_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L683-L747"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_gl_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the current gl configuration</p>
+<p>This function uses constants that are not in the OpenGL ES 2.1
+namespace, so only use this on desktop systems.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float | None</span></dt><dd><p>Alpha to use.</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>config</strong><span class="classifier">dict</span></dt><dd><p>The currently active OpenGL configuration.</p>
 </dd>
 </dl>
 </td>
@@ -1446,288 +1324,9 @@ be used to set the stencil clear index.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_clear_depth">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_depth</code><span class="sig-paren">(</span><em>depth=1.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L226-L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_depth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the clear value for the depth buffer</p>
-<p>This is a wrapper for gl.glClearDepth.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>depth</strong><span class="classifier">float</span></dt><dd><p>The depth to use.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_clear_stencil">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_stencil</code><span class="sig-paren">(</span><em>index=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L238-L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_stencil" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the clear value for the stencil buffer</p>
-<p>This is a wrapper for gl.glClearStencil.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>The index to use when the stencil buffer is cleared.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_blend_func">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_func</code><span class="sig-paren">(</span><em>srgb='one'</em>, <em>drgb='zero'</em>, <em>salpha=None</em>, <em>dalpha=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L252-L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_func" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specify pixel arithmetic for RGB and alpha</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>srgb</strong><span class="classifier">str</span></dt><dd><p>Source RGB factor.</p>
-</dd>
-<dt><strong>drgb</strong><span class="classifier">str</span></dt><dd><p>Destination RGB factor.</p>
-</dd>
-<dt><strong>salpha</strong><span class="classifier">str | None</span></dt><dd><p>Source alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">srgb</span></code> is used.</p>
-</dd>
-<dt><strong>dalpha</strong><span class="classifier">str</span></dt><dd><p>Destination alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">drgb</span></code> is used.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_blend_color">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_color</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L272-L280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the blend color</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_blend_equation">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_equation</code><span class="sig-paren">(</span><em>mode_rgb</em>, <em>mode_alpha=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L282-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_equation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specify the equation for RGB and alpha blending</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>mode_rgb</strong><span class="classifier">str</span></dt><dd><p>Mode for RGB.</p>
-</dd>
-<dt><strong>mode_alpha</strong><span class="classifier">str | None</span></dt><dd><p>Mode for Alpha. If None, <code class="docutils literal notranslate"><span class="pre">mode_rgb</span></code> is used.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>See <code class="docutils literal notranslate"><span class="pre">set_blend_equation</span></code> for valid modes.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_scissor">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_scissor</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>w</em>, <em>h</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L303-L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_scissor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Define the scissor box</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>x</strong><span class="classifier">int</span></dt><dd><p>Left corner of the box.</p>
-</dd>
-<dt><strong>y</strong><span class="classifier">int</span></dt><dd><p>Lower corner of the box.</p>
-</dd>
-<dt><strong>w</strong><span class="classifier">int</span></dt><dd><p>The width of the box.</p>
-</dd>
-<dt><strong>h</strong><span class="classifier">int</span></dt><dd><p>The height of the box.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_stencil_func">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_func</code><span class="sig-paren">(</span><em>func='always'</em>, <em>ref=0</em>, <em>mask=8</em>, <em>face='front_and_back'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L319-L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_func" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set front or back function and reference value</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>See set_stencil_func.</p>
-</dd>
-<dt><strong>ref</strong><span class="classifier">int</span></dt><dd><p>Reference value for the stencil test.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
-</dd>
-<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_stencil_mask">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_mask</code><span class="sig-paren">(</span><em>mask=8</em>, <em>face='front_and_back'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L337-L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Control the front or back writing of individual bits in the stencil</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
-</dd>
-<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_stencil_op">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_op</code><span class="sig-paren">(</span><em>sfail='keep'</em>, <em>dpfail='keep'</em>, <em>dppass='keep'</em>, <em>face='front_and_back'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L349-L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_op" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set front or back stencil test actions</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>sfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil fails. Must be one of
-‘keep’, ‘zero’, ‘replace’, ‘incr’, ‘incr_wrap’,
-‘decr’, ‘decr_wrap’, or ‘invert’.</p>
-</dd>
-<dt><strong>dpfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil passes.</p>
-</dd>
-<dt><strong>dppass</strong><span class="classifier">str</span></dt><dd><p>Action to take when both the stencil and depth tests pass,
-or when the stencil test passes and either there is no depth
-buffer or depth testing is not enabled.</p>
-</dd>
-<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_depth_func">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_func</code><span class="sig-paren">(</span><em>func='less'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L373-L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_func" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specify the value used for depth buffer comparisons</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>The depth comparison function. Must be one of ‘never’, ‘less’,
-‘equal’, ‘lequal’, ‘greater’, ‘gequal’, ‘notequal’, or ‘always’.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_depth_mask">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_mask</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L384-L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Toggle writing into the depth buffer</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>flag</strong><span class="classifier">bool</span></dt><dd><p>Whether depth writing should be enabled.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_color_mask">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_color_mask</code><span class="sig-paren">(</span><em>red</em>, <em>green</em>, <em>blue</em>, <em>alpha</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L394-L409"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_color_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Toggle writing of frame buffer color components</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>red</strong><span class="classifier">bool</span></dt><dd><p>Red toggle.</p>
-</dd>
-<dt><strong>green</strong><span class="classifier">bool</span></dt><dd><p>Green toggle.</p>
-</dd>
-<dt><strong>blue</strong><span class="classifier">bool</span></dt><dd><p>Blue toggle.</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">bool</span></dt><dd><p>Alpha toggle.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_sample_coverage">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_sample_coverage</code><span class="sig-paren">(</span><em>value=1.0</em>, <em>invert=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L411-L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_sample_coverage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specify multisample coverage parameters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>Sample coverage value (will be clamped between 0. and 1.).</p>
-</dd>
-<dt><strong>invert</strong><span class="classifier">bool</span></dt><dd><p>Specify if the coverage masks should be inverted.</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.wrappers.get_state_presets">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">get_state_presets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L431-L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_state_presets" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">get_state_presets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L431-L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_state_presets" title="Permalink to this definition">¶</a></dt>
 <dd><p>The available GL state presets</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1743,85 +1342,9 @@ buffer or depth testing is not enabled.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.set_state">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_state</code><span class="sig-paren">(</span><em>preset=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L441-L526"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set OpenGL rendering state, optionally using a preset</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>preset</strong><span class="classifier">str | None</span></dt><dd><p>Can be one of (‘opaque’, ‘translucent’, ‘additive’) to use
-use reasonable defaults for these typical use cases.</p>
-</dd>
-<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>Other supplied keyword arguments will override any preset defaults.
-Options to be enabled or disabled should be supplied as booleans
-(e.g., <code class="docutils literal notranslate"><span class="pre">'depth_test=True'</span></code>, <code class="docutils literal notranslate"><span class="pre">cull_face=False</span></code>), non-boolean
-entries will be passed as arguments to <code class="docutils literal notranslate"><span class="pre">set_*</span></code> functions (e.g.,
-<code class="docutils literal notranslate"><span class="pre">blend_func=('src_alpha',</span> <span class="pre">'one')</span></code> will call <code class="docutils literal notranslate"><span class="pre">set_blend_func</span></code>).</p>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>This serves three purposes:</p>
-<ol class="arabic simple">
-<li>Set GL state using reasonable presets.</li>
-<li>Wrapping glEnable/glDisable functionality.</li>
-<li>Convienence wrapping of other <code class="docutils literal notranslate"><span class="pre">gloo.set_*</span></code> functions.</li>
-</ol>
-<p>For example, one could do the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy</span> <span class="k">import</span> <span class="n">gloo</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;translucent&#39;</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
-</pre></div>
-</div>
-<p>This would take the preset defaults for ‘translucent’, turn
-depth testing off (which would normally be on for that preset),
-and additionally set the glClearColor parameter to be white.</p>
-<p>Another example to showcase glEnable/glDisable wrapping:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">polygon_offset_fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># noqa, doctest:+SKIP</span>
-</pre></div>
-</div>
-<p>This would be equivalent to calling</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="k">import</span> <span class="n">gl</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glDisable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POLYGON_OFFSET_FILL</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Or here’s another example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
-</pre></div>
-</div>
-<p>Thus arbitrary GL state components can be set directly using
-<code class="docutils literal notranslate"><span class="pre">set_state</span></code>. Note that individual functions are exposed e.g.,
-as <code class="docutils literal notranslate"><span class="pre">set_clear_color</span></code>, with some more informative docstrings
-about those particular functions.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.finish">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L532-L544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.finish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wait for GL commands to to finish</p>
-<p>This creates a GLIR command for glFinish and then processes the
-GLIR commands. If the GLIR interpreter is remote (e.g. WebGL), this
-function will return before GL has finished processing the commands.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="vispy.gloo.wrappers.flush">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L546-L557"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.flush" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flush GL commands</p>
-<p>This is a wrapper for glFlush(). This also flushes the GLIR
-command queue.</p>
-</dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.wrappers.read_pixels">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">read_pixels</code><span class="sig-paren">(</span><em>viewport=None</em>, <em>alpha=True</em>, <em>mode='color'</em>, <em>out_type='unsigned_byte'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L605-L680"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.read_pixels" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">read_pixels</code><span class="sig-paren">(</span><em><span class="n">viewport</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">alpha</span><span class="o">=</span><span class="default_value">True</span></em>, <em><span class="n">mode</span><span class="o">=</span><span class="default_value">'color'</span></em>, <em><span class="n">out_type</span><span class="o">=</span><span class="default_value">'unsigned_byte'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L605-L680"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.read_pixels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read pixels from the currently selected buffer.</p>
 <p>Under most circumstances, this function reads from the front buffer.
 Unlike all other functions in vispy.gloo, this function directly executes
@@ -1862,9 +1385,249 @@ is 1.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_color">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_color</code><span class="sig-paren">(</span><em><span class="n">color</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L272-L280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the blend color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_equation">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_equation</code><span class="sig-paren">(</span><em><span class="n">mode_rgb</span></em>, <em><span class="n">mode_alpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L282-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_equation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the equation for RGB and alpha blending</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mode_rgb</strong><span class="classifier">str</span></dt><dd><p>Mode for RGB.</p>
+</dd>
+<dt><strong>mode_alpha</strong><span class="classifier">str | None</span></dt><dd><p>Mode for Alpha. If None, <code class="docutils literal notranslate"><span class="pre">mode_rgb</span></code> is used.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">set_blend_equation</span></code> for valid modes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_func">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_blend_func</code><span class="sig-paren">(</span><em><span class="n">srgb</span><span class="o">=</span><span class="default_value">'one'</span></em>, <em><span class="n">drgb</span><span class="o">=</span><span class="default_value">'zero'</span></em>, <em><span class="n">salpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">dalpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L252-L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify pixel arithmetic for RGB and alpha</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>srgb</strong><span class="classifier">str</span></dt><dd><p>Source RGB factor.</p>
+</dd>
+<dt><strong>drgb</strong><span class="classifier">str</span></dt><dd><p>Destination RGB factor.</p>
+</dd>
+<dt><strong>salpha</strong><span class="classifier">str | None</span></dt><dd><p>Source alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">srgb</span></code> is used.</p>
+</dd>
+<dt><strong>dalpha</strong><span class="classifier">str</span></dt><dd><p>Destination alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">drgb</span></code> is used.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_color">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_color</code><span class="sig-paren">(</span><em><span class="n">color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em><span class="n">alpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L212-L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the screen clear color</p>
+<p>This is a wrapper for gl.glClearColor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float | None</span></dt><dd><p>Alpha to use.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_depth">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_depth</code><span class="sig-paren">(</span><em><span class="n">depth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L226-L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the clear value for the depth buffer</p>
+<p>This is a wrapper for gl.glClearDepth.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>depth</strong><span class="classifier">float</span></dt><dd><p>The depth to use.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_stencil">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_clear_stencil</code><span class="sig-paren">(</span><em><span class="n">index</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L238-L248"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_stencil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the clear value for the stencil buffer</p>
+<p>This is a wrapper for gl.glClearStencil.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>The index to use when the stencil buffer is cleared.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_color_mask">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_color_mask</code><span class="sig-paren">(</span><em><span class="n">red</span></em>, <em><span class="n">green</span></em>, <em><span class="n">blue</span></em>, <em><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L394-L409"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_color_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle writing of frame buffer color components</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>red</strong><span class="classifier">bool</span></dt><dd><p>Red toggle.</p>
+</dd>
+<dt><strong>green</strong><span class="classifier">bool</span></dt><dd><p>Green toggle.</p>
+</dd>
+<dt><strong>blue</strong><span class="classifier">bool</span></dt><dd><p>Blue toggle.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">bool</span></dt><dd><p>Alpha toggle.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_cull_face">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_cull_face</code><span class="sig-paren">(</span><em><span class="n">mode</span><span class="o">=</span><span class="default_value">'back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L135-L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_cull_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front, back, or both faces to be culled</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Culling mode. Can be “front”, “back”, or “front_and_back”.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_func">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_func</code><span class="sig-paren">(</span><em><span class="n">func</span><span class="o">=</span><span class="default_value">'less'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L373-L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the value used for depth buffer comparisons</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>The depth comparison function. Must be one of ‘never’, ‘less’,
+‘equal’, ‘lequal’, ‘greater’, ‘gequal’, ‘notequal’, or ‘always’.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_mask">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_mask</code><span class="sig-paren">(</span><em><span class="n">flag</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L384-L392"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle writing into the depth buffer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>flag</strong><span class="classifier">bool</span></dt><dd><p>Whether depth writing should be enabled.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_range">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_depth_range</code><span class="sig-paren">(</span><em><span class="n">near</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em><span class="n">far</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L113-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set depth values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>near</strong><span class="classifier">float</span></dt><dd><p>Near clipping plane.</p>
+</dd>
+<dt><strong>far</strong><span class="classifier">float</span></dt><dd><p>Far clipping plane.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_front_face">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_front_face</code><span class="sig-paren">(</span><em><span class="n">mode</span><span class="o">=</span><span class="default_value">'ccw'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L125-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_front_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set which faces are front-facing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Can be ‘cw’ for clockwise or ‘ccw’ for counter-clockwise.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
 <dt id="vispy.gloo.wrappers.set_hint">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_hint</code><span class="sig-paren">(</span><em>target</em>, <em>mode</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L559-L572"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_hint" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_hint</code><span class="sig-paren">(</span><em><span class="n">target</span></em>, <em><span class="n">mode</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L559-L572"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_hint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set OpenGL drawing hint</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1883,18 +1646,16 @@ is 1.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="vispy.gloo.wrappers.get_gl_configuration">
-<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">get_gl_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L683-L747"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_gl_configuration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the current gl configuration</p>
-<p>This function uses constants that are not in the OpenGL ES 2.1
-namespace, so only use this on desktop systems.</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_line_width">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_line_width</code><span class="sig-paren">(</span><em><span class="n">width</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L145-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_line_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set line width</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>config</strong><span class="classifier">dict</span></dt><dd><p>The currently active OpenGL configuration.</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>The line width.</p>
 </dd>
 </dl>
 </td>
@@ -1903,87 +1664,147 @@ namespace, so only use this on desktop systems.</p>
 </table>
 </dd></dl>
 
-<dl class="class">
-<dt id="vispy.gloo.wrappers.GlooFunctions">
-<em class="property">class </em><code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">GlooFunctions</code><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/wrappers.py#L575-L586"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="vispy.gloo.wrappers.GlooFunctions.glir">
-<em class="property">property </em><code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions.glir" title="Permalink to this definition">¶</a></dt>
-<dd><p>The GLIR queue corresponding to the current canvas</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_polygon_offset">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_polygon_offset</code><span class="sig-paren">(</span><em><span class="n">factor</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em><span class="n">units</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L158-L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_polygon_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scale and units used to calculate depth values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>factor</strong><span class="classifier">float</span></dt><dd><p>Scale factor used to create a variable depth offset for
+each polygon.</p>
+</dd>
+<dt><strong>units</strong><span class="classifier">float</span></dt><dd><p>Multiplied by an implementation-specific value to create a
+constant depth offset.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_sample_coverage">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_sample_coverage</code><span class="sig-paren">(</span><em><span class="n">value</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em><span class="n">invert</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L411-L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_sample_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify multisample coverage parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>Sample coverage value (will be clamped between 0. and 1.).</p>
+</dd>
+<dt><strong>invert</strong><span class="classifier">bool</span></dt><dd><p>Specify if the coverage masks should be inverted.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_scissor">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_scissor</code><span class="sig-paren">(</span><em><span class="n">x</span></em>, <em><span class="n">y</span></em>, <em><span class="n">w</span></em>, <em><span class="n">h</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L303-L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_scissor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the scissor box</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>x</strong><span class="classifier">int</span></dt><dd><p>Left corner of the box.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">int</span></dt><dd><p>Lower corner of the box.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">int</span></dt><dd><p>The width of the box.</p>
+</dd>
+<dt><strong>h</strong><span class="classifier">int</span></dt><dd><p>The height of the box.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_state">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_state</code><span class="sig-paren">(</span><em><span class="n">preset</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L441-L526"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set OpenGL rendering state, optionally using a preset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>preset</strong><span class="classifier">str | None</span></dt><dd><p>Can be one of (‘opaque’, ‘translucent’, ‘additive’) to use
+use reasonable defaults for these typical use cases.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>Other supplied keyword arguments will override any preset defaults.
+Options to be enabled or disabled should be supplied as booleans
+(e.g., <code class="docutils literal notranslate"><span class="pre">'depth_test=True'</span></code>, <code class="docutils literal notranslate"><span class="pre">cull_face=False</span></code>), non-boolean
+entries will be passed as arguments to <code class="docutils literal notranslate"><span class="pre">set_*</span></code> functions (e.g.,
+<code class="docutils literal notranslate"><span class="pre">blend_func=('src_alpha',</span> <span class="pre">'one')</span></code> will call <code class="docutils literal notranslate"><span class="pre">set_blend_func</span></code>).</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This serves three purposes:</p>
+<ol class="arabic simple">
+<li>Set GL state using reasonable presets.</li>
+<li>Wrapping glEnable/glDisable functionality.</li>
+<li>Convienence wrapping of other <code class="docutils literal notranslate"><span class="pre">gloo.set_*</span></code> functions.</li>
+</ol>
+<p>For example, one could do the following:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;translucent&#39;</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
 </div>
-<div class="section" id="module-vispy.gloo.context">
-<span id="the-opengl-context"></span><h2>The OpenGL context<a class="headerlink" href="#module-vispy.gloo.context" title="Permalink to this headline">¶</a></h2>
-<p>Functionality to deal with GL Contexts in vispy. This module is defined
-in gloo, because gloo (and the layers that depend on it) need to be
-context aware. The vispy.app module “provides” a context, and therefore
-depends on this module. Although the GLContext class is aimed for use
-by vispy.app (for practical reasons), it should be possible to use
-GLContext without using vispy.app by overloading it in an appropriate
-manner.</p>
-<p>An GLContext object acts as a placeholder on which different parts
-of vispy (or other systems) can keep track of information related to
-an OpenGL context.</p>
-<dl class="class">
-<dt id="vispy.gloo.context.FakeCanvas">
-<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">FakeCanvas</code><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L262-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fake canvas to allow using gloo without vispy.app</p>
-<p>Instantiate this class to collect GLIR commands from gloo
-interactions. Call flush() in your draw event handler to execute
-the commands in the active contect.</p>
-<dl class="method">
-<dt id="vispy.gloo.context.FakeCanvas.flush">
-<code class="descname">flush</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L274-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas.flush" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flush commands. Call this after setting to context to current.</p>
+<p>This would take the preset defaults for ‘translucent’, turn
+depth testing off (which would normally be on for that preset),
+and additionally set the glClearColor parameter to be white.</p>
+<p>Another example to showcase glEnable/glDisable wrapping:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">polygon_offset_fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
+</div>
+<p>This would be equivalent to calling</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glDisable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POLYGON_OFFSET_FILL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or here’s another example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
+</div>
+<p>Thus arbitrary GL state components can be set directly using
+<code class="docutils literal notranslate"><span class="pre">set_state</span></code>. Note that individual functions are exposed e.g.,
+as <code class="docutils literal notranslate"><span class="pre">set_clear_color</span></code>, with some more informative docstrings
+about those particular functions.</p>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="class">
-<dt id="vispy.gloo.context.GLContext">
-<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLContext</code><span class="sig-paren">(</span><em>config=None</em>, <em>shared=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L88-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext" title="Permalink to this definition">¶</a></dt>
-<dd><p>An object encapsulating data necessary for a OpenGL context</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_func">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_func</code><span class="sig-paren">(</span><em><span class="n">func</span><span class="o">=</span><span class="default_value">'always'</span></em>, <em><span class="n">ref</span><span class="o">=</span><span class="default_value">0</span></em>, <em><span class="n">mask</span><span class="o">=</span><span class="default_value">8</span></em>, <em><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L319-L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front or back function and reference value</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>config</strong><span class="classifier">dict | None</span></dt><dd><p>The requested configuration.</p>
+<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>See set_stencil_func.</p>
 </dd>
-<dt><strong>shared</strong><span class="classifier">instance of GLContext | None</span></dt><dd><p>The shared context.</p>
+<dt><strong>ref</strong><span class="classifier">int</span></dt><dd><p>Reference value for the stencil test.</p>
 </dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.capabilities">
-<em class="property">property </em><code class="descname">capabilities</code><a class="headerlink" href="#vispy.gloo.context.GLContext.capabilities" title="Permalink to this definition">¶</a></dt>
-<dd><p>The OpenGL capabilities</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.config">
-<em class="property">property </em><code class="descname">config</code><a class="headerlink" href="#vispy.gloo.context.GLContext.config" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary describing the configuration of this GL context.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.create_shared">
-<code class="descname">create_shared</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ref</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L120-L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.create_shared" title="Permalink to this definition">¶</a></dt>
-<dd><p>For the app backends to create the GLShared object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name.</p>
+<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
 </dd>
-<dt><strong>ref</strong><span class="classifier">object</span></dt><dd><p>The reference.</p>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
 </dd>
 </dl>
 </td>
@@ -1992,16 +1813,18 @@ the commands in the active contect.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.flush_commands">
-<code class="descname">flush_commands</code><span class="sig-paren">(</span><em>self</em>, <em>event=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L160-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.flush_commands" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flush</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_mask">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_mask</code><span class="sig-paren">(</span><em><span class="n">mask</span><span class="o">=</span><span class="default_value">8</span></em>, <em><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L337-L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control the front or back writing of individual bits in the stencil</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
+</dd>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
 </dd>
 </dl>
 </td>
@@ -2010,16 +1833,37 @@ the commands in the active contect.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.glir">
-<em class="property">property </em><code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.context.GLContext.glir" title="Permalink to this definition">¶</a></dt>
-<dd><p>The glir queue for the context. This queue is for objects
-that can be shared accross canvases (if they share a contex).</p>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_op">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_stencil_op</code><span class="sig-paren">(</span><em><span class="n">sfail</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em><span class="n">dpfail</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em><span class="n">dppass</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L349-L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front or back stencil test actions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>sfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil fails. Must be one of
+‘keep’, ‘zero’, ‘replace’, ‘incr’, ‘incr_wrap’,
+‘decr’, ‘decr_wrap’, or ‘invert’.</p>
+</dd>
+<dt><strong>dpfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil passes.</p>
+</dd>
+<dt><strong>dppass</strong><span class="classifier">str</span></dt><dd><p>Action to take when both the stencil and depth tests pass,
+or when the stencil test passes and either there is no depth
+buffer or depth testing is not enabled.</p>
+</dd>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="method">
-<dt id="vispy.gloo.context.GLContext.set_viewport">
-<code class="descname">set_viewport</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L178-L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.set_viewport" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_viewport">
+<code class="descclassname">vispy.gloo.wrappers.</code><code class="descname">set_viewport</code><span class="sig-paren">(</span><em><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L99-L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the OpenGL viewport</p>
 <p>This is a wrapper for gl.glViewport.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2037,7 +1881,130 @@ individual components, or as a single tuple with four values.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+</div>
+<div class="section" id="module-vispy.gloo.context">
+<span id="the-opengl-context"></span><h2>The OpenGL context<a class="headerlink" href="#module-vispy.gloo.context" title="Permalink to this headline">¶</a></h2>
+<p>Functionality to deal with GL Contexts in vispy. This module is defined
+in gloo, because gloo (and the layers that depend on it) need to be
+context aware. The vispy.app module “provides” a context, and therefore
+depends on this module. Although the GLContext class is aimed for use
+by vispy.app (for practical reasons), it should be possible to use
+GLContext without using vispy.app by overloading it in an appropriate
+manner.</p>
+<p>An GLContext object acts as a placeholder on which different parts
+of vispy (or other systems) can keep track of information related to
+an OpenGL context.</p>
+<dl class="py class">
+<dt id="vispy.gloo.context.FakeCanvas">
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">FakeCanvas</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L262-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fake canvas to allow using gloo without vispy.app</p>
+<p>Instantiate this class to collect GLIR commands from gloo
+interactions. Call flush() in your draw event handler to execute
+the commands in the active contect.</p>
+<dl class="py method">
+<dt id="vispy.gloo.context.FakeCanvas.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L274-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush commands. Call this after setting to context to current.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.context.GLContext">
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLContext</code><span class="sig-paren">(</span><em><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em><span class="n">shared</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L88-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object encapsulating data necessary for a OpenGL context</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>config</strong><span class="classifier">dict | None</span></dt><dd><p>The requested configuration.</p>
+</dd>
+<dt><strong>shared</strong><span class="classifier">instance of GLContext | None</span></dt><dd><p>The shared context.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.capabilities">
+<em class="property">property </em><code class="descname">capabilities</code><a class="headerlink" href="#vispy.gloo.context.GLContext.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>The OpenGL capabilities</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.config">
+<em class="property">property </em><code class="descname">config</code><a class="headerlink" href="#vispy.gloo.context.GLContext.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary describing the configuration of this GL context.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.create_shared">
+<code class="descname">create_shared</code><span class="sig-paren">(</span><em><span class="n">name</span></em>, <em><span class="n">ref</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L120-L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.create_shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>For the app backends to create the GLShared object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name.</p>
+</dd>
+<dt><strong>ref</strong><span class="classifier">object</span></dt><dd><p>The reference.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.flush_commands">
+<code class="descname">flush_commands</code><span class="sig-paren">(</span><em><span class="n">event</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L160-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.flush_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.glir">
+<em class="property">property </em><code class="descname">glir</code><a class="headerlink" href="#vispy.gloo.context.GLContext.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The glir queue for the context. This queue is for objects
+that can be shared accross canvases (if they share a contex).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.context.GLContext.set_viewport">
+<code class="descname">set_viewport</code><span class="sig-paren">(</span><em><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L178-L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.set_viewport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the OpenGL viewport</p>
+<p>This is a wrapper for gl.glViewport.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>*args</strong><span class="classifier">tuple</span></dt><dd><p>X and Y coordinates, plus width and height. Can be passed in as
+individual components, or as a single tuple with four values.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
 <dt id="vispy.gloo.context.GLContext.shared">
 <em class="property">property </em><code class="descname">shared</code><a class="headerlink" href="#vispy.gloo.context.GLContext.shared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the object that represents the namespace that can
@@ -2046,38 +2013,38 @@ potentially be shared between multiple contexts.</p>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="vispy.gloo.context.GLShared">
-<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLShared</code><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L186-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">vispy.gloo.context.</code><code class="descname">GLShared</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L186-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a “namespace” that can be shared between
 different contexts. App backends can associate themselves with this
 object via add_ref().</p>
 <p>This object can be used to establish whether two contexts/canvases
 share objects, and can be used as a placeholder to store shared
 information, such as glyph atlasses.</p>
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.context.GLShared.add_ref">
-<code class="descname">add_ref</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>ref</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L225-L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLShared.add_ref" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_ref</code><span class="sig-paren">(</span><em><span class="n">name</span></em>, <em><span class="n">ref</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L225-L236"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.GLShared.add_ref" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a reference for the backend object that gives access
 to the low level context. Used in vispy.app.canvas.backends.
 The given name must match with that of previously added
 references.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.context.GLShared.name">
 <em class="property">property </em><code class="descname">name</code><a class="headerlink" href="#vispy.gloo.context.GLShared.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the canvas backend that this shared namespace is
 associated with. Can be None.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.context.GLShared.parser">
 <em class="property">property </em><code class="descname">parser</code><a class="headerlink" href="#vispy.gloo.context.GLShared.parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>The GLIR parser (shared between contexts)</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="vispy.gloo.context.GLShared.ref">
 <em class="property">property </em><code class="descname">ref</code><a class="headerlink" href="#vispy.gloo.context.GLShared.ref" title="Permalink to this definition">¶</a></dt>
 <dd><p>A reference (stored internally via a weakref) to an object
@@ -2088,15 +2055,15 @@ typically be the CanvasBackend object.</p>
 
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.context.forget_canvas">
-<code class="descclassname">vispy.gloo.context.</code><code class="descname">forget_canvas</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L79-L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.forget_canvas" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">forget_canvas</code><span class="sig-paren">(</span><em><span class="n">canvas</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L79-L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.forget_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forget about the given canvas. Used by the canvas when closed.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.context.get_current_canvas">
-<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_current_canvas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L45-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.get_current_canvas" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_current_canvas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L45-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.get_current_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the currently active canvas</p>
 <p>Returns None if there is no canvas available. A canvas is made
 active on initialization and before the draw event is emitted.</p>
@@ -2106,9 +2073,9 @@ no current Canvas. Use Canvas.set_current() to manually activate a
 canvas.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.context.get_default_config">
-<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_default_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L34-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.get_default_config" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">get_default_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L34-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.get_default_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the default OpenGL context configuration</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2124,9 +2091,9 @@ canvas.</p>
 </table>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="vispy.gloo.context.set_current_canvas">
-<code class="descclassname">vispy.gloo.context.</code><code class="descname">set_current_canvas</code><span class="sig-paren">(</span><em>canvas</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/0.6/vispy/gloo/context.py#L63-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.set_current_canvas" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">vispy.gloo.context.</code><code class="descname">set_current_canvas</code><span class="sig-paren">(</span><em><span class="n">canvas</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/context.py#L63-L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.context.set_current_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a canvas active. Used primarily by the canvas itself.</p>
 </dd></dl>
 
@@ -2158,7 +2125,7 @@ canvas.</p>
       <li class="pull-right"><a href="#">Back to top</a></li>
     </ul>
     <ul class="list-unstyled small">
-      <li>2013-2019, VisPy developers</li>
+      <li>2013-2020, VisPy developers</li>
       <li>Code licensed under
         <a href="http://opensource.org/licenses/BSD-3-Clause">BSD license</a>,
         documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 </a>
