@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.visuals.transforms.transform_system module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.visuals.axis module" href="vispy.visuals.axis.html" />
+    <link rel="prev" title="vispy.visuals.transforms.nonlinear module" href="vispy.visuals.transforms.nonlinear.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.visuals.transforms.transform_system.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.visuals.transforms.transform_system">
+<span id="vispy-visuals-transforms-transform-system-module"></span><h1>vispy.visuals.transforms.transform_system module<a class="headerlink" href="#module-vispy.visuals.transforms.transform_system" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.transform_system.</code><code class="sig-name descname">TransformSystem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">canvas</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L15-L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>TransformSystem encapsulates information about the coordinate
+systems needed to draw a Visual.</p>
+<p>Visual rendering operates in six coordinate systems:</p>
+<ul class="simple">
+<li><p><strong>Visual</strong> - arbitrary local coordinate frame of the visual. Vertex
+buffers used by the visual are usually specified in this coordinate
+system.</p></li>
+<li><p><strong>Scene</strong> - This is an isometric coordinate system used mainly for 
+lighting calculations.</p></li>
+<li><p><strong>Document</strong> - This coordinate system has units of _logical_ pixels, and
+should usually represent the pixel coordinates of the canvas being drawn
+to. Visuals use this coordinate system to make measurements for font
+size, line width, and in general anything that is specified in physical
+units (px, pt, mm, in, etc.). In most circumstances, this is exactly the
+same as the canvas coordinate system.</p></li>
+<li><p><strong>Canvas</strong> - This coordinate system represents the logical pixel
+coordinates of the canvas. It has its origin in the top-left corner of
+the canvas, and is typically the coordinate system that mouse and touch 
+events are reported in. Note that, by convention, _logical_ pixels
+are not necessarily the same size as the _physical_ pixels in the
+framebuffer that is being rendered to.</p></li>
+<li><p><strong>Framebuffer</strong> - The buffer coordinate system has units of _physical_ 
+pixels, and should usually represent the coordinates of the current 
+framebuffer (on the canvas or an FBO) being rendered to. Visuals use this
+coordinate system primarily for antialiasing calculations. It is also the
+coorinate system used by glFragCoord. In most cases,
+this will have the same scale as the document and canvas coordinate 
+systems because the active framebuffer is the
+back buffer of the canvas, and the canvas will have _logical_ and
+_physical_ pixels of the same size. However, the scale may be different
+in the case of high-resolution displays, or when rendering to an 
+off-screen framebuffer with different scaling or boundaries than the
+canvas.</p></li>
+<li><p><strong>Render</strong> - This coordinate system is the obligatory system for
+vertices returned by a vertex shader. It has coordinates (-1, -1) to
+(1, 1) across the current glViewport. In OpenGL terminology, this is
+called clip coordinates.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>canvas</strong><span class="classifier">Canvas</span></dt><dd><p>The canvas being drawn to.</p>
+</dd>
+<dt><strong>dpi</strong><span class="classifier">float</span></dt><dd><p>The dot-per-inch resolution of the document coordinate system. By
+default this is set to the resolution of the canvas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>By default, TransformSystems are configured such that the document
+coordinate system matches the logical pixels of the canvas,</p>
+<p class="rubric">Examples</p>
+<p>1. To convert local vertex coordinates to normalized device coordinates in
+the vertex shader, we first need a vertex shader that supports configurable
+transformations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vec4 a_position;
+void main() {
+    gl_Position = $transform(a_position);
+}
+</pre></div>
+</div>
+<p>Next, we supply the complete chain of transforms when drawing the visual:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def draw(tr_sys):</dt><dd><p>tr = tr_sys.get_full_transform()
+self.program[‘transform’] = tr.shader_map()
+self.program[‘a_position’] = self.vertex_buffer
+self.program.draw(‘triangles’)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>2. Draw a line whose width is given in mm. To start, we need normal vectors
+for each vertex, which tell us the direction the vertex should move in
+order to set the line width:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vec4 a_position;
+vec4 a_normal;
+float u_line_width;
+float u_dpi;
+void main() {
+    // map vertex position and normal vector to the document cs
+    vec4 doc_pos = $visual_to_doc(a_position);
+    vec4 doc_normal = $visual_to_doc(a_position + a_normal) - doc_pos;
+
+    // Use DPI to convert mm line width to logical pixels
+    float px_width = (u_line_width / 25.4) * dpi;
+
+    // expand by line width
+    doc_pos += normalize(doc_normal) * px_width;
+
+    // finally, map the remainder of the way to normalized device
+    // coordinates.
+    gl_Position = $doc_to_render(a_position);
+}
+</pre></div>
+</div>
+<p>In this case, we need to access
+the transforms independently, so <code class="docutils literal notranslate"><span class="pre">get_full_transform()</span></code> is not useful
+here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">tr_sys</span><span class="p">):</span>
+    <span class="c1"># Send two parts of the full transform separately</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_doc</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+    <span class="n">doc_to_render</span> <span class="o">=</span> <span class="p">(</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">framebuffer_transform</span> <span class="o">*</span>
+                     <span class="n">tr_sys</span><span class="o">.</span><span class="n">document_transform</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_to_render</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_line_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">dpi</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_normal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normal_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;triangles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Draw a triangle with antialiasing at the edge.</p></li>
+<li><p>Using inverse transforms in the fragment shader</p></li>
+</ol>
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.canvas">
+<em class="property">property </em><code class="sig-name descname">canvas</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Canvas being drawn to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.canvas_transform">
+<em class="property">property </em><code class="sig-name descname">canvas_transform</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.canvas_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from canvas coordinate frame to framebuffer
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.configure">
+<code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">viewport</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fbo_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fbo_rect</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">canvas</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L178-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically configure the TransformSystem:</p>
+<ul class="simple">
+<li><p>canvas_transform maps from the Canvas logical pixel
+coordinate system to the framebuffer coordinate system, taking into 
+account the logical/physical pixel scale factor, current FBO 
+position, and y-axis inversion.</p></li>
+<li><p>framebuffer_transform maps from the current GL viewport on the
+framebuffer coordinate system to clip coordinates (-1 to 1).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>viewport</strong><span class="classifier">tuple or None</span></dt><dd><p>The GL viewport rectangle (x, y, w, h). If None, then it
+is assumed to cover the entire canvas.</p>
+</dd>
+<dt><strong>fbo_size</strong><span class="classifier">tuple or None</span></dt><dd><p>The size of the active FBO. If None, then it is assumed to have the
+same size as the canvas’s framebuffer.</p>
+</dd>
+<dt><strong>fbo_rect</strong><span class="classifier">tuple or None</span></dt><dd><p>The position and size (x, y, w, h) of the FBO in the coordinate
+system of the canvas’s framebuffer. If None, then the bounds are
+assumed to cover the entire active framebuffer.</p>
+</dd>
+<dt><strong>canvas</strong><span class="classifier">Canvas instance</span></dt><dd><p>Optionally set the canvas for this TransformSystem. See the 
+<cite>canvas</cite> property.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.document_transform">
+<em class="property">property </em><code class="sig-name descname">document_transform</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.document_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from document coordinate frame to the framebuffer
+(physical pixel) coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.dpi">
+<em class="property">property </em><code class="sig-name descname">dpi</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.dpi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Physical resolution of the document coordinate system (dots per
+inch).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.framebuffer_transform">
+<em class="property">property </em><code class="sig-name descname">framebuffer_transform</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.framebuffer_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from pixel coordinate frame to rendering
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.get_transform">
+<code class="sig-name descname">get_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map_from</span><span class="o">=</span><span class="default_value">'visual'</span></em>, <em class="sig-param"><span class="n">map_to</span><span class="o">=</span><span class="default_value">'render'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L328-L350"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.get_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a transform mapping between any two coordinate systems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>map_from</strong><span class="classifier">str</span></dt><dd><p>The starting coordinate system to map from. Must be one of: visual,
+scene, document, canvas, framebuffer, or render.</p>
+</dd>
+<dt><strong>map_to</strong><span class="classifier">str</span></dt><dd><p>The ending coordinate system to map to. Must be one of: visual,
+scene, document, canvas, framebuffer, or render.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.pixel_scale">
+<em class="property">property </em><code class="sig-name descname">pixel_scale</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.pixel_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.scene_transform">
+<em class="property">property </em><code class="sig-name descname">scene_transform</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.scene_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from scene coordinate frame to document
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.transform_system.TransformSystem.visual_transform">
+<em class="property">property </em><code class="sig-name descname">visual_transform</code><a class="headerlink" href="#vispy.visuals.transforms.transform_system.TransformSystem.visual_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from visual local coordinate frame to scene
+coordinate frame.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.visuals.transforms.nonlinear.html" title="previous page">vispy.visuals.transforms.nonlinear module</a>
+    <a class='right-next' id="next-link" href="vispy.visuals.axis.html" title="next page">vispy.visuals.axis module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

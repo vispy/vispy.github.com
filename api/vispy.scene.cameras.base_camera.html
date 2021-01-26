@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.scene.cameras.base_camera module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.scene.cameras.fly module" href="vispy.scene.cameras.fly.html" />
+    <link rel="prev" title="vispy.scene.cameras.arcball module" href="vispy.scene.cameras.arcball.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.scene.cameras.base_camera.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.scene.cameras.base_camera">
+<span id="vispy-scene-cameras-base-camera-module"></span><h1>vispy.scene.cameras.base_camera module<a class="headerlink" href="#module-vispy.scene.cameras.base_camera" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.cameras.base_camera.</code><code class="sig-name descname">BaseCamera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interactive</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">flip</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">up</span><span class="o">=</span><span class="default_value">'+z'</span></em>, <em class="sig-param"><span class="n">parent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L24-L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.node.html#vispy.scene.node.Node" title="vispy.scene.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.node.Node</span></code></a></p>
+<p>Base camera class.</p>
+<p>The Camera describes the perspective from which a ViewBox views its
+subscene, and the way that user interaction affects that perspective.</p>
+<p>Most functionality is implemented in subclasses. This base class has
+no user interaction and causes the subscene to use the same coordinate
+system as the ViewBox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>interactive</strong><span class="classifier">bool</span></dt><dd><p>Whether the camera processes mouse and keyboard events.</p>
+</dd>
+<dt><strong>flip</strong><span class="classifier">tuple of bools</span></dt><dd><p>For each dimension, specify whether it is flipped.</p>
+</dd>
+<dt><strong>up</strong><span class="classifier">{‘+z’, ‘-z’, ‘+y’, ‘-y’, ‘+x’, ‘-x’}</span></dt><dd><p>The direction that is considered up. Default ‘+z’. Not all
+camera’s may support this (yet).</p>
+</dd>
+<dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent of the camera.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name used to identify the camera in the scene.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.center">
+<em class="property">property </em><code class="sig-name descname">center</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.center" title="Permalink to this definition">¶</a></dt>
+<dd><p>The center location for this camera</p>
+<p>The exact meaning of this value differs per type of camera, but
+generally means the point of interest or the rotation point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.depth_value">
+<em class="property">property </em><code class="sig-name descname">depth_value</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.depth_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>The depth value to use  in orthographic and perspective projection</p>
+<p>For orthographic projections, <code class="docutils literal notranslate"><span class="pre">depth_value</span></code> is the distance between
+the near and far clipping planes. For perspective projections, it is
+the ratio between the near and far clipping plane distances.</p>
+<p>GL has a fixed amount of precision in the depth buffer, and a fixed
+constant will not work for both a very large range and very high
+precision. This property provides the user a way to override
+the default value if necessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.flip">
+<em class="property">property </em><code class="sig-name descname">flip</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.flip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.fov">
+<em class="property">property </em><code class="sig-name descname">fov</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.fov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Field-of-view angle of the camera. If 0, the camera is in
+orthographic mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.get_state">
+<code class="sig-name descname">get_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">props</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L321-L343"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current view state of the camera</p>
+<p>Returns a dict of key-value pairs. The exact keys depend on the
+camera. Can be passed to set_state() (of this or another camera
+of the same type) to reproduce the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>props</strong><span class="classifier">list of strings | None</span></dt><dd><p>List of properties to include in the returned dict. If None,
+all of camera state is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.interactive">
+<em class="property">property </em><code class="sig-name descname">interactive</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.interactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean describing whether the camera should enable or disable
+user interaction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.link">
+<code class="sig-name descname">link</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">camera</span></em>, <em class="sig-param"><span class="n">props</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L390-L425"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link this camera with another camera of the same type</p>
+<p>Linked camera’s keep each-others’ state in sync.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>camera</strong><span class="classifier">instance of Camera</span></dt><dd><p>The other camera to link.</p>
+</dd>
+<dt><strong>props</strong><span class="classifier">list of strings | tuple of strings | None</span></dt><dd><p>List of camera state properties to keep in sync between
+the two cameras. If None, all of camera state is kept in sync.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">“x” | “y” | None</span></dt><dd><p>An axis to link between two PanZoomCamera instances. If not None,
+view limits in the selected axis only will be kept in sync between
+the cameras.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.on_canvas_change">
+<code class="sig-name descname">on_canvas_change</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L468-L483"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.on_canvas_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Canvas change event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.pre_transform">
+<em class="property">property </em><code class="sig-name descname">pre_transform</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.pre_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>A transform to apply to the beginning of the scene transform, in
+addition to anything else provided by this Camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L310-L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the view to the default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.set_default_state">
+<code class="sig-name descname">set_default_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L315-L319"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.set_default_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current state to be the default state to be applied
+when calling reset().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.set_range">
+<code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">z</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">margin</span><span class="o">=</span><span class="default_value">0.05</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L239-L305"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.set_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the range of the view region for the camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">tuple | None</span></dt><dd><p>X range.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">tuple | None</span></dt><dd><p>Y range.</p>
+</dd>
+<dt><strong>z</strong><span class="classifier">tuple | None</span></dt><dd><p>Z range.</p>
+</dd>
+<dt><strong>margin</strong><span class="classifier">float</span></dt><dd><p>Margin to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The view is set to the given range or to the scene boundaries
+if ranges are not specified. The ranges should be 2-element
+tuples specifying the min and max for each dimension.</p>
+<p>For the PanZoomCamera the view is fully defined by the range.
+For e.g. the TurntableCamera the elevation and azimuth are not
+set. One should use reset() for that.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.set_state">
+<code class="sig-name descname">set_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L345-L388"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the view state of the camera</p>
+<p>Should be a dict (or kwargs) as returned by get_state. It can
+be an incomlete dict, in which case only the specified
+properties are set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state</strong><span class="classifier">dict</span></dt><dd><p>The camera state.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Unused keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.up">
+<em class="property">property </em><code class="sig-name descname">up</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.up" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dimension that is considered up.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.view_changed">
+<code class="sig-name descname">view_changed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L429-L444"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.view_changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when this camera is changes its view. Also called
+when its associated with a viewbox.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.viewbox">
+<em class="property">property </em><code class="sig-name descname">viewbox</code><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.viewbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>The viewbox that this camera applies to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.viewbox_key_event">
+<code class="sig-name descname">viewbox_key_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L485-L494"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>ViewBox key event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.viewbox_mouse_event">
+<code class="sig-name descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L458-L466"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Viewbox mouse event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.viewbox_resize_event">
+<code class="sig-name descname">viewbox_resize_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L496-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.viewbox_resize_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ViewBox resize handler to update the transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.scene.cameras.base_camera.BaseCamera.zoom_factor">
+<code class="sig-name descname">zoom_factor</code><em class="property"> = 0.007</em><a class="headerlink" href="#vispy.scene.cameras.base_camera.BaseCamera.zoom_factor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.scene.cameras.base_camera.nested_getattr">
+<code class="sig-prename descclassname">vispy.scene.cameras.base_camera.</code><code class="sig-name descname">nested_getattr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">names</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L13-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.nested_getattr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="vispy.scene.cameras.base_camera.nested_setattr">
+<code class="sig-prename descclassname">vispy.scene.cameras.base_camera.</code><code class="sig-name descname">nested_setattr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">names</span></em>, <em class="sig-param"><span class="n">val</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/base_camera.py#L19-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.base_camera.nested_setattr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.scene.cameras.arcball.html" title="previous page">vispy.scene.cameras.arcball module</a>
+    <a class='right-next' id="next-link" href="vispy.scene.cameras.fly.html" title="next page">vispy.scene.cameras.fly module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.gloo.wrappers module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.glsl package" href="vispy.glsl.html" />
+    <link rel="prev" title="vispy.gloo.util module" href="vispy.gloo.util.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.gloo.wrappers.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.gloo.wrappers">
+<span id="vispy-gloo-wrappers-module"></span><h1>vispy.gloo.wrappers module<a class="headerlink" href="#module-vispy.gloo.wrappers" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.gloo.wrappers.GlooFunctions">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">GlooFunctions</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L574-L585"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.wrappers.BaseGlooFunctions</span></code></p>
+<dl class="py method">
+<dt id="vispy.gloo.wrappers.GlooFunctions.glir">
+<em class="property">property </em><code class="sig-name descname">glir</code><a class="headerlink" href="#vispy.gloo.wrappers.GlooFunctions.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GLIR queue corresponding to the current canvas</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.clear">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">clear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">stencil</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L179-L209"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the screen buffers</p>
+<p>This is a wrapper for gl.glClear.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">bool | str | tuple | instance of Color</span></dt><dd><p>Clear the color buffer bit. If not bool, <code class="docutils literal notranslate"><span class="pre">set_clear_color</span></code> will
+be used to set the color clear value.</p>
+</dd>
+<dt><strong>depth</strong><span class="classifier">bool | float</span></dt><dd><p>Clear the depth buffer bit. If float, <code class="docutils literal notranslate"><span class="pre">set_clear_depth</span></code> will
+be used to set the depth clear value.</p>
+</dd>
+<dt><strong>stencil</strong><span class="classifier">bool | int</span></dt><dd><p>Clear the stencil buffer bit. If int, <code class="docutils literal notranslate"><span class="pre">set_clear_stencil</span></code> will
+be used to set the stencil clear index.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.finish">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">finish</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L531-L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for GL commands to to finish</p>
+<p>This creates a GLIR command for glFinish and then processes the
+GLIR commands. If the GLIR interpreter is remote (e.g. WebGL), this
+function will return before GL has finished processing the commands.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.flush">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L545-L556"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush GL commands</p>
+<p>This is a wrapper for glFlush(). This also flushes the GLIR
+command queue.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.get_gl_configuration">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">get_gl_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L682-L746"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_gl_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the current gl configuration</p>
+<p>This function uses constants that are not in the OpenGL ES 2.1
+namespace, so only use this on desktop systems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>config</strong><span class="classifier">dict</span></dt><dd><p>The currently active OpenGL configuration.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.get_state_presets">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">get_state_presets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L430-L438"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.get_state_presets" title="Permalink to this definition">¶</a></dt>
+<dd><p>The available GL state presets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>presets</strong><span class="classifier">dict</span></dt><dd><p>The dictionary of presets usable with <code class="docutils literal notranslate"><span class="pre">set_options</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.read_pixels">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">read_pixels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">viewport</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'color'</span></em>, <em class="sig-param"><span class="n">out_type</span><span class="o">=</span><span class="default_value">'unsigned_byte'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L604-L679"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.read_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read pixels from the currently selected buffer.</p>
+<p>Under most circumstances, this function reads from the front buffer.
+Unlike all other functions in vispy.gloo, this function directly executes
+an OpenGL command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>viewport</strong><span class="classifier">array-like | None</span></dt><dd><p>4-element list of x, y, w, h parameters. If None (default),
+the current GL viewport will be queried and used.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">bool</span></dt><dd><p>If True (default), the returned array has 4 elements (RGBA).
+If False, it has 3 (RGB). This only effects the color mode.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Type of buffer data to read. Can be one of ‘colors’, ‘depth’,
+or ‘stencil’. See returns for more information.</p>
+</dd>
+<dt><strong>out_type</strong><span class="classifier">str | dtype</span></dt><dd><p>Can be ‘unsigned_byte’ or ‘float’. Note that this does not
+use casting, but instead determines how values are read from
+the current buffer. Can also be numpy dtypes <code class="docutils literal notranslate"><span class="pre">np.uint8</span></code>,
+<code class="docutils literal notranslate"><span class="pre">np.ubyte</span></code>, or <code class="docutils literal notranslate"><span class="pre">np.float32</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pixels</strong><span class="classifier">array</span></dt><dd><p>3D array of pixels in np.uint8 or np.float32 format.
+The array shape is (h, w, 3) or (h, w, 4) for colors mode,
+with the top-left corner of the framebuffer at index [0, 0] in the
+returned array. If ‘mode’ is depth or stencil then the last dimension
+is 1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_color">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_blend_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L271-L279"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the blend color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_equation">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_blend_equation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode_rgb</span></em>, <em class="sig-param"><span class="n">mode_alpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L281-L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_equation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the equation for RGB and alpha blending</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode_rgb</strong><span class="classifier">str</span></dt><dd><p>Mode for RGB.</p>
+</dd>
+<dt><strong>mode_alpha</strong><span class="classifier">str | None</span></dt><dd><p>Mode for Alpha. If None, <code class="docutils literal notranslate"><span class="pre">mode_rgb</span></code> is used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">set_blend_equation</span></code> for valid modes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_blend_func">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_blend_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">srgb</span><span class="o">=</span><span class="default_value">'one'</span></em>, <em class="sig-param"><span class="n">drgb</span><span class="o">=</span><span class="default_value">'zero'</span></em>, <em class="sig-param"><span class="n">salpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dalpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L251-L269"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_blend_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify pixel arithmetic for RGB and alpha</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>srgb</strong><span class="classifier">str</span></dt><dd><p>Source RGB factor.</p>
+</dd>
+<dt><strong>drgb</strong><span class="classifier">str</span></dt><dd><p>Destination RGB factor.</p>
+</dd>
+<dt><strong>salpha</strong><span class="classifier">str | None</span></dt><dd><p>Source alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">srgb</span></code> is used.</p>
+</dd>
+<dt><strong>dalpha</strong><span class="classifier">str</span></dt><dd><p>Destination alpha factor. If None, <code class="docutils literal notranslate"><span class="pre">drgb</span></code> is used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_color">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_clear_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L211-L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the screen clear color</p>
+<p>This is a wrapper for gl.glClearColor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">str | tuple | instance of Color</span></dt><dd><p>Color to use. See vispy.color.Color for options.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float | None</span></dt><dd><p>Alpha to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_depth">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_clear_depth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L225-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the clear value for the depth buffer</p>
+<p>This is a wrapper for gl.glClearDepth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>depth</strong><span class="classifier">float</span></dt><dd><p>The depth to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_clear_stencil">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_clear_stencil</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L237-L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_clear_stencil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the clear value for the stencil buffer</p>
+<p>This is a wrapper for gl.glClearStencil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>The index to use when the stencil buffer is cleared.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_color_mask">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_color_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">red</span></em>, <em class="sig-param"><span class="n">green</span></em>, <em class="sig-param"><span class="n">blue</span></em>, <em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L393-L408"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_color_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle writing of frame buffer color components</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>red</strong><span class="classifier">bool</span></dt><dd><p>Red toggle.</p>
+</dd>
+<dt><strong>green</strong><span class="classifier">bool</span></dt><dd><p>Green toggle.</p>
+</dd>
+<dt><strong>blue</strong><span class="classifier">bool</span></dt><dd><p>Blue toggle.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">bool</span></dt><dd><p>Alpha toggle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_cull_face">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_cull_face</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L134-L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_cull_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front, back, or both faces to be culled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Culling mode. Can be “front”, “back”, or “front_and_back”.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_func">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_depth_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span><span class="o">=</span><span class="default_value">'less'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L372-L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the value used for depth buffer comparisons</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>The depth comparison function. Must be one of ‘never’, ‘less’,
+‘equal’, ‘lequal’, ‘greater’, ‘gequal’, ‘notequal’, or ‘always’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_mask">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_depth_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">flag</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L383-L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle writing into the depth buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>flag</strong><span class="classifier">bool</span></dt><dd><p>Whether depth writing should be enabled.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_depth_range">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_depth_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">near</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">far</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L112-L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_depth_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set depth values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>near</strong><span class="classifier">float</span></dt><dd><p>Near clipping plane.</p>
+</dd>
+<dt><strong>far</strong><span class="classifier">float</span></dt><dd><p>Far clipping plane.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_front_face">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_front_face</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'ccw'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L124-L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_front_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set which faces are front-facing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Can be ‘cw’ for clockwise or ‘ccw’ for counter-clockwise.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_hint">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_hint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">mode</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L558-L571"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_hint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set OpenGL drawing hint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target</strong><span class="classifier">str</span></dt><dd><p>The target, e.g. ‘fog_hint’, ‘line_smooth_hint’,
+‘point_smooth_hint’.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>The mode to set (e.g., ‘fastest’, ‘nicest’, ‘dont_care’).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_line_width">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_line_width</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L144-L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_line_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set line width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>The line width.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_polygon_offset">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_polygon_offset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">factor</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">units</span><span class="o">=</span><span class="default_value">0.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L157-L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_polygon_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the scale and units used to calculate depth values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>factor</strong><span class="classifier">float</span></dt><dd><p>Scale factor used to create a variable depth offset for
+each polygon.</p>
+</dd>
+<dt><strong>units</strong><span class="classifier">float</span></dt><dd><p>Multiplied by an implementation-specific value to create a
+constant depth offset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_sample_coverage">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_sample_coverage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">invert</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L410-L421"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_sample_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify multisample coverage parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>Sample coverage value (will be clamped between 0. and 1.).</p>
+</dd>
+<dt><strong>invert</strong><span class="classifier">bool</span></dt><dd><p>Specify if the coverage masks should be inverted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_scissor">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_scissor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L302-L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_scissor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the scissor box</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">int</span></dt><dd><p>Left corner of the box.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">int</span></dt><dd><p>Lower corner of the box.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">int</span></dt><dd><p>The width of the box.</p>
+</dd>
+<dt><strong>h</strong><span class="classifier">int</span></dt><dd><p>The height of the box.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_state">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preset</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L440-L525"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set OpenGL rendering state, optionally using a preset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>preset</strong><span class="classifier">str | None</span></dt><dd><p>Can be one of (‘opaque’, ‘translucent’, ‘additive’) to use
+use reasonable defaults for these typical use cases.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>Other supplied keyword arguments will override any preset defaults.
+Options to be enabled or disabled should be supplied as booleans
+(e.g., <code class="docutils literal notranslate"><span class="pre">'depth_test=True'</span></code>, <code class="docutils literal notranslate"><span class="pre">cull_face=False</span></code>), non-boolean
+entries will be passed as arguments to <code class="docutils literal notranslate"><span class="pre">set_*</span></code> functions (e.g.,
+<code class="docutils literal notranslate"><span class="pre">blend_func=('src_alpha',</span> <span class="pre">'one')</span></code> will call <code class="docutils literal notranslate"><span class="pre">set_blend_func</span></code>).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This serves three purposes:</p>
+<ol class="arabic simple">
+<li><p>Set GL state using reasonable presets.</p></li>
+<li><p>Wrapping glEnable/glDisable functionality.</p></li>
+<li><p>Convienence wrapping of other <code class="docutils literal notranslate"><span class="pre">gloo.set_*</span></code> functions.</p></li>
+</ol>
+<p>For example, one could do the following:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;translucent&#39;</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
+</div>
+<p>This would take the preset defaults for ‘translucent’, turn
+depth testing off (which would normally be on for that preset),
+and additionally set the glClearColor parameter to be white.</p>
+<p>Another example to showcase glEnable/glDisable wrapping:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">polygon_offset_fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
+</div>
+<p>This would be equivalent to calling</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">gl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glDisable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_BLEND</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_DEPTH_TEST</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">glEnable</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_POLYGON_OFFSET_FILL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or here’s another example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gloo</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">clear_color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">))</span>  <span class="c1"># noqa, doctest:+SKIP</span>
+</pre></div>
+</div>
+<p>Thus arbitrary GL state components can be set directly using
+<code class="docutils literal notranslate"><span class="pre">set_state</span></code>. Note that individual functions are exposed e.g.,
+as <code class="docutils literal notranslate"><span class="pre">set_clear_color</span></code>, with some more informative docstrings
+about those particular functions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_func">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_stencil_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span><span class="o">=</span><span class="default_value">'always'</span></em>, <em class="sig-param"><span class="n">ref</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">mask</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L318-L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front or back function and reference value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">str</span></dt><dd><p>See set_stencil_func.</p>
+</dd>
+<dt><strong>ref</strong><span class="classifier">int</span></dt><dd><p>Reference value for the stencil test.</p>
+</dd>
+<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
+</dd>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_mask">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_stencil_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L336-L346"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control the front or back writing of individual bits in the stencil</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mask</strong><span class="classifier">int</span></dt><dd><p>Mask that is ANDed with ref and stored stencil value.</p>
+</dd>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_stencil_op">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_stencil_op</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sfail</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em class="sig-param"><span class="n">dpfail</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em class="sig-param"><span class="n">dppass</span><span class="o">=</span><span class="default_value">'keep'</span></em>, <em class="sig-param"><span class="n">face</span><span class="o">=</span><span class="default_value">'front_and_back'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L348-L368"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_stencil_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set front or back stencil test actions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil fails. Must be one of
+‘keep’, ‘zero’, ‘replace’, ‘incr’, ‘incr_wrap’,
+‘decr’, ‘decr_wrap’, or ‘invert’.</p>
+</dd>
+<dt><strong>dpfail</strong><span class="classifier">str</span></dt><dd><p>Action to take when the stencil passes.</p>
+</dd>
+<dt><strong>dppass</strong><span class="classifier">str</span></dt><dd><p>Action to take when both the stencil and depth tests pass,
+or when the stencil test passes and either there is no depth
+buffer or depth testing is not enabled.</p>
+</dd>
+<dt><strong>face</strong><span class="classifier">str</span></dt><dd><p>Can be ‘front’, ‘back’, or ‘front_and_back’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.gloo.wrappers.set_viewport">
+<code class="sig-prename descclassname">vispy.gloo.wrappers.</code><code class="sig-name descname">set_viewport</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/wrappers.py#L98-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.wrappers.set_viewport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the OpenGL viewport</p>
+<p>This is a wrapper for gl.glViewport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*args</strong><span class="classifier">tuple</span></dt><dd><p>X and Y coordinates, plus width and height. Can be passed in as
+individual components, or as a single tuple with four values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.gloo.util.html" title="previous page">vispy.gloo.util module</a>
+    <a class='right-next' id="next-link" href="vispy.glsl.html" title="next page">vispy.glsl package</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

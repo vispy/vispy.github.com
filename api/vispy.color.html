@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.color package &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.color.tests package" href="vispy.color.tests.html" />
+    <link rel="prev" title="vispy.app.timer module" href="vispy.app.timer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#subpackages" class="nav-link">Subpackages</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#submodules" class="nav-link">Submodules</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#module-vispy.color" class="nav-link">Module contents</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.color.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="vispy-color-package">
+<h1>vispy.color package<a class="headerlink" href="#vispy-color-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.tests.html">vispy.color.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.tests.test_color.html">vispy.color.tests.test_color module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.tests.html#module-vispy.color.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.color_space.html">vispy.color.color_space module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-vispy.color">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.color" title="Permalink to this headline">¶</a></h2>
+<p>Convience interfaces to manipulate colors.</p>
+<p>This module provides support for manipulating colors.</p>
+<dl class="py class">
+<dt id="vispy.color.BaseColormap">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">BaseColormap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L212-L324"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.BaseColormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class representing a colormap:</p>
+<blockquote>
+<div><p>t in [0, 1] –&gt; rgba_color</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">list of lists, tuples, or ndarrays</span></dt><dd><p>The control colors used by the colormap (shape = (ncolors, 4)).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Must be overriden. Child classes need to implement:</p>
+<dl class="simple">
+<dt>glsl_map<span class="classifier">string</span></dt><dd><p>The GLSL function for the colormap. Use $color_0 to refer
+to the first color in <cite>colors</cite>, and so on. These are vec4 vectors.</p>
+</dd>
+<dt>map(item)<span class="classifier">function</span></dt><dd><p>Takes a (N, 1) vector of values in [0, 1], and returns a rgba array
+of size (N, 4).</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="vispy.color.BaseColormap.colors">
+<code class="sig-name descname">colors</code><em class="property"> = None</em><a class="headerlink" href="#vispy.color.BaseColormap.colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.color.BaseColormap.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = None</em><a class="headerlink" href="#vispy.color.BaseColormap.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.BaseColormap.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L255-L281"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.BaseColormap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a rgba array for the requested items.</p>
+<p>This function must be overriden by child classes.</p>
+<p>This function doesn’t need to implement argument checking on <cite>item</cite>.
+It can always assume that <cite>item</cite> is a (N, 1) array of values between
+0 and 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>item</strong><span class="classifier">ndarray</span></dt><dd><p>An array of values in [0,1].</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rgba</strong><span class="classifier">ndarray</span></dt><dd><p>An array with rgba values, with one color per item. The shape
+should be <code class="docutils literal notranslate"><span class="pre">item.shape</span> <span class="pre">+</span> <span class="pre">(4,)</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Users are expected to use a colormap with <code class="docutils literal notranslate"><span class="pre">__getitem__()</span></code> rather
+than <code class="docutils literal notranslate"><span class="pre">map()</span></code> (which implements a lower-level API).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.color.BaseColormap.texture_map_data">
+<code class="sig-name descname">texture_map_data</code><em class="property"> = None</em><a class="headerlink" href="#vispy.color.BaseColormap.texture_map_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.color.Color">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">Color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L367-L439"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray" title="vispy.color.color_array.ColorArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.color_array.ColorArray</span></code></a></p>
+<p>A single color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">str | tuple</span></dt><dd><p>If str, can be any of the names in <code class="docutils literal notranslate"><span class="pre">vispy.color.get_color_names</span></code>.
+Can also be a hex value if it starts with <code class="docutils literal notranslate"><span class="pre">'#'</span></code> as <code class="docutils literal notranslate"><span class="pre">'#ff0000'</span></code>.
+If array-like, it must be an 1-dimensional array with 3 or 4 elements.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float | None</span></dt><dd><p>If no alpha is not supplied in <code class="docutils literal notranslate"><span class="pre">color</span></code> entry and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is None,
+then this will default to 1.0 (opaque). If float, it will override
+the alpha value in <code class="docutils literal notranslate"><span class="pre">color</span></code>, if provided.</p>
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool</span></dt><dd><p>If True, clip the color values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.color.Color.RGB">
+<em class="property">property </em><code class="sig-name descname">RGB</code><a class="headerlink" href="#vispy.color.Color.RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.RGBA">
+<em class="property">property </em><code class="sig-name descname">RGBA</code><a class="headerlink" href="#vispy.color.Color.RGBA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.alpha">
+<em class="property">property </em><code class="sig-name descname">alpha</code><a class="headerlink" href="#vispy.color.Color.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of alpha floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.hex">
+<em class="property">property </em><code class="sig-name descname">hex</code><a class="headerlink" href="#vispy.color.Color.hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy array with N elements, each one a hex triplet string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.hsv">
+<em class="property">property </em><code class="sig-name descname">hsv</code><a class="headerlink" href="#vispy.color.Color.hsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of HSV floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.is_blank">
+<em class="property">property </em><code class="sig-name descname">is_blank</code><a class="headerlink" href="#vispy.color.Color.is_blank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean indicating whether the color is invisible.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.lab">
+<em class="property">property </em><code class="sig-name descname">lab</code><a class="headerlink" href="#vispy.color.Color.lab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.rgb">
+<em class="property">property </em><code class="sig-name descname">rgb</code><a class="headerlink" href="#vispy.color.Color.rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGB floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.rgba">
+<em class="property">property </em><code class="sig-name descname">rgba</code><a class="headerlink" href="#vispy.color.Color.rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Color.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#vispy.color.Color.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of color HSV values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.color.ColorArray">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">ColorArray</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">(0.0, 0.0, 0.0)</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">color_space</span><span class="o">=</span><span class="default_value">'rgb'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L82-L364"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.ColorArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>An array of colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">str | tuple | list of colors</span></dt><dd><p>If str, can be any of the names in <code class="docutils literal notranslate"><span class="pre">vispy.color.get_color_names</span></code>.
+Can also be a hex value if it starts with <code class="docutils literal notranslate"><span class="pre">'#'</span></code> as <code class="docutils literal notranslate"><span class="pre">'#ff0000'</span></code>.
+If array-like, it must be an Nx3 or Nx4 array-like object.
+Can also be a list of colors, such as
+<code class="docutils literal notranslate"><span class="pre">['red',</span> <span class="pre">'#00ff00',</span> <span class="pre">ColorArray('blue')]</span></code>.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float | None</span></dt><dd><p>If no alpha is not supplied in <code class="docutils literal notranslate"><span class="pre">color</span></code> entry and <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is None,
+then this will default to 1.0 (opaque). If float, it will override
+any alpha values in <code class="docutils literal notranslate"><span class="pre">color</span></code>, if provided.</p>
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool</span></dt><dd><p>Clip the color value.</p>
+</dd>
+<dt><strong>color_space</strong><span class="classifier">‘rgb’ | ‘hsv’</span></dt><dd><p>‘rgb’ (default) : color tuples are interpreted as (r, g, b) components.
+‘hsv’ : color tuples are interpreted as (h, s, v) components.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Under the hood, this class stores data in RGBA format suitable for use
+on the GPU.</p>
+<p class="rubric">Examples</p>
+<p>There are many ways to define colors. Here are some basic cases:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">ColorArray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># using string name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">&lt;ColorArray: 1 color ((1.0, 0.0, 0.0, 1.0))&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># RGBA tuple</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">)</span>  <span class="c1"># hex color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">()</span>  <span class="c1"># defaults to black</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">rgb</span>
+<span class="go">&gt;&gt;&gt;hsv_color = ColorArray(color_space=&quot;hsv&quot;, color=(0, 0, 0.5))</span>
+<span class="go">&gt;&gt;&gt;hsv_color</span>
+<span class="go">&lt;ColorArray: 1 color ((0.5, 0.5, 0.5, 1.0))&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span>
+<span class="go">&lt;ColorArray: 1 color ((1.0, 1.0, 1.0, 0.0))&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;#0000FFFF&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span>
+<span class="go">&lt;ColorArray: 3 colors ((1.0, 0.0, 0.0, 1.0) ... (1.0, 0.0, 0.0, 1.0))&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="vispy.color.ColorArray.RGB">
+<em class="property">property </em><code class="sig-name descname">RGB</code><a class="headerlink" href="#vispy.color.ColorArray.RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.RGBA">
+<em class="property">property </em><code class="sig-name descname">RGBA</code><a class="headerlink" href="#vispy.color.ColorArray.RGBA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA uint8s</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.alpha">
+<em class="property">property </em><code class="sig-name descname">alpha</code><a class="headerlink" href="#vispy.color.ColorArray.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of alpha floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L156-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.ColorArray.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.darker">
+<code class="sig-name descname">darker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dv</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L337-L354"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.ColorArray.darker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce a darker color (if possible)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dv</strong><span class="classifier">float</span></dt><dd><p>Amount to decrease the color value by.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool</span></dt><dd><p>If False, operation will be carried out in-place.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">instance of ColorArray</span></dt><dd><p>The darkened Color.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L203-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.ColorArray.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend a ColorArray with new colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">instance of ColorArray</span></dt><dd><p>The new colors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.hex">
+<em class="property">property </em><code class="sig-name descname">hex</code><a class="headerlink" href="#vispy.color.ColorArray.hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy array with N elements, each one a hex triplet string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.hsv">
+<em class="property">property </em><code class="sig-name descname">hsv</code><a class="headerlink" href="#vispy.color.ColorArray.hsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of HSV floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.lab">
+<em class="property">property </em><code class="sig-name descname">lab</code><a class="headerlink" href="#vispy.color.ColorArray.lab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.lighter">
+<code class="sig-name descname">lighter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dv</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/color_array.py#L318-L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.ColorArray.lighter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce a lighter color (if possible)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dv</strong><span class="classifier">float</span></dt><dd><p>Amount to increase the color value by.</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">bool</span></dt><dd><p>If False, operation will be carried out in-place.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">instance of ColorArray</span></dt><dd><p>The lightened Color.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.rgb">
+<em class="property">property </em><code class="sig-name descname">rgb</code><a class="headerlink" href="#vispy.color.ColorArray.rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx3 array of RGB floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.rgba">
+<em class="property">property </em><code class="sig-name descname">rgba</code><a class="headerlink" href="#vispy.color.ColorArray.rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nx4 array of RGBA floats</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.ColorArray.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#vispy.color.ColorArray.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Length-N array of color HSV values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.color.Colormap">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">Colormap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span></em>, <em class="sig-param"><span class="n">controls</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">'linear'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L347-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.Colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap" title="vispy.color.colormap.BaseColormap"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.colormap.BaseColormap</span></code></a></p>
+<p>A colormap defining several control colors and an interpolation scheme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">list of colors | ColorArray</span></dt><dd><p>The list of control colors. If not a <code class="docutils literal notranslate"><span class="pre">ColorArray</span></code>, a new
+<code class="docutils literal notranslate"><span class="pre">ColorArray</span></code> instance is created from this list. See the
+documentation of <code class="docutils literal notranslate"><span class="pre">ColorArray</span></code>.</p>
+</dd>
+<dt><strong>controls</strong><span class="classifier">array-like</span></dt><dd><p>The list of control points for the given colors. It should be
+an increasing list of floating-point number between 0.0 and 1.0.
+The first control point must be 0.0. The last control point must be
+1.0. The number of control points depends on the interpolation scheme.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str</span></dt><dd><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
+be ‘zero’.
+If ‘linear’, ncontrols = ncolors (one color per control point).
+If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Here is a basic example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">Colormap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="vispy.color.Colormap.interpolation">
+<em class="property">property </em><code class="sig-name descname">interpolation</code><a class="headerlink" href="#vispy.color.Colormap.interpolation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The interpolation mode of the colormap</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Colormap.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L411-L425"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.Colormap.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Python mapping function from the [0,1] interval to a
+list of rgba colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array-like</span></dt><dd><p>The values to map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">list</span></dt><dd><p>List of rgba colors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.color.Colormap.texture_lut">
+<code class="sig-name descname">texture_lut</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L427-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.Colormap.texture_lut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a texture2D object for LUT after its value is set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.color.get_color_dict">
+<code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">get_color_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/_color_dict.py#L19-L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.get_color_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the known colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color_dict</strong><span class="classifier">dict</span></dt><dd><p>Dict of colors known by Vispy {name: #rgb}.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.color.get_color_names">
+<code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">get_color_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/_color_dict.py#L6-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.get_color_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the known color names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>names</strong><span class="classifier">list</span></dt><dd><p>List of color names known by Vispy.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.color.get_colormap">
+<code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">get_colormap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L1089-L1124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.get_colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain a colormap</p>
+<p>Some colormaps can have additional configuration parameters. Refer to
+their corresponding documentation for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">str | Colormap</span></dt><dd><p>Colormap name. Can also be a Colormap for pass-through.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;single_hue&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.color.get_colormaps">
+<code class="sig-prename descclassname">vispy.color.</code><code class="sig-name descname">get_colormaps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/color/colormap.py#L1127-L1129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.color.get_colormaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of colormap names.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.app.timer.html" title="previous page">vispy.app.timer module</a>
+    <a class='right-next' id="next-link" href="vispy.color.tests.html" title="next page">vispy.color.tests package</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

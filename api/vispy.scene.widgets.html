@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.scene.widgets package &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.scene.widgets.anchor module" href="vispy.scene.widgets.anchor.html" />
+    <link rel="prev" title="vispy.scene.tests.test_visuals module" href="vispy.scene.tests.test_visuals.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#submodules" class="nav-link">Submodules</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#module-vispy.scene.widgets" class="nav-link">Module contents</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.scene.widgets.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="vispy-scene-widgets-package">
+<h1>vispy.scene.widgets package<a class="headerlink" href="#vispy-scene-widgets-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.anchor.html">vispy.scene.widgets.anchor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.axis.html">vispy.scene.widgets.axis module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.colorbar.html">vispy.scene.widgets.colorbar module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.console.html">vispy.scene.widgets.console module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.grid.html">vispy.scene.widgets.grid module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.label.html">vispy.scene.widgets.label module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.viewbox.html">vispy.scene.widgets.viewbox module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.widget.html">vispy.scene.widgets.widget module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-vispy.scene.widgets">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.scene.widgets" title="Permalink to this headline">¶</a></h2>
+<p>The vispy.scene.widgets namespace provides a range of widgets to allow
+user interaction. Widgets are rectangular Visual objects such as buttons
+and sliders.</p>
+<dl class="py class">
+<dt id="vispy.scene.widgets.AxisWidget">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">AxisWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">orientation</span><span class="o">=</span><span class="default_value">'left'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/axis.py#L12-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Widget containing an axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>orientation</strong><span class="classifier">str</span></dt><dd><p>Orientation of the axis, ‘left’ or ‘bottom’.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to AxisVisual.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.AxisWidget.link_view">
+<code class="sig-name descname">link_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">view</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/axis.py#L61-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.link_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Link this axis to a ViewBox</p>
+<p>This makes it so that the axis’s domain always matches the
+visible range in the ViewBox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>view</strong><span class="classifier">instance of ViewBox</span></dt><dd><p>The ViewBox to link.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.AxisWidget.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/axis.py#L34-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.AxisWidget.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.ColorBarWidget">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">ColorBarWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmap</span></em>, <em class="sig-param"><span class="n">orientation</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">label_color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">clim</span><span class="o">=</span><span class="default_value">('', '')</span></em>, <em class="sig-param"><span class="n">border_width</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">border_color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">padding</span><span class="o">=</span><span class="default_value">(0.2, 0.2)</span></em>, <em class="sig-param"><span class="n">axis_ratio</span><span class="o">=</span><span class="default_value">0.05</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/colorbar.py#L12-L178"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Widget containing a ColorBar</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>cmap</strong><span class="classifier">str | vispy.color.ColorMap</span></dt><dd><p>Either the name of the ColorMap to be used from the standard
+set of names (refer to <cite>vispy.color.get_colormap</cite>),
+or a custom ColorMap object.
+The ColorMap is used to apply a gradient on the colorbar.</p>
+</dd>
+<dt><strong>orientation</strong><span class="classifier">{‘left’, ‘right’, ‘top’, ‘bottom’}</span></dt><dd><p>The orientation of the colorbar, used for rendering. The
+orientation can be thought of as the position of the label
+relative to the color bar.</p>
+<p>When the orientation is ‘left’ or ‘right’, the colorbar is
+vertically placed. When it is ‘top’ or ‘bottom’, the colorbar is
+horizontally placed. The colorbar automatically resizes when its
+container’s dimension changes.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘top’: the colorbar is horizontal.
+Color is applied from left to right.
+Minimum corresponds to left and maximum to right.
+Label is to the top of the colorbar</p></li>
+<li><p>‘bottom’: Same as top, except that
+label is to the bottom of the colorbar</p></li>
+<li><p>‘left’: the colorbar is vertical.
+Color is applied from bottom to top.
+Minimum corresponds to bottom and maximum to top.
+Label is to the left of the colorbar</p></li>
+<li><p>‘right’: Same as left, except that the
+label is placed to the right of the colorbar</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>The label that is to be drawn with the colorbar
+that provides information about the colorbar.</p>
+</dd>
+<dt><strong>label_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of labels. This can either be a
+str as the color’s name or an actual instace of a vipy.color.Color</p>
+</dd>
+<dt><strong>clim</strong><span class="classifier">tuple (min, max)</span></dt><dd><p>the minimum and maximum values of the data that
+is given to the colorbar. This is used to draw the scale
+on the side of the colorbar.</p>
+</dd>
+<dt><strong>border_width</strong><span class="classifier">float (in px)</span></dt><dd><p>The width of the border the colormap should have. This measurement
+is given in pixels</p>
+</dd>
+<dt><strong>border_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the border of the colormap. This can either be a
+str as the color’s name or an actual instace of a vipy.color.Color</p>
+</dd>
+<dt><strong>padding</strong><span class="classifier">tuple (major_axis, minor_axis) [0, 1]</span></dt><dd><p>padding with respect to the major and minor axis</p>
+</dd>
+<dt><strong>axis_ratio</strong><span class="classifier">float</span></dt><dd><p>ratio of minor axis to major axis</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.border_color">
+<em class="property">property </em><code class="sig-name descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color of the border around the ColorBar in pixels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.border_width">
+<em class="property">property </em><code class="sig-name descname">border_width</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.border_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The width of the border around the ColorBar in pixels</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.clim">
+<em class="property">property </em><code class="sig-name descname">clim</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.clim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.cmap">
+<em class="property">property </em><code class="sig-name descname">cmap</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.cmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.label">
+<em class="property">property </em><code class="sig-name descname">label</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/colorbar.py#L90-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.orientation">
+<em class="property">property </em><code class="sig-name descname">orientation</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.orientation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ColorBarWidget.ticks">
+<em class="property">property </em><code class="sig-name descname">ticks</code><a class="headerlink" href="#vispy.scene.widgets.ColorBarWidget.ticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.Console">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">Console</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text_color</span><span class="o">=</span><span class="default_value">'black'</span></em>, <em class="sig-param"><span class="n">font_size</span><span class="o">=</span><span class="default_value">12.0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/console.py#L141-L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Fast and failsafe text console</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>text_color</strong><span class="classifier">instance of Color</span></dt><dd><p>Color to use.</p>
+</dd>
+<dt><strong>font_size</strong><span class="classifier">float</span></dt><dd><p>Point size to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.Console.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/console.py#L166-L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the console</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Console.font_size">
+<em class="property">property </em><code class="sig-name descname">font_size</code><a class="headerlink" href="#vispy.scene.widgets.Console.font_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The font size (in points) of the text</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Console.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/console.py#L156-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Console.text_color">
+<em class="property">property </em><code class="sig-name descname">text_color</code><a class="headerlink" href="#vispy.scene.widgets.Console.text_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color of the text</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Console.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">wrap</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/console.py#L170-L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Console.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write text and scroll</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>Text to write. <code class="docutils literal notranslate"><span class="pre">''</span></code> can be used for a blank line, as a newline
+is automatically added to the end of each line.</p>
+</dd>
+<dt><strong>wrap</strong><span class="classifier">str</span></dt><dd><p>If True, long messages will be wrapped to span multiple lines.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.Grid">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">Grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spacing</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L17-L513"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Widget that automatically sets the position and size of child Widgets to
+proportionally divide its internal area into a grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spacing</strong><span class="classifier">int</span></dt><dd><p>Spacing between widgets.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to <cite>Widget</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.add_grid">
+<code class="sig-name descname">add_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">col</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">row_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">col_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L199-L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Grid and add it as a child widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>row</strong><span class="classifier">int</span></dt><dd><p>The row in which to add the widget (0 is the topmost row)</p>
+</dd>
+<dt><strong>col</strong><span class="classifier">int</span></dt><dd><p>The column in which to add the widget (0 is the leftmost column)</p>
+</dd>
+<dt><strong>row_span</strong><span class="classifier">int</span></dt><dd><p>The number of rows to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>col_span</strong><span class="classifier">int</span></dt><dd><p>The number of columns to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to the new <cite>Grid</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.add_view">
+<code class="sig-name descname">add_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">col</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">row_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">col_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L221-L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new ViewBox and add it as a child widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>row</strong><span class="classifier">int</span></dt><dd><p>The row in which to add the widget (0 is the topmost row)</p>
+</dd>
+<dt><strong>col</strong><span class="classifier">int</span></dt><dd><p>The column in which to add the widget (0 is the leftmost column)</p>
+</dd>
+<dt><strong>row_span</strong><span class="classifier">int</span></dt><dd><p>The number of rows to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>col_span</strong><span class="classifier">int</span></dt><dd><p>The number of columns to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to <cite>ViewBox</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.add_widget">
+<code class="sig-name descname">add_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">row</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">col</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">row_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">col_span</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L86-L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.add_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new widget to this grid. This will cause other widgets in the
+grid to be resized to make room for the new widget. Can be used
+to replace a widget as well</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">Widget | None</span></dt><dd><p>The Widget to add. New widget is constructed if widget is None.</p>
+</dd>
+<dt><strong>row</strong><span class="classifier">int</span></dt><dd><p>The row in which to add the widget (0 is the topmost row)</p>
+</dd>
+<dt><strong>col</strong><span class="classifier">int</span></dt><dd><p>The column in which to add the widget (0 is the leftmost column)</p>
+</dd>
+<dt><strong>row_span</strong><span class="classifier">int</span></dt><dd><p>The number of rows to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>col_span</strong><span class="classifier">int</span></dt><dd><p>The number of columns to be occupied by this widget. Default is 1.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>parameters sent to the new Widget that is constructed if
+widget is None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The widget’s parent is automatically set to this grid, and all other
+parent(s) are removed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.grid_size">
+<em class="property">property </em><code class="sig-name descname">grid_size</code><a class="headerlink" href="#vispy.scene.widgets.Grid.grid_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.layout_array">
+<em class="property">property </em><code class="sig-name descname">layout_array</code><a class="headerlink" href="#vispy.scene.widgets.Grid.layout_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.next_row">
+<code class="sig-name descname">next_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L242-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.next_row" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.remove_widget">
+<code class="sig-name descname">remove_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L151-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.remove_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a widget from this grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">Widget</span></dt><dd><p>The Widget to remove</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Grid.resize_widget">
+<code class="sig-name descname">resize_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em>, <em class="sig-param"><span class="n">row_span</span></em>, <em class="sig-param"><span class="n">col_span</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/grid.py#L166-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Grid.resize_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize a widget in the grid to new dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">Widget</span></dt><dd><p>The widget to resize</p>
+</dd>
+<dt><strong>row_span</strong><span class="classifier">int</span></dt><dd><p>The number of rows to be occupied by this widget.</p>
+</dd>
+<dt><strong>col_span</strong><span class="classifier">int</span></dt><dd><p>The number of columns to be occupied by this widget.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.Label">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">Label</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/label.py#L11-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Label widget</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The label.</p>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float</span></dt><dd><p>The rotation of the label.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to TextVisual.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.Label.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/label.py#L30-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Label.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Label.text">
+<em class="property">property </em><code class="sig-name descname">text</code><a class="headerlink" href="#vispy.scene.widgets.Label.text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.ViewBox">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">ViewBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">camera</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/viewbox.py#L15-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.widgets.widget.Widget</span></code></a></p>
+<p>Provides a rectangular widget to which its subscene is rendered.</p>
+<p>Three classes work together when using a ViewBox:
+* The <code class="xref py py-class docutils literal notranslate"><span class="pre">SubScene</span></code> class describes a “world” coordinate system and the
+entities that live inside it.
+* ViewBox is a “window” through which we view the
+subscene. Multiple ViewBoxes may view the same subscene.
+* <code class="xref py py-class docutils literal notranslate"><span class="pre">Camera</span></code> describes both the perspective from which the
+subscene is rendered, and the way user interaction affects that
+perspective.</p>
+<p>In general it is only necessary to create the ViewBox; a SubScene and
+Camera will be generated automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>camera</strong><span class="classifier">instance of Camera | str | None</span></dt><dd><p>The camera through which to view the SubScene. If None, then a
+PanZoomCamera (2D interaction) is used. If str, then the string is
+used as the argument to <code class="xref py py-func docutils literal notranslate"><span class="pre">make_camera()</span></code>.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Extra keyword arguments to pass to <cite>Widget</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/viewbox.py#L170-L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an Node to the scene for this ViewBox.</p>
+<p>This is a convenience method equivalent to
+<cite>node.parent = viewbox.scene</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>node</strong><span class="classifier">instance of Node</span></dt><dd><p>The node to add.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.camera">
+<em class="property">property </em><code class="sig-name descname">camera</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get/set the Camera in use by this ViewBox</p>
+<p>If a string is given (e.g. ‘panzoom’, ‘turntable’, ‘fly’). A
+corresponding camera is selected if it already exists in the
+scene, otherwise a new camera is created.</p>
+<p>The camera object is made a child of the scene (if it is not
+already in the scene).</p>
+<p>Multiple cameras can exist in one scene, although only one can
+be active at a time. A single camera can be used by multiple
+viewboxes at the same time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.get_scene_bounds">
+<code class="sig-name descname">get_scene_bounds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/viewbox.py#L125-L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.get_scene_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the total bounds based on the visuals present in the scene</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dim</strong><span class="classifier">int | None</span></dt><dd><p>Dimension to return.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>bounds</strong><span class="classifier">list | tuple</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">dim</span> <span class="pre">is</span> <span class="pre">None</span></code>, Returns a list of 3 tuples, otherwise
+the bounds for the requested dimension.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.is_in_scene">
+<code class="sig-name descname">is_in_scene</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/viewbox.py#L115-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.is_in_scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get whether the given node is inside the scene of this viewbox.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>node</strong><span class="classifier">instance of Node</span></dt><dd><p>The node.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/viewbox.py#L183-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.ViewBox.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.ViewBox.scene">
+<em class="property">property </em><code class="sig-name descname">scene</code><a class="headerlink" href="#vispy.scene.widgets.ViewBox.scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>The root node of the scene viewed by this ViewBox.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.scene.widgets.Widget">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.widgets.</code><code class="sig-name descname">Widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span><span class="o">=</span><span class="default_value">(0, 0)</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">(10, 10)</span></em>, <em class="sig-param"><span class="n">border_color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">border_width</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">bgcolor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">padding</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">margin</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/widget.py#L18-L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Compound" title="vispy.scene.visuals.Compound"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.Compound</span></code></a></p>
+<p>A widget takes up a rectangular space, intended for use in
+a 2D pixel coordinate frame.</p>
+<p>The widget is positioned using the transform attribute (as any
+node), and its extent (size) is kept as a separate property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pos</strong><span class="classifier">(x, y)</span></dt><dd><p>A 2-element tuple to specify the top left corner of the widget.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">(w, h)</span></dt><dd><p>A 2-element tuple to spicify the size of the widget.</p>
+</dd>
+<dt><strong>border_color</strong><span class="classifier">color</span></dt><dd><p>The color of the border.</p>
+</dd>
+<dt><strong>border_width</strong><span class="classifier">float</span></dt><dd><p>The width of the border line in pixels.</p>
+</dd>
+<dt><strong>bgcolor</strong><span class="classifier">color</span></dt><dd><p>The background color.</p>
+</dd>
+<dt><strong>padding</strong><span class="classifier">int</span></dt><dd><p>The amount of padding in the widget (i.e. the space reserved between
+the contents and the border).</p>
+</dd>
+<dt><strong>margin</strong><span class="classifier">int</span></dt><dd><p>The margin to keep outside the widget’s border.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.add_grid">
+<code class="sig-name descname">add_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/widget.py#L453-L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new Grid and add it as a child widget.</p>
+<p>All arguments are given to Grid().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.add_view">
+<code class="sig-name descname">add_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/widget.py#L463-L471"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new ViewBox and add it as a child widget.</p>
+<p>All arguments are given to ViewBox().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.add_widget">
+<code class="sig-name descname">add_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/widget.py#L430-L451"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.add_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a Widget as a managed child of this Widget.</p>
+<p>The child will be
+automatically positioned and sized to fill the entire space inside
+this Widget (unless _update_child_widgets is redefined).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">instance of Widget</span></dt><dd><p>The widget to add.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">instance of Widget</span></dt><dd><p>The widget.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.bgcolor">
+<em class="property">property </em><code class="sig-name descname">bgcolor</code><a class="headerlink" href="#vispy.scene.widgets.Widget.bgcolor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The background color of the Widget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.border_color">
+<em class="property">property </em><code class="sig-name descname">border_color</code><a class="headerlink" href="#vispy.scene.widgets.Widget.border_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color of the border.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>The actual height of the widget</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.height_max">
+<em class="property">property </em><code class="sig-name descname">height_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum height of the widget</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.height_min">
+<em class="property">property </em><code class="sig-name descname">height_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.height_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>The minimum height of the widget</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.inner_rect">
+<em class="property">property </em><code class="sig-name descname">inner_rect</code><a class="headerlink" href="#vispy.scene.widgets.Widget.inner_rect" title="Permalink to this definition">¶</a></dt>
+<dd><p>The rectangular area inside the margin, border, and padding.</p>
+<p>Generally widgets should avoid drawing or placing sub-widgets outside
+this rectangle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.margin">
+<em class="property">property </em><code class="sig-name descname">margin</code><a class="headerlink" href="#vispy.scene.widgets.Widget.margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.padding">
+<em class="property">property </em><code class="sig-name descname">padding</code><a class="headerlink" href="#vispy.scene.widgets.Widget.padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.picking">
+<em class="property">property </em><code class="sig-name descname">picking</code><a class="headerlink" href="#vispy.scene.widgets.Widget.picking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean that determines whether this node (and its children) are
+drawn in picking mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.pos">
+<em class="property">property </em><code class="sig-name descname">pos</code><a class="headerlink" href="#vispy.scene.widgets.Widget.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.rect">
+<em class="property">property </em><code class="sig-name descname">rect</code><a class="headerlink" href="#vispy.scene.widgets.Widget.rect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.remove_widget">
+<code class="sig-name descname">remove_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/widgets/widget.py#L473-L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.widgets.Widget.remove_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a Widget as a managed child of this Widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>widget</strong><span class="classifier">instance of Widget</span></dt><dd><p>The widget to remove.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#vispy.scene.widgets.Widget.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size (w, h) of this widget.</p>
+<p>If the widget is a child of another widget, then its size is assigned
+automatically by its parent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.stretch">
+<em class="property">property </em><code class="sig-name descname">stretch</code><a class="headerlink" href="#vispy.scene.widgets.Widget.stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stretch factors (w, h) used when determining how much space to
+allocate to this widget in a layout.</p>
+<p>If either stretch factor is None, then it will be assigned when the
+widget is added to a layout based on the number of columns or rows it
+occupies.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>The actual width of this widget</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.width_max">
+<em class="property">property </em><code class="sig-name descname">width_max</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>The maximum width the widget can have</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.widgets.Widget.width_min">
+<em class="property">property </em><code class="sig-name descname">width_min</code><a class="headerlink" href="#vispy.scene.widgets.Widget.width_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>The minimum width the widget can have</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.scene.tests.test_visuals.html" title="previous page">vispy.scene.tests.test_visuals module</a>
+    <a class='right-next' id="next-link" href="vispy.scene.widgets.anchor.html" title="next page">vispy.scene.widgets.anchor module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

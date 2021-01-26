@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.scene.cameras.fly module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.scene.cameras.magnify module" href="vispy.scene.cameras.magnify.html" />
+    <link rel="prev" title="vispy.scene.cameras.base_camera module" href="vispy.scene.cameras.base_camera.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.scene.cameras.fly.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.scene.cameras.fly">
+<span id="vispy-scene-cameras-fly-module"></span><h1>vispy.scene.cameras.fly module<a class="headerlink" href="#module-vispy.scene.cameras.fly" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.scene.cameras.fly.FlyCamera">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.scene.cameras.fly.</code><code class="sig-name descname">FlyCamera</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fov</span><span class="o">=</span><span class="default_value">60</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/fly.py#L16-L482"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera" title="vispy.scene.cameras.perspective.PerspectiveCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.cameras.perspective.PerspectiveCamera</span></code></a></p>
+<p>The fly camera provides a way to explore 3D data using an
+interaction style that resembles a flight simulator.</p>
+<p>For this camera, the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> indicates the speed of the
+camera in units per second, and the <code class="docutils literal notranslate"><span class="pre">center</span></code> indicates the
+position of the camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fov</strong><span class="classifier">float</span></dt><dd><p>Field of view. Default 60.0.</p>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float | None</span></dt><dd><p>Rotation to use.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to <cite>BaseCamera</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Interacting with this camera might need a bit of practice.
+The reaction to key presses can be customized by modifying the
+keymap property.</p>
+<p>Moving:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>arrow keys, or WASD to move forward, backward, left and right</p></li>
+<li><p>F and C keys move up and down</p></li>
+<li><p>Space bar to brake</p></li>
+</ul>
+</div></blockquote>
+<p>Viewing:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use the mouse while holding down LMB to control the pitch and yaw.</p></li>
+<li><p>Alternatively, the pitch and yaw can be changed using the keys
+IKJL</p></li>
+<li><p>The camera auto-rotates to make the bottom point down, manual
+rolling can be performed using Q and E.</p></li>
+</ul>
+</div></blockquote>
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.auto_roll">
+<em class="property">property </em><code class="sig-name descname">auto_roll</code><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.auto_roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to rotate the camera automaticall to try and attempt
+to keep Z up.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.keymap">
+<em class="property">property </em><code class="sig-name descname">keymap</code><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.keymap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary that maps keys to thruster directions</p>
+<p>The keys in this dictionary are vispy key descriptions (from
+vispy.keys) or characters that represent keys. These are matched
+to the “key” attribute of key-press and key-release events.</p>
+<p>The values are tuples, in which the first element specifies the
+magnitude of the acceleration, using negative values for
+“backward” thrust. A value of zero means to brake. The remaining
+elements specify the dimension to which the acceleration should
+be applied. These are 1, 2, 3 for forward/backward, left/right,
+up/down, and 4, 5, 6 for pitch, yaw, roll.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.on_timer">
+<code class="sig-name descname">on_timer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/fly.py#L254-L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timer event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.rotation">
+<em class="property">property </em><code class="sig-name descname">rotation</code><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the full rotation. This rotation is composed of the
+normal rotation plus the extra rotation due to the current
+interaction of the user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.rotation1">
+<em class="property">property </em><code class="sig-name descname">rotation1</code><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.rotation1" title="Permalink to this definition">¶</a></dt>
+<dd><p>rotation1 records confirmed camera rotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.rotation2">
+<em class="property">property </em><code class="sig-name descname">rotation2</code><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.rotation2" title="Permalink to this definition">¶</a></dt>
+<dd><p>rotation2 records on going camera rotation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.viewbox_key_event">
+<code class="sig-name descname">viewbox_key_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/fly.py#L349-L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.viewbox_key_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>ViewBox key event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.scene.cameras.fly.FlyCamera.viewbox_mouse_event">
+<code class="sig-name descname">viewbox_mouse_event</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/scene/cameras/fly.py#L383-L466"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.scene.cameras.fly.FlyCamera.viewbox_mouse_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>ViewBox mouse event handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.scene.cameras.base_camera.html" title="previous page">vispy.scene.cameras.base_camera module</a>
+    <a class='right-next' id="next-link" href="vispy.scene.cameras.magnify.html" title="next page">vispy.scene.cameras.magnify module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

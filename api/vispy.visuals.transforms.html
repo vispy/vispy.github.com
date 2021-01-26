@@ -1,0 +1,1413 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.visuals.transforms package &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.visuals.transforms.tests package" href="vispy.visuals.transforms.tests.html" />
+    <link rel="prev" title="vispy.visuals.text.text module" href="vispy.visuals.text.text.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#subpackages" class="nav-link">Subpackages</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#submodules" class="nav-link">Submodules</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#module-vispy.visuals.transforms" class="nav-link">Module contents</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.visuals.transforms.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="vispy-visuals-transforms-package">
+<h1>vispy.visuals.transforms package<a class="headerlink" href="#vispy-visuals-transforms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.tests.html">vispy.visuals.transforms.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.transforms.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html">vispy.visuals.transforms.tests.test_transforms module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.transforms.tests.html#module-vispy.visuals.transforms.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.base_transform.html">vispy.visuals.transforms.base_transform module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.chain.html">vispy.visuals.transforms.chain module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.interactive.html">vispy.visuals.transforms.interactive module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.linear.html">vispy.visuals.transforms.linear module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.nonlinear.html">vispy.visuals.transforms.nonlinear module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.transform_system.html">vispy.visuals.transforms.transform_system module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-vispy.visuals.transforms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.visuals.transforms" title="Permalink to this headline">¶</a></h2>
+<p>Provides classes representing different transform types suitable for
+use with visuals and scenes.</p>
+<dl class="py class">
+<dt id="vispy.visuals.transforms.ChainTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">ChainTransform</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">transforms</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L12-L249"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>BaseTransform subclass that performs a sequence of transformations in
+order. Internally, this class uses shaders.FunctionChain to generate
+its glsl_map and glsl_imap functions.</p>
+<p>Arguments:</p>
+<dl class="simple">
+<dt>transforms<span class="classifier">list of BaseTransform instances</span></dt><dd><p>See <code class="docutils literal notranslate"><span class="pre">transforms</span></code> property.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.Isometric">
+<em class="property">property </em><code class="sig-name descname">Isometric</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.Linear">
+<em class="property">property </em><code class="sig-name descname">Linear</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.NonScaling">
+<em class="property">property </em><code class="sig-name descname">NonScaling</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.Orthogonal">
+<em class="property">property </em><code class="sig-name descname">Orthogonal</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tr</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L181-L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new transform to the end of this chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tr</strong><span class="classifier">instance of Transform</span></dt><dd><p>The transform to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.ChainTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = None</em><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.ChainTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = None</em><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L151-L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L134-L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.prepend">
+<code class="sig-name descname">prepend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tr</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L195-L207"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.prepend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new transform to the beginning of this chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tr</strong><span class="classifier">instance of Transform</span></dt><dd><p>The transform to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.shader_imap">
+<code class="sig-name descname">shader_imap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L171-L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.shader_imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>see shader_map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.shader_map">
+<code class="sig-name descname">shader_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/chain.py#L168-L169"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.shader_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shader Function that accepts only a single vec4 argument
+and defines new attributes / uniforms supplying the Function with
+any static input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.simplified">
+<em class="property">property </em><code class="sig-name descname">simplified</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.simplified" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simplified representation of the same transformation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.ChainTransform.transforms">
+<em class="property">property </em><code class="sig-name descname">transforms</code><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.transforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of transform that make up the transform chain.</p>
+<p>The order of transforms is given such that the last transform in the 
+list is the first to be invoked when mapping coordinates through 
+the chain.</p>
+<p>For example, the following two mappings are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Map coordinates through individual transforms:</span>
+<span class="n">trans1</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">trans2</span> <span class="o">=</span> <span class="n">PolarTransform</span><span class="p">()</span>
+<span class="n">mapped</span> <span class="o">=</span> <span class="n">trans1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">trans2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">coords</span><span class="p">))</span>
+
+<span class="c1"># Equivalent mapping through chain:</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="n">ChainTransform</span><span class="p">([</span><span class="n">trans1</span><span class="p">,</span> <span class="n">trans2</span><span class="p">])</span>
+<span class="n">mapped</span> <span class="o">=</span> <span class="n">chain</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.LogTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">LogTransform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/nonlinear.py#L14-L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.LogTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>Transform perfoming logarithmic transformation on three axes.</p>
+<p>Maps (x, y, z) =&gt; (log(base.x, x), log(base.y, y), log(base.z, z))</p>
+<p>No transformation is applied for axes with base == 0.</p>
+<p>If base &lt; 0, then the inverse function is applied: x =&gt; base.x ** x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>base</strong><span class="classifier">array-like</span></dt><dd><p>Base for the X, Y, Z axes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.Isometric">
+<code class="sig-name descname">Isometric</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.Linear">
+<code class="sig-name descname">Linear</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.NonScaling">
+<code class="sig-name descname">NonScaling</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.Orthogonal">
+<code class="sig-name descname">Orthogonal</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.LogTransform.base">
+<em class="property">property </em><code class="sig-name descname">base</code><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.base" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>base</em> is a tuple (x, y, z) containing the log base that should be
+applied to each axis of the input vector. If any axis has a base &lt;= 0,
+then that axis is not affected.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = '\n        vec4 LogTransform_map(vec4 pos) {\n            if($base.x &gt; 1.0)\n                pos.x = log(pos.x) / log($base.x);\n            else if($base.x &lt; -1.0)\n                pos.x = pow(-$base.x, pos.x);\n\n            if($base.y &gt; 1.0)\n                pos.y = log(pos.y) / log($base.y);\n            else if($base.y &lt; -1.0)\n                pos.y = pow(-$base.y, pos.y);\n\n            if($base.z &gt; 1.0)\n                pos.z = log(pos.z) / log($base.z);\n            else if($base.z &lt; -1.0)\n                pos.z = pow(-$base.z, pos.z);\n            return pos;\n        }\n        '</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.LogTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = '\n        vec4 LogTransform_map(vec4 pos) {\n            if($base.x &gt; 1.0)\n                pos.x = log(pos.x) / log($base.x);\n            else if($base.x &lt; -1.0)\n                pos.x = pow(-$base.x, pos.x);\n\n            if($base.y &gt; 1.0)\n                pos.y = log(pos.y) / log($base.y);\n            else if($base.y &lt; -1.0)\n                pos.y = pow(-$base.y, pos.y);\n\n            if($base.z &gt; 1.0)\n                pos.z = log(pos.z) / log($base.z);\n            else if($base.z &lt; -1.0)\n                pos.z = pow(-$base.z, pos.z);\n            return pos;\n        }\n        '</em><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.LogTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L92-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>obj</em> mapped through the inverse transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.LogTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em>, <em class="sig-param"><span class="n">base</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L78-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>obj</em> mapped through the forward transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.LogTransform.shader_imap">
+<code class="sig-name descname">shader_imap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/nonlinear.py#L101-L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.shader_imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>see shader_map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.LogTransform.shader_map">
+<code class="sig-name descname">shader_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/nonlinear.py#L96-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.shader_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shader Function that accepts only a single vec4 argument
+and defines new attributes / uniforms supplying the Function with
+any static input.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.MatrixTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">MatrixTransform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L316-L550"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>Affine transformation class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">array-like | None</span></dt><dd><p>4x4 array to use for the transform.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.Isometric">
+<code class="sig-name descname">Isometric</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.Linear">
+<code class="sig-name descname">Linear</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.NonScaling">
+<code class="sig-name descname">NonScaling</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.Orthogonal">
+<code class="sig-name descname">Orthogonal</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = '\n        vec4 affine_transform_imap(vec4 pos) {\n            return $inv_matrix * pos;\n        }\n    '</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.MatrixTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = '\n        vec4 affine_transform_map(vec4 pos) {\n            return $matrix * pos;\n        }\n    '</em><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L365-L379"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.inv_matrix">
+<em class="property">property </em><code class="sig-name descname">inv_matrix</code><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.inv_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L348-L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.matrix">
+<em class="property">property </em><code class="sig-name descname">matrix</code><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L496-L497"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.rotate">
+<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">axis</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L446-L460"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the matrix by some angle about a given axis.</p>
+<p>The rotation is applied <em>after</em> the transformations already present
+in the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>angle</strong><span class="classifier">float</span></dt><dd><p>The angle of rotation, in degrees.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">array-like</span></dt><dd><p>The x, y and z coordinates of the axis vector to rotate around.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.scale">
+<code class="sig-name descname">scale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L424-L444"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale the matrix about a given origin.</p>
+<p>The scaling is applied <em>after</em> the transformations already present
+in the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>scale</strong><span class="classifier">array-like</span></dt><dd><p>Scale factors along x, y and z axes.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">array-like or None</span></dt><dd><p>The x, y and z coordinates to scale around. If None,
+(0, 0, 0) will be used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.set_frustum">
+<code class="sig-name descname">set_frustum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L532-L550"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_frustum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the frustum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">float</span></dt><dd><p>Left.</p>
+</dd>
+<dt><strong>r</strong><span class="classifier">float</span></dt><dd><p>Right.</p>
+</dd>
+<dt><strong>b</strong><span class="classifier">float</span></dt><dd><p>Bottom.</p>
+</dd>
+<dt><strong>t</strong><span class="classifier">float</span></dt><dd><p>Top.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">float</span></dt><dd><p>Near.</p>
+</dd>
+<dt><strong>f</strong><span class="classifier">float</span></dt><dd><p>Far.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.set_mapping">
+<code class="sig-name descname">set_mapping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">points1</span></em>, <em class="sig-param"><span class="n">points2</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L462-L474"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set to a 3D transformation matrix that maps points1 onto points2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points1</strong><span class="classifier">array-like, shape (4, 3)</span></dt><dd><p>Four starting 3D coordinates.</p>
+</dd>
+<dt><strong>points2</strong><span class="classifier">array-like, shape (4, 3)</span></dt><dd><p>Four ending 3D coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.set_ortho">
+<code class="sig-name descname">set_ortho</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L476-L494"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_ortho" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set ortho transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">float</span></dt><dd><p>Left.</p>
+</dd>
+<dt><strong>r</strong><span class="classifier">float</span></dt><dd><p>Right.</p>
+</dd>
+<dt><strong>b</strong><span class="classifier">float</span></dt><dd><p>Bottom.</p>
+</dd>
+<dt><strong>t</strong><span class="classifier">float</span></dt><dd><p>Top.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">float</span></dt><dd><p>Near.</p>
+</dd>
+<dt><strong>f</strong><span class="classifier">float</span></dt><dd><p>Far.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.set_perspective">
+<code class="sig-name descname">set_perspective</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fov</span></em>, <em class="sig-param"><span class="n">aspect</span></em>, <em class="sig-param"><span class="n">near</span></em>, <em class="sig-param"><span class="n">far</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L516-L530"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_perspective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the perspective</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fov</strong><span class="classifier">float</span></dt><dd><p>Field of view.</p>
+</dd>
+<dt><strong>aspect</strong><span class="classifier">float</span></dt><dd><p>Aspect ratio.</p>
+</dd>
+<dt><strong>near</strong><span class="classifier">float</span></dt><dd><p>Near location.</p>
+</dd>
+<dt><strong>far</strong><span class="classifier">float</span></dt><dd><p>Far location.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.shader_imap">
+<code class="sig-name descname">shader_imap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L386-L389"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.shader_imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>see shader_map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.shader_map">
+<code class="sig-name descname">shader_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L381-L384"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.shader_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shader Function that accepts only a single vec4 argument
+and defines new attributes / uniforms supplying the Function with
+any static input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.MatrixTransform.translate">
+<code class="sig-name descname">translate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L409-L422"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate the matrix</p>
+<p>The translation is applied <em>after</em> the transformations already present
+in the matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pos</strong><span class="classifier">arrayndarray</span></dt><dd><p>Position to translate by.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.NullTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">NullTransform</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L15-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.NullTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>Transform having no effect on coordinates (identity transform).</p>
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.Isometric">
+<code class="sig-name descname">Isometric</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.Linear">
+<code class="sig-name descname">Linear</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.NonScaling">
+<code class="sig-name descname">NonScaling</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.Orthogonal">
+<code class="sig-name descname">Orthogonal</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = 'vec4 null_transform_imap(vec4 pos) {return pos;}'</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.NullTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = 'vec4 null_transform_map(vec4 pos) {return pos;}'</em><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.NullTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L37-L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.NullTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L26-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.PanZoomTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">PanZoomTransform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">canvas</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">aspect</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/interactive.py#L10-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.linear.html#vispy.visuals.transforms.linear.STTransform" title="vispy.visuals.transforms.linear.STTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.linear.STTransform</span></code></a></p>
+<p>Pan-zoom transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>canvas</strong><span class="classifier">instance of Canvas | None</span></dt><dd><p>The canvas to attch to.</p>
+</dd>
+<dt><strong>aspect</strong><span class="classifier">float | None</span></dt><dd><p>The aspect ratio to apply.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to the underlying <cite>STTransform</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PanZoomTransform.attach">
+<code class="sig-name descname">attach</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">canvas</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/interactive.py#L28-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.attach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach this tranform to a canvas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>canvas</strong><span class="classifier">instance of Canvas</span></dt><dd><p>The canvas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PanZoomTransform.canvas_tr">
+<em class="property">property </em><code class="sig-name descname">canvas_tr</code><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.canvas_tr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PanZoomTransform.on_mouse_move">
+<code class="sig-name descname">on_mouse_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/interactive.py#L62-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_mouse_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mouse move handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PanZoomTransform.on_mouse_wheel">
+<code class="sig-name descname">on_mouse_wheel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/interactive.py#L89-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_mouse_wheel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mouse wheel handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PanZoomTransform.on_resize">
+<code class="sig-name descname">on_resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/interactive.py#L47-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.PolarTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">PolarTransform</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/nonlinear.py#L110-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>Polar transform</p>
+<p>Maps (theta, r, z) to (x, y, z), where <cite>x = r*cos(theta)</cite>
+and <cite>y = r*sin(theta)</cite>.</p>
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.Isometric">
+<code class="sig-name descname">Isometric</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.Linear">
+<code class="sig-name descname">Linear</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.NonScaling">
+<code class="sig-name descname">NonScaling</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.Orthogonal">
+<code class="sig-name descname">Orthogonal</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = '\n        vec4 polar_transform_map(vec4 pos) {\n            // TODO: need some modulo math to handle larger theta values..?\n            float theta = atan(pos.y, pos.x);\n            float r = length(pos.xy);\n            return vec4(theta, r, pos.z, 1.);\n        }\n        '</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.PolarTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = '\n        vec4 polar_transform_map(vec4 pos) {\n            return vec4(pos.y * cos(pos.x), pos.y * sin(pos.x), pos.z, 1.);\n        }\n        '</em><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PolarTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L145-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>obj</em> mapped through the inverse transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.PolarTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L136-L143"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>obj</em> mapped through the forward transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.STTransform">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">STTransform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scale</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">translate</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L54-L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<p>Transform performing only scale and translate, in that order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>scale</strong><span class="classifier">array-like</span></dt><dd><p>Scale factors for X, Y, Z axes.</p>
+</dd>
+<dt><strong>translate</strong><span class="classifier">array-like</span></dt><dd><p>Scale factors for X, Y, Z axes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.Isometric">
+<code class="sig-name descname">Isometric</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.Isometric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.Linear">
+<code class="sig-name descname">Linear</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.Linear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.NonScaling">
+<code class="sig-name descname">NonScaling</code><em class="property"> = False</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.NonScaling" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.Orthogonal">
+<code class="sig-name descname">Orthogonal</code><em class="property"> = True</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.Orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.as_matrix">
+<code class="sig-name descname">as_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L216-L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.as_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.from_mapping">
+<em class="property">classmethod </em><code class="sig-name descname">from_mapping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">x1</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L222-L242"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.from_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an STTransform from the given mapping</p>
+<p>See <cite>set_mapping</cite> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x0</strong><span class="classifier">array-like</span></dt><dd><p>Start.</p>
+</dd>
+<dt><strong>x1</strong><span class="classifier">array-like</span></dt><dd><p>End.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">instance of STTransform</span></dt><dd><p>The transform.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.glsl_imap">
+<code class="sig-name descname">glsl_imap</code><em class="property"> = '\n        vec4 st_transform_imap(vec4 pos) {\n            return vec4((pos.xyz - $translate.xyz * pos.w) / $scale.xyz,\n                        pos.w);\n        }\n    '</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.glsl_imap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="vispy.visuals.transforms.STTransform.glsl_map">
+<code class="sig-name descname">glsl_map</code><em class="property"> = '\n        vec4 st_transform_map(vec4 pos) {\n            return vec4(pos.xyz * $scale.xyz + $translate.xyz * pos.w, pos.w);\n        }\n    '</em><a class="headerlink" href="#vispy.visuals.transforms.STTransform.glsl_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.imap">
+<code class="sig-name descname">imap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L115-L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invert map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coords</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/_util.py#L95-L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.move">
+<code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">move</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L181-L190"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the translation of this transform by the amount given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>move</strong><span class="classifier">array-like</span></dt><dd><p>The values to be added to the current translation of the transform.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.scale">
+<em class="property">property </em><code class="sig-name descname">scale</code><a class="headerlink" href="#vispy.visuals.transforms.STTransform.scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.set_mapping">
+<code class="sig-name descname">set_mapping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">x1</span></em>, <em class="sig-param"><span class="n">update</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L244-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.set_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure this transform such that it maps points x0 =&gt; x1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x0</strong><span class="classifier">array-like, shape (2, 2) or (2, 3)</span></dt><dd><p>Start location.</p>
+</dd>
+<dt><strong>x1</strong><span class="classifier">array-like, shape (2, 2) or (2, 3)</span></dt><dd><p>End location.</p>
+</dd>
+<dt><strong>update</strong><span class="classifier">bool</span></dt><dd><p>If False, then the update event is not emitted.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>For example, if we wish to map the corners of a rectangle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>onto a unit cube:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>then we can generate the transform as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tr</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tr</span><span class="o">.</span><span class="n">set_mapping</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">tr</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">p1</span><span class="p">)[:,:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">p2</span>  <span class="c1"># test</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.shader_imap">
+<code class="sig-name descname">shader_imap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L139-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.shader_imap" title="Permalink to this definition">¶</a></dt>
+<dd><p>see shader_map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.shader_map">
+<code class="sig-name descname">shader_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L136-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.shader_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shader Function that accepts only a single vec4 argument
+and defines new attributes / uniforms supplying the Function with
+any static input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.translate">
+<em class="property">property </em><code class="sig-name descname">translate</code><a class="headerlink" href="#vispy.visuals.transforms.STTransform.translate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.STTransform.zoom">
+<code class="sig-name descname">zoom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">zoom</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">(0, 0, 0)</span></em>, <em class="sig-param"><span class="n">mapped</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/linear.py#L192-L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.STTransform.zoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the transform such that its scale factor is changed, but
+the specified center point is left unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>zoom</strong><span class="classifier">array-like</span></dt><dd><p>Values to multiply the transform’s current scale
+factors.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">array-like</span></dt><dd><p>The center point around which the scaling will take place.</p>
+</dd>
+<dt><strong>mapped</strong><span class="classifier">bool</span></dt><dd><p>Whether <em>center</em> is expressed in mapped coordinates (True) or
+unmapped coordinates (False).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.visuals.transforms.TransformSystem">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.transforms.</code><code class="sig-name descname">TransformSystem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">canvas</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L15-L355"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>TransformSystem encapsulates information about the coordinate
+systems needed to draw a Visual.</p>
+<p>Visual rendering operates in six coordinate systems:</p>
+<ul class="simple">
+<li><p><strong>Visual</strong> - arbitrary local coordinate frame of the visual. Vertex
+buffers used by the visual are usually specified in this coordinate
+system.</p></li>
+<li><p><strong>Scene</strong> - This is an isometric coordinate system used mainly for 
+lighting calculations.</p></li>
+<li><p><strong>Document</strong> - This coordinate system has units of _logical_ pixels, and
+should usually represent the pixel coordinates of the canvas being drawn
+to. Visuals use this coordinate system to make measurements for font
+size, line width, and in general anything that is specified in physical
+units (px, pt, mm, in, etc.). In most circumstances, this is exactly the
+same as the canvas coordinate system.</p></li>
+<li><p><strong>Canvas</strong> - This coordinate system represents the logical pixel
+coordinates of the canvas. It has its origin in the top-left corner of
+the canvas, and is typically the coordinate system that mouse and touch 
+events are reported in. Note that, by convention, _logical_ pixels
+are not necessarily the same size as the _physical_ pixels in the
+framebuffer that is being rendered to.</p></li>
+<li><p><strong>Framebuffer</strong> - The buffer coordinate system has units of _physical_ 
+pixels, and should usually represent the coordinates of the current 
+framebuffer (on the canvas or an FBO) being rendered to. Visuals use this
+coordinate system primarily for antialiasing calculations. It is also the
+coorinate system used by glFragCoord. In most cases,
+this will have the same scale as the document and canvas coordinate 
+systems because the active framebuffer is the
+back buffer of the canvas, and the canvas will have _logical_ and
+_physical_ pixels of the same size. However, the scale may be different
+in the case of high-resolution displays, or when rendering to an 
+off-screen framebuffer with different scaling or boundaries than the
+canvas.</p></li>
+<li><p><strong>Render</strong> - This coordinate system is the obligatory system for
+vertices returned by a vertex shader. It has coordinates (-1, -1) to
+(1, 1) across the current glViewport. In OpenGL terminology, this is
+called clip coordinates.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>canvas</strong><span class="classifier">Canvas</span></dt><dd><p>The canvas being drawn to.</p>
+</dd>
+<dt><strong>dpi</strong><span class="classifier">float</span></dt><dd><p>The dot-per-inch resolution of the document coordinate system. By
+default this is set to the resolution of the canvas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>By default, TransformSystems are configured such that the document
+coordinate system matches the logical pixels of the canvas,</p>
+<p class="rubric">Examples</p>
+<p>1. To convert local vertex coordinates to normalized device coordinates in
+the vertex shader, we first need a vertex shader that supports configurable
+transformations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vec4 a_position;
+void main() {
+    gl_Position = $transform(a_position);
+}
+</pre></div>
+</div>
+<p>Next, we supply the complete chain of transforms when drawing the visual:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def draw(tr_sys):</dt><dd><p>tr = tr_sys.get_full_transform()
+self.program[‘transform’] = tr.shader_map()
+self.program[‘a_position’] = self.vertex_buffer
+self.program.draw(‘triangles’)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>2. Draw a line whose width is given in mm. To start, we need normal vectors
+for each vertex, which tell us the direction the vertex should move in
+order to set the line width:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vec4 a_position;
+vec4 a_normal;
+float u_line_width;
+float u_dpi;
+void main() {
+    // map vertex position and normal vector to the document cs
+    vec4 doc_pos = $visual_to_doc(a_position);
+    vec4 doc_normal = $visual_to_doc(a_position + a_normal) - doc_pos;
+
+    // Use DPI to convert mm line width to logical pixels
+    float px_width = (u_line_width / 25.4) * dpi;
+
+    // expand by line width
+    doc_pos += normalize(doc_normal) * px_width;
+
+    // finally, map the remainder of the way to normalized device
+    // coordinates.
+    gl_Position = $doc_to_render(a_position);
+}
+</pre></div>
+</div>
+<p>In this case, we need to access
+the transforms independently, so <code class="docutils literal notranslate"><span class="pre">get_full_transform()</span></code> is not useful
+here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">tr_sys</span><span class="p">):</span>
+    <span class="c1"># Send two parts of the full transform separately</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_doc</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+    <span class="n">doc_to_render</span> <span class="o">=</span> <span class="p">(</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">framebuffer_transform</span> <span class="o">*</span>
+                     <span class="n">tr_sys</span><span class="o">.</span><span class="n">document_transform</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_to_render</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_line_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">dpi</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_normal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normal_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;triangles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Draw a triangle with antialiasing at the edge.</p></li>
+<li><p>Using inverse transforms in the fragment shader</p></li>
+</ol>
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.canvas">
+<em class="property">property </em><code class="sig-name descname">canvas</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Canvas being drawn to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.canvas_transform">
+<em class="property">property </em><code class="sig-name descname">canvas_transform</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.canvas_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from canvas coordinate frame to framebuffer
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.configure">
+<code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">viewport</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fbo_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fbo_rect</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">canvas</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L178-L243"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically configure the TransformSystem:</p>
+<ul class="simple">
+<li><p>canvas_transform maps from the Canvas logical pixel
+coordinate system to the framebuffer coordinate system, taking into 
+account the logical/physical pixel scale factor, current FBO 
+position, and y-axis inversion.</p></li>
+<li><p>framebuffer_transform maps from the current GL viewport on the
+framebuffer coordinate system to clip coordinates (-1 to 1).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>viewport</strong><span class="classifier">tuple or None</span></dt><dd><p>The GL viewport rectangle (x, y, w, h). If None, then it
+is assumed to cover the entire canvas.</p>
+</dd>
+<dt><strong>fbo_size</strong><span class="classifier">tuple or None</span></dt><dd><p>The size of the active FBO. If None, then it is assumed to have the
+same size as the canvas’s framebuffer.</p>
+</dd>
+<dt><strong>fbo_rect</strong><span class="classifier">tuple or None</span></dt><dd><p>The position and size (x, y, w, h) of the FBO in the coordinate
+system of the canvas’s framebuffer. If None, then the bounds are
+assumed to cover the entire active framebuffer.</p>
+</dd>
+<dt><strong>canvas</strong><span class="classifier">Canvas instance</span></dt><dd><p>Optionally set the canvas for this TransformSystem. See the 
+<cite>canvas</cite> property.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.document_transform">
+<em class="property">property </em><code class="sig-name descname">document_transform</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.document_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from document coordinate frame to the framebuffer
+(physical pixel) coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.dpi">
+<em class="property">property </em><code class="sig-name descname">dpi</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.dpi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Physical resolution of the document coordinate system (dots per
+inch).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.framebuffer_transform">
+<em class="property">property </em><code class="sig-name descname">framebuffer_transform</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.framebuffer_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from pixel coordinate frame to rendering
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.get_transform">
+<code class="sig-name descname">get_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map_from</span><span class="o">=</span><span class="default_value">'visual'</span></em>, <em class="sig-param"><span class="n">map_to</span><span class="o">=</span><span class="default_value">'render'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/transforms/transform_system.py#L328-L350"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.get_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a transform mapping between any two coordinate systems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>map_from</strong><span class="classifier">str</span></dt><dd><p>The starting coordinate system to map from. Must be one of: visual,
+scene, document, canvas, framebuffer, or render.</p>
+</dd>
+<dt><strong>map_to</strong><span class="classifier">str</span></dt><dd><p>The ending coordinate system to map to. Must be one of: visual,
+scene, document, canvas, framebuffer, or render.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.pixel_scale">
+<em class="property">property </em><code class="sig-name descname">pixel_scale</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.pixel_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.scene_transform">
+<em class="property">property </em><code class="sig-name descname">scene_transform</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.scene_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from scene coordinate frame to document
+coordinate frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.visuals.transforms.TransformSystem.visual_transform">
+<em class="property">property </em><code class="sig-name descname">visual_transform</code><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.visual_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform mapping from visual local coordinate frame to scene
+coordinate frame.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.visuals.text.text.html" title="previous page">vispy.visuals.text.text module</a>
+    <a class='right-next' id="next-link" href="vispy.visuals.transforms.tests.html" title="next page">vispy.visuals.transforms.tests package</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

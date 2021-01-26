@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.gloo.buffer module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.gloo.context module" href="vispy.gloo.context.html" />
+    <link rel="prev" title="vispy.gloo.tests.test_wrappers module" href="vispy.gloo.tests.test_wrappers.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.gloo.buffer.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.gloo.buffer">
+<span id="vispy-gloo-buffer-module"></span><h1>vispy.gloo.buffer module<a class="headerlink" href="#module-vispy.gloo.buffer" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.gloo.buffer.Buffer">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.buffer.</code><code class="sig-name descname">Buffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">nbytes</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L17-L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
+<p>Generic GPU buffer.</p>
+<p>A generic buffer is an interface used to upload data to a GPU array buffer
+(ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER). It keeps track of
+buffer size but does not have any CPU storage. You can consider it as
+write-only.</p>
+<p>The <cite>set_data</cite> is a deferred operation: you can call it even if an OpenGL
+context is not available. The <cite>update</cite> function is responsible to upload
+pending data to GPU memory and requires an active GL context.</p>
+<p>The Buffer class only deals with data in terms of bytes; it is not
+aware of data type or element size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | None</span></dt><dd><p>Buffer data.</p>
+</dd>
+<dt><strong>nbytes</strong><span class="classifier">int | None</span></dt><dd><p>Buffer byte size.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.buffer.Buffer.nbytes">
+<em class="property">property </em><code class="sig-name descname">nbytes</code><a class="headerlink" href="#vispy.gloo.buffer.Buffer.nbytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer size in bytes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.Buffer.resize_bytes">
+<code class="sig-name descname">resize_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L115-L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize this buffer (deferred operation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>New buffer size in bytes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.Buffer.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L89-L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data in the buffer (deferred operation).</p>
+<p>This completely resets the size and contents of the buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.Buffer.set_subdata">
+<code class="sig-name descname">set_subdata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L60-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.Buffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a sub-region of the buffer (deferred operation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>offset: int</strong></dt><dd><p>Offset in buffer where to start copying data (in bytes)</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.buffer.DataBuffer">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.buffer.</code><code class="sig-name descname">DataBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L132-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.buffer.Buffer" title="vispy.gloo.buffer.Buffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.buffer.Buffer</span></code></a></p>
+<p>GPU data buffer that is aware of data type and elements size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | None</span></dt><dd><p>Buffer data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.dtype">
+<em class="property">property </em><code class="sig-name descname">dtype</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer dtype</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.glsl_type">
+<em class="property">property </em><code class="sig-name descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.itemsize">
+<em class="property">property </em><code class="sig-name descname">itemsize</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.itemsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total number of bytes required to store the array data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.offset">
+<em class="property">property </em><code class="sig-name descname">offset</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer offset (in bytes) relative to base</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.resize_bytes">
+<code class="sig-name descname">resize_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L242-L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer (in-place, deferred operation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>size</strong><span class="classifier">integer</span></dt><dd><p>New buffer size in bytes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This clears any pending operations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L177-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data (deferred operation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.set_subdata">
+<code class="sig-name descname">set_subdata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L155-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.set_subdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a sub-region of the buffer (deferred operation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>offset: int</strong></dt><dd><p>Offset in buffer where to start copying data (i.e. index of
+starting element).</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of elements in the buffer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBuffer.stride">
+<em class="property">property </em><code class="sig-name descname">stride</code><a class="headerlink" href="#vispy.gloo.buffer.DataBuffer.stride" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stride of data in memory</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.buffer.DataBufferView">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.buffer.</code><code class="sig-name descname">DataBufferView</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base</span></em>, <em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L312-L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.buffer.DataBuffer" title="vispy.gloo.buffer.DataBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.buffer.DataBuffer</span></code></a></p>
+<p>View on a sub-region of a DataBuffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>base</strong><span class="classifier">DataBuffer</span></dt><dd><p>The buffer accessed by this view.</p>
+</dd>
+<dt><strong>key</strong><span class="classifier">str, int, slice, or Ellpsis</span></dt><dd><p>The index into the base buffer that defines a sub-region of the buffer
+to view. String arguments select a single field from multi-field
+dtypes, and other allowed types select a subset of rows.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>It is generally not necessary to instantiate this class manually; use
+<code class="docutils literal notranslate"><span class="pre">base_buffer[key]</span></code> instead.</p>
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.base">
+<em class="property">property </em><code class="sig-name descname">base</code><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer base if this buffer is a view on another buffer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.glir">
+<em class="property">property </em><code class="sig-name descname">glir</code><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.glir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The glir queue for this object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of this GL object used to reference the GL object
+in GLIR. id’s are unique within a process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.offset">
+<em class="property">property </em><code class="sig-name descname">offset</code><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Buffer offset (in bytes) relative to base</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.resize_bytes">
+<code class="sig-name descname">resize_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L403-L404"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.resize_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the buffer (in-place, deferred operation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>size</strong><span class="classifier">integer</span></dt><dd><p>New buffer size in bytes</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This clears any pending operations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L389-L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data (deferred operation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.buffer.DataBufferView.set_subdata">
+<code class="sig-name descname">set_subdata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L386-L387"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.DataBufferView.set_subdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a sub-region of the buffer (deferred operation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>offset: int</strong></dt><dd><p>Offset in buffer where to start copying data (i.e. index of
+starting element).</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory.
+Asking explicitly for a copy will prevent this behavior.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.buffer.IndexBuffer">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.buffer.</code><code class="sig-name descname">IndexBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L473-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.IndexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.buffer.DataBuffer" title="vispy.gloo.buffer.DataBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.buffer.DataBuffer</span></code></a></p>
+<p>Buffer for index data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | None</span></dt><dd><p>Buffer data.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.buffer.VertexBuffer">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.buffer.</code><code class="sig-name descname">VertexBuffer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/buffer.py#L418-L460"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.buffer.VertexBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.buffer.DataBuffer" title="vispy.gloo.buffer.DataBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.buffer.DataBuffer</span></code></a></p>
+<p>Buffer for vertex attribute data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Buffer data (optional)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.gloo.tests.test_wrappers.html" title="previous page">vispy.gloo.tests.test_wrappers module</a>
+    <a class='right-next' id="next-link" href="vispy.gloo.context.html" title="next page">vispy.gloo.context module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

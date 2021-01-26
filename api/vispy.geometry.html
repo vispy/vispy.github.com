@@ -1,0 +1,1214 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.geometry package &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.geometry.tests package" href="vispy.geometry.tests.html" />
+    <link rel="prev" title="vispy.color.colormap module" href="vispy.color.colormap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#subpackages" class="nav-link">Subpackages</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#submodules" class="nav-link">Submodules</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#module-vispy.geometry" class="nav-link">Module contents</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.geometry.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="vispy-geometry-package">
+<h1>vispy.geometry package<a class="headerlink" href="#vispy-geometry-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.tests.html">vispy.geometry.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_calculations.html">vispy.geometry.tests.test_calculations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_generation.html">vispy.geometry.tests.test_generation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_meshdata.html">vispy.geometry.tests.test_meshdata module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html">vispy.geometry.tests.test_triangulation module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.tests.html#module-vispy.geometry.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isocurve.html">vispy.geometry.isocurve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isosurface.html">vispy.geometry.isosurface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.meshdata.html">vispy.geometry.meshdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.normals.html">vispy.geometry.normals module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.parametric.html">vispy.geometry.parametric module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.polygon.html">vispy.geometry.polygon module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.rect.html">vispy.geometry.rect module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-vispy.geometry">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.geometry" title="Permalink to this headline">¶</a></h2>
+<p>This module implements classes and methods for handling geometric data.</p>
+<dl class="py class">
+<dt id="vispy.geometry.MeshData">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">MeshData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">faces</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">edges</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vertex_colors</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">face_colors</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vertex_values</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L22-L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class for storing and operating on 3D mesh data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">ndarray, shape (Nv, 3)</span></dt><dd><p>Vertex coordinates. If faces is not specified, then this will
+instead be interpreted as (Nf, 3, 3) array of coordinates.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier">ndarray, shape (Nf, 3)</span></dt><dd><p>Indices into the vertex array.</p>
+</dd>
+<dt><strong>edges</strong><span class="classifier">None</span></dt><dd><p>[not available yet]</p>
+</dd>
+<dt><strong>vertex_colors</strong><span class="classifier">ndarray, shape (Nv, 4)</span></dt><dd><p>Vertex colors. If faces is not specified, this will be
+interpreted as (Nf, 3, 4) array of colors.</p>
+</dd>
+<dt><strong>face_colors</strong><span class="classifier">ndarray, shape (Nf, 4)</span></dt><dd><p>Face colors.</p>
+</dd>
+<dt><strong>vertex_values</strong><span class="classifier">ndarray, shape (Nv,)</span></dt><dd><p>Vertex values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>All arguments are optional.</p>
+<p>The object may contain:</p>
+<ul class="simple">
+<li><p>list of vertex locations</p></li>
+<li><p>list of edges</p></li>
+<li><p>list of triangles</p></li>
+<li><p>colors per vertex, edge, or tri</p></li>
+<li><p>normals per vertex or tri</p></li>
+</ul>
+<p>This class handles conversion between the standard
+[list of vertices, list of faces] format (suitable for use with
+glDrawElements) and ‘indexed’ [list of vertices] format (suitable
+for use with glDrawArrays). It will automatically compute face normal
+vectors as well as averaged vertex normal vectors.</p>
+<p>The class attempts to be as efficient as possible in caching conversion
+results and avoiding unnecessary conversions.</p>
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_bounds">
+<code class="sig-name descname">get_bounds</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L197-L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the mesh bounds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>bounds</strong><span class="classifier">list</span></dt><dd><p>A list of tuples of mesh bounds.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_edge_colors">
+<code class="sig-name descname">get_edge_colors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L536-L537"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_edge_colors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_edges">
+<code class="sig-name descname">get_edges</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L119-L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edges of the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If indexed is None, return (Nf, 3) array of vertex indices,
+two per edge in the mesh.
+If indexed is ‘faces’, then return (Nf, 3, 2) array of vertex
+indices with 3 edges per face, and two vertices per edge.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>edges</strong><span class="classifier">ndarray</span></dt><dd><p>The edges.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_face_colors">
+<code class="sig-name descname">get_face_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L463-L491"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_face_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the face colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If indexed is None, return (Nf, 4) array of face colors.
+If indexed==’faces’, then instead return an indexed array
+(Nf, 3, 4)  (note this is just the same array with each color
+repeated three times).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">ndarray</span></dt><dd><p>The colors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_face_normals">
+<code class="sig-name descname">get_face_normals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L281-L311"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_face_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get face normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If None, return an array (Nf, 3) of normal vectors for each face.
+If ‘faces’, then instead return an indexed array (Nf, 3, 3)
+(this is just the same array with each vector copied three times).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>normals</strong><span class="classifier">ndarray</span></dt><dd><p>The normals.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_faces">
+<code class="sig-name descname">get_faces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L112-L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array (Nf, 3) of vertex indices, three per triangular face.</p>
+<p>If faces have not been computed for this mesh, returns None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_vertex_colors">
+<code class="sig-name descname">get_vertex_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L353-L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_vertex_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get vertex colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If None, return an array (Nv, 4) of vertex colors.
+If indexed==’faces’, then instead return an indexed array
+(Nf, 3, 4).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">ndarray</span></dt><dd><p>The vertex colors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_vertex_faces">
+<code class="sig-name descname">get_vertex_faces</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L570-L580"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_vertex_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>List mapping each vertex index to a list of face indices that use it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_vertex_normals">
+<code class="sig-name descname">get_vertex_normals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L313-L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_vertex_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get vertex normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If None, return an (N, 3) array of normal vectors with one entry
+per unique vertex in the mesh. If indexed is ‘faces’, then the
+array will contain three normal vectors per face (and some
+vertices may be repeated).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>normals</strong><span class="classifier">ndarray</span></dt><dd><p>The normals.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_vertex_values">
+<code class="sig-name descname">get_vertex_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L378-L401"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_vertex_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get vertex colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If None, return an array (Nv,) of vertex values.
+If indexed==’faces’, then instead return an indexed array
+(Nf, 3).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>values</strong><span class="classifier">ndarray</span></dt><dd><p>The vertex values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.get_vertices">
+<code class="sig-name descname">get_vertices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L166-L195"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.get_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If Note, return an array (N,3) of the positions of vertices in
+the mesh. By default, each unique vertex appears only once.
+If indexed is ‘faces’, then the array will instead contain three
+vertices per face in the mesh (and a single vertex may appear more
+than once in the array).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">ndarray</span></dt><dd><p>The vertices.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.has_edge_indexed_data">
+<code class="sig-name descname">has_edge_indexed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L254-L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.has_edge_indexed_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.has_face_color">
+<code class="sig-name descname">has_face_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L273-L279"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.has_face_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this data set has face color information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.has_face_indexed_data">
+<code class="sig-name descname">has_face_indexed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L249-L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.has_face_indexed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this object already has vertex positions indexed
+by face</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.has_vertex_color">
+<code class="sig-name descname">has_vertex_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L257-L263"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.has_vertex_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this data set has vertex color information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.has_vertex_value">
+<code class="sig-name descname">has_vertex_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L265-L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.has_vertex_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if this data set has vertex value information</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.n_faces">
+<em class="property">property </em><code class="sig-name descname">n_faces</code><a class="headerlink" href="#vispy.geometry.MeshData.n_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of faces in the mesh</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.n_vertices">
+<em class="property">property </em><code class="sig-name descname">n_vertices</code><a class="headerlink" href="#vispy.geometry.MeshData.n_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of vertices in the mesh</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.reset_normals">
+<code class="sig-name descname">reset_normals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L243-L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.reset_normals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.restore">
+<code class="sig-name descname">restore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L645-L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the state of a mesh previously saved using save()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state</strong><span class="classifier">dict</span></dt><dd><p>The previous state.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L618-L643"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize this mesh to a string appropriate for disk storage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>state</strong><span class="classifier">dict</span></dt><dd><p>The state.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.set_face_colors">
+<code class="sig-name descname">set_face_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span></em>, <em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L493-L519"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.set_face_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the face color array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">array</span></dt><dd><p>Array of colors. Must have shape (Nf, 4) (indexed by face),
+or shape (Nf, 3, 4) (face colors indexed by faces).</p>
+</dd>
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.set_faces">
+<code class="sig-name descname">set_faces</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">faces</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L147-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.set_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>faces</strong><span class="classifier">ndarray</span></dt><dd><p>(Nf, 3) array of faces. Each row in the array contains
+three indices into the vertex array, specifying the three corners
+of a triangular face.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.set_vertex_colors">
+<code class="sig-name descname">set_vertex_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span></em>, <em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L403-L431"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.set_vertex_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the vertex color array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>colors</strong><span class="classifier">array</span></dt><dd><p>Array of colors. Must have shape (Nv, 4) (indexing by vertex)
+or shape (Nf, 3, 4) (vertices indexed by face).</p>
+</dd>
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.set_vertex_values">
+<code class="sig-name descname">set_vertex_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L433-L461"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.set_vertex_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the vertex value array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>values</strong><span class="classifier">array</span></dt><dd><p>Array of values. Must have shape (Nv,) (indexing by vertex)
+or shape (Nf, 3) (vertices indexed by face).</p>
+</dd>
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>Should be ‘faces’ if colors are indexed by faces.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.MeshData.set_vertices">
+<code class="sig-name descname">set_vertices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">verts</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">indexed</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reset_normals</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/meshdata.py#L214-L241"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.MeshData.set_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mesh vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>verts</strong><span class="classifier">ndarray | None</span></dt><dd><p>The array (Nv, 3) of vertex coordinates.</p>
+</dd>
+<dt><strong>indexed</strong><span class="classifier">str | None</span></dt><dd><p>If indexed==’faces’, then the data must have shape (Nf, 3, 3) and
+is assumed to be already indexed as a list of faces. This will
+cause any pre-existing normal vectors to be cleared unless
+reset_normals=False.</p>
+</dd>
+<dt><strong>reset_normals</strong><span class="classifier">bool</span></dt><dd><p>If True, reset the normals.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.geometry.PolygonData">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">PolygonData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">edges</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">faces</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/polygon.py#L12-L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.PolygonData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Polygon class for data handling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">(Nv, 3) array</span></dt><dd><p>Vertex coordinates. If faces is not specified, then this will instead
+be interpreted as (Nf, 3, 3) array of coordinates.</p>
+</dd>
+<dt><strong>edges</strong><span class="classifier">(Nv, 2) array</span></dt><dd><p>Constraining edges specified by vertex indices.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier">(Nf, 3) array</span></dt><dd><p>Indexes into the vertex array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>All arguments are optional.</p>
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.add_vertex">
+<code class="sig-name descname">add_vertex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertex</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/polygon.py#L133-L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.PolygonData.add_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds given vertex and retriangulates to generate new faces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vertex</strong><span class="classifier">array-like</span></dt><dd><p>The vertex to add.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.convex_hull">
+<em class="property">property </em><code class="sig-name descname">convex_hull</code><a class="headerlink" href="#vispy.geometry.PolygonData.convex_hull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an array of vertex indexes representing the convex hull.</p>
+<p>If faces have not been computed for this mesh, the function
+computes them.
+If no vertices or faces are specified, the function returns None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.edges">
+<em class="property">property </em><code class="sig-name descname">edges</code><a class="headerlink" href="#vispy.geometry.PolygonData.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an array (Nv, 2) of vertex indices.</p>
+<p>If no vertices or faces are specified, the function returns None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.faces">
+<em class="property">property </em><code class="sig-name descname">faces</code><a class="headerlink" href="#vispy.geometry.PolygonData.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an array (Nf, 3) of vertex indexes, three per triangular
+face in the mesh.</p>
+<p>If faces have not been computed for this mesh, the function
+computes them.
+If no vertices or faces are specified, the function returns None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.triangulate">
+<code class="sig-name descname">triangulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/polygon.py#L111-L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.PolygonData.triangulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triangulates the set of vertices and stores the triangles in faces and
+the convex hull in convex_hull.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.PolygonData.vertices">
+<em class="property">property </em><code class="sig-name descname">vertices</code><a class="headerlink" href="#vispy.geometry.PolygonData.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an array (Nf, 3) of vertices.</p>
+<p>If only faces exist, the function computes the vertices and
+returns them.
+If no vertices or faces are specified, the function returns None.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.geometry.Rect">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">Rect</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/rect.py#L4-L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Rect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Representation of a rectangular area in a 2D coordinate system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*args</strong><span class="classifier">arguments</span></dt><dd><p>Can be in the form <cite>Rect(x, y, w, h)</cite>, <cite>Rect(pos, size)</cite>, or
+<cite>Rect(Rect)</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.geometry.Rect.bottom">
+<em class="property">property </em><code class="sig-name descname">bottom</code><a class="headerlink" href="#vispy.geometry.Rect.bottom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.center">
+<em class="property">property </em><code class="sig-name descname">center</code><a class="headerlink" href="#vispy.geometry.Rect.center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.contains">
+<code class="sig-name descname">contains</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/rect.py#L172-L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Rect.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query if the rectangle contains points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">float</span></dt><dd><p>X coordinate.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">float</span></dt><dd><p>Y coordinate.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>contains</strong><span class="classifier">bool</span></dt><dd><p>True if the point is within the rectangle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.flipped">
+<code class="sig-name descname">flipped</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/rect.py#L138-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Rect.flipped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Rect with the same bounds but with axes inverted</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">bool</span></dt><dd><p>Flip the X axis.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">bool</span></dt><dd><p>Flip the Y axis.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rect</strong><span class="classifier">instance of Rect</span></dt><dd><p>The flipped rectangle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.geometry.Rect.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.left">
+<em class="property">property </em><code class="sig-name descname">left</code><a class="headerlink" href="#vispy.geometry.Rect.left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.normalized">
+<code class="sig-name descname">normalized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/rect.py#L131-L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Rect.normalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Rect covering the same area, but with height and width
+guaranteed to be positive.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.padded">
+<code class="sig-name descname">padded</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">padding</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/rect.py#L115-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Rect.padded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new Rect padded (smaller) by padding on all sides</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>padding</strong><span class="classifier">float</span></dt><dd><p>The padding.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rect</strong><span class="classifier">instance of Rect</span></dt><dd><p>The padded rectangle.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.pos">
+<em class="property">property </em><code class="sig-name descname">pos</code><a class="headerlink" href="#vispy.geometry.Rect.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.right">
+<em class="property">property </em><code class="sig-name descname">right</code><a class="headerlink" href="#vispy.geometry.Rect.right" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#vispy.geometry.Rect.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.top">
+<em class="property">property </em><code class="sig-name descname">top</code><a class="headerlink" href="#vispy.geometry.Rect.top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.geometry.Rect.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.geometry.Rect.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.geometry.Triangulation">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">Triangulation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pts</span></em>, <em class="sig-param"><span class="n">edges</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/triangulation.py#L11-L804"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Triangulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Constrained delaunay triangulation</p>
+<p>Implementation based on <a class="reference internal" href="#r018d6735238b-1" id="id1">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pts</strong><span class="classifier">array</span></dt><dd><p>Nx2 array of points.</p>
+</dd>
+<dt><strong>edges</strong><span class="classifier">array</span></dt><dd><p>Nx2 array of edges (dtype=int).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Delaunay legalization is not yet implemented. This produces a proper
+triangulation, but adding legalisation would produce fewer thin
+triangles.</p></li>
+<li><p>The pts and edges arrays may be modified.</p></li>
+</ul>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r018d6735238b-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Domiter, V. and Žalik, B. Sweep‐line algorithm for constrained
+Delaunay triangulation</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.geometry.Triangulation.triangulate">
+<code class="sig-name descname">triangulate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/triangulation.py#L116-L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.Triangulation.triangulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do the triangulation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_arrow">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_arrow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rows</span></em>, <em class="sig-param"><span class="n">cols</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">cone_radius</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cone_length</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L546-L595"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_arrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a 3D arrow using a cylinder plus cone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rows</strong><span class="classifier">int</span></dt><dd><p>Number of rows.</p>
+</dd>
+<dt><strong>cols</strong><span class="classifier">int</span></dt><dd><p>Number of columns.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>Base cylinder radius.</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float</span></dt><dd><p>Length of the arrow.</p>
+</dd>
+<dt><strong>cone_radius</strong><span class="classifier">float</span></dt><dd><dl class="simple">
+<dt>Radius of the cone base.</dt><dd><p>If None, then this defaults to 2x the cylinder radius.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>cone_length</strong><span class="classifier">float</span></dt><dd><dl class="simple">
+<dt>Length of the cone.</dt><dd><p>If None, then this defaults to 1/3 of the arrow length.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>arrow</strong><span class="classifier">MeshData</span></dt><dd><p>Vertices and faces computed for a cone surface.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_box">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">height</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">width_segments</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">height_segments</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">depth_segments</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">planes</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L201-L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate vertices &amp; indices for a filled and outlined box.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>Box width.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">float</span></dt><dd><p>Box height.</p>
+</dd>
+<dt><strong>depth</strong><span class="classifier">float</span></dt><dd><p>Box depth.</p>
+</dd>
+<dt><strong>width_segments</strong><span class="classifier">int</span></dt><dd><p>Box segments count along the width.</p>
+</dd>
+<dt><strong>height_segments</strong><span class="classifier">float</span></dt><dd><p>Box segments count along the height.</p>
+</dd>
+<dt><strong>depth_segments</strong><span class="classifier">float</span></dt><dd><p>Box segments count along the depth.</p>
+</dd>
+<dt><strong>planes: array_like</strong></dt><dd><p>Any combination of <code class="docutils literal notranslate"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
+Included planes in the box construction.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">array</span></dt><dd><p>Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce a filled box.</p>
+</dd>
+<dt><strong>outline</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce an outline of the box.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_cone">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_cone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cols</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L507-L543"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_cone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a cone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cols</strong><span class="classifier">int</span></dt><dd><p>Number of faces.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>Base cone radius.</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float</span></dt><dd><p>Length of the cone.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cone</strong><span class="classifier">MeshData</span></dt><dd><p>Vertices and faces computed for a cone surface.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_cube">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_cube</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L16-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_cube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate vertices &amp; indices for a filled and outlined cube</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">array</span></dt><dd><p>Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>filled</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce a filled cube.</p>
+</dd>
+<dt><strong>outline</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce an outline of the cube.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_cylinder">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_cylinder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rows</span></em>, <em class="sig-param"><span class="n">cols</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">[1.0, 1.0]</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L453-L504"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_cylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a cylinder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rows</strong><span class="classifier">int</span></dt><dd><p>Number of rows.</p>
+</dd>
+<dt><strong>cols</strong><span class="classifier">int</span></dt><dd><p>Number of columns.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">tuple of float</span></dt><dd><p>Cylinder radii.</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float</span></dt><dd><p>Length of the cylinder.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">bool</span></dt><dd><p>Rotate each row by half a column.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cylinder</strong><span class="classifier">MeshData</span></dt><dd><p>Vertices and faces computed for a cylindrical surface.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_grid_mesh">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_grid_mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xs</span></em>, <em class="sig-param"><span class="n">ys</span></em>, <em class="sig-param"><span class="n">zs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L598-L646"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_grid_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate vertices and indices for an implicitly connected mesh.</p>
+<p>The intention is that this makes it simple to generate a mesh
+from meshgrid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>xs</strong><span class="classifier">ndarray</span></dt><dd><p>A 2d array of x coordinates for the vertices of the mesh. Must
+have the same dimensions as ys and zs.</p>
+</dd>
+<dt><strong>ys</strong><span class="classifier">ndarray</span></dt><dd><p>A 2d array of y coordinates for the vertices of the mesh. Must
+have the same dimensions as xs and zs.</p>
+</dd>
+<dt><strong>zs</strong><span class="classifier">ndarray</span></dt><dd><p>A 2d array of z coordinates for the vertices of the mesh. Must
+have the same dimensions as xs and ys.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">ndarray</span></dt><dd><p>The array of vertices in the mesh.</p>
+</dd>
+<dt><strong>indices</strong><span class="classifier">ndarray</span></dt><dd><p>The array of indices for the mesh.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_plane">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_plane</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">height</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">width_segments</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">height_segments</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">direction</span><span class="o">=</span><span class="default_value">'+z'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L92-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_plane" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate vertices &amp; indices for a filled and outlined plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>Plane width.</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">float</span></dt><dd><p>Plane height.</p>
+</dd>
+<dt><strong>width_segments</strong><span class="classifier">int</span></dt><dd><p>Plane segments count along the width.</p>
+</dd>
+<dt><strong>height_segments</strong><span class="classifier">float</span></dt><dd><p>Plane segments count along the height.</p>
+</dd>
+<dt><strong>direction: unicode</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">{'-x',</span> <span class="pre">'+x',</span> <span class="pre">'-y',</span> <span class="pre">'+y',</span> <span class="pre">'-z',</span> <span class="pre">'+z'}</span></code>
+Direction the plane will be facing.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">array</span></dt><dd><p>Array of vertices suitable for use as a VertexBuffer.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce a filled plane.</p>
+</dd>
+<dt><strong>outline</strong><span class="classifier">array</span></dt><dd><p>Indices to use to produce an outline of the plane.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r5aae4a72062f-1"><span class="brackets">1</span></dt>
+<dd><p>Cabello, R. (n.d.). PlaneBufferGeometry.js. Retrieved May 12, 2015,
+from <a class="reference external" href="http://git.io/vU1Fh">http://git.io/vU1Fh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.create_sphere">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">create_sphere</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rows</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">cols</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">subdivisions</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'latitude'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/generation.py#L415-L450"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.create_sphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sphere</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rows</strong><span class="classifier">int</span></dt><dd><p>Number of rows (for method=’latitude’ and ‘cube’).</p>
+</dd>
+<dt><strong>cols</strong><span class="classifier">int</span></dt><dd><p>Number of columns (for method=’latitude’ and ‘cube’).</p>
+</dd>
+<dt><strong>depth</strong><span class="classifier">int</span></dt><dd><p>Number of depth segments (for method=’cube’).</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>Sphere radius.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">bool</span></dt><dd><p>Rotate each row by half a column (for method=’latitude’).</p>
+</dd>
+<dt><strong>subdivisions</strong><span class="classifier">int</span></dt><dd><p>Number of subdivisions to perform (for method=’ico’)</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str</span></dt><dd><p>Method for generating sphere. Accepts ‘latitude’ for latitude-
+longitude, ‘ico’ for icosahedron, and ‘cube’ for cube based
+tessellation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sphere</strong><span class="classifier">MeshData</span></dt><dd><p>Vertices and faces computed for a spherical surface.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.resize">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">kind</span><span class="o">=</span><span class="default_value">'linear'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/calculations.py#L84-L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize an image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Array of shape (N, M, …).</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple</span></dt><dd><p>2-element shape.</p>
+</dd>
+<dt><strong>kind</strong><span class="classifier">str</span></dt><dd><p>Interpolation, either “linear” or “nearest”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>scaled_image</strong><span class="classifier">ndarray</span></dt><dd><p>New image, will have dtype np.float64.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="vispy.geometry.triangulate">
+<code class="sig-prename descclassname">vispy.geometry.</code><code class="sig-name descname">triangulate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/geometry/triangulation.py#L825-L858"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.geometry.triangulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triangulate a set of vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">array-like</span></dt><dd><p>The vertices.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vertices</strong><span class="classifier">array-like</span></dt><dd><p>The vertices.</p>
+</dd>
+<dt><strong>tringles</strong><span class="classifier">array-like</span></dt><dd><p>The triangles.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.color.colormap.html" title="previous page">vispy.color.colormap module</a>
+    <a class='right-next' id="next-link" href="vispy.geometry.tests.html" title="next page">vispy.geometry.tests package</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

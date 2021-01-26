@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.gloo.program module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.gloo.texture module" href="vispy.gloo.texture.html" />
+    <link rel="prev" title="vispy.gloo.preprocessor module" href="vispy.gloo.preprocessor.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#gloo-vs-glir" class="nav-link">Gloo vs GLIR</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.gloo.program.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.gloo.program">
+<span id="vispy-gloo-program-module"></span><h1>vispy.gloo.program module<a class="headerlink" href="#module-vispy.gloo.program" title="Permalink to this headline">¶</a></h1>
+<p>Implementation of a GL Program object.</p>
+<p>This class parses the source code to obtain the names and types of
+uniforms, attributes, varyings and constants. This information is used
+to provide the user with a natural way to set variables.</p>
+<div class="section" id="gloo-vs-glir">
+<h2>Gloo vs GLIR<a class="headerlink" href="#gloo-vs-glir" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>Done in this class:</dt><dd><ul class="simple">
+<li><p>Check the data shape given for uniforms and attributes</p></li>
+<li><p>Convert uniform data to array of the correct type</p></li>
+<li><p>Check whether any variables are set that are not present in source code</p></li>
+</ul>
+</dd>
+<dt>Done by GLIR:</dt><dd><ul class="simple">
+<li><p>Check whether a set uniform/attribute is not active (a warning is given)</p></li>
+<li><p>Check whether anactive attribute or uniform is not set (a warning is given)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt id="vispy.gloo.program.FragmentShader">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.program.</code><code class="sig-name descname">FragmentShader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L64-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.FragmentShader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.program.Shader" title="vispy.gloo.program.Shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.program.Shader</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.program.GeometryShader">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.program.</code><code class="sig-name descname">GeometryShader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L68-L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.GeometryShader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.program.Shader" title="vispy.gloo.program.Shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.program.Shader</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.program.Program">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.program.</code><code class="sig-name descname">Program</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vert</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">frag</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L73-L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.Program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
+<p>Shader program object</p>
+<p>A Program is an object to which shaders can be attached and linked to
+create the final program.</p>
+<p>Uniforms and attributes can be set using indexing: e.g.
+<code class="docutils literal notranslate"><span class="pre">program['a_pos']</span> <span class="pre">=</span> <span class="pre">pos_data</span></code> and <code class="docutils literal notranslate"><span class="pre">program['u_color']</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vert</strong><span class="classifier">str</span></dt><dd><p>The vertex shader to be used by this program</p>
+</dd>
+<dt><strong>frag</strong><span class="classifier">str</span></dt><dd><p>The fragment shader to be used by this program</p>
+</dd>
+<dt><strong>count</strong><span class="classifier">int (optional)</span></dt><dd><p>The program will prepare a structured vertex buffer of count
+vertices. All attributes set using <code class="docutils literal notranslate"><span class="pre">prog['attr']</span> <span class="pre">=</span> <span class="pre">X</span></code> will
+be combined into a structured vbo with interleaved elements, which
+is more efficient than having one vbo per attribute.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If several shaders are specified, only one can contain the main
+function. OpenGL ES 2.0 does not support a list of shaders.</p>
+<dl class="py method">
+<dt id="vispy.gloo.program.Program.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L281-L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.Program.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind a VertexBuffer that has structured data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">VertexBuffer</span></dt><dd><p>The vertex buffer to bind. The field names of the array
+are mapped to attribute names in GLSL.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.program.Program.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'triangles'</span></em>, <em class="sig-param"><span class="n">indices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">check_error</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L465-L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.Program.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the attribute arrays in the specified mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">str | GL_ENUM</span></dt><dd><p>‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘lines_adjacency’,
+‘line_strip_adjacency’, ‘triangles’, ‘triangle_strip’, or
+‘triangle_fan’.</p>
+</dd>
+<dt><strong>indices</strong><span class="classifier">array</span></dt><dd><p>Array of indices to draw.</p>
+</dd>
+<dt><strong>check_error:</strong></dt><dd><p>Check error after draw.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.program.Program.set_shaders">
+<code class="sig-name descname">set_shaders</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vert</span></em>, <em class="sig-param"><span class="n">frag</span></em>, <em class="sig-param"><span class="n">geom</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">update_variables</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L164-L208"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.Program.set_shaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the vertex and fragment shaders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vert</strong><span class="classifier">str</span></dt><dd><p>Source code for vertex shader.</p>
+</dd>
+<dt><strong>frag</strong><span class="classifier">str</span></dt><dd><p>Source code for fragment shaders.</p>
+</dd>
+<dt><strong>geom</strong><span class="classifier">str (optional)</span></dt><dd><p>Source code for geometry shader.</p>
+</dd>
+<dt><strong>update_variables</strong><span class="classifier">bool</span></dt><dd><p>If True, then process any pending variables immediately after
+setting shader code. Default is True.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.program.Program.shaders">
+<em class="property">property </em><code class="sig-name descname">shaders</code><a class="headerlink" href="#vispy.gloo.program.Program.shaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>All currently attached shaders</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.program.Program.variables">
+<em class="property">property </em><code class="sig-name descname">variables</code><a class="headerlink" href="#vispy.gloo.program.Program.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of the variables in use by the current program</p>
+<p>The list is obtained by parsing the GLSL source code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>variables</strong><span class="classifier">list</span></dt><dd><p>Each variable is represented as a tuple (kind, type, name),
+where <cite>kind</cite> is ‘attribute’, ‘uniform’, ‘uniform_array’,
+‘varying’ or ‘const’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.program.Shader">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.program.</code><code class="sig-name descname">Shader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L43-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.Shader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
+<dl class="py method">
+<dt id="vispy.gloo.program.Shader.code">
+<em class="property">property </em><code class="sig-name descname">code</code><a class="headerlink" href="#vispy.gloo.program.Shader.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.program.VertexShader">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.program.</code><code class="sig-name descname">VertexShader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">code</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/program.py#L60-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.program.VertexShader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.program.Shader" title="vispy.gloo.program.Shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.program.Shader</span></code></a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.gloo.preprocessor.html" title="previous page">vispy.gloo.preprocessor module</a>
+    <a class='right-next' id="next-link" href="vispy.gloo.texture.html" title="next page">vispy.gloo.texture module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

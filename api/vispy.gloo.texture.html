@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.gloo.texture module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.gloo.util module" href="vispy.gloo.util.html" />
+    <link rel="prev" title="vispy.gloo.program module" href="vispy.gloo.program.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.gloo.texture.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.gloo.texture">
+<span id="vispy-gloo-texture-module"></span><h1>vispy.gloo.texture module<a class="headerlink" href="#module-vispy.gloo.texture" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.gloo.texture.BaseTexture">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">BaseTexture</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L17-L382"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
+<p>A Texture is used to represent a topological set of scalar values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | tuple | None</span></dt><dd><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str | None</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str | None</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple | None</span></dt><dd><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.format">
+<em class="property">property </em><code class="sig-name descname">format</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>The texture format (color channels).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.interpolation">
+<em class="property">property </em><code class="sig-name descname">interpolation</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.interpolation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture interpolation for minification and magnification.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L201-L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the texture size and format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">tuple of integers</span></dt><dd><p>New texture shape in zyx order. Optionally, an extra dimention
+may be specified to indicate the number of color channels.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | enum | None</span></dt><dd><p>The internal (storage) format of the texture: ‘luminance’,
+‘alpha’, ‘r8’, ‘r16’, ‘r16f’, ‘r32f’; ‘luminance_alpha’,
+‘rg8’, ‘rg16’, ‘rg16f’, ‘rg32f’; ‘rgb’, ‘rgb8’, ‘rgb16’,
+‘rgb16f’, ‘rgb32f’; ‘rgba’, ‘rgba8’, ‘rgba16’, ‘rgba16f’,
+‘rgba32f’.  If None, the internalformat is chosen
+automatically based on the number of channels.  This is a
+hint which may be ignored by the OpenGL implementation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L278-L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set texture data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>offset: int | tuple of ints</strong></dt><dd><p>Offset in texture where to start copying data</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory. Asking explicitly
+for a copy will prevent this behavior.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This operation implicitly resizes the texture to the shape of
+the data if given offset is None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.shape">
+<em class="property">property </em><code class="sig-name descname">shape</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data shape (last dimension indicates number of color channels)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.wrapping">
+<em class="property">property </em><code class="sig-name descname">wrapping</code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.wrapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture wrapping mode</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.Texture1D">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">Texture1D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L386-L446"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.Texture1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
+<p>One dimensional texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | tuple | None</span></dt><dd><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str | None</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str | None</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple | None</span></dt><dd><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture1D.glsl_sample">
+<em class="property">property </em><code class="sig-name descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.texture.Texture1D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture1D.glsl_sampler_type">
+<em class="property">property </em><code class="sig-name descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture1D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture1D.glsl_type">
+<em class="property">property </em><code class="sig-name descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture1D.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture1D.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.gloo.texture.Texture1D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.Texture2D">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">Texture2D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L450-L514"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.Texture2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
+<p>Two dimensional texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Texture data shaped as W, or a tuple with the shape for
+the texture (W).</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple</span></dt><dd><p>Optional. A tuple with the shape HxW. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture2D.glsl_sample">
+<em class="property">property </em><code class="sig-name descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.texture.Texture2D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture2D.glsl_sampler_type">
+<em class="property">property </em><code class="sig-name descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture2D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture2D.glsl_type">
+<em class="property">property </em><code class="sig-name descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture2D.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture2D.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.gloo.texture.Texture2D.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture2D.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.gloo.texture.Texture2D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.Texture3D">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">Texture3D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L518-L588"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.Texture3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
+<p>Three dimensional texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | tuple | None</span></dt><dd><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str | None</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str | None</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple | None</span></dt><dd><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.depth">
+<em class="property">property </em><code class="sig-name descname">depth</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture depth</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.glsl_sample">
+<em class="property">property </em><code class="sig-name descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.glsl_sampler_type">
+<em class="property">property </em><code class="sig-name descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.glsl_type">
+<em class="property">property </em><code class="sig-name descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.Texture3D.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.gloo.texture.Texture3D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.TextureAtlas">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">TextureAtlas</code><span class="sig-paren">(</span><em class="sig-param">shape=(1024</em>, <em class="sig-param">1024)</em>, <em class="sig-param">dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L885-L998"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.Texture2D" title="vispy.gloo.texture.Texture2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.Texture2D</span></code></a></p>
+<p>Group multiple small data regions into a larger texture.</p>
+<p>The algorithm is based on the article by Jukka Jylänki : “A Thousand Ways
+to Pack the Bin - A Practical Approach to Two-Dimensional Rectangle Bin
+Packing”, February 27, 2010. More precisely, this is an implementation of
+the Skyline Bottom-Left algorithm based on C++ sources provided by Jukka
+Jylänki at: <a class="reference external" href="http://clb.demon.fi/files/RectangleBinPack/">http://clb.demon.fi/files/RectangleBinPack/</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">tuple of int</span></dt><dd><p>Texture shape (optional).</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">numpy.dtype object</span></dt><dd><p>Texture starting data type (default: float32)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This creates a 2D texture that holds 1D float32 data.
+An example of simple access:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span> <span class="o">=</span> <span class="n">TextureAtlas</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bounds</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">get_free_region</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atlas</span><span class="o">.</span><span class="n">set_region</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureAtlas.get_free_region">
+<code class="sig-name descname">get_free_region</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">height</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L920-L981"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a free region of given size and allocate it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of region to allocate</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of region to allocate</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>bounds</strong><span class="classifier">tuple | None</span></dt><dd><p>A newly allocated region as (x, y, w, h) or None
+(if failed).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.TextureCube">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">TextureCube</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L592-L665"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureCube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
+<p>Texture Cube</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | tuple | None</span></dt><dd><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str | None</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str | None</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple | None</span></dt><dd><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.depth">
+<em class="property">property </em><code class="sig-name descname">depth</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture depth</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.glsl_sample">
+<em class="property">property </em><code class="sig-name descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.glsl_sampler_type">
+<em class="property">property </em><code class="sig-name descname">glsl_sampler_type</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.glsl_sampler_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL type of the sampler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.glsl_type">
+<em class="property">property </em><code class="sig-name descname">glsl_type</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.glsl_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL declaration strings required for a variable to hold this data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureCube.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.gloo.texture.TextureCube.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.gloo.texture.TextureEmulated3D">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.gloo.texture.</code><code class="sig-name descname">TextureEmulated3D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">interpolation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wrapping</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">resizeable</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L669-L881"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.Texture2D" title="vispy.gloo.texture.Texture2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.Texture2D</span></code></a></p>
+<p>Two dimensional texture that is emulating a three dimensional texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray | tuple | None</span></dt><dd><p>Texture data in the form of a numpy array (or something that
+can be turned into one). A tuple with the shape of the texture
+can also be given.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Indicates whether texture can be resized. Default True.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str | None</span></dt><dd><p>Interpolation mode, must be one of: ‘nearest’, ‘linear’.
+Default ‘nearest’.</p>
+</dd>
+<dt><strong>wrapping</strong><span class="classifier">str | None</span></dt><dd><p>Wrapping mode, must be one of: ‘repeat’, ‘clamp_to_edge’,
+‘mirrored_repeat’. Default ‘clamp_to_edge’.</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple | None</span></dt><dd><p>Optional. A tuple with the shape of the texture. If <code class="docutils literal notranslate"><span class="pre">data</span></code>
+is also a tuple, it will override the value of <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | None</span></dt><dd><p>Internal format to use.</p>
+</dd>
+<dt><strong>resizeable</strong><span class="classifier">None</span></dt><dd><p>Deprecated version of <cite>resizable</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.depth">
+<em class="property">property </em><code class="sig-name descname">depth</code><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture depth</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.glsl_sample">
+<em class="property">property </em><code class="sig-name descname">glsl_sample</code><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.glsl_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>GLSL function that samples the texture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture height</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.resize">
+<code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">internalformat</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L828-L853"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the texture size and format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">tuple of integers</span></dt><dd><p>New texture shape in zyx order. Optionally, an extra dimention
+may be specified to indicate the number of color channels.</p>
+</dd>
+<dt><strong>format</strong><span class="classifier">str | enum | None</span></dt><dd><p>The format of the texture: ‘luminance’, ‘alpha’,
+‘luminance_alpha’, ‘rgb’, or ‘rgba’. If not given the format
+is chosen automatically based on the number of channels.
+When the data has one channel, ‘luminance’ is assumed.</p>
+</dd>
+<dt><strong>internalformat</strong><span class="classifier">str | enum | None</span></dt><dd><p>The internal (storage) format of the texture: ‘luminance’,
+‘alpha’, ‘r8’, ‘r16’, ‘r16f’, ‘r32f’; ‘luminance_alpha’,
+‘rg8’, ‘rg16’, ‘rg16f’, ‘rg32f’; ‘rgb’, ‘rgb8’, ‘rgb16’,
+‘rgb16f’, ‘rgb32f’; ‘rgba’, ‘rgba8’, ‘rgba16’, ‘rgba16f’,
+‘rgba32f’.  If None, the internalformat is chosen
+automatically based on the number of channels.  This is a
+hint which may be ignored by the OpenGL implementation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.set_data">
+<code class="sig-name descname">set_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L804-L826"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.set_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set texture data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Data to be uploaded</p>
+</dd>
+<dt><strong>offset: int | tuple of ints</strong></dt><dd><p>Offset in texture where to start copying data</p>
+</dd>
+<dt><strong>copy: bool</strong></dt><dd><p>Since the operation is deferred, data may change before
+data is actually uploaded to GPU memory. Asking explicitly
+for a copy will prevent this behavior.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This operation implicitely resizes the texture to the shape of
+the data if given offset is None.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.shape">
+<em class="property">property </em><code class="sig-name descname">shape</code><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data shape (last dimension indicates number of color channels)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.gloo.texture.TextureEmulated3D.width">
+<em class="property">property </em><code class="sig-name descname">width</code><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture width</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.gloo.program.html" title="previous page">vispy.gloo.program module</a>
+    <a class='right-next' id="next-link" href="vispy.gloo.util.html" title="next page">vispy.gloo.util module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

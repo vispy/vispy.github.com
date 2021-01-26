@@ -1,0 +1,736 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vispy.app.canvas module &#8212; VisPy</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vispy.app.inputhook module" href="vispy.app.inputhook.html" />
+    <link rel="prev" title="vispy.app.base module" href="vispy.app.base.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../index.html">
+    
+      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../installation.html">Installation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../overview.html">Documentation</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../gallery.html">Gallery</a>
+        </li>
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="modules.html">API</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../news.html">News</a>
+        </li>
+        
+        
+      </ul>
+
+
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+    <div class="bd-toc-item active">
+    
+  
+    <ul class="nav bd-sidenav">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+            
+                <li class="active">
+                    <a href="vispy.html">vispy package</a>
+                </li>
+            
+          
+        
+        
+        
+        
+      </ul>
+  
+  </nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/master/api/vispy.app.canvas.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="module-vispy.app.canvas">
+<span id="vispy-app-canvas-module"></span><h1>vispy.app.canvas module<a class="headerlink" href="#module-vispy.app.canvas" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="vispy.app.canvas.Canvas">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.app.canvas.</code><code class="sig-name descname">Canvas</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">'VisPy canvas'</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">(800, 600)</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">autoswap</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">app</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">create_native</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">vsync</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">resizable</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">decorate</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">fullscreen</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">shared</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">keys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">parent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dpi</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">always_on_top</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">px_scale</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">backend_kwargs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L25-L554"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Representation of a GUI element with an OpenGL context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>title</strong><span class="classifier">str</span></dt><dd><p>The widget title</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">(width, height)</span></dt><dd><p>The size of the window.</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">(x, y)</span></dt><dd><p>The position of the window in screen coordinates.</p>
+</dd>
+<dt><strong>show</strong><span class="classifier">bool</span></dt><dd><p>Whether to show the widget immediately. Default False.</p>
+</dd>
+<dt><strong>autoswap</strong><span class="classifier">bool</span></dt><dd><p>Whether to swap the buffers automatically after a draw event.
+Default True. If True, the <code class="docutils literal notranslate"><span class="pre">swap_buffers</span></code> Canvas method will
+be called last (by default) by the <code class="docutils literal notranslate"><span class="pre">canvas.draw</span></code> event handler.</p>
+</dd>
+<dt><strong>app</strong><span class="classifier">Application | str</span></dt><dd><p>Give vispy Application instance to use as a backend.
+(vispy.app is used by default.) If str, then an application
+using the chosen backend (e.g., ‘pyglet’) will be created.
+Note the canvas application can be accessed at <code class="docutils literal notranslate"><span class="pre">canvas.app</span></code>.</p>
+</dd>
+<dt><strong>create_native</strong><span class="classifier">bool</span></dt><dd><p>Whether to create the widget immediately. Default True.</p>
+</dd>
+<dt><strong>vsync</strong><span class="classifier">bool</span></dt><dd><p>Enable vertical synchronization.</p>
+</dd>
+<dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Allow the window to be resized.</p>
+</dd>
+<dt><strong>decorate</strong><span class="classifier">bool</span></dt><dd><p>Decorate the window. Default True.</p>
+</dd>
+<dt><strong>fullscreen</strong><span class="classifier">bool | int</span></dt><dd><p>If False, windowed mode is used (default). If True, the default
+monitor is used. If int, the given monitor number is used.</p>
+</dd>
+<dt><strong>config</strong><span class="classifier">dict</span></dt><dd><p>A dict with OpenGL configuration options, which is combined
+with the default configuration options and used to initialize
+the context. See <code class="docutils literal notranslate"><span class="pre">canvas.context.config</span></code> for possible
+options.</p>
+</dd>
+<dt><strong>shared</strong><span class="classifier">Canvas | GLContext | None</span></dt><dd><p>An existing canvas or context to share OpenGL objects with.</p>
+</dd>
+<dt><strong>keys</strong><span class="classifier">str | dict | None</span></dt><dd><p>Default key mapping to use. If ‘interactive’, escape and F11 will
+close the canvas and toggle full-screen mode, respectively.
+If dict, maps keys to functions. If dict values are strings,
+they are assumed to be <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> methods, otherwise they should
+be callable.</p>
+</dd>
+<dt><strong>parent</strong><span class="classifier">widget-object</span></dt><dd><p>The parent widget if this makes sense for the used backend.</p>
+</dd>
+<dt><strong>dpi</strong><span class="classifier">float | None</span></dt><dd><p>Resolution in dots-per-inch to use for the canvas. If dpi is None,
+then the value will be determined by querying the global config first,
+and then the operating system.</p>
+</dd>
+<dt><strong>always_on_top</strong><span class="classifier">bool</span></dt><dd><p>If True, try to create the window in always-on-top mode.</p>
+</dd>
+<dt><strong>px_scale</strong><span class="classifier">int &gt; 0</span></dt><dd><p>A scale factor to apply between logical and physical pixels in addition
+to the actual scale factor determined by the backend. This option
+allows the scale factor to be adjusted for testing.</p>
+</dd>
+<dt><strong>backend_kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to be supplied to the backend canvas object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The <cite>Canvas</cite> receives the following events:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>initialize</p></li>
+<li><p>resize</p></li>
+<li><p>draw</p></li>
+<li><p>mouse_press</p></li>
+<li><p>mouse_release</p></li>
+<li><p>mouse_double_click</p></li>
+<li><p>mouse_move</p></li>
+<li><p>mouse_wheel</p></li>
+<li><p>key_press</p></li>
+<li><p>key_release</p></li>
+<li><p>stylus</p></li>
+<li><p>touch</p></li>
+<li><p>close</p></li>
+</ul>
+</div></blockquote>
+<p>The ordering of the mouse_double_click, mouse_press, and mouse_release
+events are not guaranteed to be consistent between backends. Only certain
+backends natively support double-clicking (currently Qt and WX); on other
+backends, they are detected manually with a fixed time delay.
+This can cause problems with accessibility, as increasing the OS detection
+time or using a dedicated double-click button will not be respected.</p>
+<p>Backend-specific arguments can be given through the <cite>backend_kwargs</cite>
+argument. Currently this can be used to control the webGL context
+requested by the <cite>ipynb_webgl</cite> backend, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">backend_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;webgl&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">preserveDrawingBuffer</span><span class="o">=</span><span class="kc">True</span><span class="p">)})</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.app">
+<em class="property">property </em><code class="sig-name descname">app</code><a class="headerlink" href="#vispy.app.canvas.Canvas.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>The vispy Application instance on which this Canvas is based.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L453-L468"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the canvas</p>
+<p class="rubric">Notes</p>
+<p>This will usually destroy the GL context. For Qt, the context
+(and widget) will be destroyed only if the widget is top-level.
+To avoid having the widget destroyed (more like standard Qt
+behavior), consider making the widget a sub-widget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fun</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L311-L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect a function to an event</p>
+<p>The name of the function
+should be on_X, with X the name of the event (e.g. ‘on_draw’).</p>
+<p>This method is typically used as a decorator on a function
+definition for an event handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fun</strong><span class="classifier">callable</span></dt><dd><p>The function.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.context">
+<em class="property">property </em><code class="sig-name descname">context</code><a class="headerlink" href="#vispy.app.canvas.Canvas.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>The OpenGL context of the native widget</p>
+<p>It gives access to OpenGL functions to call on this canvas object,
+and to the shared context namespace.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.create_native">
+<code class="sig-name descname">create_native</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L222-L240"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.create_native" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the native widget if not already done so. If the widget
+is already created, this function does nothing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.dpi">
+<em class="property">property </em><code class="sig-name descname">dpi</code><a class="headerlink" href="#vispy.app.canvas.Canvas.dpi" title="Permalink to this definition">¶</a></dt>
+<dd><p>The physical resolution of the canvas in dots per inch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.fps">
+<em class="property">property </em><code class="sig-name descname">fps</code><a class="headerlink" href="#vispy.app.canvas.Canvas.fps" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fps of canvas/window, as the rate that events.draw is emitted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.fullscreen">
+<em class="property">property </em><code class="sig-name descname">fullscreen</code><a class="headerlink" href="#vispy.app.canvas.Canvas.fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.measure_fps">
+<code class="sig-name descname">measure_fps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">callback</span><span class="o">=</span><span class="default_value">'%1.1f FPS'</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L480-L509"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.measure_fps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure the current FPS</p>
+<p>Sets the update window, connects the draw event to update_fps
+and sets the callback function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>window</strong><span class="classifier">float</span></dt><dd><p>The time-window (in seconds) to calculate FPS. Default 1.0.</p>
+</dd>
+<dt><strong>callback</strong><span class="classifier">function | str</span></dt><dd><p>The function to call with the float FPS value, or the string
+to be formatted with the fps value and then printed. The
+default is <code class="docutils literal notranslate"><span class="pre">'%1.1f</span> <span class="pre">FPS'</span></code>. If callback evaluates to False, the
+FPS measurement is stopped.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.native">
+<em class="property">property </em><code class="sig-name descname">native</code><a class="headerlink" href="#vispy.app.canvas.Canvas.native" title="Permalink to this definition">¶</a></dt>
+<dd><p>The native widget object on which this Canvas is based.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.physical_size">
+<em class="property">property </em><code class="sig-name descname">physical_size</code><a class="headerlink" href="#vispy.app.canvas.Canvas.physical_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The physical size of the canvas/window, which may differ from the
+size property on backends that expose HiDPI</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.pixel_scale">
+<em class="property">property </em><code class="sig-name descname">pixel_scale</code><a class="headerlink" href="#vispy.app.canvas.Canvas.pixel_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ratio between the number of logical pixels, or ‘points’, and
+the physical pixels on the device. In most cases this will be 1.0,
+but on certain backends this will be greater than 1. This should be
+used as a scaling factor when writing your own visualisations
+with gloo (make a copy and multiply all your logical pixel values
+by it). When writing Visuals or SceneGraph visualisations, this value
+is exposed as <cite>TransformSystem.px_scale</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.position">
+<em class="property">property </em><code class="sig-name descname">position</code><a class="headerlink" href="#vispy.app.canvas.Canvas.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of canvas/window relative to screen</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L533-L554"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the canvas to an offscreen buffer and return the image
+array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>Numpy array of type ubyte and shape (h, w, 4). Index [0, 0] is the
+upper-left corner of the rendered region.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.set_current">
+<code class="sig-name descname">set_current</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L407-L416"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.set_current" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make this the active GL canvas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">visible</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">run</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L428-L440"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show or hide the canvas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>visible</strong><span class="classifier">bool</span></dt><dd><p>Make the canvas visible.</p>
+</dd>
+<dt><strong>run</strong><span class="classifier">bool</span></dt><dd><p>Run the backend event loop.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#vispy.app.canvas.Canvas.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size of canvas/window</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.swap_buffers">
+<code class="sig-name descname">swap_buffers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L418-L426"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.swap_buffers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap GL buffers such that the offscreen buffer becomes visible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.title">
+<em class="property">property </em><code class="sig-name descname">title</code><a class="headerlink" href="#vispy.app.canvas.Canvas.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The title of canvas/window</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.Canvas.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L442-L451"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.Canvas.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inform the backend that the Canvas needs to be redrawn</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>event</strong><span class="classifier">None</span></dt><dd><p>Not used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.app.canvas.DrawEvent">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.app.canvas.</code><code class="sig-name descname">DrawEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">region</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L767-L795"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.DrawEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.util.event.html#vispy.util.event.Event" title="vispy.util.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.Event</span></code></a></p>
+<p>Draw event class</p>
+<p>This type of event is sent to Canvas.events.draw when a redraw
+is required.</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">str</span></dt><dd><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>region</strong><span class="classifier">(int, int, int, int) or None</span></dt><dd><p>The region of the canvas which needs to be redrawn (x, y, w, h).
+If None, the entire canvas must be redrawn.</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">object (optional)</span></dt><dd><p>The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">extra keyword arguments</span></dt><dd><p>All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.app.canvas.DrawEvent.region">
+<em class="property">property </em><code class="sig-name descname">region</code><a class="headerlink" href="#vispy.app.canvas.DrawEvent.region" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.app.canvas.KeyEvent">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.app.canvas.</code><code class="sig-name descname">KeyEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">key</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">text</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">modifiers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L688-L727"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.KeyEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.util.event.html#vispy.util.event.Event" title="vispy.util.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.Event</span></code></a></p>
+<p>Key event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">str</span></dt><dd><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>key</strong><span class="classifier">vispy.keys.Key instance</span></dt><dd><p>The Key object for this event. Can be compared to string names.</p>
+</dd>
+<dt><strong>text</strong><span class="classifier">str</span></dt><dd><p>The text representation of the key (can be an empty string).</p>
+</dd>
+<dt><strong>modifiers</strong><span class="classifier">tuple of Key instances</span></dt><dd><p>Tuple that specifies which modifier keys were pressed down at the
+time of the event (shift, control, alt, meta).</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">object (optional)</span></dt><dd><p>The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.app.canvas.KeyEvent.key">
+<em class="property">property </em><code class="sig-name descname">key</code><a class="headerlink" href="#vispy.app.canvas.KeyEvent.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.KeyEvent.modifiers">
+<em class="property">property </em><code class="sig-name descname">modifiers</code><a class="headerlink" href="#vispy.app.canvas.KeyEvent.modifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.KeyEvent.text">
+<em class="property">property </em><code class="sig-name descname">text</code><a class="headerlink" href="#vispy.app.canvas.KeyEvent.text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.app.canvas.MouseEvent">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.app.canvas.</code><code class="sig-name descname">MouseEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">pos</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">button</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buttons</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">modifiers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">delta</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">last_event</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">press_event</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L558-L685"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.MouseEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.util.event.html#vispy.util.event.Event" title="vispy.util.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.Event</span></code></a></p>
+<p>Mouse event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below, as well as a “time” attribute with the event’s
+precision start time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">str</span></dt><dd><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>pos</strong><span class="classifier">(int, int)</span></dt><dd><p>The position of the mouse (in screen coordinates).</p>
+</dd>
+<dt><strong>button</strong><span class="classifier">int | None</span></dt><dd><p>The button that generated this event (can be None).
+Left=1, right=2, middle=3. During a mouse drag, this
+will return the button that started the drag (same thing as
+<code class="docutils literal notranslate"><span class="pre">event.press_event.button</span></code>).</p>
+</dd>
+<dt><strong>buttons</strong><span class="classifier">[int, …]</span></dt><dd><p>The list of buttons depressed during this event.</p>
+</dd>
+<dt><strong>modifiers</strong><span class="classifier">tuple of Key instances</span></dt><dd><p>Tuple that specifies which modifier keys were pressed down at the
+time of the event (shift, control, alt, meta).</p>
+</dd>
+<dt><strong>delta</strong><span class="classifier">(float, float)</span></dt><dd><p>The amount of scrolling in horizontal and vertical direction. One
+“tick” corresponds to a delta of 1.0.</p>
+</dd>
+<dt><strong>press_event</strong><span class="classifier">MouseEvent</span></dt><dd><p>The press event that was generated at the start of the current drag,
+if any.</p>
+</dd>
+<dt><strong>last_event</strong><span class="classifier">MouseEvent</span></dt><dd><p>The MouseEvent immediately preceding the current event. During drag
+operations, all generated events retain their last_event properties,
+allowing the entire drag to be reconstructed.</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">object (optional)</span></dt><dd><p>The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.button">
+<em class="property">property </em><code class="sig-name descname">button</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.button" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.buttons">
+<em class="property">property </em><code class="sig-name descname">buttons</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.buttons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.delta">
+<em class="property">property </em><code class="sig-name descname">delta</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.delta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.drag_events">
+<code class="sig-name descname">drag_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L652-L669"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.MouseEvent.drag_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all mouse events in the current drag operation.</p>
+<p>Returns None if there is no current drag operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.is_dragging">
+<em class="property">property </em><code class="sig-name descname">is_dragging</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.is_dragging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether this event is part of a mouse drag operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.last_event">
+<em class="property">property </em><code class="sig-name descname">last_event</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.last_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.modifiers">
+<em class="property">property </em><code class="sig-name descname">modifiers</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.modifiers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.pos">
+<em class="property">property </em><code class="sig-name descname">pos</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.press_event">
+<em class="property">property </em><code class="sig-name descname">press_event</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.press_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.time">
+<em class="property">property </em><code class="sig-name descname">time</code><a class="headerlink" href="#vispy.app.canvas.MouseEvent.time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.MouseEvent.trail">
+<code class="sig-name descname">trail</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L671-L685"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.MouseEvent.trail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an (N, 2) array of mouse coordinates for every event in the
+current mouse drag operation.</p>
+<p>Returns None if there is no current drag operation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="vispy.app.canvas.ResizeEvent">
+<em class="property">class </em><code class="sig-prename descclassname">vispy.app.canvas.</code><code class="sig-name descname">ResizeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">physical_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/app/canvas.py#L730-L764"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.app.canvas.ResizeEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.util.event.html#vispy.util.event.Event" title="vispy.util.event.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.Event</span></code></a></p>
+<p>Resize event class</p>
+<p>Note that each event object has an attribute for each of the input
+arguments listed below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">str</span></dt><dd><p>String indicating the event type (e.g. mouse_press, key_release)</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">(int, int)</span></dt><dd><p>The new size of the Canvas, in points (logical pixels).</p>
+</dd>
+<dt><strong>physical_size</strong><span class="classifier">(int, int)</span></dt><dd><p>The new physical size of the Canvas, in pixels.</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">object (optional)</span></dt><dd><p>The native GUI event object</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">extra keyword arguments</span></dt><dd><p>All extra keyword arguments become attributes of the event object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="vispy.app.canvas.ResizeEvent.physical_size">
+<em class="property">property </em><code class="sig-name descname">physical_size</code><a class="headerlink" href="#vispy.app.canvas.ResizeEvent.physical_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="vispy.app.canvas.ResizeEvent.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#vispy.app.canvas.ResizeEvent.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="vispy.app.base.html" title="previous page">vispy.app.base module</a>
+    <a class='right-next' id="next-link" href="vispy.app.inputhook.html" title="next page">vispy.app.inputhook module</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2013-2021, VisPy developers.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
