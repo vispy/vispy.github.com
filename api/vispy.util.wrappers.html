@@ -195,7 +195,7 @@ backends, but it should be(come) aware of (in)compatibilities between
 them.</p>
 <dl class="py function">
 <dt id="vispy.util.wrappers.run_subprocess">
-<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">run_subprocess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">command</span></em>, <em class="sig-param"><span class="n">return_code</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L100-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.run_subprocess" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">run_subprocess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">command</span></em>, <em class="sig-param"><span class="n">return_code</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L101-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.run_subprocess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run command using subprocess.Popen</p>
 <p>Run command and wait for command to complete. If the return code was zero
 then return, otherwise raise CalledProcessError.
@@ -229,13 +229,13 @@ error).</p>
 
 <dl class="py function">
 <dt id="vispy.util.wrappers.test">
-<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L154-L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.test" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L155-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proxy function to delay <cite>.testing</cite> import</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="vispy.util.wrappers.use">
-<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">use</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gl</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.use" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">vispy.util.wrappers.</code><code class="sig-name descname">use</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gl</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/util/wrappers.py#L23-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.util.wrappers.use" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the usage options for vispy</p>
 <p>Specify what app backend and GL backend to use.</p>
 <dl class="field-list simple">
@@ -247,6 +247,7 @@ error).</p>
 <li><p>‘PyQt5’: use Qt widget toolkit via PyQt5.</p></li>
 <li><p>‘PySide’: use Qt widget toolkit via PySide.</p></li>
 <li><p>‘PySide2’: use Qt widget toolkit via PySide2.</p></li>
+<li><p>‘PySide6’: use Qt widget toolkit via PySide6.</p></li>
 <li><p>‘PyGlet’: use Pyglet backend.</p></li>
 <li><p>‘Glfw’: use Glfw backend (successor of Glut). Widely available
 on Linux.</p></li>
@@ -286,7 +287,7 @@ your system (via PyOpenGL).</p></li>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="http://vispy.org/app.html#vispy.app.use_app" title="(in VisPy v0.6)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.app.use_app</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.app.use_app</span></code></dt><dd></dd>
 <dt><a class="reference internal" href="vispy.gloo.gl.html#vispy.gloo.gl.use_gl" title="vispy.gloo.gl.use_gl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.gloo.gl.use_gl</span></code></a></dt><dd></dd>
 </dl>
 </div>
