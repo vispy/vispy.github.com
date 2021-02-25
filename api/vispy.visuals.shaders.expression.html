@@ -185,13 +185,13 @@
 <span id="vispy-visuals-shaders-expression-module"></span><h1>vispy.visuals.shaders.expression module<a class="headerlink" href="#module-vispy.visuals.shaders.expression" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="vispy.visuals.shaders.expression.Expression">
-<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.shaders.expression.</code><code class="sig-name descname">Expression</code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L7-L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.Expression" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.expression.</span></code><code class="sig-name descname"><span class="pre">Expression</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L7-L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.Expression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.shader_object.ShaderObject</span></code></a></p>
 <p>Base class for expressions (ShaderObjects that do not have a
 definition nor dependencies)</p>
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.Expression.definition">
-<code class="sig-name descname">definition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">names</span></em>, <em class="sig-param"><span class="n">version</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L12-L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.Expression.definition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">definition</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L12-L14"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.Expression.definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL definition for this object. Use <em>obj_names</em> to
 determine the names of dependencies, and <em>version</em> (number, qualifier)
 to adjust code output.</p>
@@ -201,42 +201,42 @@ to adjust code output.</p>
 
 <dl class="py class">
 <dt id="vispy.visuals.shaders.expression.FunctionCall">
-<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.shaders.expression.</code><code class="sig-name descname">FunctionCall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L54-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.expression.</span></code><code class="sig-name descname"><span class="pre">FunctionCall</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L54-L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.visuals.shaders.expression.Expression" title="vispy.visuals.shaders.expression.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.expression.Expression</span></code></a></p>
 <p>Representation of a call to a function</p>
 <p>Essentially this is container for a Function along with its signature.</p>
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.FunctionCall.dtype">
-<em class="property">property </em><code class="sig-name descname">dtype</code><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.dtype" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dtype</span></code><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.dtype" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.FunctionCall.expression">
-<code class="sig-name descname">expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">names</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L95-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.expression" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">expression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L95-L99"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.expression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL expression used to reference this object inline.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.FunctionCall.function">
-<em class="property">property </em><code class="sig-name descname">function</code><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.function" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">function</span></code><a class="headerlink" href="#vispy.visuals.shaders.expression.FunctionCall.function" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.visuals.shaders.expression.TextExpression">
-<em class="property">class </em><code class="sig-prename descclassname">vispy.visuals.shaders.expression.</code><code class="sig-name descname">TextExpression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L17-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.expression.</span></code><code class="sig-name descname"><span class="pre">TextExpression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L17-L51"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.visuals.shaders.expression.Expression" title="vispy.visuals.shaders.expression.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.expression.Expression</span></code></a></p>
 <p>Plain GLSL text to insert inline</p>
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.TextExpression.expression">
-<code class="sig-name descname">expression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">names</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L30-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression.expression" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">expression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/visuals/shaders/expression.py#L30-L31"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression.expression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL expression used to reference this object inline.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.visuals.shaders.expression.TextExpression.text">
-<em class="property">property </em><code class="sig-name descname">text</code><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression.text" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">text</span></code><a class="headerlink" href="#vispy.visuals.shaders.expression.TextExpression.text" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -268,7 +268,7 @@ to adjust code output.</p>
   <div class="container">
     <p>
           &copy; Copyright 2013-2021, VisPy developers.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
     </p>
   </div>
 </footer>
