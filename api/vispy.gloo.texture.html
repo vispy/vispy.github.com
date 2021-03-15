@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vispy.gloo.texture module &#8212; VisPy</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.d8bbf5861d671d414e1a.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -47,67 +44,76 @@
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
-    <a class="navbar-brand" href="../index.html">
+
     
-      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+      
+      <a class="navbar-brand" href="../index.html">
+        <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+      </a>
+      
     
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    
     <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../installation.html">Installation</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../overview.html">Documentation</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../gallery.html">Gallery</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="modules.html">API</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../news.html">News</a>
-        </li>
-        
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../gallery.html">
+  Gallery
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="modules.html">
+  API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../news.html">
+  News
+ </a>
+</li>
+
         
       </ul>
 
-
-      
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
+      <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/vispyproject" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
     </div>
 </div>
@@ -117,41 +123,159 @@
     <div class="container-xl">
       <div class="row">
           
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-
-    <div class="bd-toc-item active">
-    
-  
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l2 current active">
+  <a class="reference internal" href="vispy.html">
+   vispy package
+  </a>
+  <ul class="current">
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.app.html">
+     vispy.app package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.color.html">
+     vispy.color package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.geometry.html">
+     vispy.geometry package
+    </a>
+   </li>
+   <li class="toctree-l3 current active">
+    <a class="reference internal" href="vispy.gloo.html">
+     vispy.gloo package
+    </a>
+    <ul class="current">
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.gl.html">
+       vispy.gloo.gl package
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.tests.html">
+       vispy.gloo.tests package
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.buffer.html">
+       vispy.gloo.buffer module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.context.html">
+       vispy.gloo.context module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.framebuffer.html">
+       vispy.gloo.framebuffer module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.glir.html">
+       vispy.gloo.glir module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.globject.html">
+       vispy.gloo.globject module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.preprocessor.html">
+       vispy.gloo.preprocessor module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.program.html">
+       vispy.gloo.program module
+      </a>
+     </li>
+     <li class="toctree-l4 current active">
+      <a class="current reference internal" href="#">
+       vispy.gloo.texture module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.util.html">
+       vispy.gloo.util module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.wrappers.html">
+       vispy.gloo.wrappers module
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.glsl.html">
+     vispy.glsl package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.io.html">
+     vispy.io package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.ipython.html">
+     vispy.ipython package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.plot.html">
+     vispy.plot package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.scene.html">
+     vispy.scene package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.testing.html">
+     vispy.testing package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.util.html">
+     vispy.util package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.visuals.html">
+     vispy.visuals package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.conftest.html">
+     vispy.conftest module
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.version.html">
+     vispy.version module
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+  </div>
+</nav>
+            </div>
             
-                <li class="active">
-                    <a href="vispy.html">vispy package</a>
-                </li>
-            
-          
-        
-        
-        
-        
-      </ul>
-  
-  </nav>
-          </div>
           
 
           
@@ -159,9 +283,7 @@
               
 
 <nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
     
-    </ul>
 </nav>
 
 
@@ -177,6 +299,9 @@
           
 
           
+          
+            
+          
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
@@ -185,7 +310,7 @@
 <span id="vispy-gloo-texture-module"></span><h1>vispy.gloo.texture module<a class="headerlink" href="#module-vispy.gloo.texture" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="vispy.gloo.texture.BaseTexture">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">BaseTexture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L17-L382"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">BaseTexture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L17-L394"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
 <p>A Texture is used to represent a topological set of scalar values.</p>
 <dl class="field-list simple">
@@ -225,6 +350,12 @@ is also a tuple, it will override the value of <code class="docutils literal not
 </dd></dl>
 
 <dl class="py method">
+<dt id="vispy.gloo.texture.BaseTexture.internalformat">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">internalformat</span></code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.internalformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>The texture internalformat.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.interpolation">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">interpolation</span></code><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.interpolation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Texture interpolation for minification and magnification.</p>
@@ -232,7 +363,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.resize">
-<code class="sig-name descname"><span class="pre">resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L201-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L209-L231"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the texture size and format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -260,7 +391,7 @@ hint which may be ignored by the OpenGL implementation.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.texture.BaseTexture.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L278-L297"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L290-L309"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.BaseTexture.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set texture data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -297,7 +428,7 @@ the data if given offset is None.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.Texture1D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L386-L446"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture1D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L398-L458"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
 <p>One dimensional texture</p>
 <dl class="field-list simple">
@@ -358,7 +489,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.Texture2D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L450-L514"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L462-L526"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
 <p>Two dimensional texture</p>
 <dl class="field-list simple">
@@ -424,7 +555,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.Texture3D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L518-L588"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">Texture3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L530-L600"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.Texture3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
 <p>Three dimensional texture</p>
 <dl class="field-list simple">
@@ -497,7 +628,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.TextureAtlas">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureAtlas</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shape=(1024</span></em>, <em class="sig-param"><span class="pre">1024)</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L885-L998"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureAtlas</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">shape=(1024</span></em>, <em class="sig-param"><span class="pre">1024)</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L897-L1010"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.Texture2D" title="vispy.gloo.texture.Texture2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.Texture2D</span></code></a></p>
 <p>Group multiple small data regions into a larger texture.</p>
 <p>The algorithm is based on the article by Jukka Jylänki : “A Thousand Ways
@@ -525,7 +656,7 @@ An example of simple access:</p>
 </div>
 <dl class="py method">
 <dt id="vispy.gloo.texture.TextureAtlas.get_free_region">
-<code class="sig-name descname"><span class="pre">get_free_region</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L920-L981"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_free_region</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L932-L993"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureAtlas.get_free_region" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a free region of given size and allocate it</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -550,7 +681,7 @@ An example of simple access:</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.TextureCube">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureCube</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L592-L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureCube" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureCube</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L604-L677"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureCube" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.BaseTexture" title="vispy.gloo.texture.BaseTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.BaseTexture</span></code></a></p>
 <p>Texture Cube</p>
 <dl class="field-list simple">
@@ -623,7 +754,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py class">
 <dt id="vispy.gloo.texture.TextureEmulated3D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureEmulated3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L669-L881"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.texture.</span></code><code class="sig-name descname"><span class="pre">TextureEmulated3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L681-L893"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.texture.Texture2D" title="vispy.gloo.texture.Texture2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.texture.Texture2D</span></code></a></p>
 <p>Two dimensional texture that is emulating a three dimensional texture</p>
 <dl class="field-list simple">
@@ -676,7 +807,7 @@ is also a tuple, it will override the value of <code class="docutils literal not
 
 <dl class="py method">
 <dt id="vispy.gloo.texture.TextureEmulated3D.resize">
-<code class="sig-name descname"><span class="pre">resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L828-L853"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.resize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L840-L865"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the texture size and format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -704,7 +835,7 @@ hint which may be ignored by the OpenGL implementation.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.texture.TextureEmulated3D.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L804-L826"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/texture.py#L816-L838"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.texture.TextureEmulated3D.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set texture data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -759,14 +890,14 @@ the data if given offset is None.</p>
     </div>
 
     
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+  <script src="../_static/js/index.d8bbf5861d671d414e1a.js"></script>
 
 
     <footer class="footer mt-5 mt-md-0">
   <div class="container">
     <p>
           &copy; Copyright 2013-2021, VisPy developers.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>

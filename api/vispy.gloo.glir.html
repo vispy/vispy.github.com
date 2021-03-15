@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vispy.gloo.glir module &#8212; VisPy</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,10 +20,6 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.d8bbf5861d671d414e1a.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -47,67 +44,76 @@
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
-<div class="container-xl">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
 
-    <a class="navbar-brand" href="../index.html">
+
     
-      <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo" />
+      
+      <a class="navbar-brand" href="../index.html">
+        <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+      </a>
+      
     
-    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    
     <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../installation.html">Installation</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../getting_started/index.html">Getting Started</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../overview.html">Documentation</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../gallery.html">Gallery</a>
-        </li>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="modules.html">API</a>
-        </li>
-        
-        <li class="nav-item ">
-            <a class="nav-link" href="../news.html">News</a>
-        </li>
-        
+        <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../overview.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../gallery.html">
+  Gallery
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="modules.html">
+  API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../news.html">
+  News
+ </a>
+</li>
+
         
       </ul>
 
-
-      
-
-      <ul class="navbar-nav">
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/vispy/vispy" target="_blank" rel="noopener">
-              <span><i class="fab fa-github-square"></i></span>
-            </a>
-          </li>
-        
-        
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/vispyproject" target="_blank" rel="noopener">
-              <span><i class="fab fa-twitter-square"></i></span>
-            </a>
-          </li>
-        
+      <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/vispyproject" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
     </div>
 </div>
@@ -117,41 +123,159 @@
     <div class="container-xl">
       <div class="row">
           
-          <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-
-    <div class="bd-toc-item active">
-    
-  
-    <ul class="nav bd-sidenav">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l2 current active">
+  <a class="reference internal" href="vispy.html">
+   vispy package
+  </a>
+  <ul class="current">
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.app.html">
+     vispy.app package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.color.html">
+     vispy.color package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.geometry.html">
+     vispy.geometry package
+    </a>
+   </li>
+   <li class="toctree-l3 current active">
+    <a class="reference internal" href="vispy.gloo.html">
+     vispy.gloo package
+    </a>
+    <ul class="current">
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.gl.html">
+       vispy.gloo.gl package
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.tests.html">
+       vispy.gloo.tests package
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.buffer.html">
+       vispy.gloo.buffer module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.context.html">
+       vispy.gloo.context module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.framebuffer.html">
+       vispy.gloo.framebuffer module
+      </a>
+     </li>
+     <li class="toctree-l4 current active">
+      <a class="current reference internal" href="#">
+       vispy.gloo.glir module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.globject.html">
+       vispy.gloo.globject module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.preprocessor.html">
+       vispy.gloo.preprocessor module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.program.html">
+       vispy.gloo.program module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.texture.html">
+       vispy.gloo.texture module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.util.html">
+       vispy.gloo.util module
+      </a>
+     </li>
+     <li class="toctree-l4">
+      <a class="reference internal" href="vispy.gloo.wrappers.html">
+       vispy.gloo.wrappers module
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.glsl.html">
+     vispy.glsl package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.io.html">
+     vispy.io package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.ipython.html">
+     vispy.ipython package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.plot.html">
+     vispy.plot package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.scene.html">
+     vispy.scene package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.testing.html">
+     vispy.testing package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.util.html">
+     vispy.util package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.visuals.html">
+     vispy.visuals package
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.conftest.html">
+     vispy.conftest module
+    </a>
+   </li>
+   <li class="toctree-l3">
+    <a class="reference internal" href="vispy.version.html">
+     vispy.version module
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+  </div>
+</nav>
+            </div>
             
-                <li class="active">
-                    <a href="vispy.html">vispy package</a>
-                </li>
-            
-          
-        
-        
-        
-        
-      </ul>
-  
-  </nav>
-          </div>
           
 
           
@@ -162,83 +286,101 @@
 </div>
 
 <nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#gl-intermediate-representation-desktop-implementation" class="nav-link">GL Intermediate Representation Desktop Implementation</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#the-shape-of-a-command" class="nav-link">The shape of a command</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#current" class="nav-link">CURRENT</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#create" class="nav-link">CREATE</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#delete" class="nav-link">DELETE</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#uniform" class="nav-link">UNIFORM</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#texture" class="nav-link">TEXTURE</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#attribute" class="nav-link">ATTRIBUTE</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#draw" class="nav-link">DRAW</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#size" class="nav-link">SIZE</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#data" class="nav-link">DATA</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#wrapping" class="nav-link">WRAPPING</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#interpolation" class="nav-link">INTERPOLATION</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#attach" class="nav-link">ATTACH</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#framebuffer" class="nav-link">FRAMEBUFFER</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#func" class="nav-link">FUNC</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#swap" class="nav-link">SWAP</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#link" class="nav-link">LINK</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-    </ul>
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gl-intermediate-representation-desktop-implementation">
+   GL Intermediate Representation Desktop Implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-shape-of-a-command">
+     The shape of a command
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#current">
+     CURRENT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create">
+     CREATE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#delete">
+     DELETE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform">
+     UNIFORM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#texture">
+     TEXTURE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attribute">
+     ATTRIBUTE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#draw">
+     DRAW
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#size">
+     SIZE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     DATA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wrapping">
+     WRAPPING
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolation">
+     INTERPOLATION
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attach">
+     ATTACH
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#framebuffer">
+     FRAMEBUFFER
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#func">
+     FUNC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#swap">
+     SWAP
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#link">
+     LINK
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
 
 
@@ -253,6 +395,9 @@
           </div>
           
 
+          
+          
+            
           
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
@@ -549,19 +694,19 @@ cause shaders to be detached and deleted. See the
 for details on program linking.</p>
 <dl class="py class">
 <dt id="vispy.gloo.glir.BaseGlirParser">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">BaseGlirParser</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L661-L687"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">BaseGlirParser</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L670-L696"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for GLIR parsers that can be attached to a GLIR queue.</p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.BaseGlirParser.is_remote">
-<code class="sig-name descname"><span class="pre">is_remote</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L671-L675"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser.is_remote" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_remote</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L680-L684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser.is_remote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether the code is executed remotely. i.e. gloo.gl cannot
 be used.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.BaseGlirParser.parse">
-<code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L684-L687"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L693-L696"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.BaseGlirParser.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse the GLIR commands. Or sent them away.</p>
 </dd></dl>
 
@@ -576,97 +721,97 @@ be used.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirBuffer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1355-L1405"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1364-L1414"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.activate">
-<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1367-L1368"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1376-L1377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.activate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1359-L1362"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1368-L1371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.deactivate">
-<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1370-L1371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1379-L1380"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1364-L1365"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1373-L1374"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1379-L1405"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1388-L1414"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirBuffer.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbytes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1373-L1377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbytes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1382-L1386"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirBuffer.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirFragmentShader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirFragmentShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L991-L992"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFragmentShader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirFragmentShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1000-L1001"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFragmentShader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirShader" title="vispy.gloo.glir.GlirShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirShader</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirFrameBuffer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirFrameBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1722-L1808"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirFrameBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1731-L1817"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.activate">
-<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1746-L1751"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1755-L1760"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.attach">
-<code class="sig-name descname"><span class="pre">attach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attachment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1760-L1787"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.attach" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">attach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attachment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_id</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1769-L1796"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.attach" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1729-L1732"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1738-L1741"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.deactivate">
-<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1753-L1758"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1762-L1767"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1734-L1735"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1743-L1744"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirFrameBuffer.set_framebuffer">
-<code class="sig-name descname"><span class="pre">set_framebuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1737-L1744"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.set_framebuffer" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_framebuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yes</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1746-L1753"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirFrameBuffer.set_framebuffer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirGeometryShader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirGeometryShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L995-L1006"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirGeometryShader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirGeometryShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1004-L1015"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirGeometryShader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirShader" title="vispy.gloo.glir.GlirShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirShader</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirIndexBuffer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirIndexBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1412-L1413"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirIndexBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirIndexBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1421-L1422"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirIndexBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirBuffer" title="vispy.gloo.glir.GlirBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirBuffer</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirObject">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L890-L906"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirObject" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirObject</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L899-L915"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirObject" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirObject.handle">
@@ -682,7 +827,7 @@ be used.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirParser">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirParser</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L690-L855"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirParser</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L699-L864"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.BaseGlirParser" title="vispy.gloo.glir.BaseGlirParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.BaseGlirParser</span></code></a></p>
 <p>A class for interpreting GLIR commands using gloo.gl</p>
 <p>We make use of relatively light GLIR objects that are instantiated
@@ -691,20 +836,20 @@ dictionary so that commands like ACTIVATE and DATA can easily
 be executed on the corresponding objects.</p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirParser.get_object">
-<code class="sig-name descname"><span class="pre">get_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L821-L824"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.get_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L830-L833"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.get_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the object with the given id or None if it does not exist.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirParser.is_remote">
-<code class="sig-name descname"><span class="pre">is_remote</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L732-L733"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.is_remote" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_remote</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L741-L742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.is_remote" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether the code is executed remotely. i.e. gloo.gl cannot
 be used.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirParser.parse">
-<code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L805-L819"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L814-L828"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirParser.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse a list of commands.</p>
 </dd></dl>
 
@@ -718,7 +863,7 @@ be used.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirProgram">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirProgram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1009-L1352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirProgram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1018-L1361"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py attribute">
 <dt id="vispy.gloo.glir.GlirProgram.ATYPEINFO">
@@ -737,7 +882,7 @@ be used.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.activate">
-<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1064-L1071"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.activate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1073-L1080"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.activate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Avoid overhead in calling glUseProgram with same arg.
 Warning: this will break if glUseProgram is used somewhere else.
 Per context we keep track of one current program.</p>
@@ -745,18 +890,18 @@ Per context we keep track of one current program.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.attach">
-<code class="sig-name descname"><span class="pre">attach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1096-L1101"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.attach" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">attach</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1105-L1110"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.attach" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attach a shader to this program.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1048-L1059"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1057-L1068"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.deactivate">
-<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1073-L1080"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1082-L1089"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Avoid overhead in calling glUseProgram with same arg.
 Warning: this will break if glUseProgram is used somewhere else.
 Per context we keep track of one current program.</p>
@@ -764,19 +909,19 @@ Per context we keep track of one current program.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1061-L1062"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1070-L1071"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.draw">
-<code class="sig-name descname"><span class="pre">draw</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1316-L1352"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.draw" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">draw</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1325-L1361"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw program in given mode, with given selection (IndexBuffer or
 first, count).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.link_program">
-<code class="sig-name descname"><span class="pre">link_program</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1103-L1124"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.link_program" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">link_program</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1112-L1133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.link_program" title="Permalink to this definition">¶</a></dt>
 <dd><p>Link the complete program and check.</p>
 <p>All shaders are detached and deleted if the program was successfully
 linked.</p>
@@ -784,13 +929,13 @@ linked.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.set_attribute">
-<code class="sig-name descname"><span class="pre">set_attribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1227-L1269"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_attribute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_attribute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1236-L1278"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_attribute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set an attribute value. Value is assumed to have been checked.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.set_shaders">
-<code class="sig-name descname"><span class="pre">set_shaders</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1082-L1094"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_shaders" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_shaders</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vert</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frag</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1091-L1103"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_shaders" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function takes care of setting the shading code and
 compiling+linking it into a working program object that is ready
 to use.</p>
@@ -798,13 +943,13 @@ to use.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.set_texture">
-<code class="sig-name descname"><span class="pre">set_texture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1153-L1184"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_texture" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_texture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1162-L1193"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_texture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a texture sampler. Value is the id of the texture to link.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirProgram.set_uniform">
-<code class="sig-name descname"><span class="pre">set_uniform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1186-L1225"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_uniform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_uniform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1195-L1234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirProgram.set_uniform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set a uniform value. Value is assumed to have been checked.</p>
 </dd></dl>
 
@@ -812,7 +957,7 @@ to use.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirQueue">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirQueue</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L512-L572"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirQueue</span></code><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L521-L581"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Representation of a queue of GLIR commands</p>
 <p>One instance of this class is attached to each context object, and
@@ -825,7 +970,7 @@ context.shared. The parser can interpret the commands in Python,
 send them to a browser, etc.</p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirQueue.associate">
-<code class="sig-name descname"><span class="pre">associate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L549-L567"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.associate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">associate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L558-L576"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.associate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge this queue with another.</p>
 <p>Both queues will use a shared command list and either one can be used
 to fill or flush the shared queue.</p>
@@ -833,27 +978,27 @@ to fill or flush the shared queue.</p>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirQueue.clear">
-<code class="sig-name descname"><span class="pre">clear</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L543-L547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.clear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">clear</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L552-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop the whole queue (and associated queues) and return a
 list of commands.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirQueue.command">
-<code class="sig-name descname"><span class="pre">command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L530-L534"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.command" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L539-L543"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a command. See the command spec at:
 <a class="reference external" href="https://github.com/vispy/vispy/wiki/Spec.-GLIR">https://github.com/vispy/vispy/wiki/Spec.-GLIR</a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirQueue.flush">
-<code class="sig-name descname"><span class="pre">flush</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L569-L572"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.flush" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">flush</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L578-L581"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush all current commands to the GLIR interpreter.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirQueue.set_verbose">
-<code class="sig-name descname"><span class="pre">set_verbose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L536-L541"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.set_verbose" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_verbose</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L545-L550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirQueue.set_verbose" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set verbose or not. If True, the GLIR commands are printed
 right before they get parsed. If a string is given, use it as
 a filter.</p>
@@ -863,209 +1008,209 @@ a filter.</p>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirRenderBuffer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirRenderBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1697-L1719"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirRenderBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1706-L1728"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirRenderBuffer.activate">
-<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1706-L1707"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1715-L1716"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.activate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirRenderBuffer.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1699-L1701"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1708-L1710"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirRenderBuffer.deactivate">
-<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1709-L1710"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1718-L1719"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirRenderBuffer.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1703-L1704"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1712-L1713"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirRenderBuffer.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1712-L1719"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1721-L1728"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirRenderBuffer.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirShader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L909-L984"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L918-L993"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirShader.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L912-L913"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L921-L922"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirShader.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L932-L933"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L941-L942"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirShader.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L915-L930"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L924-L939"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirShader.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirTexture">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1416-L1479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1425-L1488"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirObject" title="vispy.gloo.glir.GlirObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirObject</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.activate">
-<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1438-L1439"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.activate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">activate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1447-L1448"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.activate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.create">
-<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1431-L1433"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.create" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1440-L1442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.create" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.deactivate">
-<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1441-L1442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.deactivate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">deactivate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1450-L1451"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.delete">
-<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1435-L1436"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">delete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1444-L1445"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.delete" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.set_interpolation">
-<code class="sig-name descname"><span class="pre">set_interpolation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1475-L1479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.set_interpolation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_interpolation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1484-L1488"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.set_interpolation" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture.set_wrapping">
-<code class="sig-name descname"><span class="pre">set_wrapping</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrapping</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1464-L1473"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.set_wrapping" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_wrapping</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrapping</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1473-L1482"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture.set_wrapping" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirTexture1D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1491-L1523"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1500-L1532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirTexture" title="vispy.gloo.glir.GlirTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirTexture</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture1D.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1507-L1523"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1516-L1532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture1D.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1494-L1505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1503-L1514"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture1D.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirTexture2D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1526-L1556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1535-L1565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirTexture" title="vispy.gloo.glir.GlirTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirTexture</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture2D.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1540-L1556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1549-L1565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture2D.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1529-L1538"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1538-L1547"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture2D.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirTexture3D">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1620-L1652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTexture3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1629-L1661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirTexture" title="vispy.gloo.glir.GlirTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirTexture</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture3D.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1636-L1652"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1645-L1661"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTexture3D.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1623-L1634"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1632-L1643"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTexture3D.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirTextureCube">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTextureCube</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1655-L1694"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirTextureCube</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1664-L1703"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirTexture" title="vispy.gloo.glir.GlirTexture"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirTexture</span></code></a></p>
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTextureCube.set_data">
-<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1677-L1694"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube.set_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1686-L1703"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube.set_data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="vispy.gloo.glir.GlirTextureCube.set_size">
-<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1666-L1675"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube.set_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">set_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1675-L1684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirTextureCube.set_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirVertexBuffer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirVertexBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1408-L1409"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirVertexBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirVertexBuffer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1417-L1418"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirVertexBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirBuffer" title="vispy.gloo.glir.GlirBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirBuffer</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="vispy.gloo.glir.GlirVertexShader">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirVertexShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L987-L988"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirVertexShader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">GlirVertexShader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L996-L997"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.GlirVertexShader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.gloo.glir.GlirShader" title="vispy.gloo.glir.GlirShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.glir.GlirShader</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.as_enum">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">as_enum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enum</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L406-L417"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.as_enum" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">as_enum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enum</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L415-L426"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.as_enum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Turn a possibly string enum into an integer enum.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.as_es2_command">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">as_es2_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L649-L658"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.as_es2_command" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">as_es2_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L658-L667"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.as_es2_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify a desktop command so it works on es2.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.convert_shader">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">convert_shader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L639-L646"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.convert_shader" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">convert_shader</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backend_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L648-L655"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.convert_shader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify shader code to be compatible with <cite>backend_type</cite> backend.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.glTexImage1D">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexImage1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1586-L1596"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexImage1D" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexImage1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1595-L1605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexImage1D" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.glTexImage3D">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexImage3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1576-L1583"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexImage3D" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexImage3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">internalformat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1585-L1592"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexImage3D" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.glTexSubImage1D">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexSubImage1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1599-L1608"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexSubImage1D" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexSubImage1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1608-L1617"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexSubImage1D" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.glTexSubImage3D">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexSubImage3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1611-L1617"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexSubImage3D" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glTexSubImage3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoffset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L1620-L1626"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glTexSubImage3D" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="vispy.gloo.glir.glir_logger">
-<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glir_logger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_or_filename</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L858-L885"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glir_logger" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></code><code class="sig-name descname"><span class="pre">glir_logger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_or_filename</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/master/vispy/gloo/glir.py#L867-L894"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.glir.glir_logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -1090,14 +1235,14 @@ a filter.</p>
     </div>
 
     
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+  <script src="../_static/js/index.d8bbf5861d671d414e1a.js"></script>
 
 
     <footer class="footer mt-5 mt-md-0">
   <div class="container">
     <p>
           &copy; Copyright 2013-2021, VisPy developers.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.1.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
     </p>
   </div>
 </footer>
