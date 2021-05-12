@@ -22,15 +22,15 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -1954,8 +1954,8 @@ The EventEmitter class provides an interface to connect to events and
 to emit events. The EmitterGroup groups EventEmitter objects.</p>
 <p>For more information see <a class="reference external" href="http://github.com/vispy/vispy/wiki/API_Events">http://github.com/vispy/vispy/wiki/API_Events</a></p>
 <dl class="py class">
-<dt id="vispy.util.event.EmitterGroup">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></code><code class="sig-name descname"><span class="pre">EmitterGroup</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">emitters</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L568-L755"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></span><span class="sig-name descname"><span class="pre">EmitterGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">emitters</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L568-L755"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.util.event.EventEmitter" title="vispy.util.event.EventEmitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.EventEmitter</span></code></a></p>
 <p>EmitterGroup instances manage a set of related
 <code class="xref py py-class docutils literal notranslate"><span class="pre">EventEmitters</span></code>.
@@ -1993,8 +1993,8 @@ group of emitters to default callbacks.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.add">
-<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L627-L684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.add" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_connect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L627-L684"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add one or more EventEmitter instances to this emitter group.
 Each keyword argument may be specified as either an EventEmitter
 instance or an Event subclass, in which case an EventEmitter will be
@@ -2013,14 +2013,14 @@ generated automatically:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.block_all">
-<code class="sig-name descname"><span class="pre">block_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L696-L700"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.block_all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.block_all">
+<span class="sig-name descname"><span class="pre">block_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L696-L700"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.block_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Block all emitters in this group.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.connect">
-<code class="sig-name descname"><span class="pre">connect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L708-L718"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.connect" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L708-L718"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect the callback to the event group. The callback will receive
 events from <em>all</em> of the emitters in the group.</p>
 <p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">EventEmitter.connect()</span></code>
@@ -2028,39 +2028,39 @@ for arguments.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.disconnect">
-<code class="sig-name descname"><span class="pre">disconnect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L720-L729"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.disconnect" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L720-L729"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect the callback from this group. See
 <code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code> and
 <code class="xref py py-func docutils literal notranslate"><span class="pre">EventEmitter.connect()</span></code> for
 more information.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.emitters">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">emitters</span></code><a class="headerlink" href="#vispy.util.event.EmitterGroup.emitters" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.emitters">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">emitters</span></span><a class="headerlink" href="#vispy.util.event.EmitterGroup.emitters" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of current emitters in this group.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.ignore_callback_errors">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ignore_callback_errors</span></code><a class="headerlink" href="#vispy.util.event.EmitterGroup.ignore_callback_errors" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.ignore_callback_errors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ignore_callback_errors</span></span><a class="headerlink" href="#vispy.util.event.EmitterGroup.ignore_callback_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether exceptions during callbacks will be caught by the emitter</p>
 <p>This allows it to continue invoking other callbacks if an error
 occurs.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EmitterGroup.unblock_all">
-<code class="sig-name descname"><span class="pre">unblock_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L702-L706"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.unblock_all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EmitterGroup.unblock_all">
+<span class="sig-name descname"><span class="pre">unblock_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L702-L706"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EmitterGroup.unblock_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unblock all emitters in this group.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="vispy.util.event.Event">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></code><code class="sig-name descname"><span class="pre">Event</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L25-L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.Event" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.Event">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L25-L143"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.Event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class describing events that occur and can be reacted to with callbacks.
 Each event instance contains information about a single event that has
@@ -2083,18 +2083,18 @@ arguments listed below.</p>
 </dl>
 </dd>
 </dl>
-<dl class="py method">
-<dt id="vispy.util.event.Event.blocked">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">blocked</span></code><a class="headerlink" href="#vispy.util.event.Event.blocked" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.blocked">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">blocked</span></span><a class="headerlink" href="#vispy.util.event.Event.blocked" title="Permalink to this definition">¶</a></dt>
 <dd><p>This boolean property indicates whether the event will be delivered
 to event callbacks. If it is set to True, then no further callbacks
 will receive the event. When possible, it is recommended to use
 Event.handled rather than Event.blocked.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.Event.handled">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">handled</span></code><a class="headerlink" href="#vispy.util.event.Event.handled" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.handled">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">handled</span></span><a class="headerlink" href="#vispy.util.event.Event.handled" title="Permalink to this definition">¶</a></dt>
 <dd><p>This boolean property indicates whether the event has already been
 acted on by an event handler. Since many handlers may have access to
 the same events, it is recommended that each check whether the event
@@ -2102,43 +2102,43 @@ has already been handled as well as set handled=True if it decides to
 act on the event.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.Event.native">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">native</span></code><a class="headerlink" href="#vispy.util.event.Event.native" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.native">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">native</span></span><a class="headerlink" href="#vispy.util.event.Event.native" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.Event.source">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">source</span></code><a class="headerlink" href="#vispy.util.event.Event.source" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.source">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#vispy.util.event.Event.source" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object that the event applies to (i.e. the source of the event).</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.Event.sources">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sources</span></code><a class="headerlink" href="#vispy.util.event.Event.sources" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.sources">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">sources</span></span><a class="headerlink" href="#vispy.util.event.Event.sources" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of objects that the event applies to (i.e. are or have
 been a source of the event). Can contain multiple objects in case
 the event traverses a hierarchy of objects.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.Event.type">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">type</span></code><a class="headerlink" href="#vispy.util.event.Event.type" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.Event.type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#vispy.util.event.Event.type" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="vispy.util.event.EventBlocker">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></code><code class="sig-name descname"><span class="pre">EventBlocker</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L758-L771"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventBlocker" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventBlocker">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></span><span class="sig-name descname"><span class="pre">EventBlocker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L758-L771"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventBlocker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Represents a block for an EventEmitter to be used in a context
 manager (i.e. ‘with’ statement).</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="vispy.util.event.EventEmitter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></code><code class="sig-name descname"><span class="pre">EventEmitter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source=None</span></em>, <em class="sig-param"><span class="pre">type=None</span></em>, <em class="sig-param"><span class="pre">event_class=&lt;class</span> <span class="pre">'vispy.util.event.Event'&gt;</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L148-L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></span><span class="sig-name descname"><span class="pre">EventEmitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">source=None</span></em>, <em class="sig-param"><span class="pre">type=None</span></em>, <em class="sig-param"><span class="pre">event_class=&lt;class</span> <span class="pre">'vispy.util.event.Event'&gt;</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L148-L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Encapsulates a list of event callbacks.</p>
 <p>Each instance of EventEmitter represents the source of a stream of similar
@@ -2175,8 +2175,8 @@ have their .source property set to this value.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.block">
-<code class="sig-name descname"><span class="pre">block</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L497-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.block" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.block">
+<span class="sig-name descname"><span class="pre">block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L497-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Block this emitter. Any attempts to emit an event while blocked
 will be silently ignored. If <em>callback</em> is given, then the emitter
 is only blocked for that specific callback.</p>
@@ -2185,15 +2185,15 @@ number of times as it is blocked.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.blocked">
-<code class="sig-name descname"><span class="pre">blocked</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L491-L495"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.blocked" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.blocked">
+<span class="sig-name descname"><span class="pre">blocked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L491-L495"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.blocked" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return boolean indicating whether the emitter is blocked for
 the given callback.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.blocker">
-<code class="sig-name descname"><span class="pre">blocker</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L524-L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.blocker" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.blocker">
+<span class="sig-name descname"><span class="pre">blocker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L524-L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.blocker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an EventBlocker to be used in ‘with’ statements
 Notes
 —–
@@ -2202,21 +2202,21 @@ For example, one could do:</p>
 pass  # ..do stuff; no events will be emitted..</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EventEmitter.callback_refs">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">callback_refs</span></code><a class="headerlink" href="#vispy.util.event.EventEmitter.callback_refs" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.callback_refs">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">callback_refs</span></span><a class="headerlink" href="#vispy.util.event.EventEmitter.callback_refs" title="Permalink to this definition">¶</a></dt>
 <dd><p>The set of callback references</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EventEmitter.callbacks">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">callbacks</span></code><a class="headerlink" href="#vispy.util.event.EventEmitter.callbacks" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.callbacks">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">callbacks</span></span><a class="headerlink" href="#vispy.util.event.EventEmitter.callbacks" title="Permalink to this definition">¶</a></dt>
 <dd><p>The set of callbacks</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.connect">
-<code class="sig-name descname"><span class="pre">connect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L263-L370"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.connect" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L263-L370"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect this emitter to a new callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2267,24 +2267,24 @@ events from the emitter.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.disconnect">
-<code class="sig-name descname"><span class="pre">disconnect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L372-L386"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.disconnect" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L372-L386"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect a callback from this emitter.</p>
 <p>If no callback is specified, then <em>all</em> callbacks are removed.
 If the callback was not already connected, then the call does nothing.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EventEmitter.ignore_callback_errors">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ignore_callback_errors</span></code><a class="headerlink" href="#vispy.util.event.EventEmitter.ignore_callback_errors" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.ignore_callback_errors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ignore_callback_errors</span></span><a class="headerlink" href="#vispy.util.event.EventEmitter.ignore_callback_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether exceptions during callbacks will be caught by the emitter</p>
 <p>This allows it to continue invoking other callbacks if an error
 occurs.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EventEmitter.print_callback_errors">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">print_callback_errors</span></code><a class="headerlink" href="#vispy.util.event.EventEmitter.print_callback_errors" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.print_callback_errors">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">print_callback_errors</span></span><a class="headerlink" href="#vispy.util.event.EventEmitter.print_callback_errors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a message and stack trace if a callback raises an exception</p>
 <p>Valid values are “first” (only show first instance), “reminders” (show
 complete first instance, then counts), “always” (always show full
@@ -2294,15 +2294,15 @@ warnings, so ensure that the vispy logging level is set to at
 least “warning”.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.util.event.EventEmitter.source">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">source</span></code><a class="headerlink" href="#vispy.util.event.EventEmitter.source" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.source">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#vispy.util.event.EventEmitter.source" title="Permalink to this definition">¶</a></dt>
 <dd><p>The object that events generated by this emitter apply to</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="vispy.util.event.EventEmitter.unblock">
-<code class="sig-name descname"><span class="pre">unblock</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L507-L522"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.unblock" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.EventEmitter.unblock">
+<span class="sig-name descname"><span class="pre">unblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L507-L522"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.EventEmitter.unblock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unblock this emitter. See <code class="xref py py-func docutils literal notranslate"><span class="pre">event.EventEmitter.block()</span></code>.</p>
 <p>Note: Use of <code class="docutils literal notranslate"><span class="pre">unblock(None)</span></code> only reverses the effect of
 <code class="docutils literal notranslate"><span class="pre">block(None)</span></code>; it does not unblock callbacks that were explicitly
@@ -2312,14 +2312,14 @@ blocked using <code class="docutils literal notranslate"><span class="pre">block
 </dd></dl>
 
 <dl class="py class">
-<dt id="vispy.util.event.WarningEmitter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></code><code class="sig-name descname"><span class="pre">WarningEmitter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L536-L565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.WarningEmitter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.WarningEmitter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.event.</span></span><span class="sig-name descname"><span class="pre">WarningEmitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L536-L565"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.WarningEmitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.util.event.EventEmitter" title="vispy.util.event.EventEmitter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.util.event.EventEmitter</span></code></a></p>
 <p>EventEmitter subclass used to allow deprecated events to be used with a
 warning message.</p>
 <dl class="py method">
-<dt id="vispy.util.event.WarningEmitter.connect">
-<code class="sig-name descname"><span class="pre">connect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L547-L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.WarningEmitter.connect" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.util.event.WarningEmitter.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/event.py#L547-L549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.event.WarningEmitter.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect this emitter to a new callback.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2403,7 +2403,7 @@ events from the emitter.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br/>
 </p>
     </div>
     

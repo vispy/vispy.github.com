@@ -22,15 +22,15 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -1949,26 +1949,26 @@
   <div class="section" id="module-vispy.visuals.filters.clipper">
 <span id="vispy-visuals-filters-clipper-module"></span><h1>vispy.visuals.filters.clipper module<a class="headerlink" href="#module-vispy.visuals.filters.clipper" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="vispy.visuals.filters.clipper.Clipper">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.clipper.</span></code><code class="sig-name descname"><span class="pre">Clipper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/clipper.py#L10-L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.visuals.filters.clipper.Clipper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.clipper.</span></span><span class="sig-name descname"><span class="pre">Clipper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/clipper.py#L10-L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <p>Clips visual output to a rectangular region.</p>
 <dl class="py attribute">
-<dt id="vispy.visuals.filters.clipper.Clipper.FRAG_SHADER">
-<code class="sig-name descname"><span class="pre">FRAG_SHADER</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">clip()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">vec4</span> <span class="pre">pos</span> <span class="pre">=</span> <span class="pre">$fb_to_clip(gl_FragCoord);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">pos.x</span> <span class="pre">&lt;</span> <span class="pre">$view.x</span> <span class="pre">||</span> <span class="pre">pos.x</span> <span class="pre">&gt;</span> <span class="pre">$view.y</span> <span class="pre">||\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">pos.y</span> <span class="pre">&lt;</span> <span class="pre">$view.z</span> <span class="pre">||</span> <span class="pre">pos.y</span> <span class="pre">&gt;</span> <span class="pre">$view.w</span> <span class="pre">)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">discard;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.FRAG_SHADER" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="vispy.visuals.filters.clipper.Clipper.FRAG_SHADER">
+<span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">clip()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">vec4</span> <span class="pre">pos</span> <span class="pre">=</span> <span class="pre">$fb_to_clip(gl_FragCoord);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">pos.x</span> <span class="pre">&lt;</span> <span class="pre">$view.x</span> <span class="pre">||</span> <span class="pre">pos.x</span> <span class="pre">&gt;</span> <span class="pre">$view.y</span> <span class="pre">||\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">pos.y</span> <span class="pre">&lt;</span> <span class="pre">$view.z</span> <span class="pre">||</span> <span class="pre">pos.y</span> <span class="pre">&gt;</span> <span class="pre">$view.w</span> <span class="pre">)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">discard;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.FRAG_SHADER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt id="vispy.visuals.filters.clipper.Clipper.bounds">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bounds</span></code><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.bounds" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.filters.clipper.Clipper.bounds">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bounds</span></span><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.bounds" title="Permalink to this definition">¶</a></dt>
 <dd><p>The clipping boundaries.</p>
 <p>This must be a tuple (x, y, w, h) in a clipping coordinate system
 that is defined by the <cite>transform</cite> property.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="vispy.visuals.filters.clipper.Clipper.transform">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">transform</span></code><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.transform" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.filters.clipper.Clipper.transform">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">transform</span></span><a class="headerlink" href="#vispy.visuals.filters.clipper.Clipper.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>The transform that maps from framebuffer coordinates to clipping
 coordinates.</p>
 </dd></dl>
@@ -2007,7 +2007,7 @@ coordinates.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.1.<br/>
 </p>
     </div>
     
