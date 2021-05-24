@@ -1825,6 +1825,11 @@
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="vispy.visuals.mesh_normals.html">
+       vispy.visuals.mesh_normals module
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="vispy.visuals.plane.html">
        vispy.visuals.plane module
       </a>
@@ -2887,6 +2892,35 @@ See ‘examples/basics/scene/mesh_shading.py’ for an example.</p>
 filters can be found in the <a class="reference internal" href="vispy.visuals.filters.mesh.html#module-vispy.visuals.filters.mesh" title="vispy.visuals.filters.mesh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vispy.visuals.filters.mesh</span></code></a> module.</p>
 <p>This class emits a <cite>data_updated</cite> event when the mesh data is updated. This
 is used for example by filters for synchronization.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vispy.scene.visuals.MeshNormals">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">MeshNormals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/scene/visuals.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.scene.visuals.MeshNormals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.mesh_normals.html#vispy.visuals.mesh_normals.MeshNormalsVisual" title="vispy.visuals.mesh_normals.MeshNormalsVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh_normals.MeshNormalsVisual</span></code></a></p>
+<p>Display mesh normals as lines.</p>
+<p>This class inherits from visuals.MeshNormalsVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>meshdata</strong><span class="classifier">instance of MeshData | None</span></dt><dd><p>The meshdata.</p>
+</dd>
+<dt><strong>primitive</strong><span class="classifier">{‘face’, ‘vertex’}</span></dt><dd><p>The primitive type on which to compute and display the normals.</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">None or float or array-like, optional</span></dt><dd><p>The length(s) of the normals. If None, the length is set to the median
+length of the edges of the mesh.</p>
+</dd>
+<dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">string</span></dt><dd><p>A name for this node, used primarily for debugging
+(optional).</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Extra arguments to define the appearance of lines. Refer to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">LineVisual</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
