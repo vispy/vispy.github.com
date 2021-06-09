@@ -3451,11 +3451,15 @@ drawn in picking mode.</p>
 black and white corresponding to these values. Default maps
 between min and max.</p>
 </dd>
-<dt><strong>method</strong><span class="classifier">{‘mip’, ‘minip’, ‘translucent’, ‘additive’, ‘iso’, ‘average’}</span></dt><dd><p>The render method to use. See corresponding docs for details.
+<dt><strong>method</strong><span class="classifier">{‘mip’, ‘attenuated_mip’, ‘minip’, ‘translucent’, ‘additive’,</span></dt><dd><p>‘iso’, ‘average’}
+The render method to use. See corresponding docs for details.
 Default ‘mip’.</p>
 </dd>
 <dt><strong>threshold</strong><span class="classifier">float</span></dt><dd><p>The threshold to use for the isosurface render method. By default
 the mean of the given volume is used.</p>
+</dd>
+<dt><strong>attenuation: float</strong></dt><dd><p>The attenuation rate to apply for the attenuated mip render method.
+Default: 1.0.</p>
 </dd>
 <dt><strong>relative_step_size</strong><span class="classifier">float</span></dt><dd><p>The relative step size to step through the volume. Default 0.8.
 Increase to e.g. 1.5 to increase performance, at the cost of
