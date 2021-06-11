@@ -874,6 +874,11 @@
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.scene.widgets.tests.html">
+         vispy.scene.widgets.tests package
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.scene.widgets.anchor.html">
          vispy.scene.widgets.anchor module
         </a>
@@ -1960,7 +1965,7 @@
 <span id="vispy-visuals-colorbar-module"></span><h1>vispy.visuals.colorbar module<a class="headerlink" href="#module-vispy.visuals.colorbar" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.colorbar.ColorBarVisual">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.colorbar.</span></span><span class="sig-name descname"><span class="pre">ColorBarVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/colorbar.py#L210-L685"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.colorbar.ColorBarVisual" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.colorbar.</span></span><span class="sig-name descname"><span class="pre">ColorBarVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/colorbar.py#L208-L689"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.colorbar.ColorBarVisual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.CompoundVisual" title="vispy.visuals.visual.CompoundVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.visual.CompoundVisual</span></code></a></p>
 <p>Visual subclass displaying a colorbar</p>
 <dl class="field-list">
@@ -2005,10 +2010,11 @@ along the breadth</p>
 <dt><strong>pos</strong><span class="classifier">tuple (x, y)</span></dt><dd><p>Position where the colorbar is to be placed with
 respect to the center of the colorbar</p>
 </dd>
-<dt><strong>label_str</strong><span class="classifier">str</span></dt><dd><p>The label that is to be drawn with the colorbar
-that provides information about the colorbar.</p>
+<dt><strong>label</strong><span class="classifier">str | vispy.visuals.TextVisual</span></dt><dd><p>The label that is to be drawn with the colorbar
+that provides information about the colorbar.
+If a TextVisual object then ‘label_color’ is ignored.</p>
 </dd>
-<dt><strong>label_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the labels. This can either be a
+<dt><strong>label_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the label and tick labels. This can either be a
 str as the color’s name or an actual instace of a vipy.color.Color</p>
 </dd>
 <dt><strong>clim</strong><span class="classifier">tuple (min, max)</span></dt><dd><p>the minimum and maximum values of the data that
@@ -2020,6 +2026,8 @@ is given in pixels</p>
 </dd>
 <dt><strong>border_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the border of the colormap. This can either be a
 str as the color’s name or an actual instace of a vipy.color.Color</p>
+</dd>
+<dt><strong>.. versionchanged:: 0.7</strong></dt><dd><p>Keyword argument <code class="docutils literal notranslate"><span class="pre">label_str</span></code> renamed to <cite>label</cite>.</p>
 </dd>
 </dl>
 </dd>

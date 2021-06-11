@@ -874,6 +874,11 @@
       </label>
       <ul>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.scene.widgets.tests.html">
+         vispy.scene.widgets.tests package
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.scene.widgets.anchor.html">
          vispy.scene.widgets.anchor module
         </a>
@@ -2208,10 +2213,11 @@ along the breadth</p>
 <dt><strong>pos</strong><span class="classifier">tuple (x, y)</span></dt><dd><p>Position where the colorbar is to be placed with
 respect to the center of the colorbar</p>
 </dd>
-<dt><strong>label_str</strong><span class="classifier">str</span></dt><dd><p>The label that is to be drawn with the colorbar
-that provides information about the colorbar.</p>
+<dt><strong>label</strong><span class="classifier">str | vispy.visuals.TextVisual</span></dt><dd><p>The label that is to be drawn with the colorbar
+that provides information about the colorbar.
+If a TextVisual object then ‘label_color’ is ignored.</p>
 </dd>
-<dt><strong>label_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the labels. This can either be a
+<dt><strong>label_color</strong><span class="classifier">str | vispy.color.Color</span></dt><dd><p>The color of the label and tick labels. This can either be a
 str as the color’s name or an actual instace of a vipy.color.Color</p>
 </dd>
 <dt><strong>clim</strong><span class="classifier">tuple (min, max)</span></dt><dd><p>the minimum and maximum values of the data that
@@ -2228,6 +2234,8 @@ str as the color’s name or an actual instace of a vipy.color.Color</p>
 </dd>
 <dt><strong>name</strong><span class="classifier">string</span></dt><dd><p>A name for this node, used primarily for debugging
 (optional).</p>
+</dd>
+<dt><strong>.. versionchanged:: 0.7</strong></dt><dd><p>Keyword argument <code class="docutils literal notranslate"><span class="pre">label_str</span></code> renamed to <cite>label</cite>.</p>
 </dd>
 </dl>
 </dd>
