@@ -1965,31 +1965,173 @@
 <span id="vispy-visuals-filters-mesh-module"></span><h1>vispy.visuals.filters.mesh module<a class="headerlink" href="#module-vispy.visuals.filters.mesh" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">ShadingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flat'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">5,</span> <span class="pre">-</span> <span class="pre">5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.3,</span> <span class="pre">0.3,</span> <span class="pre">0.3,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shininess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L201-L348"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">ShadingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flat'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shininess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">5,</span> <span class="pre">-</span> <span class="pre">5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.25)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L247-L573"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
-<p>Filter to apply shading to a mesh.</p>
-<p>To disable shading, either detach (ex. <code class="docutils literal notranslate"><span class="pre">mesh.detach(filter_obj)</span></code>) or
-set the shading type to <code class="docutils literal notranslate"><span class="pre">None</span></code> (ex. <code class="docutils literal notranslate"><span class="pre">filter_obj.shading</span> <span class="pre">=</span> <span class="pre">None</span></code>).</p>
+<p>Apply shading to a <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVisual</span></code></a> using the Phong reflection model.</p>
+<p>For convenience, a <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVisual</span></code></a> creates and
+embeds a shading filter when constructed with an explicit <cite>shading</cite>
+parameter, e.g. <cite>mesh = MeshVisual(…, shading=’smooth’)</cite>. The filter is
+then accessible as <cite>mesh.shading_filter</cite>.</p>
+<p>When attached manually to a <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVisual</span></code></a>, the
+shading filter should come after any other filter that modifies the base
+color to be shaded. See the examples below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shading</strong><span class="classifier">str</span></dt><dd><p>Shading mode: None, ‘flat’ or ‘smooth’. If None, the shading is
+disabled.</p>
+</dd>
+<dt><strong>ambient_coefficient</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the ambient reflection coefficient (Ka).</p>
+</dd>
+<dt><strong>diffuse_coefficient</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the diffuse reflection coefficient (Kd).</p>
+</dd>
+<dt><strong>specular_coefficient</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the specular reflection coefficient (Ks).</p>
+</dd>
+<dt><strong>shininess</strong><span class="classifier">float</span></dt><dd><p>The shininess controls the size of specular highlight. The higher, the
+more localized.  Must be greater than or equal to zero.</p>
+</dd>
+<dt><strong>light_dir</strong><span class="classifier">array_like</span></dt><dd><p>Direction of the light. Assuming a directional light.</p>
+</dd>
+<dt><strong>ambient_light</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the ambient light.</p>
+</dd>
+<dt><strong>diffuse_light</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the diffuse light.</p>
+</dd>
+<dt><strong>specular_light</strong><span class="classifier">str or tuple or Color</span></dt><dd><p>Color and intensity of the specular light.</p>
+</dd>
+<dt><strong>enabled</strong><span class="classifier">bool, default=True</span></dt><dd><p>Whether the filter is enabled at creation time. This can be changed at
+run time with <a class="reference internal" href="#vispy.visuals.filters.mesh.ShadingFilter.enabled" title="vispy.visuals.filters.mesh.ShadingFilter.enabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enabled</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Under the Phong reflection model, the illumination <cite>I</cite> is computed as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">I_ambient</span> <span class="o">+</span> <span class="n">mesh_color</span> <span class="o">*</span> <span class="n">I_diffuse</span> <span class="o">+</span> <span class="n">I_specular</span>
+</pre></div>
+</div>
+<p>for each color channel independently.
+<cite>mesh_color</cite> is the color of the <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVisual</span></code></a>,
+possibly modified by the filters applied before this one.
+The ambient, diffuse and specular terms are defined as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I_ambient</span> <span class="o">=</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">Ia</span>
+<span class="n">I_diffuse</span> <span class="o">=</span> <span class="n">Kd</span> <span class="o">*</span> <span class="n">Id</span> <span class="o">*</span> <span class="n">dot</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">I_specular</span> <span class="o">=</span> <span class="n">Ks</span> <span class="o">*</span> <span class="n">Is</span> <span class="o">*</span> <span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span> <span class="o">**</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>with</p>
+<dl class="simple">
+<dt><cite>L</cite></dt><dd><p>the light direction, assuming a directional light,</p>
+</dd>
+<dt><cite>N</cite></dt><dd><p>the normal to the surface at the reflection point,</p>
+</dd>
+<dt><cite>R</cite></dt><dd><p>the direction of the reflection,</p>
+</dd>
+<dt><cite>V</cite></dt><dd><p>the direction to the viewer,</p>
+</dd>
+<dt><cite>s</cite></dt><dd><p>the shininess factor.</p>
+</dd>
+</dl>
+<p>The <cite>Ka</cite>, <cite>Kd</cite> and <cite>Ks</cite> coefficients are defined as an RGBA color. The RGB
+components define the color that the surface reflects, and the alpha
+component (A) defines the intensity/attenuation of the reflection. When
+applied in the per-channel illumation formulas above, the color component
+is multiplied by the intensity to obtain the final coefficient, e.g.
+<cite>Kd = R * A</cite> for the red channel.</p>
+<p>Similarly, the light intensities, <cite>Ia</cite>, <cite>Id</cite> and <cite>Is</cite>, are defined by RGBA
+colors, corresponding to the color of the light and its intensity.</p>
 <p class="rubric">Examples</p>
-<p>See
+<p>Define the mesh data for a <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh.MeshVisual</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># A triangle.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let the <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh.MeshVisual</span></code></a> create and embed a shading
+filter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">MeshVisual</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;smooth&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Configure the filter afterwards.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">shading_filter</span><span class="o">.</span><span class="n">shininess</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">shading_filter</span><span class="o">.</span><span class="n">specular_coefficient</span> <span class="o">=</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+<p>Create the shading filter manually and attach it to a
+<a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh.MeshVisual</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># With the default shading parameters.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span> <span class="o">=</span> <span class="n">ShadingFilter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">MeshVisual</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">shading_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The filter can be configured at creation time and at run time:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Configure at creation time.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span> <span class="o">=</span> <span class="n">ShadingFilter</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1"># A shiny surface (small specular highlight).</span>
+<span class="gp">... </span>    <span class="n">shininess</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1"># A blue higlight, at half intensity.</span>
+<span class="gp">... </span>    <span class="n">specular_coefficient</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="c1"># Equivalent to `(0.7, 0.7, 0.7, 1.0)`.</span>
+<span class="gp">... </span>    <span class="n">diffuse_coefficient</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1"># Same as `(0.2, 0.3, 0.3, 1.0)`.</span>
+<span class="gp">... </span>    <span class="n">ambient_coefficient</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Change the configuration at run time.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span><span class="o">.</span><span class="n">shininess</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span><span class="o">.</span><span class="n">specular_coefficient</span> <span class="o">=</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+<p>Disable the filter temporarily:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Turn off the shading.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">... </span><span class="c1"># Some time passes...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Turn on the shading again.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>When using the <a class="reference internal" href="#vispy.visuals.filters.mesh.WireframeFilter" title="vispy.visuals.filters.mesh.WireframeFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">WireframeFilter</span></code></a>, the wireframe is shaded only if
+the wireframe filter is attached before the shading filter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shading_filter</span> <span class="o">=</span> <span class="n">ShadingFilter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wireframe_filter</span> <span class="o">=</span> <span class="n">WireframeFilter</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Option 1: Shade the wireframe.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span> <span class="o">=</span> <span class="n">MeshVisual</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span><span class="o">.</span><span class="n">attached</span><span class="p">(</span><span class="n">wireframe_filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh1</span><span class="o">.</span><span class="n">attached</span><span class="p">(</span><span class="n">shading_filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Option 2: Do not shade the wireframe.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh2</span> <span class="o">=</span> <span class="n">MeshVisual</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh2</span><span class="o">.</span><span class="n">attached</span><span class="p">(</span><span class="n">shading_filter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mesh2</span><span class="o">.</span><span class="n">attached</span><span class="p">(</span><span class="n">wireframe_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See also
 <a class="reference external" href="https://github.com/vispy/vispy/blob/main/examples/basics/scene/mesh_shading.py">examples/basics/scene/mesh_shading.py</a>
 example script.</p>
 <dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.ambient_color">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ambient_color</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.ambient_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>The ambient color.</p>
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.ambient_coefficient">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ambient_coefficient</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.ambient_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ambient reflection coefficient.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.diffuse_color">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">diffuse_color</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.diffuse_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>The diffuse light color.</p>
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.ambient_light">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ambient_light</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.ambient_light" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color and intensity of the ambient light.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.light_color">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">light_color</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.light_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>The light color.</p>
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.diffuse_coefficient">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">diffuse_coefficient</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.diffuse_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>The diffuse reflection coefficient.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.diffuse_light">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">diffuse_light</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.diffuse_light" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color and intensity of the diffuse light.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.enabled">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">enabled</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>True to enable the filter, False to disable.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -2000,7 +2142,7 @@ example script.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.on_mesh_data_updated">
-<span class="sig-name descname"><span class="pre">on_mesh_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L326-L327"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.on_mesh_data_updated" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">on_mesh_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L551-L552"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.on_mesh_data_updated" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -2012,20 +2154,26 @@ example script.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.shininess">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shininess</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.shininess" title="Permalink to this definition">¶</a></dt>
-<dd><p>The shininess.</p>
+<dd><p>The shininess controlling the spread of the specular highlight.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.specular_color">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">specular_color</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.specular_color" title="Permalink to this definition">¶</a></dt>
-<dd><p>The specular light color.</p>
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.specular_coefficient">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">specular_coefficient</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.specular_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>The specular reflection coefficient.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.ShadingFilter.specular_light">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">specular_light</span></span><a class="headerlink" href="#vispy.visuals.filters.mesh.ShadingFilter.specular_light" title="Permalink to this definition">¶</a></dt>
+<dd><p>The color and intensity of the specular light.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.TextureFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">TextureFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texcoords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L11-L114"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.TextureFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">TextureFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texcoords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L14-L117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.TextureFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <p>Filter to apply a texture to a mesh.</p>
 <p>Note the texture is applied by multiplying the texture color by the
@@ -2071,9 +2219,11 @@ example script.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.WireframeFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">WireframeFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wireframe_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L395-L512"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">WireframeFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wireframe_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L620-L740"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <p>Add wireframe to a mesh.</p>
+<p>The wireframe filter should be attached before the shading filter for the
+wireframe to be shaded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -2111,7 +2261,7 @@ example script.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated">
-<span class="sig-name descname"><span class="pre">on_mesh_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L503-L504"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">on_mesh_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/mesh.py#L731-L732"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
