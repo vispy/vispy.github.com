@@ -968,11 +968,6 @@
       </label>
       <ul>
        <li class="toctree-l4">
-        <a class="reference internal" href="vispy.testing.tests.test_networkx_layout.html">
-         vispy.testing.tests.test_networkx_layout module
-        </a>
-       </li>
-       <li class="toctree-l4">
         <a class="reference internal" href="vispy.testing.tests.test_testing.html">
          vispy.testing.tests.test_testing module
         </a>
@@ -982,6 +977,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.testing.image_tester.html">
        vispy.testing.image_tester module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.testing.rendered_array_tester.html">
+       vispy.testing.rendered_array_tester module
       </a>
      </li>
     </ul>
@@ -1999,7 +1999,7 @@ The ray is expressed in coordinates local to the volume (i.e. texture
 coordinates).</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.volume.</span></span><span class="sig-name descname"><span class="pre">VolumeVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attenuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grays'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim_range_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emulate_texture</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L460-L909"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.volume.</span></span><span class="sig-name descname"><span class="pre">VolumeVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attenuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grays'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L464-L875"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.Visual" title="vispy.visuals.visual.Visual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.visual.Visual</span></code></a></p>
 <p>Displays a 3D Volume</p>
 <dl class="field-list simple">
@@ -2031,17 +2031,33 @@ quality.</p>
 <dt><strong>gamma</strong><span class="classifier">float</span></dt><dd><p>Gamma to use during colormap lookup.  Final color will be cmap(val**gamma).
 by default: 1.</p>
 </dd>
-<dt><strong>clim_range_threshold</strong><span class="classifier">float</span></dt><dd><p>When changing the clims, if the new clim range is smaller than this fraction of the
-last-used texture data range, then it will trigger a rescaling of the texture data.
-For instance: if the texture data was last scaled from 0-1, and the clims are set to
-0.4-0.5, then a texture rescale will be triggered if <code class="docutils literal notranslate"><span class="pre">clim_range_threshold</span> <span class="pre">&lt;</span> <span class="pre">0.1</span></code>.
-To prevent rescaling, set this value to 0.  To <em>always</em> rescale, set the value to
-&gt;= 1.  By default, 0.2</p>
-</dd>
-<dt><strong>emulate_texture</strong><span class="classifier">bool</span></dt><dd><p>Use 2D textures to emulate a 3D texture. OpenGL ES 2.0 compatible,
-but has lower performance on desktop platforms.</p>
-</dd>
 <dt><strong>interpolation</strong><span class="classifier">{‘linear’, ‘nearest’}</span></dt><dd><p>Selects method of image interpolation.</p>
+</dd>
+<dt><strong>texture_format: numpy.dtype | str | None</strong></dt><dd><p>How to store data on the GPU. OpenGL allows for many different storage
+formats and schemes for the low-level texture data stored in the GPU.
+Most common is unsigned integers or floating point numbers.
+Unsigned integers are the most widely supported while other formats
+may not be supported on older versions of OpenGL, WebGL
+(without enabling some extensions), or with older GPUs.
+Default value is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means data will be scaled on the
+CPU and the result stored in the GPU as an unsigned integer. If a
+numpy dtype object, an internal texture format will be chosen to
+support that dtype and data will <em>not</em> be scaled on the CPU. Not all
+dtypes are supported. If a string, then
+it must be one of the OpenGL internalformat strings described in the
+table on this page: <a class="reference external" href="https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml">https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glTexImage2D.xhtml</a>
+The name should have <cite>GL_</cite> removed and be lowercase (ex.
+<cite>GL_R32F</cite> becomes <code class="docutils literal notranslate"><span class="pre">'r32f'</span></code>). Lastly, this can also be the string
+<code class="docutils literal notranslate"><span class="pre">'auto'</span></code> which will use the data type of the provided volume data
+to determine the internalformat of the texture.
+When this is specified (not <code class="docutils literal notranslate"><span class="pre">None</span></code>) data is scaled on the
+GPU which allows for faster color limit changes. Additionally, when
+32-bit float data is provided it won’t be copied before being
+transferred to the GPU. Note this visual is limited to “luminance”
+formatted data (single band). This is equivalent to <cite>GL_RED</cite> format
+in OpenGL 4.0.</p>
+</dd>
+<dt><strong>.. versionchanged: 0.7</strong></dt><dd><p>Deprecate ‘emulate_texture’ keyword argument.</p>
 </dd>
 </dl>
 </dd>
@@ -2058,15 +2074,6 @@ but has lower performance on desktop platforms.</p>
 <dd><p>The contrast limits that were applied to the volume data.</p>
 <p>Volume display is mapped from black to white with these values.
 Settable via set_data() as well as &#64;clim.setter.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.clim_normalized">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">clim_normalized</span></span><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.clim_normalized" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalize current clims between 0-1 based on last-used texture data range.</p>
-<p>In set_data(), the data is normalized (on the CPU) to 0-1 using <code class="docutils literal notranslate"><span class="pre">clim</span></code>.
-During rendering, the frag shader will apply the final contrast adjustment based on
-the current <code class="docutils literal notranslate"><span class="pre">clim</span></code>.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -2133,40 +2140,29 @@ on the render method.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.rescale_data">
-<span class="sig-name descname"><span class="pre">rescale_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L627-L639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.rescale_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Force rescaling of data to the current contrast limits and texture upload.</p>
-<p>Because Textures are currently 8-bits, and contrast adjustment is done during
-rendering by scaling the values retrieved from the texture on the GPU (provided that
-the new contrast limits settings are within the range of the clims used when the
-last texture was uploaded), posterization may become visible if the contrast limits
-become <em>too</em> small of a fraction of the clims used to normalize the texture.
-This function is a convenience to “force” rescaling of the Texture data to the
-current contrast limits range.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.set_data">
-<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L567-L625"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.set_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L600-L647"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the volume data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>vol</strong><span class="classifier">ndarray</span></dt><dd><p>The 3D volume.</p>
 </dd>
-<dt><strong>clim</strong><span class="classifier">tuple | None</span></dt><dd><p>Colormap limits to use. None will use the min and max values.</p>
+<dt><strong>clim</strong><span class="classifier">tuple</span></dt><dd><p>Colormap limits to use (min, max). None will use the min and max
+values. Defaults to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt><strong>copy</strong><span class="classifier">bool | True</span></dt><dd><p>Whether to copy the input volume prior to applying clim normalization.</p>
+<dt><strong>copy</strong><span class="classifier">bool</span></dt><dd><p>Whether to copy the input volume prior to applying clim
+normalization on the CPU. Has no effect if visual was created
+with ‘texture_format’ not equal to None as data is not modified
+on the CPU and data must already be copied to the GPU.
+Data must be 32-bit floating point data to completely avoid any
+data copying when scaling on the CPU. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code> for
+CPU scaled data. It is forced to <code class="docutils literal notranslate"><span class="pre">False</span></code> for GPU scaled data.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.texture_is_inverted">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">texture_is_inverted</span></span><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.texture_is_inverted" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.threshold">
