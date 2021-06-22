@@ -1654,6 +1654,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.visuals.tests.test_scalable_textures.html">
+         vispy.visuals.tests.test_scalable_textures module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.tests.test_sdf.html">
          vispy.visuals.tests.test_sdf module
         </a>
@@ -2522,8 +2527,9 @@ columns in the image grid.</p>
 </dd>
 <dt><strong>cmap</strong><span class="classifier">str | ColorMap</span></dt><dd><p>Colormap to use for luminance images.</p>
 </dd>
-<dt><strong>clim</strong><span class="classifier">str | tuple</span></dt><dd><p>Limits to use for the colormap. Can be ‘auto’ to auto-set bounds to
-the min and max of the data.</p>
+<dt><strong>clim</strong><span class="classifier">str | tuple</span></dt><dd><p>Limits to use for the colormap. I.e. the values that map to black and white
+in a gray colormap. Can be ‘auto’ to auto-set bounds to
+the min and max of the data. If not given or None, ‘auto’ is used.</p>
 </dd>
 <dt><strong>gamma</strong><span class="classifier">float</span></dt><dd><p>Gamma to use during colormap lookup.  Final color will be cmap(val**gamma).
 by default: 1.</p>
@@ -3456,9 +3462,9 @@ drawn in picking mode.</p>
 <dt><strong>vol</strong><span class="classifier">ndarray</span></dt><dd><p>The volume to display. Must be ndim==3. Array is assumed to be stored
 as <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code>.</p>
 </dd>
-<dt><strong>clim</strong><span class="classifier">tuple of two floats | None</span></dt><dd><p>The contrast limits. The values in the volume are mapped to
-black and white corresponding to these values. Default maps
-between min and max.</p>
+<dt><strong>clim</strong><span class="classifier">str | tuple</span></dt><dd><p>Limits to use for the colormap. I.e. the values that map to black and white
+in a gray colormap. Can be ‘auto’ to auto-set bounds to
+the min and max of the data. If not given or None, ‘auto’ is used.</p>
 </dd>
 <dt><strong>method</strong><span class="classifier">{‘mip’, ‘attenuated_mip’, ‘minip’, ‘translucent’, ‘additive’,</span></dt><dd><p>‘iso’, ‘average’}
 The render method to use. See corresponding docs for details.
