@@ -2519,7 +2519,16 @@ MeshVisual is used.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>ImageVisual data. Can be shape (M, N), (M, N, 3), or (M, N, 4).</p>
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>ImageVisual data. Can be shape (M, N), (M, N, 3), or (M, N, 4).
+If floating point data is provided and contains NaNs, they will
+be made transparent (discarded) for the single band data case when
+scaling is done on the GPU (see <code class="docutils literal notranslate"><span class="pre">texture_format</span></code>). On the CPU,
+single band NaNs are mapped to 0 as they are sent to the GPU which
+result in them using the lowest <code class="docutils literal notranslate"><span class="pre">clim</span></code> value in the GPU.
+For RGB data, NaNs will be mapped to the lowest <code class="docutils literal notranslate"><span class="pre">clim</span></code> value.
+If the Alpha band is NaN it will be mapped to 0 (transparent).
+Note that NaN handling is not required by some OpenGL implementations
+and NaNs may be treated differently on some systems (ex. as 0s).</p>
 </dd>
 <dt><strong>method</strong><span class="classifier">str</span></dt><dd><p>Selects method of rendering image in case of non-linear transforms.
 Each method produces similar results, but may trade efficiency
