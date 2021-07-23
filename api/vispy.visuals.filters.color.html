@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -37,7 +41,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="vispy.visuals.filters.material module" href="vispy.visuals.filters.material.html" />
+    <link rel="next" title="vispy.visuals.filters.mesh module" href="vispy.visuals.filters.mesh.html" />
     <link rel="prev" title="vispy.visuals.filters.clipper module" href="vispy.visuals.filters.clipper.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4 current active">
         <a class="current reference internal" href="#">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1986,7 +1995,7 @@
 <span id="vispy-visuals-filters-color-module"></span><h1>vispy.visuals.filters.color module<a class="headerlink" href="#module-vispy.visuals.filters.color" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.Alpha">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">Alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/filters/color.py#L110-L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.Alpha" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">Alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/color.py#L110-L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.Alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.Alpha.FRAG_SHADER">
@@ -2002,7 +2011,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ColorFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/filters/color.py#L132-L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.ColorFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/color.py#L132-L151"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.ColorFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ColorFilter.FRAG_SHADER">
@@ -2018,7 +2027,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.IsolineFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">IsolineFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/filters/color.py#L10-L107"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.IsolineFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">IsolineFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/color.py#L10-L107"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.IsolineFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.IsolineFilter.FRAG_SHADER">
@@ -2049,7 +2058,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ZColormapFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ZColormapFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/filters/color.py#L154-L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.ZColormapFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ZColormapFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/filters/color.py#L154-L181"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.filters.color.ZColormapFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ZColormapFilter.FRAG_SHADER">
@@ -2072,7 +2081,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="vispy.visuals.filters.clipper.html" title="previous page">vispy.visuals.filters.clipper module</a>
-    <a class='right-next' id="next-link" href="vispy.visuals.filters.material.html" title="next page">vispy.visuals.filters.material module</a>
+    <a class='right-next' id="next-link" href="vispy.visuals.filters.mesh.html" title="next page">vispy.visuals.filters.mesh module</a>
 
               </div>
               

@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -37,7 +41,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="vispy.util.keys module" href="vispy.util.keys.html" />
+    <link rel="next" title="vispy.util.gallery_scraper module" href="vispy.util.gallery_scraper.html" />
     <link rel="prev" title="vispy.util.fourier module" href="vispy.util.fourier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1986,17 +1995,17 @@
 <span id="vispy-util-frozen-module"></span><h1>vispy.util.frozen module<a class="headerlink" href="#module-vispy.util.frozen" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.util.frozen.Frozen">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.frozen.</span></span><span class="sig-name descname"><span class="pre">Frozen</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/util/frozen.py#L9-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.util.frozen.</span></span><span class="sig-name descname"><span class="pre">Frozen</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/frozen.py#L9-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.util.frozen.Frozen.freeze">
-<span class="sig-name descname"><span class="pre">freeze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/util/frozen.py#L19-L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen.freeze" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">freeze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/frozen.py#L19-L21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen.freeze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Freeze the object so that only existing properties can be set</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.util.frozen.Frozen.unfreeze">
-<span class="sig-name descname"><span class="pre">unfreeze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/util/frozen.py#L23-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen.unfreeze" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unfreeze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/util/frozen.py#L23-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.util.frozen.Frozen.unfreeze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unfreeze the object so that additional properties can be added</p>
 </dd></dl>
 
@@ -2011,7 +2020,7 @@
               <div class='prev-next-bottom'>
                 
     <a class='left-prev' id="prev-link" href="vispy.util.fourier.html" title="previous page">vispy.util.fourier module</a>
-    <a class='right-next' id="next-link" href="vispy.util.keys.html" title="next page">vispy.util.keys module</a>
+    <a class='right-next' id="next-link" href="vispy.util.gallery_scraper.html" title="next page">vispy.util.gallery_scraper module</a>
 
               </div>
               

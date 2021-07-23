@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1982,8 +1991,41 @@
               
               <div>
                 
-  <div class="section" id="vispy-gloo-gl-tests-test-basics-module">
-<h1>vispy.gloo.gl.tests.test_basics module<a class="headerlink" href="#vispy-gloo-gl-tests-test-basics-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-vispy.gloo.gl.tests.test_basics">
+<span id="vispy-gloo-gl-tests-test-basics-module"></span><h1>vispy.gloo.gl.tests.test_basics module<a class="headerlink" href="#module-vispy.gloo.gl.tests.test_basics" title="Permalink to this headline">¶</a></h1>
+<p>Test to verify some basic functionality of our OpenGL API. We cover
+much more in the test_functionality. Together, these two tests should
+touch <em>all</em> ES 2.0 API calls.</p>
+<p>The only exception is glCompressedTexImage2D and glCompressedTexSubImage2D.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.gloo.gl.tests.test_basics.teardown_module">
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.gl.tests.test_basics.</span></span><span class="sig-name descname"><span class="pre">teardown_module</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/gl/tests/test_basics.py#L18-L19"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.gl.tests.test_basics.teardown_module" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.gloo.gl.tests.test_basics.test_basics_desktop">
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.gl.tests.test_basics.</span></span><span class="sig-name descname"><span class="pre">test_basics_desktop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/_testing.py#L22-L38"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.gl.tests.test_basics.test_basics_desktop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test desktop GL backend for basic functionality.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.gloo.gl.tests.test_basics.test_basics_pypengl">
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.gl.tests.test_basics.</span></span><span class="sig-name descname"><span class="pre">test_basics_pypengl</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/_testing.py#L48-L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.gl.tests.test_basics.test_basics_pypengl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test pyopengl GL backend for basic functionality.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.gloo.gl.tests.test_basics.test_functionality_es2">
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.gl.tests.test_basics.</span></span><span class="sig-name descname"><span class="pre">test_functionality_es2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/_testing.py#L55-L62"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.gl.tests.test_basics.test_functionality_es2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test es2 GL backend for basic functionality.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.gloo.gl.tests.test_basics.test_functionality_proxy">
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.gl.tests.test_basics.</span></span><span class="sig-name descname"><span class="pre">test_functionality_proxy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/_testing.py#L41-L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.gl.tests.test_basics.test_functionality_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test GL proxy class for basic functionality.</p>
+</dd></dl>
+
 </div>
 
 

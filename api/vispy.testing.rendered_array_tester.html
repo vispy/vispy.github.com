@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1982,8 +1991,54 @@
               
               <div>
                 
-  <div class="section" id="vispy-testing-rendered-array-tester-module">
-<h1>vispy.testing.rendered_array_tester module<a class="headerlink" href="#vispy-testing-rendered-array-tester-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-vispy.testing.rendered_array_tester">
+<span id="vispy-testing-rendered-array-tester-module"></span><h1>vispy.testing.rendered_array_tester module<a class="headerlink" href="#module-vispy.testing.rendered_array_tester" title="Permalink to this headline">¶</a></h1>
+<p>Test utilities for comparing rendered arrays with expected array results.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.testing.rendered_array_tester.compare_render">
+<span class="sig-prename descclassname"><span class="pre">vispy.testing.rendered_array_tester.</span></span><span class="sig-name descname"><span class="pre">compare_render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orig_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rendered_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_render</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#float" title="(in Python v3.6)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/rendered_array_tester.py#L19-L47"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.testing.rendered_array_tester.compare_render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare an expected original array with the rendered result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>orig_data</strong></dt><dd><p>Expected output result array. This will be converted to an RGBA array
+to be compared against the rendered data.</p>
+</dd>
+<dt><strong>rendered_data</strong></dt><dd><p>Actual rendered result as an RGBA 8-bit unsigned array.</p>
+</dd>
+<dt><strong>previous_render</strong></dt><dd><p>Previous instance of a render that the current render should not be
+equal to.</p>
+</dd>
+<dt><strong>atol</strong></dt><dd><p>Absolute tolerance to be passed to
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.testing.assert_allclose.html#numpy.testing.assert_allclose" title="(in NumPy v1.21)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.testing.assert_allclose()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.testing.rendered_array_tester.make_rgba">
+<span class="sig-prename descclassname"><span class="pre">vispy.testing.rendered_array_tester.</span></span><span class="sig-name descname"><span class="pre">make_rgba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a></span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/rendered_array_tester.py#L63-L85"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.testing.rendered_array_tester.make_rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any array to an RGBA array.</p>
+<p>RGBA arrays have 3 dimensions where the last represents the channels. If
+an Alpha channel needs to be added it will be made completely opaque.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>3D RGBA unsigned 8-bit array</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="vispy.testing.rendered_array_tester.max_for_dtype">
+<span class="sig-prename descclassname"><span class="pre">vispy.testing.rendered_array_tester.</span></span><span class="sig-name descname"><span class="pre">max_for_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dtype</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/testing/rendered_array_tester.py#L50-L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.testing.rendered_array_tester.max_for_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get maximum value an image array should have for a specific dtype.</p>
+<p>This is max int for each integer type or 1.0 for floating point types.</p>
+</dd></dl>
+
 </div>
 
 

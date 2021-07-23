@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1996,7 +2005,7 @@ of vispy (or other systems) can keep track of information related to
 an OpenGL context.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.gloo.context.FakeCanvas">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">FakeCanvas</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L258-L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">FakeCanvas</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L258-L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Fake canvas to allow using gloo without vispy.app</p>
 <p>Instantiate this class to collect GLIR commands from gloo
@@ -2004,7 +2013,7 @@ interactions. Call flush() in your draw event handler to execute
 the commands in the active contect.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.FakeCanvas.flush">
-<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L270-L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas.flush" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L270-L272"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.FakeCanvas.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush commands. Call this after setting to context to current.</p>
 </dd></dl>
 
@@ -2012,7 +2021,7 @@ the commands in the active contect.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLContext">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">GLContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L86-L179"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">GLContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L86-L179"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.wrappers.BaseGlooFunctions</span></code></p>
 <p>An object encapsulating data necessary for a OpenGL context</p>
 <dl class="field-list simple">
@@ -2039,7 +2048,7 @@ the commands in the active contect.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLContext.create_shared">
-<span class="sig-name descname"><span class="pre">create_shared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L118-L130"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.create_shared" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_shared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L118-L130"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.create_shared" title="Permalink to this definition">¶</a></dt>
 <dd><p>For the app backends to create the GLShared object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2055,7 +2064,7 @@ the commands in the active contect.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLContext.flush_commands">
-<span class="sig-name descname"><span class="pre">flush_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L156-L172"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.flush_commands" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">flush_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L156-L172"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.flush_commands" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flush</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2069,7 +2078,7 @@ the commands in the active contect.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLContext.get_viewport">
-<span class="sig-name descname"><span class="pre">get_viewport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L178-L179"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.get_viewport" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_viewport</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L178-L179"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.get_viewport" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -2081,7 +2090,7 @@ that can be shared accross canvases (if they share a contex).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLContext.set_viewport">
-<span class="sig-name descname"><span class="pre">set_viewport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L174-L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.set_viewport" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_viewport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L174-L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLContext.set_viewport" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the OpenGL viewport</p>
 <p>This is a wrapper for gl.glViewport.</p>
 <dl class="field-list simple">
@@ -2106,7 +2115,7 @@ potentially be shared between multiple contexts.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLShared">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">GLShared</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L182-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">GLShared</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L182-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLShared" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Representation of a “namespace” that can be shared between
 different contexts. App backends can associate themselves with this
@@ -2116,7 +2125,7 @@ share objects, and can be used as a placeholder to store shared
 information, such as glyph atlasses.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.context.GLShared.add_ref">
-<span class="sig-name descname"><span class="pre">add_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L221-L232"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLShared.add_ref" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L221-L232"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.GLShared.add_ref" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a reference for the backend object that gives access
 to the low level context. Used in vispy.app.canvas.backends.
 The given name must match with that of previously added
@@ -2149,13 +2158,13 @@ typically be the CanvasBackend object.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.gloo.context.forget_canvas">
-<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">forget_canvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L78-L83"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.forget_canvas" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">forget_canvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L78-L83"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.forget_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forget about the given canvas. Used by the canvas when closed.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.gloo.context.get_current_canvas">
-<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">get_current_canvas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L45-L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.get_current_canvas" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">get_current_canvas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L45-L60"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.get_current_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the currently active canvas</p>
 <p>Returns None if there is no canvas available. A canvas is made
 active on initialization and before the draw event is emitted.</p>
@@ -2167,7 +2176,7 @@ canvas.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.gloo.context.get_default_config">
-<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">get_default_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L34-L42"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.get_default_config" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">get_default_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L34-L42"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.get_default_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the default OpenGL context configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -2181,7 +2190,7 @@ canvas.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.gloo.context.set_current_canvas">
-<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">set_current_canvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/context.py#L63-L75"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.set_current_canvas" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.gloo.context.</span></span><span class="sig-name descname"><span class="pre">set_current_canvas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/context.py#L63-L75"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.context.set_current_canvas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a canvas active. Used primarily by the canvas itself.</p>
 </dd></dl>
 

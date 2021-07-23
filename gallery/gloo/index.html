@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gloo &#8212; VisPy</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Show an Image" href="animate_images.html" />
+    <link rel="prev" title="Gallery" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/vispy-teaser-short.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../overview.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Gallery
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../api/modules.html">
+  API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../news.html">
+  News
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+  Code of Conduct
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/vispyproject" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Gloo
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="animate_images.html">
+     Show an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="animate_images_slice.html">
+     Animate an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="animate_shape.html">
+     Animate a Shape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="display_lines.html">
+     Draw a bunch of lines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="display_points.html">
+     Draw 2D points
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="display_shape.html">
+     Draw a Quad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="geometry_shader.html">
+     Use a Geometry Shader
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gpuimage.html">
+     Animate a 2D function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hello_fbo.html">
+     Use FrameBuffers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="multi_texture.html">
+     Use multiple textures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="post_processing.html">
+     Show post-processing using a FrameBuffer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rotate_cube.html">
+     Draw 3D rotating Cube
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="spatial_filters.html">
+     Spatial Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="start.html">
+     Simplest Possible Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="start_shaders.html">
+     Simplest Shader Program
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../scene/index.html">
+   Scene
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/axes_plot.html">
+     Simple Line with Axis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/background_borders.html">
+     Demonstration of borders and background colors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/colorbar_widget.html">
+     Display a ColorBar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/colored_line.html">
+     Changing Line Colors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/console.html">
+     Vispy Console
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/contour.html">
+     Apply Contour Filter on an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/flipped_axis.html">
+     Aspect Ratios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/graph.html">
+     Visualize NetworkX Graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/image.html">
+     Display an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/infinite_line.html">
+     Draw an InfiniteLine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/isocurve.html">
+     Display an Isocurve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/isocurve_for_trisurface.html">
+     Isocurve for Triangular Mesh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/isocurve_for_trisurface_qt.html">
+     Isocurve for Triangular Mesh with Qt Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/isocurve_updates.html">
+     Update Image and Isocurve Visuals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/isosurface.html">
+     Isosurface Visual
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/line.html">
+     Draw a Line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/line_update.html">
+     Animated Line Visual
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/linear_region.html">
+     Draw an LinearRegion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/magnify.html">
+     Zoom in using MagnifyCamera
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/mesh_normals.html">
+     Display Mesh Normals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/mesh_shading.html">
+     Shading a Mesh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/mesh_texture.html">
+     Texture Filter on Meshes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/nested_viewbox.html">
+     Nexted Viewboxes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/one_cam_two_scenes.html">
+     Share Camera Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/one_scene_four_cams.html">
+     Single Scene in Multiple View boxes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/point_cloud.html">
+     Create a Point Cloud
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/polygon.html">
+     Shape Visuals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/save_animation.html">
+     Create and Save Animation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/sensitivity.html">
+     Zoom Sensitivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/shape_draw.html">
+     Draw and Edit Shapes with Mouse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/sphere.html">
+     Draw a Sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/surface_plot.html">
+     Draw a SurfacePlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/text.html">
+     Text in a Scene and ViewBox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/turntable_box.html">
+     Display a Cube
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/viewbox.html">
+     ViewBox with Clipping Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scene/volume.html">
+     Volume Rendering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../plotting/index.html">
+   Plotting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/colorbar.html">
+     Plot different styles of ColorBar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/ipython_fig_playground.html">
+     Boilerplate Interactive Plotting Session
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/plot.html">
+     Plot data with different styles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/plot_colorbars.html">
+     Line plot and colorbar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/scatter_histogram.html">
+     Scatter plot and histograms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/spectrogram.html">
+     Spectrogram and Line Plot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/volume_plot.html">
+     Multi-view Volume Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/main/gallery/gloo/index.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="gloo">
+<span id="sphx-glr-gallery-gloo"></span><h1>Gloo<a class="headerlink" href="#gloo" title="Permalink to this headline">¶</a></h1>
+<p>More example scripts are available in the VisPy repository’s
+<a class="reference external" href="https://github.com/vispy/vispy/tree/main/examples">example scripts directory</a>.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Draw a new array of random image pixels on every draw cycle."><div class="figure align-default" id="id1">
+<img alt="Show an Image" src="../../_images/sphx_glr_animate_images_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="animate_images.html#sphx-glr-gallery-gloo-animate-images-py"><span class="std std-ref">Show an Image</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Use a timer to trigger updating an image."><div class="figure align-default" id="id2">
+<img alt="Animate an Image" src="../../_images/sphx_glr_animate_images_slice_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="animate_images_slice.html#sphx-glr-gallery-gloo-animate-images-slice-py"><span class="std std-ref">Animate an Image</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating showing a quad using a Texture2D and VertexBuffer and a timer to control ..."><div class="figure align-default" id="id3">
+<img alt="Animate a Shape" src="../../_images/sphx_glr_animate_shape_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="animate_shape.html#sphx-glr-gallery-gloo-animate-shape-py"><span class="std std-ref">Animate a Shape</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how multiple line-pieces can be drawn using one call, by discarding s..."><div class="figure align-default" id="id4">
+<img alt="Draw a bunch of lines" src="../../_images/sphx_glr_display_lines_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="display_lines.html#sphx-glr-gallery-gloo-display-lines-py"><span class="std std-ref">Draw a bunch of lines</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple example plotting 2D points."><div class="figure align-default" id="id5">
+<img alt="Draw 2D points" src="../../_images/sphx_glr_display_points_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="display_points.html#sphx-glr-gallery-gloo-display-points-py"><span class="std std-ref">Draw 2D points</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple example demonstrating showing a quad using a gloo Program."><div class="figure align-default" id="id6">
+<img alt="Draw a Quad" src="../../_images/sphx_glr_display_shape_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="display_shape.html#sphx-glr-gallery-gloo-display-shape-py"><span class="std std-ref">Draw a Quad</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Use a Geometry Shader"><div class="figure align-default" id="id7">
+<img alt="Use a Geometry Shader" src="../../_images/sphx_glr_geometry_shader_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="geometry_shader.html#sphx-glr-gallery-gloo-geometry-shader-py"><span class="std std-ref">Use a Geometry Shader</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Illustrate how to plot a 2D function (an image) y=f(x,y) on the GPU."><div class="figure align-default" id="id8">
+<img alt="Animate a 2D function" src="../../_images/sphx_glr_gpuimage_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="gpuimage.html#sphx-glr-gallery-gloo-gpuimage-py"><span class="std std-ref">Animate a 2D function</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Minimal example demonstrating the use of frame buffer objects (FBO). This example blurs the out..."><div class="figure align-default" id="id9">
+<img alt="Use FrameBuffers" src="../../_images/sphx_glr_hello_fbo_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="hello_fbo.html#sphx-glr-gallery-gloo-hello-fbo-py"><span class="std std-ref">Use FrameBuffers</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="We create two textures. One that shows a red, green and blue band in the horizontal direction a..."><div class="figure align-default" id="id10">
+<img alt="Use multiple textures" src="../../_images/sphx_glr_multi_texture_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="multi_texture.html#sphx-glr-gallery-gloo-multi-texture-py"><span class="std std-ref">Use multiple textures</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Show post-processing using a FrameBuffer"><div class="figure align-default" id="id11">
+<img alt="Show post-processing using a FrameBuffer" src="../../_images/sphx_glr_post_processing_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="post_processing.html#sphx-glr-gallery-gloo-post-processing-py"><span class="std std-ref">Show post-processing using a FrameBuffer</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to display 3D objects."><div class="figure align-default" id="id12">
+<img alt="Draw 3D rotating Cube" src="../../_images/sphx_glr_rotate_cube_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="rotate_cube.html#sphx-glr-gallery-gloo-rotate-cube-py"><span class="std std-ref">Draw 3D rotating Cube</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating spatial filtering using spatial-filters fragment shader."><div class="figure align-default" id="id13">
+<img alt="Spatial Filtering" src="../../_images/sphx_glr_spatial_filters_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="spatial_filters.html#sphx-glr-gallery-gloo-spatial-filters-py"><span class="std std-ref">Spatial Filtering</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simplest Possible Script"><div class="figure align-default" id="id14">
+<img alt="Simplest Possible Script" src="../../_images/sphx_glr_start_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="start.html#sphx-glr-gallery-gloo-start-py"><span class="std std-ref">Simplest Possible Script</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simplest Shader Program"><div class="figure align-default" id="id15">
+<img alt="Simplest Shader Program" src="../../_images/sphx_glr_start_shaders_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="start_shaders.html#sphx-glr-gallery-gloo-start-shaders-py"><span class="std std-ref">Simplest Shader Program</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div><div class="sphx-glr-footer class sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/33e214bcd239cc0ec2da9c18f64ded71/gloo_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">gloo_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/872c98af3306d692220bd1c8cdf60f59/gloo_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">gloo_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">Gallery</a>
+    <a class='right-next' id="next-link" href="animate_images.html" title="next page">Show an Image</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2013-2021, VisPy developers.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

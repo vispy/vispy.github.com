@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1986,7 +1995,7 @@
 <span id="vispy-scene-cameras-turntable-module"></span><h1>vispy.scene.cameras.turntable module<a class="headerlink" href="#module-vispy.scene.cameras.turntable" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.cameras.turntable.TurntableCamera">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.scene.cameras.turntable.</span></span><span class="sig-name descname"><span class="pre">TurntableCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fov</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/scene/cameras/turntable.py#L13-L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.scene.cameras.turntable.</span></span><span class="sig-name descname"><span class="pre">TurntableCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fov</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azimuth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/scene/cameras/turntable.py#L13-L157"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.Base3DRotationCamera" title="vispy.scene.cameras.perspective.Base3DRotationCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.cameras.perspective.Base3DRotationCamera</span></code></a></p>
 <p>3D camera class that orbits around a center point while
 maintaining a view on a center point.</p>
@@ -2044,7 +2053,7 @@ plane.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.scene.cameras.turntable.TurntableCamera.orbit">
-<span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elev</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/scene/cameras/turntable.py#L115-L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera.orbit" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">orbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elev</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/scene/cameras/turntable.py#L115-L127"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera.orbit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Orbits the camera around the center position.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1986,7 +1995,7 @@
 <span id="vispy-visuals-scrolling-lines-module"></span><h1>vispy.visuals.scrolling_lines module<a class="headerlink" href="#module-vispy.visuals.scrolling_lines" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.scrolling_lines.ScrollingLinesVisual">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.scrolling_lines.</span></span><span class="sig-name descname"><span class="pre">ScrollingLinesVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/scrolling_lines.py#L12-L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.scrolling_lines.</span></span><span class="sig-name descname"><span class="pre">ScrollingLinesVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/scrolling_lines.py#L12-L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.Visual" title="vispy.visuals.visual.Visual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.visual.Visual</span></code></a></p>
 <p>Displays many line strips of equal length, with the option to add new
 vertex data to one end of the lines.</p>
@@ -2018,7 +2027,7 @@ option is not compatible with <em>pos_offset</em>.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.scrolling_lines.ScrollingLinesVisual.roll_data">
-<span class="sig-name descname"><span class="pre">roll_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/scrolling_lines.py#L165-L184"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.roll_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">roll_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/scrolling_lines.py#L165-L184"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.roll_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append new data to the right side of every line strip and remove
 as much data from the left.</p>
 <dl class="field-list simple">
@@ -2033,7 +2042,7 @@ as much data from the left.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_color">
-<span class="sig-name descname"><span class="pre">set_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/scrolling_lines.py#L144-L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_color" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/scrolling_lines.py#L144-L152"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the array of colors for each line strip.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2047,7 +2056,7 @@ as much data from the left.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_data">
-<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/scrolling_lines.py#L186-L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/scrolling_lines.py#L186-L197"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the complete data for a single line strip.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2063,7 +2072,7 @@ as much data from the left.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_pos_offset">
-<span class="sig-name descname"><span class="pre">set_pos_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/visuals/scrolling_lines.py#L134-L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_pos_offset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_pos_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">po</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/scrolling_lines.py#L134-L142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.scrolling_lines.ScrollingLinesVisual.set_pos_offset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the array of position offsets for each line strip.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

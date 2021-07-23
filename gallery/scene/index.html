@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scene &#8212; VisPy</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/font-mfizz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Simple Line with Axis" href="axes_plot.html" />
+    <link rel="prev" title="Simplest Shader Program" href="../gloo/start_shaders.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/vispy-teaser-short.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../installation.html">
+  Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../overview.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../index.html">
+  Gallery
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../api/modules.html">
+  API
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../news.html">
+  News
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+  Code of Conduct
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/vispyproject" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../gloo/index.html">
+   Gloo
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/animate_images.html">
+     Show an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/animate_images_slice.html">
+     Animate an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/animate_shape.html">
+     Animate a Shape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/display_lines.html">
+     Draw a bunch of lines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/display_points.html">
+     Draw 2D points
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/display_shape.html">
+     Draw a Quad
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/geometry_shader.html">
+     Use a Geometry Shader
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/gpuimage.html">
+     Animate a 2D function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/hello_fbo.html">
+     Use FrameBuffers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/multi_texture.html">
+     Use multiple textures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/post_processing.html">
+     Show post-processing using a FrameBuffer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/rotate_cube.html">
+     Draw 3D rotating Cube
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/spatial_filters.html">
+     Spatial Filtering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/start.html">
+     Simplest Possible Script
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gloo/start_shaders.html">
+     Simplest Shader Program
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Scene
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="axes_plot.html">
+     Simple Line with Axis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="background_borders.html">
+     Demonstration of borders and background colors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="colorbar_widget.html">
+     Display a ColorBar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="colored_line.html">
+     Changing Line Colors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="console.html">
+     Vispy Console
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="contour.html">
+     Apply Contour Filter on an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="flipped_axis.html">
+     Aspect Ratios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graph.html">
+     Visualize NetworkX Graph
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="image.html">
+     Display an Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="infinite_line.html">
+     Draw an InfiniteLine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="isocurve.html">
+     Display an Isocurve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="isocurve_for_trisurface.html">
+     Isocurve for Triangular Mesh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="isocurve_for_trisurface_qt.html">
+     Isocurve for Triangular Mesh with Qt Interface
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="isocurve_updates.html">
+     Update Image and Isocurve Visuals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="isosurface.html">
+     Isosurface Visual
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="line.html">
+     Draw a Line
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="line_update.html">
+     Animated Line Visual
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_region.html">
+     Draw an LinearRegion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="magnify.html">
+     Zoom in using MagnifyCamera
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mesh_normals.html">
+     Display Mesh Normals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mesh_shading.html">
+     Shading a Mesh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mesh_texture.html">
+     Texture Filter on Meshes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested_viewbox.html">
+     Nexted Viewboxes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="one_cam_two_scenes.html">
+     Share Camera Views
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="one_scene_four_cams.html">
+     Single Scene in Multiple View boxes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="point_cloud.html">
+     Create a Point Cloud
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="polygon.html">
+     Shape Visuals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="save_animation.html">
+     Create and Save Animation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sensitivity.html">
+     Zoom Sensitivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="shape_draw.html">
+     Draw and Edit Shapes with Mouse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sphere.html">
+     Draw a Sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="surface_plot.html">
+     Draw a SurfacePlot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="text.html">
+     Text in a Scene and ViewBox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="turntable_box.html">
+     Display a Cube
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="viewbox.html">
+     ViewBox with Clipping Methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="volume.html">
+     Volume Rendering
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../plotting/index.html">
+   Plotting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/colorbar.html">
+     Plot different styles of ColorBar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/ipython_fig_playground.html">
+     Boilerplate Interactive Plotting Session
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/plot.html">
+     Plot data with different styles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/plot_colorbars.html">
+     Line plot and colorbar
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/scatter_histogram.html">
+     Scatter plot and histograms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/spectrogram.html">
+     Spectrogram and Line Plot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../plotting/volume_plot.html">
+     Multi-view Volume Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Scene
+  </a>
+  <ul class="visible nav section-nav flex-column">
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grid-layouts">
+   Grid Layouts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy-website/edit/main/gallery/scene/index.rst">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="scene">
+<span id="sphx-glr-gallery-scene"></span><h1>Scene<a class="headerlink" href="#scene" title="Permalink to this headline">¶</a></h1>
+<p>More example scripts are available in the VisPy repository’s
+<a class="reference external" href="https://github.com/vispy/vispy/tree/main/examples">example scripts directory</a>.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple Line with Axis"><div class="figure align-default" id="id1">
+<img alt="Simple Line with Axis" src="../../_images/sphx_glr_axes_plot_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="axes_plot.html#sphx-glr-gallery-scene-axes-plot-py"><span class="std std-ref">Simple Line with Axis</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstration of borders and background colors"><div class="figure align-default" id="id2">
+<img alt="Demonstration of borders and background colors" src="../../_images/sphx_glr_background_borders_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="background_borders.html#sphx-glr-gallery-scene-background-borders-py"><span class="std std-ref">Demonstration of borders and background colors</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas and ColorBarWidget to display a ColorBar"><div class="figure align-default" id="id3">
+<img alt="Display a ColorBar" src="../../_images/sphx_glr_colorbar_widget_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="colorbar_widget.html#sphx-glr-gallery-scene-colorbar-widget-py"><span class="std std-ref">Display a ColorBar</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Changing Line Colors"><div class="figure align-default" id="id4">
+<img alt="Changing Line Colors" src="../../_images/sphx_glr_colored_line_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="colored_line.html#sphx-glr-gallery-scene-colored-line-py"><span class="std std-ref">Changing Line Colors</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrate the use of the vispy console."><div class="figure align-default" id="id5">
+<img alt="Vispy Console" src="../../_images/sphx_glr_console_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="console.html#sphx-glr-gallery-scene-console-py"><span class="std std-ref">Vispy Console</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas to display an Image."><div class="figure align-default" id="id6">
+<img alt="Apply Contour Filter on an Image" src="../../_images/sphx_glr_contour_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="contour.html#sphx-glr-gallery-scene-contour-py"><span class="std std-ref">Apply Contour Filter on an Image</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating the use of aspect ratio, and also the flipping of axis using negative asp..."><div class="figure align-default" id="id7">
+<img alt="Aspect Ratios" src="../../_images/sphx_glr_flipped_axis_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="flipped_axis.html#sphx-glr-gallery-scene-flipped-axis-py"><span class="std std-ref">Aspect Ratios</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to visualise a NetworkX graph using a VisPy Graph."><div class="figure align-default" id="id8">
+<img alt="Visualize NetworkX Graph" src="../../_images/sphx_glr_graph_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="graph.html#sphx-glr-gallery-scene-graph-py"><span class="std std-ref">Visualize NetworkX Graph</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas to display an Image."><div class="figure align-default" id="id9">
+<img alt="Display an Image" src="../../_images/sphx_glr_image_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="image.html#sphx-glr-gallery-scene-image-py"><span class="std std-ref">Display an Image</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstration of InfiniteLine visual."><div class="figure align-default" id="id10">
+<img alt="Draw an InfiniteLine" src="../../_images/sphx_glr_infinite_line_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="infinite_line.html#sphx-glr-gallery-scene-infinite-line-py"><span class="std std-ref">Draw an InfiniteLine</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas to display an Isocurve visual."><div class="figure align-default" id="id11">
+<img alt="Display an Isocurve" src="../../_images/sphx_glr_isocurve_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="isocurve.html#sphx-glr-gallery-scene-isocurve-py"><span class="std std-ref">Display an Isocurve</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates isocurve for triangular mesh with vertex data."><div class="figure align-default" id="id12">
+<img alt="Isocurve for Triangular Mesh" src="../../_images/sphx_glr_isocurve_for_trisurface_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="isocurve_for_trisurface.html#sphx-glr-gallery-scene-isocurve-for-trisurface-py"><span class="std std-ref">Isocurve for Triangular Mesh</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates isocurve for triangular mesh with vertex data and a qt interface."><div class="figure align-default" id="id13">
+<img alt="Isocurve for Triangular Mesh with Qt Interface" src="../../_images/sphx_glr_isocurve_for_trisurface_qt_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="isocurve_for_trisurface_qt.html#sphx-glr-gallery-scene-isocurve-for-trisurface-qt-py"><span class="std std-ref">Isocurve for Triangular Mesh with Qt Interface</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Show use of SceneCanvas to display and update Image and Isocurve visuals using ViewBox visual."><div class="figure align-default" id="id14">
+<img alt="Update Image and Isocurve Visuals" src="../../_images/sphx_glr_isocurve_updates_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="isocurve_updates.html#sphx-glr-gallery-scene-isocurve-updates-py"><span class="std std-ref">Update Image and Isocurve Visuals</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the use of the Isosurface visual."><div class="figure align-default" id="id15">
+<img alt="Isosurface Visual" src="../../_images/sphx_glr_isosurface_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="isosurface.html#sphx-glr-gallery-scene-isosurface-py"><span class="std std-ref">Isosurface Visual</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple demonstration of SceneCanvas containing a single line entity as its entire scenegraph."><div class="figure align-default" id="id16">
+<img alt="Draw a Line" src="../../_images/sphx_glr_line_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="line.html#sphx-glr-gallery-scene-line-py"><span class="std std-ref">Draw a Line</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstration of animated Line visual."><div class="figure align-default" id="id17">
+<img alt="Animated Line Visual" src="../../_images/sphx_glr_line_update_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="line_update.html#sphx-glr-gallery-scene-line-update-py"><span class="std std-ref">Animated Line Visual</span></a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstration of LinearRegion visual. Allows drawing of infinite horizontal or vertical region ..."><div class="figure align-default" id="id18">
+<img alt="Draw an LinearRegion" src="../../_images/sphx_glr_linear_region_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="linear_region.html#sphx-glr-gallery-scene-linear-region-py"><span class="std std-ref">Draw an LinearRegion</span></a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrates use of special Camera subclasses to implement a (flashy)  data-exploration tool."><div class="figure align-default" id="id19">
+<img alt="Zoom in using MagnifyCamera" src="../../_images/sphx_glr_magnify_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="magnify.html#sphx-glr-gallery-scene-magnify-py"><span class="std std-ref">Zoom in using MagnifyCamera</span></a></span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Show how to display mesh normals on a mesh."><div class="figure align-default" id="id20">
+<img alt="Display Mesh Normals" src="../../_images/sphx_glr_mesh_normals_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="mesh_normals.html#sphx-glr-gallery-scene-mesh-normals-py"><span class="std std-ref">Display Mesh Normals</span></a></span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Show mesh filter usage for shading (lighting) a mesh and displaying a wireframe."><div class="figure align-default" id="id21">
+<img alt="Shading a Mesh" src="../../_images/sphx_glr_mesh_shading_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="mesh_shading.html#sphx-glr-gallery-scene-mesh-shading-py"><span class="std std-ref">Shading a Mesh</span></a></span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Show how to use the texture filter on meshes."><div class="figure align-default" id="id22">
+<img alt="Texture Filter on Meshes" src="../../_images/sphx_glr_mesh_texture_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="mesh_texture.html#sphx-glr-gallery-scene-mesh-texture-py"><span class="std std-ref">Texture Filter on Meshes</span></a></span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple test of nested viewboxes, demonstrating the three methods that can be used by a viewbox ..."><div class="figure align-default" id="id23">
+<img alt="Nexted Viewboxes" src="../../_images/sphx_glr_nested_viewbox_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="nested_viewbox.html#sphx-glr-gallery-scene-nested-viewbox-py"><span class="std std-ref">Nexted Viewboxes</span></a></span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrating two scenes that share the same camera view by linking the cameras."><div class="figure align-default" id="id24">
+<img alt="Share Camera Views" src="../../_images/sphx_glr_one_cam_two_scenes_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="one_cam_two_scenes.html#sphx-glr-gallery-scene-one-cam-two-scenes-py"><span class="std std-ref">Share Camera Views</span></a></span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrating a single scene that is shown in four different viewboxes, each with a different c..."><div class="figure align-default" id="id25">
+<img alt="Single Scene in Multiple View boxes" src="../../_images/sphx_glr_one_scene_four_cams_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="one_scene_four_cams.html#sphx-glr-gallery-scene-one-scene-four-cams-py"><span class="std std-ref">Single Scene in Multiple View boxes</span></a></span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrates use of visual.Markers to create a point cloud with a standard turntable camera to ..."><div class="figure align-default" id="id26">
+<img alt="Create a Point Cloud" src="../../_images/sphx_glr_point_cloud_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="point_cloud.html#sphx-glr-gallery-scene-point-cloud-py"><span class="std std-ref">Create a Point Cloud</span></a></span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstration of PolygonVisual, EllipseVisual, RectangleVisual and RegularPolygon"><div class="figure align-default" id="id27">
+<img alt="Shape Visuals" src="../../_images/sphx_glr_polygon_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="polygon.html#sphx-glr-gallery-scene-polygon-py"><span class="std std-ref">Shape Visuals</span></a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create a sphere."><div class="figure align-default" id="id28">
+<img alt="Create and Save Animation" src="../../_images/sphx_glr_save_animation_thumb.gif" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="save_animation.html#sphx-glr-gallery-scene-save-animation-py"><span class="std std-ref">Create and Save Animation</span></a></span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="For testing zoom sensitivity on various platforms"><div class="figure align-default" id="id29">
+<img alt="Zoom Sensitivity" src="../../_images/sphx_glr_sensitivity_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="sensitivity.html#sphx-glr-gallery-scene-sensitivity-py"><span class="std std-ref">Zoom Sensitivity</span></a></span><a class="headerlink" href="#id29" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple demonstration of drawing and editing shapes with the mouse This demo implements mouse pi..."><div class="figure align-default" id="id30">
+<img alt="Draw and Edit Shapes with Mouse" src="../../_images/sphx_glr_shape_draw_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="shape_draw.html#sphx-glr-gallery-scene-shape-draw-py"><span class="std std-ref">Draw and Edit Shapes with Mouse</span></a></span><a class="headerlink" href="#id30" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create a sphere."><div class="figure align-default" id="id31">
+<img alt="Draw a Sphere" src="../../_images/sphx_glr_sphere_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="sphere.html#sphx-glr-gallery-scene-sphere-py"><span class="std std-ref">Draw a Sphere</span></a></span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the use of the SurfacePlot visual."><div class="figure align-default" id="id32">
+<img alt="Draw a SurfacePlot" src="../../_images/sphx_glr_surface_plot_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="surface_plot.html#sphx-glr-gallery-scene-surface-plot-py"><span class="std std-ref">Draw a SurfacePlot</span></a></span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrate the use of text in the root scene and a viewbox. Note how the point size is indepen..."><div class="figure align-default" id="id33">
+<img alt="Text in a Scene and ViewBox" src="../../_images/sphx_glr_text_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="text.html#sphx-glr-gallery-scene-text-py"><span class="std std-ref">Text in a Scene and ViewBox</span></a></span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas to display a cube with an arcball camera."><div class="figure align-default" id="id34">
+<img alt="Display a Cube" src="../../_images/sphx_glr_turntable_box_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="turntable_box.html#sphx-glr-gallery-scene-turntable-box-py"><span class="std std-ref">Display a Cube</span></a></span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Demonstrate ViewBox using various clipping methods."><div class="figure align-default" id="id35">
+<img alt="ViewBox with Clipping Methods" src="../../_images/sphx_glr_viewbox_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="viewbox.html#sphx-glr-gallery-scene-viewbox-py"><span class="std std-ref">ViewBox with Clipping Methods</span></a></span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Example volume rendering"><div class="figure align-default" id="id36">
+<img alt="Volume Rendering" src="../../_images/sphx_glr_volume_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="volume.html#sphx-glr-gallery-scene-volume-py"><span class="std std-ref">Volume Rendering</span></a></span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div></div>
+<div class="section" id="grid-layouts">
+<span id="sphx-glr-gallery-scene-grid-layout"></span><h1>Grid Layouts<a class="headerlink" href="#grid-layouts" title="Permalink to this headline">¶</a></h1>
+<p>Examples of using the GridWidget to layout elements in a SceneCanvas.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Test automatic layout of multiple viewboxes using Grid."><div class="figure align-default" id="id37">
+<img alt="Multiple ViewBoxes on a Grid" src="../../_images/sphx_glr_grid_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid.html#sphx-glr-gallery-scene-grid-layout-grid-py"><span class="std std-ref">Multiple ViewBoxes on a Grid</span></a></span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip=" +-----+-----+ |     |     | |  1  |  2  | |     |     | +-----+-----+"><div class="figure align-default" id="id38">
+<img alt="Simple use of a grid layout" src="../../_images/sphx_glr_grid_basic_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid_basic.html#sphx-glr-gallery-scene-grid-layout-grid-basic-py"><span class="std std-ref">Simple use of a grid layout</span></a></span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="+---+-------+---+ | 1 |   1   | 2 | |---+-------+---+ | 3 | Empty | 2 | +---+-------+---+ | 3 |..."><div class="figure align-default" id="id39">
+<img alt="More complex grid layout" src="../../_images/sphx_glr_grid_holed_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid_holed.html#sphx-glr-gallery-scene-grid-layout-grid-holed-py"><span class="std std-ref">More complex grid layout</span></a></span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Test automatic layout of multiple viewboxes using Grid."><div class="figure align-default" id="id40">
+<img alt="Multiple Line Views on a Grid" src="../../_images/sphx_glr_grid_large_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid_large.html#sphx-glr-gallery-scene-grid-layout-grid-large-py"><span class="std std-ref">Multiple Line Views on a Grid</span></a></span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="+-----+-----+-----+ |  1  |  2  |  2  | +-----+-----+-----+ |  3  |  3  |  4  | +-----+-----+--..."><div class="figure align-default" id="id41">
+<img alt="Another Grid Layout" src="../../_images/sphx_glr_grid_uneven_col_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid_uneven_col.html#sphx-glr-gallery-scene-grid-layout-grid-uneven-col-py"><span class="std std-ref">Another Grid Layout</span></a></span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="+----+-------------+ |    |             | | y  |   viewbox   | |    |             | +----+-----..."><div class="figure align-default" id="id42">
+<img alt="Plot-like Grid Layout" src="../../_images/sphx_glr_grid_x_y_viewbox_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="grid_layout/grid_x_y_viewbox.html#sphx-glr-gallery-scene-grid-layout-grid-x-y-viewbox-py"><span class="std std-ref">Plot-like Grid Layout</span></a></span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div><div class="sphx-glr-footer class sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2769614f5e69c4d8064e3eecef16418d/scene_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">scene_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/ac86467d9a20f7e32175055fc4331dec/scene_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">scene_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="../gloo/start_shaders.html" title="previous page">Simplest Shader Program</a>
+    <a class='right-next' id="next-link" href="axes_plot.html" title="next page">Simple Line with Axis</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2013-2021, VisPy developers.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

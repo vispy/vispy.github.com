@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -91,7 +95,7 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../gallery.html">
+ <a class="reference internal nav-link" href="../gallery/index.html">
   Gallery
  </a>
 </li>
@@ -1164,6 +1168,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.util.tests.test_gallery_scraper.html">
+         vispy.util.tests.test_gallery_scraper module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.util.tests.test_import.html">
          vispy.util.tests.test_import module
         </a>
@@ -1238,6 +1247,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.util.frozen.html">
        vispy.util.frozen module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.util.gallery_scraper.html">
+       vispy.util.gallery_scraper module
       </a>
      </li>
      <li class="toctree-l3">
@@ -1417,11 +1431,6 @@
        <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="vispy.visuals.filters.material.html">
-         vispy.visuals.filters.material module
         </a>
        </li>
        <li class="toctree-l4">
@@ -1986,7 +1995,7 @@
 <span id="vispy-gloo-framebuffer-module"></span><h1>vispy.gloo.framebuffer module<a class="headerlink" href="#module-vispy.gloo.framebuffer" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.FrameBuffer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.framebuffer.</span></span><span class="sig-name descname"><span class="pre">FrameBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stencil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L91-L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.framebuffer.</span></span><span class="sig-name descname"><span class="pre">FrameBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stencil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L91-L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
 <p>Frame buffer object</p>
 <dl class="field-list simple">
@@ -2003,7 +2012,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.FrameBuffer.activate">
-<span class="sig-name descname"><span class="pre">activate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L119-L126"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">activate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L119-L126"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.activate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Activate/use this frame buffer.</p>
 </dd></dl>
 
@@ -2015,7 +2024,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.FrameBuffer.deactivate">
-<span class="sig-name descname"><span class="pre">deactivate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L128-L132"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">deactivate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L128-L132"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.deactivate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop using this frame buffer, the previous framebuffer will be
 made active.</p>
 </dd></dl>
@@ -2028,7 +2037,7 @@ made active.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.FrameBuffer.read">
-<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'color'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L223-L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.read" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'color'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L223-L257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return array of pixel values in an attached buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2057,7 +2066,7 @@ the offset and dimensions of the crop.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.FrameBuffer.resize">
-<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L201-L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L201-L221"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.FrameBuffer.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize all attached buffers with the given shape</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2087,7 +2096,7 @@ of color channels is preserved.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.RenderBuffer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.framebuffer.</span></span><span class="sig-name descname"><span class="pre">RenderBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L15-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.RenderBuffer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.gloo.framebuffer.</span></span><span class="sig-name descname"><span class="pre">RenderBuffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resizeable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L15-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.RenderBuffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject" title="vispy.gloo.globject.GLObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.globject.GLObject</span></code></a></p>
 <p>Base class for render buffer object</p>
 <p>A render buffer can be in color, depth or stencil format. If this
@@ -2112,7 +2121,7 @@ format is not specified, it is set when attached to the FrameBuffer.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.gloo.framebuffer.RenderBuffer.resize">
-<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/v0.7.3/vispy/gloo/framebuffer.py#L50-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.RenderBuffer.resize" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/gloo/framebuffer.py#L50-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.gloo.framebuffer.RenderBuffer.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the render-buffer size and format</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
