@@ -2044,7 +2044,7 @@
 <p>This module provides support for manipulating colors.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.color.BaseColormap">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">BaseColormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L213-L325"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.BaseColormap" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">BaseColormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L213-L329"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.BaseColormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class representing a colormap:</p>
 <blockquote>
@@ -2106,6 +2106,12 @@ should be <code class="docutils literal notranslate"><span class="pre">item.shap
 than <code class="docutils literal notranslate"><span class="pre">map()</span></code> (which implements a lower-level API).</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="vispy.color.BaseColormap.texture_lut">
+<span class="sig-name descname"><span class="pre">texture_lut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L284-L286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.BaseColormap.texture_lut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a texture2D object for LUT after its value is set. Can be None.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.color.BaseColormap.texture_map_data">
 <span class="sig-name descname"><span class="pre">texture_map_data</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#vispy.color.BaseColormap.texture_map_data" title="Permalink to this definition">¶</a></dt>
@@ -2116,7 +2122,7 @@ than <code class="docutils literal notranslate"><span class="pre">map()</span></
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.color.Color">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">Color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/color_array.py#L368-L440"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray" title="vispy.color.color_array.ColorArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.color_array.ColorArray</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">vispy.color.color_array.</span></code></p>
 <p>A single color</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2370,7 +2376,7 @@ on the GPU.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.color.Colormap">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">Colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L348-L442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">Colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L352-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap" title="vispy.color.colormap.BaseColormap"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.colormap.BaseColormap</span></code></a></p>
 <p>A colormap defining several control colors and an interpolation scheme.</p>
 <dl class="field-list simple">
@@ -2408,7 +2414,7 @@ If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.color.Colormap.map">
-<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L413-L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap.map" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L417-L431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap.map" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Python mapping function from the [0,1] interval to a
 list of rgba colors</p>
 <dl class="field-list simple">
@@ -2429,8 +2435,8 @@ list of rgba colors</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.color.Colormap.texture_lut">
-<span class="sig-name descname"><span class="pre">texture_lut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L429-L442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap.texture_lut" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a texture2D object for LUT after its value is set.</p>
+<span class="sig-name descname"><span class="pre">texture_lut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L433-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.Colormap.texture_lut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a texture2D object for LUT after its value is set. Can be None.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2465,7 +2471,7 @@ list of rgba colors</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.color.get_colormap">
-<span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">get_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L1096-L1150"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.get_colormap" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">get_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L1095-L1149"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.get_colormap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain a colormap.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2483,7 +2489,7 @@ list of rgba colors</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.color.get_colormaps">
-<span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">get_colormaps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L1153-L1155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.get_colormaps" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">vispy.color.</span></span><span class="sig-name descname"><span class="pre">get_colormaps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L1152-L1154"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.get_colormaps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of colormap names.</p>
 </dd></dl>
 
@@ -2520,7 +2526,7 @@ list of rgba colors</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.1.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
 </p>
     </div>
     
