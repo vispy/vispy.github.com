@@ -3521,7 +3521,7 @@ by default: 1.</p>
 </dd>
 <dt><strong>interpolation</strong><span class="classifier">{‘linear’, ‘nearest’}</span></dt><dd><p>Selects method of image interpolation.</p>
 </dd>
-<dt><strong>texture_format: numpy.dtype | str | None</strong></dt><dd><p>How to store data on the GPU. OpenGL allows for many different storage
+<dt><strong>texture_format</strong><span class="classifier">numpy.dtype | str | None</span></dt><dd><p>How to store data on the GPU. OpenGL allows for many different storage
 formats and schemes for the low-level texture data stored in the GPU.
 Most common is unsigned integers or floating point numbers.
 Unsigned integers are the most widely supported while other formats
@@ -3544,6 +3544,21 @@ GPU which allows for faster color limit changes. Additionally, when
 transferred to the GPU. Note this visual is limited to “luminance”
 formatted data (single band). This is equivalent to <cite>GL_RED</cite> format
 in OpenGL 4.0.</p>
+</dd>
+<dt><strong>raycasting_mode</strong><span class="classifier">{‘volume’, ‘plane’}</span></dt><dd><p>Whether to cast a ray through the whole volume or perpendicular to a
+plane through the volume defined.</p>
+</dd>
+<dt><strong>plane_position</strong><span class="classifier">ArrayLike</span></dt><dd><p>A (3,) array containing a position on a plane of interest in the volume.
+The position is defined in data coordinates. Only relevant in
+raycasting_mode = ‘plane’.</p>
+</dd>
+<dt><strong>plane_normal</strong><span class="classifier">ArrayLike</span></dt><dd><p>A (3,) array containing a vector normal to the plane of interest in the
+volume. The normal vector is defined in data coordinates. Only relevant
+in raycasting_mode = ‘plane’.</p>
+</dd>
+<dt><strong>plane_thickness</strong><span class="classifier">float</span></dt><dd><p>A value defining the total length of the ray perpendicular to the
+plane interrogated during rendering. Defined in data coordinates.
+Only relevant in raycasting_mode = ‘plane’.</p>
 </dd>
 <dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
 </dd>
