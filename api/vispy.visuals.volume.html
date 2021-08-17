@@ -2006,17 +2006,17 @@
 <div class="section" id="about-this-technique">
 <h2>About this technique<a class="headerlink" href="#about-this-technique" title="Permalink to this headline">¶</a></h2>
 <p>In Python, we define the six faces of a cuboid to draw, as well as
-texture cooridnates corresponding with the vertices of the cuboid. 
+texture cooridnates corresponding with the vertices of the cuboid.
 The back faces of the cuboid are drawn (and front faces are culled)
-because only the back faces are visible when the camera is inside the 
+because only the back faces are visible when the camera is inside the
 volume.</p>
-<p>In the vertex shader, we intersect the view ray with the near and far 
+<p>In the vertex shader, we intersect the view ray with the near and far
 clipping planes. In the fragment shader, we use these two points to
 compute the ray direction and then compute the position of the front
 cuboid surface (or near clipping plane) along the view ray.</p>
 <p>Next we calculate the number of steps to walk from the front surface
 to the back surface and iterate over these positions in a for-loop.
-At each iteration, the fragment color or other voxel information is 
+At each iteration, the fragment color or other voxel information is
 updated depending on the selected rendering method.</p>
 <p>It is important for the texture interpolation is ‘linear’ for most volumes,
 since with ‘nearest’ the result can look very ugly; however for volumes with
@@ -2029,7 +2029,7 @@ The ray is expressed in coordinates local to the volume (i.e. texture
 coordinates).</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.volume.</span></span><span class="sig-name descname"><span class="pre">VolumeVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attenuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grays'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L454-L867"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.volume.</span></span><span class="sig-name descname"><span class="pre">VolumeVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mip'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attenuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grays'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipping_planes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L462-L925"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.Visual" title="vispy.visuals.visual.Visual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.visual.Visual</span></code></a></p>
 <p>Displays a 3D Volume</p>
 <dl class="field-list simple">
@@ -2107,6 +2107,13 @@ Settable via set_data() as well as &#64;clim.setter.</p>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.clipping_planes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">clipping_planes</span></span><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.clipping_planes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the set of planes used to clip the volume.</p>
+<p>Each plane is defined by a position and a normal vector (magnitude is irrelevant). Shape: (n_planes, 2, 3)</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.cmap">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cmap</span></span><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.cmap" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2171,7 +2178,7 @@ on the render method.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.volume.VolumeVisual.set_data">
-<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L590-L635"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.set_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/volume.py#L600-L645"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.volume.VolumeVisual.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the volume data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
