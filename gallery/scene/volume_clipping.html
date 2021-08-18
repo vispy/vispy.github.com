@@ -550,12 +550,9 @@ to download the full example code</p>
 - x/y/z/o - add new clipping plane with normal along x/y/z or [1,1,1] oblique axis
 - r - remove a clipping plane</p>
 <img alt="volume clipping" class="sphx-glr-single-img" src="../../_images/sphx_glr_volume_clipping_001.png" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">get_colormaps</span><span class="p">,</span> <span class="n">BaseColormap</span>
 <span class="kn">from</span> <span class="nn">vispy.visuals.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span>
 
 <span class="c1"># Read volume</span>
@@ -567,49 +564,24 @@ to download the full example code</p>
 <span class="c1"># Set up a viewbox to display the image with interactive pan/zoom</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
 
-<span class="c1"># Set whether we are emulating a 3D texture</span>
-<span class="n">emulate_texture</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="c1"># Create the volume visuals, only one is visible</span>
+<span class="c1"># Create the volume visual</span>
 <span class="n">volume</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.225</span><span class="p">)</span>
 <span class="n">volume</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="c1"># Create three cameras (Fly, Turntable and Arcball)</span>
+<span class="c1"># Create and set the camera</span>
 <span class="n">fov</span> <span class="o">=</span> <span class="mf">60.</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">,</span>
-                                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Turntable&#39;</span><span class="p">)</span>
-
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam</span>  <span class="c1"># Select turntable at first</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span>
+    <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
+    <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Turntable&#39;</span>
+<span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam</span>
 
 <span class="c1"># Create an XYZAxis visual</span>
 <span class="n">axis</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">XYZAxis</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">affine</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
 <span class="n">axis</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">affine</span>
-
-
-<span class="c1"># create colormaps that work well for translucent and additive volume rendering</span>
-<span class="k">class</span> <span class="nc">TransFire</span><span class="p">(</span><span class="n">BaseColormap</span><span class="p">):</span>
-    <span class="n">glsl_map</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    vec4 translucent_fire(float t) {</span>
-<span class="s2">        return vec4(pow(t, 0.5), t, t*t, max(0, t*1.05 - 0.05));</span>
-<span class="s2">    }</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-
-<span class="k">class</span> <span class="nc">TransGrays</span><span class="p">(</span><span class="n">BaseColormap</span><span class="p">):</span>
-    <span class="n">glsl_map</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    vec4 translucent_grays(float t) {</span>
-<span class="s2">        return vec4(t, t, t, t*0.05);</span>
-<span class="s2">    }</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-
-<span class="c1"># Setup colormap iterators</span>
-<span class="n">opaque_cmaps</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">get_colormaps</span><span class="p">())</span>
-<span class="n">translucent_cmaps</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">([</span><span class="n">TransFire</span><span class="p">(),</span> <span class="n">TransGrays</span><span class="p">()])</span>
-<span class="n">opaque_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">opaque_cmaps</span><span class="p">)</span>
-<span class="n">translucent_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">translucent_cmaps</span><span class="p">)</span>
 
 
 <span class="c1"># Implement axis connection with cam2</span>
@@ -637,6 +609,8 @@ to download the full example code</p>
 
 
 <span class="k">def</span> <span class="nf">add_clip</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clip_modes</span><span class="p">:</span>
+        <span class="k">return</span>
     <span class="n">new_plane</span> <span class="o">=</span> <span class="n">clip_modes</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">new_plane</span>
@@ -668,7 +642,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.963 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.633 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-volume-clipping-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ac077fe69019fbea2c256038b4ec9d38/volume_clipping.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">volume_clipping.py</span></code></a></p>
