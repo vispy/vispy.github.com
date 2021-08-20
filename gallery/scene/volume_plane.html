@@ -550,7 +550,8 @@ to download the full example code</p>
 * 1  - toggle between volume rendering methods
 * 2 -  toggle between volume rendering modes (‘volume’, ‘plane’)
 * [] - shift plane along plane normal
-* {} - decrease/increase plane thickness</p>
+* {} - decrease/increase plane thickness
+* Spacebar - stop/start animation</p>
 <ul class="simple">
 <li><p>x/y/z/o - set plane normal along x/y/z or [1,1,1] oblique axis</p></li>
 </ul>
@@ -652,7 +653,6 @@ to download the full example code</p>
         <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span>
             <span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shift</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;plane position: </span><span class="si">{</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
@@ -661,6 +661,11 @@ to download the full example code</p>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">timer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">move_plane</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
@@ -683,7 +688,7 @@ to download the full example code</p>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  46.088 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  49.687 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-volume-plane-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a9386a949aff63867e8c23f30b221a74/volume_plane.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">volume_plane.py</span></code></a></p>
