@@ -24,8 +24,6 @@
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
@@ -1935,7 +1933,7 @@
                 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/vispy/vispy-website/edit/main/api/vispy.color.colormap.rst">
+    <a href="https://github.com/vispy/vispy/edit/main/doc/api/vispy.color.colormap.rst">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -2119,26 +2117,30 @@ list of rgba colors</p>
 <p>A colormap which is defined by n evenly spaced points in a circular color space.</p>
 <p>This means that we change the hue value while keeping the
 saturation and value constant.</p>
-<dl class="simple">
-<dt>n_colors<span class="classifier">int, optional</span></dt><dd><p>The number of colors to generate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_colors</strong><span class="classifier">int, optional</span></dt><dd><p>The number of colors to generate.</p>
 </dd>
-<dt>hue_start<span class="classifier">int, optional</span></dt><dd><p>The hue start value. Must be in the range [0, 360], the default is 0.</p>
+<dt><strong>hue_start</strong><span class="classifier">int, optional</span></dt><dd><p>The hue start value. Must be in the range [0, 360], the default is 0.</p>
 </dd>
-<dt>saturation<span class="classifier">float, optional</span></dt><dd><p>The saturation component of the colors to generate. The default is
+<dt><strong>saturation</strong><span class="classifier">float, optional</span></dt><dd><p>The saturation component of the colors to generate. The default is
 fully saturated (1.0). Must be in the range [0, 1.0].</p>
 </dd>
-<dt>value<span class="classifier">float, optional</span></dt><dd><p>The value (brightness) component of the colors to generate. Must
+<dt><strong>value</strong><span class="classifier">float, optional</span></dt><dd><p>The value (brightness) component of the colors to generate. Must
 be in the range [0, 1.0], and the default is 1.0</p>
 </dd>
-<dt>controls<span class="classifier">array-like, optional</span></dt><dd><p>The list of control points for the colors to generate. It should be
+<dt><strong>controls</strong><span class="classifier">array-like, optional</span></dt><dd><p>The list of control points for the colors to generate. It should be
 an increasing list of floating-point number between 0.0 and 1.0.
 The first control point must be 0.0. The last control point must be
 1.0. The number of control points depends on the interpolation scheme.</p>
 </dd>
-<dt>interpolation<span class="classifier">str, optional</span></dt><dd><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
+<dt><strong>interpolation</strong><span class="classifier">str, optional</span></dt><dd><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
 be ‘zero’.
 If ‘linear’, ncontrols = ncolors (one color per control point).
 If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2148,26 +2150,30 @@ If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.colormap.</span></span><span class="sig-name descname"><span class="pre">HSLuv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ncolors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L690-L735"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.colormap.HSLuv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.color.colormap.Colormap" title="vispy.color.colormap.Colormap"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.colormap.Colormap</span></code></a></p>
 <p>A colormap which is defined by n evenly spaced points in the HSLuv space.</p>
-<dl class="simple">
-<dt>n_colors<span class="classifier">int, optional</span></dt><dd><p>The number of colors to generate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_colors</strong><span class="classifier">int, optional</span></dt><dd><p>The number of colors to generate.</p>
 </dd>
-<dt>hue_start<span class="classifier">int, optional</span></dt><dd><p>The hue start value. Must be in the range [0, 360], the default is 0.</p>
+<dt><strong>hue_start</strong><span class="classifier">int, optional</span></dt><dd><p>The hue start value. Must be in the range [0, 360], the default is 0.</p>
 </dd>
-<dt>saturation<span class="classifier">float, optional</span></dt><dd><p>The saturation component of the colors to generate. The default is
+<dt><strong>saturation</strong><span class="classifier">float, optional</span></dt><dd><p>The saturation component of the colors to generate. The default is
 fully saturated (1.0). Must be in the range [0, 1.0].</p>
 </dd>
-<dt>value<span class="classifier">float, optional</span></dt><dd><p>The value component of the colors to generate or “brightness”. Must
+<dt><strong>value</strong><span class="classifier">float, optional</span></dt><dd><p>The value component of the colors to generate or “brightness”. Must
 be in the range [0, 1.0], and the default is 0.7.</p>
 </dd>
-<dt>controls<span class="classifier">array-like, optional</span></dt><dd><p>The list of control points for the colors to generate. It should be
+<dt><strong>controls</strong><span class="classifier">array-like, optional</span></dt><dd><p>The list of control points for the colors to generate. It should be
 an increasing list of floating-point number between 0.0 and 1.0.
 The first control point must be 0.0. The last control point must be
 1.0. The number of control points depends on the interpolation scheme.</p>
 </dd>
-<dt>interpolation<span class="classifier">str, optional</span></dt><dd><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
+<dt><strong>interpolation</strong><span class="classifier">str, optional</span></dt><dd><p>The interpolation mode of the colormap. Default: ‘linear’. Can also
 be ‘zero’.
 If ‘linear’, ncontrols = ncolors (one color per control point).
 If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2194,8 +2200,12 @@ If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.color.colormap.</span></span><span class="sig-name descname"><span class="pre">RedYellowBlueCyan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.33,</span> <span class="pre">0.66,</span> <span class="pre">1.0)</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/color/colormap.py#L763-L785"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.color.colormap.RedYellowBlueCyan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.color.colormap.Colormap" title="vispy.color.colormap.Colormap"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.colormap.Colormap</span></code></a></p>
 <p>A colormap which goes red-yellow positive and blue-cyan negative</p>
-<dl class="simple">
-<dt>limits<span class="classifier">array-like, optional</span></dt><dd><p>The limits for the fully transparent, opaque red, and yellow points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>limits</strong><span class="classifier">array-like, optional</span></dt><dd><p>The limits for the fully transparent, opaque red, and yellow points.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2248,6 +2258,11 @@ is 1.0.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;single_hue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">

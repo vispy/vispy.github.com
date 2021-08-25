@@ -24,8 +24,6 @@
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
@@ -294,6 +292,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-widget">
+   Jupyter Widget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#updating-my-fork-s-branch-to-main">
    Updating my fork’s branch to “main”
   </a>
@@ -307,7 +310,7 @@
                 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/vispy/vispy-website/edit/main/dev_guide/contributor_guide.rst">
+    <a href="https://github.com/vispy/vispy/edit/main/doc/dev_guide/contributor_guide.rst">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -531,20 +534,35 @@ differences in systems.</p>
 </div>
 <div class="section" id="sphinx-documentation-and-jupyter-widget">
 <h2>Sphinx Documentation and Jupyter Widget<a class="headerlink" href="#sphinx-documentation-and-jupyter-widget" title="Permalink to this headline">¶</a></h2>
-<p>Any contributors wishing to modify the Sphinx Documentation from the VisPy
-repository’s “doc” directory or the Jupyter Widget in the “js” directory
-should note that these directories are actually special “git submodules”.
-Git submodules are special directories in a git repository that point to
-external git repositories. In the case of “doc”, this points to:</p>
-<p><a class="reference external" href="https://github.com/vispy/vispy-website">https://github.com/vispy/vispy-website</a></p>
-<p>In the case of “js”, this points to:</p>
-<p><a class="reference external" href="https://github.com/vispy/vispy.js/">https://github.com/vispy/vispy.js/</a></p>
-<p>Any modifications that you wish to make to either of these directories
-<strong>MUST</strong> be submitted to their respective repositories first. After they
-are merged in those repositories then you or the VisPy maintainers can
-update the git submodules in the main VisPy repository to point to these
-new versions. Of course, if you have any questions, feel free to ask the
-VisPy maintainers.</p>
+<p>VisPy’s documentation website is a <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a>
+project stored in the “doc” directory of the repository. To generate the
+documentation run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> doc
+make html
+</pre></div>
+</div>
+<p>Repeated execution of <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> will reuse information from previous runs
+which may be faster, but may also produce incorrect output in specific cases.
+To make sure, you can clean out the build directory by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>.</p>
+<p>To view the output you can view the build folder in a browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firefox</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>As part of the documentation generation, the sphinx-gallery project will run
+all of the examples to generate screenshots for the gallery pages. This can
+take a long time and is unnecessary if you aren’t modifying the gallery or
+examples. To build the site without generating the gallery run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span> <span class="n">SPHINXOPTS</span><span class="o">=</span><span class="s2">&quot;-D plot_gallery=0&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jupyter-widget">
+<h2>Jupyter Widget<a class="headerlink" href="#jupyter-widget" title="Permalink to this headline">¶</a></h2>
+<p>VisPy no longer has a jupyter widget as part of the main VisPy Python
+package. Instead the “jupyter_rfb” package is used through the “jupyter_rfb”
+backend of VisPy. Major changes to this backend will likely need changes to
+the jupyter_rfb library which can be found here:</p>
+<p><a class="reference external" href="https://github.com/vispy/jupyter_rfb/">https://github.com/vispy/jupyter_rfb/</a></p>
 </div>
 <div class="section" id="updating-my-fork-s-branch-to-main">
 <h2>Updating my fork’s branch to “main”<a class="headerlink" href="#updating-my-fork-s-branch-to-main" title="Permalink to this headline">¶</a></h2>

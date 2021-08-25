@@ -24,8 +24,6 @@
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-mfizz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
@@ -1945,7 +1943,7 @@
                 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/vispy/vispy-website/edit/main/api/vispy.visuals.shaders.function.rst">
+    <a href="https://github.com/vispy/vispy/edit/main/doc/api/vispy.visuals.shaders.function.rst">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -1979,7 +1977,7 @@ changes made to any object may be propagated to the root of the hierarchy to
 trigger a recompile.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.Function">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">Function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L34-L494"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">Function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L34-L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.shader_object.ShaderObject</span></code></a></p>
 <p>Representation of a GLSL function</p>
 <p>Objects of this class can be used for re-using and composing GLSL
@@ -1996,6 +1994,41 @@ the index operation. Expressions can be:</p>
 </ul>
 <p>All functions have implicit “$pre” and “$post” placeholders that may be
 used to insert code at the beginning and end of the function.</p>
+<p class="rubric">Notes</p>
+<p>Function calls:</p>
+<p>As can be seen above, the arguments with which a function is to be
+called must be specified by calling the Function object. The
+arguments can be any of the expressions mentioned earlier. If the
+signature is already specified in the template code, that function
+itself must be given.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    void main() {</span>
+<span class="s1">        vec4 position = $pos;</span>
+<span class="s1">        gl_Position = $scale(position)</span>
+<span class="s1">    }</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Example of a function call with all possible three expressions</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">func1</span><span class="p">(</span><span class="s1">&#39;3.0&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform float u_param&#39;</span><span class="p">,</span> <span class="n">func2</span><span class="p">())</span>
+
+<span class="c1"># For scale, the sigfnature is already specified</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_func</span>  <span class="c1"># Must not specify args</span>
+</pre></div>
+</div>
+<p>Data for uniform and attribute variables:</p>
+<p>To each variable a value can be associated. In fact, in most cases
+the Function class is smart enough to be able to create a Variable
+object if only the data is given.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">&#39;uniform float offset&#39;</span><span class="p">)</span>  <span class="c1"># No data</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">&#39;uniform float offset&#39;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># With data</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>  <span class="c1"># -&gt; Uniform Variable</span>
+<span class="n">position</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">()</span>  <span class="c1"># -&gt; attribute Variable</span>
+
+<span class="c1"># Updating variables</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">position</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="rubric">Examples</p>
 <p>This example shows the basic usage of the Function class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vert_code_template</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
@@ -2083,7 +2116,7 @@ and two uniforms for the scale factors.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.Function.definition">
-<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L465-L466"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.definition" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L472-L473"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL definition for this object. Use <em>obj_names</em> to
 determine the names of dependencies, and <em>version</em> (number, qualifier)
 to adjust code output.</p>
@@ -2091,7 +2124,7 @@ to adjust code output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.Function.expression">
-<span class="sig-name descname"><span class="pre">expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L468-L469"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.expression" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L475-L476"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.expression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL expression used to reference this object inline.</p>
 </dd></dl>
 
@@ -2104,7 +2137,7 @@ to avoid name clashes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.Function.replace">
-<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L372-L388"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.replace" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L379-L395"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.replace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set verbatim code replacement</p>
 <p>It is strongly recommended to use function[‘$foo’] = ‘bar’ where
 possible because template variables are less likely to changed
@@ -2134,7 +2167,7 @@ than the code itself in future versions of vispy.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.Function.static_names">
-<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L367-L370"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.static_names" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L374-L377"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.Function.static_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of names that are declared in this object’s
 definition (not including the name of the object itself).</p>
 <p>These names will be reserved by the compiler when automatically
@@ -2150,7 +2183,7 @@ determining object names.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">FunctionChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L559-L739"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">FunctionChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L566-L746"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.function.Function</span></code></a></p>
 <p>Subclass that generates GLSL code to call Function list in order</p>
 <p>Functions may be called independently, or composed such that the
@@ -2167,41 +2200,39 @@ output of each function provides the input to the next.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>This creates a function chain:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;void my_func_1() </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;void my_func_1() </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">func2</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;void my_func_2() </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chain</span> <span class="o">=</span> <span class="n">FunctionChain</span><span class="p">(</span><span class="s1">&#39;my_func_chain&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">func1</span><span class="p">,</span> <span class="n">func2</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>If <em>chain</em> is included in a ModularProgram, it will generate the following
 output:</p>
-<blockquote>
-<div><p>void my_func_1() {}
-void my_func_2() {}</p>
-<dl class="simple">
-<dt>void my_func_chain() {</dt><dd><p>my_func_1();
-my_func_2();</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">my_func_1</span><span class="p">()</span> <span class="p">{}</span>
+<span class="n">void</span> <span class="n">my_func_2</span><span class="p">()</span> <span class="p">{}</span>
+
+<span class="n">void</span> <span class="n">my_func_chain</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">my_func_1</span><span class="p">();</span>
+    <span class="n">my_func_2</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The return type of the generated function is the same as the return type
 of the last function in the chain. Likewise, the arguments for the
 generated function are the same as the first function in the chain.</p>
 <p>If the return type is not ‘void’, then the return value of each function
 will be used to supply the first input argument of the next function in
 the chain. For example:</p>
-<blockquote>
-<div><p>vec3 my_func_1(vec3 input) {return input + vec3(1, 0, 0);}
-void my_func_2(vec3 input) {return input + vec3(0, 1, 0);}</p>
-<dl class="simple">
-<dt>vec3 my_func_chain(vec3 input) {</dt><dd><p>return my_func_2(my_func_1(input));</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vec3</span> <span class="n">my_func_1</span><span class="p">(</span><span class="n">vec3</span> <span class="nb">input</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);}</span>
+<span class="n">void</span> <span class="n">my_func_2</span><span class="p">(</span><span class="n">vec3</span> <span class="nb">input</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="n">vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);}</span>
+
+<span class="n">vec3</span> <span class="n">my_func_chain</span><span class="p">(</span><span class="n">vec3</span> <span class="nb">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">my_func_2</span><span class="p">(</span><span class="n">my_func_1</span><span class="p">(</span><span class="nb">input</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain.append">
-<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L660-L665"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.append" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L667-L672"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append a new function to the end of this chain.</p>
 </dd></dl>
 
@@ -2213,7 +2244,7 @@ void my_func_2(vec3 input) {return input + vec3(0, 1, 0);}</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain.definition">
-<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L691-L732"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.definition" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L698-L739"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL definition for this object. Use <em>obj_names</em> to
 determine the names of dependencies, and <em>version</em> (number, qualifier)
 to adjust code output.</p>
@@ -2226,13 +2257,13 @@ to adjust code output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain.insert">
-<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L677-L682"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.insert" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L684-L689"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a new function into the chain at <em>index</em>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L684-L689"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.remove" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L691-L696"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a function from the chain.</p>
 </dd></dl>
 
@@ -2243,7 +2274,7 @@ to adjust code output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.FunctionChain.static_names">
-<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L734-L735"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.static_names" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L741-L742"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.FunctionChain.static_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of names that are declared in this object’s
 definition (not including the name of the object itself).</p>
 <p>These names will be reserved by the compiler when automatically
@@ -2259,25 +2290,25 @@ determining object names.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">MainFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L497-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">MainFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L504-L563"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.function.Function</span></code></a></p>
 <p>Subclass of Function that allows multiple functions and variables to
 be defined in a single code string. The code must contain a main() function
 definition.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction.add_callback">
-<span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L552-L553"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.add_callback" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L559-L560"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.add_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction.add_chain">
-<span class="sig-name descname"><span class="pre">add_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L546-L550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.add_chain" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_chain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L553-L557"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.add_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new ChainFunction and attach to $var.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction.definition">
-<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L520-L525"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.definition" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shader</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L527-L532"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL definition for this object. Use <em>obj_names</em> to
 determine the names of dependencies, and <em>version</em> (number, qualifier)
 to adjust code output.</p>
@@ -2285,7 +2316,7 @@ to adjust code output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction.remove_callback">
-<span class="sig-name descname"><span class="pre">remove_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L555-L556"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.remove_callback" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L562-L563"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.remove_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -2295,7 +2326,7 @@ to adjust code output.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.MainFunction.static_names">
-<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L527-L544"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.static_names" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">static_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L534-L551"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.MainFunction.static_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of names that are declared in this object’s
 definition (not including the name of the object itself).</p>
 <p>These names will be reserved by the compiler when automatically
@@ -2312,12 +2343,12 @@ determining object names.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.StatementList">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">StatementList</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L742-L778"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.function.</span></span><span class="sig-name descname"><span class="pre">StatementList</span></span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L749-L785"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.shader_object.ShaderObject</span></code></a></p>
 <p>Represents a list of statements.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.StatementList.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L750-L761"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.add" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L757-L768"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an item to the list unless it is already present.</p>
 <p>If the item is an expression, then a semicolon will be appended to it
 in the final compiled code.</p>
@@ -2325,13 +2356,13 @@ in the final compiled code.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.StatementList.expression">
-<span class="sig-name descname"><span class="pre">expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L770-L778"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.expression" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_names</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L777-L785"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.expression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the GLSL expression used to reference this object inline.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.function.StatementList.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L763-L768"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.remove" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/vispy/vispy/blob/main/vispy/visuals/shaders/function.py#L770-L775"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#vispy.visuals.shaders.function.StatementList.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove an item from the list.</p>
 </dd></dl>
 
