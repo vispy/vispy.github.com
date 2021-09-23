@@ -2055,7 +2055,7 @@
 <h2>GL Intermediate Representation Desktop Implementation<a class="headerlink" href="#gl-intermediate-representation-desktop-implementation" title="Permalink to this headline">¶</a></h2>
 <p>The glir module holds the desktop implementation of the GL Intermediate
 Representation (GLIR). Parsing and handling of the GLIR for other platforms
-can be found in external libraries (ex. vispy.js for WebGL).</p>
+can be found in external libraries.</p>
 <p>We propose the specification of a simple intermediate representation for
 OpenGL. It provides a means to serialize a visualization, so that the
 high-level API and the part that does the GL commands can be separated,
@@ -2065,7 +2065,7 @@ return values. In effect, the commands can be streamed from one node to
 another without having to wait for a reply. Only in the event of an
 error information needs to go in the other direction, but this can be
 done asynchronously.</p>
-<p>The purpose for Vispy is to allow the usage gloo (our high level object
+<p>The purpose for GLIR has been to allow the usage gloo (our high level object
 oriented interface to OpenGL), while executing the visualization in the
 browser (via JS/WebGL). The fact that the stream of commands is
 one-directional is essential to realize reactive visualizations.</p>

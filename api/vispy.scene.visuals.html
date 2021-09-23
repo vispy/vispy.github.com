@@ -2549,8 +2549,7 @@ in vispy/gloo/glsl/misc/spatial_filters.frag</p>
 formats and schemes for the low-level texture data stored in the GPU.
 Most common is unsigned integers or floating point numbers.
 Unsigned integers are the most widely supported while other formats
-may not be supported on older versions of OpenGL, WebGL
-(without enabling some extensions), or with older GPUs.
+may not be supported on older versions of OpenGL or with older GPUs.
 Default value is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means data will be scaled on the
 CPU and the result stored in the GPU as an unsigned integer. If a
 numpy dtype object, an internal texture format will be chosen to
@@ -3328,10 +3327,6 @@ per-vertex colors or a material that does not require normals.</p>
 <dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.text.text.html#vispy.visuals.text.text.TextVisual" title="vispy.visuals.text.text.TextVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.text.text.TextVisual</span></code></a></p>
 <p>Visual that displays text</p>
 <p>This class inherits from visuals.TextVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
-<dl class="simple">
-<dt>Note: SDF GPU is not currently supported in WebGL without additional</dt><dd><p>extensions (see comments in fragment shader below).</p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -3359,9 +3354,8 @@ Can also be a list of tuple if <cite>text</cite> is a list.</p>
 <dt><strong>anchor_y</strong><span class="classifier">str</span></dt><dd><p>Vertical text anchor.</p>
 </dd>
 <dt><strong>method</strong><span class="classifier">str</span></dt><dd><p>Rendering method for text characters. Either ‘cpu’ (default) or
-‘gpu’. The ‘cpu’ method should perform better on remote backends
-like those based on WebGL. The ‘gpu’ method should produce higher
-quality results.</p>
+‘gpu’. The ‘cpu’ method should perform better on remote backends.
+The ‘gpu’ method should produce higher quality results.</p>
 </dd>
 <dt><strong>font_manager</strong><span class="classifier">object | None</span></dt><dd><p>Font manager to use (can be shared if the GLContext is shared).</p>
 </dd>
@@ -3490,8 +3484,7 @@ by default: 1.</p>
 formats and schemes for the low-level texture data stored in the GPU.
 Most common is unsigned integers or floating point numbers.
 Unsigned integers are the most widely supported while other formats
-may not be supported on older versions of OpenGL, WebGL
-(without enabling some extensions), or with older GPUs.
+may not be supported on older versions of OpenGL or with older GPUs.
 Default value is <code class="docutils literal notranslate"><span class="pre">None</span></code> which means data will be scaled on the
 CPU and the result stored in the GPU as an unsigned integer. If a
 numpy dtype object, an internal texture format will be chosen to
