@@ -1390,6 +1390,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.visuals.filters.clipping_planes.html">
+         vispy.visuals.filters.clipping_planes module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.filters.color.html">
          vispy.visuals.filters.color module
         </a>
@@ -2853,6 +2858,35 @@ region.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>The array of locations to display each symbol.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">float or array</span></dt><dd><p>The symbol size in screen (or data, if scaling is on) px.</p>
+</dd>
+<dt><strong>edge_width</strong><span class="classifier">float or array or None</span></dt><dd><p>The width of the symbol outline in screen (or data, if scaling is on) px.</p>
+</dd>
+<dt><strong>edge_width_rel</strong><span class="classifier">float or array or None</span></dt><dd><p>The width as a fraction of marker size. Exactly one of
+<cite>edge_width</cite> and <cite>edge_width_rel</cite> must be supplied.</p>
+</dd>
+<dt><strong>edge_color</strong><span class="classifier">Color | ColorArray</span></dt><dd><p>The color used to draw each symbol outline.</p>
+</dd>
+<dt><strong>face_color</strong><span class="classifier">Color | ColorArray</span></dt><dd><p>The color used to draw each symbol interior.</p>
+</dd>
+<dt><strong>symbol</strong><span class="classifier">str</span></dt><dd><p>The style of symbol to draw (see Notes).</p>
+</dd>
+<dt><strong>scaling</strong><span class="classifier">bool</span></dt><dd><p>If set to True, marker scales when rezooming.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>The opacity level of the visual.</p>
+</dd>
+<dt><strong>antialias</strong><span class="classifier">float</span></dt><dd><p>Antialiasing amount (in px).</p>
+</dd>
+<dt><strong>spherical</strong><span class="classifier">bool</span></dt><dd><p>Whether to add a spherical effect on the marker using lighting.</p>
+</dd>
+<dt><strong>light_color</strong><span class="classifier">Color | ColorArray</span></dt><dd><p>The color of the light used to create the spherical effect.</p>
+</dd>
+<dt><strong>light_position</strong><span class="classifier">array</span></dt><dd><p>The coordinates of the light used to create the spherical effect.</p>
+</dd>
+<dt><strong>light_ambient</strong><span class="classifier">float</span></dt><dd><p>The amount of ambient light used to create the spherical effect.</p>
+</dd>
 <dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
 </dd>
 <dt><strong>name</strong><span class="classifier">string</span></dt><dd><p>A name for this node, used primarily for debugging
@@ -2861,6 +2895,10 @@ region.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Allowed style strings are: disc, arrow, ring, clobber, square, diamond,
+vbar, hbar, cross, tailed_arrow, x, triangle_up, triangle_down,
+and star.</p>
 </dd></dl>
 
 <dl class="py class">

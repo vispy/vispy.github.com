@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Volume rendering with clipping planes &#8212; VisPy</title>
+    <title>Spheres and Sticks &#8212; VisPy</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -39,8 +39,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Rendering Planes through 3D Data" href="volume_plane.html" />
-    <link rel="prev" title="Volume Rendering" href="volume.html" />
+    <link rel="next" title="Display Mesh Normals" href="mesh_normals.html" />
+    <link rel="prev" title="Zoom in using MagnifyCamera" href="magnify.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -266,6 +266,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="clipping_planes.html">
+     Clipping planes with volume and markers
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="colorbar_widget.html">
      Display a ColorBar
     </a>
@@ -348,6 +353,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="magnify.html">
      Zoom in using MagnifyCamera
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Spheres and Sticks
     </a>
    </li>
    <li class="toctree-l2">
@@ -435,11 +445,6 @@
      Volume Rendering
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Volume rendering with clipping planes
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="volume_plane.html">
      Rendering Planes through 3D Data
@@ -518,7 +523,7 @@
                 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/vispy/vispy/edit/main/doc/gallery/scene/volume_clipping.rst">
+    <a href="https://github.com/vispy/vispy/edit/main/doc/gallery/scene/marker_spheres.rst">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -539,114 +544,64 @@
                 
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-scene-volume-clipping-py"><span class="std std-ref">here</span></a>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-scene-marker-spheres-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="volume-rendering-with-clipping-planes">
-<span id="sphx-glr-gallery-scene-volume-clipping-py"></span><h1>Volume rendering with clipping planes<a class="headerlink" href="#volume-rendering-with-clipping-planes" title="Permalink to this headline">¶</a></h1>
-<p>Controls:
-- x/y/z/o - add new clipping plane with normal along x/y/z or [1,1,1] oblique axis
-- r - remove a clipping plane</p>
-<img alt="volume clipping" class="sphx-glr-single-img" src="../../_images/sphx_glr_volume_clipping_001.png" />
+<div class="sphx-glr-example-title section" id="spheres-and-sticks">
+<span id="sphx-glr-gallery-scene-marker-spheres-py"></span><h1>Spheres and Sticks<a class="headerlink" href="#spheres-and-sticks" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span>
 
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">vispy.visuals.transforms</span> <span class="kn">import</span> <span class="n">STTransform</span>
-
-<span class="c1"># Read volume</span>
-<span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;volume/stent.npz&#39;</span><span class="p">))[</span><span class="s1">&#39;arr_0&#39;</span><span class="p">]</span>
-
-<span class="c1"># Prepare canvas</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Set up a viewbox to display the image with interactive pan/zoom</span>
+<span class="c1"># Create canvas and view</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">ArcballCamera</span><span class="p">(</span><span class="n">fov</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">500</span>
 
-<span class="c1"># Create the volume visual</span>
-<span class="n">volume</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.225</span><span class="p">)</span>
-<span class="n">volume</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># Prepare data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">57983</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="c1"># Create and set the camera</span>
-<span class="n">fov</span> <span class="o">=</span> <span class="mf">60.</span>
-<span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span>
-    <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
-    <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Turntable&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">size</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">colors</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># Create and show visual</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Markers</span><span class="p">(</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">antialias</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">face_color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+    <span class="n">edge_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">scaling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">spherical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">scene</span>
 
-<span class="c1"># Create an XYZAxis visual</span>
-<span class="n">axis</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">XYZAxis</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">affine</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
-<span class="n">axis</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">affine</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+                  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="n">line_vis</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="n">vis2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Tube</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">vis2</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">scene</span>
+    <span class="n">line_vis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vis2</span><span class="p">)</span>
 
-<span class="c1"># Implement axis connection with cam2</span>
-<span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_move</span><span class="o">.</span><span class="n">connect</span>
-<span class="k">def</span> <span class="nf">on_mouse_move</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">is_dragging</span><span class="p">:</span>
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">roll</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">elevation</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">scale</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span>
-        <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translate</span><span class="p">((</span><span class="mf">50.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">))</span>
-        <span class="n">axis</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-<span class="n">volume_center</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">clip_modes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">volume_center</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]),</span>
-    <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">volume_center</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]),</span>
-    <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">volume_center</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]),</span>
-    <span class="s1">&#39;o&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">volume_center</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]),</span>
-<span class="p">}</span>
-
-
-<span class="k">def</span> <span class="nf">add_clip</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clip_modes</span><span class="p">:</span>
-        <span class="k">return</span>
-    <span class="n">new_plane</span> <span class="o">=</span> <span class="n">clip_modes</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">new_plane</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span><span class="p">,</span> <span class="n">new_plane</span><span class="p">])</span>
-
-
-<span class="k">def</span> <span class="nf">remove_clip</span><span class="p">(</span><span class="n">vol</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">clipping_planes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-
-<span class="c1"># Implement key presses</span>
-<span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">key_press</span><span class="o">.</span><span class="n">connect</span>
-<span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s1">&#39;xyzo&#39;</span><span class="p">:</span>
-        <span class="n">add_clip</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
-        <span class="n">remove_clip</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
-
-
-<span class="c1"># for testing performance</span>
-<span class="c1"># @canvas.connect</span>
-<span class="c1"># def on_draw(ev):</span>
-<span class="c1"># canvas.update()</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.945 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-volume-clipping-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.411 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-marker-spheres-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/ac077fe69019fbea2c256038b4ec9d38/volume_clipping.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">volume_clipping.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/538eac077a09f92fa3656b707a624dea/marker_spheres.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">marker_spheres.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/b371be4b9862090b7e3fdefbbccfa162/volume_clipping.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">volume_clipping.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/03b2cd3f1dd072d255f10f1dbef66678/marker_spheres.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">marker_spheres.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -658,8 +613,8 @@ to download the full example code</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="volume.html" title="previous page">Volume Rendering</a>
-    <a class='right-next' id="next-link" href="volume_plane.html" title="next page">Rendering Planes through 3D Data</a>
+    <a class='left-prev' id="prev-link" href="magnify.html" title="previous page">Zoom in using MagnifyCamera</a>
+    <a class='right-next' id="next-link" href="mesh_normals.html" title="next page">Display Mesh Normals</a>
 
               </div>
               
