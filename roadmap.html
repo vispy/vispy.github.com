@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Roadmap &#8212; VisPy</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="Developer’s Guide" href="dev_guide/index.html" />
     <link rel="prev" title="FAQ" href="faq.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -297,14 +301,14 @@
               
               <div>
                 
-  <div class="section" id="roadmap">
+  <section id="roadmap">
 <h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h1>
 <p>Where do we see VisPy going in the future? What is development focused on?
 What can users look forward to in upcoming VisPy major releases?
 We try to answer these types of “big picture” questions below.
 For shorter term issues and plans see the
 <a class="reference external" href="https://github.com/vispy/vispy/issues">GitHub issue tracker</a>.</p>
-<div class="section" id="road-to-version-1-0">
+<section id="road-to-version-1-0">
 <h2>Road to Version 1.0<a class="headerlink" href="#road-to-version-1-0" title="Permalink to this headline">¶</a></h2>
 <p>At the time of writing VisPy still doesn’t have a 1.x version number despite
 being used by hundreds of users from graduate students to industry. We believe
@@ -312,7 +316,7 @@ a 1.0 version should represent stability and feeling of completeness when it
 comes to interfaces, performance, and functionality. We don’t think we’re there
 yet, but we have ideas for what a 1.0 release might look like and we’ve
 described it below.</p>
-<div class="section" id="performance-and-collections">
+<section id="performance-and-collections">
 <h3>Performance and Collections<a class="headerlink" href="#performance-and-collections" title="Permalink to this headline">¶</a></h3>
 <p>One of the main reasons users come to VisPy (or so we’ve been told) is the
 performance of visualizing <strong>a lot</strong> of data or visualizing data that updates
@@ -338,8 +342,8 @@ VisPy’s Jupyter widget does not perform well. It can
 draw most things nowadays, but eventually lags behind any updates whether
 they be from timers or user input.</p></li>
 </ol>
-</div>
-<div class="section" id="plotting-api">
+</section>
+<section id="plotting-api">
 <h3>Plotting API<a class="headerlink" href="#plotting-api" title="Permalink to this headline">¶</a></h3>
 <p>The Plotting API in VisPy has been a dream in the back of the VisPy developers’
 minds since the beginning of development. While the plotting interfaces exist,
@@ -350,8 +354,8 @@ hidden (<cite>_</cite> prefix) attributes and going multiple levels deep into co
 (compound) visuals just to change the size or style of something. This
 deserves a real specification and plan for how users can get the most out of
 these interfaces so that they stay simple but useful.</p>
-</div>
-<div class="section" id="dask-and-cupy-integration">
+</section>
+<section id="dask-and-cupy-integration">
 <h3>Dask and CuPy Integration<a class="headerlink" href="#dask-and-cupy-integration" title="Permalink to this headline">¶</a></h3>
 <p>Dask and CuPy arrays present a very interesting opportunity for VisPy to
 display larger data and at faster speeds than previously possible. However,
@@ -363,8 +367,8 @@ that data <strong>without</strong> ever needing to copy it back to the CPU.</p>
 <p>See <a class="reference external" href="https://github.com/vispy/vispy/issues/1985">#1985</a> and
 <a class="reference external" href="https://github.com/vispy/vispy/issues/1986">#1986</a> for more information
 and discussion on these topics.</p>
-</div>
-<div class="section" id="low-level-leakage">
+</section>
+<section id="low-level-leakage">
 <h3>Low-level leakage<a class="headerlink" href="#low-level-leakage" title="Permalink to this headline">¶</a></h3>
 <p>VisPy depends heavily on OpenGL for all of its drawing functionality. While
 this performs well, we’ve had to bring some of the low-level logic of OpenGL
@@ -372,8 +376,8 @@ into higher levels of VisPy to make things work. As VisPy continues to grow
 we’d like to make sure that any pieces specific to OpenGL stay in the low
 level parts of VisPy and are accessed through defined interfaces.</p>
 <p>See the “OpenGL, Vulkan, and WebGPU” section below for why this is important.</p>
-</div>
-<div class="section" id="primitive-visuals">
+</section>
+<section id="primitive-visuals">
 <h3>Primitive Visuals<a class="headerlink" href="#primitive-visuals" title="Permalink to this headline">¶</a></h3>
 <p>Along the same lines of preventing low-level APIs leaking into higher levels,
 we’d like to define a set of “primitive” Visual objects. These primitives
@@ -384,13 +388,13 @@ needing to know the complexities of the underlying layers.</p>
 <p>See the <a class="reference external" href="https://github.com/vispy/vispy/wiki/Primitive-Visuals">VisPy Wiki</a>
 for our attempt at defining these types of primitives.</p>
 <p>See the “OpenGL, Vulkan, and WebGPU” section below for why this is important.</p>
-</div>
-</div>
-<div class="section" id="road-to-version-2-0">
+</section>
+</section>
+<section id="road-to-version-2-0">
 <h2>Road to Version 2.0<a class="headerlink" href="#road-to-version-2-0" title="Permalink to this headline">¶</a></h2>
 <p>We’ll cross this bridge when we come to it, but maybe we can start planning
 sooner rather than later.</p>
-<div class="section" id="opengl-vulkan-and-webgpu">
+<section id="opengl-vulkan-and-webgpu">
 <h3>OpenGL, Vulkan, and WebGPU<a class="headerlink" href="#opengl-vulkan-and-webgpu" title="Permalink to this headline">¶</a></h3>
 <p>VisPy currently strives for compliance with OpenGL 2 and OpenGL ES. This was
 a goal of early VisPy in order to have compatibility with mobile platforms
@@ -412,8 +416,8 @@ visualizations but with a completely different graphics technology doing the
 drawing.</p>
 <p>See <a class="reference external" href="https://github.com/vispy/vispy/issues/1988">#1988</a> to track any
 discussion and related issues.</p>
-</div>
-<div class="section" id="deprecation-of-gloo-and-glir">
+</section>
+<section id="deprecation-of-gloo-and-glir">
 <h3>Deprecation of “gloo” and GLIR<a class="headerlink" href="#deprecation-of-gloo-and-glir" title="Permalink to this headline">¶</a></h3>
 <p>In the beginning of VisPy development, the GLIR (OpenGL Intermediate
 Representation) was created to allow for the possibility of “remote” rendering.
@@ -436,20 +440,31 @@ above OpenGL 2 is old. Updating “gloo”, or an interface like it, to work wit
 newer versions of OpenGL would be too much work at this point. What we’re
 really looking for is the type of control newer graphics libraries like Vulkan
 can provide.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="faq.html" title="previous page">FAQ</a>
-    <a class='right-next' id="next-link" href="dev_guide/index.html" title="next page">Developer’s Guide</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="faq.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">FAQ</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="dev_guide/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Developer’s Guide</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -457,20 +472,19 @@ can provide.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

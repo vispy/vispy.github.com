@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Modern OpenGL &#8212; VisPy</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="Getting Started - gloo" href="gloo.html" />
     <link rel="prev" title="Getting Started" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -287,7 +291,7 @@
               
               <div>
                 
-  <div class="section" id="modern-opengl">
+  <section id="modern-opengl">
 <h1>Modern OpenGL<a class="headerlink" href="#modern-opengl" title="Permalink to this headline">¶</a></h1>
 <p>OpenGL has evolved over the years and a big change occurred in 2003 with the
 introduction of the dynamic pipeline (OpenGL 2.0), i.e. the use of shaders that
@@ -297,7 +301,7 @@ allow to have direct access to the GPU.</p>
 lot of tutorials that still use this fixed pipeline. This introduces some
 radical changes in the way of programming OpenGL and makes it both more
 difficult to program but far more powerful.</p>
-<div class="section" id="shaders">
+<section id="shaders">
 <h2>Shaders<a class="headerlink" href="#shaders" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -338,8 +342,8 @@ executed on each fragment that is generated after the vertex stage. For
 example, in the simple figure above, the vertex would be called 3 times, once
 for each vertex (1,2 and 3) while the fragment shader would be executed 21
 times, once for each fragment (pixel).</p>
-</div>
-<div class="section" id="buffers">
+</section>
+<section id="buffers">
 <h2>Buffers<a class="headerlink" href="#buffers" title="Permalink to this headline">¶</a></h2>
 <p>We explained earlier that the vertex shader act on the vertices. The question
 is thus where do those vertices comes from? The idea of modern GL is that
@@ -377,8 +381,8 @@ only 3 channels (r,g,b) if we did not want to use transparency. This would save
 some bytes for each vertex. Of course, for 4 vertices, this does not really
 matter but you have to realize it <strong>will matter</strong> if you data size grows up to
 one or ten million vertices.</p>
-</div>
-<div class="section" id="uniform-attribute-varying">
+</section>
+<section id="uniform-attribute-varying">
 <h2>Uniform, attribute, varying<a class="headerlink" href="#uniform-attribute-varying" title="Permalink to this headline">¶</a></h2>
 <p>At this point in the tutorial, we know what are shaders and buffers but we
 still need to explain how they may be connected together. So, let’s consider
@@ -451,10 +455,10 @@ fragments. What is the color of each individual fragment?</p>
 is made using distance of the fragment to each individual vertex. This is a
 very important concept to understand. Any varying value is interpolated between
 the vertices that compose the elementary item (mostly, line or triangle).</p>
-</div>
-<div class="section" id="transformations">
+</section>
+<section id="transformations">
 <h2>Transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="projection-matrix">
+<section id="projection-matrix">
 <h3>Projection matrix<a class="headerlink" href="#projection-matrix" title="Permalink to this headline">¶</a></h3>
 <p>We need first to define what do we want to view, that is, we need to define a
 viewing volume such that any object within the volume (even partially) will be
@@ -490,8 +494,8 @@ field of view in the horizontal and vertical direction:</p>
 <p>where <code class="docutils literal notranslate"><span class="pre">fovy</span></code> specifies the field of view angle, in degrees, in the y
 direction and <code class="docutils literal notranslate"><span class="pre">aspect</span></code> specifies the aspect ratio that determines the field
 of view in the x direction.</p>
-</div>
-<div class="section" id="model-and-view-matrices">
+</section>
+<section id="model-and-view-matrices">
 <h3>Model and view matrices<a class="headerlink" href="#model-and-view-matrices" title="Permalink to this headline">¶</a></h3>
 <p>We are almost done with matrices. You may have guessed that the above matrix
 requires the viewing volume to be in the z direction. We could design our 3D
@@ -507,23 +511,23 @@ useful for rotating an object around its center. To sum up, we need:</p>
 <li><p><strong>View matrix</strong> maps from world space to camera space</p></li>
 <li><p><strong>Projection matrix</strong> maps from camera to screen space</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="learning-modern-opengl">
+</section>
+</section>
+<section id="learning-modern-opengl">
 <h2>Learning modern OpenGL<a class="headerlink" href="#learning-modern-opengl" title="Permalink to this headline">¶</a></h2>
 <p>There exist a lot of resources on the web related to OpenGL. I only mention
 here a few of them that deals with the dynamic rendering pipeline. If you’ve
 found other resources, make sure they deal with the dynamic rendering pipeline
 and not the fixed one.</p>
-<div class="section" id="an-intro-to-modern-opengl">
+<section id="an-intro-to-modern-opengl">
 <h3>An intro to modern OpenGL<a class="headerlink" href="#an-intro-to-modern-opengl" title="Permalink to this headline">¶</a></h3>
 <p>OpenGL has been around a long time, and from reading all the accumulated layers
 of documentation out there on the Internet, it’s not always clear what parts
 are historic and what parts are still useful and supported on modern graphics
 hardware. It’s about time for a new OpenGL <a class="reference external" href="http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html">introduction that</a>
 walks through the parts that are still relevant today.</p>
-</div>
-<div class="section" id="learning-modern-3d-graphics-programming">
+</section>
+<section id="learning-modern-3d-graphics-programming">
 <h3>Learning Modern 3D Graphics Programming<a class="headerlink" href="#learning-modern-3d-graphics-programming" title="Permalink to this headline">¶</a></h3>
 <p>This <a class="reference external" href="https://paroj.github.io/gltut/">book</a> is intended to teach you how
 to be a graphics programmer. It is not aimed at any particular graphics field;
@@ -533,8 +537,8 @@ any number of things, this book can still be an asset for you. This does not
 mean that it covers everything there is about 3D graphics. Hardly. It tries to
 provide a sound foundation for your further exploration in whatever field of 3D
 graphics you are interested in.</p>
-</div>
-<div class="section" id="opengl-es-2-0-documentation">
+</section>
+<section id="opengl-es-2-0-documentation">
 <h3>OpenGL ES 2.0 documentation<a class="headerlink" href="#opengl-es-2-0-documentation" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.khronos.org/opengles/2_X/">OpenGL ES 2.0</a> is defined relative to
 the OpenGL 2.0 specification and emphasizes a programmable 3D graphics pipeline
@@ -542,20 +546,31 @@ with the ability to create shader and program objects and the ability to write
 vertex and fragment shaders in the OpenGL ES Shading Language. VisPy is based
 on OpenGL ES 2.0 because it give access to the programmable pipeline while
 keeping overall complexity tractable.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="gloo.html" title="next page">Getting Started - gloo</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting Started</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="gloo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started - gloo</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -563,20 +578,19 @@ keeping overall complexity tractable.</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

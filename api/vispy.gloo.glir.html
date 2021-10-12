@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>vispy.gloo.glir module &#8212; VisPy</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="vispy.gloo.globject module" href="vispy.gloo.globject.html" />
     <link rel="prev" title="vispy.gloo.framebuffer module" href="vispy.gloo.framebuffer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -2054,9 +2058,9 @@
               
               <div>
                 
-  <div class="section" id="module-vispy.gloo.glir">
+  <section id="module-vispy.gloo.glir">
 <span id="vispy-gloo-glir-module"></span><h1>vispy.gloo.glir module<a class="headerlink" href="#module-vispy.gloo.glir" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="gl-intermediate-representation-desktop-implementation">
+<section id="gl-intermediate-representation-desktop-implementation">
 <h2>GL Intermediate Representation Desktop Implementation<a class="headerlink" href="#gl-intermediate-representation-desktop-implementation" title="Permalink to this headline">¶</a></h2>
 <p>The glir module holds the desktop implementation of the GL Intermediate
 Representation (GLIR). Parsing and handling of the GLIR for other platforms
@@ -2088,7 +2092,7 @@ created for:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VisPy</span> <span class="mf">0.6</span>
 </pre></div>
 </div>
-<div class="section" id="the-shape-of-a-command">
+<section id="the-shape-of-a-command">
 <h3>The shape of a command<a class="headerlink" href="#the-shape-of-a-command" title="Permalink to this headline">¶</a></h3>
 <p>GLIR consists of a sequence of commands that are defined as tuples. Each
 command has the following shape:</p>
@@ -2109,16 +2113,16 @@ explained further below.</p></li>
 the enum can also be given as an int, but a string is recommended for
 better debugging. The string is case insensitive.</p></li>
 </ul>
-</div>
-<div class="section" id="current">
+</section>
+<section id="current">
 <h3>CURRENT<a class="headerlink" href="#current" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;CURRENT&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Will be called when the context is made current. The GLIR implementation
 can use this to reset some caches.</p>
-</div>
-<div class="section" id="create">
+</section>
+<section id="create">
 <h3>CREATE<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;CREATE&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">class</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2130,8 +2134,8 @@ can use this to reset some caches.</p>
 argument that can be any of 10 classes: ‘Program’, ‘VertexBuffer’,
 ‘IndexBuffer’, ‘Texture2D’, ‘Texture3D’, ‘RenderBuffer’, ‘FrameBuffer’,
 ‘VertexShader’, ‘FragmentShader’, ‘GeometryShader’</p>
-</div>
-<div class="section" id="delete">
+</section>
+<section id="delete">
 <h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2143,8 +2147,8 @@ argument that can be any of 10 classes: ‘Program’, ‘VertexBuffer’,
 given id. If the id does not exist, this command is ignored. This
 command does not have arguments. When used with Shader objects, the
 shader is freed from GPU memory.</p>
-</div>
-<div class="section" id="uniform">
+</section>
+<section id="uniform">
 <h3>UNIFORM<a class="headerlink" href="#uniform" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;UNIFORM&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">type</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Examples:</span>
@@ -2163,8 +2167,8 @@ resetting shaders, all uniforms and attributes have to be re-submitted.</p>
 <p>Discussion: for the uniform and attribute commands, the type argument
 should not strictly be necessary, but it makes the GLIR implementation
 simpler. Plus in gloo we <em>have</em> this information.</p>
-</div>
-<div class="section" id="texture">
+</section>
+<section id="texture">
 <h3>TEXTURE<a class="headerlink" href="#texture" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;TEXTURE&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">texture_id</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Examples:</span>
@@ -2173,8 +2177,8 @@ simpler. Plus in gloo we <em>have</em> this information.</p>
 </div>
 <p>Applies to: Program</p>
 <p>This command is used to link a texture to a GLSL uniform sampler.</p>
-</div>
-<div class="section" id="attribute">
+</section>
+<section id="attribute">
 <h3>ATTRIBUTE<a class="headerlink" href="#attribute" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;ATTRIBUTE&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">type</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">vbo_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">stride</span><span class="p">:</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">offset</span><span class="p">:</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example: Buffer id 5, stride 4, offset 0</span>
@@ -2189,8 +2193,8 @@ element is zero, the remaining elements represent the data to pass to
 <code class="docutils literal notranslate"><span class="pre">glVertexAttribNf</span></code>.</p>
 <p>It is an error to provide this command before the shaders are set. After
 resetting shaders, all uniforms and attributes have to be re-submitted.</p>
-</div>
-<div class="section" id="draw">
+</section>
+<section id="draw">
 <h3>DRAW<a class="headerlink" href="#draw" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;DRAW&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">mode</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">selection</span><span class="p">:</span><span class="nb">tuple</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example: Draw 100 lines</span>
@@ -2208,8 +2212,8 @@ which can be ‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘li
 <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">count)</span></code>. If it has three elements, it contains
 <code class="docutils literal notranslate"><span class="pre">(&lt;index-buffer-id&gt;,</span> <span class="pre">gtype,</span> <span class="pre">count)</span></code>, where <code class="docutils literal notranslate"><span class="pre">gtype</span></code> is
 ‘unsigned_byte’,’unsigned_short’, or ‘unsigned_int’.</p>
-</div>
-<div class="section" id="size">
+</section>
+<section id="size">
 <h3>SIZE<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;SIZE&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">size</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">[</span><span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="p">],</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">internalformat</span><span class="o">&gt;</span><span class="p">])</span>
 <span class="c1"># Example: resize a buffer</span>
@@ -2241,8 +2245,8 @@ suffix of ‘8’, ‘16’, ‘16f’, or ‘32f’.</p>
 tuple may contain the dimension for the color channels, but this
 information is ignored. The format <em>should</em> be set to ‘color’, ‘depth’
 or ‘stencil’.</p>
-</div>
-<div class="section" id="data">
+</section>
+<section id="data">
 <h3>DATA<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;DATA&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">offset</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">data</span><span class="p">:</span><span class="n">array</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2255,8 +2259,8 @@ FragmentShader, GeometryShader</p>
 id. For VertexBuffer and IndexBuffer the offset is an integer. For
 textures it is a tuple that matches with the dimension of the texture.
 For shader objects it is always 0 and the data must be a <code class="docutils literal notranslate"><span class="pre">str</span></code> object.</p>
-</div>
-<div class="section" id="wrapping">
+</section>
+<section id="wrapping">
 <h3>WRAPPING<a class="headerlink" href="#wrapping" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;WRAPPING&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">texture_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">wrapping</span><span class="p">:</span><span class="nb">tuple</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2266,8 +2270,8 @@ For shader objects it is always 0 and the data must be a <code class="docutils l
 <p>Applies to: Texture2D, Texture3D</p>
 <p>Set the wrapping mode for each dimension of the texture. Each element
 must be a string: ‘repeat’, ‘clamp_to_edge’ or ‘mirrored_repeat’.</p>
-</div>
-<div class="section" id="interpolation">
+</section>
+<section id="interpolation">
 <h3>INTERPOLATION<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;INTERPOLATION&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">texture_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">min</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">mag</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2278,8 +2282,8 @@ must be a string: ‘repeat’, ‘clamp_to_edge’ or ‘mirrored_repeat’.</p
 <p>Set the interpolation mode of the texture for minification and
 magnification. The min and mag argument can both be either ‘nearest’ or
 ‘linear’.</p>
-</div>
-<div class="section" id="attach">
+</section>
+<section id="attach">
 <h3>ATTACH<a class="headerlink" href="#attach" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;ATTACH&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">framebuffer_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">attachment</span><span class="p">:</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="p">(</span><span class="s1">&#39;ATTACH&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">shader_id</span><span class="o">&gt;</span><span class="p">)</span>
@@ -2293,8 +2297,8 @@ magnification. The min and mag argument can both be either ‘nearest’ or
 attachment argument can be ‘color’, ‘depth’ or ‘stencil’. The object
 argument must be the id for a RenderBuffer or Texture2D.
 For Program this attaches an existing Shader object to the program.</p>
-</div>
-<div class="section" id="framebuffer">
+</section>
+<section id="framebuffer">
 <h3>FRAMEBUFFER<a class="headerlink" href="#framebuffer" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;FRAMEBUFFER&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">framebuffer_id</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">use</span><span class="p">:</span><span class="nb">bool</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="c1"># Example:</span>
@@ -2305,8 +2309,8 @@ For Program this attaches an existing Shader object to the program.</p>
 <p>Turn the framebuffer on or off. When deactivating a frame buffer, the
 GLIR implementation should activate any previously activated
 framebuffer.</p>
-</div>
-<div class="section" id="func">
+</section>
+<section id="func">
 <h3>FUNC<a class="headerlink" href="#func" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;FUNC&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">gl_function_name</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">[</span><span class="n">arg1</span><span class="p">,</span> <span class="p">[</span><span class="n">arg2</span><span class="p">,</span> <span class="p">[</span><span class="n">arg3</span><span class="p">]]])</span>
 </pre></div>
@@ -2322,8 +2326,8 @@ glBlendFuncSeparate, glBlendEquationSeparate, glBlendColor, glScissor,
 glStencilFuncSeparate, glStencilMaskSeparate, glStencilOpSeparate,
 glDepthFunc, glDepthMask, glColorMask, glSampleCoverage, glFlush,
 glFinish, glHint.</p>
-</div>
-<div class="section" id="swap">
+</section>
+<section id="swap">
 <h3>SWAP<a class="headerlink" href="#swap" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;SWAP&#39;</span><span class="p">,)</span>
 </pre></div>
@@ -2332,8 +2336,8 @@ glFinish, glHint.</p>
 rendering. This command tells the renderer that it should swap drawing
 buffers. This is especially important when rendering with WebGL where
 drawing buffers are implicitly swapped.</p>
-</div>
-<div class="section" id="link">
+</section>
+<section id="link">
 <h3>LINK<a class="headerlink" href="#link" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;LINK&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">program_id</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
@@ -2864,20 +2868,31 @@ a filter.</p>
 <span class="sig-prename descclassname"><span class="pre">vispy.gloo.glir.</span></span><span class="sig-name descname"><span class="pre">glir_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser_cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_or_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.gloo.glir.glir_logger" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="vispy.gloo.framebuffer.html" title="previous page">vispy.gloo.framebuffer module</a>
-    <a class='right-next' id="next-link" href="vispy.gloo.globject.html" title="next page">vispy.gloo.globject module</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="vispy.gloo.framebuffer.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">vispy.gloo.framebuffer module</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="vispy.gloo.globject.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">vispy.gloo.globject module</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -2885,20 +2900,19 @@ a filter.</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

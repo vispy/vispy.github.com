@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>FAQ &#8212; VisPy</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="Roadmap" href="roadmap.html" />
     <link rel="prev" title="Resources" href="resources.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -290,14 +294,14 @@
               
               <div>
                 
-  <div class="section" id="faq">
+  <section id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <p>VisPy is a big project with a lot of features and sometimes a couple ways to
 do things. It sits on top of the very complex OpenGL library. We’ve tried to
 document what we could in an organized and easy to find manner, but some
 topics don’t quite fit. This set of Frequently Asked Questions is where you’ll
 find the answer to some of these miscellaneous questions.</p>
-<div class="section" id="why-is-my-visualization-slower-when-i-add-more-visual-objects">
+<section id="why-is-my-visualization-slower-when-i-add-more-visual-objects">
 <h2>Why is my visualization slower when I add more Visual objects?<a class="headerlink" href="#why-is-my-visualization-slower-when-i-add-more-visual-objects" title="Permalink to this headline">¶</a></h2>
 <p>Each Visual object in VisPy is an OpenGL Program consisting of at least a
 vertex shader and a fragment shader (see <a class="reference internal" href="getting_started/modern-gl.html"><span class="doc">Modern OpenGL</span></a>).
@@ -318,8 +322,8 @@ types of Visuals in VisPy and more complex use cases. As a last resort for
 the most complex cases, a custom Visual (custom shader code) may be necessary.
 Before writing a custom Visual, check with VisPy maintainers by asking a
 question on gitter or creating a question as a GitHub issue.</p>
-</div>
-<div class="section" id="is-vispy-multi-threaded-or-thread-safe">
+</section>
+<section id="is-vispy-multi-threaded-or-thread-safe">
 <h2>Is VisPy multi-threaded or thread-safe?<a class="headerlink" href="#is-vispy-multi-threaded-or-thread-safe" title="Permalink to this headline">¶</a></h2>
 <p>VisPy does not have any special multi-thread or multi-process handling except
 for the funcionality provided by the GUI framework backends that it uses. For
@@ -337,8 +341,8 @@ one to do the redraw. Since many Visual objects automatically call
 <code class="docutils literal notranslate"><span class="pre">self.update()</span></code> for property or data modifications this can be difficult to
 do in the most performant way. Updates or requests for changes to better support
 thread-safe data updates are welcome.</p>
-</div>
-<div class="section" id="how-to-render-headless-off-screen-with-vispy">
+</section>
+<section id="how-to-render-headless-off-screen-with-vispy">
 <h2>How to render headless/off-screen with VisPy?<a class="headerlink" href="#how-to-render-headless-off-screen-with-vispy" title="Permalink to this headline">¶</a></h2>
 <p>There are two strategies to render without windows with VisPy:</p>
 <ol class="arabic simple">
@@ -354,15 +358,15 @@ This can be used with any VisPy backend.</p></li>
 </pre></div>
 </div>
 <p>to save the rendered scene to an image file.</p>
-<div class="section" id="xvfb">
+<section id="xvfb">
 <h3>Xvfb<a class="headerlink" href="#xvfb" title="Permalink to this headline">¶</a></h3>
 <p>Wrap the command to launch your script with <code class="docutils literal notranslate"><span class="pre">xfvb-run</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xvfb</span><span class="o">-</span><span class="n">run</span> <span class="o">-</span><span class="n">a</span> <span class="n">python</span> <span class="n">my_script</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml</a></p>
-</div>
-<div class="section" id="osmesa">
+</section>
+<section id="osmesa">
 <h3>OSMesa<a class="headerlink" href="#osmesa" title="Permalink to this headline">¶</a></h3>
 <p>Using the OSMesa (Off-Screen Mesa) backend:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">vispy</span>
@@ -375,8 +379,8 @@ explicitly with</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://mesa-docs.readthedocs.io/en/latest/osmesa.html">https://mesa-docs.readthedocs.io/en/latest/osmesa.html</a></p>
-</div>
-<div class="section" id="egl">
+</section>
+<section id="egl">
 <h3>EGL<a class="headerlink" href="#egl" title="Permalink to this headline">¶</a></h3>
 <p>Using the EGL backend:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">vispy</span>
@@ -392,9 +396,9 @@ explicitly with</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/EGL_(API">https://en.wikipedia.org/wiki/EGL_(API</a>)</p>
-</div>
-</div>
-<div class="section" id="how-to-achieve-transparency-with-2d-objects">
+</section>
+</section>
+<section id="how-to-achieve-transparency-with-2d-objects">
 <h2>How to achieve transparency with 2D objects?<a class="headerlink" href="#how-to-achieve-transparency-with-2d-objects" title="Permalink to this headline">¶</a></h2>
 <p>With objects that lie in a 2D plane, e.g. images, it is possible to get a
 translucent effect (i.e. partial transparency, a see-through effect) by
@@ -454,24 +458,35 @@ otherwise it can be set with</p>
                      <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="how-do-i-cite-vispy">
+</section>
+<section id="how-do-i-cite-vispy">
 <h2>How do I cite VisPy?<a class="headerlink" href="#how-do-i-cite-vispy" title="Permalink to this headline">¶</a></h2>
 <p>See the VisPy repository for citation information:
 <a class="reference external" href="https://github.com/vispy/vispy/blob/main/CITATION.rst">https://github.com/vispy/vispy/blob/main/CITATION.rst</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="resources.html" title="previous page">Resources</a>
-    <a class='right-next' id="next-link" href="roadmap.html" title="next page">Roadmap</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="resources.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Resources</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="roadmap.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Roadmap</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -479,20 +494,19 @@ otherwise it can be set with</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

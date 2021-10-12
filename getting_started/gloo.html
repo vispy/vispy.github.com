@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Getting Started - gloo &#8212; VisPy</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="Getting Started - Visuals" href="visuals.html" />
     <link rel="prev" title="Modern OpenGL" href="modern-gl.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -285,14 +289,14 @@
               
               <div>
                 
-  <div class="section" id="getting-started-gloo">
+  <section id="getting-started-gloo">
 <h1>Getting Started - gloo<a class="headerlink" href="#getting-started-gloo" title="Permalink to this headline">¶</a></h1>
 <p>The gloo layer of VisPy is the lowest level interface and is the closest thing
 to OpenGL that VisPy provides. This also means it is the most complicated.
 While OpenGL is complicated, gloo tries to provide a simple to use
 object-oriented layer on top of that. The guide below will walk through the
 basics of using VisPy’s gloo interface to create a visualization.</p>
-<div class="section" id="getting-system-information">
+<section id="getting-system-information">
 <h2>Getting System Information<a class="headerlink" href="#getting-system-information" title="Permalink to this headline">¶</a></h2>
 <p>A good quick way of checking if VisPy is properly installed is to print out
 system information. This output includes information like what backends you
@@ -339,8 +343,8 @@ here or got an error when running this command, this likely means your system’
 OpenGL library is not properly installed or can’t be found by VisPy. You may
 need to upgrade or re-install your GPU drivers to fix this or OpenGL may not
 be compatible with your system.</p>
-</div>
-<div class="section" id="the-canvas-and-the-application">
+</section>
+<section id="the-canvas-and-the-application">
 <h2>The Canvas and The Application<a class="headerlink" href="#the-canvas-and-the-application" title="Permalink to this headline">¶</a></h2>
 <p>There are two things that are common across all of the VisPy interfaces in one
 way or another:</p>
@@ -348,7 +352,7 @@ way or another:</p>
 <li><p>One <code class="docutils literal notranslate"><span class="pre">Application</span></code> instance</p></li>
 <li><p>At least one <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> (or subclass) instance</p></li>
 </ol>
-<div class="section" id="the-application">
+<section id="the-application">
 <h3>The Application<a class="headerlink" href="#the-application" title="Permalink to this headline">¶</a></h3>
 <p>The VisPy <code class="docutils literal notranslate"><span class="pre">Application</span></code> object wraps the high-level event loop logic of
 the VisPy backend you use (PyQt5, Wx, etc). In most cases you don’t have
@@ -358,8 +362,8 @@ will not be able to process events and won’t run properly. Note that just like
 with any GUI framework, calling the <code class="docutils literal notranslate"><span class="pre">.run()</span></code> method of the application is
 a blocking call. Nothing after the <code class="docutils literal notranslate"><span class="pre">.run()</span></code> call will be executed until the
 application is stopped, usually by closing your GUI window.</p>
-</div>
-<div class="section" id="the-canvas">
+</section>
+<section id="the-canvas">
 <h3>The Canvas<a class="headerlink" href="#the-canvas" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> object will be your main way of using and controlling VisPy.
 Depending on the VisPy interface you’re using, you’ll either be using the
@@ -367,9 +371,9 @@ Depending on the VisPy interface you’re using, you’ll either be using the
 different types of canvases are built on each other, they will almost never
 be used in the same application. To help keep your code easy to understand
 it is best not to mix these classes or their subcomponents.</p>
-</div>
-</div>
-<div class="section" id="basic-script">
+</section>
+</section>
+<section id="basic-script">
 <h2>Basic Script<a class="headerlink" href="#basic-script" title="Permalink to this headline">¶</a></h2>
 <p>To start any gloo visualization we will need to create a <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> object and
 an <code class="docutils literal notranslate"><span class="pre">Application</span></code>. Here is the most basic working example we can create:</p>
@@ -426,8 +430,8 @@ interpreter.</p></li>
 <p>The above code is also available in the
 <a class="reference internal" href="../gallery/gloo/start.html#sphx-glr-gallery-gloo-start-py"><span class="std std-ref">examples/gloo/start.py</span></a> script.</p>
 </div>
-</div>
-<div class="section" id="basic-script-alternative">
+</section>
+<section id="basic-script-alternative">
 <h2>Basic Script (Alternative)<a class="headerlink" href="#basic-script-alternative" title="Permalink to this headline">¶</a></h2>
 <p>Another common way to structure a script like this is to subclass the
 <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> class and override the necessary methods directly. This can be
@@ -450,8 +454,8 @@ useful if you want to keep all parts of your visualization contained in the
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-an-opengl-program">
+</section>
+<section id="create-an-opengl-program">
 <h2>Create an OpenGL Program<a class="headerlink" href="#create-an-opengl-program" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned earlier, the <code class="docutils literal notranslate"><span class="pre">gloo</span></code> interface provides a low-level
 object-oriented interface on top of OpenGL. If we want to do anything more
@@ -547,8 +551,8 @@ also change the drawing method used (ex. ‘points’ or ‘lines’ instead of
 <a class="reference external" href="https://github.com/vispy/vispy/blob/main/examples/tutorial/gloo/colored_quad.py">examples/tutorial/gloo/colored_quad.py</a>
 script.</p>
 </div>
-</div>
-<div class="section" id="timers">
+</section>
+<section id="timers">
 <h2>Timers<a class="headerlink" href="#timers" title="Permalink to this headline">¶</a></h2>
 <p>A common requirement of any visualization is to make changes over time. VisPy
 provides a generic <a class="reference internal" href="../api/vispy.app.timer.html#vispy.app.timer.Timer" title="vispy.app.timer.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timer</span></code></a> class to help with this.
@@ -671,8 +675,8 @@ OpenGL program are adjusted based on our new <code class="docutils literal notra
 <a class="reference external" href="https://github.com/vispy/vispy/blob/main/examples/tutorial/gloo/rotating_quad.py">examples/tutorial/gloo/rotating_quad.py</a>
 script.</p>
 </div>
-</div>
-<div class="section" id="keyboard-events">
+</section>
+<section id="keyboard-events">
 <h2>Keyboard Events<a class="headerlink" href="#keyboard-events" title="Permalink to this headline">¶</a></h2>
 <p>So far our examples haven’t included any user interaction. The easiest way
 to include some is to attach meaning to certain key presses. We can update
@@ -689,27 +693,38 @@ method to handle all keyboard events.</p>
 <p>This method is automatically executed when the <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> detects a key press.
 The <code class="docutils literal notranslate"><span class="pre">event.text</span></code> is used to check for the Spacebar being pressed. If the
 timer is running, we stop it, otherwise we start it.</p>
-</div>
-<div class="section" id="other-topics">
+</section>
+<section id="other-topics">
 <h2>Other Topics<a class="headerlink" href="#other-topics" title="Permalink to this headline">¶</a></h2>
 <p>That’s it for the “Getting Started” topics for the gloo interface. Now it is
 time to get coding and exploring the other parts of the documentation. If you
 think something is missing here and would make for a really good
 “Getting Started” topic, please create an issue on GitHub. See
 <a class="reference internal" href="../community.html"><span class="doc">Community</span></a> for more information.</p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="modern-gl.html" title="previous page">Modern OpenGL</a>
-    <a class='right-next' id="next-link" href="visuals.html" title="next page">Getting Started - Visuals</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="modern-gl.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modern OpenGL</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="visuals.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started - Visuals</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -717,20 +732,19 @@ think something is missing here and would make for a really good
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

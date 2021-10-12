@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Installation on Raspberry Pi 3 Model B &#8212; VisPy</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -23,14 +24,14 @@
 
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -42,7 +43,10 @@
     <link rel="next" title="Getting Started" href="getting_started/index.html" />
     <link rel="prev" title="Installation" href="installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -246,17 +250,17 @@
               
               <div>
                 
-  <div class="section" id="installation-on-raspberry-pi-3-model-b">
+  <section id="installation-on-raspberry-pi-3-model-b">
 <h1>Installation on Raspberry Pi 3 Model B<a class="headerlink" href="#installation-on-raspberry-pi-3-model-b" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="distribution">
+<section id="distribution">
 <h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
 <p>For this installation a recent <a class="reference external" href="https://www.raspberrypi.org/downloads/raspbian/">Rasbian Stretch with Desktop</a> is used. Download the
 image and write it onto a fast micro SDHC (class 10) with enough capacity
 (at least 16GB).</p>
 <p>You might use other distributions for raspberry, but there have been only tests
 with Raspbian so far.</p>
-</div>
-<div class="section" id="raspbian-raspberry-setup">
+</section>
+<section id="raspbian-raspberry-setup">
 <h2>Raspbian/Raspberry setup<a class="headerlink" href="#raspbian-raspberry-setup" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Perform first time startup (language etc.)</p></li>
@@ -271,8 +275,8 @@ with Raspbian so far.</p>
 </li>
 <li><p>Reboot</p></li>
 </ol>
-</div>
-<div class="section" id="checking-opengl-capabilities">
+</section>
+<section id="checking-opengl-capabilities">
 <h2>Checking OpenGL capabilities<a class="headerlink" href="#checking-opengl-capabilities" title="Permalink to this headline">¶</a></h2>
 <p>Now start <cite>glxgears</cite> on a console and check the framerate. You should get
 something around 60 FPS.</p>
@@ -285,8 +289,8 @@ there will be the error message:</p>
 </div>
 <p>You can ignore this for now, but if you have any information on the source of
 this error and how to resolve, please let vispy-devs know.</p>
-</div>
-<div class="section" id="backend-requirements">
+</section>
+<section id="backend-requirements">
 <h2>Backend requirements<a class="headerlink" href="#backend-requirements" title="Permalink to this headline">¶</a></h2>
 <p>VisPy requires at least one toolkit for opening a window and creates an OpenGL
 context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet.</p>
@@ -294,8 +298,8 @@ context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet.</p>
 <p class="admonition-title">Warning</p>
 <p>For Raspbian/Raspberry we rely on Qt4 for now!</p>
 </div>
-</div>
-<div class="section" id="package-requirements">
+</section>
+<section id="package-requirements">
 <h2>Package requirements<a class="headerlink" href="#package-requirements" title="Permalink to this headline">¶</a></h2>
 <p>The only mandatory requirement for VisPy is the <a class="reference external" href="http://numpy.org">numpy</a>
 package. This is already distributed with Raspbian. Nevertheless you need to
@@ -306,8 +310,8 @@ install some system packages to get VisPy compiled, installed and running:</p>
 <li><p><cite>cython3</cite> - C-Extensions for Python3</p></li>
 </ul>
 <p>Please use the Raspbian package manager to retrieve these packages.</p>
-</div>
-<div class="section" id="installation-options">
+</section>
+<section id="installation-options">
 <h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">¶</a></h2>
 <p>You have several options to install VisPy. Make sure to use the system <code class="docutils literal notranslate"><span class="pre">python3</span></code>
 at all times. We recommend to use the latest development version.</p>
@@ -328,8 +332,8 @@ can also use this line:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip3 install git+https://github.com/vispy/vispy.git
 </pre></div>
 </div>
-</div>
-<div class="section" id="testing-installation">
+</section>
+<section id="testing-installation">
 <h2>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h2>
 <p>It is strongly advised to run the vispy test suite right after installation to
 check if everything is ok. To do this, just type:</p>
@@ -342,19 +346,30 @@ check if everything is ok. To do this, just type:</p>
 instability in the test suite does not necessarily imply instability in the
 working state of the provided VisPy examples.</p>
 <p>If you have feedback or questions, please use the VisPy <a class="reference internal" href="community.html"><span class="doc">Community</span></a> channels.</p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="installation.html" title="previous page">Installation</a>
-    <a class='right-next' id="next-link" href="getting_started/index.html" title="next page">Getting Started</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="installation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="getting_started/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -362,20 +377,19 @@ working state of the provided VisPy examples.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2013-2021, VisPy developers.<br/>
+    &copy; Copyright 2013-2021, VisPy developers.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     
