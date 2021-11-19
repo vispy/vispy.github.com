@@ -1965,31 +1965,31 @@
 <span id="vispy-visuals-filters-picking-module"></span><h1>vispy.visuals.filters.picking module<a class="headerlink" href="#module-vispy.visuals.filters.picking" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.picking.PickingFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.picking.</span></span><span class="sig-name descname"><span class="pre">PickingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.picking.</span></span><span class="sig-name descname"><span class="pre">PickingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
 <p>Filter used to color visuals by a picking ID.</p>
 <p>Note that the ID color uses the alpha channel, so this may not be used
 with blending enabled.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.picking.PickingFilter.FRAG_SHADER">
-<span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">picking_filter()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">$enabled</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">return;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">gl_FragColor.a</span> <span class="pre">==</span> <span class="pre">0.0</span> <span class="pre">)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">discard;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">gl_FragColor</span> <span class="pre">=</span> <span class="pre">$id_color;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.FRAG_SHADER" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">picking_filter()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">$enabled</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">return;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">gl_FragColor.a</span> <span class="pre">==</span> <span class="pre">0.0</span> <span class="pre">)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">discard;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">gl_FragColor</span> <span class="pre">=</span> <span class="pre">$id_color;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.FRAG_SHADER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.filters.picking.PickingFilter.color">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.color" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.color" title="Permalink to this definition">¶</a></dt>
 <dd><p>The RGBA color that will be drawn to the framebuffer for visuals
 that use this filter.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.filters.picking.PickingFilter.enabled">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">enabled</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.enabled" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enabled</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.filters.picking.PickingFilter.id">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.id" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#vispy.visuals.filters.picking.PickingFilter.id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2036,7 +2036,7 @@ that use this filter.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
 </p>
     </div>
     
