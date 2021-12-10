@@ -2955,7 +2955,13 @@ tessellation.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="vispy.geometry.triangulate">
 <span class="sig-prename descclassname"><span class="pre">vispy.geometry.</span></span><span class="sig-name descname"><span class="pre">triangulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.geometry.triangulate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Triangulate a set of vertices</p>
+<dd><p>Triangulate a set of vertices.</p>
+<p>This uses a pure Python implementation based on <a class="reference internal" href="#r546f6c8f29a1-1" id="id4">[1]</a>.</p>
+<p>If <cite>Triangle</cite> by Jonathan R. Shewchuk <a class="reference internal" href="#r546f6c8f29a1-2" id="id5">[2]</a> and the Python bindings <cite>triangle</cite> <a class="reference internal" href="#r546f6c8f29a1-3" id="id6">[3]</a>
+are installed, this will be used instead. Users need to acknowledge and adhere to
+the licensing terms of these packages.</p>
+<p>In the VisPy <cite>PolygonCollection Example</cite> <a class="reference internal" href="#r546f6c8f29a1-4" id="id7">[4]</a> a speedup of 97% using
+<cite>Triangle</cite>/<cite>triangle</cite> can be achieved compared to the pure Python implementation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -2967,9 +2973,29 @@ tessellation.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>vertices</strong><span class="classifier">array-like</span></dt><dd><p>The vertices.</p>
 </dd>
-<dt><strong>tringles</strong><span class="classifier">array-like</span></dt><dd><p>The triangles.</p>
+<dt><strong>triangles</strong><span class="classifier">array-like</span></dt><dd><p>The triangles.</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r546f6c8f29a1-1"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Domiter, V. and Žalik, B. Sweep‐line algorithm for constrained
+Delaunay triangulation</p>
+</dd>
+<dt class="label" id="r546f6c8f29a1-2"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p>Shewchuk J.R. (1996) Triangle: Engineering a 2D quality mesh generator and
+Delaunay triangulator. In: Lin M.C., Manocha D. (eds) Applied Computational
+Geometry Towards Geometric Engineering. WACG 1996. Lecture Notes in Computer
+Science, vol 1148. Springer, Berlin, Heidelberg.
+<a class="reference external" href="https://doi.org/10.1007/BFb0014497">https://doi.org/10.1007/BFb0014497</a></p>
+</dd>
+<dt class="label" id="r546f6c8f29a1-3"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dd><p><a class="reference external" href="https://rufat.be/triangle/">https://rufat.be/triangle/</a></p>
+</dd>
+<dt class="label" id="r546f6c8f29a1-4"><span class="brackets"><a class="fn-backref" href="#id7">4</a></span></dt>
+<dd><p><a class="reference external" href="https://github.com/vispy/vispy/blob/main/examples/collections/polygon_collection.py">https://github.com/vispy/vispy/blob/main/examples/collections/polygon_collection.py</a></p>
 </dd>
 </dl>
 </dd></dl>
