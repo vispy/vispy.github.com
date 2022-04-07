@@ -8,31 +8,28 @@
 
     <title>Installation on Raspberry Pi 3 Model B &#8212; VisPy</title>
     
-    <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
+
     
-    <link rel="stylesheet"
-      href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/style.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
     
-    <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -49,7 +46,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -181,7 +178,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -251,9 +248,9 @@
               <div>
                 
   <section id="installation-on-raspberry-pi-3-model-b">
-<h1>Installation on Raspberry Pi 3 Model B<a class="headerlink" href="#installation-on-raspberry-pi-3-model-b" title="Permalink to this headline">¶</a></h1>
+<h1>Installation on Raspberry Pi 3 Model B<a class="headerlink" href="#installation-on-raspberry-pi-3-model-b" title="Permalink to this headline">#</a></h1>
 <section id="distribution">
-<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
+<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">#</a></h2>
 <p>For this installation a recent <a class="reference external" href="https://www.raspberrypi.org/downloads/raspbian/">Rasbian Stretch with Desktop</a> is used. Download the
 image and write it onto a fast micro SDHC (class 10) with enough capacity
 (at least 16GB).</p>
@@ -261,7 +258,7 @@ image and write it onto a fast micro SDHC (class 10) with enough capacity
 with Raspbian so far.</p>
 </section>
 <section id="raspbian-raspberry-setup">
-<h2>Raspbian/Raspberry setup<a class="headerlink" href="#raspbian-raspberry-setup" title="Permalink to this headline">¶</a></h2>
+<h2>Raspbian/Raspberry setup<a class="headerlink" href="#raspbian-raspberry-setup" title="Permalink to this headline">#</a></h2>
 <ol class="arabic">
 <li><p>Perform first time startup (language etc.)</p></li>
 <li><p>start <cite>raspi_config</cite> at console and make sure to select the KMS driver
@@ -277,7 +274,7 @@ with Raspbian so far.</p>
 </ol>
 </section>
 <section id="checking-opengl-capabilities">
-<h2>Checking OpenGL capabilities<a class="headerlink" href="#checking-opengl-capabilities" title="Permalink to this headline">¶</a></h2>
+<h2>Checking OpenGL capabilities<a class="headerlink" href="#checking-opengl-capabilities" title="Permalink to this headline">#</a></h2>
 <p>Now start <cite>glxgears</cite> on a console and check the framerate. You should get
 something around 60 FPS.</p>
 <p>To retrieve more information about the OpenGL status of the system start
@@ -291,7 +288,7 @@ there will be the error message:</p>
 this error and how to resolve, please let vispy-devs know.</p>
 </section>
 <section id="backend-requirements">
-<h2>Backend requirements<a class="headerlink" href="#backend-requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Backend requirements<a class="headerlink" href="#backend-requirements" title="Permalink to this headline">#</a></h2>
 <p>VisPy requires at least one toolkit for opening a window and creates an OpenGL
 context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet.</p>
 <div class="admonition warning">
@@ -300,7 +297,7 @@ context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet.</p>
 </div>
 </section>
 <section id="package-requirements">
-<h2>Package requirements<a class="headerlink" href="#package-requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Package requirements<a class="headerlink" href="#package-requirements" title="Permalink to this headline">#</a></h2>
 <p>The only mandatory requirement for VisPy is the <a class="reference external" href="http://numpy.org">numpy</a>
 package. This is already distributed with Raspbian. Nevertheless you need to
 install some system packages to get VisPy compiled, installed and running:</p>
@@ -312,7 +309,7 @@ install some system packages to get VisPy compiled, installed and running:</p>
 <p>Please use the Raspbian package manager to retrieve these packages.</p>
 </section>
 <section id="installation-options">
-<h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">¶</a></h2>
+<h2>Installation options<a class="headerlink" href="#installation-options" title="Permalink to this headline">#</a></h2>
 <p>You have several options to install VisPy. Make sure to use the system <code class="docutils literal notranslate"><span class="pre">python3</span></code>
 at all times. We recommend to use the latest development version.</p>
 <p><strong>To install the latest release version</strong>, you can do:</p>
@@ -334,7 +331,7 @@ can also use this line:</p>
 </div>
 </section>
 <section id="testing-installation">
-<h2>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h2>
+<h2>Testing installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">#</a></h2>
 <p>It is strongly advised to run the vispy test suite right after installation to
 check if everything is ok. To do this, just type:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vispy</span>
@@ -377,8 +374,9 @@ working state of the provided VisPy examples.</p>
       </div>
     </div>
   
-    <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -389,7 +387,7 @@ working state of the provided VisPy examples.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     
