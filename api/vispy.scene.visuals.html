@@ -1603,6 +1603,11 @@
         </a>
        </li>
        <li class="toctree-l4">
+        <a class="reference internal" href="vispy.visuals.tests.test_image_complex.html">
+         vispy.visuals.tests.test_image_complex module
+        </a>
+       </li>
+       <li class="toctree-l4">
         <a class="reference internal" href="vispy.visuals.tests.test_infinite_line.html">
          vispy.visuals.tests.test_infinite_line module
         </a>
@@ -1791,6 +1796,11 @@
      <li class="toctree-l3">
       <a class="reference internal" href="vispy.visuals.image.html">
        vispy.visuals.image module
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="vispy.visuals.image_complex.html">
+       vispy.visuals.image_complex module
       </a>
      </li>
      <li class="toctree-l3">
@@ -2240,6 +2250,40 @@ str as the color’s name or an actual instace of a vipy.color.Color</p>
 (optional).</p>
 </dd>
 <dt><strong>.. versionchanged:: 0.7</strong></dt><dd><p>Keyword argument <code class="docutils literal notranslate"><span class="pre">label_str</span></code> renamed to <cite>label</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="vispy.scene.visuals.ComplexImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">ComplexImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.ComplexImage" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.image_complex.html#vispy.visuals.image_complex.ComplexImageVisual" title="vispy.visuals.image_complex.ComplexImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.image_complex.ComplexImageVisual</span></code></a></p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageVisual</span></code> subclass displaying a complex-valued image.</p>
+<p>This class inherits from visuals.ComplexImageVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
+<p>This class handles complex values by using an rg32f float texture behind the scenes,
+storing the real component in the “r”  value and the imaginary in the “g” value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Complex valued ImageVisual data.  Should be a two dimensional array with a dtype
+of np.complex64 or np.complex128.</p>
+</dd>
+<dt><strong>complex_mode</strong><span class="classifier">str</span></dt><dd><dl class="simple">
+<dt>The mode used to convert the complex value in each pixel into a scalar:</dt><dd><ul class="simple">
+<li><p>‘real’: show only the real component.</p></li>
+<li><p>‘imaginary’: show only the imaginary component.</p></li>
+<li><p>‘magnitude’: show the magnitude (<cite>np.abs</cite>) of the complex value.</p></li>
+<li><p>‘phase’: show the phase (<cite>np.angle</cite>) of the complex value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
+</dd>
+<dt><strong>name</strong><span class="classifier">string</span></dt><dd><p>A name for this node, used primarily for debugging
+(optional).</p>
 </dd>
 </dl>
 </dd>
