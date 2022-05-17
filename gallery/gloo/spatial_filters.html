@@ -588,6 +588,7 @@ to download the full example code</p>
 
 <span class="c1"># loading interpolation kernel</span>
 <span class="n">kernel</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">load_spatial_filters</span><span class="p">()</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;2D&#39;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
 
 <span class="c1"># A simple texture quad</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a_position&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
@@ -630,7 +631,7 @@ to download the full example code</p>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">((</span><span class="mi">512</span><span class="p">),</span> <span class="p">(</span><span class="mi">512</span><span class="p">)))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span> <span class="o">%</span> <span class="s1">&#39;Nearest&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">FRAG_SHADER</span> <span class="o">%</span> <span class="s1">&#39;Nearest2D&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Texture2D</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
 
         <span class="c1"># using packed data as discussed in pr #1069</span>
@@ -677,7 +678,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.490 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.771 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-gloo-spatial-filters-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c50468e897ac8b980bb9096af13fb325/spatial_filters.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">spatial_filters.py</span></code></a></p>

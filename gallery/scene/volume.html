@@ -576,6 +576,7 @@ to download the full example code</p>
 <li><p>2  - toggle between volume rendering methods</p></li>
 <li><p>3  - toggle between stent-CT / brain-MRI image</p></li>
 <li><p>4  - toggle between colormaps</p></li>
+<li><p>5  - toggle between interpolation methods</p></li>
 <li><p>0  - reset cameras</p></li>
 <li><p>[] - decrease/increase isosurface threshold</p></li>
 </ul>
@@ -649,6 +650,9 @@ to download the full example code</p>
 <span class="n">opaque_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">opaque_cmaps</span><span class="p">)</span>
 <span class="n">translucent_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">translucent_cmaps</span><span class="p">)</span>
 
+<span class="n">interp_methods</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">volume1</span><span class="o">.</span><span class="n">interpolation_methods</span><span class="p">)</span>
+<span class="n">interp</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">interp_methods</span><span class="p">)</span>
+
 
 <span class="c1"># Implement axis connection with cam2</span>
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_move</span><span class="o">.</span><span class="n">connect</span>
@@ -696,6 +700,11 @@ to download the full example code</p>
             <span class="n">cmap</span> <span class="o">=</span> <span class="n">translucent_cmap</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">translucent_cmaps</span><span class="p">)</span>
         <span class="n">volume1</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
         <span class="n">volume2</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span>
+        <span class="n">interp</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">interp_methods</span><span class="p">)</span>
+        <span class="n">volume1</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="n">interp</span>
+        <span class="n">volume2</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="n">interp</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interpolation method: </span><span class="si">{</span><span class="n">interp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
         <span class="n">cam1</span><span class="o">.</span><span class="n">set_range</span><span class="p">()</span>
         <span class="n">cam3</span><span class="o">.</span><span class="n">set_range</span><span class="p">()</span>
@@ -716,7 +725,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.412 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.443 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-volume-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/60ae51dd0ce8e21860e72fb3c18d856c/volume.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">volume.py</span></code></a></p>
