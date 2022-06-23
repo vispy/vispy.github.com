@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>vispy.visuals.shaders package &#8212; VisPy</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
 
-    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
   <link rel="stylesheet"
     href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -26,47 +30,55 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="vispy.visuals.shaders.tests package" href="vispy.visuals.shaders.tests.html" />
     <link rel="prev" title="vispy.visuals.line.line module" href="vispy.visuals.line.line.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
+  
 
-<a class="navbar-brand" href="../index.html">
-  <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
 </a>
-
-
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -126,6 +138,14 @@
     <div id="navbar-end">
       
       <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
@@ -144,13 +164,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -1869,19 +1889,20 @@
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 <div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
@@ -1906,10 +1927,10 @@
 </ul>
 
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
+    </div>
+    
+    <div class="toc-item">
+      
 
 <div class="tocsection editthispage">
     <a href="https://github.com/vispy/vispy/edit/main/vispy/visuals/shaders/__init__.py">
@@ -1917,24 +1938,22 @@
     </a>
 </div>
 
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="vispy-visuals-shaders-package">
-<h1>vispy.visuals.shaders package<a class="headerlink" href="#vispy-visuals-shaders-package" title="Permalink to this headline">#</a></h1>
+<h1>vispy.visuals.shaders package<a class="headerlink" href="#vispy-visuals-shaders-package" title="Permalink to this heading">#</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">#</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.tests.html">vispy.visuals.shaders.tests package</a><ul>
@@ -1951,7 +1970,7 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.compiler.html">vispy.visuals.shaders.compiler module</a></li>
@@ -1969,7 +1988,7 @@
 </div>
 </section>
 <section id="module-vispy.visuals.shaders">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.visuals.shaders" title="Permalink to this headline">#</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.visuals.shaders" title="Permalink to this heading">#</a></h2>
 <p>Provides functionality for composing shaders from multiple GLSL
 code snippets.</p>
 <dl class="py class">
@@ -2001,7 +2020,7 @@ returns a dict of GLSL strings with the same keys.</p>
 <dd><p>Compile all code and return a dict {name: code} where the keys
 are determined by the keyword arguments passed to __init__().</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pretty</strong><span class="classifier">bool</span></dt><dd><p>If True, use a slower method to mangle object names. This produces
 GLSL that is more readable.
@@ -2018,7 +2037,7 @@ If False, then the output is mostly unreadable GLSL, but is about
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.Function">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">Function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.Function" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.shader_object.ShaderObject</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderObject</span></code></a></p>
 <p>Representation of a GLSL function</p>
 <p>Objects of this class can be used for re-using and composing GLSL
 snippets. Each Function consists of a GLSL snippet in the form of
@@ -2183,7 +2202,7 @@ to avoid name clashes.</p>
 possible because template variables are less likely to changed
 than the code itself in future versions of vispy.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>str1</strong><span class="classifier">str</span></dt><dd><p>String to replace</p>
 </dd>
@@ -2224,12 +2243,12 @@ determining object names.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.FunctionChain">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">FunctionChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.FunctionChain" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.function.Function</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></a></p>
 <p>Subclass that generates GLSL code to call Function list in order</p>
 <p>Functions may be called independently, or composed such that the
 output of each function provides the input to the next.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>The name of the generated function</p>
 </dd>
@@ -2331,7 +2350,7 @@ determining object names.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.MainFunction">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">MainFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shader_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.MainFunction" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.function.Function</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function" title="vispy.visuals.shaders.function.Function"><code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></a></p>
 <p>Subclass of Function that allows multiple functions and variables to
 be defined in a single code string. The code must contain a main() function
 definition.</p>
@@ -2384,7 +2403,7 @@ determining object names.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.ModularProgram">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">ModularProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.ModularProgram" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.Program" title="vispy.gloo.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.gloo.program.Program</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.Program" title="vispy.gloo.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></a></p>
 <p>Shader program using Function instances as basis for its shaders.</p>
 <p>Automatically rebuilds program when functions have changed and uploads
 program variables.</p>
@@ -2399,7 +2418,7 @@ program variables.</p>
 <span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.ModularProgram.draw" title="Permalink to this definition">#</a></dt>
 <dd><p>Draw the attribute arrays in the specified mode.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mode</strong><span class="classifier">str | GL_ENUM</span></dt><dd><p>‘points’, ‘lines’, ‘line_strip’, ‘line_loop’, ‘lines_adjacency’,
 ‘line_strip_adjacency’, ‘triangles’, ‘triangle_strip’, or
@@ -2486,10 +2505,10 @@ debugging purposes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.Variable">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.Variable" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.shader_object.ShaderObject</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject" title="vispy.visuals.shaders.shader_object.ShaderObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderObject</span></code></a></p>
 <p>Representation of global shader variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>the name of the variable. This string can also contain the full
 definition of the variable, e.g. ‘uniform vec2 foo’.</p>
@@ -2558,7 +2577,7 @@ the value has changed since it was last used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.shaders.Varying">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.shaders.</span></span><span class="sig-name descname"><span class="pre">Varying</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.shaders.Varying" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable" title="vispy.visuals.shaders.variable.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.shaders.variable.Variable</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable" title="vispy.visuals.shaders.variable.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a></p>
 <p>Representation of a varying (variables passed from one shader to the
 next).</p>
 <p>Varyings can inherit their dtype from another Variable, allowing for
@@ -2597,51 +2616,55 @@ a varying using syntax <code class="docutils literal notranslate"><span class="p
 </section>
 
 
-              </div>
+              </article>
               
-              
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="vispy.visuals.line.line.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">vispy.visuals.line.line module</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="vispy.visuals.shaders.tests.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">vispy.visuals.shaders.tests package</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-              
-          </main>
-          
 
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="vispy.visuals.line.line.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">vispy.visuals.line.line module</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="vispy.visuals.shaders.tests.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">vispy.visuals.shaders.tests package</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2013-2022, VisPy developers.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>

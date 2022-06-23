@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Computation times &#8212; VisPy</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
 
-    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
   <link rel="stylesheet"
     href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -26,45 +30,53 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
+  
 
-<a class="navbar-brand" href="../../index.html">
-  <img src="../../_static/vispy-teaser-short.png" class="logo" alt="logo">
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
 </a>
-
-
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -124,6 +136,14 @@
     <div id="navbar-end">
       
       <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
@@ -142,13 +162,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -156,27 +176,28 @@
     
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 
 <nav id="bd-toc-nav">
     
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
+    </div>
+    
+    <div class="toc-item">
+      
 
 <div class="tocsection editthispage">
     <a href="https://github.com/vispy/vispy/edit/main/doc/gallery/gloo/sg_execution_times.rst">
@@ -184,92 +205,85 @@
     </a>
 </div>
 
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="computation-times">
-<span id="sphx-glr-gallery-gloo-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Permalink to this headline">#</a></h1>
-<p><strong>00:21.530</strong> total execution time for <strong>gallery_gloo</strong> files:</p>
+<span id="sphx-glr-gallery-gloo-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Permalink to this heading">#</a></h1>
+<p><strong>00:18.695</strong> total execution time for <strong>gallery_gloo</strong> files:</p>
 <table class="table">
-<colgroup>
-<col style="width: 82%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="rotate_cube.html#sphx-glr-gallery-gloo-rotate-cube-py"><span class="std std-ref">Draw 3D rotating Cube</span></a> (<code class="docutils literal notranslate"><span class="pre">rotate_cube.py</span></code>)</p></td>
-<td><p>00:04.751</p></td>
+<td><p>00:03.761</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="rotating_quad.html#sphx-glr-gallery-gloo-rotating-quad-py"><span class="std std-ref">Rotating Quad</span></a> (<code class="docutils literal notranslate"><span class="pre">rotating_quad.py</span></code>)</p></td>
-<td><p>00:02.984</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="animate_images.html#sphx-glr-gallery-gloo-animate-images-py"><span class="std std-ref">Show an Image</span></a> (<code class="docutils literal notranslate"><span class="pre">animate_images.py</span></code>)</p></td>
+<td><p>00:02.522</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="animate_images.html#sphx-glr-gallery-gloo-animate-images-py"><span class="std std-ref">Show an Image</span></a> (<code class="docutils literal notranslate"><span class="pre">animate_images.py</span></code>)</p></td>
-<td><p>00:02.576</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="rotating_quad.html#sphx-glr-gallery-gloo-rotating-quad-py"><span class="std std-ref">Rotating Quad</span></a> (<code class="docutils literal notranslate"><span class="pre">rotating_quad.py</span></code>)</p></td>
+<td><p>00:02.431</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="post_processing.html#sphx-glr-gallery-gloo-post-processing-py"><span class="std std-ref">Show post-processing using a FrameBuffer</span></a> (<code class="docutils literal notranslate"><span class="pre">post_processing.py</span></code>)</p></td>
-<td><p>00:02.110</p></td>
+<td><p>00:01.723</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="gpuimage.html#sphx-glr-gallery-gloo-gpuimage-py"><span class="std std-ref">Animate a 2D function</span></a> (<code class="docutils literal notranslate"><span class="pre">gpuimage.py</span></code>)</p></td>
-<td><p>00:01.804</p></td>
+<td><p>00:01.488</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="animate_shape.html#sphx-glr-gallery-gloo-animate-shape-py"><span class="std std-ref">Animate a Shape</span></a> (<code class="docutils literal notranslate"><span class="pre">animate_shape.py</span></code>)</p></td>
-<td><p>00:00.943</p></td>
+<td><p>00:00.807</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="animate_images_slice.html#sphx-glr-gallery-gloo-animate-images-slice-py"><span class="std std-ref">Animate an Image</span></a> (<code class="docutils literal notranslate"><span class="pre">animate_images_slice.py</span></code>)</p></td>
-<td><p>00:00.833</p></td>
+<td><p>00:00.782</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="display_points.html#sphx-glr-gallery-gloo-display-points-py"><span class="std std-ref">Draw 2D points</span></a> (<code class="docutils literal notranslate"><span class="pre">display_points.py</span></code>)</p></td>
-<td><p>00:00.805</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="spatial_filters.html#sphx-glr-gallery-gloo-spatial-filters-py"><span class="std std-ref">Spatial Filtering</span></a> (<code class="docutils literal notranslate"><span class="pre">spatial_filters.py</span></code>)</p></td>
+<td><p>00:00.754</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spatial_filters.html#sphx-glr-gallery-gloo-spatial-filters-py"><span class="std std-ref">Spatial Filtering</span></a> (<code class="docutils literal notranslate"><span class="pre">spatial_filters.py</span></code>)</p></td>
-<td><p>00:00.786</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="display_points.html#sphx-glr-gallery-gloo-display-points-py"><span class="std std-ref">Draw 2D points</span></a> (<code class="docutils literal notranslate"><span class="pre">display_points.py</span></code>)</p></td>
+<td><p>00:00.724</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="display_lines.html#sphx-glr-gallery-gloo-display-lines-py"><span class="std std-ref">Draw a bunch of lines</span></a> (<code class="docutils literal notranslate"><span class="pre">display_lines.py</span></code>)</p></td>
-<td><p>00:00.742</p></td>
+<td><p>00:00.674</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="hello_fbo.html#sphx-glr-gallery-gloo-hello-fbo-py"><span class="std std-ref">Use FrameBuffers</span></a> (<code class="docutils literal notranslate"><span class="pre">hello_fbo.py</span></code>)</p></td>
-<td><p>00:00.677</p></td>
+<td><p>00:00.612</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="colored_quad.html#sphx-glr-gallery-gloo-colored-quad-py"><span class="std std-ref">Show color quad Image</span></a> (<code class="docutils literal notranslate"><span class="pre">colored_quad.py</span></code>)</p></td>
-<td><p>00:00.537</p></td>
+<td><p>00:00.520</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="multi_texture.html#sphx-glr-gallery-gloo-multi-texture-py"><span class="std std-ref">Use multiple textures</span></a> (<code class="docutils literal notranslate"><span class="pre">multi_texture.py</span></code>)</p></td>
-<td><p>00:00.521</p></td>
+<td><p>00:00.489</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="display_shape.html#sphx-glr-gallery-gloo-display-shape-py"><span class="std std-ref">Draw a Quad</span></a> (<code class="docutils literal notranslate"><span class="pre">display_shape.py</span></code>)</p></td>
-<td><p>00:00.504</p></td>
+<td><p>00:00.483</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="start_shaders.html#sphx-glr-gallery-gloo-start-shaders-py"><span class="std std-ref">Simplest Shader Program</span></a> (<code class="docutils literal notranslate"><span class="pre">start_shaders.py</span></code>)</p></td>
-<td><p>00:00.503</p></td>
+<td><p>00:00.474</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="start.html#sphx-glr-gallery-gloo-start-py"><span class="std std-ref">Simplest Possible Script</span></a> (<code class="docutils literal notranslate"><span class="pre">start.py</span></code>)</p></td>
-<td><p>00:00.453</p></td>
+<td><p>00:00.450</p></td>
 <td><p>0.0 MB</p></td>
 </tr>
 </tbody>
@@ -277,37 +291,41 @@
 </section>
 
 
-              </div>
+              </article>
               
+
               
-              <!-- Previous / next buttons -->
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
+              </footer>
               
-          </main>
+          </div>
           
-
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2013-2022, VisPy developers.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>

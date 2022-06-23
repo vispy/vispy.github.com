@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>vispy.visuals.filters.color module &#8212; VisPy</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
 
-    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
   <link rel="stylesheet"
     href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -26,47 +30,55 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="vispy.visuals.filters.mesh module" href="vispy.visuals.filters.mesh.html" />
     <link rel="prev" title="vispy.visuals.filters.clipping_planes module" href="vispy.visuals.filters.clipping_planes.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
+  
 
-<a class="navbar-brand" href="../index.html">
-  <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
 </a>
-
-
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -126,6 +138,14 @@
     <div id="navbar-end">
       
       <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
@@ -144,13 +164,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -1869,27 +1889,28 @@
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 
 <nav id="bd-toc-nav">
     
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
+    </div>
+    
+    <div class="toc-item">
+      
 
 <div class="tocsection editthispage">
     <a href="https://github.com/vispy/vispy/edit/main/vispy/visuals/filterscolor.py">
@@ -1897,26 +1918,24 @@
     </a>
 </div>
 
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="module-vispy.visuals.filters.color">
-<span id="vispy-visuals-filters-color-module"></span><h1>vispy.visuals.filters.color module<a class="headerlink" href="#module-vispy.visuals.filters.color" title="Permalink to this headline">#</a></h1>
+<span id="vispy-visuals-filters-color-module"></span><h1>vispy.visuals.filters.color module<a class="headerlink" href="#module-vispy.visuals.filters.color" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.Alpha">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">Alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.color.Alpha" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.Alpha.FRAG_SHADER">
 <span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">apply_alpha()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">gl_FragColor.a</span> <span class="pre">=</span> <span class="pre">gl_FragColor.a</span> <span class="pre">*</span> <span class="pre">$alpha;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.color.Alpha.FRAG_SHADER" title="Permalink to this definition">#</a></dt>
@@ -1932,7 +1951,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ColorFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ColorFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.color.ColorFilter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ColorFilter.FRAG_SHADER">
 <span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">apply_color_filter()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">gl_FragColor</span> <span class="pre">=</span> <span class="pre">gl_FragColor</span> <span class="pre">*</span> <span class="pre">$filter;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.color.ColorFilter.FRAG_SHADER" title="Permalink to this definition">#</a></dt>
@@ -1948,7 +1967,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.IsolineFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">IsolineFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.color.IsolineFilter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.IsolineFilter.FRAG_SHADER">
 <span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">isoline()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if</span> <span class="pre">($isolevel</span> <span class="pre">&lt;=</span> <span class="pre">0.</span> <span class="pre">||</span> <span class="pre">$isowidth</span> <span class="pre">&lt;=</span> <span class="pre">0.)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">return;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">function</span> <span class="pre">taken</span> <span class="pre">from</span> <span class="pre">glumpy/examples/isocurves.py\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">and</span> <span class="pre">extended</span> <span class="pre">to</span> <span class="pre">have</span> <span class="pre">level,</span> <span class="pre">width,</span> <span class="pre">color</span> <span class="pre">and</span> <span class="pre">antialiasing\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">as</span> <span class="pre">parameters\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">Extract</span> <span class="pre">data</span> <span class="pre">value\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">this</span> <span class="pre">accounts</span> <span class="pre">for</span> <span class="pre">perception,\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">have</span> <span class="pre">to</span> <span class="pre">decide,</span> <span class="pre">which</span> <span class="pre">one</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">or</span> <span class="pre">make</span> <span class="pre">this</span> <span class="pre">a</span> <span class="pre">uniform\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">const</span> <span class="pre">vec3</span> <span class="pre">w</span> <span class="pre">=</span> <span class="pre">vec3(0.299,</span> <span class="pre">0.587,</span> <span class="pre">0.114);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//const</span> <span class="pre">vec3</span> <span class="pre">w</span> <span class="pre">=</span> <span class="pre">vec3(0.2126,</span> <span class="pre">0.7152,</span> <span class="pre">0.0722);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">dot(gl_FragColor.rgb,</span> <span class="pre">w);\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">setup</span> <span class="pre">lw,</span> <span class="pre">aa\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">linewidth</span> <span class="pre">=</span> <span class="pre">$isowidth</span> <span class="pre">+</span> <span class="pre">$antialias;\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">&quot;middle&quot;</span> <span class="pre">contour(s)</span> <span class="pre">dividing</span> <span class="pre">upper</span> <span class="pre">and</span> <span class="pre">lower</span> <span class="pre">half\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">but</span> <span class="pre">only</span> <span class="pre">if</span> <span class="pre">isolevel</span> <span class="pre">is</span> <span class="pre">even\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">mod($isolevel,2.0)</span> <span class="pre">==</span> <span class="pre">0.0</span> <span class="pre">)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">length(value</span> <span class="pre">-</span> <span class="pre">0.5)</span> <span class="pre">&lt;</span> <span class="pre">0.5</span> <span class="pre">/</span> <span class="pre">$isolevel)\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">linewidth</span> <span class="pre">=</span> <span class="pre">linewidth</span> <span class="pre">*</span> <span class="pre">2;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">Trace</span> <span class="pre">contour</span> <span class="pre">isoline\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">v</span>&#160; <span class="pre">=</span> <span class="pre">$isolevel</span> <span class="pre">*</span> <span class="pre">value</span> <span class="pre">-</span> <span class="pre">0.5;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">dv</span> <span class="pre">=</span> <span class="pre">linewidth/2.0</span> <span class="pre">*</span> <span class="pre">fwidth(v);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">f</span> <span class="pre">=</span> <span class="pre">abs(fract(v)</span> <span class="pre">-</span> <span class="pre">0.5);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">d</span> <span class="pre">=</span> <span class="pre">smoothstep(-dv,</span> <span class="pre">+dv,</span> <span class="pre">f);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">float</span> <span class="pre">t</span> <span class="pre">=</span> <span class="pre">linewidth/2.0</span> <span class="pre">-</span> <span class="pre">$antialias;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">d</span> <span class="pre">=</span> <span class="pre">abs(d)*linewidth/2.0</span> <span class="pre">-</span> <span class="pre">t;\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if(</span> <span class="pre">d</span> <span class="pre">&lt;</span> <span class="pre">-</span> <span class="pre">linewidth</span> <span class="pre">)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">d</span> <span class="pre">=</span> <span class="pre">1.0;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}</span> <span class="pre">else</span>&#160; <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">d</span> <span class="pre">/=</span> <span class="pre">$antialias;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">setup</span> <span class="pre">foreground\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">vec4</span> <span class="pre">fc</span> <span class="pre">=</span> <span class="pre">$isocolor;\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">//</span> <span class="pre">mix</span> <span class="pre">with</span> <span class="pre">background\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">if</span> <span class="pre">(d</span> <span class="pre">&lt;</span> <span class="pre">1.)</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">gl_FragColor</span> <span class="pre">=</span> <span class="pre">mix(gl_FragColor,</span> <span class="pre">fc,</span> <span class="pre">1-d);\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.color.IsolineFilter.FRAG_SHADER" title="Permalink to this definition">#</a></dt>
@@ -1979,7 +1998,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ZColormapFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.color.</span></span><span class="sig-name descname"><span class="pre">ZColormapFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.color.ZColormapFilter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.filters.base_filter.Filter</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter" title="vispy.visuals.filters.base_filter.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.filters.color.ZColormapFilter.FRAG_SHADER">
 <span class="sig-name descname"><span class="pre">FRAG_SHADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">void</span> <span class="pre">z_colormap_support()</span> <span class="pre">{\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">$zval</span> <span class="pre">=</span> <span class="pre">$position.z;\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">}\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#vispy.visuals.filters.color.ZColormapFilter.FRAG_SHADER" title="Permalink to this definition">#</a></dt>
@@ -1995,51 +2014,55 @@
 </section>
 
 
-              </div>
+              </article>
               
-              
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="vispy.visuals.filters.clipping_planes.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">vispy.visuals.filters.clipping_planes module</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="vispy.visuals.filters.mesh.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">vispy.visuals.filters.mesh module</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-              
-          </main>
-          
 
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="vispy.visuals.filters.clipping_planes.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">vispy.visuals.filters.clipping_planes module</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="vispy.visuals.filters.mesh.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">vispy.visuals.filters.mesh module</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2013-2022, VisPy developers.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>

@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>vispy.visuals.transforms package &#8212; VisPy</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
 
-    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
   <link rel="stylesheet"
     href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -26,47 +30,55 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="vispy.visuals.transforms.tests package" href="vispy.visuals.transforms.tests.html" />
     <link rel="prev" title="vispy.visuals.text.text module" href="vispy.visuals.text.text.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
+  
 
-<a class="navbar-brand" href="../index.html">
-  <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
 </a>
-
-
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -126,6 +138,14 @@
     <div id="navbar-end">
       
       <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
@@ -144,13 +164,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -1869,19 +1889,20 @@
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 <div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
@@ -1906,10 +1927,10 @@
 </ul>
 
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
+    </div>
+    
+    <div class="toc-item">
+      
 
 <div class="tocsection editthispage">
     <a href="https://github.com/vispy/vispy/edit/main/vispy/visuals/transforms/__init__.py">
@@ -1917,24 +1938,22 @@
     </a>
 </div>
 
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="vispy-visuals-transforms-package">
-<h1>vispy.visuals.transforms package<a class="headerlink" href="#vispy-visuals-transforms-package" title="Permalink to this headline">#</a></h1>
+<h1>vispy.visuals.transforms package<a class="headerlink" href="#vispy-visuals-transforms-package" title="Permalink to this heading">#</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">#</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.tests.html">vispy.visuals.transforms.tests package</a><ul>
@@ -1949,7 +1968,7 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.transforms.base_transform.html">vispy.visuals.transforms.base_transform module</a></li>
@@ -1962,18 +1981,18 @@
 </div>
 </section>
 <section id="module-vispy.visuals.transforms">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.visuals.transforms" title="Permalink to this headline">#</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vispy.visuals.transforms" title="Permalink to this heading">#</a></h2>
 <p>Provides classes representing different transform types suitable for
 use with visuals and scenes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.ChainTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">ChainTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">transforms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>BaseTransform subclass that performs a sequence of transformations in
 order. Internally, this class uses shaders.FunctionChain to generate
 its glsl_map and glsl_imap functions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>transforms</strong><span class="classifier">list of BaseTransform instances</span></dt><dd><p>See <code class="docutils literal notranslate"><span class="pre">transforms</span></code> property.</p>
 </dd>
@@ -2005,7 +2024,7 @@ its glsl_map and glsl_imap functions.</p>
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.append" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a new transform to the end of this chain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>tr</strong><span class="classifier">instance of Transform</span></dt><dd><p>The transform to use.</p>
 </dd>
@@ -2029,13 +2048,13 @@ its glsl_map and glsl_imap functions.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Inverse map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2049,13 +2068,13 @@ its glsl_map and glsl_imap functions.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2069,7 +2088,7 @@ its glsl_map and glsl_imap functions.</p>
 <span class="sig-name descname"><span class="pre">prepend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.ChainTransform.prepend" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a new transform to the beginning of this chain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>tr</strong><span class="classifier">instance of Transform</span></dt><dd><p>The transform to use.</p>
 </dd>
@@ -2123,13 +2142,13 @@ the chain.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.LogTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">LogTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.LogTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Transform perfoming logarithmic transformation on three axes.</p>
 <p>Maps (x, y, z) =&gt; (log(base.x, x), log(base.y, y), log(base.z, z))</p>
 <p>No transformation is applied for axes with base == 0.</p>
 <p>If base &lt; 0, then the inverse function is applied: x =&gt; base.x ** x</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>base</strong><span class="classifier">array-like</span></dt><dd><p>Base for the X, Y, Z axes.</p>
 </dd>
@@ -2179,7 +2198,7 @@ then that axis is not affected.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Return <em>obj</em> mapped through the inverse transformation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
 </dd>
@@ -2193,7 +2212,7 @@ then that axis is not affected.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Return <em>obj</em> mapped through the forward transformation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
 </dd>
@@ -2221,10 +2240,10 @@ any static input.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.MatrixTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">MatrixTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Affine transformation class</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>matrix</strong><span class="classifier">array-like | None</span></dt><dd><p>4x4 array to use for the transform.</p>
 </dd>
@@ -2266,13 +2285,13 @@ any static input.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Inverse map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2291,13 +2310,13 @@ any static input.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2323,7 +2342,7 @@ any static input.</p>
 <p>The rotation is applied <em>after</em> the transformations already present
 in the matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>angle</strong><span class="classifier">float</span></dt><dd><p>The angle of rotation, in degrees.</p>
 </dd>
@@ -2341,7 +2360,7 @@ in the matrix.</p>
 <p>The scaling is applied <em>after</em> the transformations already present
 in the matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>scale</strong><span class="classifier">array-like</span></dt><dd><p>Scale factors along x, y and z axes.</p>
 </dd>
@@ -2358,7 +2377,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">set_frustum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_frustum" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the frustum</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>l</strong><span class="classifier">float</span></dt><dd><p>Left.</p>
 </dd>
@@ -2382,7 +2401,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">set_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_mapping" title="Permalink to this definition">#</a></dt>
 <dd><p>Set to a 3D transformation matrix that maps points1 onto points2.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>points1</strong><span class="classifier">array-like, shape (4, 3)</span></dt><dd><p>Four starting 3D coordinates.</p>
 </dd>
@@ -2398,7 +2417,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">set_ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_ortho" title="Permalink to this definition">#</a></dt>
 <dd><p>Set ortho transform</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>l</strong><span class="classifier">float</span></dt><dd><p>Left.</p>
 </dd>
@@ -2422,7 +2441,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">set_perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fov</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.MatrixTransform.set_perspective" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the perspective</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fov</strong><span class="classifier">float</span></dt><dd><p>Field of view.</p>
 </dd>
@@ -2458,7 +2477,7 @@ any static input.</p>
 <p>The translation is applied <em>after</em> the transformations already present
 in the matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pos</strong><span class="classifier">arrayndarray</span></dt><dd><p>Position to translate by.</p>
 </dd>
@@ -2472,7 +2491,7 @@ in the matrix.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.NullTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">NullTransform</span></span><a class="headerlink" href="#vispy.visuals.transforms.NullTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Transform having no effect on coordinates (identity transform).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.NullTransform.Isometric">
@@ -2509,7 +2528,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Inverse map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
 </dd>
@@ -2523,7 +2542,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.NullTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
 </dd>
@@ -2537,10 +2556,10 @@ in the matrix.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.PanZoomTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">PanZoomTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.linear.html#vispy.visuals.transforms.linear.STTransform" title="vispy.visuals.transforms.linear.STTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.linear.STTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.linear.html#vispy.visuals.transforms.linear.STTransform" title="vispy.visuals.transforms.linear.STTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">STTransform</span></code></a></p>
 <p>Pan-zoom transform</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>canvas</strong><span class="classifier">instance of Canvas | None</span></dt><dd><p>The canvas to attch to.</p>
 </dd>
@@ -2556,7 +2575,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">attach</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">canvas</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.attach" title="Permalink to this definition">#</a></dt>
 <dd><p>Attach this tranform to a canvas</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>canvas</strong><span class="classifier">instance of Canvas</span></dt><dd><p>The canvas.</p>
 </dd>
@@ -2575,7 +2594,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">on_mouse_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_mouse_move" title="Permalink to this definition">#</a></dt>
 <dd><p>Mouse move handler</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
 </dd>
@@ -2589,7 +2608,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">on_mouse_wheel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_mouse_wheel" title="Permalink to this definition">#</a></dt>
 <dd><p>Mouse wheel handler</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
 </dd>
@@ -2603,7 +2622,7 @@ in the matrix.</p>
 <span class="sig-name descname"><span class="pre">on_resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PanZoomTransform.on_resize" title="Permalink to this definition">#</a></dt>
 <dd><p>Resize handler</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>event</strong><span class="classifier">instance of Event</span></dt><dd><p>The event.</p>
 </dd>
@@ -2617,7 +2636,7 @@ in the matrix.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.PolarTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">PolarTransform</span></span><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Polar transform</p>
 <p>Maps (theta, r, z) to (x, y, z), where <cite>x = r*cos(theta)</cite>
 and <cite>y = r*sin(theta)</cite>.</p>
@@ -2656,7 +2675,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Return <em>obj</em> mapped through the inverse transformation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
 </dd>
@@ -2670,7 +2689,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.PolarTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Return <em>obj</em> mapped through the forward transformation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>obj</strong><span class="classifier">tuple (x,y) or (x,y,z)</span></dt><dd><p>array with shape (…, 2) or (…, 3)</p>
 </dd>
@@ -2684,10 +2703,10 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.transforms.STTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.transforms.</span></span><span class="sig-name descname"><span class="pre">STTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.STTransform" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.transforms.base_transform.BaseTransform</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Transform performing only scale and translate, in that order.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>scale</strong><span class="classifier">array-like</span></dt><dd><p>Scale factors for X, Y, Z axes.</p>
 </dd>
@@ -2727,7 +2746,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <dd><p>Create an STTransform from the given mapping</p>
 <p>See <cite>set_mapping</cite> for details.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x0</strong><span class="classifier">array-like</span></dt><dd><p>Start.</p>
 </dd>
@@ -2735,7 +2754,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>t</strong><span class="classifier">instance of STTransform</span></dt><dd><p>The transform.</p>
 </dd>
@@ -2759,13 +2778,13 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">imap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.STTransform.imap" title="Permalink to this definition">#</a></dt>
 <dd><p>Invert map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to inverse map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2779,13 +2798,13 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.STTransform.map" title="Permalink to this definition">#</a></dt>
 <dd><p>Map coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates to map.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>coords</strong><span class="classifier">ndarray</span></dt><dd><p>Coordinates.</p>
 </dd>
@@ -2799,7 +2818,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">move</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.STTransform.move" title="Permalink to this definition">#</a></dt>
 <dd><p>Change the translation of this transform by the amount given.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>move</strong><span class="classifier">array-like</span></dt><dd><p>The values to be added to the current translation of the transform.</p>
 </dd>
@@ -2818,7 +2837,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
 <span class="sig-name descname"><span class="pre">set_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.STTransform.set_mapping" title="Permalink to this definition">#</a></dt>
 <dd><p>Configure this transform such that it maps points x0 =&gt; x1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x0</strong><span class="classifier">array-like, shape (2, 2) or (2, 3)</span></dt><dd><p>Start location.</p>
 </dd>
@@ -2871,7 +2890,7 @@ any static input.</p>
 <dd><p>Update the transform such that its scale factor is changed, but
 the specified center point is left unchanged.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>zoom</strong><span class="classifier">array-like</span></dt><dd><p>Values to multiply the transform’s current scale
 factors.</p>
@@ -2931,7 +2950,7 @@ vertices returned by a vertex shader. It has coordinates (-1, -1) to
 called clip coordinates.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>canvas</strong><span class="classifier">Canvas</span></dt><dd><p>The canvas being drawn to.</p>
 </dd>
@@ -3034,7 +3053,7 @@ position, and y-axis inversion.</p></li>
 framebuffer coordinate system to clip coordinates (-1 to 1).</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>viewport</strong><span class="classifier">tuple or None</span></dt><dd><p>The GL viewport rectangle (x, y, w, h). If None, then it
 is assumed to cover the entire canvas.</p>
@@ -3077,7 +3096,7 @@ assumed to cover the entire active framebuffer.</p>
 <span class="sig-name descname"><span class="pre">get_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'visual'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'render'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.transforms.TransformSystem.get_transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a transform mapping between any two coordinate systems.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>map_from</strong><span class="classifier">str</span></dt><dd><p>The starting coordinate system to map from. Must be one of: visual,
 scene, document, canvas, framebuffer, or render.</p>
@@ -3113,51 +3132,55 @@ scene, document, canvas, framebuffer, or render.</p>
 </section>
 
 
-              </div>
+              </article>
               
-              
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="vispy.visuals.text.text.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">vispy.visuals.text.text module</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="vispy.visuals.transforms.tests.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">vispy.visuals.transforms.tests package</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-              
-          </main>
-          
 
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="vispy.visuals.text.text.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">vispy.visuals.text.text module</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="vispy.visuals.transforms.tests.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">vispy.visuals.transforms.tests package</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2013-2022, VisPy developers.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>

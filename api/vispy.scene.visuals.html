@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>vispy.scene.visuals module &#8212; VisPy</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
 
-    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
   <link rel="stylesheet"
     href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -26,47 +30,55 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="vispy.testing package" href="vispy.testing.html" />
     <link rel="prev" title="vispy.scene.subscene module" href="vispy.scene.subscene.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
+  
 
-<a class="navbar-brand" href="../index.html">
-  <img src="../_static/vispy-teaser-short.png" class="logo" alt="logo">
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
 </a>
-
-
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -126,6 +138,14 @@
     <div id="navbar-end">
       
       <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/vispy/vispy" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
@@ -144,13 +164,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -1869,27 +1889,28 @@
 
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 
 <nav id="bd-toc-nav">
     
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
+    </div>
+    
+    <div class="toc-item">
+      
 
 <div class="tocsection editthispage">
     <a href="https://github.com/vispy/vispy/edit/main/vispy/scenevisuals.py">
@@ -1897,22 +1918,20 @@
     </a>
 </div>
 
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="module-vispy.scene.visuals">
-<span id="vispy-scene-visuals-module"></span><h1>vispy.scene.visuals module<a class="headerlink" href="#module-vispy.scene.visuals" title="Permalink to this headline">#</a></h1>
+<span id="vispy-scene-visuals-module"></span><h1>vispy.scene.visuals module<a class="headerlink" href="#module-vispy.scene.visuals" title="Permalink to this heading">#</a></h1>
 <p>The classes in scene.visuals are visuals that may be added to a scenegraph
 using the methods and properties defined in <cite>vispy.scene.Node</cite> such as name,
 visible, parent, children, etc…</p>
@@ -1923,7 +1942,7 @@ the Visual classes found in <cite>vispy.visuals</cite>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Arrow">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Arrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Arrow" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line.arrow.html#vispy.visuals.line.arrow.ArrowVisual" title="vispy.visuals.line.arrow.ArrowVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.line.arrow.ArrowVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line.arrow.html#vispy.visuals.line.arrow.ArrowVisual" title="vispy.visuals.line.arrow.ArrowVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowVisual</span></code></a></p>
 <p>Arrow visual</p>
 <p>This class inherits from visuals.ArrowVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <p>A special line visual which can also draw optional arrow heads at the
@@ -1934,7 +1953,7 @@ as center point, and the orientation of the arrow head is automatically
 determined by calculating the direction vector between <cite>v1</cite> and <cite>v2</cite>. 
 The arrow head can be detached from arrow body.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>Array of shape (…, 2) or (…, 3) specifying vertex coordinates
 of arrow body.</p>
@@ -2014,11 +2033,11 @@ colormap name, or appropriate <cite>Function</cite>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Axis">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Axis" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.AxisVisual" title="vispy.visuals.axis.AxisVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.axis.AxisVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.AxisVisual" title="vispy.visuals.axis.AxisVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxisVisual</span></code></a></p>
 <p>Axis visual</p>
 <p>This class inherits from visuals.AxisVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>Co-ordinates of start and end of the axis.</p>
 </dd>
@@ -2077,11 +2096,11 @@ determined automatically.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Box">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Box" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.box.html#vispy.visuals.box.BoxVisual" title="vispy.visuals.box.BoxVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.box.BoxVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.box.html#vispy.visuals.box.BoxVisual" title="vispy.visuals.box.BoxVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoxVisual</span></code></a></p>
 <p>Visual that displays a box.</p>
 <p>This class inherits from visuals.BoxVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>Box width.</p>
 </dd>
@@ -2120,11 +2139,11 @@ cube edges are drawn.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.ColorBar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">ColorBar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.ColorBar" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.colorbar.html#vispy.visuals.colorbar.ColorBarVisual" title="vispy.visuals.colorbar.ColorBarVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.colorbar.ColorBarVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.colorbar.html#vispy.visuals.colorbar.ColorBarVisual" title="vispy.visuals.colorbar.ColorBarVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorBarVisual</span></code></a></p>
 <p>Visual subclass displaying a colorbar</p>
 <p>This class inherits from visuals.ColorBarVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>cmap</strong><span class="classifier">str | vispy.color.ColorMap</span></dt><dd><p>Either the name of the ColorMap to be used from the standard
 set of names (refer to <cite>vispy.color.get_colormap</cite>),
@@ -2197,13 +2216,13 @@ str as the color’s name or an actual instace of a vipy.color.Color</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.ComplexImage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">ComplexImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.ComplexImage" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.image_complex.html#vispy.visuals.image_complex.ComplexImageVisual" title="vispy.visuals.image_complex.ComplexImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.image_complex.ComplexImageVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.image_complex.html#vispy.visuals.image_complex.ComplexImageVisual" title="vispy.visuals.image_complex.ComplexImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ComplexImageVisual</span></code></a></p>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageVisual</span></code> subclass displaying a complex-valued image.</p>
 <p>This class inherits from visuals.ComplexImageVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <p>This class handles complex values by using an rg32f float texture behind the scenes,
 storing the real component in the “r”  value and the imaginary in the “g” value.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>Complex valued ImageVisual data.  Should be a two dimensional array with a dtype
 of np.complex64 or np.complex128.</p>
@@ -2231,7 +2250,7 @@ of np.complex64 or np.complex128.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Compound">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Compound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Compound" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.CompoundVisual" title="vispy.visuals.visual.CompoundVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.visual.CompoundVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.CompoundVisual" title="vispy.visuals.visual.CompoundVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompoundVisual</span></code></a></p>
 <p>Visual consisting entirely of sub-visuals.</p>
 <p>This class inherits from visuals.CompoundVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <p>To the user, a compound visual behaves exactly like a normal visual–it
@@ -2239,7 +2258,7 @@ has a transform system, draw() and bounds() methods, etc. Internally, the
 compound visual automatically manages proxying these transforms and methods
 to its sub-visuals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>subvisuals</strong><span class="classifier">list of BaseVisual instances</span></dt><dd><p>The list of visuals to be combined in this compound visual.</p>
 </dd>
@@ -2256,11 +2275,11 @@ to its sub-visuals.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Cube">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Cube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Cube" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.cube.html#vispy.visuals.cube.CubeVisual" title="vispy.visuals.cube.CubeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.cube.CubeVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.cube.html#vispy.visuals.cube.CubeVisual" title="vispy.visuals.cube.CubeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">CubeVisual</span></code></a></p>
 <p>Visual that displays a cube or cuboid</p>
 <p>This class inherits from visuals.CubeVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>size</strong><span class="classifier">float or tuple</span></dt><dd><p>The size of the cuboid. A float gives a cube, whereas tuples may
 specify the size of each axis (x, y, z) independently.</p>
@@ -2287,11 +2306,11 @@ cube edges are drawn.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Ellipse">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Ellipse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Ellipse" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.ellipse.html#vispy.visuals.ellipse.EllipseVisual" title="vispy.visuals.ellipse.EllipseVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.ellipse.EllipseVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.ellipse.html#vispy.visuals.ellipse.EllipseVisual" title="vispy.visuals.ellipse.EllipseVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">EllipseVisual</span></code></a></p>
 <p>Displays a 2D ellipse</p>
 <p>This class inherits from visuals.EllipseVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>center</strong><span class="classifier">array</span></dt><dd><p>Center of the ellipse</p>
 </dd>
@@ -2330,11 +2349,11 @@ Defaults to 100</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Graph">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Graph" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.graphs.graph.html#vispy.visuals.graphs.graph.GraphVisual" title="vispy.visuals.graphs.graph.GraphVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.graphs.graph.GraphVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.graphs.graph.html#vispy.visuals.graphs.graph.GraphVisual" title="vispy.visuals.graphs.graph.GraphVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphVisual</span></code></a></p>
 <p>Visual for displaying graphs or networks.</p>
 <p>This class inherits from visuals.GraphVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>adjacency_mat</strong><span class="classifier">array or sparse</span></dt><dd><p>The adjacency matrix of the graph.</p>
 </dd>
@@ -2384,12 +2403,12 @@ for more information.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.GridLines">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">GridLines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.GridLines" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.gridlines.html#vispy.visuals.gridlines.GridLinesVisual" title="vispy.visuals.gridlines.GridLinesVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.gridlines.GridLinesVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.gridlines.html#vispy.visuals.gridlines.GridLinesVisual" title="vispy.visuals.gridlines.GridLinesVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridLinesVisual</span></code></a></p>
 <p>Displays regularly spaced grid lines in any coordinate system and at
 any scale.</p>
 <p>This class inherits from visuals.GridLinesVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>scale</strong><span class="classifier">tuple</span></dt><dd><p>The scale factors to apply when determining the spacing of grid lines.</p>
 </dd>
@@ -2409,7 +2428,7 @@ channel modified.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.GridMesh">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">GridMesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.GridMesh" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.gridmesh.html#vispy.visuals.gridmesh.GridMeshVisual" title="vispy.visuals.gridmesh.GridMeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.gridmesh.GridMeshVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.gridmesh.html#vispy.visuals.gridmesh.GridMeshVisual" title="vispy.visuals.gridmesh.GridMeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">GridMeshVisual</span></code></a></p>
 <p>Displays a mesh in a Cartesian grid about x,y,z coordinates.</p>
 <p>This class inherits from visuals.GridMeshVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <p>This makes it simple to generate a mesh from e.g. the output
@@ -2417,7 +2436,7 @@ of numpy.meshgrid.</p>
 <p>All arguments are optional, though they can be changed
 individually later with the set_data method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>xs</strong><span class="classifier">ndarray</span></dt><dd><p>A 2d array of x coordinates for the vertices of the mesh. Must
 have the same dimensions as ys and zs.</p>
@@ -2451,11 +2470,11 @@ MeshVisual is used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Histogram">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Histogram" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.histogram.html#vispy.visuals.histogram.HistogramVisual" title="vispy.visuals.histogram.HistogramVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.histogram.HistogramVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.histogram.html#vispy.visuals.histogram.HistogramVisual" title="vispy.visuals.histogram.HistogramVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">HistogramVisual</span></code></a></p>
 <p>Visual that calculates and displays a histogram of data</p>
 <p>This class inherits from visuals.HistogramVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">array-like</span></dt><dd><p>Data to histogram. Currently only 1D data is supported.</p>
 </dd>
@@ -2478,11 +2497,11 @@ MeshVisual is used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Image">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Image" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.image.html#vispy.visuals.image.ImageVisual" title="vispy.visuals.image.ImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.image.ImageVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.image.html#vispy.visuals.image.ImageVisual" title="vispy.visuals.image.ImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageVisual</span></code></a></p>
 <p>Visual subclass displaying an image.</p>
 <p>This class inherits from visuals.ImageVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>data</strong><span class="classifier">ndarray</span></dt><dd><p>ImageVisual data. Can be shape (M, N), (M, N, 3), or (M, N, 4).
 If floating point data is provided and contains NaNs, they will
@@ -2583,11 +2602,11 @@ if the data are 2D.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.InfiniteLine">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">InfiniteLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.InfiniteLine" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.infinite_line.html#vispy.visuals.infinite_line.InfiniteLineVisual" title="vispy.visuals.infinite_line.InfiniteLineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.infinite_line.InfiniteLineVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.infinite_line.html#vispy.visuals.infinite_line.InfiniteLineVisual" title="vispy.visuals.infinite_line.InfiniteLineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">InfiniteLineVisual</span></code></a></p>
 <p>Infinite horizontal or vertical line for 2D plots.</p>
 <p>This class inherits from visuals.InfiniteLineVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pos</strong><span class="classifier">float</span></dt><dd><p>Position of the line along the axis.</p>
 </dd>
@@ -2613,11 +2632,11 @@ must be of shape (1, 4) and provide one rgba color per vertex.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Isocurve">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Isocurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Isocurve" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isocurve.html#vispy.visuals.isocurve.IsocurveVisual" title="vispy.visuals.isocurve.IsocurveVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.isocurve.IsocurveVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isocurve.html#vispy.visuals.isocurve.IsocurveVisual" title="vispy.visuals.isocurve.IsocurveVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsocurveVisual</span></code></a></p>
 <p>Displays an isocurve of a 2D scalar array.</p>
 <p>This class inherits from visuals.IsocurveVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">ndarray | None</span></dt><dd><p>2D scalar array.</p>
 </dd>
@@ -2645,11 +2664,11 @@ colormap.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Isoline">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Isoline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Isoline" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isoline.html#vispy.visuals.isoline.IsolineVisual" title="vispy.visuals.isoline.IsolineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.isoline.IsolineVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isoline.html#vispy.visuals.isoline.IsolineVisual" title="vispy.visuals.isoline.IsolineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsolineVisual</span></code></a></p>
 <p>Isocurves of a tri mesh with data at vertices at different levels.</p>
 <p>This class inherits from visuals.IsolineVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>vertices</strong><span class="classifier">ndarray, shape (Nv, 3) | None</span></dt><dd><p>Vertex coordinates.</p>
 </dd>
@@ -2677,11 +2696,11 @@ must be of shape (Nlev, 4) and provide one rgba color by level.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Isosurface">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Isosurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Isosurface" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isosurface.html#vispy.visuals.isosurface.IsosurfaceVisual" title="vispy.visuals.isosurface.IsosurfaceVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.isosurface.IsosurfaceVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.isosurface.html#vispy.visuals.isosurface.IsosurfaceVisual" title="vispy.visuals.isosurface.IsosurfaceVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsosurfaceVisual</span></code></a></p>
 <p>Displays an isosurface of a 3D scalar array.</p>
 <p>This class inherits from visuals.IsosurfaceVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">ndarray | None</span></dt><dd><p>3D scalar array.</p>
 </dd>
@@ -2708,11 +2727,11 @@ must be of shape (Nlev, 4) and provide one rgba color by level.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Line">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Line" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line.line.html#vispy.visuals.line.line.LineVisual" title="vispy.visuals.line.line.LineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.line.line.LineVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line.line.html#vispy.visuals.line.line.LineVisual" title="vispy.visuals.line.line.LineVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineVisual</span></code></a></p>
 <p>Line visual</p>
 <p>This class inherits from visuals.LineVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>Array of shape (…, 2) or (…, 3) specifying vertex coordinates.</p>
 </dd>
@@ -2763,11 +2782,11 @@ which may be unavailable or inconsistent on some platforms.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.LinePlot">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">LinePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.LinePlot" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line_plot.html#vispy.visuals.line_plot.LinePlotVisual" title="vispy.visuals.line_plot.LinePlotVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.line_plot.LinePlotVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.line_plot.html#vispy.visuals.line_plot.LinePlotVisual" title="vispy.visuals.line_plot.LinePlotVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinePlotVisual</span></code></a></p>
 <p>Visual displaying a plot line with optional markers.</p>
 <p>This class inherits from visuals.LinePlotVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">array-like</span></dt><dd><p>Arguments can be passed as <code class="docutils literal notranslate"><span class="pre">(Y,)</span></code>, <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y)</span></code>, <code class="docutils literal notranslate"><span class="pre">(X,</span> <span class="pre">Y,</span> <span class="pre">Z)</span></code> or
 <code class="docutils literal notranslate"><span class="pre">np.array((X,</span> <span class="pre">Y))</span></code>, <code class="docutils literal notranslate"><span class="pre">np.array((X,</span> <span class="pre">Y,</span> <span class="pre">Z))</span></code>.</p>
@@ -2819,11 +2838,11 @@ are supported.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.LinearRegion">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">LinearRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.LinearRegion" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.linear_region.html#vispy.visuals.linear_region.LinearRegionVisual" title="vispy.visuals.linear_region.LinearRegionVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.linear_region.LinearRegionVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.linear_region.html#vispy.visuals.linear_region.LinearRegionVisual" title="vispy.visuals.linear_region.LinearRegionVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearRegionVisual</span></code></a></p>
 <p>Infinite horizontal or vertical region for 2D plots.</p>
 <p>This class inherits from visuals.LinearRegionVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pos</strong><span class="classifier">list, tuple or numpy array</span></dt><dd><p>Bounds of the region along the axis. len(pos) must be &gt;=2.</p>
 </dd>
@@ -2846,11 +2865,11 @@ region.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Markers">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Markers" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.markers.html#vispy.visuals.markers.MarkersVisual" title="vispy.visuals.markers.MarkersVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.markers.MarkersVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.markers.html#vispy.visuals.markers.MarkersVisual" title="vispy.visuals.markers.MarkersVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MarkersVisual</span></code></a></p>
 <p>Visual displaying marker symbols.</p>
 <p>This class inherits from visuals.MarkersVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>The array of locations to display each symbol.</p>
 </dd>
@@ -2898,11 +2917,11 @@ and star.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Mesh">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Mesh" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh.MeshVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual" title="vispy.visuals.mesh.MeshVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVisual</span></code></a></p>
 <p>Mesh visual</p>
 <p>This class inherits from visuals.MeshVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>vertices</strong><span class="classifier">array-like | None</span></dt><dd><p>The vertices.</p>
 </dd>
@@ -2960,11 +2979,11 @@ is used for example by filters for synchronization.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.MeshNormals">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">MeshNormals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.MeshNormals" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.mesh_normals.html#vispy.visuals.mesh_normals.MeshNormalsVisual" title="vispy.visuals.mesh_normals.MeshNormalsVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.mesh_normals.MeshNormalsVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.mesh_normals.html#vispy.visuals.mesh_normals.MeshNormalsVisual" title="vispy.visuals.mesh_normals.MeshNormalsVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshNormalsVisual</span></code></a></p>
 <p>Display mesh normals as lines.</p>
 <p>This class inherits from visuals.MeshNormalsVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>meshdata</strong><span class="classifier">instance of <a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData" title="vispy.geometry.meshdata.MeshData"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshData</span></code></a></span></dt><dd><p>The mesh data.</p>
 </dd>
@@ -3035,11 +3054,11 @@ the normals and get the <a class="reference internal" href="vispy.geometry.meshd
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Plane">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Plane" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.plane.html#vispy.visuals.plane.PlaneVisual" title="vispy.visuals.plane.PlaneVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.plane.PlaneVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.plane.html#vispy.visuals.plane.PlaneVisual" title="vispy.visuals.plane.PlaneVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlaneVisual</span></code></a></p>
 <p>Visual that displays a plane.</p>
 <p>This class inherits from visuals.PlaneVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>width</strong><span class="classifier">float</span></dt><dd><p>Plane width.</p>
 </dd>
@@ -3074,11 +3093,11 @@ cube edges are drawn.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Polygon">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Polygon" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.polygon.html#vispy.visuals.polygon.PolygonVisual" title="vispy.visuals.polygon.PolygonVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.polygon.PolygonVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.polygon.html#vispy.visuals.polygon.PolygonVisual" title="vispy.visuals.polygon.PolygonVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">PolygonVisual</span></code></a></p>
 <p>Displays a 2D polygon</p>
 <p>This class inherits from visuals.PolygonVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>pos</strong><span class="classifier">array</span></dt><dd><p>Set of vertices defining the polygon.</p>
 </dd>
@@ -3118,11 +3137,11 @@ obey the requested line width or join/endcap styles.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Rectangle">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Rectangle" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.rectangle.html#vispy.visuals.rectangle.RectangleVisual" title="vispy.visuals.rectangle.RectangleVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.rectangle.RectangleVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.rectangle.html#vispy.visuals.rectangle.RectangleVisual" title="vispy.visuals.rectangle.RectangleVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">RectangleVisual</span></code></a></p>
 <p>Displays a 2D rectangle with optional rounded corners</p>
 <p>This class inherits from visuals.RectangleVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>center</strong><span class="classifier">array</span></dt><dd><p>Center of the rectangle</p>
 </dd>
@@ -3158,11 +3177,11 @@ Defaults to 0.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.RegularPolygon">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">RegularPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.RegularPolygon" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.regular_polygon.html#vispy.visuals.regular_polygon.RegularPolygonVisual" title="vispy.visuals.regular_polygon.RegularPolygonVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.regular_polygon.RegularPolygonVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.regular_polygon.html#vispy.visuals.regular_polygon.RegularPolygonVisual" title="vispy.visuals.regular_polygon.RegularPolygonVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegularPolygonVisual</span></code></a></p>
 <p>Displays a regular polygon</p>
 <p>This class inherits from visuals.RegularPolygonVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>center</strong><span class="classifier">array-like (x, y)</span></dt><dd><p>Center of the regular polygon</p>
 </dd>
@@ -3190,12 +3209,12 @@ Defaults to  0.1</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.ScrollingLines">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">ScrollingLines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.ScrollingLines" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.scrolling_lines.html#vispy.visuals.scrolling_lines.ScrollingLinesVisual" title="vispy.visuals.scrolling_lines.ScrollingLinesVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.scrolling_lines.ScrollingLinesVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.scrolling_lines.html#vispy.visuals.scrolling_lines.ScrollingLinesVisual" title="vispy.visuals.scrolling_lines.ScrollingLinesVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScrollingLinesVisual</span></code></a></p>
 <p>Displays many line strips of equal length, with the option to add new
 vertex data to one end of the lines.</p>
 <p>This class inherits from visuals.ScrollingLinesVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_lines</strong><span class="classifier">int</span></dt><dd><p>The number of independent line strips to draw.</p>
 </dd>
@@ -3225,11 +3244,11 @@ option is not compatible with <em>pos_offset</em>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Spectrogram">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Spectrogram" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.spectrogram.html#vispy.visuals.spectrogram.SpectrogramVisual" title="vispy.visuals.spectrogram.SpectrogramVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.spectrogram.SpectrogramVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.spectrogram.html#vispy.visuals.spectrogram.SpectrogramVisual" title="vispy.visuals.spectrogram.SpectrogramVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpectrogramVisual</span></code></a></p>
 <p>Calculate and show a spectrogram</p>
 <p>This class inherits from visuals.SpectrogramVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x</strong><span class="classifier">array-like</span></dt><dd><p>1D signal to operate on. <code class="docutils literal notranslate"><span class="pre">If</span> <span class="pre">len(x)</span> <span class="pre">&lt;</span> <span class="pre">n_fft</span></code>, x will be
 zero-padded to length <code class="docutils literal notranslate"><span class="pre">n_fft</span></code>.</p>
@@ -3267,11 +3286,11 @@ min and max values.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Sphere">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Sphere" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.sphere.html#vispy.visuals.sphere.SphereVisual" title="vispy.visuals.sphere.SphereVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.sphere.SphereVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.sphere.html#vispy.visuals.sphere.SphereVisual" title="vispy.visuals.sphere.SphereVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">SphereVisual</span></code></a></p>
 <p>Visual that displays a sphere</p>
 <p>This class inherits from visuals.SphereVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>radius</strong><span class="classifier">float</span></dt><dd><p>The size of the sphere.</p>
 </dd>
@@ -3316,11 +3335,11 @@ sphere edges are drawn.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.SurfacePlot">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">SurfacePlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.SurfacePlot" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.surface_plot.html#vispy.visuals.surface_plot.SurfacePlotVisual" title="vispy.visuals.surface_plot.SurfacePlotVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.surface_plot.SurfacePlotVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.surface_plot.html#vispy.visuals.surface_plot.SurfacePlotVisual" title="vispy.visuals.surface_plot.SurfacePlotVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePlotVisual</span></code></a></p>
 <p>Displays a surface plot on a regular x,y grid</p>
 <p>This class inherits from visuals.SurfacePlotVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x</strong><span class="classifier">ndarray | None</span></dt><dd><p>1D/2D array of values specifying the x positions of vertices in the
 grid. In case 1D array given as input, the values will be replicated
@@ -3356,11 +3375,11 @@ per-vertex colors or a material that does not require normals.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Text">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Text" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.text.text.html#vispy.visuals.text.text.TextVisual" title="vispy.visuals.text.text.TextVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.text.text.TextVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.text.text.html#vispy.visuals.text.text.TextVisual" title="vispy.visuals.text.text.TextVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextVisual</span></code></a></p>
 <p>Visual that displays text</p>
 <p>This class inherits from visuals.TextVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>text</strong><span class="classifier">str | list of str</span></dt><dd><p>Text to display. Can also be a list of strings.
 Note: support for list of str might be removed soon
@@ -3408,14 +3427,14 @@ visuals in the scene.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Tube">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Tube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Tube" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.tube.html#vispy.visuals.tube.TubeVisual" title="vispy.visuals.tube.TubeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.tube.TubeVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.tube.html#vispy.visuals.tube.TubeVisual" title="vispy.visuals.tube.TubeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">TubeVisual</span></code></a></p>
 <p>Displays a tube around a piecewise-linear path.</p>
 <p>This class inherits from visuals.TubeVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <p>The tube mesh is corrected following its Frenet curvature and
 torsion such that it varies smoothly along the curve, including if
 the tube is closed.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>points</strong><span class="classifier">ndarray</span></dt><dd><p>An array of (x, y, z) points describing the path along which the
 tube will be extruded.</p>
@@ -3457,7 +3476,7 @@ tube’s cross section. Defaults to 8.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.VisualNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">VisualNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.VisualNode" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="vispy.scene.node.html#vispy.scene.node.Node" title="vispy.scene.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.node.Node</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="vispy.scene.node.html#vispy.scene.node.Node" title="vispy.scene.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.scene.visuals.VisualNode.draw">
 <span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.VisualNode.draw" title="Permalink to this definition">#</a></dt>
@@ -3482,11 +3501,11 @@ drawn in picking mode.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Volume">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Volume" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.volume.html#vispy.visuals.volume.VolumeVisual" title="vispy.visuals.volume.VolumeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.volume.VolumeVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.volume.html#vispy.visuals.volume.VolumeVisual" title="vispy.visuals.volume.VolumeVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">VolumeVisual</span></code></a></p>
 <p>Displays a 3D Volume</p>
 <p>This class inherits from visuals.VolumeVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>vol</strong><span class="classifier">ndarray</span></dt><dd><p>The volume to display. Must be ndim==3. Array is assumed to be stored
 as <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code>.</p>
@@ -3583,11 +3602,11 @@ Only relevant in raycasting_mode = ‘plane’.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.Windbarb">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">Windbarb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.Windbarb" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.windbarb.html#vispy.visuals.windbarb.WindbarbVisual" title="vispy.visuals.windbarb.WindbarbVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.windbarb.WindbarbVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.windbarb.html#vispy.visuals.windbarb.WindbarbVisual" title="vispy.visuals.windbarb.WindbarbVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindbarbVisual</span></code></a></p>
 <p>Visual displaying windbarbs.</p>
 <p>This class inherits from visuals.WindbarbVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
 </dd>
@@ -3602,12 +3621,12 @@ Only relevant in raycasting_mode = ‘plane’.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.visuals.XYZAxis">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.visuals.</span></span><span class="sig-name descname"><span class="pre">XYZAxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.visuals.XYZAxis" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.scene.visuals.VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.xyz_axis.html#vispy.visuals.xyz_axis.XYZAxisVisual" title="vispy.visuals.xyz_axis.XYZAxisVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.visuals.xyz_axis.XYZAxisVisual</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#vispy.scene.visuals.VisualNode" title="vispy.scene.visuals.VisualNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisualNode</span></code></a>, <a class="reference internal" href="vispy.visuals.xyz_axis.html#vispy.visuals.xyz_axis.XYZAxisVisual" title="vispy.visuals.xyz_axis.XYZAxisVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">XYZAxisVisual</span></code></a></p>
 <p>Simple 3D axis for indicating coordinate system orientation. Axes are
 x=red, y=green, z=blue.</p>
 <p>This class inherits from visuals.XYZAxisVisual and scene.Node, allowing the visual to be placed inside a scenegraph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>parent</strong><span class="classifier">Node</span></dt><dd><p>The parent node to assign to this node (optional).</p>
 </dd>
@@ -3622,51 +3641,55 @@ x=red, y=green, z=blue.</p>
 </section>
 
 
-              </div>
+              </article>
               
-              
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="vispy.scene.subscene.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">vispy.scene.subscene module</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="vispy.testing.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">vispy.testing package</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-              
-          </main>
-          
 
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="vispy.scene.subscene.html" title="previous page">
+      <i class="fas fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">vispy.scene.subscene module</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="vispy.testing.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">vispy.testing package</p>
+  </div>
+  <i class="fas fa-angle-right"></i>
+  </a>
+</div>
+              </footer>
+              
+          </div>
+          
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2013-2022, VisPy developers.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>
