@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,304 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.BasicEvent">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BasicEvent
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     TestEmitters
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.assert_result">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.assert_result()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.record_event">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.record_event()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_chained_emitters">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_chained_emitters()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_decorator_connection">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_decorator_connection()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_disconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_disconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emission_order">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emission_order()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_block">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_block()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_error_handling">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_error_handling()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_loop">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_loop()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_source">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_source()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_subclass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_subclass()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_type">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_type()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_emitter_type_event_class">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_emitter_type_event_class()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_event_block">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_event_block()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_event_handling">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_event_handling()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_event_kwargs">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_event_kwargs()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_multiple_callbacks">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_multiple_callbacks()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_prebuilt_event">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_prebuilt_event()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_reconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_reconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_source_stack_integrity">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_source_stack_integrity()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_symbolic_callback">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_symbolic_callback()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.test_typed_event">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.test_typed_event()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TestEmitters.try_emitter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestEmitters.try_emitter()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.TypedEvent">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     TypedEvent
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.test_emitter_block">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     test_emitter_block()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.test_emitter_reentrance_allowed_when_blocked1">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     test_emitter_reentrance_allowed_when_blocked1()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.test_emitter_reentrance_allowed_when_blocked2">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     test_emitter_reentrance_allowed_when_blocked2()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.test_emitter_reentrance_allowed_when_blocked3">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     test_emitter_reentrance_allowed_when_blocked3()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_event_emitter.test_event_connect_order">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     test_event_connect_order()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2164,7 +2460,7 @@
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

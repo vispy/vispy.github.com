@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,44 @@
   <a class="reference internal nav-link" href="#module-vispy">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.set_log_level">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       set_log_level()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.sys_info">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sys_info()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.test">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       test()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.use">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       use()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1971,11 +2010,33 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.app.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.app.application.html">vispy.app.application module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.app.base.html">vispy.app.base module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.app.canvas.html">vispy.app.canvas module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.app.qt.html">vispy.app.qt module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.app.timer.html">vispy.app.timer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.app.application.html">vispy.app.application module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.application.html#vispy.app.application.Application"><code class="docutils literal notranslate"><span class="pre">Application</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.app.base.html">vispy.app.base module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.base.html#vispy.app.base.BaseApplicationBackend"><code class="docutils literal notranslate"><span class="pre">BaseApplicationBackend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.base.html#vispy.app.base.BaseCanvasBackend"><code class="docutils literal notranslate"><span class="pre">BaseCanvasBackend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.base.html#vispy.app.base.BaseTimerBackend"><code class="docutils literal notranslate"><span class="pre">BaseTimerBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.app.canvas.html">vispy.app.canvas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.canvas.html#vispy.app.canvas.Canvas"><code class="docutils literal notranslate"><span class="pre">Canvas</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.canvas.html#vispy.app.canvas.DrawEvent"><code class="docutils literal notranslate"><span class="pre">DrawEvent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.canvas.html#vispy.app.canvas.KeyEvent"><code class="docutils literal notranslate"><span class="pre">KeyEvent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.canvas.html#vispy.app.canvas.MouseEvent"><code class="docutils literal notranslate"><span class="pre">MouseEvent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.canvas.html#vispy.app.canvas.ResizeEvent"><code class="docutils literal notranslate"><span class="pre">ResizeEvent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.app.qt.html">vispy.app.qt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.qt.html#vispy.app.qt.QtCanvas"><code class="docutils literal notranslate"><span class="pre">QtCanvas</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.qt.html#vispy.app.qt.QtSceneCanvas"><code class="docutils literal notranslate"><span class="pre">QtSceneCanvas</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.app.timer.html">vispy.app.timer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.app.timer.html#vispy.app.timer.Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.app.html#module-vispy.app">Module contents</a></li>
@@ -1991,12 +2052,81 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.color.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_space.html">vispy.color.color_space module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color"><code class="docutils literal notranslate"><span class="pre">Color</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray"><code class="docutils literal notranslate"><span class="pre">ColorArray</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vispy.color.html#module-vispy.color">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_space.html">vispy.color.color_space module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap"><code class="docutils literal notranslate"><span class="pre">BaseColormap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Colormap"><code class="docutils literal notranslate"><span class="pre">Colormap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.CubeHelixColormap"><code class="docutils literal notranslate"><span class="pre">CubeHelixColormap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Diverging"><code class="docutils literal notranslate"><span class="pre">Diverging</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.HSL"><code class="docutils literal notranslate"><span class="pre">HSL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.HSLuv"><code class="docutils literal notranslate"><span class="pre">HSLuv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.MatplotlibColormap"><code class="docutils literal notranslate"><span class="pre">MatplotlibColormap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.RedYellowBlueCyan"><code class="docutils literal notranslate"><span class="pre">RedYellowBlueCyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.SingleHue"><code class="docutils literal notranslate"><span class="pre">SingleHue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.get_colormap"><code class="docutils literal notranslate"><span class="pre">get_colormap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.get_colormaps"><code class="docutils literal notranslate"><span class="pre">get_colormaps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.mix"><code class="docutils literal notranslate"><span class="pre">mix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.smoothstep"><code class="docutils literal notranslate"><span class="pre">smoothstep()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.step"><code class="docutils literal notranslate"><span class="pre">step()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.html#module-vispy.color">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap"><code class="docutils literal notranslate"><span class="pre">BaseColormap</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap.colors"><code class="docutils literal notranslate"><span class="pre">BaseColormap.colors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap.glsl_map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.glsl_map</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap.map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_lut()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.BaseColormap.texture_map_data"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_map_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.Color"><code class="docutils literal notranslate"><span class="pre">Color</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.RGB"><code class="docutils literal notranslate"><span class="pre">Color.RGB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.RGBA"><code class="docutils literal notranslate"><span class="pre">Color.RGBA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.alpha"><code class="docutils literal notranslate"><span class="pre">Color.alpha</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.hex"><code class="docutils literal notranslate"><span class="pre">Color.hex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.hsv"><code class="docutils literal notranslate"><span class="pre">Color.hsv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.is_blank"><code class="docutils literal notranslate"><span class="pre">Color.is_blank</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.lab"><code class="docutils literal notranslate"><span class="pre">Color.lab</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.rgb"><code class="docutils literal notranslate"><span class="pre">Color.rgb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.rgba"><code class="docutils literal notranslate"><span class="pre">Color.rgba</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Color.value"><code class="docutils literal notranslate"><span class="pre">Color.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray"><code class="docutils literal notranslate"><span class="pre">ColorArray</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.RGB"><code class="docutils literal notranslate"><span class="pre">ColorArray.RGB</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.RGBA"><code class="docutils literal notranslate"><span class="pre">ColorArray.RGBA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.alpha"><code class="docutils literal notranslate"><span class="pre">ColorArray.alpha</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.copy"><code class="docutils literal notranslate"><span class="pre">ColorArray.copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.darker"><code class="docutils literal notranslate"><span class="pre">ColorArray.darker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.extend"><code class="docutils literal notranslate"><span class="pre">ColorArray.extend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.hex"><code class="docutils literal notranslate"><span class="pre">ColorArray.hex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.hsv"><code class="docutils literal notranslate"><span class="pre">ColorArray.hsv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.lab"><code class="docutils literal notranslate"><span class="pre">ColorArray.lab</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.lighter"><code class="docutils literal notranslate"><span class="pre">ColorArray.lighter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.rgb"><code class="docutils literal notranslate"><span class="pre">ColorArray.rgb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.rgba"><code class="docutils literal notranslate"><span class="pre">ColorArray.rgba</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.ColorArray.value"><code class="docutils literal notranslate"><span class="pre">ColorArray.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.Colormap"><code class="docutils literal notranslate"><span class="pre">Colormap</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Colormap.interpolation"><code class="docutils literal notranslate"><span class="pre">Colormap.interpolation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Colormap.map"><code class="docutils literal notranslate"><span class="pre">Colormap.map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.html#vispy.color.Colormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">Colormap.texture_lut()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.get_color_dict"><code class="docutils literal notranslate"><span class="pre">get_color_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.get_color_names"><code class="docutils literal notranslate"><span class="pre">get_color_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.get_colormap"><code class="docutils literal notranslate"><span class="pre">get_colormap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.html#vispy.color.get_colormaps"><code class="docutils literal notranslate"><span class="pre">get_colormaps()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.geometry.html">vispy.geometry package</a><ul>
@@ -2009,21 +2139,139 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.geometry.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.isocurve.html">vispy.geometry.isocurve module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.isosurface.html">vispy.geometry.isosurface module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html">vispy.geometry.meshdata module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.normals.html">vispy.geometry.normals module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.parametric.html">vispy.geometry.parametric module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html">vispy.geometry.polygon module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html">vispy.geometry.rect module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.calculations.html#vispy.geometry.calculations.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.html#module-vispy.geometry">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.calc_sq_distance"><code class="docutils literal notranslate"><span class="pre">calc_sq_distance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.curve3_bezier"><code class="docutils literal notranslate"><span class="pre">curve3_bezier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.curve4_bezier"><code class="docutils literal notranslate"><span class="pre">curve4_bezier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_arrow"><code class="docutils literal notranslate"><span class="pre">create_arrow()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_box"><code class="docutils literal notranslate"><span class="pre">create_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cone"><code class="docutils literal notranslate"><span class="pre">create_cone()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cube"><code class="docutils literal notranslate"><span class="pre">create_cube()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cylinder"><code class="docutils literal notranslate"><span class="pre">create_cylinder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_grid_mesh"><code class="docutils literal notranslate"><span class="pre">create_grid_mesh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_plane"><code class="docutils literal notranslate"><span class="pre">create_plane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_sphere"><code class="docutils literal notranslate"><span class="pre">create_sphere()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.isocurve.html">vispy.geometry.isocurve module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.isocurve.html#vispy.geometry.isocurve.isocurve"><code class="docutils literal notranslate"><span class="pre">isocurve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.isosurface.html">vispy.geometry.isosurface module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.isosurface.html#vispy.geometry.isosurface.isosurface"><code class="docutils literal notranslate"><span class="pre">isosurface()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html">vispy.geometry.meshdata module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData"><code class="docutils literal notranslate"><span class="pre">MeshData</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.normals.html">vispy.geometry.normals module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.normals.html#vispy.geometry.normals.compact"><code class="docutils literal notranslate"><span class="pre">compact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.normals.html#vispy.geometry.normals.normals"><code class="docutils literal notranslate"><span class="pre">normals()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.parametric.html">vispy.geometry.parametric module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.parametric.html#vispy.geometry.parametric.surface"><code class="docutils literal notranslate"><span class="pre">surface()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html">vispy.geometry.polygon module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData"><code class="docutils literal notranslate"><span class="pre">PolygonData</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html">vispy.geometry.rect module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect"><code class="docutils literal notranslate"><span class="pre">Rect</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot"><code class="docutils literal notranslate"><span class="pre">TorusKnot</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.triangulation.html#vispy.geometry.triangulation.Triangulation"><code class="docutils literal notranslate"><span class="pre">Triangulation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.triangulation.html#vispy.geometry.triangulation.triangulate"><code class="docutils literal notranslate"><span class="pre">triangulate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.html#module-vispy.geometry">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData"><code class="docutils literal notranslate"><span class="pre">MeshData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_bounds"><code class="docutils literal notranslate"><span class="pre">MeshData.get_bounds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_edge_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_edge_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_edges"><code class="docutils literal notranslate"><span class="pre">MeshData.get_edges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_face_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_face_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_face_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.get_face_normals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.get_faces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_vertex_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_vertex_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_faces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_vertex_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_normals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_vertex_values"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.get_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.has_edge_indexed_data"><code class="docutils literal notranslate"><span class="pre">MeshData.has_edge_indexed_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.has_face_color"><code class="docutils literal notranslate"><span class="pre">MeshData.has_face_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.has_face_indexed_data"><code class="docutils literal notranslate"><span class="pre">MeshData.has_face_indexed_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.has_vertex_color"><code class="docutils literal notranslate"><span class="pre">MeshData.has_vertex_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.has_vertex_value"><code class="docutils literal notranslate"><span class="pre">MeshData.has_vertex_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.is_empty"><code class="docutils literal notranslate"><span class="pre">MeshData.is_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.n_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.n_faces</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.n_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.n_vertices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.reset_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.reset_normals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.restore"><code class="docutils literal notranslate"><span class="pre">MeshData.restore()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.save"><code class="docutils literal notranslate"><span class="pre">MeshData.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.set_face_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.set_face_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.set_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.set_faces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.set_vertex_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertex_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.set_vertex_values"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertex_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.MeshData.set_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertices()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData"><code class="docutils literal notranslate"><span class="pre">PolygonData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.add_vertex"><code class="docutils literal notranslate"><span class="pre">PolygonData.add_vertex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.convex_hull"><code class="docutils literal notranslate"><span class="pre">PolygonData.convex_hull</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.edges"><code class="docutils literal notranslate"><span class="pre">PolygonData.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.faces"><code class="docutils literal notranslate"><span class="pre">PolygonData.faces</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.triangulate"><code class="docutils literal notranslate"><span class="pre">PolygonData.triangulate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.PolygonData.vertices"><code class="docutils literal notranslate"><span class="pre">PolygonData.vertices</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect"><code class="docutils literal notranslate"><span class="pre">Rect</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.bottom"><code class="docutils literal notranslate"><span class="pre">Rect.bottom</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.center"><code class="docutils literal notranslate"><span class="pre">Rect.center</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.contains"><code class="docutils literal notranslate"><span class="pre">Rect.contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.flipped"><code class="docutils literal notranslate"><span class="pre">Rect.flipped()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.height"><code class="docutils literal notranslate"><span class="pre">Rect.height</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.left"><code class="docutils literal notranslate"><span class="pre">Rect.left</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.normalized"><code class="docutils literal notranslate"><span class="pre">Rect.normalized()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.padded"><code class="docutils literal notranslate"><span class="pre">Rect.padded()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.pos"><code class="docutils literal notranslate"><span class="pre">Rect.pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.right"><code class="docutils literal notranslate"><span class="pre">Rect.right</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.size"><code class="docutils literal notranslate"><span class="pre">Rect.size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.top"><code class="docutils literal notranslate"><span class="pre">Rect.top</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Rect.width"><code class="docutils literal notranslate"><span class="pre">Rect.width</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Triangulation"><code class="docutils literal notranslate"><span class="pre">Triangulation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.Triangulation.triangulate"><code class="docutils literal notranslate"><span class="pre">Triangulation.triangulate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_arrow"><code class="docutils literal notranslate"><span class="pre">create_arrow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_box"><code class="docutils literal notranslate"><span class="pre">create_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_cone"><code class="docutils literal notranslate"><span class="pre">create_cone()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_cube"><code class="docutils literal notranslate"><span class="pre">create_cube()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_cylinder"><code class="docutils literal notranslate"><span class="pre">create_cylinder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_grid_mesh"><code class="docutils literal notranslate"><span class="pre">create_grid_mesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_plane"><code class="docutils literal notranslate"><span class="pre">create_plane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.create_sphere"><code class="docutils literal notranslate"><span class="pre">create_sphere()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.html#vispy.geometry.triangulate"><code class="docutils literal notranslate"><span class="pre">triangulate()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.gloo.html">vispy.gloo package</a><ul>
@@ -2042,25 +2290,133 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.gloo.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.buffer.html">vispy.gloo.buffer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.context.html">vispy.gloo.context module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.framebuffer.html">vispy.gloo.framebuffer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.buffer.html">vispy.gloo.buffer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.buffer.html#vispy.gloo.buffer.Buffer"><code class="docutils literal notranslate"><span class="pre">Buffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.buffer.html#vispy.gloo.buffer.DataBuffer"><code class="docutils literal notranslate"><span class="pre">DataBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.buffer.html#vispy.gloo.buffer.DataBufferView"><code class="docutils literal notranslate"><span class="pre">DataBufferView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.buffer.html#vispy.gloo.buffer.IndexBuffer"><code class="docutils literal notranslate"><span class="pre">IndexBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.buffer.html#vispy.gloo.buffer.VertexBuffer"><code class="docutils literal notranslate"><span class="pre">VertexBuffer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.context.html">vispy.gloo.context module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.FakeCanvas"><code class="docutils literal notranslate"><span class="pre">FakeCanvas</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.GLContext"><code class="docutils literal notranslate"><span class="pre">GLContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.GLShared"><code class="docutils literal notranslate"><span class="pre">GLShared</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.forget_canvas"><code class="docutils literal notranslate"><span class="pre">forget_canvas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.get_current_canvas"><code class="docutils literal notranslate"><span class="pre">get_current_canvas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.get_default_config"><code class="docutils literal notranslate"><span class="pre">get_default_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.context.html#vispy.gloo.context.set_current_canvas"><code class="docutils literal notranslate"><span class="pre">set_current_canvas()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.framebuffer.html">vispy.gloo.framebuffer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.framebuffer.html#vispy.gloo.framebuffer.FrameBuffer"><code class="docutils literal notranslate"><span class="pre">FrameBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.framebuffer.html#vispy.gloo.framebuffer.RenderBuffer"><code class="docutils literal notranslate"><span class="pre">RenderBuffer</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.glir.html">vispy.gloo.glir module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#gl-intermediate-representation-desktop-implementation">GL Intermediate Representation Desktop Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.BaseGlirParser"><code class="docutils literal notranslate"><span class="pre">BaseGlirParser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirBuffer"><code class="docutils literal notranslate"><span class="pre">GlirBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirFragmentShader"><code class="docutils literal notranslate"><span class="pre">GlirFragmentShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirFrameBuffer"><code class="docutils literal notranslate"><span class="pre">GlirFrameBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirGeometryShader"><code class="docutils literal notranslate"><span class="pre">GlirGeometryShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirIndexBuffer"><code class="docutils literal notranslate"><span class="pre">GlirIndexBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirObject"><code class="docutils literal notranslate"><span class="pre">GlirObject</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirParser"><code class="docutils literal notranslate"><span class="pre">GlirParser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirProgram"><code class="docutils literal notranslate"><span class="pre">GlirProgram</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirQueue"><code class="docutils literal notranslate"><span class="pre">GlirQueue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirRenderBuffer"><code class="docutils literal notranslate"><span class="pre">GlirRenderBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirShader"><code class="docutils literal notranslate"><span class="pre">GlirShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirTexture"><code class="docutils literal notranslate"><span class="pre">GlirTexture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirTexture1D"><code class="docutils literal notranslate"><span class="pre">GlirTexture1D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirTexture2D"><code class="docutils literal notranslate"><span class="pre">GlirTexture2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirTexture3D"><code class="docutils literal notranslate"><span class="pre">GlirTexture3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirTextureCube"><code class="docutils literal notranslate"><span class="pre">GlirTextureCube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirVertexBuffer"><code class="docutils literal notranslate"><span class="pre">GlirVertexBuffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.GlirVertexShader"><code class="docutils literal notranslate"><span class="pre">GlirVertexShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.as_enum"><code class="docutils literal notranslate"><span class="pre">as_enum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.as_es2_command"><code class="docutils literal notranslate"><span class="pre">as_es2_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.convert_shader"><code class="docutils literal notranslate"><span class="pre">convert_shader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.glTexImage1D"><code class="docutils literal notranslate"><span class="pre">glTexImage1D()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.glTexImage3D"><code class="docutils literal notranslate"><span class="pre">glTexImage3D()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.glTexSubImage1D"><code class="docutils literal notranslate"><span class="pre">glTexSubImage1D()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.glTexSubImage3D"><code class="docutils literal notranslate"><span class="pre">glTexSubImage3D()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.glir.html#vispy.gloo.glir.glir_logger"><code class="docutils literal notranslate"><span class="pre">glir_logger()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.globject.html">vispy.gloo.globject module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.globject.html#on-queues">On queues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.globject.html#vispy.gloo.globject.GLObject"><code class="docutils literal notranslate"><span class="pre">GLObject</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.preprocessor.html">vispy.gloo.preprocessor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.preprocessor.html">vispy.gloo.preprocessor module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.preprocessor.html#vispy.gloo.preprocessor.merge_includes"><code class="docutils literal notranslate"><span class="pre">merge_includes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.preprocessor.html#vispy.gloo.preprocessor.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.preprocessor.html#vispy.gloo.preprocessor.remove_comments"><code class="docutils literal notranslate"><span class="pre">remove_comments()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.program.html">vispy.gloo.program module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#gloo-vs-glir">Gloo vs GLIR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.FragmentShader"><code class="docutils literal notranslate"><span class="pre">FragmentShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.GeometryShader"><code class="docutils literal notranslate"><span class="pre">GeometryShader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.Program"><code class="docutils literal notranslate"><span class="pre">Program</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.Shader"><code class="docutils literal notranslate"><span class="pre">Shader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.program.html#vispy.gloo.program.VertexShader"><code class="docutils literal notranslate"><span class="pre">VertexShader</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.texture.html">vispy.gloo.texture module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.util.html">vispy.gloo.util module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.wrappers.html">vispy.gloo.wrappers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.texture.html">vispy.gloo.texture module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.BaseTexture"><code class="docutils literal notranslate"><span class="pre">BaseTexture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.Texture1D"><code class="docutils literal notranslate"><span class="pre">Texture1D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.Texture2D"><code class="docutils literal notranslate"><span class="pre">Texture2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.Texture3D"><code class="docutils literal notranslate"><span class="pre">Texture3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.TextureAtlas"><code class="docutils literal notranslate"><span class="pre">TextureAtlas</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.TextureCube"><code class="docutils literal notranslate"><span class="pre">TextureCube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.TextureEmulated3D"><code class="docutils literal notranslate"><span class="pre">TextureEmulated3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.convert_dtype_and_clip"><code class="docutils literal notranslate"><span class="pre">convert_dtype_and_clip()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.downcast_to_32bit_if_needed"><code class="docutils literal notranslate"><span class="pre">downcast_to_32bit_if_needed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.texture.html#vispy.gloo.texture.get_dtype_limits"><code class="docutils literal notranslate"><span class="pre">get_dtype_limits()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.util.html">vispy.gloo.util module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.util.html#vispy.gloo.util.check_enum"><code class="docutils literal notranslate"><span class="pre">check_enum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.util.html#vispy.gloo.util.check_identifier"><code class="docutils literal notranslate"><span class="pre">check_identifier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.util.html#vispy.gloo.util.check_variable"><code class="docutils literal notranslate"><span class="pre">check_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.util.html#vispy.gloo.util.draw_texture"><code class="docutils literal notranslate"><span class="pre">draw_texture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.wrappers.html">vispy.gloo.wrappers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.GL_PRESETS"><code class="docutils literal notranslate"><span class="pre">GL_PRESETS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.GlooFunctions"><code class="docutils literal notranslate"><span class="pre">GlooFunctions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.finish"><code class="docutils literal notranslate"><span class="pre">finish()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.flush"><code class="docutils literal notranslate"><span class="pre">flush()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.get_gl_configuration"><code class="docutils literal notranslate"><span class="pre">get_gl_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.get_state_presets"><code class="docutils literal notranslate"><span class="pre">get_state_presets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.read_pixels"><code class="docutils literal notranslate"><span class="pre">read_pixels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_blend_color"><code class="docutils literal notranslate"><span class="pre">set_blend_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_blend_equation"><code class="docutils literal notranslate"><span class="pre">set_blend_equation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_blend_func"><code class="docutils literal notranslate"><span class="pre">set_blend_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_clear_color"><code class="docutils literal notranslate"><span class="pre">set_clear_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_clear_depth"><code class="docutils literal notranslate"><span class="pre">set_clear_depth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_clear_stencil"><code class="docutils literal notranslate"><span class="pre">set_clear_stencil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_color_mask"><code class="docutils literal notranslate"><span class="pre">set_color_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_cull_face"><code class="docutils literal notranslate"><span class="pre">set_cull_face()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_depth_func"><code class="docutils literal notranslate"><span class="pre">set_depth_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_depth_mask"><code class="docutils literal notranslate"><span class="pre">set_depth_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_depth_range"><code class="docutils literal notranslate"><span class="pre">set_depth_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_front_face"><code class="docutils literal notranslate"><span class="pre">set_front_face()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_hint"><code class="docutils literal notranslate"><span class="pre">set_hint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_line_width"><code class="docutils literal notranslate"><span class="pre">set_line_width()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_polygon_offset"><code class="docutils literal notranslate"><span class="pre">set_polygon_offset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_sample_coverage"><code class="docutils literal notranslate"><span class="pre">set_sample_coverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_scissor"><code class="docutils literal notranslate"><span class="pre">set_scissor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_state"><code class="docutils literal notranslate"><span class="pre">set_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_stencil_func"><code class="docutils literal notranslate"><span class="pre">set_stencil_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_stencil_mask"><code class="docutils literal notranslate"><span class="pre">set_stencil_mask()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_stencil_op"><code class="docutils literal notranslate"><span class="pre">set_stencil_op()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.wrappers.html#vispy.gloo.wrappers.set_viewport"><code class="docutils literal notranslate"><span class="pre">set_viewport()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.gloo.html#module-vispy.gloo">Module contents</a></li>
@@ -2068,10 +2424,35 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.glsl.html">vispy.glsl package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.glsl.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html">vispy.glsl.build_spatial_filters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html">vispy.glsl.build_spatial_filters module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Bessel"><code class="docutils literal notranslate"><span class="pre">Bessel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Blackman"><code class="docutils literal notranslate"><span class="pre">Blackman</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.CatRom"><code class="docutils literal notranslate"><span class="pre">CatRom</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Cubic"><code class="docutils literal notranslate"><span class="pre">Cubic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Hamming"><code class="docutils literal notranslate"><span class="pre">Hamming</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Hanning"><code class="docutils literal notranslate"><span class="pre">Hanning</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Hermite"><code class="docutils literal notranslate"><span class="pre">Hermite</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Kaiser"><code class="docutils literal notranslate"><span class="pre">Kaiser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Lanczos"><code class="docutils literal notranslate"><span class="pre">Lanczos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Linear"><code class="docutils literal notranslate"><span class="pre">Linear</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Mitchell"><code class="docutils literal notranslate"><span class="pre">Mitchell</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Quadric"><code class="docutils literal notranslate"><span class="pre">Quadric</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Sinc"><code class="docutils literal notranslate"><span class="pre">Sinc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.SpatialFilter"><code class="docutils literal notranslate"><span class="pre">SpatialFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Spline16"><code class="docutils literal notranslate"><span class="pre">Spline16</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.Spline36"><code class="docutils literal notranslate"><span class="pre">Spline36</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.generate_filter_code"><code class="docutils literal notranslate"><span class="pre">generate_filter_code()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html#vispy.glsl.build_spatial_filters.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vispy.glsl.html#module-vispy.glsl">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.glsl.html#module-vispy.glsl">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.glsl.html#vispy.glsl.find"><code class="docutils literal notranslate"><span class="pre">find()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.glsl.html#vispy.glsl.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.io.html">vispy.io package</a><ul>
@@ -2084,14 +2465,53 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.io.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.datasets.html">vispy.io.datasets module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.image.html">vispy.io.image module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.mesh.html">vispy.io.mesh module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.stl.html">vispy.io.stl module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html">vispy.io.wavefront module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.datasets.html">vispy.io.datasets module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_crate"><code class="docutils literal notranslate"><span class="pre">load_crate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_iris"><code class="docutils literal notranslate"><span class="pre">load_iris()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_spatial_filters"><code class="docutils literal notranslate"><span class="pre">load_spatial_filters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.pack_ieee"><code class="docutils literal notranslate"><span class="pre">pack_ieee()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.pack_unit"><code class="docutils literal notranslate"><span class="pre">pack_unit()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="vispy.io.html#module-vispy.io">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.image.html">vispy.io.image module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.imread"><code class="docutils literal notranslate"><span class="pre">imread()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.imsave"><code class="docutils literal notranslate"><span class="pre">imsave()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.read_png"><code class="docutils literal notranslate"><span class="pre">read_png()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.write_png"><code class="docutils literal notranslate"><span class="pre">write_png()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.mesh.html">vispy.io.mesh module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.mesh.html#vispy.io.mesh.read_mesh"><code class="docutils literal notranslate"><span class="pre">read_mesh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.mesh.html#vispy.io.mesh.write_mesh"><code class="docutils literal notranslate"><span class="pre">write_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.stl.html">vispy.io.stl module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.HeaderError"><code class="docutils literal notranslate"><span class="pre">HeaderError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl"><code class="docutils literal notranslate"><span class="pre">load_stl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl_ascii"><code class="docutils literal notranslate"><span class="pre">load_stl_ascii()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl_binary"><code class="docutils literal notranslate"><span class="pre">load_stl_binary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html">vispy.io.wavefront module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader"><code class="docutils literal notranslate"><span class="pre">WavefrontReader</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.html#module-vispy.io">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.imread"><code class="docutils literal notranslate"><span class="pre">imread()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.imsave"><code class="docutils literal notranslate"><span class="pre">imsave()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.load_crate"><code class="docutils literal notranslate"><span class="pre">load_crate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.load_data_file"><code class="docutils literal notranslate"><span class="pre">load_data_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.load_iris"><code class="docutils literal notranslate"><span class="pre">load_iris()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.load_spatial_filters"><code class="docutils literal notranslate"><span class="pre">load_spatial_filters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.read_mesh"><code class="docutils literal notranslate"><span class="pre">read_mesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.read_png"><code class="docutils literal notranslate"><span class="pre">read_png()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.write_mesh"><code class="docutils literal notranslate"><span class="pre">write_mesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.html#vispy.io.write_png"><code class="docutils literal notranslate"><span class="pre">write_png()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.plot.html">vispy.plot package</a><ul>
@@ -2104,8 +2524,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.plot.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.plot.fig.html">vispy.plot.fig module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.plot.plotwidget.html">vispy.plot.plotwidget module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.plot.fig.html">vispy.plot.fig module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.plot.fig.html#vispy.plot.fig.Fig"><code class="docutils literal notranslate"><span class="pre">Fig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.plot.plotwidget.html">vispy.plot.plotwidget module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.plot.plotwidget.html#vispy.plot.plotwidget.PlotWidget"><code class="docutils literal notranslate"><span class="pre">PlotWidget</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.plot.html#module-vispy.plot">Module contents</a><ul>
@@ -2136,11 +2562,62 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.canvas.html">vispy.scene.canvas module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.events.html">vispy.scene.events module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.node.html">vispy.scene.node module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.subscene.html">vispy.scene.subscene module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.visuals.html">vispy.scene.visuals module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.canvas.html">vispy.scene.canvas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.canvas.html#vispy.scene.canvas.SceneCanvas"><code class="docutils literal notranslate"><span class="pre">SceneCanvas</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.events.html">vispy.scene.events module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.events.html#vispy.scene.events.SceneMouseEvent"><code class="docutils literal notranslate"><span class="pre">SceneMouseEvent</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.node.html">vispy.scene.node module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.node.html#vispy.scene.node.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.subscene.html">vispy.scene.subscene module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.subscene.html#vispy.scene.subscene.SubScene"><code class="docutils literal notranslate"><span class="pre">SubScene</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.visuals.html">vispy.scene.visuals module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Arrow"><code class="docutils literal notranslate"><span class="pre">Arrow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Axis"><code class="docutils literal notranslate"><span class="pre">Axis</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Box"><code class="docutils literal notranslate"><span class="pre">Box</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.ColorBar"><code class="docutils literal notranslate"><span class="pre">ColorBar</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.ComplexImage"><code class="docutils literal notranslate"><span class="pre">ComplexImage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Compound"><code class="docutils literal notranslate"><span class="pre">Compound</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Cube"><code class="docutils literal notranslate"><span class="pre">Cube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Ellipse"><code class="docutils literal notranslate"><span class="pre">Ellipse</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.GridLines"><code class="docutils literal notranslate"><span class="pre">GridLines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.GridMesh"><code class="docutils literal notranslate"><span class="pre">GridMesh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Histogram"><code class="docutils literal notranslate"><span class="pre">Histogram</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.InfiniteLine"><code class="docutils literal notranslate"><span class="pre">InfiniteLine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Isocurve"><code class="docutils literal notranslate"><span class="pre">Isocurve</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Isoline"><code class="docutils literal notranslate"><span class="pre">Isoline</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Isosurface"><code class="docutils literal notranslate"><span class="pre">Isosurface</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Line"><code class="docutils literal notranslate"><span class="pre">Line</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.LinePlot"><code class="docutils literal notranslate"><span class="pre">LinePlot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.LinearRegion"><code class="docutils literal notranslate"><span class="pre">LinearRegion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Markers"><code class="docutils literal notranslate"><span class="pre">Markers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Mesh"><code class="docutils literal notranslate"><span class="pre">Mesh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.MeshNormals"><code class="docutils literal notranslate"><span class="pre">MeshNormals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Plane"><code class="docutils literal notranslate"><span class="pre">Plane</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Polygon"><code class="docutils literal notranslate"><span class="pre">Polygon</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Rectangle"><code class="docutils literal notranslate"><span class="pre">Rectangle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.RegularPolygon"><code class="docutils literal notranslate"><span class="pre">RegularPolygon</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.ScrollingLines"><code class="docutils literal notranslate"><span class="pre">ScrollingLines</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Spectrogram"><code class="docutils literal notranslate"><span class="pre">Spectrogram</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.SurfacePlot"><code class="docutils literal notranslate"><span class="pre">SurfacePlot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Text"><code class="docutils literal notranslate"><span class="pre">Text</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Tube"><code class="docutils literal notranslate"><span class="pre">Tube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.VisualNode"><code class="docutils literal notranslate"><span class="pre">VisualNode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Volume"><code class="docutils literal notranslate"><span class="pre">Volume</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.Windbarb"><code class="docutils literal notranslate"><span class="pre">Windbarb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.visuals.html#vispy.scene.visuals.XYZAxis"><code class="docutils literal notranslate"><span class="pre">XYZAxis</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.html#module-vispy.scene">Module contents</a><ul>
@@ -2159,8 +2636,24 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.testing.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.testing.image_tester.html">vispy.testing.image_tester module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.testing.rendered_array_tester.html">vispy.testing.rendered_array_tester module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.testing.image_tester.html">vispy.testing.image_tester module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.ImageTester"><code class="docutils literal notranslate"><span class="pre">ImageTester</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.assert_image_approved"><code class="docutils literal notranslate"><span class="pre">assert_image_approved()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.assert_image_match"><code class="docutils literal notranslate"><span class="pre">assert_image_match()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.downsample"><code class="docutils literal notranslate"><span class="pre">downsample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.get_test_data_repo"><code class="docutils literal notranslate"><span class="pre">get_test_data_repo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.git_cmd_base"><code class="docutils literal notranslate"><span class="pre">git_cmd_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.git_commit_id"><code class="docutils literal notranslate"><span class="pre">git_commit_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.git_status"><code class="docutils literal notranslate"><span class="pre">git_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.image_tester.html#vispy.testing.image_tester.make_diff_image"><code class="docutils literal notranslate"><span class="pre">make_diff_image()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.testing.rendered_array_tester.html">vispy.testing.rendered_array_tester module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.rendered_array_tester.html#vispy.testing.rendered_array_tester.compare_render"><code class="docutils literal notranslate"><span class="pre">compare_render()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.rendered_array_tester.html#vispy.testing.rendered_array_tester.make_rgba"><code class="docutils literal notranslate"><span class="pre">make_rgba()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.testing.rendered_array_tester.html#vispy.testing.rendered_array_tester.max_for_dtype"><code class="docutils literal notranslate"><span class="pre">max_for_dtype()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.testing.html#module-vispy.testing">Module contents</a><ul>
@@ -2194,24 +2687,105 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.util.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.bunch.html">vispy.util.bunch module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.check_environment.html">vispy.util.check_environment module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.config.html">vispy.util.config module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.eq.html">vispy.util.eq module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.event.html">vispy.util.event module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.fetching.html">vispy.util.fetching module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.filter.html">vispy.util.filter module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.fourier.html">vispy.util.fourier module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.frozen.html">vispy.util.frozen module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.gallery_scraper.html">vispy.util.gallery_scraper module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.keys.html">vispy.util.keys module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.logs.html">vispy.util.logs module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.osmesa_gl.html">vispy.util.osmesa_gl module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.profiler.html">vispy.util.profiler module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.ptime.html">vispy.util.ptime module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.quaternion.html">vispy.util.quaternion module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.transforms.html">vispy.util.transforms module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.util.wrappers.html">vispy.util.wrappers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.bunch.html">vispy.util.bunch module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.bunch.html#vispy.util.bunch.SimpleBunch"><code class="docutils literal notranslate"><span class="pre">SimpleBunch</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.check_environment.html">vispy.util.check_environment module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.check_environment.html#vispy.util.check_environment.has_backend"><code class="docutils literal notranslate"><span class="pre">has_backend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.check_environment.html#vispy.util.check_environment.has_matplotlib"><code class="docutils literal notranslate"><span class="pre">has_matplotlib()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.check_environment.html#vispy.util.check_environment.has_skimage"><code class="docutils literal notranslate"><span class="pre">has_skimage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.config.html">vispy.util.config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.ConfigEvent"><code class="docutils literal notranslate"><span class="pre">ConfigEvent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.get_config_keys"><code class="docutils literal notranslate"><span class="pre">get_config_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.save_config"><code class="docutils literal notranslate"><span class="pre">save_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.set_data_dir"><code class="docutils literal notranslate"><span class="pre">set_data_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.config.html#vispy.util.config.sys_info"><code class="docutils literal notranslate"><span class="pre">sys_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.eq.html">vispy.util.eq module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.eq.html#vispy.util.eq.eq"><code class="docutils literal notranslate"><span class="pre">eq()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.event.html">vispy.util.event module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.event.html#vispy.util.event.EmitterGroup"><code class="docutils literal notranslate"><span class="pre">EmitterGroup</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.event.html#vispy.util.event.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.event.html#vispy.util.event.EventBlocker"><code class="docutils literal notranslate"><span class="pre">EventBlocker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.event.html#vispy.util.event.EventEmitter"><code class="docutils literal notranslate"><span class="pre">EventEmitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.event.html#vispy.util.event.WarningEmitter"><code class="docutils literal notranslate"><span class="pre">WarningEmitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.fetching.html">vispy.util.fetching module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.fetching.html#vispy.util.fetching.ProgressBar"><code class="docutils literal notranslate"><span class="pre">ProgressBar</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.fetching.html#vispy.util.fetching.load_data_file"><code class="docutils literal notranslate"><span class="pre">load_data_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.fetching.html#vispy.util.fetching.sizeof_fmt"><code class="docutils literal notranslate"><span class="pre">sizeof_fmt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.filter.html">vispy.util.filter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.filter.html#vispy.util.filter.gaussian_filter"><code class="docutils literal notranslate"><span class="pre">gaussian_filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.fourier.html">vispy.util.fourier module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.fourier.html#vispy.util.fourier.fft_freqs"><code class="docutils literal notranslate"><span class="pre">fft_freqs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.fourier.html#vispy.util.fourier.stft"><code class="docutils literal notranslate"><span class="pre">stft()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.frozen.html">vispy.util.frozen module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.frozen.html#vispy.util.frozen.Frozen"><code class="docutils literal notranslate"><span class="pre">Frozen</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.gallery_scraper.html">vispy.util.gallery_scraper module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.gallery_scraper.html#vispy.util.gallery_scraper.FrameGrabber"><code class="docutils literal notranslate"><span class="pre">FrameGrabber</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.gallery_scraper.html#vispy.util.gallery_scraper.VisPyGalleryScraper"><code class="docutils literal notranslate"><span class="pre">VisPyGalleryScraper</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.gallery_scraper.html#vispy.util.gallery_scraper.get_canvaslike_from_globals"><code class="docutils literal notranslate"><span class="pre">get_canvaslike_from_globals()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.keys.html">vispy.util.keys module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.keys.html#vispy.util.keys.Key"><code class="docutils literal notranslate"><span class="pre">Key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.logs.html">vispy.util.logs module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.logs.html#vispy.util.logs.NumPyJSONEncoder"><code class="docutils literal notranslate"><span class="pre">NumPyJSONEncoder</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.logs.html#vispy.util.logs.log_exception"><code class="docutils literal notranslate"><span class="pre">log_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.logs.html#vispy.util.logs.set_log_level"><code class="docutils literal notranslate"><span class="pre">set_log_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.logs.html#vispy.util.logs.use_log_level"><code class="docutils literal notranslate"><span class="pre">use_log_level</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.osmesa_gl.html">vispy.util.osmesa_gl module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.osmesa_gl.html#vispy.util.osmesa_gl.fix_osmesa_gl_lib"><code class="docutils literal notranslate"><span class="pre">fix_osmesa_gl_lib()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.profiler.html">vispy.util.profiler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.profiler.html#vispy.util.profiler.Profiler"><code class="docutils literal notranslate"><span class="pre">Profiler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.ptime.html">vispy.util.ptime module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.ptime.html#vispy.util.ptime.time"><code class="docutils literal notranslate"><span class="pre">time()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.quaternion.html">vispy.util.quaternion module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.quaternion.html#vispy.util.quaternion.Quaternion"><code class="docutils literal notranslate"><span class="pre">Quaternion</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.transforms.html">vispy.util.transforms module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.affine_map"><code class="docutils literal notranslate"><span class="pre">affine_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.frustum"><code class="docutils literal notranslate"><span class="pre">frustum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.ortho"><code class="docutils literal notranslate"><span class="pre">ortho()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.perspective"><code class="docutils literal notranslate"><span class="pre">perspective()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.transforms.html#vispy.util.transforms.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.util.wrappers.html">vispy.util.wrappers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.wrappers.html#vispy.util.wrappers.run_subprocess"><code class="docutils literal notranslate"><span class="pre">run_subprocess()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.wrappers.html#vispy.util.wrappers.test"><code class="docutils literal notranslate"><span class="pre">test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.wrappers.html#vispy.util.wrappers.use"><code class="docutils literal notranslate"><span class="pre">use()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.util.html#module-vispy.util">Module contents</a></li>
@@ -2271,48 +2845,151 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.axis.html">vispy.visuals.axis module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.axis.html">vispy.visuals.axis module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.AxisVisual"><code class="docutils literal notranslate"><span class="pre">AxisVisual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.MaxNLocator"><code class="docutils literal notranslate"><span class="pre">MaxNLocator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.Ticker"><code class="docutils literal notranslate"><span class="pre">Ticker</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.axis.html#vispy.visuals.axis.scale_range"><code class="docutils literal notranslate"><span class="pre">scale_range()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.border.html">vispy.visuals.border module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.box.html">vispy.visuals.box module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.colorbar.html">vispy.visuals.colorbar module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.cube.html">vispy.visuals.cube module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.ellipse.html">vispy.visuals.ellipse module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.gridlines.html">vispy.visuals.gridlines module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.gridmesh.html">vispy.visuals.gridmesh module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.histogram.html">vispy.visuals.histogram module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.image.html">vispy.visuals.image module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.image_complex.html">vispy.visuals.image_complex module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.infinite_line.html">vispy.visuals.infinite_line module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isocurve.html">vispy.visuals.isocurve module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isoline.html">vispy.visuals.isoline module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isosurface.html">vispy.visuals.isosurface module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.line_plot.html">vispy.visuals.line_plot module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.linear_region.html">vispy.visuals.linear_region module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.markers.html">vispy.visuals.markers module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.mesh.html">vispy.visuals.mesh module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.mesh_normals.html">vispy.visuals.mesh_normals module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.plane.html">vispy.visuals.plane module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.polygon.html">vispy.visuals.polygon module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.rectangle.html">vispy.visuals.rectangle module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.regular_polygon.html">vispy.visuals.regular_polygon module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.scrolling_lines.html">vispy.visuals.scrolling_lines module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.spectrogram.html">vispy.visuals.spectrogram module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.sphere.html">vispy.visuals.sphere module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.surface_plot.html">vispy.visuals.surface_plot module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.tube.html">vispy.visuals.tube module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.box.html">vispy.visuals.box module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.box.html#vispy.visuals.box.BoxVisual"><code class="docutils literal notranslate"><span class="pre">BoxVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.colorbar.html">vispy.visuals.colorbar module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.colorbar.html#vispy.visuals.colorbar.ColorBarVisual"><code class="docutils literal notranslate"><span class="pre">ColorBarVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.cube.html">vispy.visuals.cube module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.cube.html#vispy.visuals.cube.CubeVisual"><code class="docutils literal notranslate"><span class="pre">CubeVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.ellipse.html">vispy.visuals.ellipse module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.ellipse.html#vispy.visuals.ellipse.EllipseVisual"><code class="docutils literal notranslate"><span class="pre">EllipseVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.gridlines.html">vispy.visuals.gridlines module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.gridlines.html#vispy.visuals.gridlines.GridLinesVisual"><code class="docutils literal notranslate"><span class="pre">GridLinesVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.gridmesh.html">vispy.visuals.gridmesh module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.gridmesh.html#vispy.visuals.gridmesh.GridMeshVisual"><code class="docutils literal notranslate"><span class="pre">GridMeshVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.histogram.html">vispy.visuals.histogram module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.histogram.html#vispy.visuals.histogram.HistogramVisual"><code class="docutils literal notranslate"><span class="pre">HistogramVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.image.html">vispy.visuals.image module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.image.html#vispy.visuals.image.ImageVisual"><code class="docutils literal notranslate"><span class="pre">ImageVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.image_complex.html">vispy.visuals.image_complex module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.image_complex.html#vispy.visuals.image_complex.ComplexImageVisual"><code class="docutils literal notranslate"><span class="pre">ComplexImageVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.infinite_line.html">vispy.visuals.infinite_line module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.infinite_line.html#vispy.visuals.infinite_line.InfiniteLineVisual"><code class="docutils literal notranslate"><span class="pre">InfiniteLineVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isocurve.html">vispy.visuals.isocurve module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.isocurve.html#vispy.visuals.isocurve.IsocurveVisual"><code class="docutils literal notranslate"><span class="pre">IsocurveVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isoline.html">vispy.visuals.isoline module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.isoline.html#vispy.visuals.isoline.IsolineVisual"><code class="docutils literal notranslate"><span class="pre">IsolineVisual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.isoline.html#vispy.visuals.isoline.iso_mesh_line"><code class="docutils literal notranslate"><span class="pre">iso_mesh_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.isosurface.html">vispy.visuals.isosurface module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.isosurface.html#vispy.visuals.isosurface.IsosurfaceVisual"><code class="docutils literal notranslate"><span class="pre">IsosurfaceVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.line_plot.html">vispy.visuals.line_plot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.line_plot.html#vispy.visuals.line_plot.LinePlotVisual"><code class="docutils literal notranslate"><span class="pre">LinePlotVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.linear_region.html">vispy.visuals.linear_region module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.linear_region.html#vispy.visuals.linear_region.LinearRegionVisual"><code class="docutils literal notranslate"><span class="pre">LinearRegionVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.markers.html">vispy.visuals.markers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.markers.html#vispy.visuals.markers.MarkersVisual"><code class="docutils literal notranslate"><span class="pre">MarkersVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.mesh.html">vispy.visuals.mesh module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.mesh.html#vispy.visuals.mesh.MeshVisual"><code class="docutils literal notranslate"><span class="pre">MeshVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.mesh_normals.html">vispy.visuals.mesh_normals module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.mesh_normals.html#vispy.visuals.mesh_normals.MeshNormalsVisual"><code class="docutils literal notranslate"><span class="pre">MeshNormalsVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.plane.html">vispy.visuals.plane module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.plane.html#vispy.visuals.plane.PlaneVisual"><code class="docutils literal notranslate"><span class="pre">PlaneVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.polygon.html">vispy.visuals.polygon module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.polygon.html#vispy.visuals.polygon.PolygonVisual"><code class="docutils literal notranslate"><span class="pre">PolygonVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.rectangle.html">vispy.visuals.rectangle module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.rectangle.html#vispy.visuals.rectangle.RectangleVisual"><code class="docutils literal notranslate"><span class="pre">RectangleVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.regular_polygon.html">vispy.visuals.regular_polygon module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.regular_polygon.html#vispy.visuals.regular_polygon.RegularPolygonVisual"><code class="docutils literal notranslate"><span class="pre">RegularPolygonVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.scrolling_lines.html">vispy.visuals.scrolling_lines module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.scrolling_lines.html#vispy.visuals.scrolling_lines.ScrollingLinesVisual"><code class="docutils literal notranslate"><span class="pre">ScrollingLinesVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.spectrogram.html">vispy.visuals.spectrogram module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.spectrogram.html#vispy.visuals.spectrogram.SpectrogramVisual"><code class="docutils literal notranslate"><span class="pre">SpectrogramVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.sphere.html">vispy.visuals.sphere module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.sphere.html#vispy.visuals.sphere.SphereVisual"><code class="docutils literal notranslate"><span class="pre">SphereVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.surface_plot.html">vispy.visuals.surface_plot module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.surface_plot.html#vispy.visuals.surface_plot.SurfacePlotVisual"><code class="docutils literal notranslate"><span class="pre">SurfacePlotVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.tube.html">vispy.visuals.tube module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tube.html#vispy.visuals.tube.TubeVisual"><code class="docutils literal notranslate"><span class="pre">TubeVisual</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.visual.html">vispy.visuals.visual module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#definitions">Definitions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#class-structure">Class Structure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#making-visual-subclasses">Making Visual Subclasses</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#making-compoundvisual-subclasses">Making CompoundVisual Subclasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.BaseVisual"><code class="docutils literal notranslate"><span class="pre">BaseVisual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.BaseVisualView"><code class="docutils literal notranslate"><span class="pre">BaseVisualView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.CompoundVisual"><code class="docutils literal notranslate"><span class="pre">CompoundVisual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.CompoundVisualView"><code class="docutils literal notranslate"><span class="pre">CompoundVisualView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.Visual"><code class="docutils literal notranslate"><span class="pre">Visual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.VisualShare"><code class="docutils literal notranslate"><span class="pre">VisualShare</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.VisualView"><code class="docutils literal notranslate"><span class="pre">VisualView</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.updating_property"><code class="docutils literal notranslate"><span class="pre">updating_property</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.volume.html">vispy.visuals.volume module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.volume.html#about-this-technique">About this technique</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.volume.html#vispy.visuals.volume.VolumeVisual"><code class="docutils literal notranslate"><span class="pre">VolumeVisual</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.windbarb.html">vispy.visuals.windbarb module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.xyz_axis.html">vispy.visuals.xyz_axis module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.windbarb.html">vispy.visuals.windbarb module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.windbarb.html#vispy.visuals.windbarb.WindbarbVisual"><code class="docutils literal notranslate"><span class="pre">WindbarbVisual</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.xyz_axis.html">vispy.visuals.xyz_axis module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.xyz_axis.html#vispy.visuals.xyz_axis.XYZAxisVisual"><code class="docutils literal notranslate"><span class="pre">XYZAxisVisual</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.html#module-vispy.visuals">Module contents</a></li>
@@ -2325,7 +3002,10 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.conftest.html">vispy.conftest module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.conftest.html">vispy.conftest module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.conftest.html#vispy.conftest.pytest_configure"><code class="docutils literal notranslate"><span class="pre">pytest_configure()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.version.html">vispy.version module</a></li>
 </ul>
 </div>
@@ -2514,7 +3194,7 @@ succesful, it will try each backend in a predetermined order.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

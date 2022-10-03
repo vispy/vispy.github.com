@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,216 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BaseColormap
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap.colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap.colors
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap.glsl_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap.glsl_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap.map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap.map()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap.texture_lut">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap.texture_lut()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.BaseColormap.texture_map_data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap.texture_map_data
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.Colormap">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Colormap
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.Colormap.interpolation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Colormap.interpolation
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.Colormap.map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Colormap.map()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.colormap.Colormap.texture_lut">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Colormap.texture_lut()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.CubeHelixColormap">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CubeHelixColormap
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.Diverging">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Diverging
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.HSL">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     HSL
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.HSLuv">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     HSLuv
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.MatplotlibColormap">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     MatplotlibColormap
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.RedYellowBlueCyan">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     RedYellowBlueCyan
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.SingleHue">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SingleHue
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.get_colormap">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_colormap()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.get_colormaps">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_colormaps()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.mix">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     mix()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.smoothstep">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     smoothstep()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.color.colormap.step">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     step()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2313,7 +2521,7 @@ between 0 and 1 when edge0 &lt; x &lt; edge1.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

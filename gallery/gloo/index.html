@@ -39,6 +39,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -202,6 +203,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="colored_cube.html">
+     Show a rotating colored cube
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="colored_quad.html">
      Show color quad Image
     </a>
@@ -232,8 +238,18 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="lighted_cube.html">
+     Show a rotating cube with lighting
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="multi_texture.html">
      Use multiple textures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="outlined_cube.html">
+     Show a rotating cube with an outline
     </a>
    </li>
    <li class="toctree-l2">
@@ -264,6 +280,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="start_shaders.html">
      Simplest Shader Program
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="texture_precision.html">
+     Example using texture internalformat for higher precision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="textured_cube.html">
+     Show a rotating textured cube
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="textured_quad.html">
+     Show a textured quad
     </a>
    </li>
   </ul>
@@ -550,9 +581,24 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Gloo
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-low-level-gl-module">
+   The low-level GL module
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -590,6 +636,9 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating showing a quad using a Texture2D and VertexBuffer and a timer to control ..."><img alt="Animate a Shape" src="../../_images/sphx_glr_animate_shape_thumb.gif" />
 <p><a class="reference internal" href="animate_shape.html#sphx-glr-gallery-gloo-animate-shape-py"><span class="std std-ref">Animate a Shape</span></a></p>
   <div class="sphx-glr-thumbnail-title">Animate a Shape</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating colored cube"><img alt="Show a rotating colored cube" src="../../_images/sphx_glr_colored_cube_thumb.png" />
+<p><a class="reference internal" href="colored_cube.html#sphx-glr-gallery-gloo-colored-cube-py"><span class="std std-ref">Show a rotating colored cube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Show a rotating colored cube</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Create a new drawing using triangle_strip"><img alt="Show color quad Image" src="../../_images/sphx_glr_colored_quad_thumb.png" />
 <p><a class="reference internal" href="colored_quad.html#sphx-glr-gallery-gloo-colored-quad-py"><span class="std std-ref">Show color quad Image</span></a></p>
   <div class="sphx-glr-thumbnail-title">Show color quad Image</div>
@@ -608,9 +657,15 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="Minimal example demonstrating the use of frame buffer objects (FBO). This example blurs the out..."><img alt="Use FrameBuffers" src="../../_images/sphx_glr_hello_fbo_thumb.png" />
 <p><a class="reference internal" href="hello_fbo.html#sphx-glr-gallery-gloo-hello-fbo-py"><span class="std std-ref">Use FrameBuffers</span></a></p>
   <div class="sphx-glr-thumbnail-title">Use FrameBuffers</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating cube with lighting"><img alt="Show a rotating cube with lighting" src="../../_images/sphx_glr_lighted_cube_thumb.png" />
+<p><a class="reference internal" href="lighted_cube.html#sphx-glr-gallery-gloo-lighted-cube-py"><span class="std std-ref">Show a rotating cube with lighting</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Show a rotating cube with lighting</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="We create two textures. One that shows a red, green and blue band in the horizontal direction a..."><img alt="Use multiple textures" src="../../_images/sphx_glr_multi_texture_thumb.png" />
 <p><a class="reference internal" href="multi_texture.html#sphx-glr-gallery-gloo-multi-texture-py"><span class="std std-ref">Use multiple textures</span></a></p>
   <div class="sphx-glr-thumbnail-title">Use multiple textures</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating cube with an outline"><img alt="Show a rotating cube with an outline" src="../../_images/sphx_glr_outlined_cube_thumb.png" />
+<p><a class="reference internal" href="outlined_cube.html#sphx-glr-gallery-gloo-outlined-cube-py"><span class="std std-ref">Show a rotating cube with an outline</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Show a rotating cube with an outline</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show post-processing using a FrameBuffer"><img alt="Show post-processing using a FrameBuffer" src="../../_images/sphx_glr_post_processing_thumb.gif" />
 <p><a class="reference internal" href="post_processing.html#sphx-glr-gallery-gloo-post-processing-py"><span class="std std-ref">Show post-processing using a FrameBuffer</span></a></p>
   <div class="sphx-glr-thumbnail-title">Show post-processing using a FrameBuffer</div>
@@ -629,6 +684,33 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simplest Shader Program"><img alt="Simplest Shader Program" src="../../_images/sphx_glr_start_shaders_thumb.png" />
 <p><a class="reference internal" href="start_shaders.html#sphx-glr-gallery-gloo-start-shaders-py"><span class="std std-ref">Simplest Shader Program</span></a></p>
   <div class="sphx-glr-thumbnail-title">Simplest Shader Program</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Generates a gradient texture with high dynamic range and renders it with a fragment shader that..."><img alt="Example using texture internalformat for higher precision" src="../../_images/sphx_glr_texture_precision_thumb.png" />
+<p><a class="reference internal" href="texture_precision.html#sphx-glr-gallery-gloo-texture-precision-py"><span class="std std-ref">Example using texture internalformat for higher precision</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example using texture internalformat for higher precision</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating textured cube"><img alt="Show a rotating textured cube" src="../../_images/sphx_glr_textured_cube_thumb.png" />
+<p><a class="reference internal" href="textured_cube.html#sphx-glr-gallery-gloo-textured-cube-py"><span class="std std-ref">Show a rotating textured cube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Show a rotating textured cube</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Show a textured quad"><img alt="Show a textured quad" src="../../_images/sphx_glr_textured_quad_thumb.png" />
+<p><a class="reference internal" href="textured_quad.html#sphx-glr-gallery-gloo-textured-quad-py"><span class="std std-ref">Show a textured quad</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Show a textured quad</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="the-low-level-gl-module">
+<h1>The low-level GL module<a class="headerlink" href="#the-low-level-gl-module" title="Permalink to this heading">#</a></h1>
+<p>Vispy has a low-level <cite>gl</cite> module which wraps <cite>GL</cite> calls almost to a 1-to-1 ratio. While this is intended mostly for internal use, it is possible to use this to construct programs.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Drawing a rotated 3D cube"><img alt="Drawing a rotated 3D cube" src="../../_images/sphx_glr_cube_thumb.png" />
+<p><a class="reference internal" href="gl/cube.html#sphx-glr-gallery-gloo-gl-cube-py"><span class="std std-ref">Drawing a rotated 3D cube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Drawing a rotated 3D cube</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="(adapted from the &quot;OpenGL ES 2.0 Programming Guide&quot;) This example demonstrates a series of expl..."><img alt="Example demonstrating simulation of fireworks using point sprites" src="../../_images/sphx_glr_fireworks_thumb.png" />
+<p><a class="reference internal" href="gl/fireworks.html#sphx-glr-gallery-gloo-gl-fireworks-py"><span class="std std-ref">Example demonstrating simulation of fireworks using point sprites</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Example demonstrating simulation of fireworks using point sprites</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Drawing a simple quad"><img alt="Drawing a simple quad" src="../../_images/sphx_glr_quad_thumb.png" />
+<p><a class="reference internal" href="gl/quad.html#sphx-glr-gallery-gloo-gl-quad-py"><span class="std std-ref">Drawing a simple quad</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Drawing a simple quad</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example is a modification of examples/tutorial/gl/quad.py which uses instanced rendering t..."><img alt="Displaying quads using Instanced rendering" src="../../_images/sphx_glr_quad_instanced_thumb.png" />
+<p><a class="reference internal" href="gl/quad_instanced.html#sphx-glr-gallery-gloo-gl-quad-instanced-py"><span class="std std-ref">Displaying quads using Instanced rendering</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Displaying quads using Instanced rendering</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
@@ -687,7 +769,7 @@
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

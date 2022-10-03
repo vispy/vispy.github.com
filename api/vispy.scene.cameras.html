@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,488 @@
   <a class="reference internal nav-link" href="#module-vispy.scene.cameras">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.ArcballCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ArcballCamera
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.center">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.center
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.depth_value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.depth_value
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.flip">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.flip
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.fov">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.fov
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.get_state">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.get_state()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.interactive">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.interactive
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.link">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.link()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.on_canvas_change">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.on_canvas_change()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.pre_transform">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.pre_transform
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.reset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.reset()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.set_default_state">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.set_default_state()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.set_range">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.set_range()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.set_state">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.set_state()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.up">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.up
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.view_changed">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.view_changed()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.viewbox">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.viewbox
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.viewbox_key_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.viewbox_key_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.viewbox_mouse_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.viewbox_mouse_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.viewbox_resize_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.viewbox_resize_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.BaseCamera.zoom_factor">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseCamera.zoom_factor
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       FlyCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.auto_roll">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.auto_roll
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.keymap">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.keymap
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.on_timer">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.on_timer()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.rotation">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.rotation
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.rotation1">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.rotation1
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.rotation2">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.rotation2
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.viewbox_key_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.viewbox_key_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.FlyCamera.viewbox_mouse_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FlyCamera.viewbox_mouse_event()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.Magnify1DCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Magnify1DCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.Magnify1DCamera.transform_class">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Magnify1DCamera.transform_class
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera.on_timer">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MagnifyCamera.on_timer()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera.transform_class">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MagnifyCamera.transform_class
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera.view_changed">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MagnifyCamera.view_changed()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera.viewbox_mouse_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MagnifyCamera.viewbox_mouse_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.MagnifyCamera.viewbox_resize_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MagnifyCamera.viewbox_resize_event()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PanZoomCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.aspect">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.aspect
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.center">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.center
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.pan">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.pan()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.rect">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.rect
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.viewbox_mouse_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.viewbox_mouse_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.viewbox_resize_event">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.viewbox_resize_event()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.PanZoomCamera.zoom">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PanZoomCamera.zoom()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.TurntableCamera">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TurntableCamera
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.TurntableCamera.azimuth">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TurntableCamera.azimuth
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.TurntableCamera.elevation">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TurntableCamera.elevation
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.TurntableCamera.orbit">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TurntableCamera.orbit()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.cameras.TurntableCamera.roll">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TurntableCamera.roll
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,8 +2441,20 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.tests.html">vispy.scene.cameras.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.tests.test_link.html">vispy.scene.cameras.tests.test_link module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.tests.test_perspective.html">vispy.scene.cameras.tests.test_perspective module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.tests.test_cameras.html">vispy.scene.cameras.tests.test_cameras module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.test_cameras.html#vispy.scene.cameras.tests.test_cameras.test_turntable_camera_transform"><code class="docutils literal notranslate"><span class="pre">test_turntable_camera_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.tests.test_link.html">vispy.scene.cameras.tests.test_link module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.test_link.html#vispy.scene.cameras.tests.test_link.test_panzoom_link"><code class="docutils literal notranslate"><span class="pre">test_panzoom_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.test_link.html#vispy.scene.cameras.tests.test_link.test_turntable_camera_link"><code class="docutils literal notranslate"><span class="pre">test_turntable_camera_link()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.tests.test_perspective.html">vispy.scene.cameras.tests.test_perspective module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.test_perspective.html#vispy.scene.cameras.tests.test_perspective.test_panzoom_center"><code class="docutils literal notranslate"><span class="pre">test_panzoom_center()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.test_perspective.html#vispy.scene.cameras.tests.test_perspective.test_perspective_render"><code class="docutils literal notranslate"><span class="pre">test_perspective_render()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.tests.html#module-vispy.scene.cameras.tests">Module contents</a></li>
@@ -1972,13 +2467,105 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.arcball.html">vispy.scene.cameras.arcball module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.base_camera.html">vispy.scene.cameras.base_camera module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.fly.html">vispy.scene.cameras.fly module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.magnify.html">vispy.scene.cameras.magnify module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.panzoom.html">vispy.scene.cameras.panzoom module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.perspective.html">vispy.scene.cameras.perspective module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.turntable.html">vispy.scene.cameras.turntable module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.arcball.html">vispy.scene.cameras.arcball module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.arcball.html#vispy.scene.cameras.arcball.ArcballCamera"><code class="docutils literal notranslate"><span class="pre">ArcballCamera</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.base_camera.html">vispy.scene.cameras.base_camera module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera"><code class="docutils literal notranslate"><span class="pre">BaseCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.center"><code class="docutils literal notranslate"><span class="pre">BaseCamera.center</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.depth_value"><code class="docutils literal notranslate"><span class="pre">BaseCamera.depth_value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.flip"><code class="docutils literal notranslate"><span class="pre">BaseCamera.flip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.fov"><code class="docutils literal notranslate"><span class="pre">BaseCamera.fov</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.get_state"><code class="docutils literal notranslate"><span class="pre">BaseCamera.get_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.interactive"><code class="docutils literal notranslate"><span class="pre">BaseCamera.interactive</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.link"><code class="docutils literal notranslate"><span class="pre">BaseCamera.link()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.on_canvas_change"><code class="docutils literal notranslate"><span class="pre">BaseCamera.on_canvas_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.pre_transform"><code class="docutils literal notranslate"><span class="pre">BaseCamera.pre_transform</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.reset"><code class="docutils literal notranslate"><span class="pre">BaseCamera.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.set_default_state"><code class="docutils literal notranslate"><span class="pre">BaseCamera.set_default_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.set_range"><code class="docutils literal notranslate"><span class="pre">BaseCamera.set_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.set_state"><code class="docutils literal notranslate"><span class="pre">BaseCamera.set_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.up"><code class="docutils literal notranslate"><span class="pre">BaseCamera.up</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.view_changed"><code class="docutils literal notranslate"><span class="pre">BaseCamera.view_changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.viewbox"><code class="docutils literal notranslate"><span class="pre">BaseCamera.viewbox</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.viewbox_key_event"><code class="docutils literal notranslate"><span class="pre">BaseCamera.viewbox_key_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">BaseCamera.viewbox_mouse_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.viewbox_resize_event"><code class="docutils literal notranslate"><span class="pre">BaseCamera.viewbox_resize_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.BaseCamera.zoom_factor"><code class="docutils literal notranslate"><span class="pre">BaseCamera.zoom_factor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.nested_getattr"><code class="docutils literal notranslate"><span class="pre">nested_getattr()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.base_camera.html#vispy.scene.cameras.base_camera.nested_setattr"><code class="docutils literal notranslate"><span class="pre">nested_setattr()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.fly.html">vispy.scene.cameras.fly module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera"><code class="docutils literal notranslate"><span class="pre">FlyCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.auto_roll"><code class="docutils literal notranslate"><span class="pre">FlyCamera.auto_roll</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.keymap"><code class="docutils literal notranslate"><span class="pre">FlyCamera.keymap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.on_timer"><code class="docutils literal notranslate"><span class="pre">FlyCamera.on_timer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.rotation"><code class="docutils literal notranslate"><span class="pre">FlyCamera.rotation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.rotation1"><code class="docutils literal notranslate"><span class="pre">FlyCamera.rotation1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.rotation2"><code class="docutils literal notranslate"><span class="pre">FlyCamera.rotation2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.viewbox_key_event"><code class="docutils literal notranslate"><span class="pre">FlyCamera.viewbox_key_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.fly.html#vispy.scene.cameras.fly.FlyCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">FlyCamera.viewbox_mouse_event()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.magnify.html">vispy.scene.cameras.magnify module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.Magnify1DCamera"><code class="docutils literal notranslate"><span class="pre">Magnify1DCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.Magnify1DCamera.transform_class"><code class="docutils literal notranslate"><span class="pre">Magnify1DCamera.transform_class</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera.on_timer"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera.on_timer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera.transform_class"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera.transform_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera.view_changed"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera.view_changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera.viewbox_mouse_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.magnify.html#vispy.scene.cameras.magnify.MagnifyCamera.viewbox_resize_event"><code class="docutils literal notranslate"><span class="pre">MagnifyCamera.viewbox_resize_event()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.panzoom.html">vispy.scene.cameras.panzoom module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.aspect"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.aspect</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.center"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.center</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.pan"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.pan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.rect"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.rect</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.viewbox_mouse_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.viewbox_resize_event"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.viewbox_resize_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.panzoom.html#vispy.scene.cameras.panzoom.PanZoomCamera.zoom"><code class="docutils literal notranslate"><span class="pre">PanZoomCamera.zoom()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.perspective.html">vispy.scene.cameras.perspective module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.Base3DRotationCamera"><code class="docutils literal notranslate"><span class="pre">Base3DRotationCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.Base3DRotationCamera.distance"><code class="docutils literal notranslate"><span class="pre">Base3DRotationCamera.distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.Base3DRotationCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">Base3DRotationCamera.viewbox_mouse_event()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera"><code class="docutils literal notranslate"><span class="pre">PerspectiveCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera.near_clip_distance"><code class="docutils literal notranslate"><span class="pre">PerspectiveCamera.near_clip_distance</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera.scale_factor"><code class="docutils literal notranslate"><span class="pre">PerspectiveCamera.scale_factor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera.viewbox_mouse_event"><code class="docutils literal notranslate"><span class="pre">PerspectiveCamera.viewbox_mouse_event()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.perspective.html#vispy.scene.cameras.perspective.PerspectiveCamera.viewbox_resize_event"><code class="docutils literal notranslate"><span class="pre">PerspectiveCamera.viewbox_resize_event()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.cameras.turntable.html">vispy.scene.cameras.turntable module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.cameras.turntable.html#vispy.scene.cameras.turntable.TurntableCamera"><code class="docutils literal notranslate"><span class="pre">TurntableCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.turntable.html#vispy.scene.cameras.turntable.TurntableCamera.azimuth"><code class="docutils literal notranslate"><span class="pre">TurntableCamera.azimuth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.turntable.html#vispy.scene.cameras.turntable.TurntableCamera.elevation"><code class="docutils literal notranslate"><span class="pre">TurntableCamera.elevation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.turntable.html#vispy.scene.cameras.turntable.TurntableCamera.orbit"><code class="docutils literal notranslate"><span class="pre">TurntableCamera.orbit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.cameras.turntable.html#vispy.scene.cameras.turntable.TurntableCamera.roll"><code class="docutils literal notranslate"><span class="pre">TurntableCamera.roll</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2670,19 +3257,24 @@ maintaining a view on a center point.</p>
 <p>For this camera, the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> indicates the zoom level, and
 the <code class="docutils literal notranslate"><span class="pre">center</span></code> indicates the position to put at the center of the
 view.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">elevation</span></code> and <code class="docutils literal notranslate"><span class="pre">azimuth</span></code> are set to 0, the camera
+points along the +y axis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fov</strong><span class="classifier">float</span></dt><dd><p>Field of view. Zero (default) means orthographic projection.</p>
 </dd>
-<dt><strong>elevation</strong><span class="classifier">float</span></dt><dd><p>Elevation angle in degrees. Positive angles place the camera
-above the cente point, negative angles place the camera below
-the center point.</p>
+<dt><strong>elevation</strong><span class="classifier">float</span></dt><dd><p>Elevation angle in degrees. The elevation angle represents a
+rotation of the camera around the current scene x-axis. The
+camera points along the x-y plane when the angle is 0.</p>
 </dd>
-<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Azimuth angle in degrees. Zero degrees places the camera on the
-positive x-axis, pointing in the negative x direction.</p>
+<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Azimuth angle in degrees. The azimuth angle represents a
+rotation of the camera around the scene z-axis according to the
+right-hand screw rule. The camera points along the y-z plane when
+the angle is 0.</p>
 </dd>
-<dt><strong>roll</strong><span class="classifier">float</span></dt><dd><p>Roll angle in degrees</p>
+<dt><strong>roll</strong><span class="classifier">float</span></dt><dd><p>Roll angle in degrees. The roll angle represents a rotation of
+the camera around the current scene y-axis.</p>
 </dd>
 <dt><strong>distance</strong><span class="classifier">float | None</span></dt><dd><p>The distance of the camera from the rotation point (only makes sense
 if fov &gt; 0). If None (default) the distance is determined from the
@@ -2708,15 +3300,15 @@ scale_factor and fov.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.TurntableCamera.azimuth">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">azimuth</span></span><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.azimuth" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees around the y axis. An angle of
-0 places the camera within the (y, z) plane.</p>
+<dd><p>Get the camera azimuth angle in degrees.</p>
+<p>The camera points along the y-z plane when the angle is 0.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.TurntableCamera.elevation">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elevation</span></span><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.elevation" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees above the horizontal (x, z)
-plane.</p>
+<dd><p>Get the camera elevation angle in degrees.</p>
+<p>The camera points along the x-y plane when the angle is 0.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2738,8 +3330,7 @@ plane.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.TurntableCamera.roll">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">roll</span></span><a class="headerlink" href="#vispy.scene.cameras.TurntableCamera.roll" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees around the z axis. An angle of
-0 places puts the camera upright.</p>
+<dd><p>Get the camera roll angle in degrees.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2792,7 +3383,7 @@ plane.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

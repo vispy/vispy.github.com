@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,337 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     LogTransform
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.Isometric">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.Isometric
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.Linear">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.Linear
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.NonScaling">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.NonScaling
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.Orthogonal">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.Orthogonal
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.base">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.base
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.glsl_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.glsl_imap
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.glsl_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.glsl_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.imap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.map()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.shader_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.shader_imap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.LogTransform.shader_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LogTransform.shader_map()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.Magnify1DTransform">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Magnify1DTransform
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.Magnify1DTransform.glsl_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Magnify1DTransform.glsl_imap
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.Magnify1DTransform.glsl_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Magnify1DTransform.glsl_map
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     MagnifyTransform
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.Linear">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.Linear
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.center">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.center
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.glsl_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.glsl_imap
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.glsl_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.glsl_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.imap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.mag">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.mag
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.map()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.radii">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.radii
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.shader_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.shader_imap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.MagnifyTransform.shader_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MagnifyTransform.shader_map()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     PolarTransform
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.Isometric">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.Isometric
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.Linear">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.Linear
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.NonScaling">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.NonScaling
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.Orthogonal">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.Orthogonal
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.glsl_imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.glsl_imap
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.glsl_map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.glsl_map
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.imap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.imap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.transforms.nonlinear.PolarTransform.map">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolarTransform.map()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2271,7 +2600,7 @@ and <cite>y = r*sin(theta)</cite>.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

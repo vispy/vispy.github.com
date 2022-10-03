@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,537 @@
   <a class="reference internal nav-link" href="#module-vispy.visuals.shaders">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.Compiler">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Compiler
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Compiler.compile">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Compiler.compile()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Function
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.args">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.args
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.code
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.definition">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.definition()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.expression">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.expression()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.name">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.name
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.replace">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.replace()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.rtype">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.rtype
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.signature">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.signature
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.static_names">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.static_names()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Function.template_vars">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Function.template_vars
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       FunctionChain
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.append">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.append()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.code
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.definition">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.definition()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.functions">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.functions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.insert">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.insert()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.remove">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.remove()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.signature">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.signature
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.static_names">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.static_names()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.FunctionChain.template_vars">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FunctionChain.template_vars
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MainFunction
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.add_callback">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.add_callback()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.add_chain">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.add_chain()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.definition">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.definition()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.remove_callback">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.remove_callback()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.signature">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.signature
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.static_names">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.static_names()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MainFunction.version_pragma">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MainFunction.version_pragma
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ModularProgram
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.build_if_needed">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.build_if_needed()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.draw">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.draw()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.frag">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.frag
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.geom">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.geom
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.update_variables">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.update_variables()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.ModularProgram.vert">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModularProgram.vert
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MultiProgram
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram.add_program">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MultiProgram.add_program()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram.bind">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MultiProgram.bind()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram.frag">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MultiProgram.frag
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram.geom">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MultiProgram.geom
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.MultiProgram.vert">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MultiProgram.vert
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Variable
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.definition">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.definition()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.dtype">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.dtype
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.expression">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.expression()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.name">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.name
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.state_id">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.state_id
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.value
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Variable.vtype">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Variable.vtype
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.visuals.shaders.Varying">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Varying
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Varying.dtype">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Varying.dtype
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Varying.invar">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Varying.invar()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Varying.link">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Varying.link()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.visuals.shaders.Varying.value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Varying.value
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,9 +2490,28 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.tests.html">vispy.visuals.shaders.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html">vispy.visuals.shaders.tests.test_function module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_multiprogram.html">vispy.visuals.shaders.tests.test_multiprogram module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_parsing.html">vispy.visuals.shaders.tests.test_parsing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html">vispy.visuals.shaders.tests.test_function module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_FunctionCall"><code class="docutils literal notranslate"><span class="pre">test_FunctionCall()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_FunctionChain"><code class="docutils literal notranslate"><span class="pre">test_FunctionChain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_MainFunction"><code class="docutils literal notranslate"><span class="pre">test_MainFunction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_StatementList"><code class="docutils literal notranslate"><span class="pre">test_StatementList()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_TextExpression"><code class="docutils literal notranslate"><span class="pre">test_TextExpression()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_Variable"><code class="docutils literal notranslate"><span class="pre">test_Variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_example1"><code class="docutils literal notranslate"><span class="pre">test_example1()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_example2"><code class="docutils literal notranslate"><span class="pre">test_example2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_function_basics"><code class="docutils literal notranslate"><span class="pre">test_function_basics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_function.html#vispy.visuals.shaders.tests.test_function.test_function_changed"><code class="docutils literal notranslate"><span class="pre">test_function_changed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_multiprogram.html">vispy.visuals.shaders.tests.test_multiprogram module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_multiprogram.html#vispy.visuals.shaders.tests.test_multiprogram.test_multiprogram"><code class="docutils literal notranslate"><span class="pre">test_multiprogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.tests.test_parsing.html">vispy.visuals.shaders.tests.test_parsing module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_parsing.html#vispy.visuals.shaders.tests.test_parsing.test_find_variables"><code class="docutils literal notranslate"><span class="pre">test_find_variables()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.test_parsing.html#vispy.visuals.shaders.tests.test_parsing.test_identifier"><code class="docutils literal notranslate"><span class="pre">test_identifier()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.tests.html#module-vispy.visuals.shaders.tests">Module contents</a></li>
@@ -1973,17 +2524,150 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.compiler.html">vispy.visuals.shaders.compiler module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.expression.html">vispy.visuals.shaders.expression module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.function.html">vispy.visuals.shaders.function module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#details">Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.compiler.html">vispy.visuals.shaders.compiler module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.compiler.html#vispy.visuals.shaders.compiler.Compiler"><code class="docutils literal notranslate"><span class="pre">Compiler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.compiler.html#vispy.visuals.shaders.compiler.Compiler.compile"><code class="docutils literal notranslate"><span class="pre">Compiler.compile()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html">vispy.visuals.shaders.multiprogram module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.parsing.html">vispy.visuals.shaders.parsing module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.program.html">vispy.visuals.shaders.program module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html">vispy.visuals.shaders.shader_object module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.variable.html">vispy.visuals.shaders.variable module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.expression.html">vispy.visuals.shaders.expression module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.Expression"><code class="docutils literal notranslate"><span class="pre">Expression</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.Expression.definition"><code class="docutils literal notranslate"><span class="pre">Expression.definition()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.FunctionCall"><code class="docutils literal notranslate"><span class="pre">FunctionCall</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.FunctionCall.dtype"><code class="docutils literal notranslate"><span class="pre">FunctionCall.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.FunctionCall.expression"><code class="docutils literal notranslate"><span class="pre">FunctionCall.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.FunctionCall.function"><code class="docutils literal notranslate"><span class="pre">FunctionCall.function</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.TextExpression"><code class="docutils literal notranslate"><span class="pre">TextExpression</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.TextExpression.expression"><code class="docutils literal notranslate"><span class="pre">TextExpression.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.expression.html#vispy.visuals.shaders.expression.TextExpression.text"><code class="docutils literal notranslate"><span class="pre">TextExpression.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.function.html">vispy.visuals.shaders.function module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#details">Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function"><code class="docutils literal notranslate"><span class="pre">Function</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.args"><code class="docutils literal notranslate"><span class="pre">Function.args</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.code"><code class="docutils literal notranslate"><span class="pre">Function.code</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.definition"><code class="docutils literal notranslate"><span class="pre">Function.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.expression"><code class="docutils literal notranslate"><span class="pre">Function.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.name"><code class="docutils literal notranslate"><span class="pre">Function.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.replace"><code class="docutils literal notranslate"><span class="pre">Function.replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.rtype"><code class="docutils literal notranslate"><span class="pre">Function.rtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.signature"><code class="docutils literal notranslate"><span class="pre">Function.signature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.static_names"><code class="docutils literal notranslate"><span class="pre">Function.static_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.Function.template_vars"><code class="docutils literal notranslate"><span class="pre">Function.template_vars</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain"><code class="docutils literal notranslate"><span class="pre">FunctionChain</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.append"><code class="docutils literal notranslate"><span class="pre">FunctionChain.append()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.code"><code class="docutils literal notranslate"><span class="pre">FunctionChain.code</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.definition"><code class="docutils literal notranslate"><span class="pre">FunctionChain.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.functions"><code class="docutils literal notranslate"><span class="pre">FunctionChain.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.insert"><code class="docutils literal notranslate"><span class="pre">FunctionChain.insert()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.remove"><code class="docutils literal notranslate"><span class="pre">FunctionChain.remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.signature"><code class="docutils literal notranslate"><span class="pre">FunctionChain.signature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.static_names"><code class="docutils literal notranslate"><span class="pre">FunctionChain.static_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.FunctionChain.template_vars"><code class="docutils literal notranslate"><span class="pre">FunctionChain.template_vars</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction"><code class="docutils literal notranslate"><span class="pre">MainFunction</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.add_callback"><code class="docutils literal notranslate"><span class="pre">MainFunction.add_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.add_chain"><code class="docutils literal notranslate"><span class="pre">MainFunction.add_chain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.definition"><code class="docutils literal notranslate"><span class="pre">MainFunction.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.remove_callback"><code class="docutils literal notranslate"><span class="pre">MainFunction.remove_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.signature"><code class="docutils literal notranslate"><span class="pre">MainFunction.signature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.static_names"><code class="docutils literal notranslate"><span class="pre">MainFunction.static_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.MainFunction.version_pragma"><code class="docutils literal notranslate"><span class="pre">MainFunction.version_pragma</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.StatementList"><code class="docutils literal notranslate"><span class="pre">StatementList</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.StatementList.add"><code class="docutils literal notranslate"><span class="pre">StatementList.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.StatementList.expression"><code class="docutils literal notranslate"><span class="pre">StatementList.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.function.html#vispy.visuals.shaders.function.StatementList.remove"><code class="docutils literal notranslate"><span class="pre">StatementList.remove()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html">vispy.visuals.shaders.multiprogram module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram"><code class="docutils literal notranslate"><span class="pre">MultiProgram</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram.add_program"><code class="docutils literal notranslate"><span class="pre">MultiProgram.add_program()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram.bind"><code class="docutils literal notranslate"><span class="pre">MultiProgram.bind()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram.frag"><code class="docutils literal notranslate"><span class="pre">MultiProgram.frag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram.geom"><code class="docutils literal notranslate"><span class="pre">MultiProgram.geom</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiProgram.vert"><code class="docutils literal notranslate"><span class="pre">MultiProgram.vert</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.multiprogram.html#vispy.visuals.shaders.multiprogram.MultiShader"><code class="docutils literal notranslate"><span class="pre">MultiShader</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.parsing.html">vispy.visuals.shaders.parsing module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.parsing.html#vispy.visuals.shaders.parsing.find_functions"><code class="docutils literal notranslate"><span class="pre">find_functions()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.parsing.html#vispy.visuals.shaders.parsing.find_program_variables"><code class="docutils literal notranslate"><span class="pre">find_program_variables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.parsing.html#vispy.visuals.shaders.parsing.find_prototypes"><code class="docutils literal notranslate"><span class="pre">find_prototypes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.parsing.html#vispy.visuals.shaders.parsing.find_template_variables"><code class="docutils literal notranslate"><span class="pre">find_template_variables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.parsing.html#vispy.visuals.shaders.parsing.parse_function_signature"><code class="docutils literal notranslate"><span class="pre">parse_function_signature()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.program.html">vispy.visuals.shaders.program module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram"><code class="docutils literal notranslate"><span class="pre">ModularProgram</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.build_if_needed"><code class="docutils literal notranslate"><span class="pre">ModularProgram.build_if_needed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.draw"><code class="docutils literal notranslate"><span class="pre">ModularProgram.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.frag"><code class="docutils literal notranslate"><span class="pre">ModularProgram.frag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.geom"><code class="docutils literal notranslate"><span class="pre">ModularProgram.geom</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.update_variables"><code class="docutils literal notranslate"><span class="pre">ModularProgram.update_variables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.program.html#vispy.visuals.shaders.program.ModularProgram.vert"><code class="docutils literal notranslate"><span class="pre">ModularProgram.vert</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html">vispy.visuals.shaders.shader_object module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject"><code class="docutils literal notranslate"><span class="pre">ShaderObject</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.changed"><code class="docutils literal notranslate"><span class="pre">ShaderObject.changed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.compile"><code class="docutils literal notranslate"><span class="pre">ShaderObject.compile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.create"><code class="docutils literal notranslate"><span class="pre">ShaderObject.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.definition"><code class="docutils literal notranslate"><span class="pre">ShaderObject.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.dependencies"><code class="docutils literal notranslate"><span class="pre">ShaderObject.dependencies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.expression"><code class="docutils literal notranslate"><span class="pre">ShaderObject.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.name"><code class="docutils literal notranslate"><span class="pre">ShaderObject.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.static_names"><code class="docutils literal notranslate"><span class="pre">ShaderObject.static_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html#vispy.visuals.shaders.shader_object.ShaderObject.version_pragma"><code class="docutils literal notranslate"><span class="pre">ShaderObject.version_pragma</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.shaders.variable.html">vispy.visuals.shaders.variable module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.InVar"><code class="docutils literal notranslate"><span class="pre">InVar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.InVar.definition"><code class="docutils literal notranslate"><span class="pre">InVar.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.InVar.dtype"><code class="docutils literal notranslate"><span class="pre">InVar.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.InVar.expression"><code class="docutils literal notranslate"><span class="pre">InVar.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.InVar.value"><code class="docutils literal notranslate"><span class="pre">InVar.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.definition"><code class="docutils literal notranslate"><span class="pre">Variable.definition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.dtype"><code class="docutils literal notranslate"><span class="pre">Variable.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.expression"><code class="docutils literal notranslate"><span class="pre">Variable.expression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.name"><code class="docutils literal notranslate"><span class="pre">Variable.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.state_id"><code class="docutils literal notranslate"><span class="pre">Variable.state_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.value"><code class="docutils literal notranslate"><span class="pre">Variable.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Variable.vtype"><code class="docutils literal notranslate"><span class="pre">Variable.vtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Varying"><code class="docutils literal notranslate"><span class="pre">Varying</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Varying.dtype"><code class="docutils literal notranslate"><span class="pre">Varying.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Varying.invar"><code class="docutils literal notranslate"><span class="pre">Varying.invar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Varying.link"><code class="docutils literal notranslate"><span class="pre">Varying.link()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.shaders.variable.html#vispy.visuals.shaders.variable.Varying.value"><code class="docutils literal notranslate"><span class="pre">Varying.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2660,7 +3344,7 @@ a varying using syntax <code class="docutils literal notranslate"><span class="p
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,295 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.GL_PRESETS">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     GL_PRESETS
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.GlooFunctions">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     GlooFunctions
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.wrappers.GlooFunctions.glir">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       GlooFunctions.glir
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.clear">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     clear()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.finish">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     finish()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.flush">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     flush()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.get_gl_configuration">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_gl_configuration()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.get_state_presets">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_state_presets()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.read_pixels">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     read_pixels()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_blend_color">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_blend_color()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_blend_equation">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_blend_equation()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_blend_func">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_blend_func()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_clear_color">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_clear_color()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_clear_depth">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_clear_depth()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_clear_stencil">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_clear_stencil()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_color_mask">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_color_mask()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_cull_face">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_cull_face()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_depth_func">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_depth_func()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_depth_mask">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_depth_mask()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_depth_range">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_depth_range()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_front_face">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_front_face()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_hint">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_hint()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_line_width">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_line_width()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_polygon_offset">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_polygon_offset()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_sample_coverage">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_sample_coverage()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_scissor">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_scissor()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_state">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_state()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_stencil_func">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_stencil_func()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_stencil_mask">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_stencil_mask()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_stencil_op">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_stencil_op()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.gloo.wrappers.set_viewport">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     set_viewport()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2514,7 +2801,7 @@ individual components, or as a single tuple with four values.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

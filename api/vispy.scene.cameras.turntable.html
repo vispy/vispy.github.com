@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,61 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.scene.cameras.turntable.TurntableCamera">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     TurntableCamera
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.turntable.TurntableCamera.azimuth">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TurntableCamera.azimuth
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.turntable.TurntableCamera.elevation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TurntableCamera.elevation
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.turntable.TurntableCamera.orbit">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TurntableCamera.orbit()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.cameras.turntable.TurntableCamera.roll">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TurntableCamera.roll
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -1941,19 +1994,24 @@ maintaining a view on a center point.</p>
 <p>For this camera, the <code class="docutils literal notranslate"><span class="pre">scale_factor</span></code> indicates the zoom level, and
 the <code class="docutils literal notranslate"><span class="pre">center</span></code> indicates the position to put at the center of the
 view.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">elevation</span></code> and <code class="docutils literal notranslate"><span class="pre">azimuth</span></code> are set to 0, the camera
+points along the +y axis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fov</strong><span class="classifier">float</span></dt><dd><p>Field of view. Zero (default) means orthographic projection.</p>
 </dd>
-<dt><strong>elevation</strong><span class="classifier">float</span></dt><dd><p>Elevation angle in degrees. Positive angles place the camera
-above the cente point, negative angles place the camera below
-the center point.</p>
+<dt><strong>elevation</strong><span class="classifier">float</span></dt><dd><p>Elevation angle in degrees. The elevation angle represents a
+rotation of the camera around the current scene x-axis. The
+camera points along the x-y plane when the angle is 0.</p>
 </dd>
-<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Azimuth angle in degrees. Zero degrees places the camera on the
-positive x-axis, pointing in the negative x direction.</p>
+<dt><strong>azimuth</strong><span class="classifier">float</span></dt><dd><p>Azimuth angle in degrees. The azimuth angle represents a
+rotation of the camera around the scene z-axis according to the
+right-hand screw rule. The camera points along the y-z plane when
+the angle is 0.</p>
 </dd>
-<dt><strong>roll</strong><span class="classifier">float</span></dt><dd><p>Roll angle in degrees</p>
+<dt><strong>roll</strong><span class="classifier">float</span></dt><dd><p>Roll angle in degrees. The roll angle represents a rotation of
+the camera around the current scene y-axis.</p>
 </dd>
 <dt><strong>distance</strong><span class="classifier">float | None</span></dt><dd><p>The distance of the camera from the rotation point (only makes sense
 if fov &gt; 0). If None (default) the distance is determined from the
@@ -1979,15 +2037,15 @@ scale_factor and fov.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.turntable.TurntableCamera.azimuth">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">azimuth</span></span><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera.azimuth" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees around the y axis. An angle of
-0 places the camera within the (y, z) plane.</p>
+<dd><p>Get the camera azimuth angle in degrees.</p>
+<p>The camera points along the y-z plane when the angle is 0.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.turntable.TurntableCamera.elevation">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elevation</span></span><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera.elevation" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees above the horizontal (x, z)
-plane.</p>
+<dd><p>Get the camera elevation angle in degrees.</p>
+<p>The camera points along the x-y plane when the angle is 0.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2009,8 +2067,7 @@ plane.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.scene.cameras.turntable.TurntableCamera.roll">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">roll</span></span><a class="headerlink" href="#vispy.scene.cameras.turntable.TurntableCamera.roll" title="Permalink to this definition">#</a></dt>
-<dd><p>The angle of the camera in degrees around the z axis. An angle of
-0 places puts the camera upright.</p>
+<dd><p>Get the camera roll angle in degrees.</p>
 </dd></dl>
 
 </dd></dl>
@@ -2062,7 +2119,7 @@ plane.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

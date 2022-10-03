@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,268 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     MeshData
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_bounds">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_bounds()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_edge_colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_edge_colors()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_edges">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_edges()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_face_colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_face_colors()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_face_normals">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_face_normals()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_faces">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_faces()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_vertex_colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_vertex_colors()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_vertex_faces">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_vertex_faces()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_vertex_normals">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_vertex_normals()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_vertex_values">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_vertex_values()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.get_vertices">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.get_vertices()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.has_edge_indexed_data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.has_edge_indexed_data()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.has_face_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.has_face_color()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.has_face_indexed_data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.has_face_indexed_data()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.has_vertex_color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.has_vertex_color()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.has_vertex_value">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.has_vertex_value()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.is_empty">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.is_empty()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.n_faces">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.n_faces
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.n_vertices">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.n_vertices
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.reset_normals">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.reset_normals()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.restore">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.restore()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.save">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.save()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.set_face_colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.set_face_colors()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.set_faces">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.set_faces()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.set_vertex_colors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.set_vertex_colors()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.set_vertex_values">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.set_vertex_values()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.meshdata.MeshData.set_vertices">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData.set_vertices()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2383,7 +2643,7 @@ reset_normals=False.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

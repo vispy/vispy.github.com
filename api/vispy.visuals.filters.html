@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1958,7 +1959,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.tests.html">vispy.visuals.filters.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.tests.test_wireframe_filter.html">vispy.visuals.filters.tests.test_wireframe_filter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.tests.test_wireframe_filter.html">vispy.visuals.filters.tests.test_wireframe_filter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_wireframe_filter.html#vispy.visuals.filters.tests.test_wireframe_filter.test_empty_mesh_wireframe"><code class="docutils literal notranslate"><span class="pre">test_empty_mesh_wireframe()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.tests.html#module-vispy.visuals.filters.tests">Module contents</a></li>
@@ -1971,12 +1975,101 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.base_filter.html">vispy.visuals.filters.base_filter module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.clipper.html">vispy.visuals.filters.clipper module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html">vispy.visuals.filters.clipping_planes module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.color.html">vispy.visuals.filters.color module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.mesh.html">vispy.visuals.filters.mesh module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.picking.html">vispy.visuals.filters.picking module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.base_filter.html">vispy.visuals.filters.base_filter module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.BaseFilter"><code class="docutils literal notranslate"><span class="pre">BaseFilter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter.attached"><code class="docutils literal notranslate"><span class="pre">Filter.attached</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.clipper.html">vispy.visuals.filters.clipper module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.clipper.html#vispy.visuals.filters.clipper.Clipper"><code class="docutils literal notranslate"><span class="pre">Clipper</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipper.html#vispy.visuals.filters.clipper.Clipper.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">Clipper.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipper.html#vispy.visuals.filters.clipper.Clipper.bounds"><code class="docutils literal notranslate"><span class="pre">Clipper.bounds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipper.html#vispy.visuals.filters.clipper.Clipper.transform"><code class="docutils literal notranslate"><span class="pre">Clipper.transform</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html">vispy.visuals.filters.clipping_planes module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html#vispy.visuals.filters.clipping_planes.PlanesClipper"><code class="docutils literal notranslate"><span class="pre">PlanesClipper</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html#vispy.visuals.filters.clipping_planes.PlanesClipper.FRAG_CODE"><code class="docutils literal notranslate"><span class="pre">PlanesClipper.FRAG_CODE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html#vispy.visuals.filters.clipping_planes.PlanesClipper.VERT_CODE"><code class="docutils literal notranslate"><span class="pre">PlanesClipper.VERT_CODE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html#vispy.visuals.filters.clipping_planes.PlanesClipper.clipping_planes"><code class="docutils literal notranslate"><span class="pre">PlanesClipper.clipping_planes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html#vispy.visuals.filters.clipping_planes.PlanesClipper.coord_system"><code class="docutils literal notranslate"><span class="pre">PlanesClipper.coord_system</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.color.html">vispy.visuals.filters.color module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.Alpha"><code class="docutils literal notranslate"><span class="pre">Alpha</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.Alpha.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">Alpha.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.Alpha.alpha"><code class="docutils literal notranslate"><span class="pre">Alpha.alpha</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ColorFilter"><code class="docutils literal notranslate"><span class="pre">ColorFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ColorFilter.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">ColorFilter.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ColorFilter.filter"><code class="docutils literal notranslate"><span class="pre">ColorFilter.filter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter"><code class="docutils literal notranslate"><span class="pre">IsolineFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">IsolineFilter.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter.antialias"><code class="docutils literal notranslate"><span class="pre">IsolineFilter.antialias</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter.color"><code class="docutils literal notranslate"><span class="pre">IsolineFilter.color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter.level"><code class="docutils literal notranslate"><span class="pre">IsolineFilter.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.IsolineFilter.width"><code class="docutils literal notranslate"><span class="pre">IsolineFilter.width</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ZColormapFilter"><code class="docutils literal notranslate"><span class="pre">ZColormapFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ZColormapFilter.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">ZColormapFilter.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.color.html#vispy.visuals.filters.color.ZColormapFilter.VERT_SHADER"><code class="docutils literal notranslate"><span class="pre">ZColormapFilter.VERT_SHADER</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.mesh.html">vispy.visuals.filters.mesh module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter"><code class="docutils literal notranslate"><span class="pre">ShadingFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.ambient_coefficient"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.ambient_coefficient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.ambient_light"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.ambient_light</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.diffuse_coefficient"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.diffuse_coefficient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.diffuse_light"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.diffuse_light</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.enabled"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.light_dir"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.light_dir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.on_mesh_data_updated"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.on_mesh_data_updated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.shading"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.shading</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.shininess"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.shininess</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.specular_coefficient"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.specular_coefficient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.specular_light"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.specular_light</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.TextureFilter"><code class="docutils literal notranslate"><span class="pre">TextureFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.TextureFilter.enabled"><code class="docutils literal notranslate"><span class="pre">TextureFilter.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.TextureFilter.texcoords"><code class="docutils literal notranslate"><span class="pre">TextureFilter.texcoords</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.TextureFilter.texture"><code class="docutils literal notranslate"><span class="pre">TextureFilter.texture</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter"><code class="docutils literal notranslate"><span class="pre">WireframeFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.color"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.enabled"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.faces_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.faces_only</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.on_mesh_data_updated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.width"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.wireframe_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.wireframe_only</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.picking.html">vispy.visuals.filters.picking module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.picking.html#vispy.visuals.filters.picking.PickingFilter"><code class="docutils literal notranslate"><span class="pre">PickingFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.picking.html#vispy.visuals.filters.picking.PickingFilter.FRAG_SHADER"><code class="docutils literal notranslate"><span class="pre">PickingFilter.FRAG_SHADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.picking.html#vispy.visuals.filters.picking.PickingFilter.color"><code class="docutils literal notranslate"><span class="pre">PickingFilter.color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.picking.html#vispy.visuals.filters.picking.PickingFilter.enabled"><code class="docutils literal notranslate"><span class="pre">PickingFilter.enabled</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.picking.html#vispy.visuals.filters.picking.PickingFilter.id"><code class="docutils literal notranslate"><span class="pre">PickingFilter.id</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2030,7 +2123,7 @@
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

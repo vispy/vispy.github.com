@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,367 @@
   <a class="reference internal nav-link" href="#module-vispy.color">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.BaseColormap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BaseColormap
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.BaseColormap.colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseColormap.colors
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.BaseColormap.glsl_map">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseColormap.glsl_map
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.BaseColormap.map">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseColormap.map()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.BaseColormap.texture_lut">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseColormap.texture_lut()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.BaseColormap.texture_map_data">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         BaseColormap.texture_map_data
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.Color">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Color
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.RGB">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.RGB
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.RGBA">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.RGBA
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.alpha">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.alpha
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.hex">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.hex
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.hsv">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.hsv
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.is_blank">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.is_blank
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.lab">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.lab
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.rgb">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.rgb
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.rgba">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.rgba
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Color.value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Color.value
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.ColorArray">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ColorArray
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.RGB">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.RGB
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.RGBA">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.RGBA
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.alpha">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.alpha
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.copy">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.copy()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.darker">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.darker()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.extend">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.extend()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.hex">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.hex
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.hsv">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.hsv
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.lab">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.lab
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.lighter">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.lighter()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.rgb">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.rgb
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.rgba">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.rgba
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.ColorArray.value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorArray.value
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.Colormap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Colormap
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Colormap.interpolation">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Colormap.interpolation
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Colormap.map">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Colormap.map()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.color.Colormap.texture_lut">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Colormap.texture_lut()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.get_color_dict">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_color_dict()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.get_color_names">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_color_names()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.get_colormap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_colormap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.color.get_colormaps">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_colormaps()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,7 +2320,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.color.tests.html">vispy.color.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.color.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.color.tests.test_color.html">vispy.color.tests.test_color module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.tests.test_color.html">vispy.color.tests.test_color module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_color"><code class="docutils literal notranslate"><span class="pre">test_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_color_array"><code class="docutils literal notranslate"><span class="pre">test_color_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_color_conversion"><code class="docutils literal notranslate"><span class="pre">test_color_conversion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_color_interpretation"><code class="docutils literal notranslate"><span class="pre">test_color_interpretation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_colormap"><code class="docutils literal notranslate"><span class="pre">test_colormap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_colormap_discrete"><code class="docutils literal notranslate"><span class="pre">test_colormap_discrete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_colormap_gradient"><code class="docutils literal notranslate"><span class="pre">test_colormap_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_colormap_interpolation"><code class="docutils literal notranslate"><span class="pre">test_colormap_interpolation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_normalize"><code class="docutils literal notranslate"><span class="pre">test_normalize()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.color.tests.html#module-vispy.color.tests">Module contents</a></li>
@@ -1971,9 +2344,68 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color"><code class="docutils literal notranslate"><span class="pre">Color</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.RGB"><code class="docutils literal notranslate"><span class="pre">Color.RGB</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.RGBA"><code class="docutils literal notranslate"><span class="pre">Color.RGBA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.alpha"><code class="docutils literal notranslate"><span class="pre">Color.alpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.hex"><code class="docutils literal notranslate"><span class="pre">Color.hex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.hsv"><code class="docutils literal notranslate"><span class="pre">Color.hsv</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.is_blank"><code class="docutils literal notranslate"><span class="pre">Color.is_blank</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.lab"><code class="docutils literal notranslate"><span class="pre">Color.lab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.rgb"><code class="docutils literal notranslate"><span class="pre">Color.rgb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.rgba"><code class="docutils literal notranslate"><span class="pre">Color.rgba</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.Color.value"><code class="docutils literal notranslate"><span class="pre">Color.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray"><code class="docutils literal notranslate"><span class="pre">ColorArray</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.RGB"><code class="docutils literal notranslate"><span class="pre">ColorArray.RGB</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.RGBA"><code class="docutils literal notranslate"><span class="pre">ColorArray.RGBA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.alpha"><code class="docutils literal notranslate"><span class="pre">ColorArray.alpha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.copy"><code class="docutils literal notranslate"><span class="pre">ColorArray.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.darker"><code class="docutils literal notranslate"><span class="pre">ColorArray.darker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.extend"><code class="docutils literal notranslate"><span class="pre">ColorArray.extend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.hex"><code class="docutils literal notranslate"><span class="pre">ColorArray.hex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.hsv"><code class="docutils literal notranslate"><span class="pre">ColorArray.hsv</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.lab"><code class="docutils literal notranslate"><span class="pre">ColorArray.lab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.lighter"><code class="docutils literal notranslate"><span class="pre">ColorArray.lighter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.rgb"><code class="docutils literal notranslate"><span class="pre">ColorArray.rgb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.rgba"><code class="docutils literal notranslate"><span class="pre">ColorArray.rgba</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html#vispy.color.color_array.ColorArray.value"><code class="docutils literal notranslate"><span class="pre">ColorArray.value</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.color.color_space.html">vispy.color.color_space module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap"><code class="docutils literal notranslate"><span class="pre">BaseColormap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.colors"><code class="docutils literal notranslate"><span class="pre">BaseColormap.colors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.glsl_map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.glsl_map</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_lut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.texture_map_data"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_map_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Colormap"><code class="docutils literal notranslate"><span class="pre">Colormap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Colormap.interpolation"><code class="docutils literal notranslate"><span class="pre">Colormap.interpolation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Colormap.map"><code class="docutils literal notranslate"><span class="pre">Colormap.map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Colormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">Colormap.texture_lut()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.CubeHelixColormap"><code class="docutils literal notranslate"><span class="pre">CubeHelixColormap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.Diverging"><code class="docutils literal notranslate"><span class="pre">Diverging</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.HSL"><code class="docutils literal notranslate"><span class="pre">HSL</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.HSLuv"><code class="docutils literal notranslate"><span class="pre">HSLuv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.MatplotlibColormap"><code class="docutils literal notranslate"><span class="pre">MatplotlibColormap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.RedYellowBlueCyan"><code class="docutils literal notranslate"><span class="pre">RedYellowBlueCyan</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.SingleHue"><code class="docutils literal notranslate"><span class="pre">SingleHue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.get_colormap"><code class="docutils literal notranslate"><span class="pre">get_colormap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.get_colormaps"><code class="docutils literal notranslate"><span class="pre">get_colormaps()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.mix"><code class="docutils literal notranslate"><span class="pre">mix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.smoothstep"><code class="docutils literal notranslate"><span class="pre">smoothstep()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.step"><code class="docutils literal notranslate"><span class="pre">step()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2485,7 +2917,7 @@ list of rgba colors</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

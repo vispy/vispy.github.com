@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,1187 @@
   <a class="reference internal nav-link" href="#module-vispy.gloo.gl">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.MainProxy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MainProxy
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.check_error">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       check_error()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glActiveTexture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glActiveTexture()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glAttachShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glAttachShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBindAttribLocation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBindAttribLocation()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBindBuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBindBuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBindFramebuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBindFramebuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBindRenderbuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBindRenderbuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBindTexture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBindTexture()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBlendColor">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBlendColor()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBlendEquation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBlendEquation()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBlendEquationSeparate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBlendEquationSeparate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBlendFunc">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBlendFunc()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBlendFuncSeparate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBlendFuncSeparate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBufferData">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBufferData()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glBufferSubData">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glBufferSubData()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCheckFramebufferStatus">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCheckFramebufferStatus()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glClear">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glClear()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glClearColor">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glClearColor()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glClearDepth">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glClearDepth()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glClearStencil">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glClearStencil()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glColorMask">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glColorMask()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCompileShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCompileShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCompressedTexImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCompressedTexImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCompressedTexSubImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCompressedTexSubImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCopyTexImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCopyTexImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCopyTexSubImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCopyTexSubImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateBuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateBuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateFramebuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateFramebuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateRenderbuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateRenderbuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCreateTexture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCreateTexture()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glCullFace">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glCullFace()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteBuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteBuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteFramebuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteFramebuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteRenderbuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteRenderbuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDeleteTexture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDeleteTexture()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDepthFunc">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDepthFunc()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDepthMask">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDepthMask()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDepthRange">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDepthRange()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDetachShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDetachShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDisable">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDisable()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDisableVertexAttribArray">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDisableVertexAttribArray()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDrawArrays">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDrawArrays()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glDrawElements">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glDrawElements()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glEnable">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glEnable()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glEnableVertexAttribArray">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glEnableVertexAttribArray()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glFinish">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glFinish()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glFlush">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glFlush()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glFramebufferRenderbuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glFramebufferRenderbuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glFramebufferTexture2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glFramebufferTexture2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glFrontFace">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glFrontFace()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGenerateMipmap">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGenerateMipmap()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetActiveAttrib">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetActiveAttrib()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetActiveUniform">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetActiveUniform()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetAttachedShaders">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetAttachedShaders()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetAttribLocation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetAttribLocation()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetBufferParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetBufferParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetFramebufferAttachmentParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetFramebufferAttachmentParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetProgramInfoLog">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetProgramInfoLog()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetProgramParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetProgramParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetRenderbufferParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetRenderbufferParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetShaderInfoLog">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetShaderInfoLog()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetShaderParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetShaderParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetShaderPrecisionFormat">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetShaderPrecisionFormat()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetShaderSource">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetShaderSource()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetTexParameter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetTexParameter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetUniform">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetUniform()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetUniformLocation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetUniformLocation()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetVertexAttrib">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetVertexAttrib()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glGetVertexAttribOffset">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glGetVertexAttribOffset()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glHint">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glHint()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsBuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsBuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsEnabled">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsEnabled()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsFramebuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsFramebuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsRenderbuffer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsRenderbuffer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsShader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsShader()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glIsTexture">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glIsTexture()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glLineWidth">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glLineWidth()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glLinkProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glLinkProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glPixelStorei">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glPixelStorei()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glPolygonOffset">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glPolygonOffset()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glReadPixels">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glReadPixels()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glRenderbufferStorage">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glRenderbufferStorage()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glSampleCoverage">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glSampleCoverage()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glScissor">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glScissor()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glShaderSource">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glShaderSource()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilFunc">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilFunc()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilFuncSeparate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilFuncSeparate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilMask">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilMask()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilMaskSeparate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilMaskSeparate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilOp">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilOp()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glStencilOpSeparate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glStencilOpSeparate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glTexImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glTexImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glTexParameterf">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glTexParameterf()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glTexParameteri">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glTexParameteri()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glTexSubImage2D">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glTexSubImage2D()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform1f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform1f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform1fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform1fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform1i">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform1i()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform1iv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform1iv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform2f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform2f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform2fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform2fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform2i">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform2i()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform2iv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform2iv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform3f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform3f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform3fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform3fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform3i">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform3i()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform3iv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform3iv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform4f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform4f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform4fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform4fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform4i">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform4i()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniform4iv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniform4iv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniformMatrix2fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniformMatrix2fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniformMatrix3fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniformMatrix3fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUniformMatrix4fv">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUniformMatrix4fv()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glUseProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glUseProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glValidateProgram">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glValidateProgram()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glVertexAttrib1f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glVertexAttrib1f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glVertexAttrib2f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glVertexAttrib2f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glVertexAttrib3f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glVertexAttrib3f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glVertexAttrib4f">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glVertexAttrib4f()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glVertexAttribPointer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glVertexAttribPointer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.glViewport">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       glViewport()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.make_debug_wrapper">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       make_debug_wrapper()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.gloo.gl.use_gl">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       use_gl()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,13 +3140,38 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.tests.html">vispy.gloo.gl.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.gloo.gl.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html">vispy.gloo.gl.tests.test_basics module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html">vispy.gloo.gl.tests.test_functionality module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#the-visualization">The visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html">vispy.gloo.gl.tests.test_basics module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html#vispy.gloo.gl.tests.test_basics.teardown_module"><code class="docutils literal notranslate"><span class="pre">teardown_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html#vispy.gloo.gl.tests.test_basics.test_basics_desktop"><code class="docutils literal notranslate"><span class="pre">test_basics_desktop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html#vispy.gloo.gl.tests.test_basics.test_basics_pypengl"><code class="docutils literal notranslate"><span class="pre">test_basics_pypengl()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html#vispy.gloo.gl.tests.test_basics.test_functionality_es2"><code class="docutils literal notranslate"><span class="pre">test_functionality_es2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_basics.html#vispy.gloo.gl.tests.test_basics.test_functionality_proxy"><code class="docutils literal notranslate"><span class="pre">test_functionality_proxy()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html">vispy.gloo.gl.tests.test_names module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_use.html">vispy.gloo.gl.tests.test_use module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html">vispy.gloo.gl.tests.test_functionality module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#the-visualization">The visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#vispy.gloo.gl.tests.test_functionality.teardown_module"><code class="docutils literal notranslate"><span class="pre">teardown_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#vispy.gloo.gl.tests.test_functionality.test_functionality_desktop"><code class="docutils literal notranslate"><span class="pre">test_functionality_desktop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#vispy.gloo.gl.tests.test_functionality.test_functionality_es2"><code class="docutils literal notranslate"><span class="pre">test_functionality_es2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#vispy.gloo.gl.tests.test_functionality.test_functionality_proxy"><code class="docutils literal notranslate"><span class="pre">test_functionality_proxy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_functionality.html#vispy.gloo.gl.tests.test_functionality.test_functionality_pyopengl"><code class="docutils literal notranslate"><span class="pre">test_functionality_pyopengl()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html">vispy.gloo.gl.tests.test_names module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.teardown_module"><code class="docutils literal notranslate"><span class="pre">teardown_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_destop"><code class="docutils literal notranslate"><span class="pre">test_destop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_es2"><code class="docutils literal notranslate"><span class="pre">test_es2()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_glplus"><code class="docutils literal notranslate"><span class="pre">test_glplus()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_main"><code class="docutils literal notranslate"><span class="pre">test_main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_proxy"><code class="docutils literal notranslate"><span class="pre">test_proxy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_names.html#vispy.gloo.gl.tests.test_names.test_pyopengl"><code class="docutils literal notranslate"><span class="pre">test_pyopengl()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.gloo.gl.tests.test_use.html">vispy.gloo.gl.tests.test_use module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_use.html#vispy.gloo.gl.tests.test_use.teardown_module"><code class="docutils literal notranslate"><span class="pre">teardown_module()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.test_use.html#vispy.gloo.gl.tests.test_use.test_use_desktop"><code class="docutils literal notranslate"><span class="pre">test_use_desktop()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.gloo.gl.tests.html#module-vispy.gloo.gl.tests">Module contents</a></li>
@@ -1977,7 +3184,10 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.dummy.html">vispy.gloo.gl.dummy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.dummy.html">vispy.gloo.gl.dummy module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.gloo.gl.dummy.html#vispy.gloo.gl.dummy.DummyProxy"><code class="docutils literal notranslate"><span class="pre">DummyProxy</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.es2.html">vispy.gloo.gl.es2 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.gl2.html">vispy.gloo.gl.gl2 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.gloo.gl.glplus.html">vispy.gloo.gl.glplus module</a></li>
@@ -2741,7 +3951,7 @@ this check was done.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

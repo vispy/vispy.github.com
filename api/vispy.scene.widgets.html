@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,544 @@
   <a class="reference internal nav-link" href="#module-vispy.scene.widgets">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.AxisWidget">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       AxisWidget
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.AxisWidget.link_view">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         AxisWidget.link_view()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.AxisWidget.on_resize">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         AxisWidget.on_resize()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ColorBarWidget
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.border_color">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.border_color
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.border_width">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.border_width
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.clim">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.clim
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.cmap">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.cmap
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.label">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.label
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.on_resize">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.on_resize()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.orientation">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.orientation
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ColorBarWidget.ticks">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ColorBarWidget.ticks
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.Console">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Console
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Console.clear">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Console.clear()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Console.font_size">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Console.font_size
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Console.on_resize">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Console.on_resize()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Console.text_color">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Console.text_color
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Console.write">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Console.write()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Grid
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.add_grid">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.add_grid()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.add_view">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.add_view()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.add_widget">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.add_widget()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.grid_size">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.grid_size
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.layout_array">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.layout_array
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.next_row">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.next_row()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.remove_widget">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.remove_widget()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.resize_widget">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Grid.resize_widget()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.Label">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Label
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Label.on_resize">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Label.on_resize()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Label.text">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Label.text
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ViewBox
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.add">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.add()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.camera">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.camera
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.get_scene_bounds">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.get_scene_bounds()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.is_in_scene">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.is_in_scene()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.on_resize">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.on_resize()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.ViewBox.scene">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ViewBox.scene
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Widget
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.add_grid">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.add_grid()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.add_view">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.add_view()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.add_widget">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.add_widget()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.bgcolor">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.bgcolor
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.border_color">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.border_color
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.height">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.height
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.height_max">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.height_max
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.height_min">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.height_min
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.inner_rect">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.inner_rect
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.margin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.margin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.padding">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.padding
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.picking">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.picking
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.pos">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.pos
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.rect">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.rect
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.remove_widget">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.remove_widget()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.size">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.size
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.stretch">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.stretch
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.width">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.width
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.width_max">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.width_max
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.scene.widgets.Widget.width_min">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Widget.width_min
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,7 +2497,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.tests.html">vispy.scene.widgets.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.tests.test_colorbar.html">vispy.scene.widgets.tests.test_colorbar module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.tests.test_colorbar.html">vispy.scene.widgets.tests.test_colorbar module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.tests.test_colorbar.html#vispy.scene.widgets.tests.test_colorbar.create_colorbar"><code class="docutils literal notranslate"><span class="pre">create_colorbar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.tests.test_colorbar.html#vispy.scene.widgets.tests.test_colorbar.test_colorbar_widget"><code class="docutils literal notranslate"><span class="pre">test_colorbar_widget()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.tests.html#module-vispy.scene.widgets.tests">Module contents</a></li>
@@ -1971,14 +2514,111 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.anchor.html">vispy.scene.widgets.anchor module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.axis.html">vispy.scene.widgets.axis module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.colorbar.html">vispy.scene.widgets.colorbar module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.console.html">vispy.scene.widgets.console module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.grid.html">vispy.scene.widgets.grid module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.label.html">vispy.scene.widgets.label module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.viewbox.html">vispy.scene.widgets.viewbox module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.widget.html">vispy.scene.widgets.widget module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.anchor.html">vispy.scene.widgets.anchor module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.anchor.html#vispy.scene.widgets.anchor.Anchor"><code class="docutils literal notranslate"><span class="pre">Anchor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.axis.html">vispy.scene.widgets.axis module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.axis.html#vispy.scene.widgets.axis.AxisWidget"><code class="docutils literal notranslate"><span class="pre">AxisWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.axis.html#vispy.scene.widgets.axis.AxisWidget.link_view"><code class="docutils literal notranslate"><span class="pre">AxisWidget.link_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.axis.html#vispy.scene.widgets.axis.AxisWidget.on_resize"><code class="docutils literal notranslate"><span class="pre">AxisWidget.on_resize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.colorbar.html">vispy.scene.widgets.colorbar module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.border_color"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.border_color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.border_width"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.border_width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.clim"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.clim</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.cmap"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.cmap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.label"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.label</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.on_resize"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.on_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.orientation"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.orientation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.colorbar.html#vispy.scene.widgets.colorbar.ColorBarWidget.ticks"><code class="docutils literal notranslate"><span class="pre">ColorBarWidget.ticks</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.console.html">vispy.scene.widgets.console module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console"><code class="docutils literal notranslate"><span class="pre">Console</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console.clear"><code class="docutils literal notranslate"><span class="pre">Console.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console.font_size"><code class="docutils literal notranslate"><span class="pre">Console.font_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console.on_resize"><code class="docutils literal notranslate"><span class="pre">Console.on_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console.text_color"><code class="docutils literal notranslate"><span class="pre">Console.text_color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.Console.write"><code class="docutils literal notranslate"><span class="pre">Console.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual.clear"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual.font_size"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual.font_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual.size"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual.size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual.text_color"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual.text_color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.console.html#vispy.scene.widgets.console.ConsoleVisual.write"><code class="docutils literal notranslate"><span class="pre">ConsoleVisual.write()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.grid.html">vispy.scene.widgets.grid module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.add_grid"><code class="docutils literal notranslate"><span class="pre">Grid.add_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.add_view"><code class="docutils literal notranslate"><span class="pre">Grid.add_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.add_widget"><code class="docutils literal notranslate"><span class="pre">Grid.add_widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.grid_size"><code class="docutils literal notranslate"><span class="pre">Grid.grid_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.layout_array"><code class="docutils literal notranslate"><span class="pre">Grid.layout_array</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.next_row"><code class="docutils literal notranslate"><span class="pre">Grid.next_row()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.remove_widget"><code class="docutils literal notranslate"><span class="pre">Grid.remove_widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.resize_widget"><code class="docutils literal notranslate"><span class="pre">Grid.resize_widget()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.label.html">vispy.scene.widgets.label module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.label.html#vispy.scene.widgets.label.Label"><code class="docutils literal notranslate"><span class="pre">Label</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.label.html#vispy.scene.widgets.label.Label.on_resize"><code class="docutils literal notranslate"><span class="pre">Label.on_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.label.html#vispy.scene.widgets.label.Label.text"><code class="docutils literal notranslate"><span class="pre">Label.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.viewbox.html">vispy.scene.widgets.viewbox module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox"><code class="docutils literal notranslate"><span class="pre">ViewBox</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.add"><code class="docutils literal notranslate"><span class="pre">ViewBox.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.camera"><code class="docutils literal notranslate"><span class="pre">ViewBox.camera</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.get_scene_bounds"><code class="docutils literal notranslate"><span class="pre">ViewBox.get_scene_bounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.is_in_scene"><code class="docutils literal notranslate"><span class="pre">ViewBox.is_in_scene()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.on_resize"><code class="docutils literal notranslate"><span class="pre">ViewBox.on_resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.viewbox.html#vispy.scene.widgets.viewbox.ViewBox.scene"><code class="docutils literal notranslate"><span class="pre">ViewBox.scene</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.scene.widgets.widget.html">vispy.scene.widgets.widget module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget"><code class="docutils literal notranslate"><span class="pre">Widget</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.add_grid"><code class="docutils literal notranslate"><span class="pre">Widget.add_grid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.add_view"><code class="docutils literal notranslate"><span class="pre">Widget.add_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.add_widget"><code class="docutils literal notranslate"><span class="pre">Widget.add_widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.bgcolor"><code class="docutils literal notranslate"><span class="pre">Widget.bgcolor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.border_color"><code class="docutils literal notranslate"><span class="pre">Widget.border_color</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.height"><code class="docutils literal notranslate"><span class="pre">Widget.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.height_max"><code class="docutils literal notranslate"><span class="pre">Widget.height_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.height_min"><code class="docutils literal notranslate"><span class="pre">Widget.height_min</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.inner_rect"><code class="docutils literal notranslate"><span class="pre">Widget.inner_rect</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.margin"><code class="docutils literal notranslate"><span class="pre">Widget.margin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.padding"><code class="docutils literal notranslate"><span class="pre">Widget.padding</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.picking"><code class="docutils literal notranslate"><span class="pre">Widget.picking</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.pos"><code class="docutils literal notranslate"><span class="pre">Widget.pos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.rect"><code class="docutils literal notranslate"><span class="pre">Widget.rect</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.remove_widget"><code class="docutils literal notranslate"><span class="pre">Widget.remove_widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.size"><code class="docutils literal notranslate"><span class="pre">Widget.size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.stretch"><code class="docutils literal notranslate"><span class="pre">Widget.stretch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.width"><code class="docutils literal notranslate"><span class="pre">Widget.width</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.width_max"><code class="docutils literal notranslate"><span class="pre">Widget.width_max</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget.width_min"><code class="docutils literal notranslate"><span class="pre">Widget.width_min</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2736,7 +3376,7 @@ occupies.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

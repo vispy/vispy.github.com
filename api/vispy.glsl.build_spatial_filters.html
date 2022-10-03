@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,408 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Bessel">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Bessel
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Bessel.besj">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Bessel.besj()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Bessel.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Bessel.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Blackman">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Blackman
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Blackman.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Blackman.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.CatRom">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CatRom
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.CatRom.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       CatRom.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Cubic">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Cubic
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Cubic.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Cubic.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Gaussian">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Gaussian
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Gaussian.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Gaussian.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hamming">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hamming
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hamming.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Hamming.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hanning">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hanning
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hanning.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Hanning.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hermite">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Hermite
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Hermite.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Hermite.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Kaiser">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Kaiser
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Kaiser.bessel_i0">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Kaiser.bessel_i0()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Kaiser.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Kaiser.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Lanczos">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Lanczos
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Lanczos.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Lanczos.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Linear">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Linear
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Linear.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Linear.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Mitchell">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Mitchell
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Mitchell.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Mitchell.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Quadric">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Quadric
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Quadric.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Quadric.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Sinc">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Sinc
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Sinc.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Sinc.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.SpatialFilter">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SpatialFilter
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.SpatialFilter.call_code">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpatialFilter.call_code()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.SpatialFilter.kernel">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpatialFilter.kernel()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.SpatialFilter.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SpatialFilter.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Spline16">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Spline16
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Spline16.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spline16.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Spline36">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Spline36
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.Spline36.weight">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Spline36.weight()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.generate_filter_code">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     generate_filter_code()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.glsl.build_spatial_filters.main">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     main()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2503,7 +2903,7 @@ w(x) = |  1 ≤ x &lt; 2: ((-6/11*(x-1) - 270/209)*(x-1) -156/209)*(x-1)
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

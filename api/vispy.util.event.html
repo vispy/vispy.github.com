@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,292 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     EmitterGroup
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.add">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.add()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.block_all">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.block_all()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.connect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.connect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.disconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.disconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.emitters">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.emitters
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.ignore_callback_errors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.ignore_callback_errors
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EmitterGroup.unblock_all">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EmitterGroup.unblock_all()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.event.Event">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Event
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.blocked">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.blocked
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.handled">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.handled
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.native">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.native
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.source">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.source
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.sources">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.sources
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.Event.type">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Event.type
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.event.EventBlocker">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     EventBlocker
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     EventEmitter
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.block">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.block()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.blocked">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.blocked()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.blocker">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.blocker()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.callback_refs">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.callback_refs
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.callbacks">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.callbacks
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.connect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.connect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.disconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.disconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.ignore_callback_errors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.ignore_callback_errors
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.print_callback_errors">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.print_callback_errors
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.source">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.source
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.EventEmitter.unblock">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EventEmitter.unblock()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.event.WarningEmitter">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     WarningEmitter
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.event.WarningEmitter.connect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       WarningEmitter.connect()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2403,7 +2687,7 @@ events from the emitter.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

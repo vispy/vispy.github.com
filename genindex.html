@@ -38,6 +38,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -1032,6 +1033,8 @@
       </ul></li>
       <li><a href="api/vispy.app.canvas.html#vispy.app.canvas.Canvas.context">context (vispy.app.canvas.Canvas property)</a>
 </li>
+      <li><a href="api/vispy.gloo.texture.html#vispy.gloo.texture.convert_dtype_and_clip">convert_dtype_and_clip() (in module vispy.gloo.texture)</a>
+</li>
       <li><a href="api/vispy.gloo.glir.html#vispy.gloo.glir.convert_shader">convert_shader() (in module vispy.gloo.glir)</a>
 </li>
       <li><a href="api/vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.convex_hull">convex_hull (vispy.geometry.polygon.PolygonData property)</a>
@@ -1309,6 +1312,8 @@
 </li>
       </ul></li>
       <li><a href="api/vispy.visuals.axis.html#vispy.visuals.axis.AxisVisual.domain">domain (vispy.visuals.axis.AxisVisual attribute)</a>
+</li>
+      <li><a href="api/vispy.gloo.texture.html#vispy.gloo.texture.downcast_to_32bit_if_needed">downcast_to_32bit_if_needed() (in module vispy.gloo.texture)</a>
 </li>
       <li><a href="api/vispy.testing.image_tester.html#vispy.testing.image_tester.downsample">downsample() (in module vispy.testing.image_tester)</a>
 </li>
@@ -1749,6 +1754,8 @@
       <li><a href="api/vispy.gloo.context.html#vispy.gloo.context.get_default_config">get_default_config() (in module vispy.gloo.context)</a>
 </li>
       <li><a href="api/vispy.util.dpi.html#vispy.util.dpi.get_dpi">get_dpi() (in module vispy.util.dpi)</a>
+</li>
+      <li><a href="api/vispy.gloo.texture.html#vispy.gloo.texture.get_dtype_limits">get_dtype_limits() (in module vispy.gloo.texture)</a>
 </li>
       <li><a href="api/vispy.geometry.html#vispy.geometry.MeshData.get_edge_colors">get_edge_colors() (vispy.geometry.MeshData method)</a>
 
@@ -3311,6 +3318,8 @@
         <li><a href="api/vispy.scene.cameras.perspective.html#module-vispy.scene.cameras.perspective">vispy.scene.cameras.perspective</a>
 </li>
         <li><a href="api/vispy.scene.cameras.tests.html#module-vispy.scene.cameras.tests">vispy.scene.cameras.tests</a>
+</li>
+        <li><a href="api/vispy.scene.cameras.tests.test_cameras.html#module-vispy.scene.cameras.tests.test_cameras">vispy.scene.cameras.tests.test_cameras</a>
 </li>
         <li><a href="api/vispy.scene.cameras.tests.test_link.html#module-vispy.scene.cameras.tests.test_link">vispy.scene.cameras.tests.test_link</a>
 </li>
@@ -5013,8 +5022,6 @@
 </li>
       <li><a href="api/vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.shininess">shininess (vispy.visuals.filters.mesh.ShadingFilter property)</a>
 </li>
-      <li><a href="api/vispy.gloo.texture.html#vispy.gloo.texture.should_cast_to_f32">should_cast_to_f32() (in module vispy.gloo.texture)</a>
-</li>
       <li><a href="api/vispy.app.canvas.html#vispy.app.canvas.Canvas.show">show() (vispy.app.canvas.Canvas method)</a>
 </li>
       <li><a href="api/vispy.visuals.regular_polygon.html#vispy.visuals.regular_polygon.RegularPolygonVisual.sides">sides (vispy.visuals.regular_polygon.RegularPolygonVisual property)</a>
@@ -5557,6 +5564,8 @@
 </li>
       <li><a href="api/vispy.visuals.tests.test_image.html#vispy.visuals.tests.test_image.test_image_nan_single_band">test_image_nan_single_band() (in module vispy.visuals.tests.test_image)</a>
 </li>
+      <li><a href="api/vispy.visuals.tests.test_image.html#vispy.visuals.tests.test_image.test_image_set_data_different_dtype">test_image_set_data_different_dtype() (in module vispy.visuals.tests.test_image)</a>
+</li>
       <li><a href="api/vispy.visuals.tests.test_image.html#vispy.visuals.tests.test_image.test_image_vertex_updates">test_image_vertex_updates() (in module vispy.visuals.tests.test_image)</a>
 </li>
       <li><a href="api/vispy.util.tests.test_import.html#vispy.util.tests.test_import.test_import_nothing">test_import_nothing() (in module vispy.util.tests.test_import)</a>
@@ -5697,12 +5706,12 @@
 </li>
       <li><a href="api/vispy.visuals.graphs.tests.test_networkx_layout.html#vispy.visuals.graphs.tests.test_networkx_layout.test_networkx_layout_with_graph">test_networkx_layout_with_graph() (in module vispy.visuals.graphs.tests.test_networkx_layout)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/vispy.gloo.tests.test_buffer.html#vispy.gloo.tests.test_buffer.DataBufferTest.test_no_resize_ellipsis">test_no_resize_ellipsis() (vispy.gloo.tests.test_buffer.DataBufferTest method)</a>
 </li>
       <li><a href="api/vispy.gloo.tests.test_buffer.html#vispy.gloo.tests.test_buffer.DataBufferTest.test_no_storage_copy">test_no_storage_copy() (vispy.gloo.tests.test_buffer.DataBufferTest method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/vispy.gloo.tests.test_buffer.html#vispy.gloo.tests.test_buffer.DataBufferTest.test_non_contiguous_storage">test_non_contiguous_storage() (vispy.gloo.tests.test_buffer.DataBufferTest method)</a>
 </li>
       <li><a href="api/vispy.color.tests.test_color.html#vispy.color.tests.test_color.test_normalize">test_normalize() (in module vispy.color.tests.test_color)</a>
@@ -5810,6 +5819,8 @@
       <li><a href="api/vispy.visuals.tests.test_infinite_line.html#vispy.visuals.tests.test_infinite_line.test_set_data">test_set_data() (in module vispy.visuals.tests.test_infinite_line)</a>
 </li>
       <li><a href="api/vispy.gloo.tests.test_buffer.html#vispy.gloo.tests.test_buffer.DataBufferTest.test_set_data_base">test_set_data_base() (vispy.gloo.tests.test_buffer.DataBufferTest method)</a>
+</li>
+      <li><a href="api/vispy.visuals.tests.test_volume.html#vispy.visuals.tests.test_volume.test_set_data_changes_shape">test_set_data_changes_shape() (in module vispy.visuals.tests.test_volume)</a>
 </li>
       <li><a href="api/vispy.visuals.tests.test_volume.html#vispy.visuals.tests.test_volume.test_set_data_does_not_change_input">test_set_data_does_not_change_input() (in module vispy.visuals.tests.test_volume)</a>
 </li>
@@ -5923,6 +5934,8 @@
 </li>
       <li><a href="api/vispy.gloo.tests.test_glir.html#vispy.gloo.tests.test_glir.test_texture_cube_alignment">test_texture_cube_alignment() (in module vispy.gloo.tests.test_glir)</a>
 </li>
+      <li><a href="api/vispy.gloo.tests.test_texture.html#vispy.gloo.tests.test_texture.test_texture_set_data_different_dtype">test_texture_set_data_different_dtype() (in module vispy.gloo.tests.test_texture)</a>
+</li>
       <li><a href="api/vispy.visuals.tests.test_axis.html#vispy.visuals.tests.test_axis.test_tick_position">test_tick_position() (in module vispy.visuals.tests.test_axis)</a>
 </li>
       <li><a href="api/vispy.scene.tests.test_node.html#vispy.scene.tests.test_node.test_topology">test_topology() (in module vispy.scene.tests.test_node)</a>
@@ -5936,6 +5949,10 @@
 </li>
       </ul></li>
       <li><a href="api/vispy.scene.cameras.tests.test_link.html#vispy.scene.cameras.tests.test_link.test_turntable_camera_link">test_turntable_camera_link() (in module vispy.scene.cameras.tests.test_link)</a>
+</li>
+      <li><a href="api/vispy.scene.cameras.tests.test_cameras.html#vispy.scene.cameras.tests.test_cameras.test_turntable_camera_transform">test_turntable_camera_transform() (in module vispy.scene.cameras.tests.test_cameras)</a>
+</li>
+      <li><a href="api/vispy.gloo.tests.test_program.html#vispy.gloo.tests.test_program.ProgramTest.test_type_aliases">test_type_aliases() (vispy.gloo.tests.test_program.ProgramTest method)</a>
 </li>
       <li><a href="api/vispy.util.tests.test_event_emitter.html#vispy.util.tests.test_event_emitter.TestEmitters.test_typed_event">test_typed_event() (vispy.util.tests.test_event_emitter.TestEmitters method)</a>
 </li>
@@ -5972,6 +5989,8 @@
       <li><a href="api/vispy.visuals.tests.test_volume.html#vispy.visuals.tests.test_volume.test_volume_depth">test_volume_depth() (in module vispy.visuals.tests.test_volume)</a>
 </li>
       <li><a href="api/vispy.visuals.tests.test_volume.html#vispy.visuals.tests.test_volume.test_volume_draw">test_volume_draw() (in module vispy.visuals.tests.test_volume)</a>
+</li>
+      <li><a href="api/vispy.visuals.tests.test_volume.html#vispy.visuals.tests.test_volume.test_volume_set_data_different_dtype">test_volume_set_data_different_dtype() (in module vispy.visuals.tests.test_volume)</a>
 </li>
       <li><a href="api/vispy.io.tests.test_io.html#vispy.io.tests.test_io.test_wavefront">test_wavefront() (in module vispy.io.tests.test_io)</a>
 </li>
@@ -7180,6 +7199,13 @@
 
       <ul>
         <li><a href="api/vispy.scene.cameras.tests.html#module-vispy.scene.cameras.tests">module</a>
+</li>
+      </ul></li>
+      <li>
+    vispy.scene.cameras.tests.test_cameras
+
+      <ul>
+        <li><a href="api/vispy.scene.cameras.tests.test_cameras.html#module-vispy.scene.cameras.tests.test_cameras">module</a>
 </li>
       </ul></li>
       <li>
@@ -8952,7 +8978,7 @@
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

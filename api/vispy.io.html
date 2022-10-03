@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,98 @@
   <a class="reference internal nav-link" href="#module-vispy.io">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.imread">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       imread()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.imsave">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       imsave()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.load_crate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_crate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.load_data_file">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_data_file()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.load_iris">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_iris()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.load_spatial_filters">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_spatial_filters()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.read_mesh">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       read_mesh()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.read_png">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       read_png()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.write_mesh">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       write_mesh()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.io.write_png">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       write_png()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,8 +2051,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.io.tests.html">vispy.io.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.io.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.tests.test_image.html">vispy.io.tests.test_image module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.io.tests.test_io.html">vispy.io.tests.test_io module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.tests.test_image.html">vispy.io.tests.test_image module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_image.html#vispy.io.tests.test_image.test_make_png"><code class="docutils literal notranslate"><span class="pre">test_make_png()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_image.html#vispy.io.tests.test_image.test_read_write_image"><code class="docutils literal notranslate"><span class="pre">test_read_write_image()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.tests.test_io.html">vispy.io.tests.test_io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_io.html#vispy.io.tests.test_io.test_huge_cross"><code class="docutils literal notranslate"><span class="pre">test_huge_cross()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_io.html#vispy.io.tests.test_io.test_meshio"><code class="docutils literal notranslate"><span class="pre">test_meshio()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_io.html#vispy.io.tests.test_io.test_wavefront"><code class="docutils literal notranslate"><span class="pre">test_wavefront()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_io.html#vispy.io.tests.test_io.test_wavefront_non_triangular"><code class="docutils literal notranslate"><span class="pre">test_wavefront_non_triangular()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.io.tests.html#module-vispy.io.tests">Module contents</a></li>
@@ -1972,11 +2075,52 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.io.datasets.html">vispy.io.datasets module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.io.image.html">vispy.io.image module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.io.mesh.html">vispy.io.mesh module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.io.stl.html">vispy.io.stl module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.io.wavefront.html">vispy.io.wavefront module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.io.datasets.html">vispy.io.datasets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_crate"><code class="docutils literal notranslate"><span class="pre">load_crate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_iris"><code class="docutils literal notranslate"><span class="pre">load_iris()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.load_spatial_filters"><code class="docutils literal notranslate"><span class="pre">load_spatial_filters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.pack_ieee"><code class="docutils literal notranslate"><span class="pre">pack_ieee()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.datasets.html#vispy.io.datasets.pack_unit"><code class="docutils literal notranslate"><span class="pre">pack_unit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.io.image.html">vispy.io.image module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.imread"><code class="docutils literal notranslate"><span class="pre">imread()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.imsave"><code class="docutils literal notranslate"><span class="pre">imsave()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.read_png"><code class="docutils literal notranslate"><span class="pre">read_png()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.image.html#vispy.io.image.write_png"><code class="docutils literal notranslate"><span class="pre">write_png()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.io.mesh.html">vispy.io.mesh module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.mesh.html#vispy.io.mesh.read_mesh"><code class="docutils literal notranslate"><span class="pre">read_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.mesh.html#vispy.io.mesh.write_mesh"><code class="docutils literal notranslate"><span class="pre">write_mesh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.io.stl.html">vispy.io.stl module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.HeaderError"><code class="docutils literal notranslate"><span class="pre">HeaderError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl"><code class="docutils literal notranslate"><span class="pre">load_stl()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl_ascii"><code class="docutils literal notranslate"><span class="pre">load_stl_ascii()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.stl.html#vispy.io.stl.load_stl_binary"><code class="docutils literal notranslate"><span class="pre">load_stl_binary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.io.wavefront.html">vispy.io.wavefront module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader"><code class="docutils literal notranslate"><span class="pre">WavefrontReader</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader.finish"><code class="docutils literal notranslate"><span class="pre">WavefrontReader.finish()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader.read"><code class="docutils literal notranslate"><span class="pre">WavefrontReader.read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader.readFace"><code class="docutils literal notranslate"><span class="pre">WavefrontReader.readFace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader.readLine"><code class="docutils literal notranslate"><span class="pre">WavefrontReader.readLine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontReader.readTuple"><code class="docutils literal notranslate"><span class="pre">WavefrontReader.readTuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter.write"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter.write()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter.writeFace"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter.writeFace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter.writeLine"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter.writeLine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter.writeMesh"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter.writeMesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html#vispy.io.wavefront.WavefrontWriter.writeTuple"><code class="docutils literal notranslate"><span class="pre">WavefrontWriter.writeTuple()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -2278,7 +2422,7 @@ if you need to write a mesh with non triangular faces.</p>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

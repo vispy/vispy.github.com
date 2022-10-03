@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1903,9 +1904,142 @@
     
     <div class="toc-item">
       
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.BasicEvent">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BasicEvent
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     TestGroups
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.assert_result">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.assert_result()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.error_event">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.error_event()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.record_event">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.record_event()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_add_custom_emitter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_add_custom_emitter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_add_emitter">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_add_emitter()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_autoconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_autoconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_block">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_block()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_connect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_connect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_construction">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_construction()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_disconnect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_disconnect()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TestGroups.test_group_ignore">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       TestGroups.test_group_ignore()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vispy.util.tests.test_emitter_group.TypedEvent">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     TypedEvent
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
 </nav>
     </div>
     
@@ -2058,7 +2192,7 @@
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   

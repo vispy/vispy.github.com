@@ -39,6 +39,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1923,6 +1924,565 @@
   <a class="reference internal nav-link" href="#module-vispy.geometry">
    Module contents
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.MeshData">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MeshData
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_bounds">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_bounds()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_edge_colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_edge_colors()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_edges">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_edges()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_face_colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_face_colors()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_face_normals">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_face_normals()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_faces">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_faces()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_vertex_colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_vertex_colors()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_vertex_faces">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_vertex_faces()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_vertex_normals">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_vertex_normals()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_vertex_values">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_vertex_values()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.get_vertices">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.get_vertices()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.has_edge_indexed_data">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.has_edge_indexed_data()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.has_face_color">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.has_face_color()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.has_face_indexed_data">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.has_face_indexed_data()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.has_vertex_color">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.has_vertex_color()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.has_vertex_value">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.has_vertex_value()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.is_empty">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.is_empty()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.n_faces">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.n_faces
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.n_vertices">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.n_vertices
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.reset_normals">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.reset_normals()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.restore">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.restore()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.save">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.save()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.set_face_colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.set_face_colors()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.set_faces">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.set_faces()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.set_vertex_colors">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.set_vertex_colors()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.set_vertex_values">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.set_vertex_values()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.MeshData.set_vertices">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MeshData.set_vertices()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.PolygonData">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       PolygonData
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.add_vertex">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.add_vertex()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.convex_hull">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.convex_hull
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.edges">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.edges
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.faces">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.faces
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.triangulate">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.triangulate()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.PolygonData.vertices">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PolygonData.vertices
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.Rect">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Rect
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.bottom">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.bottom
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.center">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.center
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.contains">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.contains()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.flipped">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.flipped()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.height">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.height
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.left">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.left
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.normalized">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.normalized()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.padded">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.padded()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.pos">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.pos
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.right">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.right
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.size">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.size
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.top">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.top
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Rect.width">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Rect.width
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.Triangulation">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Triangulation
+      </span>
+     </code>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vispy.geometry.Triangulation.triangulate">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Triangulation.triangulate()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_arrow">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_arrow()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_box">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_box()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_cone">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_cone()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_cube">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_cube()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_cylinder">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_cylinder()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_grid_mesh">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_grid_mesh()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_plane">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_plane()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.create_sphere">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       create_sphere()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.resize">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       resize()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vispy.geometry.triangulate">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       triangulate()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1958,10 +2518,35 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.geometry.tests.html">vispy.geometry.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.geometry.tests.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_calculations.html">vispy.geometry.tests.test_calculations module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_generation.html">vispy.geometry.tests.test_generation module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_meshdata.html">vispy.geometry.tests.test_meshdata module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html">vispy.geometry.tests.test_triangulation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_calculations.html">vispy.geometry.tests.test_calculations module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_calculations.html#vispy.geometry.tests.test_calculations.test_resize"><code class="docutils literal notranslate"><span class="pre">test_resize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_generation.html">vispy.geometry.tests.test_generation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html#vispy.geometry.tests.test_generation.test_box"><code class="docutils literal notranslate"><span class="pre">test_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html#vispy.geometry.tests.test_generation.test_cube"><code class="docutils literal notranslate"><span class="pre">test_cube()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html#vispy.geometry.tests.test_generation.test_cylinder"><code class="docutils literal notranslate"><span class="pre">test_cylinder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html#vispy.geometry.tests.test_generation.test_plane"><code class="docutils literal notranslate"><span class="pre">test_plane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html#vispy.geometry.tests.test_generation.test_sphere"><code class="docutils literal notranslate"><span class="pre">test_sphere()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_meshdata.html">vispy.geometry.tests.test_meshdata module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_meshdata.html#vispy.geometry.tests.test_meshdata.test_meshdata"><code class="docutils literal notranslate"><span class="pre">test_meshdata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html">vispy.geometry.tests.test_triangulation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.assert_array_eq"><code class="docutils literal notranslate"><span class="pre">assert_array_eq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_edge_event"><code class="docutils literal notranslate"><span class="pre">test_edge_event()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_edge_intersections"><code class="docutils literal notranslate"><span class="pre">test_edge_intersections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_initialize"><code class="docutils literal notranslate"><span class="pre">test_initialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_intersect_edge_arrays"><code class="docutils literal notranslate"><span class="pre">test_intersect_edge_arrays()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_merge_duplicate_points"><code class="docutils literal notranslate"><span class="pre">test_merge_duplicate_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_orthogonal"><code class="docutils literal notranslate"><span class="pre">test_orthogonal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_projection"><code class="docutils literal notranslate"><span class="pre">test_projection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_random"><code class="docutils literal notranslate"><span class="pre">test_random()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html#vispy.geometry.tests.test_triangulation.test_utility_methods"><code class="docutils literal notranslate"><span class="pre">test_utility_methods()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.geometry.tests.html#module-vispy.geometry.tests">Module contents</a></li>
@@ -1974,18 +2559,130 @@
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isocurve.html">vispy.geometry.isocurve module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isosurface.html">vispy.geometry.isosurface module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.meshdata.html">vispy.geometry.meshdata module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.normals.html">vispy.geometry.normals module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.parametric.html">vispy.geometry.parametric module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.polygon.html">vispy.geometry.polygon module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.rect.html">vispy.geometry.rect module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.calculations.html#vispy.geometry.calculations.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.calc_sq_distance"><code class="docutils literal notranslate"><span class="pre">calc_sq_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.curve3_bezier"><code class="docutils literal notranslate"><span class="pre">curve3_bezier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.curves.html#vispy.geometry.curves.curve4_bezier"><code class="docutils literal notranslate"><span class="pre">curve4_bezier()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_arrow"><code class="docutils literal notranslate"><span class="pre">create_arrow()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_box"><code class="docutils literal notranslate"><span class="pre">create_box()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cone"><code class="docutils literal notranslate"><span class="pre">create_cone()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cube"><code class="docutils literal notranslate"><span class="pre">create_cube()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_cylinder"><code class="docutils literal notranslate"><span class="pre">create_cylinder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_grid_mesh"><code class="docutils literal notranslate"><span class="pre">create_grid_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_plane"><code class="docutils literal notranslate"><span class="pre">create_plane()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.generation.html#vispy.geometry.generation.create_sphere"><code class="docutils literal notranslate"><span class="pre">create_sphere()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isocurve.html">vispy.geometry.isocurve module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.isocurve.html#vispy.geometry.isocurve.isocurve"><code class="docutils literal notranslate"><span class="pre">isocurve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.isosurface.html">vispy.geometry.isosurface module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.isosurface.html#vispy.geometry.isosurface.isosurface"><code class="docutils literal notranslate"><span class="pre">isosurface()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.meshdata.html">vispy.geometry.meshdata module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData"><code class="docutils literal notranslate"><span class="pre">MeshData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_bounds"><code class="docutils literal notranslate"><span class="pre">MeshData.get_bounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_edge_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_edge_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_edges"><code class="docutils literal notranslate"><span class="pre">MeshData.get_edges()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_face_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_face_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_face_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.get_face_normals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.get_faces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_vertex_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_vertex_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_faces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_vertex_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_normals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_vertex_values"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertex_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.get_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.get_vertices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.has_edge_indexed_data"><code class="docutils literal notranslate"><span class="pre">MeshData.has_edge_indexed_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.has_face_color"><code class="docutils literal notranslate"><span class="pre">MeshData.has_face_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.has_face_indexed_data"><code class="docutils literal notranslate"><span class="pre">MeshData.has_face_indexed_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.has_vertex_color"><code class="docutils literal notranslate"><span class="pre">MeshData.has_vertex_color()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.has_vertex_value"><code class="docutils literal notranslate"><span class="pre">MeshData.has_vertex_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.is_empty"><code class="docutils literal notranslate"><span class="pre">MeshData.is_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.n_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.n_faces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.n_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.n_vertices</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.reset_normals"><code class="docutils literal notranslate"><span class="pre">MeshData.reset_normals()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.restore"><code class="docutils literal notranslate"><span class="pre">MeshData.restore()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.save"><code class="docutils literal notranslate"><span class="pre">MeshData.save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.set_face_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.set_face_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.set_faces"><code class="docutils literal notranslate"><span class="pre">MeshData.set_faces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.set_vertex_colors"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertex_colors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.set_vertex_values"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertex_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.meshdata.html#vispy.geometry.meshdata.MeshData.set_vertices"><code class="docutils literal notranslate"><span class="pre">MeshData.set_vertices()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.normals.html">vispy.geometry.normals module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.normals.html#vispy.geometry.normals.compact"><code class="docutils literal notranslate"><span class="pre">compact()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.normals.html#vispy.geometry.normals.normals"><code class="docutils literal notranslate"><span class="pre">normals()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.parametric.html">vispy.geometry.parametric module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.parametric.html#vispy.geometry.parametric.surface"><code class="docutils literal notranslate"><span class="pre">surface()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.polygon.html">vispy.geometry.polygon module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData"><code class="docutils literal notranslate"><span class="pre">PolygonData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.add_vertex"><code class="docutils literal notranslate"><span class="pre">PolygonData.add_vertex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.convex_hull"><code class="docutils literal notranslate"><span class="pre">PolygonData.convex_hull</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.edges"><code class="docutils literal notranslate"><span class="pre">PolygonData.edges</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.faces"><code class="docutils literal notranslate"><span class="pre">PolygonData.faces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.triangulate"><code class="docutils literal notranslate"><span class="pre">PolygonData.triangulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.polygon.html#vispy.geometry.polygon.PolygonData.vertices"><code class="docutils literal notranslate"><span class="pre">PolygonData.vertices</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.rect.html">vispy.geometry.rect module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect"><code class="docutils literal notranslate"><span class="pre">Rect</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.bottom"><code class="docutils literal notranslate"><span class="pre">Rect.bottom</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.center"><code class="docutils literal notranslate"><span class="pre">Rect.center</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.contains"><code class="docutils literal notranslate"><span class="pre">Rect.contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.flipped"><code class="docutils literal notranslate"><span class="pre">Rect.flipped()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.height"><code class="docutils literal notranslate"><span class="pre">Rect.height</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.left"><code class="docutils literal notranslate"><span class="pre">Rect.left</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.normalized"><code class="docutils literal notranslate"><span class="pre">Rect.normalized()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.padded"><code class="docutils literal notranslate"><span class="pre">Rect.padded()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.pos"><code class="docutils literal notranslate"><span class="pre">Rect.pos</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.right"><code class="docutils literal notranslate"><span class="pre">Rect.right</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.size"><code class="docutils literal notranslate"><span class="pre">Rect.size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.top"><code class="docutils literal notranslate"><span class="pre">Rect.top</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.rect.html#vispy.geometry.rect.Rect.width"><code class="docutils literal notranslate"><span class="pre">Rect.width</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot"><code class="docutils literal notranslate"><span class="pre">TorusKnot</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.components"><code class="docutils literal notranslate"><span class="pre">TorusKnot.components</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.first_component"><code class="docutils literal notranslate"><span class="pre">TorusKnot.first_component</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.major_radius"><code class="docutils literal notranslate"><span class="pre">TorusKnot.major_radius</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.minor_radius"><code class="docutils literal notranslate"><span class="pre">TorusKnot.minor_radius</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.num_components"><code class="docutils literal notranslate"><span class="pre">TorusKnot.num_components</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.num_points"><code class="docutils literal notranslate"><span class="pre">TorusKnot.num_points</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.p"><code class="docutils literal notranslate"><span class="pre">TorusKnot.p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html#vispy.geometry.torusknot.TorusKnot.q"><code class="docutils literal notranslate"><span class="pre">TorusKnot.q</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.triangulation.html#vispy.geometry.triangulation.Triangulation"><code class="docutils literal notranslate"><span class="pre">Triangulation</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.geometry.triangulation.html#vispy.geometry.triangulation.Triangulation.triangulate"><code class="docutils literal notranslate"><span class="pre">Triangulation.triangulate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.geometry.triangulation.html#vispy.geometry.triangulation.triangulate"><code class="docutils literal notranslate"><span class="pre">triangulate()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -3018,7 +3715,7 @@ Science, vol 1148. Springer, Berlin, Heidelberg.
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.3.<br>
 </p>
   </div>
   
