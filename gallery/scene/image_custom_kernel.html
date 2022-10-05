@@ -625,6 +625,7 @@ to download the full example code</p>
 <span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">load_data_file</span><span class="p">,</span> <span class="n">read_png</span>
 
 <span class="kn">from</span> <span class="nn">scipy.signal.windows</span> <span class="kn">import</span> <span class="n">gaussian</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">)</span>
@@ -634,25 +635,31 @@ to download the full example code</p>
 <span class="c1"># Set up a viewbox to display the image with interactive pan/zoom</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
 
-<span class="c1"># Create the image</span>
-<span class="n">img_data</span> <span class="o">=</span> <span class="n">read_png</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;mona_lisa/mona_lisa_sm.png&#39;</span><span class="p">))</span>
+<span class="c1"># Load the image with a slight blur (so we can later show the sharpening filter)</span>
+<span class="n">img_data</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span>
+    <span class="n">read_png</span><span class="p">(</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;mona_lisa/mona_lisa_sm.png&#39;</span><span class="p">)),</span>
+    <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="c1"># build custom kernels</span>
+<span class="c1"># build gaussian kernel</span>
 <span class="n">small_gaussian_window</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">small_gaussian_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">small_gaussian_window</span><span class="p">,</span> <span class="n">small_gaussian_window</span><span class="p">)</span>
+<span class="c1"># normalize</span>
+<span class="n">small_gaussian_kernel</span> <span class="o">=</span> <span class="n">small_gaussian_kernel</span> <span class="o">/</span> <span class="n">small_gaussian_kernel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
+<span class="c1"># do the same but larget and with bigger sigma</span>
 <span class="n">big_gaussian_window</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">big_gaussian_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">big_gaussian_window</span><span class="p">,</span> <span class="n">big_gaussian_window</span><span class="p">)</span>
+<span class="n">big_gaussian_kernel</span> <span class="o">=</span> <span class="n">big_gaussian_kernel</span> <span class="o">/</span> <span class="n">big_gaussian_kernel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-<span class="n">h_prewitt_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="n">v_prewitt_kernel</span> <span class="o">=</span> <span class="n">h_prewitt_kernel</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># sharpening kernel</span>
+<span class="n">sharpen_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 
 <span class="n">kernels</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;null&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
     <span class="s1">&#39;small gaussian&#39;</span><span class="p">:</span> <span class="n">small_gaussian_kernel</span><span class="p">,</span>
     <span class="s1">&#39;big gaussian&#39;</span><span class="p">:</span> <span class="n">big_gaussian_kernel</span><span class="p">,</span>
-    <span class="s1">&#39;horizontal prewitt&#39;</span><span class="p">:</span> <span class="n">h_prewitt_kernel</span><span class="p">,</span>
-    <span class="s1">&#39;vertical prewitt&#39;</span><span class="p">:</span> <span class="n">v_prewitt_kernel</span><span class="p">,</span>
+    <span class="s1">&#39;sharpening&#39;</span><span class="p">:</span> <span class="n">sharpen_kernel</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">k_names</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">(</span><span class="n">kernels</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -690,7 +697,7 @@ to download the full example code</p>
     <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.153 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.705 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-image-custom-kernel-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/9bcd4a2588e9e144e18205c03677de59/image_custom_kernel.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">image_custom_kernel.py</span></code></a></p>
