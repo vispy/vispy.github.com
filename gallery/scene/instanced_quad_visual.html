@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Custom Visual for instanced rendering of a colored quad &#8212; VisPy</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/instanced_quad_visual';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Display an Isocurve" href="isocurve.html" />
+    <link rel="prev" title="Draw an InfiniteLine" href="infinite_line.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../installation.html">
+                        Installation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../getting_started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../overview.html">
+                        Documentation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Gallery
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../api/modules.html">
+                        API
+                    </a>
+                </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                <li class="nav-item">
+                    <a class="nav-link" href="../../news.html">
+                        News
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../https%3A//github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md.html">
+                        Code of Conduct
+                    </a>
+                </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/vispy/vispy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/vispyproject" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../installation.html">
+                        Installation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../getting_started/index.html">
+                        Getting Started
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../overview.html">
+                        Documentation
+                    </a>
+                </li>
+                
+
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Gallery
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../api/modules.html">
+                        API
+                    </a>
+                </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                <li class="nav-item">
+                    <a class="nav-link" href="../../news.html">
+                        News
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../https%3A//github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md.html">
+                        Code of Conduct
+                    </a>
+                </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/vispy/vispy" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/vispyproject" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gloo/index.html">Gloo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_images.html">Show an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_images_slice.html">Animate an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_shape.html">Animate a Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_cube.html">Show a rotating colored cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_cube_instanced.html">Draw many colored cubes using instanced rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_quad.html">Show color quad Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_lines.html">Draw a bunch of lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_points.html">Draw 2D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/gpuimage.html">Animate a 2D function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/hello_fbo.html">Use FrameBuffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/lighted_cube.html">Show a rotating cube with lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/multi_texture.html">Use multiple textures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/outlined_cube.html">Show a rotating cube with an outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/post_processing.html">Show post-processing using a FrameBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/rotate_cube.html">Draw 3D rotating Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/rotating_quad.html">Rotating Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/spatial_filters.html">Spatial Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/start.html">Simplest Possible Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/start_shaders.html">Simplest Shader Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/texture_precision.html">Example using texture internalformat for higher precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/textured_cube.html">Show a rotating textured cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/textured_quad.html">Show a textured quad</a></li>
+</ul>
+</li>
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Scene</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="axes_plot.html">Simple Line with Axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_borders.html">Demonstration of borders and background colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clipping_planes.html">Clipping planes with volume and markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar_widget.html">Display a ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colored_line.html">Changing Line Colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_image.html">Complex image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Vispy Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contour.html">Apply Contour Filter on an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flipped_axis.html">Aspect Ratios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Visualize NetworkX Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">Display an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_custom_kernel.html">Custom image sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infinite_line.html">Draw an InfiniteLine</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Custom Visual for instanced rendering of a colored quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve.html">Display an Isocurve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_for_trisurface.html">Isocurve for Triangular Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_for_trisurface_qt.html">Isocurve for Triangular Mesh with Qt Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_updates.html">Update Image and Isocurve Visuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isosurface.html">Isosurface Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">Draw a Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_update.html">Animated Line Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_region.html">Draw an LinearRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnify.html">Zoom in using MagnifyCamera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="marker_spheres.html">Spheres and Sticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_normals.html">Display Mesh Normals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_shading.html">Shading a Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_texture.html">Texture Filter on Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nested_viewbox.html">Nested Viewboxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="one_cam_two_scenes.html">Share Camera Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="one_scene_four_cams.html">Single Scene in Multiple View boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="point_cloud.html">Create a Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polygon.html">Shape Visuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="save_animation.html">Create and Save Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensitivity.html">Zoom Sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape_draw.html">Draw and Edit Shapes with Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphere.html">Draw a Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="surface_plot.html">Draw a SurfacePlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text in a Scene and ViewBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turntable_box.html">Display a Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewbox.html">ViewBox with Clipping Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume.html">Volume Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume_plane.html">Rendering Planes through 3D Data</a></li>
+</ul>
+</li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../plotting/index.html">Plotting</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/colorbar.html">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/plot.html">Plot data with different styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/plot_colorbars.html">Line plot and colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/scatter_histogram.html">Scatter plot and histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/spectrogram.html">Spectrogram and Line Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/volume_plot.html">Multi-view Volume Plot</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-scene-instanced-quad-visual-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="custom-visual-for-instanced-rendering-of-a-colored-quad">
+<span id="sphx-glr-gallery-scene-instanced-quad-visual-py"></span><h1>Custom Visual for instanced rendering of a colored quad<a class="headerlink" href="#custom-visual-for-instanced-rendering-of-a-colored-quad" title="Permalink to this heading">#</a></h1>
+<p># this example is based on the tutorial: T01_basic_visual.py</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">visuals</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">use</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># full gl+ context is required for instanced rendering</span>
+<span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s1">&#39;gl+&#39;</span><span class="p">)</span>
+
+
+<span class="n">vertex_shader</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">// both these attributes will be defined on an instance basis (not per vertex)</span>
+<span class="s2">attribute vec2 shift;</span>
+<span class="s2">attribute vec4 color;</span>
+
+<span class="s2">varying vec4 v_color;</span>
+<span class="s2">void main() {</span>
+<span class="s2">    v_color = color;</span>
+<span class="s2">    gl_Position = $transform(vec4($position + shift, 0, 1));</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">fragment_shader</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">varying vec4 v_color;</span>
+
+<span class="s2">void main() {</span>
+<span class="s2">  gl_FragColor = v_color;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">InstancedRectVisual</span><span class="p">(</span><span class="n">visuals</span><span class="o">.</span><span class="n">Visual</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+        <span class="n">visuals</span><span class="o">.</span><span class="n">Visual</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vertex_shader</span><span class="p">,</span> <span class="n">fragment_shader</span><span class="p">)</span>
+
+        <span class="c1"># vertices for two triangles forming a rectangle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vbo</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">]</span>
+        <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vbo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_mode</span> <span class="o">=</span> <span class="s1">&#39;triangles&#39;</span>
+
+        <span class="c1"># create a vertex buffer with a divisor argument of 1. This means that the</span>
+        <span class="c1"># attribute value is set to the next element of the array every 1 instance.</span>
+        <span class="c1"># The length of the array multiplied by the divisor determines the number</span>
+        <span class="c1"># of instances</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shifts</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">500</span><span class="p">,</span> <span class="n">divisor</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;shift&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shifts</span>
+
+        <span class="c1"># we can provide additional buffers with different divisors, as long as the</span>
+        <span class="c1"># amount of instances (length * divisor) is the same. In this case, we will change</span>
+        <span class="c1"># color every 5 instances</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">divisor</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
+
+
+<span class="c1"># create a visual node class to add it to the canvas</span>
+<span class="n">InstancedRect</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">create_visual_node</span><span class="p">(</span><span class="n">InstancedRectVisual</span><span class="p">)</span>
+
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">rect</span> <span class="o">=</span> <span class="n">InstancedRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.064 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-instanced-quad-visual-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e5b514779ae50d30078306ebb41721c8/instanced_quad_visual.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">instanced_quad_visual.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c93acee6dc8dad1f4fddd7a4f237db04/instanced_quad_visual.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">instanced_quad_visual.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="infinite_line.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Draw an InfiniteLine</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="isocurve.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Display an Isocurve</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/vispy/vispy/edit/main/doc/gallery/scene/instanced_quad_visual.rst">
+        <i class="fa-solid fa-pencil"></i> Edit this page
+    </a>
+</div>
+
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../_sources/gallery/scene/instanced_quad_visual.rst.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2013-2022, VisPy developers.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
