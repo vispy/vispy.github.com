@@ -68,7 +68,7 @@ data for your visualization. If your workflow does not fit well into this
 structure then a threaded option is likely your best bet. See the other data
 source scripts in this section of the gallery for other examples.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-222
+.. GENERATED FROM PYTHON SOURCE LINES 59-226
 
 
 
@@ -244,13 +244,17 @@ source scripts in this section of the gallery for other examples.
         # Change "1.0" to "auto" to run connected function as quickly as possible
         timer = Timer("1.0", connect=data_source.run_data_creation, start=True)
 
+        # stop the timer when the window is closed and destroyed
+        # not always needed, but needed for vispy gallery creation
+        win.destroyed.connect(timer.stop)
+
         win.show()
         app.run()
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.345 seconds)
+   **Total running time of the script:** ( 0 minutes  3.337 seconds)
 
 
 .. _sphx_glr_download_gallery_scene_realtime_data_ex03a_data_sources_timer.py:
