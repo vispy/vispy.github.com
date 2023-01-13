@@ -559,10 +559,10 @@ downloaded from the GPU manufacturer’s website.</p>
 repository to your local machine and install vispy in “development” mode.
 This means that any changes to the cloned repository will be immediately
 available in the python environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>creates <span class="s2">&quot;vispy&quot;</span> folder
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>creates<span class="w"> </span><span class="s2">&quot;vispy&quot;</span><span class="w"> </span>folder
 <span class="go">git clone git://github.com/vispy/vispy.git</span>
 <span class="go">cd vispy</span>
-<span class="gp"># </span>install the vispy package <span class="k">in</span> editable/development mode
+<span class="gp"># </span>install<span class="w"> </span>the<span class="w"> </span>vispy<span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span>editable/development<span class="w"> </span>mode
 <span class="go">pip install -e .</span>
 </pre></div>
 </div>
@@ -661,10 +661,10 @@ sure you have selected the one you are using VisPy with.</p>
 with <code class="docutils literal notranslate"><span class="pre">primusrun</span> <span class="pre">python</span> <span class="pre">your_script.py</span></code>.</p>
 <p>For use with a Jupyter kernel, say in Spyder or the <code class="docutils literal notranslate"><span class="pre">jupyter-qtconsole</span></code>,
 make sure the kernel is started with <code class="docutils literal notranslate"><span class="pre">primusrun</span></code>. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ primusrun spyder3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>primusrun<span class="w"> </span>spyder3
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ primusrun jupyter-qtconsole
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>primusrun<span class="w"> </span>jupyter-qtconsole
 </pre></div>
 </div>
 </section>
@@ -673,23 +673,23 @@ make sure the kernel is started with <code class="docutils literal notranslate">
 <p>If you want the jupyter-qtconsole to always use your Nvidia graphics card,
 you can change the parameters in the default kernel. To find the default
 kernel, run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jupyter kernelspec list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </pre></div>
 </div>
 <p>then edit the <code class="docutils literal notranslate"><span class="pre">kernel.json</span></code> file to include <code class="docutils literal notranslate"><span class="pre">&quot;primusrun&quot;,</span></code> as the first
 parameter in <code class="docutils literal notranslate"><span class="pre">argv</span></code>. For example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;argv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;primusrun&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;ipykernel_launcher&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;{connection_file}&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python 3&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;argv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;primusrun&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;ipykernel_launcher&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;{connection_file}&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python 3&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Using a similar configuration, you could have two kernels configurations, one
@@ -892,7 +892,7 @@ console run with <code class="docutils literal notranslate"><span class="pre">pr
     
 <p class="copyright">
 
-    &copy; Copyright 2013-2022, VisPy developers.<br>
+    &copy; Copyright 2013-2023, VisPy developers.<br>
 
 </p>
 
