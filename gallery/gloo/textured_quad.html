@@ -452,6 +452,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../scene/image_custom_kernel.html">Custom image sampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/infinite_line.html">Draw an InfiniteLine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/instanced_mesh.html">Instanced rendering of arbitrarily transformed meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scene/instanced_mesh_visual.html">Instanced Mesh Visual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/instanced_quad_visual.html">Custom Visual for instanced rendering of a colored quad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/isocurve.html">Display an Isocurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/isocurve_for_trisurface.html">Isocurve for Triangular Mesh</a></li>
@@ -567,7 +568,7 @@ to download the full example code</p>
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">gloo</span><span class="p">,</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">Program</span>
 
-<span class="n">vertex</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertex</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    attribute vec2 position;</span>
 <span class="s2">    attribute vec2 texcoord;</span>
 <span class="s2">    varying vec2 v_texcoord;</span>
@@ -577,7 +578,7 @@ to download the full example code</p>
 <span class="s2">        v_texcoord = texcoord;</span>
 <span class="s2">    } &quot;&quot;&quot;</span>
 
-<span class="n">fragment</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fragment</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    uniform sampler2D texture;</span>
 <span class="s2">    varying vec2 v_texcoord;</span>
 <span class="s2">    void main()</span>
@@ -589,7 +590,7 @@ to download the full example code</p>
 <span class="k">def</span> <span class="nf">checkerboard</span><span class="p">(</span><span class="n">grid_num</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
     <span class="n">row_even</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">row_odd</span> <span class="o">=</span> <span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">(</span><span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">row_even</span><span class="p">,</span> <span class="n">row_odd</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.row_stack.html#numpy.row_stack" title="numpy.row_stack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">row_stack</span></a><span class="p">(</span><span class="n">grid_num</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">row_even</span><span class="p">,</span> <span class="n">row_odd</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint8" title="numpy.uint8" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">uint8</span></a><span class="p">)</span>
     <span class="k">return</span> <span class="mi">255</span> <span class="o">*</span> <span class="n">Z</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -599,7 +600,7 @@ to download the full example code</p>
                             <span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">)</span>
 
         <span class="c1"># Build program &amp; data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">fragment</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">program</span> <span class="o">=</span> <span class="n">Program</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertex</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fragment</span></a><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
                                     <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
@@ -622,7 +623,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.128 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.138 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-gloo-textured-quad-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/79a787ef65f813e052c88d5711c9fc45/textured_quad.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">textured_quad.py</span></code></a></p>
@@ -730,7 +731,7 @@ to download the full example code</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     <br/>
   </p>
 </div>

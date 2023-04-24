@@ -452,6 +452,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../scene/image_custom_kernel.html">Custom image sampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene/infinite_line.html">Draw an InfiniteLine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene/instanced_mesh.html">Instanced rendering of arbitrarily transformed meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scene/instanced_mesh_visual.html">Instanced Mesh Visual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene/instanced_quad_visual.html">Custom Visual for instanced rendering of a colored quad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene/isocurve.html">Display an Isocurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../scene/isocurve_for_trisurface.html">Isocurve for Triangular Mesh</a></li>
@@ -577,7 +578,7 @@ uses instanced rendering to generate many copies of the same quad.</p>
 <span class="c1"># we need full gl context for instanced rendering</span>
 <span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s1">&#39;gl+&#39;</span><span class="p">)</span>
 
-<span class="n">vertex_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertex_code</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    uniform float scale;</span>
 <span class="s2">    attribute vec4 color;</span>
 <span class="s2">    attribute vec2 position;</span>
@@ -589,7 +590,7 @@ uses instanced rendering to generate many copies of the same quad.</p>
 <span class="s2">        v_color = color;</span>
 <span class="s2">    } &quot;&quot;&quot;</span>
 
-<span class="n">fragment_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fragment_code</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    varying vec4 v_color;</span>
 <span class="s2">    void main()</span>
 <span class="s2">    {</span>
@@ -604,18 +605,18 @@ uses instanced rendering to generate many copies of the same quad.</p>
 
     <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="c1"># Build data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-                                 <span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                                 <span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
                               <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">),</span>
                                  <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n_instances</span> <span class="o">=</span> <span class="mi">1000</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">n_instances</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;instance_offset&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.empty.html#numpy.empty" title="numpy.empty" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">empty</span></a><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_instances</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;instance_offset&quot;</span><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="s1">&#39;instance_offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_instances</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="s1">&#39;instance_offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.rand.html#numpy.random.rand" title="numpy.random.rand" class="sphx-glr-backref-module-numpy-random sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span></a><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_instances</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
 
         <span class="c1"># Build &amp; activate program</span>
 
@@ -625,8 +626,8 @@ uses instanced rendering to generate many copies of the same quad.</p>
         <span class="n">fragment</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">glCreateShader</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">)</span>
 
         <span class="c1"># Set shaders source</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">vertex_code</span><span class="p">)</span>
-        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">fragment_code</span><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertex_code</span></a><span class="p">)</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fragment_code</span></a><span class="p">)</span>
 
         <span class="c1"># Compile shaders</span>
         <span class="n">gl</span><span class="o">.</span><span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">)</span>
@@ -703,7 +704,7 @@ uses instanced rendering to generate many copies of the same quad.</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.086 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.098 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-gloo-gl-quad-instanced-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../../_downloads/57046f8c630c90958b8d31accd667927/quad_instanced.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">quad_instanced.py</span></code></a></p>
@@ -811,7 +812,7 @@ uses instanced rendering to generate many copies of the same quad.</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     <br/>
   </p>
 </div>

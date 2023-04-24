@@ -452,6 +452,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../scene/image_custom_kernel.html">Custom image sampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/infinite_line.html">Draw an InfiniteLine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/instanced_mesh.html">Instanced rendering of arbitrarily transformed meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scene/instanced_mesh_visual.html">Instanced Mesh Visual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/instanced_quad_visual.html">Custom Visual for instanced rendering of a colored quad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/isocurve.html">Display an Isocurve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../scene/isocurve_for_trisurface.html">Isocurve for Triangular Mesh</a></li>
@@ -569,32 +570,32 @@ to download the full example code</p>
 <span class="c1"># arg( e^(1/z) )</span>
 <span class="k">def</span> <span class="nf">exp_z_inv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">z</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.angle.html#numpy.angle" title="numpy.angle" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">angle</span></a><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
 <span class="c1"># create a 2d grid whose elements are of exp_z_inv</span>
 <span class="k">def</span> <span class="nf">gen_image</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
-    <span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+    <span class="n">x_vals</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+    <span class="n">y_vals</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
 
-    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span>
-    <span class="n">v_fn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">exp_z_inv</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html#numpy.meshgrid" title="numpy.meshgrid" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span></a><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span>
+    <span class="n">v_fn</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vectorize.html#numpy.vectorize" title="numpy.vectorize" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class"><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span></a><span class="p">(</span><span class="n">exp_z_inv</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">v_fn</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v_fn</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">)</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">Fig</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plot</span> <span class="o">=</span> <span class="n">fig</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">bgcolor</span> <span class="o">=</span> <span class="s2">&quot;#efefef&quot;</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">gen_image</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-<span class="n">plot</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hsl&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">img</span></a> <span class="o">=</span> <span class="n">gen_image</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">img</span></a><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hsl&quot;</span><span class="p">)</span>
 <span class="n">plot</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set_range</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
 
-<span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">positions</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">:</span>
-    <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">,</span>
+<span class="k">for</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">position</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">positions</span></a><span class="p">:</span>
+    <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">position</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">position</span></a><span class="p">,</span>
                   <span class="n">label</span><span class="o">=</span><span class="s2">&quot;argument of e^(1/z)&quot;</span><span class="p">,</span>
                   <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0°&quot;</span><span class="p">,</span> <span class="s2">&quot;180°&quot;</span><span class="p">),</span>
                   <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hsl&quot;</span><span class="p">,</span>
@@ -604,7 +605,7 @@ to download the full example code</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.536 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.302 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-plotting-colorbar-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b4c75744546d86014b84c3d0ba05b9a2/colorbar.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">colorbar.py</span></code></a></p>
@@ -712,7 +713,7 @@ to download the full example code</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     <br/>
   </p>
 </div>
