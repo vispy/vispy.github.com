@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.clipper.html">vispy.visuals.filters.clipper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html">vispy.visuals.filters.clipping_planes module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.color.html">vispy.visuals.filters.color module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.markers.html">vispy.visuals.filters.markers module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.mesh.html">vispy.visuals.filters.mesh module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.picking.html">vispy.visuals.filters.picking module</a></li>
 </ul>
@@ -832,6 +833,13 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.tests.html">vispy.visuals.filters.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.tests.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.tests.test_primitive_picking_filters.html">vispy.visuals.filters.tests.test_primitive_picking_filters module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_primitive_picking_filters.html#vispy.visuals.filters.tests.test_primitive_picking_filters.test_empty_markers_picking"><code class="docutils literal notranslate"><span class="pre">test_empty_markers_picking()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_primitive_picking_filters.html#vispy.visuals.filters.tests.test_primitive_picking_filters.test_empty_mesh_face_picking"><code class="docutils literal notranslate"><span class="pre">test_empty_mesh_face_picking()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_primitive_picking_filters.html#vispy.visuals.filters.tests.test_primitive_picking_filters.test_markers_picking"><code class="docutils literal notranslate"><span class="pre">test_markers_picking()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_primitive_picking_filters.html#vispy.visuals.filters.tests.test_primitive_picking_filters.test_mesh_face_picking"><code class="docutils literal notranslate"><span class="pre">test_mesh_face_picking()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.tests.test_wireframe_filter.html">vispy.visuals.filters.tests.test_wireframe_filter module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.test_wireframe_filter.html#vispy.visuals.filters.tests.test_wireframe_filter.test_empty_mesh_wireframe"><code class="docutils literal notranslate"><span class="pre">test_empty_mesh_wireframe()</span></code></a></li>
 </ul>
@@ -852,6 +860,11 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.BaseFilter"><code class="docutils literal notranslate"><span class="pre">BaseFilter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.Filter.attached"><code class="docutils literal notranslate"><span class="pre">Filter.attached</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.PrimitivePickingFilter"><code class="docutils literal notranslate"><span class="pre">PrimitivePickingFilter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.PrimitivePickingFilter.discard_transparent"><code class="docutils literal notranslate"><span class="pre">PrimitivePickingFilter.discard_transparent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.PrimitivePickingFilter.enabled"><code class="docutils literal notranslate"><span class="pre">PrimitivePickingFilter.enabled</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -901,7 +914,12 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.markers.html">vispy.visuals.filters.markers module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.markers.html#vispy.visuals.filters.markers.MarkerPickingFilter"><code class="docutils literal notranslate"><span class="pre">MarkerPickingFilter</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="vispy.visuals.filters.mesh.html">vispy.visuals.filters.mesh module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.FacePickingFilter"><code class="docutils literal notranslate"><span class="pre">FacePickingFilter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.InstancedShadingFilter"><code class="docutils literal notranslate"><span class="pre">InstancedShadingFilter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter"><code class="docutils literal notranslate"><span class="pre">ShadingFilter</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.ShadingFilter.ambient_coefficient"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.ambient_coefficient</span></code></a></li>
@@ -927,7 +945,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.color"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.color</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.enabled"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.enabled</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.faces_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.faces_only</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.on_mesh_data_updated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.on_data_updated"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.on_data_updated()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.width"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.width</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.filters.mesh.html#vispy.visuals.filters.mesh.WireframeFilter.wireframe_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.wireframe_only</span></code></a></li>
 </ul>

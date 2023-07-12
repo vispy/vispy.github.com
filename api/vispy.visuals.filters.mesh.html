@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="vispy.visuals.filters.picking module" href="vispy.visuals.filters.picking.html" />
-    <link rel="prev" title="vispy.visuals.filters.color module" href="vispy.visuals.filters.color.html" />
+    <link rel="prev" title="vispy.visuals.filters.markers module" href="vispy.visuals.filters.markers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -643,6 +643,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.clipper.html">vispy.visuals.filters.clipper module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.clipping_planes.html">vispy.visuals.filters.clipping_planes module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.color.html">vispy.visuals.filters.color module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.markers.html">vispy.visuals.filters.markers module</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">vispy.visuals.filters.mesh module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.picking.html">vispy.visuals.filters.picking module</a></li>
 </ul>
@@ -826,6 +827,17 @@ document.write(`
                   
   <section id="module-vispy.visuals.filters.mesh">
 <span id="vispy-visuals-filters-mesh-module"></span><h1>vispy.visuals.filters.mesh module<a class="headerlink" href="#module-vispy.visuals.filters.mesh" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.FacePickingFilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">FacePickingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discard_transparent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.mesh.FacePickingFilter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="vispy.visuals.filters.base_filter.html#vispy.visuals.filters.base_filter.PrimitivePickingFilter" title="vispy.visuals.filters.base_filter.PrimitivePickingFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">PrimitivePickingFilter</span></code></a></p>
+<p>Filter used to color mesh faces by a picking ID.</p>
+<p>Note that the ID color uses the alpha channel, so this may not be used
+with blending enabled.</p>
+<p class="rubric">Examples</p>
+<p><a class="reference internal" href="../gallery/scene/face_picking.html#sphx-glr-gallery-scene-face-picking-py"><span class="std std-ref">Picking Faces from a Mesh</span></a></p>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.filters.mesh.InstancedShadingFilter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.filters.mesh.</span></span><span class="sig-name descname"><span class="pre">InstancedShadingFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flat'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_coefficient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shininess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">5,</span> <span class="pre">-5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ambient_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.25)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffuse_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specular_light</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.25)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.mesh.InstancedShadingFilter" title="Permalink to this definition">#</a></dt>
@@ -1131,8 +1143,8 @@ example script.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated">
-<span class="sig-name descname"><span class="pre">on_mesh_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="vispy.visuals.filters.mesh.WireframeFilter.on_data_updated">
+<span class="sig-name descname"><span class="pre">on_data_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.filters.mesh.WireframeFilter.on_data_updated" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -1163,12 +1175,12 @@ example script.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="vispy.visuals.filters.color.html"
+       href="vispy.visuals.filters.markers.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">vispy.visuals.filters.color module</p>
+        <p class="prev-next-title">vispy.visuals.filters.markers module</p>
       </div>
     </a>
     <a class="right-next"
@@ -1198,6 +1210,7 @@ example script.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.FacePickingFilter"><code class="docutils literal notranslate"><span class="pre">FacePickingFilter</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.InstancedShadingFilter"><code class="docutils literal notranslate"><span class="pre">InstancedShadingFilter</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.ShadingFilter"><code class="docutils literal notranslate"><span class="pre">ShadingFilter</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.ShadingFilter.ambient_coefficient"><code class="docutils literal notranslate"><span class="pre">ShadingFilter.ambient_coefficient</span></code></a></li>
@@ -1223,7 +1236,7 @@ example script.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.color"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.color</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.enabled"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.enabled</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.faces_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.faces_only</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.on_mesh_data_updated"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.on_mesh_data_updated()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.on_data_updated"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.on_data_updated()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.width"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.width</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.filters.mesh.WireframeFilter.wireframe_only"><code class="docutils literal notranslate"><span class="pre">WireframeFilter.wireframe_only</span></code></a></li>
 </ul>
