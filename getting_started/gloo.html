@@ -28,20 +28,20 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=7002c910" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=2bf17c04"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/gloo';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -458,14 +458,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="getting-started-gloo">
-<h1>Getting Started - gloo<a class="headerlink" href="#getting-started-gloo" title="Permalink to this heading">#</a></h1>
+<h1>Getting Started - gloo<a class="headerlink" href="#getting-started-gloo" title="Link to this heading">#</a></h1>
 <p>The gloo layer of VisPy is the lowest level interface and is the closest thing
 to OpenGL that VisPy provides. This also means it is the most complicated.
 While OpenGL is complicated, gloo tries to provide a simple to use
 object-oriented layer on top of that. The guide below will walk through the
 basics of using VisPy’s gloo interface to create a visualization.</p>
 <section id="getting-system-information">
-<h2>Getting System Information<a class="headerlink" href="#getting-system-information" title="Permalink to this heading">#</a></h2>
+<h2>Getting System Information<a class="headerlink" href="#getting-system-information" title="Link to this heading">#</a></h2>
 <p>A good quick way of checking if VisPy is properly installed is to print out
 system information. This output includes information like what backends you
 have installed as well as information that can be gathered from OpenGL about
@@ -513,7 +513,7 @@ need to upgrade or re-install your GPU drivers to fix this or OpenGL may not
 be compatible with your system.</p>
 </section>
 <section id="the-canvas-and-the-application">
-<h2>The Canvas and The Application<a class="headerlink" href="#the-canvas-and-the-application" title="Permalink to this heading">#</a></h2>
+<h2>The Canvas and The Application<a class="headerlink" href="#the-canvas-and-the-application" title="Link to this heading">#</a></h2>
 <p>There are two things that are common across all of the VisPy interfaces in one
 way or another:</p>
 <ol class="arabic simple">
@@ -521,7 +521,7 @@ way or another:</p>
 <li><p>At least one <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> (or subclass) instance</p></li>
 </ol>
 <section id="the-application">
-<h3>The Application<a class="headerlink" href="#the-application" title="Permalink to this heading">#</a></h3>
+<h3>The Application<a class="headerlink" href="#the-application" title="Link to this heading">#</a></h3>
 <p>The VisPy <code class="docutils literal notranslate"><span class="pre">Application</span></code> object wraps the high-level event loop logic of
 the VisPy backend you use (PyQt5, Wx, etc). In most cases you don’t have
 to know too much about this, but you do need to create and run the
@@ -532,7 +532,7 @@ a blocking call. Nothing after the <code class="docutils literal notranslate"><s
 application is stopped, usually by closing your GUI window.</p>
 </section>
 <section id="the-canvas">
-<h3>The Canvas<a class="headerlink" href="#the-canvas" title="Permalink to this heading">#</a></h3>
+<h3>The Canvas<a class="headerlink" href="#the-canvas" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> object will be your main way of using and controlling VisPy.
 Depending on the VisPy interface you’re using, you’ll either be using the
 <code class="docutils literal notranslate"><span class="pre">Canvas</span></code>, <code class="docutils literal notranslate"><span class="pre">SceneCanvas</span></code>, or creating <code class="docutils literal notranslate"><span class="pre">Figure</span></code> objects. While these
@@ -542,7 +542,7 @@ it is best not to mix these classes or their subcomponents.</p>
 </section>
 </section>
 <section id="basic-script">
-<h2>Basic Script<a class="headerlink" href="#basic-script" title="Permalink to this heading">#</a></h2>
+<h2>Basic Script<a class="headerlink" href="#basic-script" title="Link to this heading">#</a></h2>
 <p>To start any gloo visualization we will need to create a <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> object and
 an <code class="docutils literal notranslate"><span class="pre">Application</span></code>. Here is the most basic working example we can create:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -600,7 +600,7 @@ interpreter.</p></li>
 </div>
 </section>
 <section id="basic-script-alternative">
-<h2>Basic Script (Alternative)<a class="headerlink" href="#basic-script-alternative" title="Permalink to this heading">#</a></h2>
+<h2>Basic Script (Alternative)<a class="headerlink" href="#basic-script-alternative" title="Link to this heading">#</a></h2>
 <p>Another common way to structure a script like this is to subclass the
 <code class="docutils literal notranslate"><span class="pre">Canvas</span></code> class and override the necessary methods directly. This can be
 useful if you want to keep all parts of your visualization contained in the
@@ -624,7 +624,7 @@ useful if you want to keep all parts of your visualization contained in the
 </div>
 </section>
 <section id="create-an-opengl-program">
-<h2>Create an OpenGL Program<a class="headerlink" href="#create-an-opengl-program" title="Permalink to this heading">#</a></h2>
+<h2>Create an OpenGL Program<a class="headerlink" href="#create-an-opengl-program" title="Link to this heading">#</a></h2>
 <p>As mentioned earlier, the <code class="docutils literal notranslate"><span class="pre">gloo</span></code> interface provides a low-level
 object-oriented interface on top of OpenGL. If we want to do anything more
 complicated that a solid color, we’ll need to start using these OpenGL
@@ -720,7 +720,7 @@ also change the drawing method used (ex. ‘points’ or ‘lines’ instead of
 </div>
 </section>
 <section id="timers">
-<h2>Timers<a class="headerlink" href="#timers" title="Permalink to this heading">#</a></h2>
+<h2>Timers<a class="headerlink" href="#timers" title="Link to this heading">#</a></h2>
 <p>A common requirement of any visualization is to make changes over time. VisPy
 provides a generic <a class="reference internal" href="../api/vispy.app.timer.html#vispy.app.timer.Timer" title="vispy.app.timer.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timer</span></code></a> class to help with this.
 Let’s take the quad example above and make a few modifications. First, we’ll
@@ -844,7 +844,7 @@ OpenGL program are adjusted based on our new <code class="docutils literal notra
 </div>
 </section>
 <section id="keyboard-events">
-<h2>Keyboard Events<a class="headerlink" href="#keyboard-events" title="Permalink to this heading">#</a></h2>
+<h2>Keyboard Events<a class="headerlink" href="#keyboard-events" title="Link to this heading">#</a></h2>
 <p>So far our examples haven’t included any user interaction. The easiest way
 to include some is to attach meaning to certain key presses. We can update
 our example to include a “pause” button on the animation. We add one new
@@ -862,7 +862,7 @@ The <code class="docutils literal notranslate"><span class="pre">event.text</spa
 timer is running, we stop it, otherwise we start it.</p>
 </section>
 <section id="other-topics">
-<h2>Other Topics<a class="headerlink" href="#other-topics" title="Permalink to this heading">#</a></h2>
+<h2>Other Topics<a class="headerlink" href="#other-topics" title="Link to this heading">#</a></h2>
 <p>That’s it for the “Getting Started” topics for the gloo interface. Now it is
 time to get coding and exploring the other parts of the documentation. If you
 think something is missing here and would make for a really good
@@ -988,7 +988,7 @@ think something is missing here and would make for a really good
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.3.
     <br/>
   </p>
 </div>

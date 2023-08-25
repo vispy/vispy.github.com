@@ -28,20 +28,20 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=7002c910" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=2bf17c04"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/modern-gl';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -458,7 +458,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="modern-opengl">
-<h1>Modern OpenGL<a class="headerlink" href="#modern-opengl" title="Permalink to this heading">#</a></h1>
+<h1>Modern OpenGL<a class="headerlink" href="#modern-opengl" title="Link to this heading">#</a></h1>
 <p>OpenGL has evolved over the years and a big change occurred in 2003 with the
 introduction of the dynamic pipeline (OpenGL 2.0), i.e. the use of shaders that
 allow to have direct access to the GPU.</p>
@@ -468,7 +468,7 @@ lot of tutorials that still use this fixed pipeline. This introduces some
 radical changes in the way of programming OpenGL and makes it both more
 difficult to program but far more powerful.</p>
 <section id="shaders">
-<h2>Shaders<a class="headerlink" href="#shaders" title="Permalink to this heading">#</a></h2>
+<h2>Shaders<a class="headerlink" href="#shaders" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The shader language is called glsl.  There are many versions that goes from 1.0
@@ -510,7 +510,7 @@ for each vertex (1,2 and 3) while the fragment shader would be executed 21
 times, once for each fragment (pixel).</p>
 </section>
 <section id="buffers">
-<h2>Buffers<a class="headerlink" href="#buffers" title="Permalink to this heading">#</a></h2>
+<h2>Buffers<a class="headerlink" href="#buffers" title="Link to this heading">#</a></h2>
 <p>We explained earlier that the vertex shader act on the vertices. The question
 is thus where do those vertices comes from? The idea of modern GL is that
 vertices are stored on the GPU and needs to be uploaded (only once) to the GPU
@@ -549,7 +549,7 @@ matter but you have to realize it <strong>will matter</strong> if you data size 
 one or ten million vertices.</p>
 </section>
 <section id="uniform-attribute-varying">
-<h2>Uniform, attribute, varying<a class="headerlink" href="#uniform-attribute-varying" title="Permalink to this heading">#</a></h2>
+<h2>Uniform, attribute, varying<a class="headerlink" href="#uniform-attribute-varying" title="Link to this heading">#</a></h2>
 <p>At this point in the tutorial, we know what are shaders and buffers but we
 still need to explain how they may be connected together. So, let’s consider
 again our CPU buffer:</p>
@@ -623,9 +623,9 @@ very important concept to understand. Any varying value is interpolated between
 the vertices that compose the elementary item (mostly, line or triangle).</p>
 </section>
 <section id="transformations">
-<h2>Transformations<a class="headerlink" href="#transformations" title="Permalink to this heading">#</a></h2>
+<h2>Transformations<a class="headerlink" href="#transformations" title="Link to this heading">#</a></h2>
 <section id="projection-matrix">
-<h3>Projection matrix<a class="headerlink" href="#projection-matrix" title="Permalink to this heading">#</a></h3>
+<h3>Projection matrix<a class="headerlink" href="#projection-matrix" title="Link to this heading">#</a></h3>
 <p>We need first to define what do we want to view, that is, we need to define a
 viewing volume such that any object within the volume (even partially) will be
 rendered while objects outside won’t. On the image below, the yellow and red
@@ -662,7 +662,7 @@ direction and <code class="docutils literal notranslate"><span class="pre">aspec
 of view in the x direction.</p>
 </section>
 <section id="model-and-view-matrices">
-<h3>Model and view matrices<a class="headerlink" href="#model-and-view-matrices" title="Permalink to this heading">#</a></h3>
+<h3>Model and view matrices<a class="headerlink" href="#model-and-view-matrices" title="Link to this heading">#</a></h3>
 <p>We are almost done with matrices. You may have guessed that the above matrix
 requires the viewing volume to be in the z direction. We could design our 3D
 scene such that all objects are withing this direction but it would not be very
@@ -680,13 +680,13 @@ useful for rotating an object around its center. To sum up, we need:</p>
 </section>
 </section>
 <section id="learning-modern-opengl">
-<h2>Learning modern OpenGL<a class="headerlink" href="#learning-modern-opengl" title="Permalink to this heading">#</a></h2>
+<h2>Learning modern OpenGL<a class="headerlink" href="#learning-modern-opengl" title="Link to this heading">#</a></h2>
 <p>There exist a lot of resources on the web related to OpenGL. I only mention
 here a few of them that deals with the dynamic rendering pipeline. If you’ve
 found other resources, make sure they deal with the dynamic rendering pipeline
 and not the fixed one.</p>
 <section id="an-intro-to-modern-opengl">
-<h3>An intro to modern OpenGL<a class="headerlink" href="#an-intro-to-modern-opengl" title="Permalink to this heading">#</a></h3>
+<h3>An intro to modern OpenGL<a class="headerlink" href="#an-intro-to-modern-opengl" title="Link to this heading">#</a></h3>
 <p>OpenGL has been around a long time, and from reading all the accumulated layers
 of documentation out there on the Internet, it’s not always clear what parts
 are historic and what parts are still useful and supported on modern graphics
@@ -694,7 +694,7 @@ hardware. It’s about time for a new OpenGL <a class="reference external" href=
 walks through the parts that are still relevant today.</p>
 </section>
 <section id="learning-modern-3d-graphics-programming">
-<h3>Learning Modern 3D Graphics Programming<a class="headerlink" href="#learning-modern-3d-graphics-programming" title="Permalink to this heading">#</a></h3>
+<h3>Learning Modern 3D Graphics Programming<a class="headerlink" href="#learning-modern-3d-graphics-programming" title="Link to this heading">#</a></h3>
 <p>This <a class="reference external" href="https://paroj.github.io/gltut/">book</a> is intended to teach you how
 to be a graphics programmer. It is not aimed at any particular graphics field;
 it is designed to cover most of the basics of 3D rendering. So if you want to
@@ -705,7 +705,7 @@ provide a sound foundation for your further exploration in whatever field of 3D
 graphics you are interested in.</p>
 </section>
 <section id="opengl-es-2-0-documentation">
-<h3>OpenGL ES 2.0 documentation<a class="headerlink" href="#opengl-es-2-0-documentation" title="Permalink to this heading">#</a></h3>
+<h3>OpenGL ES 2.0 documentation<a class="headerlink" href="#opengl-es-2-0-documentation" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://www.khronos.org/opengles/2_X/">OpenGL ES 2.0</a> is defined relative to
 the OpenGL 2.0 specification and emphasizes a programmable 3D graphics pipeline
 with the ability to create shader and program objects and the ability to write
@@ -835,7 +835,7 @@ keeping overall complexity tractable.</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.3.
     <br/>
   </p>
 </div>
