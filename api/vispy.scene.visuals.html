@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="../_static/documentation_options.js?v=ae7cdda7"></script>
+    <script src="../_static/documentation_options.js?v=29976ab1"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.scene.visuals';</script>
@@ -1831,10 +1831,12 @@ region.</p>
 </dd>
 <dt><strong>size</strong><span class="classifier">float or array</span></dt><dd><p>The symbol size in screen (or data, if scaling is on) px.</p>
 </dd>
-<dt><strong>edge_width</strong><span class="classifier">float or array or None</span></dt><dd><p>The width of the symbol outline in screen (or data, if scaling is on) px.</p>
+<dt><strong>edge_width</strong><span class="classifier">float or array or None</span></dt><dd><p>The width of the symbol outline in screen (or data, if scaling is on) px.
+Defaults to 1.0 if None or not provided and <code class="docutils literal notranslate"><span class="pre">edge_width_rel</span></code> is not
+provided.</p>
 </dd>
-<dt><strong>edge_width_rel</strong><span class="classifier">float or array or None</span></dt><dd><p>The width as a fraction of marker size. Exactly one of
-<cite>edge_width</cite> and <cite>edge_width_rel</cite> must be supplied.</p>
+<dt><strong>edge_width_rel</strong><span class="classifier">float or array or None</span></dt><dd><p>The width as a fraction of marker size. Can not be specified along with
+edge_width. A ValueError will be raised if both are provided.</p>
 </dd>
 <dt><strong>edge_color</strong><span class="classifier">Color | ColorArray</span></dt><dd><p>The color used to draw each symbol outline.</p>
 </dd>
