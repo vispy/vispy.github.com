@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=f677a238"></script>
+    <script src="../../_static/documentation_options.js?v=65f7ac4b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/one_scene_four_cams';</script>
@@ -558,7 +558,7 @@ document.write(`
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-gallery-scene-one-scene-four-cams-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code</p>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="single-scene-in-multiple-view-boxes">
 <span id="sphx-glr-gallery-scene-one-scene-four-cams-py"></span><h1>Single Scene in Multiple View boxes<a class="headerlink" href="#single-scene-in-multiple-view-boxes" title="Link to this heading">#</a></h1>
@@ -583,7 +583,7 @@ be achieved.</p>
 <span class="n">vb2</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">border_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 <span class="n">vb3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">border_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 <span class="n">vb4</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">ViewBox</span><span class="p">(</span><span class="n">border_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scenes</span></a> <span class="o">=</span> <span class="n">vb1</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb3</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb4</span><span class="o">.</span><span class="n">scene</span>
+<span class="n">scenes</span> <span class="o">=</span> <span class="n">vb1</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb2</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb3</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">vb4</span><span class="o">.</span><span class="n">scene</span>
 
 <span class="c1"># Put viewboxes in a grid</span>
 <span class="n">grid</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
@@ -595,7 +595,7 @@ be achieved.</p>
 
 <span class="c1"># Create some visuals to show</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">load_crate</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
-<span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scenes</span></a><span class="p">:</span>
+<span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">scenes</span><span class="p">:</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">im1</span></a><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">parent</span><span class="o">=</span><span class="n">par</span><span class="p">)</span>
 
 <span class="c1"># Assign cameras</span>
@@ -605,11 +605,11 @@ be achieved.</p>
 <span class="n">vb4</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">FlyCamera</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span></a> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.617 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.631 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-one-scene-four-cams-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/94b58f82dd005fa3f9863a172770bdd2/one_scene_four_cams.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">one_scene_four_cams.ipynb</span></code></a></p>
@@ -718,7 +718,7 @@ be achieved.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

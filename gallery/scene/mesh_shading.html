@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=f677a238"></script>
+    <script src="../../_static/documentation_options.js?v=65f7ac4b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/mesh_shading';</script>
@@ -558,7 +558,7 @@ document.write(`
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-gallery-scene-mesh-shading-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code</p>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="shading-a-mesh">
 <span id="sphx-glr-gallery-scene-mesh-shading-py"></span><h1>Shading a Mesh<a class="headerlink" href="#shading-a-mesh" title="Link to this heading">#</a></h1>
@@ -572,14 +572,14 @@ to download the full example code</p>
 <span class="kn">from</span> <span class="nn">vispy.visuals.filters</span> <span class="kn">import</span> <span class="n">ShadingFilter</span><span class="p">,</span> <span class="n">WireframeFilter</span>
 
 
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="argparse.ArgumentParser" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">parser</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="argparse.ArgumentParser" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-class"><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span></a><span class="p">()</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">default_mesh</span></a> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument" title="argparse.ArgumentParser.add_argument" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-method"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span></a><span class="p">(</span><span class="s1">&#39;--mesh&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">default_mesh</span></a><span class="p">)</span>
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument" title="argparse.ArgumentParser.add_argument" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-method"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span></a><span class="p">(</span><span class="s1">&#39;--shininess&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument" title="argparse.ArgumentParser.add_argument" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-method"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span></a><span class="p">(</span><span class="s1">&#39;--wireframe-width&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="argparse.Namespace" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">args</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">_</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_known_args" title="argparse.ArgumentParser.parse_known_args" class="sphx-glr-backref-module-argparse sphx-glr-backref-type-py-method"><span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span></a><span class="p">()</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">default_mesh</span> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--mesh&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_mesh</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--shininess&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--wireframe-width&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">normals</span></a><span class="p">,</span> <span class="n">texcoords</span> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">args</span><span class="o">.</span><span class="n">mesh</span></a><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">normals</span></a><span class="p">,</span> <span class="n">texcoords</span> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">mesh</span><span class="p">)</span>
 
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
@@ -595,11 +595,11 @@ to download the full example code</p>
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 
 <span class="c1"># Use filters to affect the rendering of the mesh.</span>
-<span class="n">wireframe_filter</span> <span class="o">=</span> <span class="n">WireframeFilter</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">args</span><span class="o">.</span><span class="n">wireframe_width</span></a><span class="p">)</span>
+<span class="n">wireframe_filter</span> <span class="o">=</span> <span class="n">WireframeFilter</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">wireframe_width</span><span class="p">)</span>
 <span class="c1"># Note: For convenience, this `ShadingFilter` would be created automatically by</span>
 <span class="c1"># the `MeshVisual with, e.g. `mesh = MeshVisual(..., shading=&#39;smooth&#39;)`. It is</span>
 <span class="c1"># created manually here for demonstration purposes.</span>
-<span class="n">shading_filter</span> <span class="o">=</span> <span class="n">ShadingFilter</span><span class="p">(</span><span class="n">shininess</span><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">args</span><span class="o">.</span><span class="n">shininess</span></a><span class="p">)</span>
+<span class="n">shading_filter</span> <span class="o">=</span> <span class="n">ShadingFilter</span><span class="p">(</span><span class="n">shininess</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">shininess</span><span class="p">)</span>
 <span class="c1"># The wireframe filter is attached before the shading filter otherwise the</span>
 <span class="c1"># wireframe is not shaded.</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">wireframe_filter</span><span class="p">)</span>
@@ -619,20 +619,20 @@ to download the full example code</p>
 
 <span class="n">attach_headlight</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_states</span></a> <span class="o">=</span> <span class="p">(</span>
+<span class="n">shading_states</span> <span class="o">=</span> <span class="p">(</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">shading</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">shading</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">shading</span><span class="o">=</span><span class="s1">&#39;smooth&#39;</span><span class="p">),</span>
 <span class="p">)</span>
-<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_state_index</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_states</span></a><span class="o">.</span><span class="n">index</span><span class="p">(</span>
+<span class="n">shading_state_index</span> <span class="o">=</span> <span class="n">shading_states</span><span class="o">.</span><span class="n">index</span><span class="p">(</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">shading</span><span class="o">=</span><span class="n">shading_filter</span><span class="o">.</span><span class="n">shading</span><span class="p">))</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_states</span></a> <span class="o">=</span> <span class="p">(</span>
+<span class="n">wireframe_states</span> <span class="o">=</span> <span class="p">(</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">wireframe_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">faces_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">wireframe_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">faces_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,),</span>
     <span class="nb">dict</span><span class="p">(</span><span class="n">wireframe_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">faces_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,),</span>
 <span class="p">)</span>
-<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_state_index</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_states</span></a><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
+<span class="n">wireframe_state_index</span> <span class="o">=</span> <span class="n">wireframe_states</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span>
     <span class="n">wireframe_only</span><span class="o">=</span><span class="n">wireframe_filter</span><span class="o">.</span><span class="n">wireframe_only</span><span class="p">,</span>
     <span class="n">faces_only</span><span class="o">=</span><span class="n">wireframe_filter</span><span class="o">.</span><span class="n">faces_only</span><span class="p">,</span>
 <span class="p">))</span>
@@ -645,11 +645,11 @@ to download the full example code</p>
 
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">key_press</span><span class="o">.</span><span class="n">connect</span>
 <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">global</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_state_index</span></a>
-    <span class="k">global</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_state_index</span></a>
+    <span class="k">global</span> <span class="n">shading_state_index</span>
+    <span class="k">global</span> <span class="n">wireframe_state_index</span>
     <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
-        <span class="n">state</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_state_index</span></a> <span class="o">=</span> <span class="n">cycle_state</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_states</span></a><span class="p">,</span>
-                                                 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">shading_state_index</span></a><span class="p">)</span>
+        <span class="n">state</span><span class="p">,</span> <span class="n">shading_state_index</span> <span class="o">=</span> <span class="n">cycle_state</span><span class="p">(</span><span class="n">shading_states</span><span class="p">,</span>
+                                                 <span class="n">shading_state_index</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">shading_filter</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="n">mesh</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -657,8 +657,8 @@ to download the full example code</p>
         <span class="n">wireframe_filter</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">wireframe_filter</span><span class="o">.</span><span class="n">enabled</span>
         <span class="n">mesh</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span>
-        <span class="n">state</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_state_index</span></a> <span class="o">=</span> <span class="n">cycle_state</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_states</span></a><span class="p">,</span>
-                                                   <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">wireframe_state_index</span></a><span class="p">)</span>
+        <span class="n">state</span><span class="p">,</span> <span class="n">wireframe_state_index</span> <span class="o">=</span> <span class="n">cycle_state</span><span class="p">(</span><span class="n">wireframe_states</span><span class="p">,</span>
+                                                   <span class="n">wireframe_state_index</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">wireframe_filter</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="n">mesh</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -671,7 +671,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.948 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.985 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-mesh-shading-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ad06d42c16b2873922d02450c95691e7/mesh_shading.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">mesh_shading.ipynb</span></code></a></p>
@@ -780,7 +780,7 @@ to download the full example code</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>

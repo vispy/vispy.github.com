@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=f677a238"></script>
+    <script src="../../_static/documentation_options.js?v=65f7ac4b"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/clipping_planes';</script>
@@ -558,14 +558,35 @@ document.write(`
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#sphx-glr-download-gallery-scene-clipping-planes-py"><span class="std std-ref">Go to the end</span></a>
-to download the full example code</p>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="clipping-planes-with-volume-and-markers">
 <span id="sphx-glr-gallery-scene-clipping-planes-py"></span><h1>Clipping planes with volume and markers<a class="headerlink" href="#clipping-planes-with-volume-and-markers" title="Link to this heading">#</a></h1>
 <p>Controls:
 - x/y/z/o - add new clipping plane with normal along x/y/z or [1,1,1] oblique axis
 - r - remove a clipping plane</p>
-<img src="../../_images/sphx_glr_clipping_planes_001.png" srcset="../../_images/sphx_glr_clipping_planes_001.png" alt="clipping planes" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<img src="../../_images/sphx_glr_clipping_planes_001.png" srcset="../../_images/sphx_glr_clipping_planes_001.png" alt="clipping planes" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Downloading data from https://raw.githubusercontent.com/vispy/demo-data/main/volume/stent.npz (805 kB)
+
+[...                                     ] 7.94750 | downloading
+[......                                  ] 15.89499 / downloading
+[.........                               ] 23.84249 - downloading
+[............                            ] 31.78998 \ downloading
+[...............                         ] 39.73748 | downloading
+[...................                     ] 47.68497 / downloading
+[......................                  ] 55.63247 - downloading
+[.........................               ] 63.57996 \ downloading
+[............................            ] 71.52746 | downloading
+[...............................         ] 79.47495 / downloading
+[..................................      ] 87.42245 - downloading
+[......................................  ] 95.36994 \ downloading
+[........................................] 100.00000 | downloading
+File saved as /home/runner/.vispy/data/volume/stent.npz.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">io</span>
 <span class="kn">from</span> <span class="nn">vispy.visuals.filters.clipping_planes</span> <span class="kn">import</span> <span class="n">PlanesClipper</span>
@@ -592,10 +613,10 @@ to download the full example code</p>
 <span class="n">markers</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">clipper</span><span class="p">)</span>
 
 <span class="c1"># Create and set the camera</span>
-<a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fov</span></a> <span class="o">=</span> <span class="mf">60.</span>
+<span class="n">fov</span> <span class="o">=</span> <span class="mf">60.</span>
 <span class="n">cam</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span>
     <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
-    <a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fov</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fov</span></a><span class="p">,</span>
+    <span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Turntable&#39;</span>
 <span class="p">)</span>
 <span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam</span>
@@ -603,10 +624,10 @@ to download the full example code</p>
 
 <span class="c1"># since volume data is in &#39;zyx&#39; coordinates, we have to reverse the coordinates</span>
 <span class="c1"># we use as a center</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">volume_center</span></a> <span class="o">=</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">volume_center</span></a> <span class="o">=</span> <span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span></a><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># clipping planes around the origin</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clip_modes</span></a> <span class="o">=</span> <span class="p">{</span>
+<span class="n">clip_modes</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;x&#39;</span><span class="p">:</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">volume_center</span></a><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]),</span>
     <span class="s1">&#39;y&#39;</span><span class="p">:</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">volume_center</span></a><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]),</span>
     <span class="s1">&#39;z&#39;</span><span class="p">:</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([[</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">volume_center</span></a><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]),</span>
@@ -615,9 +636,9 @@ to download the full example code</p>
 
 
 <span class="k">def</span> <span class="nf">add_clip</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clip_modes</span></a><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clip_modes</span><span class="p">:</span>
         <span class="k">return</span>
-    <span class="n">clipping_planes</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">([</span><span class="n">volume</span><span class="o">.</span><span class="n">clipping_planes</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">clip_modes</span></a><span class="p">[</span><span class="n">mode</span><span class="p">]])</span>
+    <span class="n">clipping_planes</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate" title="numpy.concatenate" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">([</span><span class="n">volume</span><span class="o">.</span><span class="n">clipping_planes</span><span class="p">,</span> <span class="n">clip_modes</span><span class="p">[</span><span class="n">mode</span><span class="p">]])</span>
     <span class="n">volume</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">clipping_planes</span>
     <span class="n">clipper</span><span class="o">.</span><span class="n">clipping_planes</span> <span class="o">=</span> <span class="n">clipping_planes</span>
 
@@ -642,7 +663,7 @@ to download the full example code</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.635 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.212 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-clipping-planes-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/7db5bc6c3f38904f91fd553c38489981/clipping_planes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">clipping_planes.ipynb</span></code></a></p>
@@ -751,7 +772,7 @@ to download the full example code</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     <br/>
   </p>
 </div>
