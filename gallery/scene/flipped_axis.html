@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=65f7ac4b"></script>
+    <script src="../../_static/documentation_options.js?v=0a06b89f"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/flipped_axis';</script>
@@ -570,7 +570,7 @@ of axis using negative aspect ratios.</p>
 * 3: flip z dimension
 * 4: cycle through up-vectors
 * 5: cycle through cameras</p>
-<img src="../../_images/sphx_glr_flipped_axis_001.png" srcset="../../_images/sphx_glr_flipped_axis_001.png" alt="flipped axis" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+<img src="../../_images/sphx_glr_flipped_axis_001.png" srcset="../../_images/sphx_glr_flipped_axis_001.png" alt="flipped axis" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -602,38 +602,38 @@ of axis using negative aspect ratios.</p>
 <span class="n">cam3</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">fov</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
                                      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Turntable&#39;</span><span class="p">)</span>
 <span class="n">cam4</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">ArcballCamera</span><span class="p">(</span><span class="n">fov</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Arcball&#39;</span><span class="p">)</span>
-<span class="n">cams</span> <span class="o">=</span> <span class="p">(</span><span class="n">cam1</span><span class="p">,</span> <span class="n">cam2</span><span class="p">,</span> <span class="n">cam3</span><span class="p">,</span> <span class="n">cam4</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a> <span class="o">=</span> <span class="p">(</span><span class="n">cam1</span><span class="p">,</span> <span class="n">cam2</span><span class="p">,</span> <span class="n">cam3</span><span class="p">,</span> <span class="n">cam4</span><span class="p">)</span>
 <span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam3</span>  <span class="c1"># Select turntable at first</span>
 
-<span class="n">ups</span> <span class="o">=</span> <span class="n">cycle</span><span class="p">((</span><span class="s1">&#39;+z&#39;</span><span class="p">,</span> <span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;+y&#39;</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span><span class="p">,</span> <span class="s1">&#39;+x&#39;</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">))</span>
+<a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">ups</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a><span class="p">((</span><span class="s1">&#39;+z&#39;</span><span class="p">,</span> <span class="s1">&#39;-z&#39;</span><span class="p">,</span> <span class="s1">&#39;+y&#39;</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span><span class="p">,</span> <span class="s1">&#39;+x&#39;</span><span class="p">,</span> <span class="s1">&#39;-x&#39;</span><span class="p">))</span>
 
 
 <span class="c1"># Implement key presses</span>
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">key_press</span><span class="o">.</span><span class="n">connect</span>
 <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cams</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a><span class="p">:</span>
             <span class="n">flip</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">flip</span>
             <span class="n">cam</span><span class="o">.</span><span class="n">flip</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">flip</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">flip</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">flip</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cams</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a><span class="p">:</span>
             <span class="n">flip</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">flip</span>
             <span class="n">cam</span><span class="o">.</span><span class="n">flip</span> <span class="o">=</span> <span class="n">flip</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="ow">not</span> <span class="n">flip</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">flip</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cams</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a><span class="p">:</span>
             <span class="n">flip</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">flip</span>
             <span class="n">cam</span><span class="o">.</span><span class="n">flip</span> <span class="o">=</span> <span class="n">flip</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">flip</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="ow">not</span> <span class="n">flip</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span>
-        <span class="n">up</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">ups</span><span class="p">)</span>
+        <span class="n">up</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">ups</span></a><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;up: &#39;</span> <span class="o">+</span> <span class="n">up</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cams</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a><span class="p">:</span>
             <span class="n">cam</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="n">up</span>
     <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span>
         <span class="n">cam_toggle</span> <span class="o">=</span> <span class="p">{</span><span class="n">cam1</span><span class="p">:</span> <span class="n">cam2</span><span class="p">,</span> <span class="n">cam2</span><span class="p">:</span> <span class="n">cam3</span><span class="p">,</span> <span class="n">cam3</span><span class="p">:</span> <span class="n">cam4</span><span class="p">,</span> <span class="n">cam4</span><span class="p">:</span> <span class="n">cam1</span><span class="p">}</span>
         <span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam_toggle</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="p">,</span> <span class="n">cam2</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; camera&#39;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cams</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">cams</span></a><span class="p">:</span>
             <span class="n">cam</span><span class="o">.</span><span class="n">set_range</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -641,7 +641,7 @@ of axis using negative aspect ratios.</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.911 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.909 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-flipped-axis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/7a5b94ff1e189b530931e3be489cb972/flipped_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">flipped_axis.ipynb</span></code></a></p>
