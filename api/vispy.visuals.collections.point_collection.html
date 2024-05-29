@@ -14,19 +14,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=7002c910" />
@@ -36,11 +36,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../_static/documentation_options.js?v=d5e49137"></script>
+    <script src="../_static/documentation_options.js?v=719c152e"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.visuals.collections.point_collection';</script>
@@ -58,27 +58,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -100,12 +96,17 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
@@ -141,54 +142,54 @@
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../installation.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting Started
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../overview.html">
-                        Documentation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../gallery/index.html">
-                        Gallery
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        API
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Documentation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../news.html">
-                        News
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
-                        Code of Conduct
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../news.html">
+    News
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+    Code of Conduct
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -272,9 +273,9 @@ document.write(`
   
 
   
-    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
       <span class="fa-solid fa-outdent"></span>
-    </label>
+    </button>
   
 </div>
 
@@ -295,60 +296,63 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
+          
+          
+            <div class="navbar-item">
 <nav class="navbar-nav">
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../installation.html">
-                        Installation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../getting_started/index.html">
-                        Getting Started
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../overview.html">
-                        Documentation
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../gallery/index.html">
-                        Gallery
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="modules.html">
-                        API
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Documentation
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../news.html">
-                        News
-                      </a>
-                    </li>
-                
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
-                        Code of Conduct
-                      </a>
-                    </li>
-                
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../gallery/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="modules.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../news.html">
+    News
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+    Code of Conduct
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -406,13 +410,13 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="vispy.html">vispy package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.app.html">vispy.app package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.app.backends.html">vispy.app.backends package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vispy.html">vispy package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.app.html">vispy.app package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.app.backends.html">vispy.app.backends package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.backends.tests.html">vispy.app.backends.tests package</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.app.tests.html">vispy.app.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.app.tests.html">vispy.app.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.tests.test_app.html">vispy.app.tests.test_app module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.tests.test_backends.html">vispy.app.tests.test_backends module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.tests.test_canvas.html">vispy.app.tests.test_canvas module</a></li>
@@ -420,32 +424,32 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.tests.test_qt.html">vispy.app.tests.test_qt module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.app.tests.test_simultaneous.html">vispy.app.tests.test_simultaneous module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.app.application.html">vispy.app.application module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.app.base.html">vispy.app.base module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.app.canvas.html">vispy.app.canvas module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.app.qt.html">vispy.app.qt module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.app.timer.html">vispy.app.timer module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.color.html">vispy.color package</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.color.tests.html">vispy.color.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.color.html">vispy.color package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.color.tests.html">vispy.color.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.color.tests.test_color.html">vispy.color.tests.test_color module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.color_array.html">vispy.color.color_array module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.color_space.html">vispy.color.color_space module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.geometry.html">vispy.geometry package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.geometry.tests.html">vispy.geometry.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.geometry.html">vispy.geometry package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.geometry.tests.html">vispy.geometry.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_calculations.html">vispy.geometry.tests.test_calculations module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_generation.html">vispy.geometry.tests.test_generation module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_meshdata.html">vispy.geometry.tests.test_meshdata module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.geometry.tests.test_triangulation.html">vispy.geometry.tests.test_triangulation module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.geometry.calculations.html">vispy.geometry.calculations module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.geometry.curves.html">vispy.geometry.curves module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.geometry.generation.html">vispy.geometry.generation module</a></li>
@@ -459,9 +463,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="vispy.geometry.torusknot.html">vispy.geometry.torusknot module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.geometry.triangulation.html">vispy.geometry.triangulation module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.gloo.html">vispy.gloo package</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.gloo.gl.html">vispy.gloo.gl package</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.gloo.html">vispy.gloo package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.gloo.gl.html">vispy.gloo.gl package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.tests.html">vispy.gloo.gl.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.dummy.html">vispy.gloo.gl.dummy module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.es2.html">vispy.gloo.gl.es2 module</a></li>
@@ -469,8 +473,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.glplus.html">vispy.gloo.gl.glplus module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.gl.pyopengl2.html">vispy.gloo.gl.pyopengl2 module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.gloo.tests.html">vispy.gloo.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.gloo.tests.html">vispy.gloo.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.tests.test_buffer.html">vispy.gloo.tests.test_buffer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.tests.test_context.html">vispy.gloo.tests.test_context module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.tests.test_framebuffer.html">vispy.gloo.tests.test_framebuffer module</a></li>
@@ -482,7 +486,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.tests.test_util.html">vispy.gloo.tests.test_util module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.gloo.tests.test_wrappers.html">vispy.gloo.tests.test_wrappers module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.buffer.html">vispy.gloo.buffer module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.context.html">vispy.gloo.context module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.framebuffer.html">vispy.gloo.framebuffer module</a></li>
@@ -494,35 +498,35 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.util.html">vispy.gloo.util module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.gloo.wrappers.html">vispy.gloo.wrappers module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.glsl.html">vispy.glsl package</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.glsl.html">vispy.glsl package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="vispy.glsl.build_spatial_filters.html">vispy.glsl.build_spatial_filters module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.io.html">vispy.io package</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.io.tests.html">vispy.io.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.io.html">vispy.io package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.io.tests.html">vispy.io.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_image.html">vispy.io.tests.test_image module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.io.tests.test_io.html">vispy.io.tests.test_io module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.io.datasets.html">vispy.io.datasets module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.io.image.html">vispy.io.image module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.io.mesh.html">vispy.io.mesh module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.io.stl.html">vispy.io.stl module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.io.wavefront.html">vispy.io.wavefront module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.plot.html">vispy.plot package</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.plot.tests.html">vispy.plot.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.plot.html">vispy.plot package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.plot.tests.html">vispy.plot.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.plot.tests.test_plot.html">vispy.plot.tests.test_plot module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.plot.fig.html">vispy.plot.fig module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.plot.plotwidget.html">vispy.plot.plotwidget module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.scene.html">vispy.scene package</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.cameras.html">vispy.scene.cameras package</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.scene.html">vispy.scene package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.cameras.html">vispy.scene.cameras package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.tests.html">vispy.scene.cameras.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.arcball.html">vispy.scene.cameras.arcball module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.base_camera.html">vispy.scene.cameras.base_camera module</a></li>
@@ -532,14 +536,14 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.perspective.html">vispy.scene.cameras.perspective module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.cameras.turntable.html">vispy.scene.cameras.turntable module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.tests.html">vispy.scene.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.tests.html">vispy.scene.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.tests.test_canvas.html">vispy.scene.tests.test_canvas module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.tests.test_node.html">vispy.scene.tests.test_node module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.tests.test_visuals.html">vispy.scene.tests.test_visuals module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.widgets.html">vispy.scene.widgets package</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.scene.widgets.html">vispy.scene.widgets package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.tests.html">vispy.scene.widgets.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.anchor.html">vispy.scene.widgets.anchor module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.axis.html">vispy.scene.widgets.axis module</a></li>
@@ -550,33 +554,33 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.viewbox.html">vispy.scene.widgets.viewbox module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.scene.widgets.widget.html">vispy.scene.widgets.widget module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.canvas.html">vispy.scene.canvas module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.events.html">vispy.scene.events module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.node.html">vispy.scene.node module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.subscene.html">vispy.scene.subscene module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.visuals.html">vispy.scene.visuals module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.testing.html">vispy.testing package</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.testing.tests.html">vispy.testing.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.testing.html">vispy.testing package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.testing.tests.html">vispy.testing.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.testing.tests.test_testing.html">vispy.testing.tests.test_testing module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.testing.image_tester.html">vispy.testing.image_tester module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.testing.rendered_array_tester.html">vispy.testing.rendered_array_tester module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.util.html">vispy.util package</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.dpi.html">vispy.util.dpi package</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="vispy.util.html">vispy.util package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.dpi.html">vispy.util.dpi package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.dpi.tests.html">vispy.util.dpi.tests package</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.fonts.html">vispy.util.fonts package</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.fonts.html">vispy.util.fonts package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.fonts.tests.html">vispy.util.fonts.tests package</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.svg.html">vispy.util.svg package</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.svg.html">vispy.util.svg package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.svg.base.html">vispy.util.svg.base module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.svg.color.html">vispy.util.svg.color module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.svg.element.html">vispy.util.svg.element module</a></li>
@@ -592,8 +596,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.svg.transformable.html">vispy.util.svg.transformable module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.svg.viewport.html">vispy.util.svg.viewport module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.tests.html">vispy.util.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.util.tests.html">vispy.util.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_config.html">vispy.util.tests.test_config module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_docstring_parameters.html">vispy.util.tests.test_docstring_parameters module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_emitter_group.html">vispy.util.tests.test_emitter_group module</a></li>
@@ -607,7 +611,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_transforms.html">vispy.util.tests.test_transforms module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_vispy.html">vispy.util.tests.test_vispy module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.util.bunch.html">vispy.util.bunch module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.util.check_environment.html">vispy.util.check_environment module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.util.config.html">vispy.util.config module</a></li>
@@ -627,9 +631,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="vispy.util.transforms.html">vispy.util.transforms module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.util.wrappers.html">vispy.util.wrappers module</a></li>
 </ul>
-</li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="vispy.visuals.html">vispy.visuals package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="vispy.visuals.collections.html">vispy.visuals.collections package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="vispy.visuals.html">vispy.visuals package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="vispy.visuals.collections.html">vispy.visuals.collections package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.collections.agg_fast_path_collection.html">vispy.visuals.collections.agg_fast_path_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.collections.agg_path_collection.html">vispy.visuals.collections.agg_path_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.collections.agg_point_collection.html">vispy.visuals.collections.agg_point_collection module</a></li>
@@ -649,8 +653,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.collections.triangle_collection.html">vispy.visuals.collections.triangle_collection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.collections.util.html">vispy.visuals.collections.util module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.filters.html">vispy.visuals.filters package</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.filters.html">vispy.visuals.filters package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.tests.html">vispy.visuals.filters.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.base_filter.html">vispy.visuals.filters.base_filter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.clipper.html">vispy.visuals.filters.clipper module</a></li>
@@ -660,26 +664,26 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.mesh.html">vispy.visuals.filters.mesh module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.filters.picking.html">vispy.visuals.filters.picking module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.glsl.html">vispy.visuals.glsl package</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.glsl.html">vispy.visuals.glsl package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.glsl.antialiasing.html">vispy.visuals.glsl.antialiasing module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.glsl.color.html">vispy.visuals.glsl.color module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.graphs.html">vispy.visuals.graphs package</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.graphs.html">vispy.visuals.graphs package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.graphs.layouts.html">vispy.visuals.graphs.layouts package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.graphs.tests.html">vispy.visuals.graphs.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.graphs.graph.html">vispy.visuals.graphs.graph module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.graphs.util.html">vispy.visuals.graphs.util module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.line.html">vispy.visuals.line package</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-33"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.line.html">vispy.visuals.line package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.line.arrow.html">vispy.visuals.line.arrow module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.line.dash_atlas.html">vispy.visuals.line.dash_atlas module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.line.line.html">vispy.visuals.line.line module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.shaders.html">vispy.visuals.shaders package</a><input class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-34"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.shaders.html">vispy.visuals.shaders package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.tests.html">vispy.visuals.shaders.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.compiler.html">vispy.visuals.shaders.compiler module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.expression.html">vispy.visuals.shaders.expression module</a></li>
@@ -690,8 +694,8 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.shader_object.html">vispy.visuals.shaders.shader_object module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.shaders.variable.html">vispy.visuals.shaders.variable module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.tests.html">vispy.visuals.tests package</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-35"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.tests.html">vispy.visuals.tests package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_arrows.html">vispy.visuals.tests.test_arrows module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_axis.html">vispy.visuals.tests.test_axis module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_collections.html">vispy.visuals.tests.test_collections module</a></li>
@@ -719,12 +723,12 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_volume.html">vispy.visuals.tests.test_volume module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_windbarb.html">vispy.visuals.tests.test_windbarb module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.text.html">vispy.visuals.text package</a><input class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-36"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.text.html">vispy.visuals.text package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.text.text.html">vispy.visuals.text.text module</a></li>
 </ul>
-</li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.transforms.html">vispy.visuals.transforms package</a><input class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-37"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="vispy.visuals.transforms.html">vispy.visuals.transforms package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.html">vispy.visuals.transforms.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.base_transform.html">vispy.visuals.transforms.base_transform module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.chain.html">vispy.visuals.transforms.chain module</a></li>
@@ -733,7 +737,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.nonlinear.html">vispy.visuals.transforms.nonlinear module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.transform_system.html">vispy.visuals.transforms.transform_system module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.axis.html">vispy.visuals.axis module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.border.html">vispy.visuals.border module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.box.html">vispy.visuals.box module</a></li>
@@ -769,11 +773,11 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.windbarb.html">vispy.visuals.windbarb module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.visuals.xyz_axis.html">vispy.visuals.xyz_axis module</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.conftest.html">vispy.conftest module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vispy.version.html">vispy.version module</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -788,13 +792,13 @@ document.write(`
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -805,7 +809,7 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
@@ -862,7 +866,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -943,8 +947,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -977,7 +981,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
 </p></div>
       
     </div>
