@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -40,14 +40,14 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=73c1ede5"></script>
+    <script src="../../_static/documentation_options.js?v=d7b969fc"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/plotting/colorbar';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Boilerplate Interactive Plotting Session" href="ipython_fig_playground.html" />
+    <link rel="next" title="Plot a scaled Image" href="export.html" />
     <link rel="prev" title="Plotting" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -422,6 +422,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_lines.html">Draw a bunch of lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_points.html">Draw 2D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/geometry_shader.html">Use a Geometry Shader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/gpuimage.html">Animate a 2D function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/hello_fbo.html">Use FrameBuffers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/lighted_cube.html">Show a rotating cube with lighting</a></li>
@@ -493,6 +494,7 @@ document.write(`
 
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Plotting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="export.html">Plot a scaled Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot.html">Plot data with different styles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_colorbars.html">Line plot and colorbar</a></li>
@@ -610,13 +612,16 @@ to download the full example code.</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.228 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.375 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-plotting-colorbar-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/24fca12f2f9a09bee7cf0bb1e85a4ad9/colorbar.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">colorbar.ipynb</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b4c75744546d86014b84c3d0ba05b9a2/colorbar.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">colorbar.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/279a95dc2797f082f3686ebca15066c7/colorbar.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">colorbar.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -642,11 +647,11 @@ to download the full example code.</p>
       </div>
     </a>
     <a class="right-next"
-       href="ipython_fig_playground.html"
+       href="export.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Boilerplate Interactive Plotting Session</p>
+        <p class="prev-next-title">Plot a scaled Image</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -721,7 +726,7 @@ to download the full example code.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>

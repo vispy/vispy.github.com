@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=73c1ede5"></script>
+    <script src="../../_static/documentation_options.js?v=d7b969fc"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/index';</script>
@@ -422,6 +422,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_lines.html">Draw a bunch of lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_points.html">Draw 2D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/geometry_shader.html">Use a Geometry Shader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/gpuimage.html">Animate a 2D function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/hello_fbo.html">Use FrameBuffers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/lighted_cube.html">Show a rotating cube with lighting</a></li>
@@ -493,6 +494,7 @@ document.write(`
 
 <li class="toctree-l1 has-children"><a class="reference internal" href="../plotting/index.html">Plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/colorbar.html">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/export.html">Plot a scaled Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot.html">Plot data with different styles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot_colorbars.html">Line plot and colorbar</a></li>
@@ -589,7 +591,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrates how to identify (pick) individual faces on a mesh."><img alt="" src="../../_images/sphx_glr_face_picking_thumb.png" />
 <p><a class="reference internal" href="face_picking.html#sphx-glr-gallery-scene-face-picking-py"><span class="std std-ref">Picking Faces from a Mesh</span></a></p>
   <div class="sphx-glr-thumbnail-title">Picking Faces from a Mesh</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating the use of aspect ratio, and also the flipping of axis using negative asp..."><img alt="" src="../../_images/sphx_glr_flipped_axis_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating the use of aspect ratio, and also the flipping of axis using negative aspect ratios."><img alt="" src="../../_images/sphx_glr_flipped_axis_thumb.png" />
 <p><a class="reference internal" href="flipped_axis.html#sphx-glr-gallery-scene-flipped-axis-py"><span class="std std-ref">Aspect Ratios</span></a></p>
   <div class="sphx-glr-thumbnail-title">Aspect Ratios</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to visualise a NetworkX graph using a VisPy Graph."><img alt="" src="../../_images/sphx_glr_graph_thumb.gif" />
@@ -637,7 +639,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Demonstration of animated Line visual."><img alt="" src="../../_images/sphx_glr_line_update_thumb.gif" />
 <p><a class="reference internal" href="line_update.html#sphx-glr-gallery-scene-line-update-py"><span class="std std-ref">Animated Line Visual</span></a></p>
   <div class="sphx-glr-thumbnail-title">Animated Line Visual</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstration of LinearRegion visual. Allows drawing of infinite horizontal or vertical region ..."><img alt="" src="../../_images/sphx_glr_linear_region_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstration of LinearRegion visual. Allows drawing of infinite horizontal or vertical region for 2D plots."><img alt="" src="../../_images/sphx_glr_linear_region_thumb.png" />
 <p><a class="reference internal" href="linear_region.html#sphx-glr-gallery-scene-linear-region-py"><span class="std std-ref">Draw an LinearRegion</span></a></p>
   <div class="sphx-glr-thumbnail-title">Draw an LinearRegion</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrates use of special Camera subclasses to implement a (flashy)  data-exploration tool."><img alt="" src="../../_images/sphx_glr_magnify_thumb.png" />
@@ -658,16 +660,16 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show how to use the texture filter on meshes."><img alt="" src="../../_images/sphx_glr_mesh_texture_thumb.png" />
 <p><a class="reference internal" href="mesh_texture.html#sphx-glr-gallery-scene-mesh-texture-py"><span class="std std-ref">Texture Filter on Meshes</span></a></p>
   <div class="sphx-glr-thumbnail-title">Texture Filter on Meshes</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Simple test of nested viewboxes, demonstrating the three methods that can be used by a viewbox ..."><img alt="" src="../../_images/sphx_glr_nested_viewbox_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Simple test of nested viewboxes, demonstrating the three methods that can be used by a viewbox to provide clipping."><img alt="" src="../../_images/sphx_glr_nested_viewbox_thumb.png" />
 <p><a class="reference internal" href="nested_viewbox.html#sphx-glr-gallery-scene-nested-viewbox-py"><span class="std std-ref">Nested Viewboxes</span></a></p>
   <div class="sphx-glr-thumbnail-title">Nested Viewboxes</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrating two scenes that share the same camera view by linking the cameras."><img alt="" src="../../_images/sphx_glr_one_cam_two_scenes_thumb.png" />
 <p><a class="reference internal" href="one_cam_two_scenes.html#sphx-glr-gallery-scene-one-cam-two-scenes-py"><span class="std std-ref">Share Camera Views</span></a></p>
   <div class="sphx-glr-thumbnail-title">Share Camera Views</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrating a single scene that is shown in four different viewboxes, each with a different c..."><img alt="" src="../../_images/sphx_glr_one_scene_four_cams_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrating a single scene that is shown in four different viewboxes, each with a different camera."><img alt="" src="../../_images/sphx_glr_one_scene_four_cams_thumb.png" />
 <p><a class="reference internal" href="one_scene_four_cams.html#sphx-glr-gallery-scene-one-scene-four-cams-py"><span class="std std-ref">Single Scene in Multiple View boxes</span></a></p>
   <div class="sphx-glr-thumbnail-title">Single Scene in Multiple View boxes</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrates use of visual.Markers to create a point cloud with a standard turntable camera to ..."><img alt="" src="../../_images/sphx_glr_point_cloud_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrates use of visual.Markers to create a point cloud with a standard turntable camera to fly around with and a centered 3D Axis."><img alt="" src="../../_images/sphx_glr_point_cloud_thumb.png" />
 <p><a class="reference internal" href="point_cloud.html#sphx-glr-gallery-scene-point-cloud-py"><span class="std std-ref">Create a Point Cloud</span></a></p>
   <div class="sphx-glr-thumbnail-title">Create a Point Cloud</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Demonstration of PolygonVisual, EllipseVisual, RectangleVisual and RegularPolygon"><img alt="" src="../../_images/sphx_glr_polygon_thumb.png" />
@@ -679,7 +681,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="For testing zoom sensitivity on various platforms"><img alt="" src="../../_images/sphx_glr_sensitivity_thumb.png" />
 <p><a class="reference internal" href="sensitivity.html#sphx-glr-gallery-scene-sensitivity-py"><span class="std std-ref">Zoom Sensitivity</span></a></p>
   <div class="sphx-glr-thumbnail-title">Zoom Sensitivity</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Simple demonstration of drawing and editing shapes with the mouse This demo implements mouse pi..."><img alt="" src="../../_images/sphx_glr_shape_draw_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Simple demonstration of drawing and editing shapes with the mouse This demo implements mouse picking on visuals and markers using the vispy scene and &quot;visual_at&quot; mechanism. Left mouse button on empty space creates new objects. Objects can be selected by clicking, and moved by dragging. Dragging control points changes the size of the object. Vispy takes care of coordinate transforms from screen to ViewBox - the demo works on different zoom levels. Lastly, additional objects are added to the view in a fixed position as &quot;buttons&quot; to select which type of object is being created. Selecting the arrow symbol will switch into select/pan mode where the left drag moves the workplane or moves objects/controlpoints."><img alt="" src="../../_images/sphx_glr_shape_draw_thumb.png" />
 <p><a class="reference internal" href="shape_draw.html#sphx-glr-gallery-scene-shape-draw-py"><span class="std std-ref">Draw and Edit Shapes with Mouse</span></a></p>
   <div class="sphx-glr-thumbnail-title">Draw and Edit Shapes with Mouse</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create a sphere."><img alt="" src="../../_images/sphx_glr_sphere_thumb.png" />
@@ -688,7 +690,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the use of the SurfacePlot visual."><img alt="" src="../../_images/sphx_glr_surface_plot_thumb.png" />
 <p><a class="reference internal" href="surface_plot.html#sphx-glr-gallery-scene-surface-plot-py"><span class="std std-ref">Draw a SurfacePlot</span></a></p>
   <div class="sphx-glr-thumbnail-title">Draw a SurfacePlot</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrate the use of text in the root scene and a viewbox. Note how the point size is indepen..."><img alt="" src="../../_images/sphx_glr_text_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstrate the use of text in the root scene and a viewbox. Note how the point size is independent of scaling of viewbox and canvas."><img alt="" src="../../_images/sphx_glr_text_thumb.png" />
 <p><a class="reference internal" href="text.html#sphx-glr-gallery-scene-text-py"><span class="std std-ref">Text in a Scene and ViewBox</span></a></p>
   <div class="sphx-glr-thumbnail-title">Text in a Scene and ViewBox</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simple use of SceneCanvas to display a cube with an arcball camera."><img alt="" src="../../_images/sphx_glr_turntable_box_thumb.png" />
@@ -700,7 +702,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Example volume rendering"><img alt="" src="../../_images/sphx_glr_volume_thumb.png" />
 <p><a class="reference internal" href="volume.html#sphx-glr-gallery-scene-volume-py"><span class="std std-ref">Volume Rendering</span></a></p>
   <div class="sphx-glr-thumbnail-title">Volume Rendering</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Controls:  1  - toggle between volume rendering methods  2 -  toggle between volume rendering m..."><img alt="" src="../../_images/sphx_glr_volume_plane_thumb.gif" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Controls:  1  - toggle between volume rendering methods  2 -  toggle between volume rendering modes (&#x27;volume&#x27;, &#x27;plane&#x27;)  [] - shift plane along plane normal  {} - decrease/increase plane thickness * Spacebar - stop/start animation"><img alt="" src="../../_images/sphx_glr_volume_plane_thumb.gif" />
 <p><a class="reference internal" href="volume_plane.html#sphx-glr-gallery-scene-volume-plane-py"><span class="std std-ref">Rendering Planes through 3D Data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Rendering Planes through 3D Data</div>
 </div></div><div class="toctree-wrapper compound">
@@ -721,10 +723,10 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Test automatic layout of multiple viewboxes using Grid."><img alt="" src="../../_images/sphx_glr_grid_large_thumb.png" />
 <p><a class="reference internal" href="grid_layout/grid_large.html#sphx-glr-gallery-scene-grid-layout-grid-large-py"><span class="std std-ref">Multiple Line Views on a Grid</span></a></p>
   <div class="sphx-glr-thumbnail-title">Multiple Line Views on a Grid</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="+-----+-----+-----+ |  1  |  2  |  2  | +-----+-----+-----+ |  3  |  3  |  4  | +-----+-----+--..."><img alt="" src="../../_images/sphx_glr_grid_uneven_col_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="+-----+-----+-----+ |  1  |  2  |  2  | +-----+-----+-----+ |  3  |  3  |  4  | +-----+-----+-----+"><img alt="" src="../../_images/sphx_glr_grid_uneven_col_thumb.png" />
 <p><a class="reference internal" href="grid_layout/grid_uneven_col.html#sphx-glr-gallery-scene-grid-layout-grid-uneven-col-py"><span class="std std-ref">Another Grid Layout</span></a></p>
   <div class="sphx-glr-thumbnail-title">Another Grid Layout</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="+----+-------------+ |    |             | | y  |   viewbox   | |    |             | +----+-----..."><img alt="" src="../../_images/sphx_glr_grid_x_y_viewbox_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="+----+-------------+ |    |             | | y  |   viewbox   | |    |             | +----+-------------+ | sp |     x       | +----+-------------+"><img alt="" src="../../_images/sphx_glr_grid_x_y_viewbox_thumb.png" />
 <p><a class="reference internal" href="grid_layout/grid_x_y_viewbox.html#sphx-glr-gallery-scene-grid-layout-grid-x-y-viewbox-py"><span class="std std-ref">Plot-like Grid Layout</span></a></p>
   <div class="sphx-glr-thumbnail-title">Plot-like Grid Layout</div>
 </div></div></section>
@@ -887,7 +889,7 @@ examples would be welcome. ;)</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>

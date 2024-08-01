@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=73c1ede5"></script>
+    <script src="../../_static/documentation_options.js?v=d7b969fc"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/contour';</script>
@@ -422,6 +422,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_lines.html">Draw a bunch of lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_points.html">Draw 2D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/geometry_shader.html">Use a Geometry Shader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/gpuimage.html">Animate a 2D function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/hello_fbo.html">Use FrameBuffers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gloo/lighted_cube.html">Show a rotating cube with lighting</a></li>
@@ -493,6 +494,7 @@ document.write(`
 
 <li class="toctree-l1 has-children"><a class="reference internal" href="../plotting/index.html">Plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/colorbar.html">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/export.html">Plot a scaled Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot.html">Plot data with different styles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot_colorbars.html">Line plot and colorbar</a></li>
@@ -569,7 +571,28 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="apply-contour-filter-on-an-image">
 <span id="sphx-glr-gallery-scene-contour-py"></span><h1>Apply Contour Filter on an Image<a class="headerlink" href="#apply-contour-filter-on-an-image" title="Link to this heading">#</a></h1>
 <p>Simple use of SceneCanvas to display an Image.</p>
-<img src="../../_images/sphx_glr_contour_001.png" srcset="../../_images/sphx_glr_contour_001.png" alt="contour" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<img src="../../_images/sphx_glr_contour_001.png" srcset="../../_images/sphx_glr_contour_001.png" alt="contour" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Downloading data from https://raw.githubusercontent.com/vispy/demo-data/main/mona_lisa/mona_lisa_sm.png (818 kB)
+
+[...                                     ] 7.82614 | downloading
+[......                                  ] 15.65228 / downloading
+[.........                               ] 23.47841 - downloading
+[............                            ] 31.30455 \ downloading
+[...............                         ] 39.13069 | downloading
+[..................                      ] 46.95683 / downloading
+[.....................                   ] 54.78296 - downloading
+[.........................               ] 62.60910 \ downloading
+[............................            ] 70.43524 | downloading
+[...............................         ] 78.26138 / downloading
+[..................................      ] 86.08752 - downloading
+[.....................................   ] 93.91365 \ downloading
+[........................................] 100.00000 | downloading
+File saved as /home/runner/.vispy/data/mona_lisa/mona_lisa_sm.png.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">vispy.visuals.filters</span> <span class="kn">import</span> <span class="n">IsolineFilter</span>
@@ -634,13 +657,16 @@ to download the full example code.</p>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.221 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.489 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-contour-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8a407d529ff0c99cffb42bbe1d5f67be/contour.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">contour.ipynb</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5a530e1c09d9196b19a0a5dfe53ddbd4/contour.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">contour.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/9076aef953f977f9ca61ddb39fb6d853/contour.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">contour.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -745,7 +771,7 @@ to download the full example code.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>

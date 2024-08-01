@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=73c1ede5"></script>
+    <script src="../../_static/documentation_options.js?v=d7b969fc"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/gloo/index';</script>
@@ -422,6 +422,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="display_lines.html">Draw a bunch of lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="display_points.html">Draw 2D points</a></li>
 <li class="toctree-l2"><a class="reference internal" href="display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_shader.html">Use a Geometry Shader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gpuimage.html">Animate a 2D function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hello_fbo.html">Use FrameBuffers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lighted_cube.html">Show a rotating cube with lighting</a></li>
@@ -493,6 +494,7 @@ document.write(`
 
 <li class="toctree-l1 has-children"><a class="reference internal" href="../plotting/index.html">Plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/colorbar.html">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/export.html">Plot a scaled Image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot.html">Plot data with different styles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plotting/plot_colorbars.html">Line plot and colorbar</a></li>
@@ -568,7 +570,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Use a timer to trigger updating an image."><img alt="" src="../../_images/sphx_glr_animate_images_slice_thumb.gif" />
 <p><a class="reference internal" href="animate_images_slice.html#sphx-glr-gallery-gloo-animate-images-slice-py"><span class="std std-ref">Animate an Image</span></a></p>
   <div class="sphx-glr-thumbnail-title">Animate an Image</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating showing a quad using a Texture2D and VertexBuffer and a timer to control ..."><img alt="" src="../../_images/sphx_glr_animate_shape_thumb.gif" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example demonstrating showing a quad using a Texture2D and VertexBuffer and a timer to control the drawing."><img alt="" src="../../_images/sphx_glr_animate_shape_thumb.gif" />
 <p><a class="reference internal" href="animate_shape.html#sphx-glr-gallery-gloo-animate-shape-py"><span class="std std-ref">Animate a Shape</span></a></p>
   <div class="sphx-glr-thumbnail-title">Animate a Shape</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating colored cube"><img alt="" src="../../_images/sphx_glr_colored_cube_thumb.png" />
@@ -580,7 +582,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Create a new drawing using triangle_strip"><img alt="" src="../../_images/sphx_glr_colored_quad_thumb.png" />
 <p><a class="reference internal" href="colored_quad.html#sphx-glr-gallery-gloo-colored-quad-py"><span class="std std-ref">Show color quad Image</span></a></p>
   <div class="sphx-glr-thumbnail-title">Show color quad Image</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how multiple line-pieces can be drawn using one call, by discarding s..."><img alt="" src="../../_images/sphx_glr_display_lines_thumb.gif" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how multiple line-pieces can be drawn using one call, by discarding some fragments."><img alt="" src="../../_images/sphx_glr_display_lines_thumb.gif" />
 <p><a class="reference internal" href="display_lines.html#sphx-glr-gallery-gloo-display-lines-py"><span class="std std-ref">Draw a bunch of lines</span></a></p>
   <div class="sphx-glr-thumbnail-title">Draw a bunch of lines</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simple example plotting 2D points."><img alt="" src="../../_images/sphx_glr_display_points_thumb.png" />
@@ -589,16 +591,19 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simple example demonstrating showing a quad using a gloo Program."><img alt="" src="../../_images/sphx_glr_display_shape_thumb.png" />
 <p><a class="reference internal" href="display_shape.html#sphx-glr-gallery-gloo-display-shape-py"><span class="std std-ref">Draw a Quad</span></a></p>
   <div class="sphx-glr-thumbnail-title">Draw a Quad</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Simple geometry shader: Takes one point as input emits one triangle as output."><img alt="" src="../../_images/sphx_glr_geometry_shader_thumb.png" />
+<p><a class="reference internal" href="geometry_shader.html#sphx-glr-gallery-gloo-geometry-shader-py"><span class="std std-ref">Use a Geometry Shader</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Use a Geometry Shader</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Illustrate how to plot a 2D function (an image) y=f(x,y) on the GPU."><img alt="" src="../../_images/sphx_glr_gpuimage_thumb.gif" />
 <p><a class="reference internal" href="gpuimage.html#sphx-glr-gallery-gloo-gpuimage-py"><span class="std std-ref">Animate a 2D function</span></a></p>
   <div class="sphx-glr-thumbnail-title">Animate a 2D function</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Minimal example demonstrating the use of frame buffer objects (FBO). This example blurs the out..."><img alt="" src="../../_images/sphx_glr_hello_fbo_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Minimal example demonstrating the use of frame buffer objects (FBO). This example blurs the output image."><img alt="" src="../../_images/sphx_glr_hello_fbo_thumb.png" />
 <p><a class="reference internal" href="hello_fbo.html#sphx-glr-gallery-gloo-hello-fbo-py"><span class="std std-ref">Use FrameBuffers</span></a></p>
   <div class="sphx-glr-thumbnail-title">Use FrameBuffers</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating cube with lighting"><img alt="" src="../../_images/sphx_glr_lighted_cube_thumb.png" />
 <p><a class="reference internal" href="lighted_cube.html#sphx-glr-gallery-gloo-lighted-cube-py"><span class="std std-ref">Show a rotating cube with lighting</span></a></p>
   <div class="sphx-glr-thumbnail-title">Show a rotating cube with lighting</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="We create two textures. One that shows a red, green and blue band in the horizontal direction a..."><img alt="" src="../../_images/sphx_glr_multi_texture_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="We create two textures. One that shows a red, green and blue band in the horizontal direction and one that does the same in the vertical direction. In the fragment shader the colors from both textures are added."><img alt="" src="../../_images/sphx_glr_multi_texture_thumb.png" />
 <p><a class="reference internal" href="multi_texture.html#sphx-glr-gallery-gloo-multi-texture-py"><span class="std std-ref">Use multiple textures</span></a></p>
   <div class="sphx-glr-thumbnail-title">Use multiple textures</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating cube with an outline"><img alt="" src="../../_images/sphx_glr_outlined_cube_thumb.png" />
@@ -622,7 +627,7 @@ document.write(`
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simplest Shader Program"><img alt="" src="../../_images/sphx_glr_start_shaders_thumb.png" />
 <p><a class="reference internal" href="start_shaders.html#sphx-glr-gallery-gloo-start-shaders-py"><span class="std std-ref">Simplest Shader Program</span></a></p>
   <div class="sphx-glr-thumbnail-title">Simplest Shader Program</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Generates a gradient texture with high dynamic range and renders it with a fragment shader that..."><img alt="" src="../../_images/sphx_glr_texture_precision_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Generates a gradient texture with high dynamic range and renders it with a fragment shader that tests for quantization errors by comparing adjacent texels and decomposes the gradient values into high and low significance bits, mapping them to separate display color channels."><img alt="" src="../../_images/sphx_glr_texture_precision_thumb.png" />
 <p><a class="reference internal" href="texture_precision.html#sphx-glr-gallery-gloo-texture-precision-py"><span class="std std-ref">Example using texture internalformat for higher precision</span></a></p>
   <div class="sphx-glr-thumbnail-title">Example using texture internalformat for higher precision</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Show a rotating textured cube"><img alt="" src="../../_images/sphx_glr_textured_cube_thumb.png" />
@@ -640,13 +645,13 @@ document.write(`
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Drawing a rotated 3D cube"><img alt="" src="../../_images/sphx_glr_cube_thumb.png" />
 <p><a class="reference internal" href="gl/cube.html#sphx-glr-gallery-gloo-gl-cube-py"><span class="std std-ref">Drawing a rotated 3D cube</span></a></p>
   <div class="sphx-glr-thumbnail-title">Drawing a rotated 3D cube</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="(adapted from the &quot;OpenGL ES 2.0 Programming Guide&quot;) This example demonstrates a series of expl..."><img alt="" src="../../_images/sphx_glr_fireworks_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="(adapted from the &quot;OpenGL ES 2.0 Programming Guide&quot;) This example demonstrates a series of explosions that last one second. The visualization during the explosion is highly optimized using a Vertex Buffer Object (VBO). After each explosion, vertex data for the next explosion are calculated, such that each explostion is unique."><img alt="" src="../../_images/sphx_glr_fireworks_thumb.png" />
 <p><a class="reference internal" href="gl/fireworks.html#sphx-glr-gallery-gloo-gl-fireworks-py"><span class="std std-ref">Example demonstrating simulation of fireworks using point sprites</span></a></p>
   <div class="sphx-glr-thumbnail-title">Example demonstrating simulation of fireworks using point sprites</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Drawing a simple quad"><img alt="" src="../../_images/sphx_glr_quad_thumb.png" />
 <p><a class="reference internal" href="gl/quad.html#sphx-glr-gallery-gloo-gl-quad-py"><span class="std std-ref">Drawing a simple quad</span></a></p>
   <div class="sphx-glr-thumbnail-title">Drawing a simple quad</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example is a modification of examples/tutorial/gl/quad.py which uses instanced rendering t..."><img alt="" src="../../_images/sphx_glr_quad_instanced_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example is a modification of examples/tutorial/gl/quad.py which uses instanced rendering to generate many copies of the same quad."><img alt="" src="../../_images/sphx_glr_quad_instanced_thumb.png" />
 <p><a class="reference internal" href="gl/quad_instanced.html#sphx-glr-gallery-gloo-gl-quad-instanced-py"><span class="std std-ref">Displaying quads using Instanced rendering</span></a></p>
   <div class="sphx-glr-thumbnail-title">Displaying quads using Instanced rendering</div>
 </div></div><div class="toctree-wrapper compound">
@@ -775,7 +780,7 @@ document.write(`
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     <br/>
   </p>
 </div>
