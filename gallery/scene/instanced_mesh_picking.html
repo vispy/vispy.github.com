@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
@@ -38,12 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=7bdd12f5"></script>
+    <script src="../../_static/documentation_options.js?v=dfa596ec"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/instanced_mesh_picking';</script>
@@ -488,9 +488,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -557,13 +562,13 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">use</span>
-<span class="kn">from</span> <span class="nn">vispy.io</span> <span class="kn">import</span> <span class="n">read_mesh</span><span class="p">,</span> <span class="n">load_data_file</span>
-<span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">InstancedMesh</span>
-<span class="kn">from</span> <span class="nn">vispy.scene</span> <span class="kn">import</span> <span class="n">transforms</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial.transform</span> <span class="kn">import</span> <span class="n">Rotation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">use</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_mesh</span><span class="p">,</span> <span class="n">load_data_file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.scene.visuals</span><span class="w"> </span><span class="kn">import</span> <span class="n">InstancedMesh</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.scene</span><span class="w"> </span><span class="kn">import</span> <span class="n">transforms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
 
 <span class="c1">#Necessary to use InstancedMesh</span>
 <span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s1">&#39;gl+&#39;</span><span class="p">)</span>
@@ -597,7 +602,7 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
 <span class="n">mesh</span><span class="o">.</span><span class="n">interactive</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">mouse_press</span><span class="o">.</span><span class="n">connect</span>
-<span class="k">def</span> <span class="nf">on_mouse_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_mouse_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
     <span class="n">clicked_mesh</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">visual_at</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clicked_mesh</span><span class="p">,</span> <span class="n">InstancedMesh</span><span class="p">):</span>
         <span class="n">pos1</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="n">min_pos</span> <span class="o">=</span> <span class="n">get_view_axis_in_scene_coordinates</span><span class="p">(</span>
@@ -610,7 +615,7 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
 
 
 
-<span class="k">def</span> <span class="nf">get_view_axis_in_scene_coordinates</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">mesh</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_view_axis_in_scene_coordinates</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">mesh</span><span class="p">):</span>
     <span class="n">event_pos</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
     <span class="n">instances_on_canvas</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># Translate each position to corresponding 2d canvas coordinates</span>
@@ -641,7 +646,7 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.083 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.207 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-instanced-mesh-picking-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/dbc1d4e92532a36ea2535625b3648b29/instanced_mesh_picking.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">instanced_mesh_picking.ipynb</span></code></a></p>
@@ -714,13 +719,13 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
 </div>
 
   <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="../../_sources/gallery/scene/instanced_mesh_picking.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/gallery/scene/instanced_mesh_picking.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
 
 </div></div>
               
@@ -735,8 +740,8 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -747,7 +752,7 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
 
   <p class="copyright">
     
-      © Copyright 2013-2024, VisPy developers.
+      © Copyright 2013-2025, VisPy developers.
       <br/>
     
   </p>
@@ -769,7 +774,8 @@ File saved as /home/runner/.vispy/data/spot/spot.obj.gz.
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
