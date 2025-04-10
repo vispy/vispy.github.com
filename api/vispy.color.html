@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=450d6c4a"></script>
+    <script src="../_static/documentation_options.js?v=e175e853"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.color';</script>
@@ -888,8 +888,10 @@
 <li class="toctree-l1"><a class="reference internal" href="vispy.color.colormap.html">vispy.color.colormap module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap"><code class="docutils literal notranslate"><span class="pre">BaseColormap</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.colors"><code class="docutils literal notranslate"><span class="pre">BaseColormap.colors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.get_bad_color"><code class="docutils literal notranslate"><span class="pre">BaseColormap.get_bad_color()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.glsl_map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.glsl_map</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.set_bad_color"><code class="docutils literal notranslate"><span class="pre">BaseColormap.set_bad_color()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_lut()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.color.colormap.html#vispy.color.colormap.BaseColormap.texture_map_data"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_map_data</span></code></a></li>
 </ul>
@@ -952,6 +954,11 @@ of size (N, 4).</p>
 <span class="sig-name descname"><span class="pre">colors</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#vispy.color.BaseColormap.colors" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="vispy.color.BaseColormap.get_bad_color">
+<span class="sig-name descname"><span class="pre">get_bad_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.color.BaseColormap.get_bad_color" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="vispy.color.BaseColormap.glsl_map">
 <span class="sig-name descname"><span class="pre">glsl_map</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#vispy.color.BaseColormap.glsl_map" title="Link to this definition">#</a></dt>
@@ -984,6 +991,11 @@ should be <code class="docutils literal notranslate"><span class="pre">item.shap
 <p>Users are expected to use a colormap with <code class="docutils literal notranslate"><span class="pre">__getitem__()</span></code> rather
 than <code class="docutils literal notranslate"><span class="pre">map()</span></code> (which implements a lower-level API).</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="vispy.color.BaseColormap.set_bad_color">
+<span class="sig-name descname"><span class="pre">set_bad_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.color.BaseColormap.set_bad_color" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.color.BaseColormap.texture_lut">
@@ -1428,8 +1440,10 @@ list of rgba colors</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vispy.color">Module contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap"><code class="docutils literal notranslate"><span class="pre">BaseColormap</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.colors"><code class="docutils literal notranslate"><span class="pre">BaseColormap.colors</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.get_bad_color"><code class="docutils literal notranslate"><span class="pre">BaseColormap.get_bad_color()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.glsl_map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.glsl_map</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.map"><code class="docutils literal notranslate"><span class="pre">BaseColormap.map()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.set_bad_color"><code class="docutils literal notranslate"><span class="pre">BaseColormap.set_bad_color()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.texture_lut"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_lut()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.color.BaseColormap.texture_map_data"><code class="docutils literal notranslate"><span class="pre">BaseColormap.texture_map_data</span></code></a></li>
 </ul>
