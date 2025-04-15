@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=4e33a8da"></script>
+    <script src="../_static/documentation_options.js?v=ea4b2cc3"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.visuals.gridlines';</script>
@@ -681,6 +681,7 @@
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_colorbar.html">vispy.visuals.tests.test_colorbar module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_colormap.html">vispy.visuals.tests.test_colormap module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_ellipse.html">vispy.visuals.tests.test_ellipse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_gridlines.html">vispy.visuals.tests.test_gridlines module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_histogram.html">vispy.visuals.tests.test_histogram module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_image.html">vispy.visuals.tests.test_image module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.tests.test_image_complex.html">vispy.visuals.tests.test_image_complex module</a></li>
@@ -827,7 +828,7 @@
 <span id="vispy-visuals-gridlines-module"></span><h1>vispy.visuals.gridlines module<a class="headerlink" href="#module-vispy.visuals.gridlines" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.gridlines.GridLinesVisual">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.gridlines.</span></span><span class="sig-name descname"><span class="pre">GridLinesVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.gridlines.GridLinesVisual" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.gridlines.</span></span><span class="sig-name descname"><span class="pre">GridLinesVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.gridlines.GridLinesVisual" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.image.html#vispy.visuals.image.ImageVisual" title="vispy.visuals.image.ImageVisual"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageVisual</span></code></a></p>
 <p>Displays regularly spaced grid lines in any coordinate system and at
 any scale.</p>
@@ -839,9 +840,24 @@ any scale.</p>
 <dt><strong>color</strong><span class="classifier">Color</span></dt><dd><p>The base color for grid lines. The final color may have its alpha
 channel modified.</p>
 </dd>
+<dt><strong>grid_bounds</strong><span class="classifier">tuple or None</span></dt><dd><p>The lower and upper bound for each axis beyond which no grid is rendered.
+In the form of (minx, maxx, miny, maxy).</p>
+</dd>
+<dt><strong>border_width</strong><span class="classifier">float</span></dt><dd><p>Tickness of the border rendered at the bounds of the grid.</p>
+</dd>
 </dl>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.gridlines.GridLinesVisual.border_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_width</span></span><a class="headerlink" href="#vispy.visuals.gridlines.GridLinesVisual.border_width" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.gridlines.GridLinesVisual.grid_bounds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grid_bounds</span></span><a class="headerlink" href="#vispy.visuals.gridlines.GridLinesVisual.grid_bounds" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="vispy.visuals.gridlines.GridLinesVisual.size">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#vispy.visuals.gridlines.GridLinesVisual.size" title="Link to this definition">#</a></dt>
@@ -900,6 +916,8 @@ channel modified.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.gridlines.GridLinesVisual"><code class="docutils literal notranslate"><span class="pre">GridLinesVisual</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.gridlines.GridLinesVisual.border_width"><code class="docutils literal notranslate"><span class="pre">GridLinesVisual.border_width</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.gridlines.GridLinesVisual.grid_bounds"><code class="docutils literal notranslate"><span class="pre">GridLinesVisual.grid_bounds</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.gridlines.GridLinesVisual.size"><code class="docutils literal notranslate"><span class="pre">GridLinesVisual.size</span></code></a></li>
 </ul>
 </li>
