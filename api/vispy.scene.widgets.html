@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=a269ae0a"></script>
+    <script src="../_static/documentation_options.js?v=95912460"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.scene.widgets';</script>
@@ -904,6 +904,7 @@
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.next_row"><code class="docutils literal notranslate"><span class="pre">Grid.next_row()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.remove_widget"><code class="docutils literal notranslate"><span class="pre">Grid.remove_widget()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.resize_widget"><code class="docutils literal notranslate"><span class="pre">Grid.resize_widget()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vispy.scene.widgets.grid.html#vispy.scene.widgets.grid.Grid.spacing"><code class="docutils literal notranslate"><span class="pre">Grid.spacing</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1190,7 +1191,7 @@ is automatically added to the end of each line.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.scene.widgets.Grid">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.widgets.</span></span><span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.widgets.Grid" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.scene.widgets.</span></span><span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.scene.widgets.Grid" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.scene.widgets.widget.html#vispy.scene.widgets.widget.Widget" title="vispy.scene.widgets.widget.Widget"><code class="xref py py-class docutils literal notranslate"><span class="pre">Widget</span></code></a></p>
 <p>Widget for proportionally dividing its internal area into a grid.</p>
 <p>This widget will automatically set the position and size of child widgets
@@ -1198,7 +1199,8 @@ according to provided constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>spacing</strong><span class="classifier">int</span></dt><dd><p>Spacing between widgets.</p>
+<dt><strong>spacing</strong><span class="classifier">int | tuple[int, int]</span></dt><dd><p>Spacing between widgets. If <cite>tuple</cite> then it must be of length two, the first element
+being <cite>width_spacing</cite> and the second being <cite>height_spacing</cite>.</p>
 </dd>
 <dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Keyword arguments to pass to <cite>Widget</cite>.</p>
 </dd>
@@ -1324,6 +1326,12 @@ parent(s) are removed.</p>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.scene.widgets.Grid.spacing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spacing</span></span><a class="headerlink" href="#vispy.scene.widgets.Grid.spacing" title="Link to this definition">#</a></dt>
+<dd><p>The spacing between individual Viewbox widgets in the grid.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1749,6 +1757,7 @@ occupies.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.next_row"><code class="docutils literal notranslate"><span class="pre">Grid.next_row()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.remove_widget"><code class="docutils literal notranslate"><span class="pre">Grid.remove_widget()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.resize_widget"><code class="docutils literal notranslate"><span class="pre">Grid.resize_widget()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.scene.widgets.Grid.spacing"><code class="docutils literal notranslate"><span class="pre">Grid.spacing</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.scene.widgets.Label"><code class="docutils literal notranslate"><span class="pre">Label</span></code></a><ul class="nav section-nav flex-column">
