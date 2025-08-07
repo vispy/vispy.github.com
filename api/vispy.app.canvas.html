@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1eb8099f"></script>
+    <script src="../_static/documentation_options.js?v=8b0cf023"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.app.canvas';</script>
@@ -853,7 +853,14 @@ Note the canvas application can be accessed at <code class="docutils literal not
 </dd>
 <dt><strong>create_native</strong><span class="classifier">bool</span></dt><dd><p>Whether to create the widget immediately. Default True.</p>
 </dd>
-<dt><strong>vsync</strong><span class="classifier">bool</span></dt><dd><p>Enable vertical synchronization.</p>
+<dt><strong>vsync</strong><span class="classifier">bool</span></dt><dd><p>Enable vertical synchronization.
+Note for some backends
+(ex. <a class="reference external" href="https://doc.qt.io/qt-6/qsurfaceformat.html#setSwapInterval">Qt-based backends</a>)
+and some platforms this setting may not work as expected. Some GPU
+drivers may require modifying vsync settings at a system or driver
+level (ex. NVIDIA control panel). See documentation for the specific
+backend engine and your system’s GPU in the case of unexpected
+behavior.</p>
 </dd>
 <dt><strong>resizable</strong><span class="classifier">bool</span></dt><dd><p>Allow the window to be resized.</p>
 </dd>
