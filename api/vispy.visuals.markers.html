@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=822404f6"></script>
+    <script src="../_static/documentation_options.js?v=b5dc8e9c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/vispy.visuals.markers';</script>
@@ -829,7 +829,7 @@
 <p>Marker Visual and shader definitions.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="vispy.visuals.markers.MarkersVisual">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.markers.</span></span><span class="sig-name descname"><span class="pre">MarkersVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fixed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spherical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">-1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_ambient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.markers.MarkersVisual" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vispy.visuals.markers.</span></span><span class="sig-name descname"><span class="pre">MarkersVisual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fixed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spherical</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">-1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">light_ambient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'points'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vispy.visuals.markers.MarkersVisual" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.visual.html#vispy.visuals.visual.Visual" title="vispy.visuals.visual.Visual"><code class="xref py py-class docutils literal notranslate"><span class="pre">Visual</span></code></a></p>
 <p>Visual displaying marker symbols.</p>
 <dl class="field-list simple">
@@ -878,6 +878,14 @@ backwards compatibility this can be set to the boolean <code class="docutils lit
 </dd>
 <dt><strong>light_ambient</strong><span class="classifier">float</span></dt><dd><p>The amount of ambient light used to create the spherical effect.</p>
 </dd>
+<dt><strong>method</strong><span class="classifier">str</span></dt><dd><p>Rendering method for markers. Options are:</p>
+<ul class="simple">
+<li><p>‘points’ (default): Use GL_POINTS primitive. Fast but may have
+platform-specific size limitations.</p></li>
+<li><p>‘instanced’: Use instanced rendering of quads. Works around point
+size limitations on some platforms.</p></li>
+</ul>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -895,6 +903,25 @@ and star.</p>
 <dt class="sig sig-object py" id="vispy.visuals.markers.MarkersVisual.antialias">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">antialias</span></span><a class="headerlink" href="#vispy.visuals.markers.MarkersVisual.antialias" title="Link to this definition">#</a></dt>
 <dd><p>Antialiasing amount (in px).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="vispy.visuals.markers.MarkersVisual.canvas_size_limits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">canvas_size_limits</span></span><a class="headerlink" href="#vispy.visuals.markers.MarkersVisual.canvas_size_limits" title="Link to this definition">#</a></dt>
+<dd><p>Tuple of (min, max) size limits for markers in canvas pixels.</p>
+<p>If set, marker sizes will be clamped to this range. This is useful
+for preventing markers from becoming too large or too small when
+zooming with scene/visual scaling.</p>
+<p>Either min or max can be None to clamp only one side.
+Set to None to disable clamping entirely (default).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>tuple or None</dt><dd><p>(min_size, max_size) or None if clamping is disabled.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -1020,6 +1047,7 @@ edge_width. A ValueError will be raised if both are provided.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual"><code class="docutils literal notranslate"><span class="pre">MarkersVisual</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.alpha"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.alpha</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.antialias"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.antialias</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.canvas_size_limits"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.canvas_size_limits</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.light_ambient"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.light_ambient</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.light_color"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.light_color</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vispy.visuals.markers.MarkersVisual.light_position"><code class="docutils literal notranslate"><span class="pre">MarkersVisual.light_position</span></code></a></li>

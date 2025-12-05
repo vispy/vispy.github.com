@@ -1,0 +1,904 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Markers with Instanced Rendering &#8212; VisPy</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css?v=7002c910" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=b5dc8e9c"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gallery/scene/instanced_markers';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Instanced rendering of arbitrarily transformed meshes" href="instanced_mesh.html" />
+    <link rel="prev" title="Draw an InfiniteLine" href="infinite_line.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.15" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-light" alt="VisPy - Home"/>
+    <img src="../../_static/vispy-teaser-short.png" class="logo__image only-dark pst-js-only" alt="VisPy - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../overview.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/modules.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news.html">
+    News
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+    Code of Conduct
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/vispy/vispy" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/vispyproject" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../getting_started/index.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../overview.html">
+    Documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/modules.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news.html">
+    News
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md">
+    Code of Conduct
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/vispy/vispy" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/vispyproject" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../gloo/index.html">Gloo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_images.html">Show an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_images_slice.html">Animate an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/animate_shape.html">Animate a Shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_cube.html">Show a rotating colored cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_cube_instanced.html">Draw many colored cubes using instanced rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/colored_quad.html">Show color quad Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_lines.html">Draw a bunch of lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_points.html">Draw 2D points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/display_shape.html">Draw a Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/geometry_shader.html">Use a Geometry Shader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/gpuimage.html">Animate a 2D function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/hello_fbo.html">Use FrameBuffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/lighted_cube.html">Show a rotating cube with lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/multi_texture.html">Use multiple textures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/outlined_cube.html">Show a rotating cube with an outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/post_processing.html">Show post-processing using a FrameBuffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/rotate_cube.html">Draw 3D rotating Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/rotating_quad.html">Rotating Quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/spatial_filters.html">Spatial Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/start.html">Simplest Possible Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/start_shaders.html">Simplest Shader Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/texture_precision.html">Example using texture internalformat for higher precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/textured_cube.html">Show a rotating textured cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gloo/textured_quad.html">Show a textured quad</a></li>
+</ul>
+</details></li>
+
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Scene</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="axes_plot.html">Simple Line with Axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_borders.html">Demonstration of borders and background colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clipping_planes.html">Clipping planes with volume and markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colorbar_widget.html">Display a ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colored_line.html">Changing Line Colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="complex_image.html">Complex image data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Vispy Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contour.html">Apply Contour Filter on an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="face_picking.html">Picking Faces from a Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flipped_axis.html">Aspect Ratios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Visualize NetworkX Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image.html">Display an Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_custom_kernel.html">Custom image sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infinite_line.html">Draw an InfiniteLine</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Markers with Instanced Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instanced_mesh.html">Instanced rendering of arbitrarily transformed meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instanced_mesh_picking.html">Picking Instance of InstancedMeshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instanced_mesh_visual.html">Instanced Mesh Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instanced_quad_visual.html">Custom Visual for instanced rendering of a colored quad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve.html">Display an Isocurve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_for_trisurface.html">Isocurve for Triangular Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_for_trisurface_qt.html">Isocurve for Triangular Mesh with Qt Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isocurve_updates.html">Update Image and Isocurve Visuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isosurface.html">Isosurface Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lasso.html">Vispy Lasso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line.html">Draw a Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_update.html">Animated Line Visual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_region.html">Draw an LinearRegion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnify.html">Zoom in using MagnifyCamera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="marker_picking.html">Picking Markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="marker_spheres.html">Spheres and Sticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_normals.html">Display Mesh Normals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_shading.html">Shading a Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh_texture.html">Texture Filter on Meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nested_viewbox.html">Nested Viewboxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="one_cam_two_scenes.html">Share Camera Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="one_scene_four_cams.html">Single Scene in Multiple View boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="point_cloud.html">Create a Point Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polygon.html">Shape Visuals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="save_animation.html">Create and Save Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensitivity.html">Zoom Sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shape_draw.html">Draw and Edit Shapes with Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphere.html">Draw a Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="surface_plot.html">Draw a SurfacePlot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text.html">Text in a Scene and ViewBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turntable_box.html">Display a Cube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewbox.html">ViewBox with Clipping Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume.html">Volume Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volume_plane.html">Rendering Planes through 3D Data</a></li>
+</ul>
+</details></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../plotting/index.html">Plotting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/colorbar.html">Plot different styles of ColorBar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/export.html">Plot a scaled Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/ipython_fig_playground.html">Boilerplate Interactive Plotting Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/plot.html">Plot data with different styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/plot_colorbars.html">Line plot and colorbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/scatter_histogram.html">Scatter plot and histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/spectrogram.html">Spectrogram and Line Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting/volume_plot.html">Multi-view Volume Plot</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Gallery</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Scene</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Markers with Instanced Rendering</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-gallery-scene-instanced-markers-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="markers-with-instanced-rendering">
+<span id="sphx-glr-gallery-scene-instanced-markers-py"></span><h1>Markers with Instanced Rendering<a class="headerlink" href="#markers-with-instanced-rendering" title="Link to this heading">#</a></h1>
+<p>Compare instanced and GL_POINTS rendering methods for Markers visual.</p>
+<p>This example shows how instanced rendering works around platform point size limits
+(many platforms limit GL_POINTS to 64px or smaller) and demonstrates the
+canvas_size_limits feature for constraining marker sizes during zoom/pan.</p>
+<p>Controls:
+* m: Toggle between ‘points’ and ‘instanced’ rendering methods
+* s: Cycle through marker sizes
+* c: Toggle canvas size clamping (min 10px, max 100px)
+* z: Toggle scaling mode: ‘fixed’ vs ‘scene’ (grows/shrinks with zoom)
+* l: Toggle spherical lighting (3D sphere effect)
+* k: Cycle through marker shapes (disc, arrow, ring, etc.)</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>you may not see a difference between methods on your platform - that’s fine!</p></li>
+<li><p>‘instanced’ method should be the same across platforms (arbitrarily large markers)</p></li>
+<li><p>Canvas size clamping keeps markers readable during zoom</p></li>
+<li><p>Spherical lighting adds depth to markers with simulated 3D lighting</p></li>
+<li><p>There may be lighting direction differences between methods (known issue)</p></li>
+</ul>
+<img src="../../_images/sphx_glr_instanced_markers_001.png" srcset="../../_images/sphx_glr_instanced_markers_001.png" alt="instanced markers" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>method=instanced | symbol=disc | size=16px | clamp=off | scaling=fixed | lighting=off
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">scene</span><span class="p">,</span> <span class="n">use</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">vispy.visuals.markers</span><span class="w"> </span><span class="kn">import</span> <span class="n">symbol_shaders</span>
+
+<span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s2">&quot;gl+&quot;</span><span class="p">)</span>
+
+
+<a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_sizes</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">])</span>
+<a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">scaling_modes</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a><span class="p">([</span><span class="s2">&quot;fixed&quot;</span><span class="p">,</span> <span class="s2">&quot;scene&quot;</span><span class="p">])</span>
+<a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_symbols</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">cycle</span></a><span class="p">(</span><span class="n">symbol_shaders</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Canvas</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s2">&quot;interactive&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Instanced Markers Demo&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unfreeze</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">PanZoomCamera</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">marker_positions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">face_colors</span> <span class="o">=</span> <span class="n">_create_markers_pattern</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;instanced&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_size</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_sizes</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_symbols</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">scaling_modes</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Markers</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
+            <span class="n">scaling</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span><span class="p">,</span>
+            <span class="n">spherical</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">marker_positions</span><span class="p">,</span>
+            <span class="n">face_color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">face_colors</span><span class="p">,</span>
+            <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_size</span><span class="p">,</span>
+            <span class="n">edge_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">symbol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">bgcolor</span> <span class="o">=</span> <span class="s2">&quot;#2e3440&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">changed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print current state with optional highlighting of what changed.&quot;&quot;&quot;</span>
+        <span class="n">clamp_str</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">canvas_size_limits</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span>
+            <span class="k">else</span> <span class="s2">&quot;off&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;method=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;symbol=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;size=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_size</span><span class="si">}</span><span class="s2">px&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;clamp&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;clamp=</span><span class="si">{</span><span class="n">clamp_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;scaling&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;scaling=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;lighting&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;lighting=</span><span class="si">{</span><span class="s1">&#39;on&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;off&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># highlight the changed part in bold</span>
+        <span class="k">if</span> <span class="n">changed</span> <span class="ow">and</span> <span class="n">changed</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="n">parts</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m</span><span class="si">{</span><span class="n">parts</span><span class="p">[</span><span class="n">changed</span><span class="p">]</span><span class="si">}</span><span class="se">\033</span><span class="s2">[0m&quot;</span>
+
+        <span class="n">state_line</span> <span class="o">=</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">state_line</span> <span class="o">=</span> <span class="n">state_line</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">state_line</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;m&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;instanced&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;points&quot;</span> <span class="k">else</span> <span class="s2">&quot;points&quot;</span>
+
+            <span class="c1"># recreate markers with new method, cannot change method on the fly</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Markers</span><span class="p">(</span>
+                <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker_positions</span><span class="p">,</span>
+                <span class="n">face_color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">face_colors</span><span class="p">,</span>
+                <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_size</span><span class="p">,</span>
+                <span class="n">edge_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">symbol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">spherical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">canvas_size_limits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;method&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_size</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_sizes</span></a><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">marker_positions</span><span class="p">,</span>
+                <span class="n">face_color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">face_colors</span><span class="p">,</span>
+                <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_size</span><span class="p">,</span>
+                <span class="n">edge_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">symbol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clamping_enabled</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">canvas_size_limits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">canvas_size_limits</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;clamp&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">scaling_modes</span></a><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling_mode</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;scaling&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">spherical</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spherical_enabled</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;lighting&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;k&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><a href="https://docs.python.org/3/library/itertools.html#itertools.cycle" title="itertools.cycle" class="sphx-glr-backref-module-itertools sphx-glr-backref-type-py-function"><span class="n">marker_symbols</span></a><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_symbol</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_state</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_markers_pattern</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+    <span class="c1"># Create positions in a circle plus one in the center</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">angles</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html#numpy.linspace" title="numpy.linspace" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/constants.html#numpy.pi" title="numpy.pi" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="mi">150</span>
+    <span class="n">center</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html#numpy.array" title="numpy.array" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">])</span>
+    <span class="n">pos</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.column_stack.html#numpy.column_stack" title="numpy.column_stack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span></a><span class="p">(</span>
+        <span class="p">[</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.cos.html#numpy.cos" title="numpy.cos" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">cos</span></a><span class="p">(</span><span class="n">angles</span><span class="p">),</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.sin.html#numpy.sin" title="numpy.sin" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-data"><span class="n">np</span><span class="o">.</span><span class="n">sin</span></a><span class="p">(</span><span class="n">angles</span><span class="p">)]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">)</span>
+
+    <span class="n">pos</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.vstack.html#numpy.vstack" title="numpy.vstack" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">([</span><span class="n">pos</span><span class="p">,</span> <span class="n">center</span><span class="p">])</span>
+
+    <span class="n">colors</span> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.zeros.html#numpy.zeros" title="numpy.zeros" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="n">n</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">hue</span> <span class="o">*</span> <span class="mi">6</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">h</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pos</span><span class="p">,</span> <span class="n">colors</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">vispy</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+    <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.744 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-instanced-markers-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1881687fa573dff23d51eb9167a19eb2/instanced_markers.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">instanced_markers.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7a541ca00d088769c784a37b303e79fb/instanced_markers.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">instanced_markers.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/506ab0b055e248edcc82e13c4082c8cd/instanced_markers.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">instanced_markers.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="infinite_line.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Draw an InfiniteLine</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="instanced_mesh.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Instanced rendering of arbitrarily transformed meshes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="
+    
+    https://github.com/vispy/vispy/edit/main/doc/gallery/scene/instanced_markers.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/gallery/scene/instanced_markers.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2013-2025, VisPy developers.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
