@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../_static/documentation_options.js?v=a8f98217"></script>
+    <script src="../_static/documentation_options.js?v=3b798c64"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -899,8 +899,9 @@ coordinates).</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>vol</strong><span class="classifier">ndarray</span></dt><dd><p>The volume to display. Must be ndim==3. Array is assumed to be stored
-as <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code>.</p>
+<dt><strong>vol</strong><span class="classifier">ndarray</span></dt><dd><p>The volume to display. Must be ndim==3 <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code> for luminance
+data or ndim==4 <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x,</span> <span class="pre">3)</span></code> for RGB data. For RGB data the
+colormap is bypassed and the RGB values are used directly.</p>
 </dd>
 <dt><strong>clim</strong><span class="classifier">str | tuple</span></dt><dd><p>Limits to use for the colormap. I.e. the values that map to black and white
 in a gray colormap. Can be ‘auto’ to auto-set bounds to
@@ -960,9 +961,7 @@ to determine the internalformat of the texture.
 When this is specified (not <code class="docutils literal notranslate"><span class="pre">None</span></code>) data is scaled on the
 GPU which allows for faster color limit changes. Additionally, when
 32-bit float data is provided it won’t be copied before being
-transferred to the GPU. Note this visual is limited to “luminance”
-formatted data (single band). This is equivalent to <cite>GL_RED</cite> format
-in OpenGL 4.0.</p>
+transferred to the GPU.</p>
 </dd>
 <dt><strong>raycasting_mode</strong><span class="classifier">{‘volume’, ‘plane’}</span></dt><dd><p>Whether to cast a ray through the whole volume or perpendicular to a
 plane through the volume defined.</p>
