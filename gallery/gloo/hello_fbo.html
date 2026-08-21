@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -606,23 +606,23 @@ This example blurs the output image.</p>
                       <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span> <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">)</span>
 
 <span class="c1"># For initial quad</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER1</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER1</span></a> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">attribute vec3 a_position;</span>
 <span class="s2">void main (void) {</span>
 <span class="s2">    gl_Position = vec4(a_position, 1.0);</span>
 <span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER1</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER1</span></a> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">uniform vec4 u_color;</span>
 <span class="s2">void main()</span>
 <span class="s2">{</span>
 <span class="s2">    gl_FragColor = u_color;</span>
 <span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
 <span class="c1"># To render the result of the FBO</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER2</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER2</span></a> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">attribute vec3 a_position;</span>
 <span class="s2">attribute vec2 a_texcoord;</span>
 <span class="s2">varying vec2 v_texcoord;</span>
@@ -632,9 +632,9 @@ This example blurs the output image.</p>
 <span class="s2">    // Calculate position</span>
 <span class="s2">    gl_Position = vec4(a_position.x, a_position.y, a_position.z, 1.0);</span>
 <span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER2</span></a> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER2</span></a> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">uniform sampler2D u_texture1;</span>
 <span class="s2">varying vec2 v_texcoord;</span>
 <span class="s2">const float c_zero = 0.0;</span>
@@ -651,7 +651,7 @@ This example blurs the output image.</p>
 <span class="s2">        }</span>
 <span class="s2">    }</span>
 <span class="s2">}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
 
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">SIZE</span></a> <span class="o">=</span> <span class="mi">50</span>
@@ -660,7 +660,7 @@ This example blurs the output image.</p>
 <span class="k">class</span><span class="w"> </span><span class="nc">Canvas</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="p">):</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">560</span><span class="p">,</span> <span class="mi">420</span><span class="p">))</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">Canvas</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="s1">'interactive'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">560</span><span class="p">,</span> <span class="mi">420</span><span class="p">))</span>
 
         <span class="c1"># Create texture to render to</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -671,14 +671,14 @@ This example blurs the output image.</p>
 
         <span class="c1"># Create program to render a shape</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER1</span></a><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="p">[</span><span class="s1">&#39;u_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vPosition</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="p">[</span><span class="s1">'u_color'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="p">[</span><span class="s1">'a_position'</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vPosition</span></a><span class="p">)</span>
 
         <span class="c1"># Create program to render FBO result</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">Program</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">VERT_SHADER2</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">FRAG_SHADER2</span></a><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vPosition</span></a><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">&#39;a_texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vTexcoord</span></a><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">&#39;u_texture1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rendertex</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">'a_position'</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vPosition</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">'a_texcoord'</span><span class="p">]</span> <span class="o">=</span> <span class="n">gloo</span><span class="o">.</span><span class="n">VertexBuffer</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vTexcoord</span></a><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="p">[</span><span class="s1">'u_texture1'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rendertex</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -692,21 +692,21 @@ This example blurs the output image.</p>
             <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
             <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">gloo</span><span class="o">.</span><span class="n">set_viewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">physical_size</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;triangle_strip&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_program1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">'triangle_strip'</span><span class="p">)</span>
 
         <span class="c1"># Now draw result to a full-screen quad</span>
         <span class="c1"># Init</span>
-        <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="n">gloo</span><span class="o">.</span><span class="n">set_clear_color</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
         <span class="n">gloo</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;triangle_strip&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_program2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">'triangle_strip'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.407 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.410 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-gloo-hello-fbo-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/61786b24c19bd356c954503605f6857d/hello_fbo.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">hello_fbo.ipynb</span></code></a></p>

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -601,16 +601,16 @@ to download the full example code.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
 
 <span class="c1">#Necessary to use InstancedMesh</span>
-<span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s1">&#39;gl+&#39;</span><span class="p">)</span>
+<span class="n">use</span><span class="p">(</span><span class="n">gl</span><span class="o">=</span><span class="s1">'gl+'</span><span class="p">)</span>
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">'interactive'</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
 
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">&#39;turntable&#39;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">'turntable'</span>
 <span class="n">view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">depth_value</span> <span class="o">=</span> <span class="mf">1e3</span>
 
 <span class="c1">#Load an mesh file</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_path</span></a> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;spot/spot.obj.gz&#39;</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_path</span></a> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">'spot/spot.obj.gz'</span><span class="p">)</span>
 
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">n_instances</span></a> <span class="o">=</span> <span class="mi">8</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">normals</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">texcoords</span></a> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_path</span></a><span class="p">)</span>
@@ -639,9 +639,9 @@ to download the full example code.</p>
             <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">clicked_mesh</span>
         <span class="p">)</span>
         <span class="n">instance_pos</span> <span class="o">=</span> <span class="n">clicked_mesh</span><span class="o">.</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">instance_positions</span></a><span class="p">[</span><span class="n">min_pos</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;visual at : </span><span class="si">{</span><span class="n">clicked_mesh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;event.pos : </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;min distance : </span><span class="si">{</span><span class="nb">min</span><span class="si">}</span><span class="s2"> and min_pos : </span><span class="si">{</span><span class="n">instance_pos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"visual at : </span><span class="si">{</span><span class="n">clicked_mesh</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"event.pos : </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"min distance : </span><span class="si">{</span><span class="nb">min</span><span class="si">}</span><span class="s2"> and min_pos : </span><span class="si">{</span><span class="n">instance_pos</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 
@@ -650,7 +650,7 @@ to download the full example code.</p>
     <span class="n">instances_on_canvas</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># Translate each position to corresponding 2d canvas coordinates</span>
     <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">instance_positions</span></a><span class="p">:</span>
-        <span class="n">on_canvas</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="n">map_from</span><span class="o">=</span><span class="s2">&quot;visual&quot;</span><span class="p">,</span> <span class="n">map_to</span><span class="o">=</span><span class="s2">&quot;canvas&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+        <span class="n">on_canvas</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="n">map_from</span><span class="o">=</span><span class="s2">"visual"</span><span class="p">,</span> <span class="n">map_to</span><span class="o">=</span><span class="s2">"canvas"</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
         <span class="n">on_canvas</span> <span class="o">/=</span> <span class="n">on_canvas</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
         <span class="n">instances_on_canvas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">on_canvas</span><span class="p">)</span>
 
@@ -671,12 +671,12 @@ to download the full example code.</p>
 <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.904 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.915 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-instanced-mesh-picking-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/dbc1d4e92532a36ea2535625b3648b29/instanced_mesh_picking.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">instanced_mesh_picking.ipynb</span></code></a></p>

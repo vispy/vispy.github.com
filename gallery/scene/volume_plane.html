@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -608,18 +608,18 @@ to download the full example code.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">vispy.visuals.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">STTransform</span>
 
 <span class="c1"># Read volume</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load" title="numpy.load" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;volume/stent.npz&#39;</span><span class="p">))[</span><span class="s1">&#39;arr_0&#39;</span><span class="p">]</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span></a> <span class="o">=</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load" title="numpy.load" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">load</span></a><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">load_data_file</span><span class="p">(</span><span class="s1">'volume/stent.npz'</span><span class="p">))[</span><span class="s1">'arr_0'</span><span class="p">]</span>
 
 <span class="c1"># Prepare canvas</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">'interactive'</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
 
 <span class="c1"># Create the volume visual for plane rendering</span>
 <span class="n">plane</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span></a><span class="p">,</span>
     <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
-    <span class="n">raycasting_mode</span><span class="o">=</span><span class="s1">&#39;plane&#39;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mip&#39;</span><span class="p">,</span>
+    <span class="n">raycasting_mode</span><span class="o">=</span><span class="s1">'plane'</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'mip'</span><span class="p">,</span>
     <span class="n">plane_thickness</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
     <span class="n">plane_position</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
     <span class="n">plane_normal</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
@@ -628,10 +628,10 @@ to download the full example code.</p>
 <span class="n">volume</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span>
     <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vol</span></a><span class="p">,</span>
     <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
-    <span class="n">raycasting_mode</span><span class="o">=</span><span class="s1">&#39;volume&#39;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mip&#39;</span><span class="p">,</span>
+    <span class="n">raycasting_mode</span><span class="o">=</span><span class="s1">'volume'</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'mip'</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">volume</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+<span class="n">volume</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s1">'additive'</span><span class="p">)</span>
 <span class="n">volume</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.25</span>
 
 <span class="c1"># Create a camera</span>
@@ -648,7 +648,7 @@ to download the full example code.</p>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update_axis_visual</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sync XYZAxis visual with camera angles&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Sync XYZAxis visual with camera angles"""</span>
     <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="n">axis</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">cam</span><span class="o">.</span><span class="n">roll</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -672,40 +672,40 @@ to download the full example code.</p>
 <span class="c1"># Implement key presses</span>
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">key_press</span><span class="o">.</span><span class="n">connect</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
-        <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mip&#39;</span><span class="p">,</span> <span class="s1">&#39;average&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'1'</span><span class="p">:</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'mip'</span><span class="p">,</span> <span class="s1">'average'</span><span class="p">]</span>
         <span class="n">method</span> <span class="o">=</span> <span class="n">methods</span><span class="p">[(</span><span class="n">methods</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Volume render method: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Volume render method: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
-        <span class="n">modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">,</span> <span class="s1">&#39;plane&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'2'</span><span class="p">:</span>
+        <span class="n">modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'volume'</span><span class="p">,</span> <span class="s1">'plane'</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">plane</span><span class="o">.</span><span class="n">raycasting_mode</span> <span class="o">==</span> <span class="n">modes</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">plane</span><span class="o">.</span><span class="n">raycasting_mode</span> <span class="o">=</span> <span class="n">modes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">plane</span><span class="o">.</span><span class="n">raycasting_mode</span> <span class="o">=</span> <span class="n">modes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">:</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;{&#39;</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s1">''</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'{'</span> <span class="k">else</span> <span class="mi">1</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_thickness</span> <span class="o">+=</span> <span class="n">t</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_thickness</span> <span class="o">+=</span> <span class="n">t</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;plane thickness: </span><span class="si">{</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_thickness</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s1">&#39;[]&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"plane thickness: </span><span class="si">{</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_thickness</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s1">''</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="ow">in</span> <span class="s1">'[]'</span><span class="p">:</span>
         <span class="n">shift</span> <span class="o">=</span> <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">/</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm" title="numpy.linalg.norm" class="sphx-glr-backref-module-numpy-linalg sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span></a><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;[&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'['</span><span class="p">:</span>
             <span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shift</span>
-        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">']'</span><span class="p">:</span>
             <span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shift</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;plane position: </span><span class="si">{</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"plane position: </span><span class="si">{</span><span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'x'</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'y'</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'z'</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">'o'</span><span class="p">:</span>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_normal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">' '</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">timer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
             <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -722,9 +722,9 @@ to download the full example code.</p>
         <span class="n">plane</span><span class="o">.</span><span class="n">plane_position</span> <span class="o">=</span> <span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
 
 
-<span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="n">move_plane</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">timer</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s1">'auto'</span><span class="p">,</span> <span class="n">connect</span><span class="o">=</span><span class="n">move_plane</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
     <span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span></a> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -732,7 +732,7 @@ to download the full example code.</p>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.885 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 22.868 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-volume-plane-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/adc0c642d881a9ee91ec55ad273575d4/volume_plane.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">volume_plane.ipynb</span></code></a></p>

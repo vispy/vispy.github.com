@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -2113,16 +2113,16 @@ the transforms independently, so <code class="docutils literal notranslate"><spa
 here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="n">tr_sys</span><span class="p">):</span>
     <span class="c1"># Send two parts of the full transform separately</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_doc</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'visual_to_doc'</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">visual_to_doc</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
     <span class="n">doc_to_render</span> <span class="o">=</span> <span class="p">(</span><span class="n">tr_sys</span><span class="o">.</span><span class="n">framebuffer_transform</span> <span class="o">*</span>
                      <span class="n">tr_sys</span><span class="o">.</span><span class="n">document_transform</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;visual_to_doc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_to_render</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'visual_to_doc'</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc_to_render</span><span class="o">.</span><span class="n">shader_map</span><span class="p">()</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_line_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;u_dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">dpi</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_buffer</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">&#39;a_normal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normal_buffer</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;triangles&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'u_line_width'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_width</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'u_dpi'</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr_sys</span><span class="o">.</span><span class="n">dpi</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'a_position'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vertex_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="p">[</span><span class="s1">'a_normal'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normal_buffer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">program</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">'triangles'</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">

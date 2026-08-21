@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -602,8 +602,8 @@ qt interface.</p>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">sip</span><span class="w"> </span><span class="kn">import</span> <span class="n">setapi</span>
-    <span class="n">setapi</span><span class="p">(</span><span class="s2">&quot;QVariant&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">setapi</span><span class="p">(</span><span class="s2">&quot;QString&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">setapi</span><span class="p">(</span><span class="s2">"QVariant"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">setapi</span><span class="p">(</span><span class="s2">"QString"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">pass</span>
 
@@ -622,26 +622,26 @@ qt interface.</p>
                                  <span class="n">QSplitter</span><span class="p">)</span>
 
 <span class="c1"># Provide automatic signal function selection for PyQtX/PySide2</span>
-<span class="n">pyqtsignal</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">pyqtSignal</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">QtCore</span><span class="p">,</span> <span class="s1">&#39;pyqtSignal&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span>
+<span class="n">pyqtsignal</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">pyqtSignal</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">QtCore</span><span class="p">,</span> <span class="s1">'pyqtSignal'</span><span class="p">)</span> <span class="k">else</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Signal</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ObjectWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Widget for editing OBJECT parameters</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">signal_object_changed</span> <span class="o">=</span> <span class="n">pyqtsignal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;objectChanged&#39;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">signal_object_changed</span> <span class="o">=</span> <span class="n">pyqtsignal</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'objectChanged'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ObjectWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
 
-        <span class="n">l_nbr_steps</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Nbr Steps &quot;</span><span class="p">)</span>
+        <span class="n">l_nbr_steps</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">"Nbr Steps "</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbr_steps</span> <span class="o">=</span> <span class="n">QSpinBox</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbr_steps</span><span class="o">.</span><span class="n">setMinimum</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbr_steps</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbr_steps</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nbr_steps</span><span class="o">.</span><span class="n">valueChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update_param</span><span class="p">)</span>
 
-        <span class="n">l_cmap</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Cmap &quot;</span><span class="p">)</span>
+        <span class="n">l_cmap</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">"Cmap "</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">get_colormaps</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">combo</span> <span class="o">=</span> <span class="n">QComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">combo</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmap</span><span class="p">)</span>
@@ -669,7 +669,7 @@ qt interface.</p>
         <span class="n">QMainWindow</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;vispy example ...&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">'vispy example ...'</span><span class="p">)</span>
 
         <span class="n">splitter</span> <span class="o">=</span> <span class="n">QSplitter</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">)</span>
 
@@ -699,7 +699,7 @@ qt interface.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">unfreeze</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">2.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">&#39;turntable&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">'turntable'</span>
         <span class="n">mesh</span> <span class="o">=</span> <span class="n">create_sphere</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
         <span class="n">vertices</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">get_vertices</span><span class="p">()</span>
         <span class="n">tris</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">get_faces</span><span class="p">()</span>
@@ -708,7 +708,7 @@ qt interface.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">iso</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Isoline</span><span class="p">(</span><span class="n">vertices</span><span class="o">=</span><span class="n">vertices</span><span class="p">,</span> <span class="n">tris</span><span class="o">=</span><span class="n">tris</span><span class="p">,</span>
                                          <span class="n">data</span><span class="o">=</span><span class="n">vertices</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
-                                         <span class="n">levels</span><span class="o">=</span><span class="n">cl</span><span class="p">,</span> <span class="n">color_lev</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">,</span>
+                                         <span class="n">levels</span><span class="o">=</span><span class="n">cl</span><span class="p">,</span> <span class="n">color_lev</span><span class="o">=</span><span class="s1">'autumn'</span><span class="p">,</span>
                                          <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>
 
@@ -721,14 +721,14 @@ qt interface.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">iso</span><span class="o">.</span><span class="n">levels</span> <span class="o">=</span> <span class="n">cl</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
     <span class="n">win</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
     <span class="n">win</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.132 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.134 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-isocurve-for-trisurface-qt-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/7820dd4a7962a250afeec9ad6aedf856/isocurve_for_trisurface_qt.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">isocurve_for_trisurface_qt.ipynb</span></code></a></p>

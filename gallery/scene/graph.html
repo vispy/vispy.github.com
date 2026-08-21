@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -601,17 +601,17 @@ Graph.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">vispy.visuals.graphs</span><span class="w"> </span><span class="kn">import</span> <span class="n">layouts</span>
 
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Simple NetworkX Graph&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span>
-                           <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="s1">&#39;panzoom&#39;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'Simple NetworkX Graph'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span>
+                           <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="s1">'panzoom'</span><span class="p">)</span>
 
 <a href="https://scipy.github.io/devdocs/reference/generated/scipy.sparse.csr_array.html#scipy.sparse.csr_array" title="scipy.sparse.csr_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">graph</span></a> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span>
     <span class="n">nx</span><span class="o">.</span><span class="n">fast_gnp_random_graph</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-<span class="n">layout</span> <span class="o">=</span> <span class="n">layouts</span><span class="o">.</span><span class="n">get_layout</span><span class="p">(</span><span class="s1">&#39;force_directed&#39;</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">layouts</span><span class="o">.</span><span class="n">get_layout</span><span class="p">(</span><span class="s1">'force_directed'</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="n">visual</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span>
-    <a href="https://scipy.github.io/devdocs/reference/generated/scipy.sparse.csr_array.html#scipy.sparse.csr_array" title="scipy.sparse.csr_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">graph</span></a><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">arrow_type</span><span class="o">=</span><span class="s2">&quot;stealth&quot;</span><span class="p">,</span>
-    <span class="n">arrow_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">node_symbol</span><span class="o">=</span><span class="s2">&quot;disc&quot;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <a href="https://scipy.github.io/devdocs/reference/generated/scipy.sparse.csr_array.html#scipy.sparse.csr_array" title="scipy.sparse.csr_array" class="sphx-glr-backref-module-scipy-sparse sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">graph</span></a><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">arrow_type</span><span class="o">=</span><span class="s2">"stealth"</span><span class="p">,</span>
+    <span class="n">arrow_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">node_symbol</span><span class="o">=</span><span class="s2">"disc"</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">face_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">border_width</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">animate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 
@@ -621,12 +621,12 @@ Graph.</p>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">visual</span><span class="o">.</span><span class="n">animate_layout</span><span class="p">():</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span></a> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.717 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.704 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-graph-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f9d03c0ca10a3ebfcb7999bcdd3cdef2/graph.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">graph.ipynb</span></code></a></p>

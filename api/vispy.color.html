@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -1179,25 +1179,25 @@ on the GPU.</p>
 <p class="rubric">Examples</p>
 <p>There are many ways to define colors. Here are some basic cases:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">vispy.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColorArray</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># using string name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">'red'</span><span class="p">)</span>  <span class="c1"># using string name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
 <span class="go">&lt;ColorArray: 1 color ((1.0, 0.0, 0.0, 1.0))&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># RGBA tuple</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;#0000ff&#39;</span><span class="p">)</span>  <span class="c1"># hex color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">'#0000ff'</span><span class="p">)</span>  <span class="c1"># hex color</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">()</span>  <span class="c1"># defaults to black</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">g</span><span class="o">.</span><span class="n">rgb</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">rgb</span>
-<span class="go">&gt;&gt;&gt;hsv_color = ColorArray(color_space=&quot;hsv&quot;, color=(0, 0, 0.5))</span>
+<span class="go">&gt;&gt;&gt;hsv_color = ColorArray(color_space="hsv", color=(0, 0, 0.5))</span>
 <span class="go">&gt;&gt;&gt;hsv_color</span>
 <span class="go">&lt;ColorArray: 1 color ((0.5, 0.5, 0.5, 1.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">'white'</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span>
 <span class="go">&lt;ColorArray: 1 color ((1.0, 1.0, 1.0, 0.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;#0000FFFF&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">'r'</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">'#0000FFFF'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span>
 <span class="go">&lt;ColorArray: 3 colors ((1.0, 0.0, 0.0, 1.0) ... (1.0, 0.0, 0.0, 1.0))&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">,</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">==</span> <span class="n">ColorArray</span><span class="p">([</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'#00ff00'</span><span class="p">,</span> <span class="n">ColorArray</span><span class="p">(</span><span class="s1">'blue'</span><span class="p">)])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1354,7 +1354,7 @@ If ‘zero’, ncontrols = ncolors+1 (one color per bin).</p>
 <p class="rubric">Examples</p>
 <p>Here is a basic example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">vispy.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">Colormap</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">Colormap</span><span class="p">([</span><span class="s1">'r'</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">cm</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -1434,8 +1434,8 @@ list of rgba colors</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">&#39;single_hue&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">'autumn'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_colormap</span><span class="p">(</span><span class="s1">'single_hue'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

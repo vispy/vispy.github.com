@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -599,9 +599,9 @@ to download the full example code.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">vispy.util.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_filter</span>
 
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">'interactive'</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">up</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">up</span><span class="o">=</span><span class="s1">'z'</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 
 <span class="c1"># Simple surface plot example</span>
 <span class="c1"># x, y values are not specified, so assumed to be 0:50</span>
@@ -616,30 +616,30 @@ to download the full example code.</p>
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
 
 <span class="c1"># p1._update_data()  # cheating.</span>
-<span class="c1"># cf = scene.filters.ZColormapFilter(&#39;fire&#39;, zrange=(z.max(), z.min()))</span>
+<span class="c1"># cf = scene.filters.ZColormapFilter('fire', zrange=(z.max(), z.min()))</span>
 <span class="c1"># p1.attach(cf)</span>
 
 
 <span class="n">xax</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">]],</span> <span class="n">tick_direction</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-                 <span class="n">font_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">axis_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">tick_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                 <span class="n">font_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">axis_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">tick_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span>
                  <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 <span class="n">xax</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span>
 
 <span class="n">yax</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]],</span> <span class="n">tick_direction</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                 <span class="n">font_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">axis_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">tick_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                 <span class="n">font_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">axis_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">tick_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span>
                  <span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 <span class="n">yax</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">STTransform</span><span class="p">(</span><span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span>
 
 <span class="c1"># Add a 3D axis to keep us oriented</span>
 <span class="n">axis</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">visuals</span><span class="o">.</span><span class="n">XYZAxis</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">view</span><span class="o">.</span><span class="n">scene</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="k">if</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span></a> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.412 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.432 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-surface-plot-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/44013a52060e9f672984a77cb0b191dd/surface_plot.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">surface_plot.ipynb</span></code></a></p>

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -606,22 +606,22 @@ to download the full example code.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">vispy.visuals.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">WireframeFilter</span>
 
 
-<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_file</span></a> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">&#39;orig/triceratops.obj.gz&#39;</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_file</span></a> <span class="o">=</span> <span class="n">load_data_file</span><span class="p">(</span><span class="s1">'orig/triceratops.obj.gz'</span><span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">read_mesh</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">mesh_file</span></a><span class="p">)</span>
 
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">vertices</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">faces</span></a><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">'flat'</span><span class="p">)</span>
 <span class="n">meshdata</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">mesh_data</span>
 
-<span class="n">wireframe_filter</span> <span class="o">=</span> <span class="n">WireframeFilter</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+<span class="n">wireframe_filter</span> <span class="o">=</span> <span class="n">WireframeFilter</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'lightblue'</span><span class="p">)</span>
 <span class="n">mesh</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">wireframe_filter</span><span class="p">)</span>
 
-<span class="n">face_normals</span> <span class="o">=</span> <span class="n">MeshNormals</span><span class="p">(</span><span class="n">meshdata</span><span class="p">,</span> <span class="n">primitive</span><span class="o">=</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
-<span class="n">vertex_normals</span> <span class="o">=</span> <span class="n">MeshNormals</span><span class="p">(</span><span class="n">meshdata</span><span class="p">,</span> <span class="n">primitive</span><span class="o">=</span><span class="s1">&#39;vertex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+<span class="n">face_normals</span> <span class="o">=</span> <span class="n">MeshNormals</span><span class="p">(</span><span class="n">meshdata</span><span class="p">,</span> <span class="n">primitive</span><span class="o">=</span><span class="s1">'face'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">)</span>
+<span class="n">vertex_normals</span> <span class="o">=</span> <span class="n">MeshNormals</span><span class="p">(</span><span class="n">meshdata</span><span class="p">,</span> <span class="n">primitive</span><span class="o">=</span><span class="s1">'vertex'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span>
                              <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">&#39;interactive&#39;</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s1">'interactive'</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
 <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
-<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">&#39;arcball&#39;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s1">'arcball'</span>
 <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 <span class="n">face_normals</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">mesh</span>
 <span class="n">vertex_normals</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">mesh</span>
@@ -629,10 +629,10 @@ to download the full example code.</p>
 
 <span class="nd">@canvas</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">key_press</span><span class="o">.</span><span class="n">connect</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">on_key_press</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">'f'</span><span class="p">:</span>
         <span class="n">face_normals</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">face_normals</span><span class="o">.</span><span class="n">visible</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;v&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">'v'</span><span class="p">:</span>
         <span class="n">vertex_normals</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">vertex_normals</span><span class="o">.</span><span class="n">visible</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
@@ -640,14 +640,14 @@ to download the full example code.</p>
 <span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Key bindings:&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; f : toggle face normals&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; v : toggle vertex normals&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Key bindings:'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">' f : toggle face normals'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">' v : toggle vertex normals'</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.168 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.178 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-scene-mesh-normals-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4d92f99b9610d6ebfee39b2b696f77aa/mesh_normals.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">mesh_normals.ipynb</span></code></a></p>

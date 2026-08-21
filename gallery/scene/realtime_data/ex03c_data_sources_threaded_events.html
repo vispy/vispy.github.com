@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../../../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../../../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -616,21 +616,21 @@ Data source finishing
 <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">CANVAS_SIZE</span></a> <span class="o">=</span> <span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>  <span class="c1"># (width, height)</span>
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NUM_LINE_POINTS</span></a> <span class="o">=</span> <span class="mi">200</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">COLORMAP_CHOICES</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="s2">&quot;reds&quot;</span><span class="p">,</span> <span class="s2">&quot;blues&quot;</span><span class="p">]</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LINE_COLOR_CHOICES</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">COLORMAP_CHOICES</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">"viridis"</span><span class="p">,</span> <span class="s2">"reds"</span><span class="p">,</span> <span class="s2">"blues"</span><span class="p">]</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LINE_COLOR_CHOICES</span></a> <span class="o">=</span> <span class="p">[</span><span class="s2">"black"</span><span class="p">,</span> <span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">]</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Controls</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="n">layout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">colormap_label</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Image Colormap:&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colormap_label</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">"Image Colormap:"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colormap_chooser</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colormap_chooser</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">COLORMAP_CHOICES</span></a><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colormap_chooser</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_color_label</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Line color:&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_color_label</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">"Line color:"</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">line_color_label</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line_color_chooser</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line_color_chooser</span><span class="o">.</span><span class="n">addItems</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LINE_COLOR_CHOICES</span></a><span class="p">)</span>
@@ -645,35 +645,35 @@ Data source finishing
         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="n">SceneCanvas</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">CANVAS_SIZE</span></a><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">view_top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'cyan'</span><span class="p">)</span>
         <span class="n">image_data</span> <span class="o">=</span> <span class="n">_generate_random_image_data</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IMAGE_SHAPE</span></a><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span>
             <span class="n">image_data</span><span class="p">,</span>
-            <span class="n">texture_format</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="n">texture_format</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
             <span class="n">cmap</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">COLORMAP_CHOICES</span></a><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
             <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view_top</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view_top</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s2">&quot;panzoom&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_top</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s2">"panzoom"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view_top</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set_range</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IMAGE_SHAPE</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">IMAGE_SHAPE</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">&#39;#c0c0c0&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s1">'#c0c0c0'</span><span class="p">)</span>
         <span class="n">line_data</span> <span class="o">=</span> <span class="n">_generate_random_line_positions</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NUM_LINE_POINTS</span></a><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">visuals</span><span class="o">.</span><span class="n">Line</span><span class="p">(</span><span class="n">line_data</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">LINE_COLOR_CHOICES</span></a><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s2">&quot;panzoom&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="s2">"panzoom"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">view_bot</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">set_range</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">NUM_LINE_POINTS</span></a><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_image_colormap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Changing image colormap to </span><span class="si">{</span><span class="n">cmap_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Changing image colormap to </span><span class="si">{</span><span class="n">cmap_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap_name</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_line_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Changing line color to </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Changing line color to </span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_data_dict</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updating data...&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">new_data_dict</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">new_data_dict</span><span class="p">[</span><span class="s2">&quot;line&quot;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Updating data..."</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">new_data_dict</span><span class="p">[</span><span class="s2">"image"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">new_data_dict</span><span class="p">[</span><span class="s2">"line"</span><span class="p">])</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_generate_random_image_data</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.float32" title="numpy.float32" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-attribute"><span class="n">np</span><span class="o">.</span><span class="n">float32</span></a><span class="p">):</span>
@@ -714,13 +714,13 @@ Data source finishing
         <span class="bp">self</span><span class="o">.</span><span class="n">_controls</span><span class="o">.</span><span class="n">line_color_chooser</span><span class="o">.</span><span class="n">currentTextChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canvas_wrapper</span><span class="o">.</span><span class="n">set_line_color</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">closeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Closing main window!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Closing main window!"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">closing</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">closeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">DataSource</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QObject</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Object representing a complex data producer.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Object representing a complex data producer."""</span>
     <span class="n">new_data</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">pyqtSignal</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
     <span class="n">finished</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">pyqtSignal</span><span class="p">()</span>
 
@@ -734,7 +734,7 @@ Data source finishing
 
     <span class="k">def</span><span class="w"> </span><span class="nf">run_data_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_end</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_iters</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data source finishing&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Data source finishing"</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">emit</span><span class="p">()</span>
             <span class="k">return</span>
 
@@ -744,8 +744,8 @@ Data source finishing
         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">image_data</span><span class="p">,</span>
-            <span class="s2">&quot;line&quot;</span><span class="p">:</span> <span class="n">line_data</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="n">image_data</span><span class="p">,</span>
+            <span class="s2">"line"</span><span class="p">:</span> <span class="n">line_data</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_data</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
         <span class="n">QtCore</span><span class="o">.</span><span class="n">QTimer</span><span class="o">.</span><span class="n">singleShot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_data_creation</span><span class="p">)</span>
@@ -763,12 +763,12 @@ Data source finishing
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line_data</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">stop_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data source is quitting...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Data source is quitting..."</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_should_end</span> <span class="o">=</span> <span class="kc">True</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">use_app</span><span class="p">(</span><span class="s2">&quot;pyqt5&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">use_app</span><span class="p">(</span><span class="s2">"pyqt5"</span><span class="p">)</span>
     <span class="n">app</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 
     <span class="n">canvas_wrapper</span> <span class="o">=</span> <span class="n">CanvasWrapper</span><span class="p">()</span>
@@ -793,7 +793,7 @@ Data source finishing
     <span class="n">data_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for data source to close gracefully...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Waiting for data source to close gracefully..."</span><span class="p">)</span>
     <span class="n">data_thread</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
     <span class="n">data_thread</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>

@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -913,10 +913,10 @@ the visual uses a <cite>MultiProgram</cite>, which allows all shader programs ac
 visual and its views to be accessed simultaneously. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_prepare_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
     <span class="c1"># This line applies to the visual and all of its views</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbo</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">'a_position'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbo</span>
 
     <span class="c1"># This line applies only to the view that is about to be drawn</span>
-    <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="p">[</span><span class="s1">&#39;u_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="p">[</span><span class="s1">'u_color'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Under most circumstances, it is not necessary to reimplement <cite>VisualView</cite>
@@ -1476,7 +1476,7 @@ and if you do, it will be called in addition to the standard logic:
         <span class="k">if</span> <span class="p">(</span><span class="n">previous</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">value</span> <span class="o">!=</span> <span class="n">previous</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_someprop</span> <span class="o">=</span> <span class="n">value</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_need_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;events&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'events'</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">SomeVisual2</span><span class="p">(</span><span class="n">Visual</span><span class="p">):</span>
@@ -1499,7 +1499,7 @@ pattern being used:</p>
 
     <span class="nd">@updating_property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">someprop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39;the docstring (or pass) is all that is needed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">'''the docstring (or pass) is all that is needed'''</span>
 </pre></div>
 </div>
 <dl class="py method">

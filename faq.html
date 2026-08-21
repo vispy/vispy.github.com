@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="_static/documentation_options.js?v=a8f98217"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -566,7 +566,7 @@ This can be used with any VisPy backend.</p></li>
 <p>Then, in your VisPy script, use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span>
-<span class="n">imageio</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;rendered.png&quot;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+<span class="n">imageio</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">"rendered.png"</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>to save the rendered scene to an image file.</p>
@@ -582,7 +582,7 @@ This can be used with any VisPy backend.</p></li>
 <h3>OSMesa<a class="headerlink" href="#osmesa" title="Link to this heading">#</a></h3>
 <p>Using the OSMesa (Off-Screen Mesa) backend:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">vispy</span>
-<span class="n">vispy</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;osmesa&quot;</span><span class="p">)</span>
+<span class="n">vispy</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"osmesa"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>VisPy tries to detect the OSMesa shared library, but, if needed, it can be set
@@ -596,7 +596,7 @@ explicitly with</p>
 <h3>EGL<a class="headerlink" href="#egl" title="Link to this heading">#</a></h3>
 <p>Using the EGL backend:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">vispy</span>
-<span class="n">vispy</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;egl&quot;</span><span class="p">)</span>
+<span class="n">vispy</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"egl"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>VisPy tries to detect the EGL shared library, but, if needed, it can be set
@@ -623,12 +623,12 @@ mode.</p>
 <ol class="arabic">
 <li><p>Set the opacity value in the alpha channel of the images:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># A white image with integer values between 0 and 255.</span>
-<span class="n">image_data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">image_data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'uint8'</span><span class="p">)</span>
 <span class="c1"># Half translucent.</span>
 <span class="n">image_data1</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">128</span>
 
 <span class="c1"># A blue image with float values between 0 and 1.</span>
-<span class="n">image_data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;np.float32&#39;</span><span class="p">)</span>
+<span class="n">image_data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'np.float32'</span><span class="p">)</span>
 <span class="n">image_data2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Blue.</span>
 <span class="c1"># A bit more translucent.</span>
 <span class="n">image_data2</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span>
@@ -662,12 +662,12 @@ function is, for example, <code class="docutils literal notranslate"><span class
 with <a class="reference external" href="https://docs.gl/es2/glBlendFunc">glBlendFunc</a> in OpenGL.
 This is the default on the <a class="reference internal" href="api/vispy.scene.visuals.html#vispy.scene.visuals.Image" title="vispy.scene.visuals.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> visual node, but
 otherwise it can be set with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visual1</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s1">&#39;translucent&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visual1</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s1">'translucent'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>which is a shortcut for</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">visual1</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cull_face</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">blend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;src_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;one_minus_src_alpha&#39;</span><span class="p">))</span>
+                     <span class="n">blend_func</span><span class="o">=</span><span class="p">(</span><span class="s1">'src_alpha'</span><span class="p">,</span> <span class="s1">'one_minus_src_alpha'</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>

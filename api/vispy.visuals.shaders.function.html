@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
 
-    <script src="../_static/documentation_options.js?v=9bedf60e"></script>
+    <script src="../_static/documentation_options.js?v=a8f98217"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -907,50 +907,50 @@ called must be specified by calling the Function object. The
 arguments can be any of the expressions mentioned earlier. If the
 signature is already specified in the template code, that function
 itself must be given.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'''</span>
 <span class="s1">    void main() {</span>
 <span class="s1">        vec4 position = $pos;</span>
 <span class="s1">        gl_Position = $scale(position)</span>
 <span class="s1">    }</span>
-<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="s1">'''</span><span class="p">)</span>
 
 <span class="c1"># Example of a function call with all possible three expressions</span>
-<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">func1</span><span class="p">(</span><span class="s1">&#39;3.0&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform float u_param&#39;</span><span class="p">,</span> <span class="n">func2</span><span class="p">())</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">'pos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">func1</span><span class="p">(</span><span class="s1">'3.0'</span><span class="p">,</span> <span class="s1">'uniform float u_param'</span><span class="p">,</span> <span class="n">func2</span><span class="p">())</span>
 
 <span class="c1"># For scale, the sigfnature is already specified</span>
-<span class="n">code</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_func</span>  <span class="c1"># Must not specify args</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">'scale'</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_func</span>  <span class="c1"># Must not specify args</span>
 </pre></div>
 </div>
 <p>Data for uniform and attribute variables:</p>
 <p>To each variable a value can be associated. In fact, in most cases
 the Function class is smart enough to be able to create a Variable
 object if only the data is given.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">&#39;uniform float offset&#39;</span><span class="p">)</span>  <span class="c1"># No data</span>
-<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">&#39;uniform float offset&#39;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># With data</span>
-<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>  <span class="c1"># -&gt; Uniform Variable</span>
-<span class="n">position</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">()</span>  <span class="c1"># -&gt; attribute Variable</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span><span class="p">[</span><span class="s1">'offset'</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">'uniform float offset'</span><span class="p">)</span>  <span class="c1"># No data</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">'offset'</span><span class="p">]</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">'uniform float offset'</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># With data</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">'offset'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>  <span class="c1"># -&gt; Uniform Variable</span>
+<span class="n">position</span><span class="p">[</span><span class="s1">'position'</span><span class="p">]</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">()</span>  <span class="c1"># -&gt; attribute Variable</span>
 
 <span class="c1"># Updating variables</span>
-<span class="n">code</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">4.0</span>
-<span class="n">position</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">code</span><span class="p">[</span><span class="s1">'offset'</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">position</span><span class="p">[</span><span class="s1">'position'</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
 <p>This example shows the basic usage of the Function class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vert_code_template</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vert_code_template</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'''</span>
 <span class="s1">    void main() {</span>
 <span class="s1">    gl_Position = $pos;</span>
 <span class="s1">    gl_Position.x += $xoffset;</span>
 <span class="s1">    gl_Position.y += $yoffset;</span>
-<span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="s1">}'''</span><span class="p">)</span>
 
-<span class="n">scale_transform</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="n">scale_transform</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'''</span>
 <span class="s1">vec4 transform_scale(vec4 pos){</span>
 <span class="s1">    return pos * $scale;</span>
-<span class="s1">}&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="s1">}'''</span><span class="p">)</span>
 
 <span class="c1"># If you get the function from a snippet collection, always</span>
-<span class="c1"># create new Function objects to ensure they are &#39;fresh&#39;.</span>
+<span class="c1"># create new Function objects to ensure they are 'fresh'.</span>
 <span class="n">vert_code</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">vert_code_template</span><span class="p">)</span>
 <span class="n">trans1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">scale_transform</span><span class="p">)</span>
 <span class="n">trans2</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="n">scale_transform</span><span class="p">)</span>  <span class="c1"># trans2 != trans1</span>
@@ -958,25 +958,25 @@ object if only the data is given.</p>
 <span class="c1"># Three ways to assign to template variables:</span>
 <span class="c1">#</span>
 <span class="c1"># 1) Assign verbatim code</span>
-<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;xoffset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;(3.0 / 3.1415)&#39;</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">'xoffset'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'(3.0 / 3.1415)'</span>
 
 <span class="c1"># 2) Assign a value (this creates a new uniform or attribute)</span>
-<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;yoffset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">'yoffset'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
 
 <span class="c1"># 3) Assign a function call expression</span>
-<span class="n">pos_var</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">&#39;attribute vec4 a_position&#39;</span><span class="p">)</span>
-<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;pos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trans1</span><span class="p">(</span><span class="n">trans2</span><span class="p">(</span><span class="n">pos_var</span><span class="p">))</span>
+<span class="n">pos_var</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="s1">'attribute vec4 a_position'</span><span class="p">)</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">'pos'</span><span class="p">]</span> <span class="o">=</span> <span class="n">trans1</span><span class="p">(</span><span class="n">trans2</span><span class="p">(</span><span class="n">pos_var</span><span class="p">))</span>
 
 <span class="c1"># Transforms also need their variables set</span>
-<span class="n">trans1</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">trans2</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">trans1</span><span class="p">[</span><span class="s1">'scale'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">trans2</span><span class="p">[</span><span class="s1">'scale'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
 <span class="c1"># You can actually change any code you want, but use this with care!</span>
-<span class="n">vert_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;gl_Position.y&#39;</span><span class="p">,</span> <span class="s1">&#39;gl_Position.z&#39;</span><span class="p">)</span>
+<span class="n">vert_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'gl_Position.y'</span><span class="p">,</span> <span class="s1">'gl_Position.z'</span><span class="p">)</span>
 
 <span class="c1"># Finally, you can set special variables explicitly. This generates</span>
 <span class="c1"># a new statement at the end of the vert_code function.</span>
-<span class="n">vert_code</span><span class="p">[</span><span class="s1">&#39;gl_PointSize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10.&#39;</span>
+<span class="n">vert_code</span><span class="p">[</span><span class="s1">'gl_PointSize'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'10.'</span>
 </pre></div>
 </div>
 <p>If we use <code class="docutils literal notranslate"><span class="pre">vert_code.compile()</span></code> we get:</p>
@@ -1106,9 +1106,9 @@ output of each function provides the input to the next.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>This creates a function chain:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;void my_func_1() </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">func2</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;void my_func_2() </span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chain</span> <span class="o">=</span> <span class="n">FunctionChain</span><span class="p">(</span><span class="s1">&#39;my_func_chain&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">func1</span><span class="p">,</span> <span class="n">func2</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func1</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'void my_func_1() </span><span class="si">{}</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func2</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'void my_func_2() </span><span class="si">{}</span><span class="s1">'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chain</span> <span class="o">=</span> <span class="n">FunctionChain</span><span class="p">(</span><span class="s1">'my_func_chain'</span><span class="p">,</span> <span class="p">[</span><span class="n">func1</span><span class="p">,</span> <span class="n">func2</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>If <em>chain</em> is included in a ModularProgram, it will generate the following
