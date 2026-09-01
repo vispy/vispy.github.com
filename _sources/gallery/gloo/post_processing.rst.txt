@@ -31,19 +31,8 @@ Show post-processing using a FrameBuffer
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/vispy/vispy/examples/gloo/post_processing.py:84: DeprecationWarning: `row_stack` alias is deprecated. Use `np.vstack` directly.
-      Z = np.row_stack(grid_num // 2 * (row_even, row_odd)).astype(np.uint8)
 
 
-
-
-
-
-|
 
 .. code-block:: Python
 
@@ -114,7 +103,7 @@ Show post-processing using a FrameBuffer
     def checkerboard(grid_num=8, grid_size=32):
         row_even = grid_num // 2 * [0, 1]
         row_odd = grid_num // 2 * [1, 0]
-        Z = np.row_stack(grid_num // 2 * (row_even, row_odd)).astype(np.uint8)
+        Z = np.vstack(grid_num // 2 * (row_even, row_odd)).astype(np.uint8)
         return 255 * Z.repeat(grid_size, axis=0).repeat(grid_size, axis=1)
 
 
@@ -194,7 +183,7 @@ Show post-processing using a FrameBuffer
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.892 seconds)
+   **Total running time of the script:** (0 minutes 1.085 seconds)
 
 
 .. _sphx_glr_download_gallery_gloo_post_processing.py:
