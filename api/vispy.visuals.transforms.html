@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=dd375a5c"></script>
+    <script src="../_static/documentation_options.js?v=eacfd036"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -880,6 +880,7 @@
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.assert_chain_types"><code class="docutils literal notranslate"><span class="pre">assert_chain_types()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_affine_mapping"><code class="docutils literal notranslate"><span class="pre">test_affine_mapping()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_inverse"><code class="docutils literal notranslate"><span class="pre">test_inverse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_log_transform_cpu_inverse"><code class="docutils literal notranslate"><span class="pre">test_log_transform_cpu_inverse()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_map_rect"><code class="docutils literal notranslate"><span class="pre">test_map_rect()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_multiplication"><code class="docutils literal notranslate"><span class="pre">test_multiplication()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.visuals.transforms.tests.test_transforms.html#vispy.visuals.transforms.tests.test_transforms.test_st_mapping"><code class="docutils literal notranslate"><span class="pre">test_st_mapping()</span></code></a></li>
@@ -1251,8 +1252,8 @@ the chain.</p>
 <dd><p>Bases: <a class="reference internal" href="vispy.visuals.transforms.base_transform.html#vispy.visuals.transforms.base_transform.BaseTransform" title="vispy.visuals.transforms.base_transform.BaseTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTransform</span></code></a></p>
 <p>Transform perfoming logarithmic transformation on three axes.</p>
 <p>Maps (x, y, z) =&gt; (log(base.x, x), log(base.y, y), log(base.z, z))</p>
-<p>No transformation is applied for axes with base == 0.</p>
-<p>If base &lt; 0, then the inverse function is applied: x =&gt; base.x ** x</p>
+<p>No transformation is applied for axes with -1 &lt;= base &lt;= 1.</p>
+<p>If base &lt; -1, then the inverse function is applied: x =&gt; (-base.x) ** x</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1285,8 +1286,8 @@ the chain.</p>
 <dt class="sig sig-object py" id="vispy.visuals.transforms.LogTransform.base">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#vispy.visuals.transforms.LogTransform.base" title="Link to this definition">#</a></dt>
 <dd><p><em>base</em> is a tuple (x, y, z) containing the log base that should be
-applied to each axis of the input vector. If any axis has a base &lt;= 0,
-then that axis is not affected.</p>
+applied to each axis of the input vector. Bases below -1 apply the
+inverse function; bases between -1 and 1 leave the axis unchanged.</p>
 </dd></dl>
 
 <dl class="py attribute">
