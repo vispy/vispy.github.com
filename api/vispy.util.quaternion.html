@@ -43,7 +43,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=4eb7542f"></script>
+    <script src="../_static/documentation_options.js?v=a6adf7ed"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -628,6 +628,7 @@
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_import.html">vispy.util.tests.test_import module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_key.html">vispy.util.tests.test_key module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_logging.html">vispy.util.tests.test_logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_quaternion.html">vispy.util.tests.test_quaternion module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_run.html">vispy.util.tests.test_run module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_transforms.html">vispy.util.tests.test_transforms module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vispy.util.tests.test_vispy.html">vispy.util.tests.test_vispy module</a></li>
@@ -905,8 +906,7 @@ imaginary (vector) parts reversed.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.util.quaternion.Quaternion.exp">
 <span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.quaternion.Quaternion.exp" title="Link to this definition">#</a></dt>
-<dd><p>Returns the exponent of the quaternion. 
-(not tested)</p>
+<dd><p>Return the exponential of the quaternion.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -934,15 +934,24 @@ as the conjugate.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.util.quaternion.Quaternion.log">
 <span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.quaternion.Quaternion.log" title="Link to this definition">#</a></dt>
-<dd><p>Returns the natural logarithm of the quaternion. 
-(not tested)</p>
+<dd><p>Return the natural logarithm of the quaternion.</p>
+<p>For a negative real quaternion, choose the positive x-axis as the
+imaginary direction, giving <code class="docutils literal notranslate"><span class="pre">log(-w)</span> <span class="pre">+</span> <span class="pre">pi*i</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If the quaternion is zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="vispy.util.quaternion.Quaternion.norm">
 <span class="sig-name descname"><span class="pre">norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vispy.util.quaternion.Quaternion.norm" title="Link to this definition">#</a></dt>
 <dd><p>Returns the norm of the quaternion</p>
-<p>norm = w**2 + x**2 + y**2 + z**2</p>
+<p>norm = (w**2 + x**2 + y**2 + z**2)**0.5</p>
 </dd></dl>
 
 <dl class="py method">
